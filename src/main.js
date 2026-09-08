@@ -1,7 +1,8 @@
 import * as THREE from 'three';
 import { GaiaNode } from './Node.js';
 import { GEOMETRIES } from './geometry.js';
-import { bindRemoteContract } from './pulse.js';
+import { bindRemoteContract, createPositionStreamer } from './pulse.js';
+import { nodeVertex, nodeFragment } from './shaders.js';
 
 const hud = document.getElementById('hud');
 const scene = new THREE.Scene();
@@ -14,7 +15,7 @@ renderer.setSize(innerWidth, innerHeight);
 renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
 document.body.appendChild(renderer.domElement);
 
-const state = { gravityPull: 1, toroidalWeave: 1, lerp: 0.05 };
+const state = { gravityPull: 1, toroidalWeave: 1, lerp: 0.05, blend: 0.5 };
 const targetState = { geometry: 'torus' };
 bindRemoteContract(state, targetState);
 
@@ -22,11 +23,16 @@ const nodes = [];
 const count = 24;
 for (let i = 0; i < count; i++) {
   const geo = new THREE.SphereGeometry(0.35, 16, 16);
-  const mat = new THREE.MeshStandardMaterial({
-    color: new THREE.Color().setHSL(i / count, 0.7, 0.55),
-    emissive: new THREE.Color().setHSL(i / count, 0.8, 0.15),
+  const hue = i / count;
+  const mat = new THREE.ShaderMaterial({
+    uniforms: {
+      uTime: { value: 0 },
+      uGravity: { value: 1 },
+      uColor: { value: new THREE.Color().setHSL(hue, 0.7, 0.55) },
+    },
+    vertexShader: nodeVertex,
+    fragmentShader: nodeFragment,
   });
-  mat.uniforms = { uTime: { value: 0 }, uGravity: { value: 1 } };
   const mesh = new THREE.Mesh(geo, mat);
   scene.add(mesh);
   nodes.push(new GaiaNode({ idx: i, mesh, material: mat }));
@@ -37,6 +43,8 @@ const key = new THREE.PointLight(0x88ffcc, 40, 80);
 key.position.set(8, 16, 10);
 scene.add(key);
 
+const streamPositions = createPositionStreamer(nodes);
+
 addEventListener('resize', () => {
   camera.aspect = innerWidth / innerHeight;
   camera.updateProjectionMatrix();
@@ -45,25 +53,32 @@ addEventListener('resize', () => {
 
 addEventListener('keydown', (e) => {
   const n = Number(e.key);
-  if (n >= 1 && n <= GEOMETRIES.length) targetState.geometry = GEOMETRIES[n - 1];
+  if (n >= 1 && n <= 9 && n <= GEOMETRIES.length) targetState.geometry = GEOMETRIES[n - 1];
+  if (e.key === '0' && GEOMETRIES[9]) targetState.geometry = GEOMETRIES[9];
+  if (e.key === 'q' && GEOMETRIES[10]) targetState.geometry = GEOMETRIES[10];
+  if (e.key === 'w' && GEOMETRIES[11]) targetState.geometry = GEOMETRIES[11];
   if (e.key === '[') state.gravityPull = Math.max(0.1, state.gravityPull - 0.1);
   if (e.key === ']') state.gravityPull = Math.min(3, state.gravityPull + 0.1);
   if (e.key === '-') state.toroidalWeave = Math.max(0, state.toroidalWeave - 0.1);
   if (e.key === '=') state.toroidalWeave = Math.min(4, state.toroidalWeave + 0.1);
+  if (e.key === ',') state.blend = Math.max(0, state.blend - 0.05);
+  if (e.key === '.') state.blend = Math.min(1, state.blend + 0.05);
 });
 
 const clock = new THREE.Clock();
 function frame() {
   const t = clock.getElapsedTime();
   for (const node of nodes) node.update(t, state, targetState);
+  streamPositions(t);
   camera.position.x = Math.sin(t * 0.08) * 42;
   camera.position.z = Math.cos(t * 0.08) * 42;
   camera.lookAt(0, 0, 0);
   hud.textContent = [
-    'GAIA VISUALIZER  band-137',
-    `geometry: ${targetState.geometry}   (keys 1-${GEOMETRIES.length})`,
+    'GAIA VISUALIZER  band-137  stage-3',
+    `geometry: ${targetState.geometry}   (1-9 / 0 / q / w)`,
     `gravityPull: ${state.gravityPull.toFixed(2)}   ([ / ])`,
     `toroidalWeave: ${state.toroidalWeave.toFixed(2)}   (- / =)`,
+    `blend: ${state.blend.toFixed(2)}   (, / .)  hamiltonian<->klein`,
     `lerp: ${state.lerp.toFixed(2)}   (gaia:targetState / ?state= / ?pulse=ws)`,
   ].join('\n');
   renderer.render(scene, camera);

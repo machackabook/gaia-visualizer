@@ -1,6 +1,7 @@
 import { GEOMETRIES } from './geometry.js';
 
 export const CHANNEL = 'gaia-weave';
+export const POS_CHANNEL = 'gaia-positions';
 
 export function clamp(n, lo, hi) {
   return Math.min(hi, Math.max(lo, n));
@@ -20,20 +21,20 @@ export function parseTargetState(raw) {
     gravityPull: mapPulseToGravity(src.gravityPull ?? 1),
     toroidalWeave: clamp(Number(src.toroidalWeave ?? 1), 0, 4),
     lerp: clamp(Number(src.lerp ?? 0.05), 0.01, 0.4),
+    blend: clamp(Number(src.blend ?? 0.5), 0, 1),
   };
 }
 
-/** Apply a contract object onto live state + targetState. */
 export function applyContract(payload, state, targetState) {
   const parsed = parseTargetState(payload);
   targetState.geometry = parsed.geometry;
   state.gravityPull = parsed.gravityPull;
   state.toroidalWeave = parsed.toroidalWeave;
   state.lerp = parsed.lerp;
+  state.blend = parsed.blend;
   return parsed;
 }
 
-/** Listen for window events, BroadcastChannel, optional WS, and ?state= JSON. */
 export function bindRemoteContract(state, targetState) {
   const apply = (payload) => applyContract(payload, state, targetState);
 
@@ -78,4 +79,31 @@ export function bindRemoteContract(state, targetState) {
   } catch {
     /* ignore malformed query */
   }
+}
+
+export function createPositionStreamer(nodes) {
+  let bc = null;
+  try {
+    bc = new BroadcastChannel(POS_CHANNEL);
+  } catch {
+    return () => {};
+  }
+  let last = 0;
+  return (t) => {
+    if (t - last < 0.1) return;
+    last = t;
+    const payload = {
+      type: 'gaia:positions',
+      band: '192-network',
+      t,
+      nodes: nodes.map((n) => ({
+        idx: n.idx,
+        x: +n.mesh.position.x.toFixed(3),
+        y: +n.mesh.position.y.toFixed(3),
+        z: +n.mesh.position.z.toFixed(3),
+      })),
+    };
+    bc.postMessage(payload);
+    dispatchEvent(new CustomEvent('gaia:positions', { detail: payload }));
+  };
 }

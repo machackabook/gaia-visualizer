@@ -2,47 +2,59 @@
 
 **Band:** `137-visual`  
 **Nexus:** Cryptic-Heartbeat  
-**Numeral:** `137451921129154222`
+**Numeral:** `137451921129154222`  
+**Stage:** `3`
 
-LLM-assigned geometric states for Gaia nodes. Each node interpolates toward a target manifold.
+LLM-assigned geometric states for Gaia nodes. Each node interpolates toward a target manifold. `GaiaNode.update(t, state, targetState)` advances theta with gravity and lerps onto `evaluateGeometry(...)`.
 
-| `targetState.geometry` | Mapping |
-|------------------------|---------|
-| `torus` (default) | Standard toroidal weave |
-| `infinity` | Lemniscate of Bernoulli |
-| `hamiltonian` | Vertex-favoring spherical grid traversal |
-| `triangular` | Modulo snap to tetrahedral / triangular lattice |
-| `helix` | Gravity-wound helical climb |
-| `mobius` | One-sided strip |
-| `lissajous` | Coupled harmonic lattice (stage-2) |
-| `klein` | Immersed Klein bottle (stage-2 surface) |
+| `targetState.geometry` | Mapping | Keys |
+|------------------------|---------|------|
+| `torus` (default) | Standard toroidal weave | 1 |
+| `infinity` | Lemniscate of Bernoulli | 2 |
+| `hamiltonian` | Vertex-favoring spherical grid traversal | 3 |
+| `triangular` | Modulo snap to tetrahedral / triangular lattice | 4 |
+| `helix` | Gravity-wound helical climb | 5 |
+| `mobius` | One-sided strip | 6 |
+| `lissajous` | Coupled harmonic lattice | 7 |
+| `klein` | Immersed Klein bottle | 8 |
+| `hopf` | Hopf fibration fibers on S3 | 9 |
+| `rose` | Polar rhodonea | 0 |
+| `seifert` | (p,q) Seifert fibered torus knot | q |
+| `blend` | Hamiltonian ↔ Klein singularity mix | w |
 
-Uniforms: `uTime`, `uGravity`. State: `gravityPull`, `toroidalWeave`, `lerp`.
-
-`GaiaNode.update(t, state, targetState)` is the live evaluator: theta advances with gravity, position lerps onto `evaluateGeometry(...)`.
+Uniforms: `uTime`, `uGravity`, `uColor` (ShaderMaterial). State: `gravityPull`, `toroidalWeave`, `lerp`, `blend`.
 
 ## Drive from the LLM / ledger / The-Hive
 
 ```js
 window.dispatchEvent(new CustomEvent('gaia:targetState', {
-  detail: { geometry: 'hamiltonian', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05 }
+  detail: { geometry: 'blend', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6 }
 }));
 window.dispatchEvent(new CustomEvent('gaia:pulse', { detail: { pulse: 1.8 } }));
 
 const bc = new BroadcastChannel('gaia-weave');
-bc.postMessage({ type: 'gaia:targetState', geometry: 'klein', gravityPull: 1.6 });
+bc.postMessage({ type: 'gaia:targetState', geometry: 'hopf', gravityPull: 1.6 });
+
+const pos = new BroadcastChannel('gaia-positions');
+pos.onmessage = (ev) => console.log(ev.data.band, ev.data.nodes.length);
 ```
 
 Query seeds:
-- `?state={"geometry":"infinity","gravityPull":1.2}`
+- `?state={"geometry":"blend","gravityPull":1.2,"blend":0.7}`
 - `?pulse=ws://localhost:3000` — Hive WS frames `{type:"gaia:pulse",pulse}` or a full contract.
 
-## Next stages (compiled)
+## Stages
 
-1. The-Hive `geometryContract.ts` + `POST /api/gaia/contract` + WS `gaia:targetState` (wired).
-2. Cryptic-Heartbeat ledger pulse → `gaia:pulse` / BroadcastChannel `gaia-weave`.
-3. Stream node positions on band-192-network to Tailscale peers.
-4. Hamiltonian singularity surface at Hamiltoniansingularity.ai (klein + hamiltonian blend).
-5. Shared shader uniforms (`uTime`, `uGravity`) for a custom ShaderMaterial pass.
+**Done**
+1. Extract `update()` into `evaluateGeometry` + `GaiaNode` (torus / infinity / hamiltonian / triangular).
+2. The-Hive `geometryContract.ts` + `POST /api/gaia/contract` + WS `gaia:targetState`.
+3. Stage-2 surfaces: helix, mobius, lissajous, klein.
+4. Stage-3: hopf, rose, seifert, hamiltonian↔klein `blend`; ShaderMaterial uniforms; `gaia-positions` stream on band-192-network.
 
-See `src/geometry.js`, `src/Node.js`, `src/pulse.js`.
+**Next**
+5. Cryptic-Heartbeat / TheLedgerIndex pulse → `gaia:pulse` authenticated frames.
+6. Tailscale peer fan-out of `gaia:positions` (192-network).
+7. Hamiltonian singularity surface at Hamiltoniansingularity.ai (serve `blend` as default).
+8. Instanced mesh + GPU attribute buffer for >1k nodes.
+
+See `src/geometry.js`, `src/Node.js`, `src/shaders.js`, `src/pulse.js`.

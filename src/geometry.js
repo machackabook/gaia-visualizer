@@ -11,7 +11,32 @@ export const GEOMETRIES = [
   'mobius',
   'lissajous',
   'klein',
+  'hopf',
+  'rose',
+  'seifert',
+  'blend',
 ];
+
+function kleinBottle(theta, phi, t, idx, major, toroidalWeave) {
+  const u = theta;
+  const v = phi;
+  const r = 4 + toroidalWeave;
+  let x = (r + Math.cos(u / 2) * Math.sin(v) - Math.sin(u / 2) * Math.sin(2 * v)) * Math.cos(u) * 1.2;
+  let z = (r + Math.cos(u / 2) * Math.sin(v) - Math.sin(u / 2) * Math.sin(2 * v)) * Math.sin(u) * 1.2;
+  let y = Math.sin(u / 2) * Math.sin(v) + Math.cos(u / 2) * Math.sin(2 * v) + Math.sin(t * 0.2 + idx) * 0.3;
+  x *= major * 0.12;
+  y *= major * 0.18;
+  z *= major * 0.12;
+  return { x, y, z };
+}
+
+function hamiltonianPath(theta, t, major) {
+  return {
+    x: major * Math.cos(theta * 3) * Math.cos(theta),
+    z: major * Math.cos(theta * 3) * Math.sin(theta),
+    y: major * Math.sin(theta * 3) + Math.sin(t) * 2,
+  };
+}
 
 export function evaluateGeometry({
   theta,
@@ -21,6 +46,7 @@ export function evaluateGeometry({
   gravityPull = 1,
   toroidalWeave = 1,
   geometry = 'torus',
+  blend = 0.5,
 }) {
   const major = 10 + idx * 2;
   const minor = 3 + toroidalWeave * 2;
@@ -28,7 +54,6 @@ export function evaluateGeometry({
 
   switch (geometry) {
     case 'infinity': {
-      // Lemniscate of Bernoulli
       const scale = major * 1.5;
       const denom = 1 + Math.sin(theta) * Math.sin(theta);
       x = (scale * Math.cos(theta)) / denom;
@@ -37,10 +62,8 @@ export function evaluateGeometry({
       break;
     }
     case 'hamiltonian': {
-      const hScale = major;
-      x = hScale * Math.cos(theta * 3) * Math.cos(theta);
-      z = hScale * Math.cos(theta * 3) * Math.sin(theta);
-      y = hScale * Math.sin(theta * 3) + Math.sin(t) * 2;
+      const h = hamiltonianPath(theta, t, major);
+      x = h.x; y = h.y; z = h.z;
       break;
     }
     case 'triangular': {
@@ -75,15 +98,42 @@ export function evaluateGeometry({
       break;
     }
     case 'klein': {
-      const u = theta;
-      const v = phi;
-      const r = 4 + toroidalWeave;
-      x = (r + Math.cos(u / 2) * Math.sin(v) - Math.sin(u / 2) * Math.sin(2 * v)) * Math.cos(u) * 1.2;
-      z = (r + Math.cos(u / 2) * Math.sin(v) - Math.sin(u / 2) * Math.sin(2 * v)) * Math.sin(u) * 1.2;
-      y = Math.sin(u / 2) * Math.sin(v) + Math.cos(u / 2) * Math.sin(2 * v) + Math.sin(t * 0.2 + idx) * 0.3;
-      x *= major * 0.12;
-      y *= major * 0.18;
-      z *= major * 0.12;
+      const k = kleinBottle(theta, phi, t, idx, major, toroidalWeave);
+      x = k.x; y = k.y; z = k.z;
+      break;
+    }
+    case 'hopf': {
+      const eta = theta;
+      const xi = phi + t * 0.15 * gravityPull;
+      const r = Math.sin(eta);
+      x = major * r * Math.cos(xi);
+      z = major * r * Math.sin(xi);
+      y = major * Math.cos(eta) * 0.65 + Math.sin(t * 0.4 + idx) * 0.4;
+      break;
+    }
+    case 'rose': {
+      const k = 3 + (idx % 4);
+      const rho = major * Math.cos(k * theta);
+      x = rho * Math.cos(theta);
+      z = rho * Math.sin(theta);
+      y = minor * Math.sin(phi + t * 0.3) * 0.6;
+      break;
+    }
+    case 'seifert': {
+      const p = 2 + (idx % 3);
+      const q = 3 + (idx % 2);
+      x = (major + minor * Math.cos(q * phi)) * Math.cos(p * theta);
+      z = (major + minor * Math.cos(q * phi)) * Math.sin(p * theta);
+      y = minor * Math.sin(q * phi) + Math.sin(t * 0.25 + idx) * 0.5;
+      break;
+    }
+    case 'blend': {
+      const h = hamiltonianPath(theta, t, major);
+      const k = kleinBottle(theta, phi, t, idx, major, toroidalWeave);
+      const a = Math.min(1, Math.max(0, blend));
+      x = h.x * (1 - a) + k.x * a;
+      y = h.y * (1 - a) + k.y * a;
+      z = h.z * (1 - a) + k.z * a;
       break;
     }
     case 'torus':
