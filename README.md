@@ -3,9 +3,9 @@
 **Band:** `137-visual`  
 **Nexus:** Cryptic-Heartbeat  
 **Numeral:** `137451921129154222`  
-**Stage:** `4`
+**Stage:** `5`
 
-LLM-assigned geometric states for Gaia nodes. Each node interpolates toward a target manifold. `GaiaNode.update(t, state, targetState)` advances theta with gravity and lerps onto `evaluateGeometry(...)`.
+LLM-assigned geometric states for Gaia nodes. Each node interpolates toward a target manifold. `GaiaNode.update(t, state, targetState)` advances theta with gravity and lerps onto `evaluateGeometry(...)`. The per-frame target vector is reused (no `new THREE.Vector3` inside `update`).
 
 | `targetState.geometry` | Mapping | Keys |
 |------------------------|---------|------|
@@ -23,6 +23,7 @@ LLM-assigned geometric states for Gaia nodes. Each node interpolates toward a ta
 | `blend` | Hamiltonian ↔ Klein singularity mix | w |
 | `trefoil` | (2,3) torus knot | e |
 | `stereo` | Stereographic chart of S2 | r |
+| `clifford` | Clifford torus in S3 → R3 | t |
 
 Uniforms: `uTime`, `uGravity`, `uColor` (ShaderMaterial). State: `gravityPull`, `toroidalWeave`, `lerp`, `blend`.
 
@@ -30,7 +31,7 @@ Uniforms: `uTime`, `uGravity`, `uColor` (ShaderMaterial). State: `gravityPull`, 
 
 ```js
 window.dispatchEvent(new CustomEvent('gaia:targetState', {
-  detail: { geometry: 'blend', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6 }
+  detail: { geometry: 'clifford', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6 }
 }));
 window.dispatchEvent(new CustomEvent('gaia:pulse', { detail: { pulse: 1.8 } }));
 
@@ -56,11 +57,12 @@ Query seeds:
 3. Stage-2 surfaces: helix, mobius, lissajous, klein.
 4. Stage-3: hopf, rose, seifert, hamiltonian↔klein `blend`; ShaderMaterial uniforms; `gaia-positions` stream on band-192-network.
 5. Stage-4: InstancedMesh for >48 nodes; `trefoil` / `stereo`; optional pulse token; HTTP position relay.
+6. Stage-5: `clifford` (S3 Clifford torus projected); reused lerp target; HUD stage-5.
 
 **Next**
-6. Cryptic-Heartbeat / TheLedgerIndex pulse → authenticated `gaia:pulse` frames (shared token already wired).
-7. Tailscale peer fan-out of `gaia:positions` (192-network) via Hive `/api/gaia/positions`.
-8. Hamiltonian singularity surface at Hamiltoniansingularity.ai (serve `blend` as default).
-9. GPU attribute buffer / compute path for >8k nodes.
+7. Cryptic-Heartbeat / TheLedgerIndex pulse → authenticated `gaia:pulse` frames (shared token already wired).
+8. Tailscale peer fan-out of `gaia:positions` (192-network) via Hive `/api/gaia/positions`.
+9. Hamiltonian singularity surface at Hamiltoniansingularity.ai (serve `blend` as default).
+10. GPU attribute buffer / compute path for >8k nodes.
 
 See `src/geometry.js`, `src/Node.js`, `src/shaders.js`, `src/pulse.js`.

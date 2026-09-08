@@ -17,6 +17,7 @@ export const GEOMETRIES = [
   'blend',
   'trefoil',
   'stereo',
+  'clifford',
 ];
 
 function kleinBottle(theta, phi, t, idx, major, toroidalWeave) {
@@ -37,6 +38,21 @@ function hamiltonianPath(theta, t, major) {
     x: major * Math.cos(theta * 3) * Math.cos(theta),
     z: major * Math.cos(theta * 3) * Math.sin(theta),
     y: major * Math.sin(theta * 3) + Math.sin(t) * 2,
+  };
+}
+
+/** Clifford torus in S3, stereographically projected to R3. */
+function cliffordTorus(theta, phi, t, major, minor) {
+  const a = Math.SQRT1_2;
+  const x4 = a * Math.cos(theta);
+  const y4 = a * Math.sin(theta);
+  const z4 = a * Math.cos(phi);
+  const w4 = a * Math.sin(phi + t * 0.15);
+  const d = 1 - w4 || 1e-6;
+  return {
+    x: (x4 / d) * major * 0.55,
+    y: (z4 / d) * minor * 0.85,
+    z: (y4 / d) * major * 0.55,
   };
 }
 
@@ -153,6 +169,11 @@ export function evaluateGeometry({
       x = s * Math.sin(v) * Math.cos(u) / (denom || 1e-6);
       z = s * Math.sin(v) * Math.sin(u) / (denom || 1e-6);
       y = s * Math.sin(t * 0.2 + idx * 0.1) * 0.3 + minor * 0.2 * Math.cos(v);
+      break;
+    }
+    case 'clifford': {
+      const c = cliffordTorus(theta, phi, t, major, minor);
+      x = c.x; y = c.y; z = c.z;
       break;
     }
     case 'torus':
