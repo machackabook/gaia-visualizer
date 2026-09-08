@@ -1,7 +1,8 @@
 /**
  * Evaluate the target geometric state assigned by the LLM.
  * Pure mapping: (theta, phi, t, idx, state, geometry) -> {x,y,z}
- * Stage-7 manifolds: villarceau, boy, catenoid.
+ * Stage-8 manifolds: dini, roman, hyperbolic.
+ * Chat kernel remains torus / infinity / hamiltonian / triangular + lerp.
  */
 export const GEOMETRIES = [
   'torus',
@@ -26,6 +27,9 @@ export const GEOMETRIES = [
   'villarceau',
   'boy',
   'catenoid',
+  'dini',
+  'roman',
+  'hyperbolic',
 ];
 
 function kleinBottle(theta, phi, t, idx, major, toroidalWeave) {
@@ -120,7 +124,6 @@ function figure8(theta, phi, t, major, minor) {
   };
 }
 
-/** Villarceau circles: two interlocking circles that lie on a torus. */
 function villarceau(theta, phi, t, idx, major, minor) {
   const lane = idx % 2;
   const a = major;
@@ -141,7 +144,6 @@ function villarceau(theta, phi, t, idx, major, minor) {
   };
 }
 
-/** Boy surface (Bryant–Kusner-ish compact immersion of RP2). */
 function boy(theta, phi, t, major, minor) {
   const u = theta;
   const v = (phi % Math.PI) * 0.95 + 0.05;
@@ -160,7 +162,6 @@ function boy(theta, phi, t, major, minor) {
   };
 }
 
-/** Catenoid ↔ helicoid associate family. */
 function catenoid(theta, phi, t, major, minor) {
   const u = (phi - Math.PI) * 1.1;
   const v = theta;
@@ -177,6 +178,50 @@ function catenoid(theta, phi, t, major, minor) {
     x: catX * (1 - alpha) + helX * alpha,
     y: catY * (1 - alpha) + helY * alpha + Math.sin(t * 0.2) * minor * 0.05,
     z: catZ * (1 - alpha) + helZ * alpha,
+  };
+}
+
+/** Dini's surface: twisted catenoid / helicoid family with constant negative curvature. */
+function dini(theta, phi, t, major, minor) {
+  const a = major * 0.18;
+  const b = 0.2 + minor * 0.04;
+  const u = theta;
+  const v = 0.15 + ((phi % (Math.PI * 0.9)) + Math.PI * 0.05);
+  const sv = Math.sin(v) || 1e-6;
+  return {
+    x: a * Math.cos(u) * Math.sin(v),
+    y: a * (Math.cos(v) + Math.log(sv) * 0.35) + b * u * 0.15 + Math.sin(t * 0.2) * 0.2,
+    z: a * Math.sin(u) * Math.sin(v),
+  };
+}
+
+/** Steiner Roman surface (RP2 immersion with three pairwise planes). */
+function roman(theta, phi, t, major, minor) {
+  const u = theta;
+  const v = phi * 0.5;
+  const s = major * 0.35;
+  const su = Math.sin(u);
+  const cu = Math.cos(u);
+  const sv = Math.sin(v);
+  const cv = Math.cos(v);
+  return {
+    x: s * su * cu * sv * sv,
+    y: s * su * su * sv * cv + Math.sin(t * 0.25) * minor * 0.08,
+    z: s * cu * su * sv * cv,
+  };
+}
+
+/** Hyperboloid of one sheet, gravity-wound. */
+function hyperbolic(theta, phi, t, idx, major, minor) {
+  const u = theta;
+  const v = (phi - Math.PI) * 0.55;
+  const a = major * 0.35;
+  const c = minor * 0.55;
+  const cosh = (Math.exp(v) + Math.exp(-v)) * 0.5;
+  return {
+    x: a * cosh * Math.cos(u),
+    y: c * v + Math.sin(t * 0.3 + idx) * 0.3,
+    z: a * cosh * Math.sin(u),
   };
 }
 
@@ -333,6 +378,21 @@ export function evaluateGeometry({
     case 'catenoid': {
       const c = catenoid(theta, phi, t, major, minor);
       x = c.x; y = c.y; z = c.z;
+      break;
+    }
+    case 'dini': {
+      const d = dini(theta, phi, t, major, minor);
+      x = d.x; y = d.y; z = d.z;
+      break;
+    }
+    case 'roman': {
+      const r = roman(theta, phi, t, major, minor);
+      x = r.x; y = r.y; z = r.z;
+      break;
+    }
+    case 'hyperbolic': {
+      const h = hyperbolic(theta, phi, t, idx, major, minor);
+      x = h.x; y = h.y; z = h.z;
       break;
     }
     case 'torus':
