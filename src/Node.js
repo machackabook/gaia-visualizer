@@ -44,12 +44,15 @@ export class GaiaNode {
 
     _target.set(x, y, z);
     const alpha = state.lerp ?? 0.05;
+    const scale = 0.85 + Math.min(0.55, pull * 0.18);
     if (this.dummy) {
       this.dummy.position.lerp(_target, alpha);
+      this.dummy.scale.setScalar(scale);
       this.dummy.updateMatrix();
       this.position.copy(this.dummy.position);
     } else if (this.mesh?.position) {
       this.mesh.position.lerp(_target, alpha);
+      this.mesh.scale.setScalar(scale);
       this.position.copy(this.mesh.position);
     } else {
       this.position.lerp(_target, alpha);

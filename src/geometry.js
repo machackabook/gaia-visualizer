@@ -18,6 +18,10 @@ export const GEOMETRIES = [
   'trefoil',
   'stereo',
   'clifford',
+  'enneper',
+  'gyroid',
+  'calabi',
+  'figure8',
 ];
 
 function kleinBottle(theta, phi, t, idx, major, toroidalWeave) {
@@ -53,6 +57,67 @@ function cliffordTorus(theta, phi, t, major, minor) {
     x: (x4 / d) * major * 0.55,
     y: (z4 / d) * minor * 0.85,
     z: (y4 / d) * major * 0.55,
+  };
+}
+
+/** Enneper minimal surface (truncated). */
+function enneper(theta, phi, t, major, minor) {
+  const u = Math.sin(theta) * 1.15;
+  const v = Math.sin(phi) * 1.15;
+  const s = major * 0.22;
+  return {
+    x: s * (u - u * u * u / 3 + u * v * v),
+    y: s * (v - v * v * v / 3 + v * u * u) + Math.sin(t * 0.25) * minor * 0.15,
+    z: s * (u * u - v * v),
+  };
+}
+
+/** Implicit gyroid sampled onto a toroidal parameter chart. */
+function gyroid(theta, phi, t, major, minor) {
+  const u = theta;
+  const v = phi + t * 0.08;
+  const w = t * 0.12;
+  const g =
+    Math.sin(u) * Math.cos(v) +
+    Math.sin(v) * Math.cos(w) +
+    Math.sin(w) * Math.cos(u);
+  const r = major * 0.45 + minor * 0.25 * g;
+  return {
+    x: r * Math.cos(u) * Math.cos(v * 0.5),
+    y: r * Math.sin(v) * 0.65,
+    z: r * Math.sin(u) * Math.cos(v * 0.5),
+  };
+}
+
+/** Toy Calabi–Yau-ish 6-torus projection into R3. */
+function calabi(theta, phi, t, idx, major, minor) {
+  const a = theta;
+  const b = phi;
+  const c = t * 0.2 + idx * 0.05;
+  const x6 = Math.cos(a);
+  const y6 = Math.sin(a);
+  const z6 = Math.cos(b);
+  const w6 = Math.sin(b);
+  const u6 = Math.cos(c);
+  const v6 = Math.sin(c);
+  return {
+    x: major * 0.4 * (x6 + 0.35 * u6 * z6),
+    y: minor * 0.7 * (y6 * w6 + 0.25 * v6),
+    z: major * 0.4 * (z6 + 0.35 * v6 * x6),
+  };
+}
+
+/** 3D figure-8 / lemniscate tube. */
+function figure8(theta, phi, t, major, minor) {
+  const scale = major * 1.15;
+  const denom = 1 + Math.sin(theta) * Math.sin(theta);
+  const cx = (scale * Math.cos(theta)) / denom;
+  const cz = (scale * Math.sin(theta) * Math.cos(theta)) / denom;
+  const tube = minor * 0.35;
+  return {
+    x: cx + tube * Math.cos(phi),
+    y: tube * Math.sin(phi) + Math.sin(t * 0.4) * 0.4,
+    z: cz + tube * Math.sin(phi * 0.5),
   };
 }
 
@@ -174,6 +239,26 @@ export function evaluateGeometry({
     case 'clifford': {
       const c = cliffordTorus(theta, phi, t, major, minor);
       x = c.x; y = c.y; z = c.z;
+      break;
+    }
+    case 'enneper': {
+      const e = enneper(theta, phi, t, major, minor);
+      x = e.x; y = e.y; z = e.z;
+      break;
+    }
+    case 'gyroid': {
+      const g = gyroid(theta, phi, t, major, minor);
+      x = g.x; y = g.y; z = g.z;
+      break;
+    }
+    case 'calabi': {
+      const c = calabi(theta, phi, t, idx, major, minor);
+      x = c.x; y = c.y; z = c.z;
+      break;
+    }
+    case 'figure8': {
+      const f = figure8(theta, phi, t, major, minor);
+      x = f.x; y = f.y; z = f.z;
       break;
     }
     case 'torus':
