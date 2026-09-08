@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { GaiaNode } from './Node.js';
 import { GEOMETRIES } from './geometry.js';
+import { bindRemoteContract } from './pulse.js';
 
 const hud = document.getElementById('hud');
 const scene = new THREE.Scene();
@@ -13,8 +14,9 @@ renderer.setSize(innerWidth, innerHeight);
 renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
 document.body.appendChild(renderer.domElement);
 
-const state = { gravityPull: 1, toroidalWeave: 1 };
+const state = { gravityPull: 1, toroidalWeave: 1, lerp: 0.05 };
 const targetState = { geometry: 'torus' };
+bindRemoteContract(state, targetState);
 
 const nodes = [];
 const count = 24;
@@ -43,7 +45,7 @@ addEventListener('resize', () => {
 
 addEventListener('keydown', (e) => {
   const n = Number(e.key);
-  if (n >= 1 && n <= 4) targetState.geometry = GEOMETRIES[n - 1];
+  if (n >= 1 && n <= GEOMETRIES.length) targetState.geometry = GEOMETRIES[n - 1];
   if (e.key === '[') state.gravityPull = Math.max(0.1, state.gravityPull - 0.1);
   if (e.key === ']') state.gravityPull = Math.min(3, state.gravityPull + 0.1);
   if (e.key === '-') state.toroidalWeave = Math.max(0, state.toroidalWeave - 0.1);
@@ -59,9 +61,10 @@ function frame() {
   camera.lookAt(0, 0, 0);
   hud.textContent = [
     'GAIA VISUALIZER  band-137',
-    `geometry: ${targetState.geometry}   (keys 1-4)`,
+    `geometry: ${targetState.geometry}   (keys 1-${GEOMETRIES.length})`,
     `gravityPull: ${state.gravityPull.toFixed(2)}   ([ / ])`,
     `toroidalWeave: ${state.toroidalWeave.toFixed(2)}   (- / =)`,
+    `lerp: ${state.lerp.toFixed(2)}   (gaia:targetState / ?state=)`,
   ].join('\n');
   renderer.render(scene, camera);
   requestAnimationFrame(frame);
