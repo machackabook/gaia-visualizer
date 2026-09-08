@@ -4,7 +4,7 @@
 **Nexus:** Cryptic-Heartbeat  
 **Numeral:** `137451921129154222`
 
-LLM-assigned geometric states for Gaia nodes. Each node interpolates toward a target manifold:
+LLM-assigned geometric states for Gaia nodes. Each node interpolates toward a target manifold.
 
 | `targetState.geometry` | Mapping |
 |------------------------|---------|
@@ -12,14 +12,27 @@ LLM-assigned geometric states for Gaia nodes. Each node interpolates toward a ta
 | `infinity` | Lemniscate of Bernoulli |
 | `hamiltonian` | Vertex-favoring spherical grid traversal |
 | `triangular` | Modulo snap to tetrahedral / triangular lattice |
+| `helix` | Gravity-wound helical climb |
+| `mobius` | One-sided strip (next-stage surface) |
 
-Uniforms: `uTime`, `uGravity`. State: `gravityPull`, `toroidalWeave`.
+Uniforms: `uTime`, `uGravity`. State: `gravityPull`, `toroidalWeave`, `lerp`.
+
+## Drive from the LLM / ledger
+
+```js
+window.dispatchEvent(new CustomEvent('gaia:targetState', {
+  detail: { geometry: 'hamiltonian', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05 }
+}));
+window.dispatchEvent(new CustomEvent('gaia:pulse', { detail: { pulse: 1.8 } }));
+```
+
+Or seed via query: `?state={"geometry":"infinity","gravityPull":1.2}`
 
 ## Next stages
 
-1. Bind `targetState` from The-Hive / Gemini-Nexus-OS LLM output.
-2. Drive `state.gravityPull` from Cryptic-Heartbeat ledger pulse.
-3. Publish positions onto band-192-network for Tailscale peers.
+1. The-Hive / Gemini-Nexus-OS emit the contract above (in motion).
+2. Cryptic-Heartbeat ledger pulse maps onto `gaia:pulse`.
+3. Stream positions on band-192-network to Tailscale peers.
 4. Hamiltonian singularity surface at Hamiltoniansingularity.ai.
 
-See `src/geometry.js` and `src/Node.js`.
+See `src/geometry.js`, `src/Node.js`, `src/pulse.js`.
