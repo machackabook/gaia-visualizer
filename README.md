@@ -3,7 +3,7 @@
 **Band:** `137-visual`  
 **Nexus:** Cryptic-Heartbeat  
 **Numeral:** `137451921129154222`  
-**Stage:** `3`
+**Stage:** `4`
 
 LLM-assigned geometric states for Gaia nodes. Each node interpolates toward a target manifold. `GaiaNode.update(t, state, targetState)` advances theta with gravity and lerps onto `evaluateGeometry(...)`.
 
@@ -21,6 +21,8 @@ LLM-assigned geometric states for Gaia nodes. Each node interpolates toward a ta
 | `rose` | Polar rhodonea | 0 |
 | `seifert` | (p,q) Seifert fibered torus knot | q |
 | `blend` | Hamiltonian ↔ Klein singularity mix | w |
+| `trefoil` | (2,3) torus knot | e |
+| `stereo` | Stereographic chart of S2 | r |
 
 Uniforms: `uTime`, `uGravity`, `uColor` (ShaderMaterial). State: `gravityPull`, `toroidalWeave`, `lerp`, `blend`.
 
@@ -42,6 +44,9 @@ pos.onmessage = (ev) => console.log(ev.data.band, ev.data.nodes.length);
 Query seeds:
 - `?state={"geometry":"blend","gravityPull":1.2,"blend":0.7}`
 - `?pulse=ws://localhost:3000` — Hive WS frames `{type:"gaia:pulse",pulse}` or a full contract.
+- `?token=...` — when set, incoming pulse/contract frames must carry the same token.
+- `?relay=http://localhost:3000/api/gaia/positions` — POST `gaia:positions` for 192-network fan-out.
+- `?nodes=256` or `?instanced=1` — InstancedMesh path (auto above 48 nodes).
 
 ## Stages
 
@@ -50,11 +55,12 @@ Query seeds:
 2. The-Hive `geometryContract.ts` + `POST /api/gaia/contract` + WS `gaia:targetState`.
 3. Stage-2 surfaces: helix, mobius, lissajous, klein.
 4. Stage-3: hopf, rose, seifert, hamiltonian↔klein `blend`; ShaderMaterial uniforms; `gaia-positions` stream on band-192-network.
+5. Stage-4: InstancedMesh for >48 nodes; `trefoil` / `stereo`; optional pulse token; HTTP position relay.
 
 **Next**
-5. Cryptic-Heartbeat / TheLedgerIndex pulse → `gaia:pulse` authenticated frames.
-6. Tailscale peer fan-out of `gaia:positions` (192-network).
-7. Hamiltonian singularity surface at Hamiltoniansingularity.ai (serve `blend` as default).
-8. Instanced mesh + GPU attribute buffer for >1k nodes.
+6. Cryptic-Heartbeat / TheLedgerIndex pulse → authenticated `gaia:pulse` frames (shared token already wired).
+7. Tailscale peer fan-out of `gaia:positions` (192-network) via Hive `/api/gaia/positions`.
+8. Hamiltonian singularity surface at Hamiltoniansingularity.ai (serve `blend` as default).
+9. GPU attribute buffer / compute path for >8k nodes.
 
 See `src/geometry.js`, `src/Node.js`, `src/shaders.js`, `src/pulse.js`.

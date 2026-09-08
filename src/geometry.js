@@ -15,6 +15,8 @@ export const GEOMETRIES = [
   'rose',
   'seifert',
   'blend',
+  'trefoil',
+  'stereo',
 ];
 
 function kleinBottle(theta, phi, t, idx, major, toroidalWeave) {
@@ -48,7 +50,7 @@ export function evaluateGeometry({
   geometry = 'torus',
   blend = 0.5,
 }) {
-  const major = 10 + idx * 2;
+  const major = 10 + (idx % 24) * 2;
   const minor = 3 + toroidalWeave * 2;
   let x = 0, y = 0, z = 0;
 
@@ -134,6 +136,23 @@ export function evaluateGeometry({
       x = h.x * (1 - a) + k.x * a;
       y = h.y * (1 - a) + k.y * a;
       z = h.z * (1 - a) + k.z * a;
+      break;
+    }
+    case 'trefoil': {
+      const u = theta;
+      x = major * 0.35 * (Math.sin(u) + 2 * Math.sin(2 * u));
+      z = major * 0.35 * (Math.cos(u) - 2 * Math.cos(2 * u));
+      y = minor * 0.55 * Math.sin(3 * u) + Math.sin(t * 0.3 + idx) * 0.4;
+      break;
+    }
+    case 'stereo': {
+      const u = theta;
+      const v = phi;
+      const denom = 1 + Math.cos(v);
+      const s = major * 0.55;
+      x = s * Math.sin(v) * Math.cos(u) / (denom || 1e-6);
+      z = s * Math.sin(v) * Math.sin(u) / (denom || 1e-6);
+      y = s * Math.sin(t * 0.2 + idx * 0.1) * 0.3 + minor * 0.2 * Math.cos(v);
       break;
     }
     case 'torus':

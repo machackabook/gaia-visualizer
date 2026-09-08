@@ -5,13 +5,15 @@ const _target = new THREE.Vector3();
 const _color = new THREE.Color();
 
 export class GaiaNode {
-  constructor({ idx, mesh, material }) {
+  constructor({ idx, mesh, material, dummy }) {
     this.idx = idx;
-    this.mesh = mesh;
+    this.mesh = mesh || dummy;
+    this.dummy = dummy || null;
     this.material = material;
     this.theta = Math.random() * Math.PI * 2;
     this.phi = Math.random() * Math.PI * 2;
     this.baseHue = idx / 24;
+    this.position = new THREE.Vector3();
   }
 
   update(t, state, targetState) {
@@ -41,7 +43,17 @@ export class GaiaNode {
     });
 
     _target.set(x, y, z);
-    this.mesh.position.lerp(_target, state.lerp ?? 0.05);
+    const alpha = state.lerp ?? 0.05;
+    if (this.dummy) {
+      this.dummy.position.lerp(_target, alpha);
+      this.dummy.updateMatrix();
+      this.position.copy(this.dummy.position);
+    } else if (this.mesh?.position) {
+      this.mesh.position.lerp(_target, alpha);
+      this.position.copy(this.mesh.position);
+    } else {
+      this.position.lerp(_target, alpha);
+    }
 
     if (this.material?.color) {
       const hue = (this.baseHue + pull * 0.08 + t * 0.01) % 1;
