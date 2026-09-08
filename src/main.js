@@ -3,6 +3,7 @@ import { GaiaNode } from './Node.js';
 import { GEOMETRIES } from './geometry.js';
 import { bindRemoteContract, createPositionStreamer } from './pulse.js';
 import { nodeVertex, nodeFragment } from './shaders.js';
+import { createGpuBuffers, writeNode } from './gpuBuffer.js';
 
 const hud = document.getElementById('hud');
 const scene = new THREE.Scene();
@@ -17,9 +18,12 @@ document.body.appendChild(renderer.domElement);
 
 const params = new URLSearchParams(location.search);
 const requested = Number(params.get('nodes') || 24);
-const count = Math.max(8, Math.min(2048, Number.isFinite(requested) ? requested : 24));
+const count = Math.max(8, Math.min(8192, Number.isFinite(requested) ? requested : 24));
 const useInstancing = count > 48 || params.get('instanced') === '1';
+const useGpu = count > 2048 || params.get('gpu') === '1';
 const relay = params.get('relay') || '';
+const peers = params.get('peers') || '';
+const token = params.get('token') || '';
 
 const hostDefault =
   /hamiltoniansingularity\.ai$/i.test(location.hostname) ? 'blend' : 'torus';
@@ -28,9 +32,10 @@ const targetState = { geometry: hostDefault };
 bindRemoteContract(state, targetState);
 
 const nodes = [];
-const geo = new THREE.SphereGeometry(0.35, useInstancing ? 8 : 16, useInstancing ? 8 : 16);
+const gpu = createGpuBuffers(count);
+const geo = new THREE.SphereGeometry(0.35, useInstancing || useGpu ? 8 : 16, useInstancing || useGpu ? 8 : 16);
 
-if (useInstancing) {
+if (useInstancing || useGpu) {
   const mat = new THREE.ShaderMaterial({
     uniforms: {
       uTime: { value: 0 },
@@ -71,7 +76,7 @@ const key = new THREE.PointLight(0x88ffcc, 40, 80);
 key.position.set(8, 16, 10);
 scene.add(key);
 
-const streamPositions = createPositionStreamer(nodes, { relay });
+const streamPositions = createPositionStreamer(nodes, { relay, peers, token, buffers: gpu });
 
 addEventListener('resize', () => {
   camera.aspect = innerWidth / innerHeight;
@@ -103,24 +108,33 @@ addEventListener('keydown', (e) => {
 const clock = new THREE.Clock();
 function frame() {
   const t = clock.getElapsedTime();
-  for (const node of nodes) node.update(t, state, targetState);
+  for (const node of nodes) {
+    node.update(t, state, targetState);
+    const p = node.position;
+    const scale = 0.85 + Math.min(0.55, (state.gravityPull ?? 1) * 0.18);
+    writeNode(gpu, node.idx, p.x, p.y, p.z, scale);
+  }
   if (nodes._instanced) {
     for (let i = 0; i < nodes.length; i++) {
       nodes._instanced.setMatrixAt(i, nodes[i].dummy.matrix);
     }
     nodes._instanced.instanceMatrix.needsUpdate = true;
+    if (nodes._instanced.material?.uniforms?.uTime) {
+      nodes._instanced.material.uniforms.uTime.value = t;
+      nodes._instanced.material.uniforms.uGravity.value = state.gravityPull;
+    }
   }
   streamPositions(t);
   camera.position.x = Math.sin(t * 0.08) * 42;
   camera.position.z = Math.cos(t * 0.08) * 42;
   camera.lookAt(0, 0, 0);
   hud.textContent = [
-    `GAIA VISUALIZER  band-137  stage-9  nodes=${count}${useInstancing ? ' instanced' : ''}`,
+    `GAIA VISUALIZER  band-137  stage-10  nodes=${count}${useInstancing || useGpu ? ' instanced' : ''}${useGpu ? ' gpu-buf' : ''}`,
     `geometry: ${targetState.geometry}   (1-9 / 0 / q w + e..k  h=scherk j=knot k=pseudosphere)`,
     `gravityPull: ${state.gravityPull.toFixed(2)}   ([ / ])`,
     `toroidalWeave: ${state.toroidalWeave.toFixed(2)}   (- / =)`,
     `blend: ${state.blend.toFixed(2)}   (, / .)  hamiltonian<->klein`,
-    `lerp: ${state.lerp.toFixed(2)}   (?state= / ?pulse=ws / ?token= / ?relay= / ?nodes=)`,
+    `lerp: ${state.lerp.toFixed(2)}   (?state= / ?pulse=ws / ?token= / ?relay= / ?peers= / ?gpu=1 / ?nodes=)`,
   ].join('\n');
   renderer.render(scene, camera);
   requestAnimationFrame(frame);

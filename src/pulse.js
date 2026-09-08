@@ -50,6 +50,14 @@ function acceptFrame(data) {
   return got === need;
 }
 
+function parsePeerList(raw) {
+  if (!raw) return [];
+  return String(raw)
+    .split(',')
+    .map((s) => s.trim())
+    .filter((s) => /^https?:\/\//i.test(s));
+}
+
 export function bindRemoteContract(state, targetState) {
   const apply = (payload) => applyContract(payload, state, targetState);
 
@@ -87,7 +95,7 @@ export function bindRemoteContract(state, targetState) {
           if (!acceptFrame({ ...data, token: data.token || token })) return;
           if (data.type === 'gaia:pulse' || data.pulse != null) {
             state.gravityPull = mapPulseToGravity(data.pulse ?? data.detail?.pulse);
-          } else {
+          } else if (data.type !== 'gaia:positions') {
             apply(data.detail || data);
           }
         } catch { /* ignore */ }
@@ -103,39 +111,62 @@ export function bindRemoteContract(state, targetState) {
   }
 }
 
-export function createPositionStreamer(nodes, { relay } = {}) {
+export function createPositionStreamer(nodes, { relay, peers, token, buffers } = {}) {
   let bc = null;
   try {
     bc = new BroadcastChannel(POS_CHANNEL);
   } catch {
     bc = null;
   }
+  const peerUrls = parsePeerList(peers);
   let last = 0;
   return (t) => {
     if (t - last < 0.1) return;
     last = t;
+    const list = buffers
+      ? snapshotFromBuffers(buffers)
+      : nodes.map((n) => {
+          const p = n.position || n.mesh?.position || n.dummy?.position || { x: 0, y: 0, z: 0 };
+          return {
+            idx: n.idx,
+            x: +p.x.toFixed(3),
+            y: +p.y.toFixed(3),
+            z: +p.z.toFixed(3),
+          };
+        });
     const payload = {
       type: 'gaia:positions',
       band: '192-network',
       t,
-      nodes: nodes.map((n) => {
-        const p = n.position || n.mesh?.position || n.dummy?.position || { x: 0, y: 0, z: 0 };
-        return {
-          idx: n.idx,
-          x: +p.x.toFixed(3),
-          y: +p.y.toFixed(3),
-          z: +p.z.toFixed(3),
-        };
-      }),
+      nodes: list,
     };
+    if (token) payload.token = token;
     if (bc) bc.postMessage(payload);
     dispatchEvent(new CustomEvent('gaia:positions', { detail: payload }));
-    if (relay) {
-      fetch(relay, {
+    const targets = [relay, ...peerUrls].filter(Boolean);
+    for (const url of targets) {
+      fetch(url, {
         method: 'POST',
-        headers: { 'content-type': 'application/json' },
+        headers: {
+          'content-type': 'application/json',
+          ...(token ? { 'x-gaia-token': token } : {}),
+        },
         body: JSON.stringify(payload),
       }).catch(() => {});
     }
   };
+}
+
+function snapshotFromBuffers(buffers) {
+  const nodes = [];
+  for (let i = 0; i < buffers.count; i++) {
+    const o = i * 3;
+    nodes.push({
+      idx: i,
+      x: +buffers.positions[o].toFixed(3),
+      y: +buffers.positions[o + 1].toFixed(3),
+      z: +buffers.positions[o + 2].toFixed(3),
+    });
+  }
+  return nodes;
 }

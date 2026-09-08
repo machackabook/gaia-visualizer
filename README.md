@@ -3,7 +3,7 @@
 **Band:** `137-visual`  
 **Nexus:** Cryptic-Heartbeat  
 **Numeral:** `137451921129154222`  
-**Stage:** `9`
+**Stage:** `10`
 
 LLM-assigned geometric states for Gaia nodes. Each node interpolates toward a target manifold. `GaiaNode.update(t, state, targetState)` advances theta/phi with gravity and lerps onto `evaluateGeometry(...)`. The per-frame target vector is reused (no `new THREE.Vector3` inside `update`). Node scale follows `gravityPull`.
 
@@ -61,17 +61,19 @@ Query seeds:
 - `?pulse=ws://localhost:3000` — Hive WS frames `{type:"gaia:pulse",pulse}` or a full contract.
 - `?token=...` — when set, incoming pulse/contract frames must carry the same token.
 - `?relay=http://localhost:3000/api/gaia/positions` — POST `gaia:positions` for 192-network fan-out.
+- `?peers=http://100.x.y.z:3000/api/gaia/positions,http://100.a.b.c:3000/api/gaia/positions` — Tailscale peer list.
 - `?nodes=256` or `?instanced=1` — InstancedMesh path (auto above 48 nodes).
+- `?gpu=1` or `?nodes=4096` — packed Float32 attribute buffer (stage-10/11).
 
 ## Stages
 
 **Done**
-1–8. Kernel extract through dini / roman / hyperbolic.
-9. Stage-9: `scherk` / `knot` / `pseudosphere`; Hamiltoniansingularity.ai defaults to `blend`; positions relay remains the 192-network path.
+1–9. Kernel extract through scherk / knot / pseudosphere; Hamiltoniansingularity.ai defaults to `blend`.
+10. Tailscale peer fan-out of `gaia:positions` via `?peers=` + Hive `/api/gaia/positions`; packed GPU attribute buffer (`src/gpuBuffer.js`); node cap 8192.
 
 **Next**
-10. Tailscale peer fan-out of `gaia:positions` (192-network) via Hive `/api/gaia/positions`.
-11. GPU attribute buffer / compute path for >8k nodes.
-12. Authenticated live `ledger_pulse.py` → Hive WS (token already on the wire).
+11. True GPU compute / transform-feedback evaluateGeometry for >8k nodes (CPU mapping remains reference).
+12. Authenticated live `ledger_pulse.py` → Hive WS (token already on the wire; CLI now ships).
+13. Memory engrams into Drive `CRYPTIC-HEARTBEAT-NEXUS-ROOT`.
 
-See `src/geometry.js`, `src/Node.js`, `src/shaders.js`, `src/pulse.js`.
+See `src/geometry.js`, `src/Node.js`, `src/shaders.js`, `src/pulse.js`, `src/gpuBuffer.js`.
