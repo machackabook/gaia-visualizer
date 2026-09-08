@@ -1,8 +1,8 @@
 /**
  * Evaluate the target geometric state assigned by the LLM.
  * Pure mapping: (theta, phi, t, idx, state, geometry) -> {x,y,z}
- * Stage-8 manifolds: dini, roman, hyperbolic.
  * Chat kernel remains torus / infinity / hamiltonian / triangular + lerp.
+ * Stage-9 manifolds: scherk, knot, pseudosphere.
  */
 export const GEOMETRIES = [
   'torus',
@@ -30,6 +30,9 @@ export const GEOMETRIES = [
   'dini',
   'roman',
   'hyperbolic',
+  'scherk',
+  'knot',
+  'pseudosphere',
 ];
 
 function kleinBottle(theta, phi, t, idx, major, toroidalWeave) {
@@ -181,7 +184,6 @@ function catenoid(theta, phi, t, major, minor) {
   };
 }
 
-/** Dini's surface: twisted catenoid / helicoid family with constant negative curvature. */
 function dini(theta, phi, t, major, minor) {
   const a = major * 0.18;
   const b = 0.2 + minor * 0.04;
@@ -195,7 +197,6 @@ function dini(theta, phi, t, major, minor) {
   };
 }
 
-/** Steiner Roman surface (RP2 immersion with three pairwise planes). */
 function roman(theta, phi, t, major, minor) {
   const u = theta;
   const v = phi * 0.5;
@@ -211,7 +212,6 @@ function roman(theta, phi, t, major, minor) {
   };
 }
 
-/** Hyperboloid of one sheet, gravity-wound. */
 function hyperbolic(theta, phi, t, idx, major, minor) {
   const u = theta;
   const v = (phi - Math.PI) * 0.55;
@@ -222,6 +222,45 @@ function hyperbolic(theta, phi, t, idx, major, minor) {
     x: a * cosh * Math.cos(u),
     y: c * v + Math.sin(t * 0.3 + idx) * 0.3,
     z: a * cosh * Math.sin(u),
+  };
+}
+
+/** Scherk first minimal surface, sampled on a bounded chart. */
+function scherk(theta, phi, t, major, minor) {
+  const u = Math.sin(theta) * 1.2;
+  const v = Math.sin(phi) * 1.2;
+  const s = major * 0.28;
+  const cu = Math.cos(u);
+  return {
+    x: s * u,
+    y: s * Math.log(Math.abs(cu / Math.cos(v)) + 1e-4) + Math.sin(t * 0.2) * minor * 0.08,
+    z: s * v,
+  };
+}
+
+/** (p,q) torus knot with p=3, q=5 gravity-wound. */
+function knot(theta, t, idx, major, minor) {
+  const p = 3;
+  const q = 5;
+  const u = theta;
+  const r = major * 0.28 + minor * 0.12 * Math.cos(q * u);
+  return {
+    x: r * Math.cos(p * u),
+    y: minor * 0.35 * Math.sin(q * u) + Math.sin(t * 0.3 + idx) * 0.25,
+    z: r * Math.sin(p * u),
+  };
+}
+
+/** Pseudosphere (tractrix of revolution), constant negative curvature. */
+function pseudosphere(theta, phi, t, major, minor) {
+  const u = ((phi % (Math.PI * 0.95)) + 0.08);
+  const v = theta;
+  const a = major * 0.22;
+  const su = Math.sin(u) || 1e-6;
+  return {
+    x: a * su * Math.cos(v),
+    y: a * (Math.cos(u) + Math.log(Math.tan(u / 2) || 1e-4)) * 0.45 + Math.sin(t * 0.2) * minor * 0.06,
+    z: a * su * Math.sin(v),
   };
 }
 
@@ -393,6 +432,21 @@ export function evaluateGeometry({
     case 'hyperbolic': {
       const h = hyperbolic(theta, phi, t, idx, major, minor);
       x = h.x; y = h.y; z = h.z;
+      break;
+    }
+    case 'scherk': {
+      const s = scherk(theta, phi, t, major, minor);
+      x = s.x; y = s.y; z = s.z;
+      break;
+    }
+    case 'knot': {
+      const k = knot(theta, t, idx, major, minor);
+      x = k.x; y = k.y; z = k.z;
+      break;
+    }
+    case 'pseudosphere': {
+      const p = pseudosphere(theta, phi, t, major, minor);
+      x = p.x; y = p.y; z = p.z;
       break;
     }
     case 'torus':

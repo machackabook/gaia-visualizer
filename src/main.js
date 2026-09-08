@@ -21,8 +21,10 @@ const count = Math.max(8, Math.min(2048, Number.isFinite(requested) ? requested 
 const useInstancing = count > 48 || params.get('instanced') === '1';
 const relay = params.get('relay') || '';
 
+const hostDefault =
+  /hamiltoniansingularity\.ai$/i.test(location.hostname) ? 'blend' : 'torus';
 const state = { gravityPull: 1, toroidalWeave: 1, lerp: 0.05, blend: 0.5 };
-const targetState = { geometry: 'torus' };
+const targetState = { geometry: hostDefault };
 bindRemoteContract(state, targetState);
 
 const nodes = [];
@@ -79,7 +81,7 @@ addEventListener('resize', () => {
 
 const extraKeys = {
   e: 12, r: 13, t: 14, y: 15, u: 16, i: 17, o: 18, p: 19, a: 20, s: 21,
-  d: 22, f: 23, g: 24,
+  d: 22, f: 23, g: 24, h: 25, j: 26, k: 27,
 };
 addEventListener('keydown', (e) => {
   const n = Number(e.key);
@@ -113,8 +115,8 @@ function frame() {
   camera.position.z = Math.cos(t * 0.08) * 42;
   camera.lookAt(0, 0, 0);
   hud.textContent = [
-    `GAIA VISUALIZER  band-137  stage-8  nodes=${count}${useInstancing ? ' instanced' : ''}`,
-    `geometry: ${targetState.geometry}   (1-9 / 0 / q w + e..p a s d=dini f=roman g=hyperbolic)`,
+    `GAIA VISUALIZER  band-137  stage-9  nodes=${count}${useInstancing ? ' instanced' : ''}`,
+    `geometry: ${targetState.geometry}   (1-9 / 0 / q w + e..k  h=scherk j=knot k=pseudosphere)`,
     `gravityPull: ${state.gravityPull.toFixed(2)}   ([ / ])`,
     `toroidalWeave: ${state.toroidalWeave.toFixed(2)}   (- / =)`,
     `blend: ${state.blend.toFixed(2)}   (, / .)  hamiltonian<->klein`,
