@@ -18,20 +18,21 @@ export class GaiaNode {
       if (this.material.uniforms.uGravity) this.material.uniforms.uGravity.value = state.gravityPull;
     }
 
-    this.theta += (0.01 + this.idx * 0.002) * state.gravityPull;
-    this.phi += 0.007 + this.idx * 0.0007;
+    const pull = state.gravityPull ?? 1;
+    this.theta += (0.01 + this.idx * 0.002) * pull;
+    this.phi += (0.007 + this.idx * 0.0007) * Math.max(0.25, pull);
 
     const { x, y, z } = evaluateGeometry({
       theta: this.theta,
       phi: this.phi,
       t,
       idx: this.idx,
-      gravityPull: state.gravityPull,
+      gravityPull: pull,
       toroidalWeave: state.toroidalWeave,
       geometry: targetState?.geometry || 'torus',
     });
 
     _target.set(x, y, z);
-    this.mesh.position.lerp(_target, 0.05);
+    this.mesh.position.lerp(_target, state.lerp ?? 0.05);
   }
 }
