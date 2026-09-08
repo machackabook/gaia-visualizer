@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import { evaluateGeometry } from './geometry.js';
 
 const _target = new THREE.Vector3();
+const _color = new THREE.Color();
 
 export class GaiaNode {
   constructor({ idx, mesh, material }) {
@@ -10,6 +11,7 @@ export class GaiaNode {
     this.material = material;
     this.theta = Math.random() * Math.PI * 2;
     this.phi = Math.random() * Math.PI * 2;
+    this.baseHue = idx / 24;
   }
 
   update(t, state, targetState) {
@@ -34,5 +36,14 @@ export class GaiaNode {
 
     _target.set(x, y, z);
     this.mesh.position.lerp(_target, state.lerp ?? 0.05);
+
+    if (this.material?.color) {
+      const hue = (this.baseHue + pull * 0.08 + t * 0.01) % 1;
+      _color.setHSL(hue, 0.7, 0.45 + Math.min(0.3, pull * 0.08));
+      this.material.color.lerp(_color, 0.08);
+      if (this.material.emissive) {
+        this.material.emissive.copy(_color).multiplyScalar(0.25 * pull);
+      }
+    }
   }
 }

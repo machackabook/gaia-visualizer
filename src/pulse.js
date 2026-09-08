@@ -1,5 +1,7 @@
 import { GEOMETRIES } from './geometry.js';
 
+export const CHANNEL = 'gaia-weave';
+
 export function clamp(n, lo, hi) {
   return Math.min(hi, Math.max(lo, n));
 }
@@ -31,17 +33,48 @@ export function applyContract(payload, state, targetState) {
   return parsed;
 }
 
-/** Listen for window events and optional ?state= JSON query. */
+/** Listen for window events, BroadcastChannel, optional WS, and ?state= JSON. */
 export function bindRemoteContract(state, targetState) {
-  addEventListener('gaia:targetState', (ev) => {
-    applyContract(ev.detail, state, targetState);
-  });
+  const apply = (payload) => applyContract(payload, state, targetState);
+
+  addEventListener('gaia:targetState', (ev) => apply(ev.detail));
   addEventListener('gaia:pulse', (ev) => {
     state.gravityPull = mapPulseToGravity(ev.detail?.pulse ?? ev.detail);
   });
+
+  try {
+    const bc = new BroadcastChannel(CHANNEL);
+    bc.onmessage = (ev) => {
+      const data = ev.data || {};
+      if (data.type === 'gaia:targetState' || data.geometry) apply(data.detail || data);
+      if (data.type === 'gaia:pulse') {
+        state.gravityPull = mapPulseToGravity(data.detail?.pulse ?? data.pulse);
+      }
+    };
+  } catch {
+    /* BroadcastChannel unavailable */
+  }
+
+  const wsUrl = new URLSearchParams(location.search).get('pulse');
+  if (wsUrl && typeof WebSocket !== 'undefined') {
+    try {
+      const ws = new WebSocket(wsUrl);
+      ws.onmessage = (ev) => {
+        try {
+          const data = JSON.parse(ev.data);
+          if (data.type === 'gaia:pulse' || data.pulse != null) {
+            state.gravityPull = mapPulseToGravity(data.pulse ?? data.detail?.pulse);
+          } else {
+            apply(data.detail || data);
+          }
+        } catch { /* ignore */ }
+      };
+    } catch { /* ignore */ }
+  }
+
   try {
     const q = new URLSearchParams(location.search).get('state');
-    if (q) applyContract(JSON.parse(q), state, targetState);
+    if (q) apply(JSON.parse(q));
   } catch {
     /* ignore malformed query */
   }

@@ -64,7 +64,7 @@ function frame() {
     `geometry: ${targetState.geometry}   (keys 1-${GEOMETRIES.length})`,
     `gravityPull: ${state.gravityPull.toFixed(2)}   ([ / ])`,
     `toroidalWeave: ${state.toroidalWeave.toFixed(2)}   (- / =)`,
-    `lerp: ${state.lerp.toFixed(2)}   (gaia:targetState / ?state=)`,
+    `lerp: ${state.lerp.toFixed(2)}   (gaia:targetState / ?state= / ?pulse=ws)`,
   ].join('\n');
   renderer.render(scene, camera);
   requestAnimationFrame(frame);
