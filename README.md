@@ -3,9 +3,11 @@
 **Band:** `137-visual`  
 **Nexus:** Cryptic-Heartbeat  
 **Numeral:** `137451921129154222`  
-**Stage:** `6`
+**Stage:** `7`
 
 LLM-assigned geometric states for Gaia nodes. Each node interpolates toward a target manifold. `GaiaNode.update(t, state, targetState)` advances theta/phi with gravity and lerps onto `evaluateGeometry(...)`. The per-frame target vector is reused (no `new THREE.Vector3` inside `update`). Node scale follows `gravityPull`.
+
+The original chat `update(t)` switch (`infinity` lemniscate, `hamiltonian`, `triangular`, `torus` default + lerp 0.05) remains the reference kernel.
 
 | `targetState.geometry` | Mapping | Keys |
 |------------------------|---------|------|
@@ -28,6 +30,9 @@ LLM-assigned geometric states for Gaia nodes. Each node interpolates toward a ta
 | `gyroid` | Gyroids sampled on a toroidal chart | u |
 | `calabi` | 6-torus toy projection | i |
 | `figure8` | 3D lemniscate tube | o |
+| `villarceau` | Interlocking Villarceau circles on a torus | p |
+| `boy` | Boy surface (RP2 immersion) | a |
+| `catenoid` | Catenoid ↔ helicoid associate family | s |
 
 Uniforms: `uTime`, `uGravity`, `uColor` (ShaderMaterial). State: `gravityPull`, `toroidalWeave`, `lerp`, `blend`.
 
@@ -35,19 +40,16 @@ Uniforms: `uTime`, `uGravity`, `uColor` (ShaderMaterial). State: `gravityPull`, 
 
 ```js
 window.dispatchEvent(new CustomEvent('gaia:targetState', {
-  detail: { geometry: 'gyroid', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6 }
+  detail: { geometry: 'villarceau', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6 }
 }));
 window.dispatchEvent(new CustomEvent('gaia:pulse', { detail: { pulse: 1.8 } }));
 
 const bc = new BroadcastChannel('gaia-weave');
-bc.postMessage({ type: 'gaia:targetState', geometry: 'calabi', gravityPull: 1.6 });
-
-const pos = new BroadcastChannel('gaia-positions');
-pos.onmessage = (ev) => console.log(ev.data.band, ev.data.nodes.length);
+bc.postMessage({ type: 'gaia:targetState', geometry: 'boy', gravityPull: 1.6 });
 ```
 
 Query seeds:
-- `?state={"geometry":"blend","gravityPull":1.2,"blend":0.7}`
+- `?state={"geometry":"catenoid","gravityPull":1.2,"blend":0.7}`
 - `?pulse=ws://localhost:3000` — Hive WS frames `{type:"gaia:pulse",pulse}` or a full contract.
 - `?token=...` — when set, incoming pulse/contract frames must carry the same token.
 - `?relay=http://localhost:3000/api/gaia/positions` — POST `gaia:positions` for 192-network fan-out.
@@ -56,13 +58,8 @@ Query seeds:
 ## Stages
 
 **Done**
-1. Extract `update()` into `evaluateGeometry` + `GaiaNode` (torus / infinity / hamiltonian / triangular).
-2. The-Hive `geometryContract.ts` + `POST /api/gaia/contract` + WS `gaia:targetState`.
-3. Stage-2 surfaces: helix, mobius, lissajous, klein.
-4. Stage-3: hopf, rose, seifert, hamiltonian↔klein `blend`; ShaderMaterial uniforms; `gaia-positions` stream on band-192-network.
-5. Stage-4: InstancedMesh for >48 nodes; `trefoil` / `stereo`; optional pulse token; HTTP position relay.
-6. Stage-5: `clifford` (S3 Clifford torus projected); reused lerp target; HUD stage-5.
-7. Stage-6: `enneper` / `gyroid` / `calabi` / `figure8`; gravity-scaled nodes; contract synced to Hive + Heartbeat.
+1–6. Kernel extract through Enneper / gyroid / Calabi / figure8 (see prior README history).
+7. Stage-7: `villarceau` / `boy` / `catenoid`; contract synced to Hive + Heartbeat + LedgerIndex.
 
 **Next**
 8. Cryptic-Heartbeat / TheLedgerIndex pulse → authenticated `gaia:pulse` frames (shared token already wired).

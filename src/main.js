@@ -77,7 +77,7 @@ addEventListener('resize', () => {
   renderer.setSize(innerWidth, innerHeight);
 });
 
-const extraKeys = { e: 12, r: 13, t: 14, y: 15, u: 16, i: 17, o: 18 };
+const extraKeys = { e: 12, r: 13, t: 14, y: 15, u: 16, i: 17, o: 18, p: 19, a: 20, s: 21 };
 addEventListener('keydown', (e) => {
   const n = Number(e.key);
   if (n >= 1 && n <= 9 && n <= GEOMETRIES.length) targetState.geometry = GEOMETRIES[n - 1];
@@ -110,8 +110,8 @@ function frame() {
   camera.position.z = Math.cos(t * 0.08) * 42;
   camera.lookAt(0, 0, 0);
   hud.textContent = [
-    `GAIA VISUALIZER  band-137  stage-6  nodes=${count}${useInstancing ? ' instanced' : ''}`,
-    `geometry: ${targetState.geometry}   (1-9 / 0 / q / w / e r t y=enneper u=gyroid i=calabi o=figure8)`,
+    `GAIA VISUALIZER  band-137  stage-7  nodes=${count}${useInstancing ? ' instanced' : ''}`,
+    `geometry: ${targetState.geometry}   (1-9 / 0 / q w e r t y u i o p=villarceau a=boy s=catenoid)`,
     `gravityPull: ${state.gravityPull.toFixed(2)}   ([ / ])`,
     `toroidalWeave: ${state.toroidalWeave.toFixed(2)}   (- / =)`,
     `blend: ${state.blend.toFixed(2)}   (, / .)  hamiltonian<->klein`,

@@ -1,6 +1,7 @@
 /**
  * Evaluate the target geometric state assigned by the LLM.
  * Pure mapping: (theta, phi, t, idx, state, geometry) -> {x,y,z}
+ * Stage-7 manifolds: villarceau, boy, catenoid.
  */
 export const GEOMETRIES = [
   'torus',
@@ -22,6 +23,9 @@ export const GEOMETRIES = [
   'gyroid',
   'calabi',
   'figure8',
+  'villarceau',
+  'boy',
+  'catenoid',
 ];
 
 function kleinBottle(theta, phi, t, idx, major, toroidalWeave) {
@@ -45,7 +49,6 @@ function hamiltonianPath(theta, t, major) {
   };
 }
 
-/** Clifford torus in S3, stereographically projected to R3. */
 function cliffordTorus(theta, phi, t, major, minor) {
   const a = Math.SQRT1_2;
   const x4 = a * Math.cos(theta);
@@ -60,7 +63,6 @@ function cliffordTorus(theta, phi, t, major, minor) {
   };
 }
 
-/** Enneper minimal surface (truncated). */
 function enneper(theta, phi, t, major, minor) {
   const u = Math.sin(theta) * 1.15;
   const v = Math.sin(phi) * 1.15;
@@ -72,7 +74,6 @@ function enneper(theta, phi, t, major, minor) {
   };
 }
 
-/** Implicit gyroid sampled onto a toroidal parameter chart. */
 function gyroid(theta, phi, t, major, minor) {
   const u = theta;
   const v = phi + t * 0.08;
@@ -89,7 +90,6 @@ function gyroid(theta, phi, t, major, minor) {
   };
 }
 
-/** Toy Calabi–Yau-ish 6-torus projection into R3. */
 function calabi(theta, phi, t, idx, major, minor) {
   const a = theta;
   const b = phi;
@@ -107,7 +107,6 @@ function calabi(theta, phi, t, idx, major, minor) {
   };
 }
 
-/** 3D figure-8 / lemniscate tube. */
 function figure8(theta, phi, t, major, minor) {
   const scale = major * 1.15;
   const denom = 1 + Math.sin(theta) * Math.sin(theta);
@@ -118,6 +117,66 @@ function figure8(theta, phi, t, major, minor) {
     x: cx + tube * Math.cos(phi),
     y: tube * Math.sin(phi) + Math.sin(t * 0.4) * 0.4,
     z: cz + tube * Math.sin(phi * 0.5),
+  };
+}
+
+/** Villarceau circles: two interlocking circles that lie on a torus. */
+function villarceau(theta, phi, t, idx, major, minor) {
+  const lane = idx % 2;
+  const a = major;
+  const b = minor;
+  const psi = theta + (lane ? Math.PI / 2 : 0) + t * 0.05;
+  const tilt = Math.atan2(b, a);
+  const c = Math.cos(tilt);
+  const s = Math.sin(tilt);
+  const cx = a * Math.cos(psi);
+  const cz = a * Math.sin(psi);
+  const r = b;
+  const localX = r * Math.cos(phi);
+  const localY = r * Math.sin(phi);
+  return {
+    x: cx + localX * c,
+    y: localY * (lane ? 1 : -1) + Math.sin(t * 0.3 + idx) * 0.2,
+    z: cz + localX * s * (lane ? -1 : 1),
+  };
+}
+
+/** Boy surface (Bryant–Kusner-ish compact immersion of RP2). */
+function boy(theta, phi, t, major, minor) {
+  const u = theta;
+  const v = (phi % Math.PI) * 0.95 + 0.05;
+  const su = Math.sin(u);
+  const cu = Math.cos(u);
+  const sv = Math.sin(v);
+  const cv = Math.cos(v);
+  const g1 = -1.5 * cu * su * sv * sv;
+  const g2 = su * (cu * cu - sv * sv * su * su);
+  const g3 = cv * sv * sv;
+  const s = major * 0.55;
+  return {
+    x: s * g1,
+    y: s * g3 * 0.85 + Math.sin(t * 0.2) * minor * 0.1,
+    z: s * g2,
+  };
+}
+
+/** Catenoid ↔ helicoid associate family. */
+function catenoid(theta, phi, t, major, minor) {
+  const u = (phi - Math.PI) * 1.1;
+  const v = theta;
+  const alpha = (Math.sin(t * 0.15) + 1) * 0.5;
+  const cosh = (Math.exp(u) + Math.exp(-u)) * 0.5;
+  const s = major * 0.28;
+  const catX = s * cosh * Math.cos(v);
+  const catZ = s * cosh * Math.sin(v);
+  const catY = s * u;
+  const helX = s * u * Math.cos(v);
+  const helZ = s * u * Math.sin(v);
+  const helY = s * v * 0.35;
+  return {
+    x: catX * (1 - alpha) + helX * alpha,
+    y: catY * (1 - alpha) + helY * alpha + Math.sin(t * 0.2) * minor * 0.05,
+    z: catZ * (1 - alpha) + helZ * alpha,
   };
 }
 
@@ -259,6 +318,21 @@ export function evaluateGeometry({
     case 'figure8': {
       const f = figure8(theta, phi, t, major, minor);
       x = f.x; y = f.y; z = f.z;
+      break;
+    }
+    case 'villarceau': {
+      const v = villarceau(theta, phi, t, idx, major, minor);
+      x = v.x; y = v.y; z = v.z;
+      break;
+    }
+    case 'boy': {
+      const b = boy(theta, phi, t, major, minor);
+      x = b.x; y = b.y; z = b.z;
+      break;
+    }
+    case 'catenoid': {
+      const c = catenoid(theta, phi, t, major, minor);
+      x = c.x; y = c.y; z = c.z;
       break;
     }
     case 'torus':
