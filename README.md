@@ -3,7 +3,7 @@
 **Band:** `137-visual`  
 **Nexus:** Cryptic-Heartbeat  
 **Numeral:** `137451921129154222`  
-**Stage:** `15`
+**Stage:** `16`
 
 LLM-assigned geometric states for Gaia nodes. Each node interpolates toward a target manifold. `GaiaNode.update(t, state, targetState)` is the living chat kernel:
 
@@ -19,7 +19,7 @@ The target vector is reused (no `new THREE.Vector3` inside `update`). Node scale
 
 On `hamiltoniansingularity.ai` the default geometry is `blend`.
 
-Stage-12 wires the GLSL chat kernel through WebGL2 **transform-feedback** (`src/transformFeedback.js`) so torus / infinity / hamiltonian / triangular can step on the GPU past 8k nodes (`?tf=1&nodes=16384`). Stage-15 expands that same TF kernel to helix / mobius / lissajous / trefoil / figure8 / cassini / clifford / villarceau. CPU mapping remains the reference for every other manifold.
+Stage-12 wires the GLSL chat kernel through WebGL2 **transform-feedback** (`src/transformFeedback.js`). Stage-16 finishes TF coverage for all 31 CPU manifolds (`?tf=1&nodes=16384`). CPU mapping remains the reference.
 
 | `targetState.geometry` | Mapping | Keys |
 |------------------------|---------|------|
@@ -57,13 +57,13 @@ Stage-12 wires the GLSL chat kernel through WebGL2 **transform-feedback** (`src/
 
 Uniforms: `uTime`, `uGravity`, `uColor` (ShaderMaterial). State: `gravityPull`, `toroidalWeave`, `lerp`, `blend`.
 
-GPU TF ids (`KERNEL_GEOMETRY_ID`): torus 0, infinity 1, hamiltonian 2, triangular 3, helix 4, mobius 5, lissajous 6, trefoil 7, figure8 8, cassini 9, clifford 10, villarceau 11.
+GPU TF ids (`KERNEL_GEOMETRY_ID`): torus 0 … superformula 30 (full set).
 
 ## Drive from the LLM / ledger / The-Hive
 
 ```js
 window.dispatchEvent(new CustomEvent('gaia:targetState', {
-  detail: { geometry: 'cassini', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6 }
+  detail: { geometry: 'blend', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6 }
 }));
 ```
 
@@ -73,20 +73,21 @@ Query seeds:
 - `?token=...`
 - `?relay=` / `?peers=` — band-192 fan-out
 - `?gpu=1` or `?nodes=4096` — packed Float32 + theta/phi buffers
-- `?tf=1&nodes=16384` — transform-feedback path (stage-12/15)
+- `?tf=1&nodes=16384` — transform-feedback path (stage-16)
 
 ## Stages
 
 **Done**
 1–9. Kernel extract through scherk / knot / pseudosphere.
 10. Peer fan-out + packed GPU attribute buffer; node cap 8192.
-11. GLSL chat-kernel evaluate (`evaluateKernel.glsl.js`); theta/phi packed; cassini / lorenz / superformula. CPU mapping remains reference.
+11. GLSL chat-kernel evaluate (`evaluateKernel.glsl.js`); theta/phi packed; cassini / lorenz / superformula.
 12. WebGL2 transform-feedback for the four chat geometries; node cap 16384 (`?tf=1`).
-15-partial. TF kernel expanded to helix, mobius, lissajous, trefoil, figure8, cassini, clifford, villarceau.
+15. TF kernel expanded to helix, mobius, lissajous, trefoil, figure8, cassini, clifford, villarceau.
+16. Remaining manifolds on the TF path (klein, hopf, rose, seifert, blend, stereo, enneper, gyroid, calabi, boy, catenoid, dini, roman, hyperbolic, scherk, knot, pseudosphere, lorenz, superformula). `uBlend` wired into the TF program.
 
 **Next**
 13. Authenticated live `ledger_pulse.py` → Hive WS against live sheet counts.
 14. Memory engrams into Drive `CRYPTIC-HEARTBEAT-NEXUS-ROOT`.
-15-rest. Remaining manifolds on the TF path (klein, hopf, blend, lorenz, superformula, …).
+16-public. hamiltoniansingularity.ai public band (`blend` default).
 
 See `src/geometry.js`, `src/Node.js`, `src/evaluateKernel.glsl.js`, `src/gpuBuffer.js`, `src/transformFeedback.js`.
