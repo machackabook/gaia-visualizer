@@ -1,5 +1,5 @@
 /**
- * Stage-16/22 WebGL2 transform-feedback kernel.
+ * Stage-16/23 WebGL2 transform-feedback kernel.
  * Advances theta/phi and evaluates the full manifold set on the GPU.
  * Falls back silently when the context is not WebGL2.
  *
@@ -11,6 +11,7 @@
  *
  * Stage 21: currentPosBuffer() + skipCpu readback unless a peer streamer needs snapshots.
  * Stage 22: markZeroCopyAttribute + skip getBufferSubData on the visual path.
+ * Stage 23: Three instanceOffset binds to currentPosBuffer() (ping-pong) each frame.
  */
 import { EVALUATE_KERNEL_GLSL, KERNEL_GEOMETRY_ID } from './evaluateKernel.glsl.js';
 
@@ -191,5 +192,5 @@ export function createTransformFeedback(gl, count, seedTheta, seedPhi) {
   };
 }
 
-export const STAGE = 22;
+export const STAGE = 23;
 export const NODE_CAP = 16384;

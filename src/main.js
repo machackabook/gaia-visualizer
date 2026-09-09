@@ -8,7 +8,7 @@ import { createTransformFeedback } from './transformFeedback.js';
 import { KERNEL_GEOMETRY_ID } from './evaluateKernel.glsl.js';
 import { STAGE, chatKernelColor } from './chatKernel.js';
 import { fidelitySummary, sampleFidelity } from './fidelity.js';
-import { markZeroCopyAttribute, shouldZeroCopy } from './zeroCopy.js';
+import { bindTfPosAttribute, markZeroCopyAttribute, shouldZeroCopy } from './zeroCopy.js';
 
 const hud = document.getElementById('hud');
 const scene = new THREE.Scene();
@@ -158,13 +158,15 @@ function frame() {
   const chatOnGpu = useTfKernel && Object.prototype.hasOwnProperty.call(KERNEL_GEOMETRY_ID, geom);
   const skipCpuPath = chatOnGpu && nodes._instanced && !needStreamReadback;
   const zeroCopy = shouldZeroCopy(params, skipCpuPath);
+  let tfBound = false;
 
   if (chatOnGpu) {
     tf.step(t, state, geom);
     if (skipCpuPath) {
       const attr = nodes._instanced.geometry.getAttribute('instanceOffset');
       if (zeroCopy) {
-        markZeroCopyAttribute(attr, tf.currentPosBuffer());
+        tfBound = bindTfPosAttribute(renderer, attr, tf.currentPosBuffer());
+        if (!tfBound) markZeroCopyAttribute(attr, tf.currentPosBuffer());
       } else {
         tf.readbackPositionsOnly(instanceOffsets);
         if (attr) attr.needsUpdate = true;
@@ -228,7 +230,7 @@ function frame() {
   camera.position.z = Math.cos(t * 0.08) * 42;
   camera.lookAt(0, 0, 0);
   hud.textContent = [
-    `GAIA VISUALIZER  band-137  stage-${STAGE}  nodes=${count}${useInstancing || useGpu ? ' instanced' : ''}${useGpu ? ' gpu-buf' : ''}${chatOnGpu ? ' tf' : ''}${skipCpuPath ? ' no-cpu-rb' : ''}${zeroCopy ? ' zerocopy' : ''}`,
+    `GAIA VISUALIZER  band-137  stage-${STAGE}  nodes=${count}${useInstancing || useGpu ? ' instanced' : ''}${useGpu ? ' gpu-buf' : ''}${chatOnGpu ? ' tf' : ''}${skipCpuPath ? ' no-cpu-rb' : ''}${zeroCopy ? ' zerocopy' : ''}${tfBound ? ' tfbind' : ''}`,
     `geometry: ${targetState.geometry}   (1-9 / 0 / q w + e..l z x  l=cassini z=lorenz x=superformula)`,
     `gravityPull: ${state.gravityPull.toFixed(2)}   ([ / ])`,
     `toroidalWeave: ${state.toroidalWeave.toFixed(2)}   (- / =)`,
