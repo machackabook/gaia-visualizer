@@ -16,6 +16,7 @@ Band `137-visual`. Chat kernel is the `update(t)` posted in-session (uniforms â†
 | 18 | Dual-path fidelity: CPU `evaluateGeometry` vs verbatim `evaluateChatKernel` / `CHAT_KERNEL_SOURCE` (`src/fidelity.js`) |
 | 20 | Instanced TF color: `chatKernelColor` + `instanceColor` so gravity/time/idx drive GPU hue (`src/shaders.js`, `src/main.js`) |
 | 21 | Skip CPU readback on TF path unless `?relay=` / `?peers=` stream; `instanceOffset` attribute carries TF `vPos` |
+| 22 | Zero-copy visual path: `src/zeroCopy.js` marks native TF `vPos` on `instanceOffset`; skip `getBufferSubData` when `?zerocopy=1` or skipCpuPath |
 
 ## Next (this compile)
 
@@ -25,7 +26,7 @@ Band `137-visual`. Chat kernel is the `update(t)` posted in-session (uniforms â†
 | 14 | The-Hive | Memory engrams into Drive folder `CRYPTIC-HEARTBEAT-NEXUS-ROOT` |
 | 16-public | gaia-visualizer | hamiltoniansingularity.ai public band; default geometry `blend` (host default already wired) |
 | 19 | The-Hive | Quine / NexusStudio emit `postGaiaContract` on every weave change (`weaveEmitter.ts`) |
-| 22 | both | True zero-copy: share the WebGL TF `vPos` buffer object with Three.js without a CPU `Float32Array` copy |
+| 23 | both | Bind Three `instanceOffset` to the same WebGLBuffer as TF write target (no dummy CPU array at all) |
 
 ## Drive from LLM
 
