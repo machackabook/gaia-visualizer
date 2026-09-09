@@ -6,7 +6,7 @@ import { nodeVertex, nodeFragment } from './shaders.js';
 import { createGpuBuffers, writeNode, NODE_CAP } from './gpuBuffer.js';
 import { createTransformFeedback } from './transformFeedback.js';
 import { KERNEL_GEOMETRY_ID } from './evaluateKernel.glsl.js';
-import { STAGE } from './chatKernel.js';
+import { STAGE, chatKernelColor } from './chatKernel.js';
 import { fidelitySummary, sampleFidelity } from './fidelity.js';
 
 const hud = document.getElementById('hud');
@@ -45,6 +45,7 @@ bindRemoteContract(state, targetState);
 const nodes = [];
 const gpu = createGpuBuffers(count);
 const geo = new THREE.SphereGeometry(0.35, useInstancing || useGpu ? 8 : 16, useInstancing || useGpu ? 8 : 16);
+const instanceColors = new Float32Array(count * 3);
 
 if (useInstancing || useGpu) {
   const mat = new THREE.ShaderMaterial({
@@ -58,12 +59,17 @@ if (useInstancing || useGpu) {
   });
   const inst = new THREE.InstancedMesh(geo, mat, count);
   inst.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
+  inst.instanceColor = new THREE.InstancedBufferAttribute(instanceColors, 3);
   scene.add(inst);
   for (let i = 0; i < count; i++) {
     const dummy = new THREE.Object3D();
     nodes.push(new GaiaNode({ idx: i, dummy, material: mat }));
     nodes[i].theta = gpu.theta[i];
     nodes[i].phi = gpu.phi[i];
+    const c = chatKernelColor(i, 0, 1);
+    instanceColors[i * 3] = c.r;
+    instanceColors[i * 3 + 1] = c.g;
+    instanceColors[i * 3 + 2] = c.b;
   }
   nodes._instanced = inst;
 } else {
@@ -122,6 +128,18 @@ addEventListener('keydown', (e) => {
   if (e.key === '.') state.blend = Math.min(1, state.blend + 0.05);
 });
 
+function paintInstanceColors(t) {
+  if (!nodes._instanced) return;
+  const pull = state.gravityPull ?? 1;
+  for (let i = 0; i < nodes.length; i++) {
+    const c = chatKernelColor(i, t, pull);
+    instanceColors[i * 3] = c.r;
+    instanceColors[i * 3 + 1] = c.g;
+    instanceColors[i * 3 + 2] = c.b;
+  }
+  nodes._instanced.instanceColor.needsUpdate = true;
+}
+
 const clock = new THREE.Clock();
 function frame() {
   const t = clock.getElapsedTime();
@@ -159,6 +177,7 @@ function frame() {
       nodes._instanced.material.uniforms.uTime.value = t;
       nodes._instanced.material.uniforms.uGravity.value = state.gravityPull;
     }
+    paintInstanceColors(t);
   } else {
     for (const node of nodes) {
       node.update(t, state, targetState);
@@ -166,6 +185,7 @@ function frame() {
       const scale = 0.85 + Math.min(0.55, (state.gravityPull ?? 1) * 0.18);
       writeNode(gpu, node.idx, p.x, p.y, p.z, scale, node.theta, node.phi);
     }
+    paintInstanceColors(t);
   }
 
   if (nodes._instanced) {
