@@ -5,8 +5,9 @@
  *
  * Stage 22 marked the buffer on userData and skipped getBufferSubData.
  * Stage 24 — ?tfbind=1 health HUD: compare __webglBuffer === currentPosBuffer().
+ * Stage 25 — reportTfBindHealth always available for the default HUD line.
  */
-export const STAGE = 24;
+export const STAGE = 25;
 
 export function shouldZeroCopy(params, skipCpuPath) {
   if (params.get('zerocopy') === '0') return false;
@@ -15,7 +16,9 @@ export function shouldZeroCopy(params, skipCpuPath) {
 }
 
 export function shouldReportTfBind(params) {
-  return params.get('tfbind') === '1' || params.get('tfbind') === 'true';
+  if (!params) return true;
+  if (params.get('tfbind') === '0' || params.get('tfbind') === 'false') return false;
+  return true;
 }
 
 export function markZeroCopyAttribute(attribute, nativeBuffer) {
@@ -53,7 +56,7 @@ export function bindTfPosAttribute(renderer, attribute, nativeBuffer) {
   return true;
 }
 
-/** Stage 24 — report whether Three's instanceOffset shares the TF pos buffer. */
+/** Stage 24/25 — report whether Three's instanceOffset shares the TF pos buffer. */
 export function reportTfBindHealth(renderer, attribute, nativeBuffer, hudEl) {
   const slot = renderer?.properties?.get?.(attribute);
   const webgl = slot?.__webglBuffer ?? null;

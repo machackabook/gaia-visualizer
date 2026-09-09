@@ -8,6 +8,7 @@
  * Stage 22: skip CPU Float32 copy of vPos when ?zerocopy=1 / skipCpuPath (src/zeroCopy.js).
  * Stage 23: bind instanceOffset.__webglBuffer to TF currentPosBuffer() each frame.
  * Stage 24: TF-bind health HUD (?tfbind=1).
+ * Stage 25: pulse + bind health always on the default HUD line.
  *
  * update(t) {
  *   this.material.uniforms.uTime.value = t;
@@ -18,7 +19,7 @@
  * }
  */
 
-export const STAGE = 24;
+export const STAGE = 25;
 export const CHAT_KERNEL_LERP = 0.05;
 export const CHAT_KERNEL_THETA_BASE = 0.01;
 export const CHAT_KERNEL_THETA_IDX = 0.002;

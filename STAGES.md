@@ -20,8 +20,9 @@ Session kernel still allocates `new THREE.Vector3` inside lerp; live path uses a
 | 22 | Zero-copy visual path: `src/zeroCopy.js` marks native TF `vPos` on `instanceOffset`; skip `getBufferSubData` when `?zerocopy=1` or skipCpuPath |
 | 23 | Bind Three `instanceOffset` `__webglBuffer` to `tf.currentPosBuffer()` every frame after ping-pong (`bindTfPosAttribute`) |
 | 24 | TF-bind health: `reportTfBindHealth` + `?tfbind=1` (`window.__GAIA_TFBIND__`) |
+| 25 | Default HUD line for pulse + TF-bind; `reportTfBindHealth` after every `bindTfPosAttribute`; `stampPulse` on `state.lastPulse` |
 
-## Next (this compile)
+## Next
 
 | Stage | Owner repo | Work |
 |------|------------|------|
@@ -29,7 +30,7 @@ Session kernel still allocates `new THREE.Vector3` inside lerp; live path uses a
 | 14 | The-Hive | Memory engrams into Drive folder `CRYPTIC-HEARTBEAT-NEXUS-ROOT` |
 | 16-public | gaia-visualizer | hamiltoniansingularity.ai public band; default geometry `blend` (host default already wired) |
 | 19-panels | The-Hive | Hook remaining Quine / NexusStudio editors to `emitWeaveChange` / `emitGeometry` / `emitBlend` |
-| 25 | both | Pulse + bind HUD on default HUD line (not only `?tfbind=1`); wire `reportTfBindHealth` from `main.js` after each `bindTfPosAttribute` |
+| 26 | both | Stage-13 live ledger counts on the same HUD line as pulse; refuse unsigned pulse when token is set |
 
 ## Drive from LLM
 

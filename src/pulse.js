@@ -50,6 +50,12 @@ function acceptFrame(data) {
   return got === need;
 }
 
+function stampPulse(state, pulse) {
+  state.gravityPull = mapPulseToGravity(pulse);
+  state.lastPulse = state.gravityPull;
+  state.lastPulseAt = Date.now();
+}
+
 function parsePeerList(raw) {
   if (!raw) return [];
   return String(raw)
@@ -66,7 +72,7 @@ export function bindRemoteContract(state, targetState) {
   });
   addEventListener('gaia:pulse', (ev) => {
     if (!acceptFrame(ev.detail || {})) return;
-    state.gravityPull = mapPulseToGravity(ev.detail?.pulse ?? ev.detail);
+    stampPulse(state, ev.detail?.pulse ?? ev.detail);
   });
 
   try {
@@ -76,7 +82,7 @@ export function bindRemoteContract(state, targetState) {
       if (!acceptFrame(data)) return;
       if (data.type === 'gaia:targetState' || data.geometry) apply(data.detail || data);
       if (data.type === 'gaia:pulse') {
-        state.gravityPull = mapPulseToGravity(data.detail?.pulse ?? data.pulse);
+        stampPulse(state, data.detail?.pulse ?? data.pulse);
       }
     };
   } catch {
@@ -94,7 +100,7 @@ export function bindRemoteContract(state, targetState) {
           const data = JSON.parse(ev.data);
           if (!acceptFrame({ ...data, token: data.token || token })) return;
           if (data.type === 'gaia:pulse' || data.pulse != null) {
-            state.gravityPull = mapPulseToGravity(data.pulse ?? data.detail?.pulse);
+            stampPulse(state, data.pulse ?? data.detail?.pulse);
           } else if (data.type !== 'gaia:positions') {
             apply(data.detail || data);
           }
