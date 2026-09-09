@@ -14,6 +14,7 @@ Band `137-visual`. Chat kernel is the `update(t)` posted in-session (uniforms â†
 | 16 | Remaining 31 manifolds on TF; `uBlend` |
 | 17 | Chat-kernel source pinned in `src/chatKernel.js`; contract constants (`CHAT_KERNEL_LERP`, theta rates) |
 | 18 | Dual-path fidelity: CPU `evaluateGeometry` vs verbatim `evaluateChatKernel` / `CHAT_KERNEL_SOURCE` (`src/fidelity.js`) |
+| 20 | Instanced TF color: `chatKernelColor` + `instanceColor` so gravity/time/idx drive GPU hue (`src/shaders.js`, `src/main.js`) |
 
 ## Next (this compile)
 
@@ -21,9 +22,9 @@ Band `137-visual`. Chat kernel is the `update(t)` posted in-session (uniforms â†
 |------|------------|------|
 | 13 | The-Hive + gaia-visualizer | Authenticated live `ledger_pulse` â†’ Hive WS against live sheet counts. Token already flows as `GAIA_PULSE_TOKEN` / `?token=` |
 | 14 | The-Hive | Memory engrams into Drive folder `CRYPTIC-HEARTBEAT-NEXUS-ROOT` |
-| 16-public | gaia-visualizer | hamiltoniansingularity.ai public band; default geometry `blend` |
-| 19 | The-Hive | Quine / NexusStudio emit `postGaiaContract` on every weave change |
-| 20 | gaia-visualizer | Instanced TF + color attribute so `uColor` follows gravity on the GPU path |
+| 16-public | gaia-visualizer | hamiltoniansingularity.ai public band; default geometry `blend` (host default already wired) |
+| 19 | The-Hive | Quine / NexusStudio emit `postGaiaContract` on every weave change (`weaveEmitter.ts`) |
+| 21 | both | Skip CPU readback on TF path: bind TF position buffer as InstancedMesh translation attribute |
 
 ## Drive from LLM
 
