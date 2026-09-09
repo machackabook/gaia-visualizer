@@ -3,9 +3,9 @@
 **Band:** `137-visual`  
 **Nexus:** Cryptic-Heartbeat  
 **Numeral:** `137451921129154222`  
-**Stage:** `16`
+**Stage:** `17`
 
-LLM-assigned geometric states for Gaia nodes. Each node interpolates toward a target manifold. `GaiaNode.update(t, state, targetState)` is the living chat kernel:
+LLM-assigned geometric states for Gaia nodes. Each node interpolates toward a target manifold. `GaiaNode.update(t, state, targetState)` is the living chat kernel. The verbatim `update(t)` from the current chat lives in `src/chatKernel.js` (`CHAT_KERNEL_SOURCE`).
 
 ```
 this.material.uniforms.uTime.value = t;
@@ -19,7 +19,7 @@ The target vector is reused (no `new THREE.Vector3` inside `update`). Node scale
 
 On `hamiltoniansingularity.ai` the default geometry is `blend`.
 
-Stage-12 wires the GLSL chat kernel through WebGL2 **transform-feedback** (`src/transformFeedback.js`). Stage-16 finishes TF coverage for all 31 CPU manifolds (`?tf=1&nodes=16384`). CPU mapping remains the reference.
+Stage-12 wires the GLSL chat kernel through WebGL2 **transform-feedback** (`src/transformFeedback.js`). Stage-16 finishes TF coverage for all 31 CPU manifolds (`?tf=1&nodes=16384`). CPU mapping remains the reference. Stage-17 pins the in-chat kernel source so later fidelity tests can replay it.
 
 | `targetState.geometry` | Mapping | Keys |
 |------------------------|---------|------|
@@ -75,19 +75,4 @@ Query seeds:
 - `?gpu=1` or `?nodes=4096` — packed Float32 + theta/phi buffers
 - `?tf=1&nodes=16384` — transform-feedback path (stage-16)
 
-## Stages
-
-**Done**
-1–9. Kernel extract through scherk / knot / pseudosphere.
-10. Peer fan-out + packed GPU attribute buffer; node cap 8192.
-11. GLSL chat-kernel evaluate (`evaluateKernel.glsl.js`); theta/phi packed; cassini / lorenz / superformula.
-12. WebGL2 transform-feedback for the four chat geometries; node cap 16384 (`?tf=1`).
-15. TF kernel expanded to helix, mobius, lissajous, trefoil, figure8, cassini, clifford, villarceau.
-16. Remaining manifolds on the TF path (klein, hopf, rose, seifert, blend, stereo, enneper, gyroid, calabi, boy, catenoid, dini, roman, hyperbolic, scherk, knot, pseudosphere, lorenz, superformula). `uBlend` wired into the TF program.
-
-**Next**
-13. Authenticated live `ledger_pulse.py` → Hive WS against live sheet counts.
-14. Memory engrams into Drive `CRYPTIC-HEARTBEAT-NEXUS-ROOT`.
-16-public. hamiltoniansingularity.ai public band (`blend` default).
-
-See `src/geometry.js`, `src/Node.js`, `src/evaluateKernel.glsl.js`, `src/gpuBuffer.js`, `src/transformFeedback.js`.
+See `STAGES.md`, `src/chatKernel.js`, `src/geometry.js`, `src/Node.js`, `src/evaluateKernel.glsl.js`, `src/gpuBuffer.js`, `src/transformFeedback.js`.
