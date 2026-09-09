@@ -1,15 +1,22 @@
 /**
- * Stage-10 / 11 GPU attribute buffer.
+ * Stage-10 / 11 / 12 GPU attribute buffer.
  * CPU evaluateGeometry remains the reference mapping.
- * Positions + theta/phi live in packed Float32Arrays that can feed
- * InstancedMesh matrices or the stage-11 GLSL kernel in evaluateKernel.glsl.js.
+ * Positions + theta/phi live in packed Float32Arrays that feed
+ * InstancedMesh matrices and the stage-12 transform-feedback kernel.
+ * Node cap raised to 16384 when ?tf=1 and WebGL2 is available.
  */
+export const NODE_CAP = 16384;
+
 export function createGpuBuffers(count) {
   const positions = new Float32Array(count * 3);
   const scales = new Float32Array(count);
   const theta = new Float32Array(count);
   const phi = new Float32Array(count);
   scales.fill(1);
+  for (let i = 0; i < count; i++) {
+    theta[i] = Math.random() * Math.PI * 2;
+    phi[i] = Math.random() * Math.PI * 2;
+  }
   return { count, positions, scales, theta, phi };
 }
 
