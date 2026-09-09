@@ -1,6 +1,6 @@
 /**
- * Stage-12/15 WebGL2 transform-feedback kernel.
- * Advances theta/phi and evaluates chat + expansion geometries on the GPU.
+ * Stage-16 WebGL2 transform-feedback kernel.
+ * Advances theta/phi and evaluates the full manifold set on the GPU.
  * Falls back silently when the context is not WebGL2.
  *
  * Chat kernel (CPU reference, never allocate inside the loop):
@@ -21,6 +21,7 @@ uniform float uTime;
 uniform float uGravity;
 uniform float uWeave;
 uniform int uGeometry;
+uniform float uBlend;
 
 out float vTheta;
 out float vPhi;
@@ -32,7 +33,7 @@ void main() {
   float pull = max(uGravity, 0.05);
   vTheta = aTheta + (0.01 + aIdx * 0.002) * pull;
   vPhi = aPhi + (0.007 + aIdx * 0.0007) * max(0.25, pull);
-  vPos = evaluateChatKernel(vTheta, vPhi, uTime, aIdx, pull, uWeave, uGeometry);
+  vPos = evaluateChatKernel(vTheta, vPhi, uTime, aIdx, pull, uWeave, uGeometry, uBlend);
 }
 `;
 
@@ -129,6 +130,7 @@ export function createTransformFeedback(gl, count, seedTheta, seedPhi) {
     uGravity: gl.getUniformLocation(program, 'uGravity'),
     uWeave: gl.getUniformLocation(program, 'uWeave'),
     uGeometry: gl.getUniformLocation(program, 'uGeometry'),
+    uBlend: gl.getUniformLocation(program, 'uBlend'),
   };
 
   const outPos = new Float32Array(count * 3);
@@ -145,6 +147,7 @@ export function createTransformFeedback(gl, count, seedTheta, seedPhi) {
       gl.uniform1f(loc.uGravity, state.gravityPull ?? 1);
       gl.uniform1f(loc.uWeave, state.toroidalWeave ?? 1);
       gl.uniform1i(loc.uGeometry, geom);
+      gl.uniform1f(loc.uBlend, state.blend ?? 0.5);
 
       const vao = read === ping ? vaoPing : vaoPong;
       const tf = read === ping ? tfPingToPong : tfPongToPing;
@@ -177,5 +180,5 @@ export function createTransformFeedback(gl, count, seedTheta, seedPhi) {
   };
 }
 
-export const STAGE = 15;
+export const STAGE = 16;
 export const NODE_CAP = 16384;
