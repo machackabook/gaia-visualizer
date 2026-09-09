@@ -5,6 +5,7 @@
  * Stage 18: CPU evaluateGeometry vs this verbatim mapping for torus/infinity/hamiltonian/triangular.
  * Stage 20: GPU TF path writes per-node color from gravity + time + idx.
  * Stage 21: TF vPos feeds InstancedMesh instanceOffset; CPU getBufferSubData only when peers stream.
+ * Stage 22: skip CPU Float32 copy of vPos when ?zerocopy=1 / skipCpuPath (src/zeroCopy.js).
  *
  * update(t) {
  *   this.material.uniforms.uTime.value = t;
@@ -15,7 +16,7 @@
  * }
  */
 
-export const STAGE = 21;
+export const STAGE = 22;
 export const CHAT_KERNEL_LERP = 0.05;
 export const CHAT_KERNEL_THETA_BASE = 0.01;
 export const CHAT_KERNEL_THETA_IDX = 0.002;
