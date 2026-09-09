@@ -8,6 +8,7 @@ import { createTransformFeedback } from './transformFeedback.js';
 import { KERNEL_GEOMETRY_ID } from './evaluateKernel.glsl.js';
 import { STAGE, chatKernelColor } from './chatKernel.js';
 import { fidelitySummary, sampleFidelity } from './fidelity.js';
+import { markZeroCopyAttribute, shouldZeroCopy } from './zeroCopy.js';
 
 const hud = document.getElementById('hud');
 const scene = new THREE.Scene();
@@ -156,13 +157,18 @@ function frame() {
   const geom = targetState.geometry || 'torus';
   const chatOnGpu = useTfKernel && Object.prototype.hasOwnProperty.call(KERNEL_GEOMETRY_ID, geom);
   const skipCpuPath = chatOnGpu && nodes._instanced && !needStreamReadback;
+  const zeroCopy = shouldZeroCopy(params, skipCpuPath);
 
   if (chatOnGpu) {
     tf.step(t, state, geom);
     if (skipCpuPath) {
-      tf.readbackPositionsOnly(instanceOffsets);
       const attr = nodes._instanced.geometry.getAttribute('instanceOffset');
-      if (attr) attr.needsUpdate = true;
+      if (zeroCopy) {
+        markZeroCopyAttribute(attr, tf.currentPosBuffer());
+      } else {
+        tf.readbackPositionsOnly(instanceOffsets);
+        if (attr) attr.needsUpdate = true;
+      }
     } else {
       tf.readback(gpu);
       paintInstanceOffsetsFromGpu();
@@ -222,12 +228,12 @@ function frame() {
   camera.position.z = Math.cos(t * 0.08) * 42;
   camera.lookAt(0, 0, 0);
   hud.textContent = [
-    `GAIA VISUALIZER  band-137  stage-${STAGE}  nodes=${count}${useInstancing || useGpu ? ' instanced' : ''}${useGpu ? ' gpu-buf' : ''}${chatOnGpu ? ' tf' : ''}${skipCpuPath ? ' no-cpu-rb' : ''}`,
+    `GAIA VISUALIZER  band-137  stage-${STAGE}  nodes=${count}${useInstancing || useGpu ? ' instanced' : ''}${useGpu ? ' gpu-buf' : ''}${chatOnGpu ? ' tf' : ''}${skipCpuPath ? ' no-cpu-rb' : ''}${zeroCopy ? ' zerocopy' : ''}`,
     `geometry: ${targetState.geometry}   (1-9 / 0 / q w + e..l z x  l=cassini z=lorenz x=superformula)`,
     `gravityPull: ${state.gravityPull.toFixed(2)}   ([ / ])`,
     `toroidalWeave: ${state.toroidalWeave.toFixed(2)}   (- / =)`,
     `blend: ${state.blend.toFixed(2)}   (, / .)  hamiltonian<->klein`,
-    `lerp: ${state.lerp.toFixed(2)}   (?state= / ?pulse=ws / ?token= / ?relay= / ?peers= / ?gpu=1 / ?tf=1 / ?fidelity=1 / ?nodes=)`,
+    `lerp: ${state.lerp.toFixed(2)}   (?state= / ?pulse=ws / ?token= / ?relay= / ?peers= / ?gpu=1 / ?tf=1 / ?zerocopy=1 / ?fidelity=1 / ?nodes=)`,
   ].join('\n');
   renderer.render(scene, camera);
   requestAnimationFrame(frame);
