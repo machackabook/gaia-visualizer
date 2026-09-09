@@ -47,7 +47,17 @@ if (params.get('fidelity') === '1') {
 
 const hostDefault =
   /hamiltoniansingularity\.ai$/i.test(location.hostname) ? 'blend' : 'torus';
-const state = { gravityPull: 1, toroidalWeave: 1, lerp: 0.05, blend: 0.5, lastPulse: null, lastPulseAt: 0 };
+const state = {
+  gravityPull: 1,
+  toroidalWeave: 1,
+  lerp: 0.05,
+  blend: 0.5,
+  lastPulse: null,
+  lastPulseAt: 0,
+  unsignedRefused: 0,
+  lastUnsignedAt: 0,
+  ledger: { topics: 0, votes: 0, bridges: 0, nodes: 0, at: 0 },
+};
 const targetState = { geometry: hostDefault };
 bindRemoteContract(state, targetState);
 
@@ -244,9 +254,11 @@ function frame() {
   const bindBit = bindReport
     ? (bindReport.bound ? 'tfbind-ok' : 'tfbind-miss')
     : (tfBound ? 'tfbind' : 'tfbind-off');
+  const led = state.ledger || {};
+  const tokenGate = token ? 'token-on' : 'token-off';
   hud.textContent = [
-    `GAIA VISUALIZER  band-137  stage-${STAGE}  nodes=${count}${useInstancing || useGpu ? ' instanced' : ''}${useGpu ? ' gpu-buf' : ''}${chatOnGpu ? ' tf' : ''}${skipCpuPath ? ' no-cpu-rb' : ''}${zeroCopy ? ' zerocopy' : ''} ${bindBit}`,
-    `pulse: ${pulseVal}  age=${pulseAge}s   tfbind: ${bindReport ? (bindReport.bound ? 'OK' : 'MISS') : (chatOnGpu && zeroCopy ? 'pending' : 'n/a')}`,
+    `GAIA VISUALIZER  band-137  stage-${STAGE}  nodes=${count}${useInstancing || useGpu ? ' instanced' : ''}${useGpu ? ' gpu-buf' : ''}${chatOnGpu ? ' tf' : ''}${skipCpuPath ? ' no-cpu-rb' : ''}${zeroCopy ? ' zerocopy' : ''} ${bindBit} ${tokenGate}`,
+    `pulse: ${pulseVal}  age=${pulseAge}s   ledger: topics=${led.topics || 0} votes=${led.votes || 0} bridges=${led.bridges || 0}   refuse=${state.unsignedRefused || 0}   tfbind: ${bindReport ? (bindReport.bound ? 'OK' : 'MISS') : (chatOnGpu && zeroCopy ? 'pending' : 'n/a')}`,
     `geometry: ${targetState.geometry}   (1-9 / 0 / q w + e..l z x  l=cassini z=lorenz x=superformula)`,
     `gravityPull: ${state.gravityPull.toFixed(2)}   ([ / ])`,
     `toroidalWeave: ${state.toroidalWeave.toFixed(2)}   (- / =)`,

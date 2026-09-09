@@ -3,9 +3,9 @@
 **Band:** `137-visual`  
 **Nexus:** Cryptic-Heartbeat  
 **Numeral:** `137451921129154222`  
-**Stage:** `25`
+**Stage:** `26`
 
-LLM-assigned geometric states for Gaia nodes. Each node interpolates toward a target manifold. `GaiaNode.update(t, state, targetState)` is the living chat kernel. The verbatim `update(t)` from the current chat lives in `src/chatKernel.js` (`CHAT_KERNEL_SOURCE`). Stage-18 adds `evaluateChatKernel` plus `src/fidelity.js` so CPU `evaluateGeometry` can be checked against that contract for torus / infinity / hamiltonian / triangular. Stage-20 paints `instanceColor` from `chatKernelColor(idx, t, gravityPull)` on both CPU and TF frames. Stage-22 skips the CPU `vPos` copy on the visual TF path (`src/zeroCopy.js`, `?zerocopy=1`). Stage-25 always prints pulse + TF-bind health on the HUD (opt out with `?tfbind=0`).
+LLM-assigned geometric states for Gaia nodes. Each node interpolates toward a target manifold. `GaiaNode.update(t, state, targetState)` is the living chat kernel. The verbatim `update(t)` from the current chat lives in `src/chatKernel.js` (`CHAT_KERNEL_SOURCE`). Stage-18 adds `evaluateChatKernel` plus `src/fidelity.js` so CPU `evaluateGeometry` can be checked against that contract for torus / infinity / hamiltonian / triangular. Stage-20 paints `instanceColor` from `chatKernelColor(idx, t, gravityPull)` on both CPU and TF frames. Stage-22 skips the CPU `vPos` copy on the visual TF path (`src/zeroCopy.js`, `?zerocopy=1`). Stage-25 always prints pulse + TF-bind health on the HUD (opt out with `?tfbind=0`). Stage-26 prints live ledger sheet counts on that same line and refuses unsigned pulse/contract frames when `?token=` is set.
 
 ```
 this.material.uniforms.uTime.value = t;
@@ -70,7 +70,7 @@ window.dispatchEvent(new CustomEvent('gaia:targetState', {
 Query seeds:
 - `?state={"geometry":"lorenz","gravityPull":1.2,"blend":0.7}`
 - `?pulse=ws://localhost:3000`
-- `?token=...`
+- `?token=...` — when set, unsigned pulse / contract / ledger frames are refused
 - `?relay=` / `?peers=` — band-192 fan-out
 - `?gpu=1` or `?nodes=4096` — packed Float32 + theta/phi buffers
 - `?tf=1&nodes=16384` — transform-feedback path (stage-16)
