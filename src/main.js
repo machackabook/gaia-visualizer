@@ -8,7 +8,13 @@ import { createTransformFeedback } from './transformFeedback.js';
 import { KERNEL_GEOMETRY_ID } from './evaluateKernel.glsl.js';
 import { STAGE, chatKernelColor } from './chatKernel.js';
 import { fidelitySummary, sampleFidelity } from './fidelity.js';
-import { bindTfPosAttribute, markZeroCopyAttribute, shouldZeroCopy } from './zeroCopy.js';
+import {
+  bindTfPosAttribute,
+  markZeroCopyAttribute,
+  reportTfBindHealth,
+  shouldReportTfBind,
+  shouldZeroCopy,
+} from './zeroCopy.js';
 
 const hud = document.getElementById('hud');
 const scene = new THREE.Scene();
@@ -31,6 +37,7 @@ const relay = params.get('relay') || '';
 const peers = params.get('peers') || '';
 const token = params.get('token') || '';
 const needStreamReadback = Boolean(relay || peers);
+const showTfBind = shouldReportTfBind(params);
 
 if (params.get('fidelity') === '1') {
   const report = sampleFidelity();
@@ -40,7 +47,7 @@ if (params.get('fidelity') === '1') {
 
 const hostDefault =
   /hamiltoniansingularity\.ai$/i.test(location.hostname) ? 'blend' : 'torus';
-const state = { gravityPull: 1, toroidalWeave: 1, lerp: 0.05, blend: 0.5 };
+const state = { gravityPull: 1, toroidalWeave: 1, lerp: 0.05, blend: 0.5, lastPulse: null, lastPulseAt: 0 };
 const targetState = { geometry: hostDefault };
 bindRemoteContract(state, targetState);
 
@@ -159,6 +166,7 @@ function frame() {
   const skipCpuPath = chatOnGpu && nodes._instanced && !needStreamReadback;
   const zeroCopy = shouldZeroCopy(params, skipCpuPath);
   let tfBound = false;
+  let bindReport = null;
 
   if (chatOnGpu) {
     tf.step(t, state, geom);
@@ -167,6 +175,8 @@ function frame() {
       if (zeroCopy) {
         tfBound = bindTfPosAttribute(renderer, attr, tf.currentPosBuffer());
         if (!tfBound) markZeroCopyAttribute(attr, tf.currentPosBuffer());
+        bindReport = reportTfBindHealth(renderer, attr, tf.currentPosBuffer());
+        tfBound = Boolean(bindReport?.bound);
       } else {
         tf.readbackPositionsOnly(instanceOffsets);
         if (attr) attr.needsUpdate = true;
@@ -229,14 +239,23 @@ function frame() {
   camera.position.x = Math.sin(t * 0.08) * 42;
   camera.position.z = Math.cos(t * 0.08) * 42;
   camera.lookAt(0, 0, 0);
+  const pulseAge = state.lastPulseAt ? ((Date.now() - state.lastPulseAt) / 1000).toFixed(1) : '—';
+  const pulseVal = state.lastPulse == null ? '—' : Number(state.lastPulse).toFixed(2);
+  const bindBit = bindReport
+    ? (bindReport.bound ? 'tfbind-ok' : 'tfbind-miss')
+    : (tfBound ? 'tfbind' : 'tfbind-off');
   hud.textContent = [
-    `GAIA VISUALIZER  band-137  stage-${STAGE}  nodes=${count}${useInstancing || useGpu ? ' instanced' : ''}${useGpu ? ' gpu-buf' : ''}${chatOnGpu ? ' tf' : ''}${skipCpuPath ? ' no-cpu-rb' : ''}${zeroCopy ? ' zerocopy' : ''}${tfBound ? ' tfbind' : ''}`,
+    `GAIA VISUALIZER  band-137  stage-${STAGE}  nodes=${count}${useInstancing || useGpu ? ' instanced' : ''}${useGpu ? ' gpu-buf' : ''}${chatOnGpu ? ' tf' : ''}${skipCpuPath ? ' no-cpu-rb' : ''}${zeroCopy ? ' zerocopy' : ''} ${bindBit}`,
+    `pulse: ${pulseVal}  age=${pulseAge}s   tfbind: ${bindReport ? (bindReport.bound ? 'OK' : 'MISS') : (chatOnGpu && zeroCopy ? 'pending' : 'n/a')}`,
     `geometry: ${targetState.geometry}   (1-9 / 0 / q w + e..l z x  l=cassini z=lorenz x=superformula)`,
     `gravityPull: ${state.gravityPull.toFixed(2)}   ([ / ])`,
     `toroidalWeave: ${state.toroidalWeave.toFixed(2)}   (- / =)`,
     `blend: ${state.blend.toFixed(2)}   (, / .)  hamiltonian<->klein`,
-    `lerp: ${state.lerp.toFixed(2)}   (?state= / ?pulse=ws / ?token= / ?relay= / ?peers= / ?gpu=1 / ?tf=1 / ?zerocopy=1 / ?fidelity=1 / ?nodes=)`,
+    `lerp: ${state.lerp.toFixed(2)}   (?state= / ?pulse=ws / ?token= / ?relay= / ?peers= / ?gpu=1 / ?tf=1 / ?zerocopy=1 / ?fidelity=1 / ?nodes= / ?tfbind=0)`,
   ].join('\n');
+  if (showTfBind && typeof window !== 'undefined' && window.__GAIA_TFBIND__) {
+    /* already stamped by reportTfBindHealth */
+  }
   renderer.render(scene, camera);
   requestAnimationFrame(frame);
 }
