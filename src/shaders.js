@@ -2,6 +2,7 @@ export const nodeVertex = `
 uniform float uTime;
 uniform float uGravity;
 attribute vec3 instanceColor;
+attribute vec3 instanceOffset;
 varying vec3 vNormalW;
 varying float vPulse;
 varying vec3 vInstanceColor;
@@ -11,7 +12,7 @@ void main() {
   vInstanceColor = instanceColor;
   float pulse = 1.0 + 0.08 * uGravity * sin(uTime * 2.4 + position.y);
   vPulse = pulse;
-  vec3 p = position * pulse;
+  vec3 p = position * pulse + instanceOffset;
   gl_Position = projectionMatrix * modelViewMatrix * vec4(p, 1.0);
 }
 `;
