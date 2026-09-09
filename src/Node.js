@@ -16,6 +16,13 @@ export class GaiaNode {
     this.position = new THREE.Vector3();
   }
 
+  /**
+   * Chat kernel reference (kept as the living update(t) contract):
+   *   uniforms uTime / uGravity
+   *   theta += (0.01 + idx * 0.002) * gravityPull
+   *   evaluate targetState.geometry (infinity | hamiltonian | triangular | torus)
+   *   mesh.position.lerp(target, 0.05) — never allocate inside the loop
+   */
   update(t, state, targetState) {
     if (this.material?.uniforms) {
       if (this.material.uniforms.uTime) this.material.uniforms.uTime.value = t;
