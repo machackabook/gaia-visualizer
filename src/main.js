@@ -175,7 +175,7 @@ function frame() {
   camera.position.z = Math.cos(t * 0.08) * 42;
   camera.lookAt(0, 0, 0);
   hud.textContent = [
-    `GAIA VISUALIZER  band-137  stage-12  nodes=${count}${useInstancing || useGpu ? ' instanced' : ''}${useGpu ? ' gpu-buf' : ''}${chatOnGpu ? ' tf' : ''}`,
+    `GAIA VISUALIZER  band-137  stage-16  nodes=${count}${useInstancing || useGpu ? ' instanced' : ''}${useGpu ? ' gpu-buf' : ''}${chatOnGpu ? ' tf' : ''}`,
     `geometry: ${targetState.geometry}   (1-9 / 0 / q w + e..l z x  l=cassini z=lorenz x=superformula)`,
     `gravityPull: ${state.gravityPull.toFixed(2)}   ([ / ])`,
     `toroidalWeave: ${state.toroidalWeave.toFixed(2)}   (- / =)`,
