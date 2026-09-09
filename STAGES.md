@@ -17,6 +17,7 @@ Band `137-visual`. Chat kernel is the `update(t)` posted in-session (uniforms â†
 | 20 | Instanced TF color: `chatKernelColor` + `instanceColor` so gravity/time/idx drive GPU hue (`src/shaders.js`, `src/main.js`) |
 | 21 | Skip CPU readback on TF path unless `?relay=` / `?peers=` stream; `instanceOffset` attribute carries TF `vPos` |
 | 22 | Zero-copy visual path: `src/zeroCopy.js` marks native TF `vPos` on `instanceOffset`; skip `getBufferSubData` when `?zerocopy=1` or skipCpuPath |
+| 23 | Bind Three `instanceOffset` `__webglBuffer` to `tf.currentPosBuffer()` every frame after ping-pong (`bindTfPosAttribute`) |
 
 ## Next (this compile)
 
@@ -25,8 +26,8 @@ Band `137-visual`. Chat kernel is the `update(t)` posted in-session (uniforms â†
 | 13 | The-Hive + gaia-visualizer | Authenticated live `ledger_pulse` â†’ Hive WS against live sheet counts. Token already flows as `GAIA_PULSE_TOKEN` / `?token=` |
 | 14 | The-Hive | Memory engrams into Drive folder `CRYPTIC-HEARTBEAT-NEXUS-ROOT` |
 | 16-public | gaia-visualizer | hamiltoniansingularity.ai public band; default geometry `blend` (host default already wired) |
-| 19 | The-Hive | Quine / NexusStudio emit `postGaiaContract` on every weave change (`weaveEmitter.ts`) |
-| 23 | both | Bind Three `instanceOffset` to the same WebGLBuffer as TF write target (no dummy CPU array at all) |
+| 19 | The-Hive | Quine / NexusStudio emit `postGaiaContract` on every weave change (`weaveEmitter.ts`) â€” helper shipped; remaining work is panel hooks |
+| 24 | both | Stage-13 live pulse + TF bind health HUD (`?tfbind=1` reports whether `__webglBuffer === currentPosBuffer`) |
 
 ## Drive from LLM
 
