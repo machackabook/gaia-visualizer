@@ -3,9 +3,9 @@
 **Band:** `137-visual`  
 **Nexus:** Cryptic-Heartbeat  
 **Numeral:** `137451921129154222`  
-**Stage:** `18`
+**Stage:** `20`
 
-LLM-assigned geometric states for Gaia nodes. Each node interpolates toward a target manifold. `GaiaNode.update(t, state, targetState)` is the living chat kernel. The verbatim `update(t)` from the current chat lives in `src/chatKernel.js` (`CHAT_KERNEL_SOURCE`). Stage-18 adds `evaluateChatKernel` plus `src/fidelity.js` so CPU `evaluateGeometry` can be checked against that contract for torus / infinity / hamiltonian / triangular.
+LLM-assigned geometric states for Gaia nodes. Each node interpolates toward a target manifold. `GaiaNode.update(t, state, targetState)` is the living chat kernel. The verbatim `update(t)` from the current chat lives in `src/chatKernel.js` (`CHAT_KERNEL_SOURCE`). Stage-18 adds `evaluateChatKernel` plus `src/fidelity.js` so CPU `evaluateGeometry` can be checked against that contract for torus / infinity / hamiltonian / triangular. Stage-20 paints `instanceColor` from `chatKernelColor(idx, t, gravityPull)` on both CPU and TF frames.
 
 ```
 this.material.uniforms.uTime.value = t;
@@ -19,7 +19,7 @@ The target vector is reused (no `new THREE.Vector3` inside `update`). Node scale
 
 On `hamiltoniansingularity.ai` the default geometry is `blend`.
 
-Stage-12 wires the GLSL chat kernel through WebGL2 **transform-feedback** (`src/transformFeedback.js`). Stage-16 finishes TF coverage for all 31 CPU manifolds (`?tf=1&nodes=16384`). CPU mapping remains the reference. Stage-17 pins the in-chat kernel source so later fidelity tests can replay it. Stage-18 runs that replay in `sampleFidelity()`.
+Stage-12 wires the GLSL chat kernel through WebGL2 **transform-feedback** (`src/transformFeedback.js`). Stage-16 finishes TF coverage for all 31 CPU manifolds (`?tf=1&nodes=16384`). CPU mapping remains the reference. Stage-17 pins the in-chat kernel source so later fidelity tests can replay it. Stage-18 runs that replay in `sampleFidelity()`. Stage-20 drives per-instance hue from gravity on the GPU path.
 
 | `targetState.geometry` | Mapping | Keys |
 |------------------------|---------|------|
@@ -55,7 +55,7 @@ Stage-12 wires the GLSL chat kernel through WebGL2 **transform-feedback** (`src/
 | `lorenz` | Lorenz attractor sample | z |
 | `superformula` | Gielis superformula polar chart | x |
 
-Uniforms: `uTime`, `uGravity`, `uColor` (ShaderMaterial). State: `gravityPull`, `toroidalWeave`, `lerp`, `blend`.
+Uniforms: `uTime`, `uGravity`, `uColor` (ShaderMaterial) plus `instanceColor` on InstancedMesh. State: `gravityPull`, `toroidalWeave`, `lerp`, `blend`.
 
 GPU TF ids (`KERNEL_GEOMETRY_ID`): torus 0 … superformula 30 (full set).
 
