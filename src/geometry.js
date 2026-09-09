@@ -2,7 +2,8 @@
  * Evaluate the target geometric state assigned by the LLM.
  * Pure mapping: (theta, phi, t, idx, state, geometry) -> {x,y,z}
  * Chat kernel remains torus / infinity / hamiltonian / triangular + lerp.
- * Stage-9 manifolds: scherk, knot, pseudosphere.
+ * Stage-9: scherk, knot, pseudosphere.
+ * Stage-11: cassini, lorenz, superformula + GLSL kernel sibling.
  */
 export const GEOMETRIES = [
   'torus',
@@ -33,6 +34,9 @@ export const GEOMETRIES = [
   'scherk',
   'knot',
   'pseudosphere',
+  'cassini',
+  'lorenz',
+  'superformula',
 ];
 
 function kleinBottle(theta, phi, t, idx, major, toroidalWeave) {
@@ -225,7 +229,6 @@ function hyperbolic(theta, phi, t, idx, major, minor) {
   };
 }
 
-/** Scherk first minimal surface, sampled on a bounded chart. */
 function scherk(theta, phi, t, major, minor) {
   const u = Math.sin(theta) * 1.2;
   const v = Math.sin(phi) * 1.2;
@@ -238,7 +241,6 @@ function scherk(theta, phi, t, major, minor) {
   };
 }
 
-/** (p,q) torus knot with p=3, q=5 gravity-wound. */
 function knot(theta, t, idx, major, minor) {
   const p = 3;
   const q = 5;
@@ -251,7 +253,6 @@ function knot(theta, t, idx, major, minor) {
   };
 }
 
-/** Pseudosphere (tractrix of revolution), constant negative curvature. */
 function pseudosphere(theta, phi, t, major, minor) {
   const u = ((phi % (Math.PI * 0.95)) + 0.08);
   const v = theta;
@@ -261,6 +262,62 @@ function pseudosphere(theta, phi, t, major, minor) {
     x: a * su * Math.cos(v),
     y: a * (Math.cos(u) + Math.log(Math.tan(u / 2) || 1e-4)) * 0.45 + Math.sin(t * 0.2) * minor * 0.06,
     z: a * su * Math.sin(v),
+  };
+}
+
+/** Cassini oval extruded along phi — sibling of the lemniscate kernel. */
+function cassini(theta, phi, t, major, minor) {
+  const a = major * 0.35;
+  const b = a * (0.85 + 0.15 * Math.sin(t * 0.2));
+  const c2 = Math.cos(2 * theta);
+  const inner = b * b * b * b - a * a * a * a * Math.sin(2 * theta) * Math.sin(2 * theta);
+  const r2 = a * a * c2 + Math.sqrt(Math.max(0, inner));
+  const r = Math.sqrt(Math.max(0, r2));
+  const tube = minor * 0.2;
+  return {
+    x: r * Math.cos(theta) + tube * Math.cos(phi),
+    y: tube * Math.sin(phi) + Math.sin(t * 0.35) * 0.3,
+    z: r * Math.sin(theta) + tube * Math.sin(phi * 0.5),
+  };
+}
+
+/** Lorenz attractor sample, gravity-wound in time. */
+function lorenz(theta, t, idx, major, gravityPull) {
+  const s = 10;
+  const r = 28;
+  const b = 8 / 3;
+  let x = Math.sin(theta + idx);
+  let y = Math.cos(theta * 0.7 + idx);
+  let z = 20 + Math.sin(idx);
+  const steps = 8;
+  const dt = 0.008 * (0.6 + gravityPull);
+  for (let i = 0; i < steps; i++) {
+    const dx = s * (y - x);
+    const dy = x * (r - z) - y;
+    const dz = x * y - b * z;
+    x += dx * dt;
+    y += dy * dt;
+    z += dz * dt;
+  }
+  const k = major * 0.045;
+  return { x: x * k, y: (z - 25) * k * 0.55 + Math.sin(t * 0.2) * 0.4, z: y * k };
+}
+
+/** Gielis superformula on a polar chart. */
+function superformula(theta, phi, t, major, minor) {
+  const m = 6;
+  const n1 = 0.3 + (Math.sin(t * 0.15) + 1) * 0.4;
+  const n2 = 1.7;
+  const n3 = 1.7;
+  const a = 1;
+  const c = 1;
+  const t4 = (m * theta) / 4;
+  const part = Math.pow(Math.abs(Math.cos(t4) / a), n2) + Math.pow(Math.abs(Math.sin(t4) / c), n3);
+  const rho = major * 0.45 / Math.pow(Math.max(part, 1e-6), 1 / n1);
+  return {
+    x: rho * Math.cos(theta),
+    y: minor * 0.45 * Math.sin(phi + t * 0.25),
+    z: rho * Math.sin(theta),
   };
 }
 
@@ -447,6 +504,21 @@ export function evaluateGeometry({
     case 'pseudosphere': {
       const p = pseudosphere(theta, phi, t, major, minor);
       x = p.x; y = p.y; z = p.z;
+      break;
+    }
+    case 'cassini': {
+      const c = cassini(theta, phi, t, major, minor);
+      x = c.x; y = c.y; z = c.z;
+      break;
+    }
+    case 'lorenz': {
+      const l = lorenz(theta, t, idx, major, gravityPull);
+      x = l.x; y = l.y; z = l.z;
+      break;
+    }
+    case 'superformula': {
+      const s = superformula(theta, phi, t, major, minor);
+      x = s.x; y = s.y; z = s.z;
       break;
     }
     case 'torus':
