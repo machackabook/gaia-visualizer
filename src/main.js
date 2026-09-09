@@ -6,6 +6,8 @@ import { nodeVertex, nodeFragment } from './shaders.js';
 import { createGpuBuffers, writeNode, NODE_CAP } from './gpuBuffer.js';
 import { createTransformFeedback } from './transformFeedback.js';
 import { KERNEL_GEOMETRY_ID } from './evaluateKernel.glsl.js';
+import { STAGE } from './chatKernel.js';
+import { fidelitySummary, sampleFidelity } from './fidelity.js';
 
 const hud = document.getElementById('hud');
 const scene = new THREE.Scene();
@@ -27,6 +29,12 @@ const wantTf = params.get('tf') === '1' || count > 8192;
 const relay = params.get('relay') || '';
 const peers = params.get('peers') || '';
 const token = params.get('token') || '';
+
+if (params.get('fidelity') === '1') {
+  const report = sampleFidelity();
+  console.info('[gaia-fidelity]', fidelitySummary(report), report.note);
+  window.__gaiaFidelity = report;
+}
 
 const hostDefault =
   /hamiltoniansingularity\.ai$/i.test(location.hostname) ? 'blend' : 'torus';
@@ -175,12 +183,12 @@ function frame() {
   camera.position.z = Math.cos(t * 0.08) * 42;
   camera.lookAt(0, 0, 0);
   hud.textContent = [
-    `GAIA VISUALIZER  band-137  stage-16  nodes=${count}${useInstancing || useGpu ? ' instanced' : ''}${useGpu ? ' gpu-buf' : ''}${chatOnGpu ? ' tf' : ''}`,
+    `GAIA VISUALIZER  band-137  stage-${STAGE}  nodes=${count}${useInstancing || useGpu ? ' instanced' : ''}${useGpu ? ' gpu-buf' : ''}${chatOnGpu ? ' tf' : ''}`,
     `geometry: ${targetState.geometry}   (1-9 / 0 / q w + e..l z x  l=cassini z=lorenz x=superformula)`,
     `gravityPull: ${state.gravityPull.toFixed(2)}   ([ / ])`,
     `toroidalWeave: ${state.toroidalWeave.toFixed(2)}   (- / =)`,
     `blend: ${state.blend.toFixed(2)}   (, / .)  hamiltonian<->klein`,
-    `lerp: ${state.lerp.toFixed(2)}   (?state= / ?pulse=ws / ?token= / ?relay= / ?peers= / ?gpu=1 / ?tf=1 / ?nodes=)`,
+    `lerp: ${state.lerp.toFixed(2)}   (?state= / ?pulse=ws / ?token= / ?relay= / ?peers= / ?gpu=1 / ?tf=1 / ?fidelity=1 / ?nodes=)`,
   ].join('\n');
   renderer.render(scene, camera);
   requestAnimationFrame(frame);
