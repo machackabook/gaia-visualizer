@@ -4,8 +4,8 @@ import { GEOMETRIES } from './geometry.js';
 import { bindRemoteContract, createPositionStreamer } from './pulse.js';
 import { nodeVertex, nodeFragment } from './shaders.js';
 import { createGpuBuffers, writeNode, NODE_CAP } from './gpuBuffer.js';
-import { createTransformFeedback, KERNEL_GEOMETRY_ID } from './transformFeedback.js';
-import { KERNEL_GEOMETRY_ID as CHAT_IDS } from './evaluateKernel.glsl.js';
+import { createTransformFeedback } from './transformFeedback.js';
+import { KERNEL_GEOMETRY_ID } from './evaluateKernel.glsl.js';
 
 const hud = document.getElementById('hud');
 const scene = new THREE.Scene();
@@ -84,7 +84,6 @@ scene.add(key);
 const streamPositions = createPositionStreamer(nodes, { relay, peers, token, buffers: gpu });
 
 const gl = renderer.getContext();
-const chatIds = CHAT_IDS || KERNEL_GEOMETRY_ID;
 const tf = wantTf ? createTransformFeedback(gl, count, gpu.theta, gpu.phi) : null;
 const useTfKernel = Boolean(tf?.supported);
 
@@ -119,7 +118,7 @@ const clock = new THREE.Clock();
 function frame() {
   const t = clock.getElapsedTime();
   const geom = targetState.geometry || 'torus';
-  const chatOnGpu = useTfKernel && Object.prototype.hasOwnProperty.call(chatIds, geom);
+  const chatOnGpu = useTfKernel && Object.prototype.hasOwnProperty.call(KERNEL_GEOMETRY_ID, geom);
 
   if (chatOnGpu) {
     tf.step(t, state, geom);
@@ -131,19 +130,20 @@ function frame() {
       node.theta = gpu.theta[i];
       node.phi = gpu.phi[i];
       const o = i * 3;
+      const tx = gpu.positions[o];
+      const ty = gpu.positions[o + 1];
+      const tz = gpu.positions[o + 2];
       if (node.dummy) {
-        node.dummy.position.lerp(
-          { x: gpu.positions[o], y: gpu.positions[o + 1], z: gpu.positions[o + 2] },
-          alpha,
-        );
+        node.dummy.position.x += (tx - node.dummy.position.x) * alpha;
+        node.dummy.position.y += (ty - node.dummy.position.y) * alpha;
+        node.dummy.position.z += (tz - node.dummy.position.z) * alpha;
         node.dummy.scale.setScalar(scale);
         node.dummy.updateMatrix();
         node.position.copy(node.dummy.position);
       } else if (node.mesh?.position) {
-        node.mesh.position.lerp(
-          { x: gpu.positions[o], y: gpu.positions[o + 1], z: gpu.positions[o + 2] },
-          alpha,
-        );
+        node.mesh.position.x += (tx - node.mesh.position.x) * alpha;
+        node.mesh.position.y += (ty - node.mesh.position.y) * alpha;
+        node.mesh.position.z += (tz - node.mesh.position.z) * alpha;
         node.position.copy(node.mesh.position);
       }
     }
