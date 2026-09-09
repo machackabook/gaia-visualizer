@@ -1,12 +1,12 @@
 /**
- * Stage-12 WebGL2 transform-feedback kernel.
- * Advances theta/phi and evaluates the four chat geometries on the GPU.
+ * Stage-12/15 WebGL2 transform-feedback kernel.
+ * Advances theta/phi and evaluates chat + expansion geometries on the GPU.
  * Falls back silently when the context is not WebGL2.
  *
  * Chat kernel (CPU reference, never allocate inside the loop):
  *   uniforms uTime / uGravity
  *   theta += (0.01 + idx * 0.002) * gravityPull
- *   switch(targetState.geometry) { infinity | hamiltonian | triangular | torus }
+ *   switch(targetState.geometry) { infinity | hamiltonian | triangular | torus | … }
  *   mesh.position.lerp(target, 0.05)
  */
 import { EVALUATE_KERNEL_GLSL, KERNEL_GEOMETRY_ID } from './evaluateKernel.glsl.js';
@@ -177,5 +177,5 @@ export function createTransformFeedback(gl, count, seedTheta, seedPhi) {
   };
 }
 
-export const STAGE = 12;
+export const STAGE = 15;
 export const NODE_CAP = 16384;
