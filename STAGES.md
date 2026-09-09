@@ -1,6 +1,7 @@
 # Gaia visualizer + The-Hive — compiled stages
 
 Band `137-visual`. Chat kernel is the `update(t)` posted in-session (uniforms → theta → geometry switch → lerp 0.05).
+Session kernel still allocates `new THREE.Vector3` inside lerp; live path uses a reused `_target` in `GaiaNode.update`.
 
 ## Done
 
@@ -18,6 +19,7 @@ Band `137-visual`. Chat kernel is the `update(t)` posted in-session (uniforms �
 | 21 | Skip CPU readback on TF path unless `?relay=` / `?peers=` stream; `instanceOffset` attribute carries TF `vPos` |
 | 22 | Zero-copy visual path: `src/zeroCopy.js` marks native TF `vPos` on `instanceOffset`; skip `getBufferSubData` when `?zerocopy=1` or skipCpuPath |
 | 23 | Bind Three `instanceOffset` `__webglBuffer` to `tf.currentPosBuffer()` every frame after ping-pong (`bindTfPosAttribute`) |
+| 24 | TF-bind health: `reportTfBindHealth` + `?tfbind=1` (`window.__GAIA_TFBIND__`) |
 
 ## Next (this compile)
 
@@ -26,8 +28,8 @@ Band `137-visual`. Chat kernel is the `update(t)` posted in-session (uniforms �
 | 13 | The-Hive + gaia-visualizer | Authenticated live `ledger_pulse` → Hive WS against live sheet counts. Token already flows as `GAIA_PULSE_TOKEN` / `?token=` |
 | 14 | The-Hive | Memory engrams into Drive folder `CRYPTIC-HEARTBEAT-NEXUS-ROOT` |
 | 16-public | gaia-visualizer | hamiltoniansingularity.ai public band; default geometry `blend` (host default already wired) |
-| 19 | The-Hive | Quine / NexusStudio emit `postGaiaContract` on every weave change (`weaveEmitter.ts`) — helper shipped; remaining work is panel hooks |
-| 24 | both | Stage-13 live pulse + TF bind health HUD (`?tfbind=1` reports whether `__webglBuffer === currentPosBuffer`) |
+| 19-panels | The-Hive | Hook remaining Quine / NexusStudio editors to `emitWeaveChange` / `emitGeometry` / `emitBlend` |
+| 25 | both | Pulse + bind HUD on default HUD line (not only `?tfbind=1`); wire `reportTfBindHealth` from `main.js` after each `bindTfPosAttribute` |
 
 ## Drive from LLM
 
