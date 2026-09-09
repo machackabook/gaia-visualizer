@@ -43,17 +43,34 @@ function expectedToken() {
   }
 }
 
-function acceptFrame(data) {
+function acceptFrame(data, state) {
   const need = expectedToken();
   if (!need) return true;
   const got = data?.token || data?.detail?.token || '';
-  return got === need;
+  if (got === need) return true;
+  if (state) {
+    state.unsignedRefused = (state.unsignedRefused || 0) + 1;
+    state.lastUnsignedAt = Date.now();
+  }
+  return false;
 }
 
 function stampPulse(state, pulse) {
   state.gravityPull = mapPulseToGravity(pulse);
   state.lastPulse = state.gravityPull;
   state.lastPulseAt = Date.now();
+}
+
+export function stampLedger(state, ledger) {
+  const src = ledger && typeof ledger === 'object' ? ledger : {};
+  state.ledger = {
+    topics: Number(src.topics ?? src.topicCount ?? 0) || 0,
+    votes: Number(src.votes ?? src.voteSum ?? 0) || 0,
+    bridges: Number(src.bridges ?? src.bridgeCount ?? 0) || 0,
+    nodes: Number(src.nodes ?? src.nodeCount ?? 0) || 0,
+    at: Date.now(),
+  };
+  return state.ledger;
 }
 
 function parsePeerList(raw) {
@@ -68,21 +85,30 @@ export function bindRemoteContract(state, targetState) {
   const apply = (payload) => applyContract(payload, state, targetState);
 
   addEventListener('gaia:targetState', (ev) => {
-    if (acceptFrame(ev.detail || {})) apply(ev.detail);
+    if (acceptFrame(ev.detail || {}, state)) apply(ev.detail);
   });
   addEventListener('gaia:pulse', (ev) => {
-    if (!acceptFrame(ev.detail || {})) return;
+    if (!acceptFrame(ev.detail || {}, state)) return;
     stampPulse(state, ev.detail?.pulse ?? ev.detail);
+    if (ev.detail?.ledger) stampLedger(state, ev.detail.ledger);
+  });
+  addEventListener('gaia:ledger', (ev) => {
+    if (!acceptFrame(ev.detail || {}, state)) return;
+    stampLedger(state, ev.detail?.ledger || ev.detail);
   });
 
   try {
     const bc = new BroadcastChannel(CHANNEL);
     bc.onmessage = (ev) => {
       const data = ev.data || {};
-      if (!acceptFrame(data)) return;
+      if (!acceptFrame(data, state)) return;
       if (data.type === 'gaia:targetState' || data.geometry) apply(data.detail || data);
       if (data.type === 'gaia:pulse') {
         stampPulse(state, data.detail?.pulse ?? data.pulse);
+        if (data.ledger || data.detail?.ledger) stampLedger(state, data.ledger || data.detail.ledger);
+      }
+      if (data.type === 'gaia:ledger' || data.ledger) {
+        stampLedger(state, data.ledger || data.detail?.ledger || data);
       }
     };
   } catch {
@@ -98,9 +124,12 @@ export function bindRemoteContract(state, targetState) {
       ws.onmessage = (ev) => {
         try {
           const data = JSON.parse(ev.data);
-          if (!acceptFrame({ ...data, token: data.token || token })) return;
+          if (!acceptFrame({ ...data, token: data.token || token }, state)) return;
           if (data.type === 'gaia:pulse' || data.pulse != null) {
             stampPulse(state, data.pulse ?? data.detail?.pulse);
+            if (data.ledger) stampLedger(state, data.ledger);
+          } else if (data.type === 'gaia:ledger') {
+            stampLedger(state, data.ledger || data);
           } else if (data.type !== 'gaia:positions') {
             apply(data.detail || data);
           }

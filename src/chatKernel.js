@@ -9,6 +9,7 @@
  * Stage 23: bind instanceOffset.__webglBuffer to TF currentPosBuffer() each frame.
  * Stage 24: TF-bind health HUD (?tfbind=1).
  * Stage 25: pulse + bind health always on the default HUD line.
+ * Stage 26: ledger sheet counts on the same HUD line; unsigned pulse refused when ?token= is set.
  *
  * update(t) {
  *   this.material.uniforms.uTime.value = t;
@@ -19,7 +20,7 @@
  * }
  */
 
-export const STAGE = 25;
+export const STAGE = 26;
 export const CHAT_KERNEL_LERP = 0.05;
 export const CHAT_KERNEL_THETA_BASE = 0.01;
 export const CHAT_KERNEL_THETA_IDX = 0.002;
