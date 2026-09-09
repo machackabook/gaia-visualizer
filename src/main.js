@@ -3,7 +3,9 @@ import { GaiaNode } from './Node.js';
 import { GEOMETRIES } from './geometry.js';
 import { bindRemoteContract, createPositionStreamer } from './pulse.js';
 import { nodeVertex, nodeFragment } from './shaders.js';
-import { createGpuBuffers, writeNode } from './gpuBuffer.js';
+import { createGpuBuffers, writeNode, NODE_CAP } from './gpuBuffer.js';
+import { createTransformFeedback, KERNEL_GEOMETRY_ID } from './transformFeedback.js';
+import { KERNEL_GEOMETRY_ID as CHAT_IDS } from './evaluateKernel.glsl.js';
 
 const hud = document.getElementById('hud');
 const scene = new THREE.Scene();
@@ -18,9 +20,10 @@ document.body.appendChild(renderer.domElement);
 
 const params = new URLSearchParams(location.search);
 const requested = Number(params.get('nodes') || 24);
-const count = Math.max(8, Math.min(8192, Number.isFinite(requested) ? requested : 24));
+const count = Math.max(8, Math.min(NODE_CAP, Number.isFinite(requested) ? requested : 24));
 const useInstancing = count > 48 || params.get('instanced') === '1';
 const useGpu = count > 2048 || params.get('gpu') === '1';
+const wantTf = params.get('tf') === '1' || count > 8192;
 const relay = params.get('relay') || '';
 const peers = params.get('peers') || '';
 const token = params.get('token') || '';
@@ -51,6 +54,8 @@ if (useInstancing || useGpu) {
   for (let i = 0; i < count; i++) {
     const dummy = new THREE.Object3D();
     nodes.push(new GaiaNode({ idx: i, dummy, material: mat }));
+    nodes[i].theta = gpu.theta[i];
+    nodes[i].phi = gpu.phi[i];
   }
   nodes._instanced = inst;
 } else {
@@ -77,6 +82,11 @@ key.position.set(8, 16, 10);
 scene.add(key);
 
 const streamPositions = createPositionStreamer(nodes, { relay, peers, token, buffers: gpu });
+
+const gl = renderer.getContext();
+const chatIds = CHAT_IDS || KERNEL_GEOMETRY_ID;
+const tf = wantTf ? createTransformFeedback(gl, count, gpu.theta, gpu.phi) : null;
+const useTfKernel = Boolean(tf?.supported);
 
 addEventListener('resize', () => {
   camera.aspect = innerWidth / innerHeight;
@@ -108,12 +118,48 @@ addEventListener('keydown', (e) => {
 const clock = new THREE.Clock();
 function frame() {
   const t = clock.getElapsedTime();
-  for (const node of nodes) {
-    node.update(t, state, targetState);
-    const p = node.position;
+  const geom = targetState.geometry || 'torus';
+  const chatOnGpu = useTfKernel && Object.prototype.hasOwnProperty.call(chatIds, geom);
+
+  if (chatOnGpu) {
+    tf.step(t, state, geom);
+    tf.readback(gpu);
+    const alpha = state.lerp ?? 0.05;
     const scale = 0.85 + Math.min(0.55, (state.gravityPull ?? 1) * 0.18);
-    writeNode(gpu, node.idx, p.x, p.y, p.z, scale, node.theta, node.phi);
+    for (let i = 0; i < nodes.length; i++) {
+      const node = nodes[i];
+      node.theta = gpu.theta[i];
+      node.phi = gpu.phi[i];
+      const o = i * 3;
+      if (node.dummy) {
+        node.dummy.position.lerp(
+          { x: gpu.positions[o], y: gpu.positions[o + 1], z: gpu.positions[o + 2] },
+          alpha,
+        );
+        node.dummy.scale.setScalar(scale);
+        node.dummy.updateMatrix();
+        node.position.copy(node.dummy.position);
+      } else if (node.mesh?.position) {
+        node.mesh.position.lerp(
+          { x: gpu.positions[o], y: gpu.positions[o + 1], z: gpu.positions[o + 2] },
+          alpha,
+        );
+        node.position.copy(node.mesh.position);
+      }
+    }
+    if (nodes._instanced?.material?.uniforms) {
+      nodes._instanced.material.uniforms.uTime.value = t;
+      nodes._instanced.material.uniforms.uGravity.value = state.gravityPull;
+    }
+  } else {
+    for (const node of nodes) {
+      node.update(t, state, targetState);
+      const p = node.position;
+      const scale = 0.85 + Math.min(0.55, (state.gravityPull ?? 1) * 0.18);
+      writeNode(gpu, node.idx, p.x, p.y, p.z, scale, node.theta, node.phi);
+    }
   }
+
   if (nodes._instanced) {
     for (let i = 0; i < nodes.length; i++) {
       nodes._instanced.setMatrixAt(i, nodes[i].dummy.matrix);
@@ -129,12 +175,12 @@ function frame() {
   camera.position.z = Math.cos(t * 0.08) * 42;
   camera.lookAt(0, 0, 0);
   hud.textContent = [
-    `GAIA VISUALIZER  band-137  stage-11  nodes=${count}${useInstancing || useGpu ? ' instanced' : ''}${useGpu ? ' gpu-buf' : ''}`,
+    `GAIA VISUALIZER  band-137  stage-12  nodes=${count}${useInstancing || useGpu ? ' instanced' : ''}${useGpu ? ' gpu-buf' : ''}${chatOnGpu ? ' tf' : ''}`,
     `geometry: ${targetState.geometry}   (1-9 / 0 / q w + e..l z x  l=cassini z=lorenz x=superformula)`,
     `gravityPull: ${state.gravityPull.toFixed(2)}   ([ / ])`,
     `toroidalWeave: ${state.toroidalWeave.toFixed(2)}   (- / =)`,
     `blend: ${state.blend.toFixed(2)}   (, / .)  hamiltonian<->klein`,
-    `lerp: ${state.lerp.toFixed(2)}   (?state= / ?pulse=ws / ?token= / ?relay= / ?peers= / ?gpu=1 / ?nodes=)`,
+    `lerp: ${state.lerp.toFixed(2)}   (?state= / ?pulse=ws / ?token= / ?relay= / ?peers= / ?gpu=1 / ?tf=1 / ?nodes=)`,
   ].join('\n');
   renderer.render(scene, camera);
   requestAnimationFrame(frame);
