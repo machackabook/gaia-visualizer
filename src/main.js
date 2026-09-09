@@ -86,7 +86,7 @@ addEventListener('resize', () => {
 
 const extraKeys = {
   e: 12, r: 13, t: 14, y: 15, u: 16, i: 17, o: 18, p: 19, a: 20, s: 21,
-  d: 22, f: 23, g: 24, h: 25, j: 26, k: 27,
+  d: 22, f: 23, g: 24, h: 25, j: 26, k: 27, l: 28, z: 29, x: 30,
 };
 addEventListener('keydown', (e) => {
   const n = Number(e.key);
@@ -112,7 +112,7 @@ function frame() {
     node.update(t, state, targetState);
     const p = node.position;
     const scale = 0.85 + Math.min(0.55, (state.gravityPull ?? 1) * 0.18);
-    writeNode(gpu, node.idx, p.x, p.y, p.z, scale);
+    writeNode(gpu, node.idx, p.x, p.y, p.z, scale, node.theta, node.phi);
   }
   if (nodes._instanced) {
     for (let i = 0; i < nodes.length; i++) {
@@ -129,8 +129,8 @@ function frame() {
   camera.position.z = Math.cos(t * 0.08) * 42;
   camera.lookAt(0, 0, 0);
   hud.textContent = [
-    `GAIA VISUALIZER  band-137  stage-10  nodes=${count}${useInstancing || useGpu ? ' instanced' : ''}${useGpu ? ' gpu-buf' : ''}`,
-    `geometry: ${targetState.geometry}   (1-9 / 0 / q w + e..k  h=scherk j=knot k=pseudosphere)`,
+    `GAIA VISUALIZER  band-137  stage-11  nodes=${count}${useInstancing || useGpu ? ' instanced' : ''}${useGpu ? ' gpu-buf' : ''}`,
+    `geometry: ${targetState.geometry}   (1-9 / 0 / q w + e..l z x  l=cassini z=lorenz x=superformula)`,
     `gravityPull: ${state.gravityPull.toFixed(2)}   ([ / ])`,
     `toroidalWeave: ${state.toroidalWeave.toFixed(2)}   (- / =)`,
     `blend: ${state.blend.toFixed(2)}   (, / .)  hamiltonian<->klein`,

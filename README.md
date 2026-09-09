@@ -3,13 +3,23 @@
 **Band:** `137-visual`  
 **Nexus:** Cryptic-Heartbeat  
 **Numeral:** `137451921129154222`  
-**Stage:** `10`
+**Stage:** `11`
 
-LLM-assigned geometric states for Gaia nodes. Each node interpolates toward a target manifold. `GaiaNode.update(t, state, targetState)` advances theta/phi with gravity and lerps onto `evaluateGeometry(...)`. The per-frame target vector is reused (no `new THREE.Vector3` inside `update`). Node scale follows `gravityPull`.
+LLM-assigned geometric states for Gaia nodes. Each node interpolates toward a target manifold. `GaiaNode.update(t, state, targetState)` is the living chat kernel:
 
-The original chat `update(t)` switch (`infinity` lemniscate, `hamiltonian`, `triangular`, `torus` default + lerp 0.05) remains the reference kernel.
+```
+this.material.uniforms.uTime.value = t;
+this.material.uniforms.uGravity.value = state.gravityPull;
+this.theta += (0.01 + this.idx * 0.002) * state.gravityPull;
+// evaluate targetState.geometry → {x,y,z}
+this.mesh.position.lerp(target, 0.05);
+```
+
+The target vector is reused (no `new THREE.Vector3` inside `update`). Node scale follows `gravityPull`.
 
 On `hamiltoniansingularity.ai` the default geometry is `blend`.
+
+Stage-11 adds a GLSL evaluate kernel (`src/evaluateKernel.glsl.js`) for the four chat geometries, packs `theta`/`phi` into the GPU buffer, and three new manifolds: `cassini`, `lorenz`, `superformula`.
 
 | `targetState.geometry` | Mapping | Keys |
 |------------------------|---------|------|
@@ -41,6 +51,9 @@ On `hamiltoniansingularity.ai` the default geometry is `blend`.
 | `scherk` | Scherk first minimal surface | h |
 | `knot` | (3,5) torus knot | j |
 | `pseudosphere` | Tractrix of revolution | k |
+| `cassini` | Cassini oval (lemniscate sibling) | l |
+| `lorenz` | Lorenz attractor sample | z |
+| `superformula` | Gielis superformula polar chart | x |
 
 Uniforms: `uTime`, `uGravity`, `uColor` (ShaderMaterial). State: `gravityPull`, `toroidalWeave`, `lerp`, `blend`.
 
@@ -48,32 +61,27 @@ Uniforms: `uTime`, `uGravity`, `uColor` (ShaderMaterial). State: `gravityPull`, 
 
 ```js
 window.dispatchEvent(new CustomEvent('gaia:targetState', {
-  detail: { geometry: 'scherk', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6 }
+  detail: { geometry: 'cassini', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6 }
 }));
-window.dispatchEvent(new CustomEvent('gaia:pulse', { detail: { pulse: 1.8 } }));
-
-const bc = new BroadcastChannel('gaia-weave');
-bc.postMessage({ type: 'gaia:targetState', geometry: 'knot', gravityPull: 1.6 });
 ```
 
 Query seeds:
-- `?state={"geometry":"pseudosphere","gravityPull":1.2,"blend":0.7}`
-- `?pulse=ws://localhost:3000` — Hive WS frames `{type:"gaia:pulse",pulse}` or a full contract.
-- `?token=...` — when set, incoming pulse/contract frames must carry the same token.
-- `?relay=http://localhost:3000/api/gaia/positions` — POST `gaia:positions` for 192-network fan-out.
-- `?peers=http://100.x.y.z:3000/api/gaia/positions,http://100.a.b.c:3000/api/gaia/positions` — Tailscale peer list.
-- `?nodes=256` or `?instanced=1` — InstancedMesh path (auto above 48 nodes).
-- `?gpu=1` or `?nodes=4096` — packed Float32 attribute buffer (stage-10/11).
+- `?state={"geometry":"lorenz","gravityPull":1.2,"blend":0.7}`
+- `?pulse=ws://localhost:3000`
+- `?token=...`
+- `?relay=` / `?peers=` — band-192 fan-out
+- `?gpu=1` or `?nodes=4096` — packed Float32 + theta/phi buffers
 
 ## Stages
 
 **Done**
-1–9. Kernel extract through scherk / knot / pseudosphere; Hamiltoniansingularity.ai defaults to `blend`.
-10. Tailscale peer fan-out of `gaia:positions` via `?peers=` + Hive `/api/gaia/positions`; packed GPU attribute buffer (`src/gpuBuffer.js`); node cap 8192.
+1–9. Kernel extract through scherk / knot / pseudosphere.
+10. Peer fan-out + packed GPU attribute buffer; node cap 8192.
+11. GLSL chat-kernel evaluate (`evaluateKernel.glsl.js`); theta/phi packed; cassini / lorenz / superformula. CPU mapping remains reference.
 
 **Next**
-11. True GPU compute / transform-feedback evaluateGeometry for >8k nodes (CPU mapping remains reference).
-12. Authenticated live `ledger_pulse.py` → Hive WS (token already on the wire; CLI now ships).
-13. Memory engrams into Drive `CRYPTIC-HEARTBEAT-NEXUS-ROOT`.
+12. Wire the GLSL kernel through WebGL2 transform-feedback for >8k nodes.
+13. Authenticated live `ledger_pulse.py` → Hive WS against live sheet counts.
+14. Memory engrams into Drive `CRYPTIC-HEARTBEAT-NEXUS-ROOT`.
 
-See `src/geometry.js`, `src/Node.js`, `src/shaders.js`, `src/pulse.js`, `src/gpuBuffer.js`.
+See `src/geometry.js`, `src/Node.js`, `src/evaluateKernel.glsl.js`, `src/gpuBuffer.js`.
