@@ -3,9 +3,9 @@
 **Band:** `137-visual`  
 **Nexus:** Cryptic-Heartbeat  
 **Numeral:** `137451921129154222`  
-**Stage:** `20`
+**Stage:** `22`
 
-LLM-assigned geometric states for Gaia nodes. Each node interpolates toward a target manifold. `GaiaNode.update(t, state, targetState)` is the living chat kernel. The verbatim `update(t)` from the current chat lives in `src/chatKernel.js` (`CHAT_KERNEL_SOURCE`). Stage-18 adds `evaluateChatKernel` plus `src/fidelity.js` so CPU `evaluateGeometry` can be checked against that contract for torus / infinity / hamiltonian / triangular. Stage-20 paints `instanceColor` from `chatKernelColor(idx, t, gravityPull)` on both CPU and TF frames.
+LLM-assigned geometric states for Gaia nodes. Each node interpolates toward a target manifold. `GaiaNode.update(t, state, targetState)` is the living chat kernel. The verbatim `update(t)` from the current chat lives in `src/chatKernel.js` (`CHAT_KERNEL_SOURCE`). Stage-18 adds `evaluateChatKernel` plus `src/fidelity.js` so CPU `evaluateGeometry` can be checked against that contract for torus / infinity / hamiltonian / triangular. Stage-20 paints `instanceColor` from `chatKernelColor(idx, t, gravityPull)` on both CPU and TF frames. Stage-22 skips the CPU `vPos` copy on the visual TF path (`src/zeroCopy.js`, `?zerocopy=1`).
 
 ```
 this.material.uniforms.uTime.value = t;
@@ -74,6 +74,7 @@ Query seeds:
 - `?relay=` / `?peers=` — band-192 fan-out
 - `?gpu=1` or `?nodes=4096` — packed Float32 + theta/phi buffers
 - `?tf=1&nodes=16384` — transform-feedback path (stage-16)
+- `?zerocopy=1` — stage-22 skip CPU `vPos` readback on the visual path
 - `?fidelity=1` — log stage-18 CPU vs chat-kernel sample report
 
-See `STAGES.md`, `src/chatKernel.js`, `src/fidelity.js`, `src/geometry.js`, `src/Node.js`, `src/evaluateKernel.glsl.js`, `src/gpuBuffer.js`, `src/transformFeedback.js`.
+See `STAGES.md`, `src/chatKernel.js`, `src/fidelity.js`, `src/geometry.js`, `src/Node.js`, `src/evaluateKernel.glsl.js`, `src/gpuBuffer.js`, `src/transformFeedback.js`, `src/zeroCopy.js`.
