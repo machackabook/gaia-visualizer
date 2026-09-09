@@ -13,6 +13,7 @@ Band `137-visual`. Chat kernel is the `update(t)` posted in-session (uniforms â†
 | 15 | TF kernel: helix, mobius, lissajous, trefoil, figure8, cassini, clifford, villarceau |
 | 16 | Remaining 31 manifolds on TF; `uBlend` |
 | 17 | Chat-kernel source pinned in `src/chatKernel.js`; contract constants (`CHAT_KERNEL_LERP`, theta rates) |
+| 18 | Dual-path fidelity: CPU `evaluateGeometry` vs verbatim `evaluateChatKernel` / `CHAT_KERNEL_SOURCE` (`src/fidelity.js`) |
 
 ## Next (this compile)
 
@@ -21,7 +22,6 @@ Band `137-visual`. Chat kernel is the `update(t)` posted in-session (uniforms â†
 | 13 | The-Hive + gaia-visualizer | Authenticated live `ledger_pulse` â†’ Hive WS against live sheet counts. Token already flows as `GAIA_PULSE_TOKEN` / `?token=` |
 | 14 | The-Hive | Memory engrams into Drive folder `CRYPTIC-HEARTBEAT-NEXUS-ROOT` |
 | 16-public | gaia-visualizer | hamiltoniansingularity.ai public band; default geometry `blend` |
-| 18 | both | Dual-path fidelity test: CPU `evaluateGeometry` vs TF kernel vs verbatim `CHAT_KERNEL_SOURCE` for the four chat geometries |
 | 19 | The-Hive | Quine / NexusStudio emit `postGaiaContract` on every weave change |
 | 20 | gaia-visualizer | Instanced TF + color attribute so `uColor` follows gravity on the GPU path |
 

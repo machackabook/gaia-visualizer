@@ -3,9 +3,9 @@
 **Band:** `137-visual`  
 **Nexus:** Cryptic-Heartbeat  
 **Numeral:** `137451921129154222`  
-**Stage:** `17`
+**Stage:** `18`
 
-LLM-assigned geometric states for Gaia nodes. Each node interpolates toward a target manifold. `GaiaNode.update(t, state, targetState)` is the living chat kernel. The verbatim `update(t)` from the current chat lives in `src/chatKernel.js` (`CHAT_KERNEL_SOURCE`).
+LLM-assigned geometric states for Gaia nodes. Each node interpolates toward a target manifold. `GaiaNode.update(t, state, targetState)` is the living chat kernel. The verbatim `update(t)` from the current chat lives in `src/chatKernel.js` (`CHAT_KERNEL_SOURCE`). Stage-18 adds `evaluateChatKernel` plus `src/fidelity.js` so CPU `evaluateGeometry` can be checked against that contract for torus / infinity / hamiltonian / triangular.
 
 ```
 this.material.uniforms.uTime.value = t;
@@ -19,7 +19,7 @@ The target vector is reused (no `new THREE.Vector3` inside `update`). Node scale
 
 On `hamiltoniansingularity.ai` the default geometry is `blend`.
 
-Stage-12 wires the GLSL chat kernel through WebGL2 **transform-feedback** (`src/transformFeedback.js`). Stage-16 finishes TF coverage for all 31 CPU manifolds (`?tf=1&nodes=16384`). CPU mapping remains the reference. Stage-17 pins the in-chat kernel source so later fidelity tests can replay it.
+Stage-12 wires the GLSL chat kernel through WebGL2 **transform-feedback** (`src/transformFeedback.js`). Stage-16 finishes TF coverage for all 31 CPU manifolds (`?tf=1&nodes=16384`). CPU mapping remains the reference. Stage-17 pins the in-chat kernel source so later fidelity tests can replay it. Stage-18 runs that replay in `sampleFidelity()`.
 
 | `targetState.geometry` | Mapping | Keys |
 |------------------------|---------|------|
@@ -74,5 +74,6 @@ Query seeds:
 - `?relay=` / `?peers=` — band-192 fan-out
 - `?gpu=1` or `?nodes=4096` — packed Float32 + theta/phi buffers
 - `?tf=1&nodes=16384` — transform-feedback path (stage-16)
+- `?fidelity=1` — log stage-18 CPU vs chat-kernel sample report
 
-See `STAGES.md`, `src/chatKernel.js`, `src/geometry.js`, `src/Node.js`, `src/evaluateKernel.glsl.js`, `src/gpuBuffer.js`, `src/transformFeedback.js`.
+See `STAGES.md`, `src/chatKernel.js`, `src/fidelity.js`, `src/geometry.js`, `src/Node.js`, `src/evaluateKernel.glsl.js`, `src/gpuBuffer.js`, `src/transformFeedback.js`.
