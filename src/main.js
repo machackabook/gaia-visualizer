@@ -29,6 +29,7 @@ const wantTf = params.get('tf') === '1' || count > 8192;
 const relay = params.get('relay') || '';
 const peers = params.get('peers') || '';
 const token = params.get('token') || '';
+const needStreamReadback = Boolean(relay || peers);
 
 if (params.get('fidelity') === '1') {
   const report = sampleFidelity();
@@ -46,6 +47,7 @@ const nodes = [];
 const gpu = createGpuBuffers(count);
 const geo = new THREE.SphereGeometry(0.35, useInstancing || useGpu ? 8 : 16, useInstancing || useGpu ? 8 : 16);
 const instanceColors = new Float32Array(count * 3);
+const instanceOffsets = new Float32Array(count * 3);
 
 if (useInstancing || useGpu) {
   const mat = new THREE.ShaderMaterial({
@@ -60,6 +62,7 @@ if (useInstancing || useGpu) {
   const inst = new THREE.InstancedMesh(geo, mat, count);
   inst.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
   inst.instanceColor = new THREE.InstancedBufferAttribute(instanceColors, 3);
+  inst.geometry.setAttribute('instanceOffset', new THREE.InstancedBufferAttribute(instanceOffsets, 3));
   scene.add(inst);
   for (let i = 0; i < count; i++) {
     const dummy = new THREE.Object3D();
@@ -140,37 +143,52 @@ function paintInstanceColors(t) {
   nodes._instanced.instanceColor.needsUpdate = true;
 }
 
+function paintInstanceOffsetsFromGpu() {
+  if (!nodes._instanced) return;
+  instanceOffsets.set(gpu.positions);
+  const attr = nodes._instanced.geometry.getAttribute('instanceOffset');
+  if (attr) attr.needsUpdate = true;
+}
+
 const clock = new THREE.Clock();
 function frame() {
   const t = clock.getElapsedTime();
   const geom = targetState.geometry || 'torus';
   const chatOnGpu = useTfKernel && Object.prototype.hasOwnProperty.call(KERNEL_GEOMETRY_ID, geom);
+  const skipCpuPath = chatOnGpu && nodes._instanced && !needStreamReadback;
 
   if (chatOnGpu) {
     tf.step(t, state, geom);
-    tf.readback(gpu);
-    const alpha = state.lerp ?? 0.05;
-    const scale = 0.85 + Math.min(0.55, (state.gravityPull ?? 1) * 0.18);
-    for (let i = 0; i < nodes.length; i++) {
-      const node = nodes[i];
-      node.theta = gpu.theta[i];
-      node.phi = gpu.phi[i];
-      const o = i * 3;
-      const tx = gpu.positions[o];
-      const ty = gpu.positions[o + 1];
-      const tz = gpu.positions[o + 2];
-      if (node.dummy) {
-        node.dummy.position.x += (tx - node.dummy.position.x) * alpha;
-        node.dummy.position.y += (ty - node.dummy.position.y) * alpha;
-        node.dummy.position.z += (tz - node.dummy.position.z) * alpha;
-        node.dummy.scale.setScalar(scale);
-        node.dummy.updateMatrix();
-        node.position.copy(node.dummy.position);
-      } else if (node.mesh?.position) {
-        node.mesh.position.x += (tx - node.mesh.position.x) * alpha;
-        node.mesh.position.y += (ty - node.mesh.position.y) * alpha;
-        node.mesh.position.z += (tz - node.mesh.position.z) * alpha;
-        node.position.copy(node.mesh.position);
+    if (skipCpuPath) {
+      tf.readbackPositionsOnly(instanceOffsets);
+      const attr = nodes._instanced.geometry.getAttribute('instanceOffset');
+      if (attr) attr.needsUpdate = true;
+    } else {
+      tf.readback(gpu);
+      paintInstanceOffsetsFromGpu();
+      const alpha = state.lerp ?? 0.05;
+      const scale = 0.85 + Math.min(0.55, (state.gravityPull ?? 1) * 0.18);
+      for (let i = 0; i < nodes.length; i++) {
+        const node = nodes[i];
+        node.theta = gpu.theta[i];
+        node.phi = gpu.phi[i];
+        const o = i * 3;
+        const tx = gpu.positions[o];
+        const ty = gpu.positions[o + 1];
+        const tz = gpu.positions[o + 2];
+        if (node.dummy) {
+          node.dummy.position.x += (tx - node.dummy.position.x) * alpha;
+          node.dummy.position.y += (ty - node.dummy.position.y) * alpha;
+          node.dummy.position.z += (tz - node.dummy.position.z) * alpha;
+          node.dummy.scale.setScalar(scale);
+          node.dummy.updateMatrix();
+          node.position.copy(node.dummy.position);
+        } else if (node.mesh?.position) {
+          node.mesh.position.x += (tx - node.mesh.position.x) * alpha;
+          node.mesh.position.y += (ty - node.mesh.position.y) * alpha;
+          node.mesh.position.z += (tz - node.mesh.position.z) * alpha;
+          node.position.copy(node.mesh.position);
+        }
       }
     }
     if (nodes._instanced?.material?.uniforms) {
@@ -185,10 +203,11 @@ function frame() {
       const scale = 0.85 + Math.min(0.55, (state.gravityPull ?? 1) * 0.18);
       writeNode(gpu, node.idx, p.x, p.y, p.z, scale, node.theta, node.phi);
     }
+    paintInstanceOffsetsFromGpu();
     paintInstanceColors(t);
   }
 
-  if (nodes._instanced) {
+  if (nodes._instanced && !skipCpuPath) {
     for (let i = 0; i < nodes.length; i++) {
       nodes._instanced.setMatrixAt(i, nodes[i].dummy.matrix);
     }
@@ -203,7 +222,7 @@ function frame() {
   camera.position.z = Math.cos(t * 0.08) * 42;
   camera.lookAt(0, 0, 0);
   hud.textContent = [
-    `GAIA VISUALIZER  band-137  stage-${STAGE}  nodes=${count}${useInstancing || useGpu ? ' instanced' : ''}${useGpu ? ' gpu-buf' : ''}${chatOnGpu ? ' tf' : ''}`,
+    `GAIA VISUALIZER  band-137  stage-${STAGE}  nodes=${count}${useInstancing || useGpu ? ' instanced' : ''}${useGpu ? ' gpu-buf' : ''}${chatOnGpu ? ' tf' : ''}${skipCpuPath ? ' no-cpu-rb' : ''}`,
     `geometry: ${targetState.geometry}   (1-9 / 0 / q w + e..l z x  l=cassini z=lorenz x=superformula)`,
     `gravityPull: ${state.gravityPull.toFixed(2)}   ([ / ])`,
     `toroidalWeave: ${state.toroidalWeave.toFixed(2)}   (- / =)`,

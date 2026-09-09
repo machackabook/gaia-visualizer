@@ -1,5 +1,5 @@
 /**
- * Stage-16 WebGL2 transform-feedback kernel.
+ * Stage-16/21 WebGL2 transform-feedback kernel.
  * Advances theta/phi and evaluates the full manifold set on the GPU.
  * Falls back silently when the context is not WebGL2.
  *
@@ -8,6 +8,8 @@
  *   theta += (0.01 + idx * 0.002) * gravityPull
  *   switch(targetState.geometry) { infinity | hamiltonian | triangular | torus | … }
  *   mesh.position.lerp(target, 0.05)
+ *
+ * Stage 21: currentPosBuffer() + skipCpu readback unless a peer streamer needs snapshots.
  */
 import { EVALUATE_KERNEL_GLSL, KERNEL_GEOMETRY_ID } from './evaluateKernel.glsl.js';
 
@@ -140,6 +142,9 @@ export function createTransformFeedback(gl, count, seedTheta, seedPhi) {
   return {
     supported: true,
     count,
+    currentPosBuffer() {
+      return read.pos;
+    },
     step(t, state, geometryName) {
       const geom = KERNEL_GEOMETRY_ID[geometryName] ?? 0;
       gl.useProgram(program);
@@ -150,9 +155,9 @@ export function createTransformFeedback(gl, count, seedTheta, seedPhi) {
       gl.uniform1f(loc.uBlend, state.blend ?? 0.5);
 
       const vao = read === ping ? vaoPing : vaoPong;
-      const tf = read === ping ? tfPingToPong : tfPongToPing;
+      const tfObj = read === ping ? tfPingToPong : tfPongToPing;
       gl.bindVertexArray(vao);
-      gl.bindTransformFeedback(gl.TRANSFORM_FEEDBACK, tf);
+      gl.bindTransformFeedback(gl.TRANSFORM_FEEDBACK, tfObj);
       gl.enable(gl.RASTERIZER_DISCARD);
       gl.beginTransformFeedback(gl.POINTS);
       gl.drawArrays(gl.POINTS, 0, count);
@@ -177,8 +182,13 @@ export function createTransformFeedback(gl, count, seedTheta, seedPhi) {
       buffers.phi.set(outPhi);
       return { positions: outPos, theta: outTheta, phi: outPhi };
     },
+    readbackPositionsOnly(target) {
+      gl.bindBuffer(gl.ARRAY_BUFFER, read.pos);
+      gl.getBufferSubData(gl.ARRAY_BUFFER, 0, target);
+      return target;
+    },
   };
 }
 
-export const STAGE = 16;
+export const STAGE = 21;
 export const NODE_CAP = 16384;
