@@ -1,22 +1,30 @@
 /**
- * Living chat-kernel contract — Stage 41.
+ * Living chat-kernel contract — Stage 42.
  * CHAT_KERNEL_SOURCE is the exact update(t) posted in the current session.
+ * sourceHash remains beec41f1 (FNV-1a of CHAT_KERNEL_SOURCE).
  * Runtime extras (not in that paste) stay in evaluateChatKernel:
  *   phi += 0.007 * toroidalWeave
  *   klein manifold for hamiltonian↔klein blend
  * GaiaNode.update() implements this without allocating Vector3 inside the loop.
  * Stage 41: evaluateChatKernelInto writes into a reused out object.
+ * Stage 42: advanceChatKernelAngles + fidelity hook when inbound sourceHash drifts.
  */
 
-export const STAGE = 41;
+export const STAGE = 42;
 export const CHAT_KERNEL_LERP = 0.05;
 export const CHAT_KERNEL_THETA_BASE = 0.01;
 export const CHAT_KERNEL_THETA_IDX = 0.002;
 export const CHAT_KERNEL_PHI_WEAVE = 0.007;
-/** Geometries named in the current-chat update(t) switch. */
 export const CHAT_KERNEL_CHAT_GEOMETRIES = ['infinity', 'hamiltonian', 'triangular', 'torus'];
-/** Runtime evaluate set (chat four + klein extra). */
 export const CHAT_KERNEL_GEOMETRIES = ['torus', 'infinity', 'hamiltonian', 'triangular', 'klein'];
+export const CHAT_KERNEL_SOURCE_HASH = 'beec41f1';
+
+export function advanceChatKernelAngles({ theta = 0, phi = 0, idx = 0, gravityPull = 1, toroidalWeave = 1 } = {}) {
+  return {
+    theta: theta + (CHAT_KERNEL_THETA_BASE + idx * CHAT_KERNEL_THETA_IDX) * gravityPull,
+    phi: phi + CHAT_KERNEL_PHI_WEAVE * toroidalWeave,
+  };
+}
 
 export function evaluateChatKernel({
   theta,
@@ -29,7 +37,6 @@ export function evaluateChatKernel({
   return evaluateChatKernelInto({}, { theta, phi, t, idx, toroidalWeave, geometry });
 }
 
-/** Zero-alloc write of {x,y,z,major,minor} into `out`. */
 export function evaluateChatKernelInto(out, {
   theta,
   phi,
@@ -113,9 +120,7 @@ function hue2rgb(p, q, t) {
 }
 
 export function hslToRgb(h, s, l) {
-  let r;
-  let g;
-  let b;
+  let r, g, b;
   if (s === 0) {
     r = g = b = l;
   } else {
