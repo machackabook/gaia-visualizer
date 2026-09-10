@@ -1,14 +1,16 @@
 /**
- * Living chat-kernel contract — Stage 33.
+ * Living chat-kernel contract — Stage 35.
  * CHAT_KERNEL_SOURCE is the exact update(t) posted in the current session.
  * Runtime extras (not in that paste) stay in evaluateChatKernel:
  *   phi += 0.007 * toroidalWeave
  *   klein manifold for hamiltonian↔klein blend
  * GaiaNode.update() implements this without allocating Vector3 inside the loop.
  * Stage 33 streams compact theta/phi seeds on gaia:positions.
+ * Stage 34 HMAC-signs kernel frames when token is set.
+ * Stage 35 applies pendingKernel immediately after node construction.
  */
 
-export const STAGE = 33;
+export const STAGE = 35;
 export const CHAT_KERNEL_LERP = 0.05;
 export const CHAT_KERNEL_THETA_BASE = 0.01;
 export const CHAT_KERNEL_THETA_IDX = 0.002;
