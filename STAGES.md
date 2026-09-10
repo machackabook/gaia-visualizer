@@ -25,6 +25,9 @@ Session kernel still allocates `new THREE.Vector3` inside lerp; live path uses a
 | 27 | Persist last ledger snapshot + pulse age across reload (`localStorage` key `gaia:stage27:snapshot`; Hive `/api/health` + `?health=`) |
 | 28 | `phi += 0.007 * toroidalWeave`; `klein` first-class in evaluate so hamiltonian↔klein blend shares one path |
 | 29 | Re-pin `CHAT_KERNEL_SOURCE` to the exact session `update(t)` (four geometries, no phi line in the paste). Runtime still advances phi and evaluates klein. `src/kernelSnapshot.js` persists theta/phi seeds (`gaia:stage29:kernel`). |
+| 30 | `applyKernelSnapshot` wired in `main.js` on boot; Hive `/api/health` + `/api/gaia/kernel` carry compact theta/phi seeds; `?health=` hydrates `gaia:kernel`. |
+| 31 | `sampleChatGeometries()` fidelity-samples only `CHAT_KERNEL_CHAT_GEOMETRIES` (infinity / hamiltonian / triangular / torus). `?fidelity=1` logs both full and chat-four reports. |
+| 32 | Signed kernel contract frame (`stage`, FNV-1a `sourceHash`, geometries) on each Hive pulse and `window.__GAIA_KERNEL__`. |
 
 ## Next
 
@@ -34,9 +37,8 @@ Session kernel still allocates `new THREE.Vector3` inside lerp; live path uses a
 | 14 | The-Hive | Memory engrams into Drive folder `CRYPTIC-HEARTBEAT-NEXUS-ROOT` |
 | 16-public | gaia-visualizer | hamiltoniansingularity.ai public band; default geometry `blend` (host default already wired) |
 | 19-panels | The-Hive | Hook remaining Quine / NexusStudio editors to `emitWeaveChange` / `emitGeometry` / `emitBlend` |
-| 30 | both | Wire `applyKernelSnapshot` in `main.js` + Hive `/api/health` so TF seed theta/phi restore on boot |
-| 31 | gaia-visualizer | Fidelity sample the four chat geometries independently of klein extras (`CHAT_KERNEL_CHAT_GEOMETRIES`) |
-| 32 | both | Export a signed kernel contract frame (`stage`, source hash, geometries) on each pulse |
+| 33 | both | Stream compact kernel seeds with `gaia:positions` so TF boot does not need a separate health fetch |
+| 34 | The-Hive | Sign kernel frames with HMAC when `GAIA_PULSE_TOKEN` is set |
 
 ## Drive from LLM
 
