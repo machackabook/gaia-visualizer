@@ -2,6 +2,7 @@ import { GEOMETRIES } from './geometry.js';
 
 export const CHANNEL = 'gaia-weave';
 export const POS_CHANNEL = 'gaia-positions';
+export const SNAPSHOT_KEY = 'gaia:stage27:snapshot';
 
 export function clamp(n, lo, hi) {
   return Math.min(hi, Math.max(lo, n));
@@ -32,7 +33,82 @@ export function applyContract(payload, state, targetState) {
   state.toroidalWeave = parsed.toroidalWeave;
   state.lerp = parsed.lerp;
   state.blend = parsed.blend;
+  persistSnapshot(state, targetState);
   return parsed;
+}
+
+export function persistSnapshot(state, targetState) {
+  try {
+    const snap = {
+      stage: 27,
+      gravityPull: state.gravityPull,
+      lastPulse: state.lastPulse,
+      lastPulseAt: state.lastPulseAt || 0,
+      unsignedRefused: state.unsignedRefused || 0,
+      ledger: state.ledger || { topics: 0, votes: 0, bridges: 0, nodes: 0, at: 0 },
+      geometry: targetState?.geometry,
+      toroidalWeave: state.toroidalWeave,
+      blend: state.blend,
+      lerp: state.lerp,
+      savedAt: Date.now(),
+    };
+    localStorage.setItem(SNAPSHOT_KEY, JSON.stringify(snap));
+    return snap;
+  } catch {
+    return null;
+  }
+}
+
+export function restoreSnapshot(state, targetState) {
+  try {
+    const raw = localStorage.getItem(SNAPSHOT_KEY);
+    if (!raw) return null;
+    const snap = JSON.parse(raw);
+    if (!snap || typeof snap !== 'object') return null;
+    if (snap.ledger) {
+      state.ledger = {
+        topics: Number(snap.ledger.topics) || 0,
+        votes: Number(snap.ledger.votes) || 0,
+        bridges: Number(snap.ledger.bridges) || 0,
+        nodes: Number(snap.ledger.nodes) || 0,
+        at: Number(snap.ledger.at) || 0,
+      };
+    }
+    if (snap.lastPulse != null) state.lastPulse = Number(snap.lastPulse);
+    if (snap.lastPulseAt) state.lastPulseAt = Number(snap.lastPulseAt);
+    if (snap.unsignedRefused) state.unsignedRefused = Number(snap.unsignedRefused) || 0;
+    if (Number.isFinite(Number(snap.gravityPull))) state.gravityPull = mapPulseToGravity(snap.gravityPull);
+    if (Number.isFinite(Number(snap.toroidalWeave))) state.toroidalWeave = clamp(Number(snap.toroidalWeave), 0, 4);
+    if (Number.isFinite(Number(snap.blend))) state.blend = clamp(Number(snap.blend), 0, 1);
+    if (Number.isFinite(Number(snap.lerp))) state.lerp = clamp(Number(snap.lerp), 0.01, 0.4);
+    if (targetState && GEOMETRIES.includes(snap.geometry)) targetState.geometry = snap.geometry;
+    state.snapshotRestored = true;
+    state.snapshotAge = snap.lastPulseAt ? Date.now() - snap.lastPulseAt : 0;
+    return snap;
+  } catch {
+    return null;
+  }
+}
+
+export async function hydrateFromHealth(state, targetState, healthUrl) {
+  if (!healthUrl) return null;
+  try {
+    const res = await fetch(healthUrl);
+    if (!res.ok) return null;
+    const body = await res.json();
+    const ledger = body.ledger || body.gaia?.ledger;
+    if (ledger) stampLedger(state, ledger);
+    if (body.lastPulseAt) state.lastPulseAt = Number(body.lastPulseAt);
+    if (body.lastPulse != null) {
+      state.lastPulse = Number(body.lastPulse);
+      state.gravityPull = mapPulseToGravity(body.lastPulse);
+    }
+    if (body.gaia?.geometry && targetState) targetState.geometry = body.gaia.geometry;
+    persistSnapshot(state, targetState);
+    return body;
+  } catch {
+    return null;
+  }
 }
 
 function expectedToken() {
@@ -51,17 +127,19 @@ function acceptFrame(data, state) {
   if (state) {
     state.unsignedRefused = (state.unsignedRefused || 0) + 1;
     state.lastUnsignedAt = Date.now();
+    persistSnapshot(state);
   }
   return false;
 }
 
-function stampPulse(state, pulse) {
+function stampPulse(state, pulse, targetState) {
   state.gravityPull = mapPulseToGravity(pulse);
   state.lastPulse = state.gravityPull;
   state.lastPulseAt = Date.now();
+  persistSnapshot(state, targetState);
 }
 
-export function stampLedger(state, ledger) {
+export function stampLedger(state, ledger, targetState) {
   const src = ledger && typeof ledger === 'object' ? ledger : {};
   state.ledger = {
     topics: Number(src.topics ?? src.topicCount ?? 0) || 0,
@@ -70,6 +148,7 @@ export function stampLedger(state, ledger) {
     nodes: Number(src.nodes ?? src.nodeCount ?? 0) || 0,
     at: Date.now(),
   };
+  persistSnapshot(state, targetState);
   return state.ledger;
 }
 
@@ -82,6 +161,7 @@ function parsePeerList(raw) {
 }
 
 export function bindRemoteContract(state, targetState) {
+  restoreSnapshot(state, targetState);
   const apply = (payload) => applyContract(payload, state, targetState);
 
   addEventListener('gaia:targetState', (ev) => {
@@ -89,12 +169,12 @@ export function bindRemoteContract(state, targetState) {
   });
   addEventListener('gaia:pulse', (ev) => {
     if (!acceptFrame(ev.detail || {}, state)) return;
-    stampPulse(state, ev.detail?.pulse ?? ev.detail);
-    if (ev.detail?.ledger) stampLedger(state, ev.detail.ledger);
+    stampPulse(state, ev.detail?.pulse ?? ev.detail, targetState);
+    if (ev.detail?.ledger) stampLedger(state, ev.detail.ledger, targetState);
   });
   addEventListener('gaia:ledger', (ev) => {
     if (!acceptFrame(ev.detail || {}, state)) return;
-    stampLedger(state, ev.detail?.ledger || ev.detail);
+    stampLedger(state, ev.detail?.ledger || ev.detail, targetState);
   });
 
   try {
@@ -104,11 +184,11 @@ export function bindRemoteContract(state, targetState) {
       if (!acceptFrame(data, state)) return;
       if (data.type === 'gaia:targetState' || data.geometry) apply(data.detail || data);
       if (data.type === 'gaia:pulse') {
-        stampPulse(state, data.detail?.pulse ?? data.pulse);
-        if (data.ledger || data.detail?.ledger) stampLedger(state, data.ledger || data.detail.ledger);
+        stampPulse(state, data.detail?.pulse ?? data.pulse, targetState);
+        if (data.ledger || data.detail?.ledger) stampLedger(state, data.ledger || data.detail.ledger, targetState);
       }
       if (data.type === 'gaia:ledger' || data.ledger) {
-        stampLedger(state, data.ledger || data.detail?.ledger || data);
+        stampLedger(state, data.ledger || data.detail?.ledger || data, targetState);
       }
     };
   } catch {
@@ -118,6 +198,8 @@ export function bindRemoteContract(state, targetState) {
   const params = new URLSearchParams(location.search);
   const wsUrl = params.get('pulse');
   const token = params.get('token') || '';
+  const health = params.get('health');
+  if (health) hydrateFromHealth(state, targetState, health);
   if (wsUrl && typeof WebSocket !== 'undefined') {
     try {
       const ws = new WebSocket(wsUrl);
@@ -126,10 +208,10 @@ export function bindRemoteContract(state, targetState) {
           const data = JSON.parse(ev.data);
           if (!acceptFrame({ ...data, token: data.token || token }, state)) return;
           if (data.type === 'gaia:pulse' || data.pulse != null) {
-            stampPulse(state, data.pulse ?? data.detail?.pulse);
-            if (data.ledger) stampLedger(state, data.ledger);
+            stampPulse(state, data.pulse ?? data.detail?.pulse, targetState);
+            if (data.ledger) stampLedger(state, data.ledger, targetState);
           } else if (data.type === 'gaia:ledger') {
-            stampLedger(state, data.ledger || data);
+            stampLedger(state, data.ledger || data, targetState);
           } else if (data.type !== 'gaia:positions') {
             apply(data.detail || data);
           }
