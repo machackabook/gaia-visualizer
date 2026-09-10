@@ -15,6 +15,7 @@ import {
   shouldReportTfBind,
   shouldZeroCopy,
 } from './zeroCopy.js';
+import { applyKernelSnapshot, loadKernelSnapshot } from './kernelSnapshot.js';
 
 const hud = document.getElementById('hud');
 const scene = new THREE.Scene();
@@ -111,6 +112,14 @@ if (useInstancing || useGpu) {
     scene.add(mesh);
     nodes.push(new GaiaNode({ idx: i, mesh, material: mat }));
   }
+}
+
+state.nodes = nodes;
+state.gpu = gpu;
+const bootKernel = state.pendingKernel || loadKernelSnapshot();
+if (bootKernel) {
+  applyKernelSnapshot(nodes, gpu, bootKernel);
+  state.kernelApplied = true;
 }
 
 scene.add(new THREE.AmbientLight(0x446688, 1.2));
@@ -259,8 +268,9 @@ function frame() {
   const led = state.ledger || {};
   const tokenGate = token ? 'token-on' : 'token-off';
   const snapBit = state.snapshotRestored ? 'snap-on' : 'snap-off';
+  const kernelBit = state.kernelApplied ? 'kernel-on' : 'kernel-off';
   hud.textContent = [
-    `GAIA VISUALIZER  band-137  stage-${STAGE}  nodes=${count}${useInstancing || useGpu ? ' instanced' : ''}${useGpu ? ' gpu-buf' : ''}${chatOnGpu ? ' tf' : ''}${skipCpuPath ? ' no-cpu-rb' : ''}${zeroCopy ? ' zerocopy' : ''} ${bindBit} ${tokenGate} ${snapBit}`,
+    `GAIA VISUALIZER  band-137  stage-${STAGE}  nodes=${count}${useInstancing || useGpu ? ' instanced' : ''}${useGpu ? ' gpu-buf' : ''}${chatOnGpu ? ' tf' : ''}${skipCpuPath ? ' no-cpu-rb' : ''}${zeroCopy ? ' zerocopy' : ''} ${bindBit} ${tokenGate} ${snapBit} ${kernelBit}`,
     `pulse: ${pulseVal}  age=${pulseAge}s   ledger: topics=${led.topics || 0} votes=${led.votes || 0} bridges=${led.bridges || 0}   refuse=${state.unsignedRefused || 0}   tfbind: ${bindReport ? (bindReport.bound ? 'OK' : 'MISS') : (chatOnGpu && zeroCopy ? 'pending' : 'n/a')}`,
     `geometry: ${targetState.geometry}   (1-9 / 0 / q w + e..l z x  l=cassini z=lorenz x=superformula)`,
     `gravityPull: ${state.gravityPull.toFixed(2)}   ([ / ])`,
