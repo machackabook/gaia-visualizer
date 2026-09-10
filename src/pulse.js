@@ -1,6 +1,6 @@
 import { GEOMETRIES } from './geometry.js';
 import { applyKernelSnapshot, compactSeedsFromNodes, saveKernelSnapshot } from './kernelSnapshot.js';
-import { verifyKernelMac } from './kernelMac.js';
+import { attachKernelMac, verifyKernelMac } from './kernelMac.js';
 
 export const CHANNEL = 'gaia-weave';
 export const POS_CHANNEL = 'gaia-positions';
@@ -47,6 +47,7 @@ export function persistSnapshot(state, targetState) {
       lastPulse: state.lastPulse,
       lastPulseAt: state.lastPulseAt || 0,
       unsignedRefused: state.unsignedRefused || 0,
+      hmacRefused: state.hmacRefused || 0,
       ledger: state.ledger || { topics: 0, votes: 0, bridges: 0, nodes: 0, at: 0 },
       geometry: targetState?.geometry,
       toroidalWeave: state.toroidalWeave,
@@ -79,6 +80,7 @@ export function restoreSnapshot(state, targetState) {
     if (snap.lastPulse != null) state.lastPulse = Number(snap.lastPulse);
     if (snap.lastPulseAt) state.lastPulseAt = Number(snap.lastPulseAt);
     if (snap.unsignedRefused) state.unsignedRefused = Number(snap.unsignedRefused) || 0;
+    if (snap.hmacRefused) state.hmacRefused = Number(snap.hmacRefused) || 0;
     if (Number.isFinite(Number(snap.gravityPull))) state.gravityPull = mapPulseToGravity(snap.gravityPull);
     if (Number.isFinite(Number(snap.toroidalWeave))) state.toroidalWeave = clamp(Number(snap.toroidalWeave), 0, 4);
     if (Number.isFinite(Number(snap.blend))) state.blend = clamp(Number(snap.blend), 0, 1);
@@ -108,7 +110,7 @@ export async function hydrateFromHealth(state, targetState, healthUrl) {
     if (body.gaia?.geometry && targetState) targetState.geometry = body.gaia.geometry;
     if (body.kernel || body.gaia?.kernel) {
       const kernel = body.kernel || body.gaia.kernel;
-      if (acceptKernelMac(kernel, state)) {
+      if (acceptKernelMac(kernel, state, { requireMac: false })) {
         state.pendingKernel = kernel;
         saveKernelSnapshot(state.pendingKernel);
         if (state.nodes) applyKernelSnapshot(state.nodes, state.gpu, kernel);
@@ -129,29 +131,40 @@ function expectedToken() {
   }
 }
 
-function acceptFrame(data, state) {
-  const need = expectedToken();
-  if (!need) return true;
-  const got = data?.token || data?.detail?.token || '';
-  if (got === need) return true;
+function refuse(state) {
   if (state) {
     state.unsignedRefused = (state.unsignedRefused || 0) + 1;
     state.lastUnsignedAt = Date.now();
     persistSnapshot(state);
   }
+}
+
+function acceptFrame(data, state) {
+  const need = expectedToken();
+  if (!need) return true;
+  const got = data?.token || data?.detail?.token || '';
+  if (got === need) return true;
+  refuse(state);
   return false;
 }
 
-function acceptKernelMac(kernel, state) {
+function acceptKernelMac(kernel, state, { requireMac } = {}) {
   const need = expectedToken();
   if (!need) return true;
   if (!kernel) return true;
-  if (!kernel.hmac) return true;
+  const must = requireMac !== false;
+  if (!kernel.hmac) {
+    if (!must) return true;
+    if (state) {
+      state.hmacRefused = (state.hmacRefused || 0) + 1;
+      refuse(state);
+    }
+    return false;
+  }
   if (verifyKernelMac(need, kernel)) return true;
   if (state) {
-    state.unsignedRefused = (state.unsignedRefused || 0) + 1;
-    state.lastUnsignedAt = Date.now();
-    persistSnapshot(state);
+    state.hmacRefused = (state.hmacRefused || 0) + 1;
+    refuse(state);
   }
   return false;
 }
@@ -184,10 +197,10 @@ function parsePeerList(raw) {
     .filter((s) => /^https?:\/\//i.test(s));
 }
 
-function ingestKernel(data, state) {
+function ingestKernel(data, state, opts) {
   const kernel = data?.kernel || data?.detail?.kernel || (data?.type === 'gaia:kernel' ? data : null);
   if (!kernel || !Array.isArray(kernel.theta) || !Array.isArray(kernel.phi)) return null;
-  if (!acceptKernelMac(kernel, state)) return null;
+  if (!acceptKernelMac(kernel, state, opts)) return null;
   state.pendingKernel = kernel;
   saveKernelSnapshot(kernel);
   if (state.nodes) applyKernelSnapshot(state.nodes, state.gpu, kernel);
@@ -205,7 +218,7 @@ export function bindRemoteContract(state, targetState) {
     if (!acceptFrame(ev.detail || {}, state)) return;
     stampPulse(state, ev.detail?.pulse ?? ev.detail, targetState);
     if (ev.detail?.ledger) stampLedger(state, ev.detail.ledger, targetState);
-    if (ev.detail?.kernel) ingestKernel(ev.detail, state);
+    if (ev.detail?.kernel) ingestKernel(ev.detail, state, { requireMac: false });
   });
   addEventListener('gaia:ledger', (ev) => {
     if (!acceptFrame(ev.detail || {}, state)) return;
@@ -213,11 +226,11 @@ export function bindRemoteContract(state, targetState) {
   });
   addEventListener('gaia:positions', (ev) => {
     if (!acceptFrame(ev.detail || {}, state)) return;
-    if (ev.detail?.kernel) ingestKernel(ev.detail, state);
+    if (ev.detail?.kernel) ingestKernel(ev.detail, state, { requireMac: false });
   });
   addEventListener('gaia:kernel', (ev) => {
     if (!acceptFrame(ev.detail || {}, state)) return;
-    ingestKernel(ev.detail || ev, state);
+    ingestKernel(ev.detail || ev, state, { requireMac: false });
   });
 
   try {
@@ -229,12 +242,25 @@ export function bindRemoteContract(state, targetState) {
       if (data.type === 'gaia:pulse') {
         stampPulse(state, data.detail?.pulse ?? data.pulse, targetState);
         if (data.ledger || data.detail?.ledger) stampLedger(state, data.ledger || data.detail.ledger, targetState);
-        if (data.kernel || data.detail?.kernel) ingestKernel(data, state);
+        if (data.kernel || data.detail?.kernel) ingestKernel(data, state, { requireMac: true });
       }
       if (data.type === 'gaia:ledger' || data.ledger) {
         stampLedger(state, data.ledger || data.detail?.ledger || data, targetState);
       }
-      if (data.type === 'gaia:kernel' || data.kernel) ingestKernel(data, state);
+      if (data.type === 'gaia:kernel' || data.kernel) ingestKernel(data, state, { requireMac: true });
+    };
+  } catch {
+    /* BroadcastChannel unavailable */
+  }
+
+  try {
+    const posBc = new BroadcastChannel(POS_CHANNEL);
+    posBc.onmessage = (ev) => {
+      const data = ev.data || {};
+      if (!acceptFrame(data, state)) return;
+      if (data.kernel || data.type === 'gaia:positions' || data.type === 'gaia:kernel') {
+        ingestKernel(data, state, { requireMac: true });
+      }
     };
   } catch {
     /* BroadcastChannel unavailable */
@@ -255,13 +281,13 @@ export function bindRemoteContract(state, targetState) {
           if (data.type === 'gaia:pulse' || data.pulse != null) {
             stampPulse(state, data.pulse ?? data.detail?.pulse, targetState);
             if (data.ledger) stampLedger(state, data.ledger, targetState);
-            if (data.kernel) ingestKernel(data, state);
+            if (data.kernel) ingestKernel(data, state, { requireMac: Boolean(token) });
           } else if (data.type === 'gaia:ledger') {
             stampLedger(state, data.ledger || data, targetState);
           } else if (data.type === 'gaia:positions') {
-            if (data.kernel) ingestKernel(data, state);
+            if (data.kernel) ingestKernel(data, state, { requireMac: Boolean(token) });
           } else if (data.type === 'gaia:kernel') {
-            ingestKernel(data, state);
+            ingestKernel(data, state, { requireMac: Boolean(token) });
           } else {
             apply(data.detail || data);
           }
@@ -301,12 +327,14 @@ export function createPositionStreamer(nodes, { relay, peers, token, buffers } =
             z: +p.z.toFixed(3),
           };
         });
+    const kernel = compactSeedsFromNodes(nodes, 64);
+    if (kernel && token) attachKernelMac(token, kernel);
     const payload = {
       type: 'gaia:positions',
       band: '192-network',
       t,
       nodes: list,
-      kernel: compactSeedsFromNodes(nodes, 64),
+      kernel,
     };
     if (token) payload.token = token;
     if (bc) bc.postMessage(payload);
