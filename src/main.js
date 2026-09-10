@@ -56,6 +56,8 @@ const state = {
   lastPulse: null,
   lastPulseAt: 0,
   unsignedRefused: 0,
+  hmacOk: 0,
+  hmacRefused: 0,
   lastUnsignedAt: 0,
   ledger: { topics: 0, votes: 0, bridges: 0, nodes: 0, at: 0 },
   snapshotRestored: false,
@@ -271,7 +273,7 @@ function frame() {
   const kernelBit = state.kernelApplied ? 'kernel-on' : 'kernel-off';
   hud.textContent = [
     `GAIA VISUALIZER  band-137  stage-${STAGE}  nodes=${count}${useInstancing || useGpu ? ' instanced' : ''}${useGpu ? ' gpu-buf' : ''}${chatOnGpu ? ' tf' : ''}${skipCpuPath ? ' no-cpu-rb' : ''}${zeroCopy ? ' zerocopy' : ''} ${bindBit} ${tokenGate} ${snapBit} ${kernelBit}`,
-    `pulse: ${pulseVal}  age=${pulseAge}s   ledger: topics=${led.topics || 0} votes=${led.votes || 0} bridges=${led.bridges || 0}   refuse=${state.unsignedRefused || 0}   tfbind: ${bindReport ? (bindReport.bound ? 'OK' : 'MISS') : (chatOnGpu && zeroCopy ? 'pending' : 'n/a')}`,
+    `pulse: ${pulseVal}  age=${pulseAge}s   ledger: topics=${led.topics || 0} votes=${led.votes || 0} bridges=${led.bridges || 0}   refuse=${state.unsignedRefused || 0}   hmacOk=${state.hmacOk || 0} hmacRefused=${state.hmacRefused || 0}   tfbind: ${bindReport ? (bindReport.bound ? 'OK' : 'MISS') : (chatOnGpu && zeroCopy ? 'pending' : 'n/a')}`,
     `geometry: ${targetState.geometry}   (1-9 / 0 / q w + e..l z x  l=cassini z=lorenz x=superformula)`,
     `gravityPull: ${state.gravityPull.toFixed(2)}   ([ / ])`,
     `toroidalWeave: ${state.toroidalWeave.toFixed(2)}   (- / =)`,
