@@ -11,21 +11,25 @@
  * Stage 25: pulse + bind health always on the default HUD line.
  * Stage 26: ledger sheet counts on the same HUD line; unsigned pulse refused when ?token= is set.
  * Stage 27: persist last ledger snapshot + pulse age across reload (localStorage + Hive /api/health).
+ * Stage 28: phi advances with toroidalWeave; klein is first-class in the chat kernel so
+ *           hamiltonian↔klein blend can share the same evaluateChatKernel path.
  *
  * update(t) {
  *   this.material.uniforms.uTime.value = t;
  *   this.material.uniforms.uGravity.value = state.gravityPull;
  *   this.theta += (0.01 + this.idx * 0.002) * state.gravityPull;
- *   // infinity | hamiltonian | triangular | torus
+ *   this.phi   += 0.007 * state.toroidalWeave;
+ *   // infinity | hamiltonian | triangular | klein | torus
  *   this.mesh.position.lerp(new THREE.Vector3(x, y, z), 0.05);
  * }
  */
 
-export const STAGE = 27;
+export const STAGE = 28;
 export const CHAT_KERNEL_LERP = 0.05;
 export const CHAT_KERNEL_THETA_BASE = 0.01;
 export const CHAT_KERNEL_THETA_IDX = 0.002;
-export const CHAT_KERNEL_GEOMETRIES = ['torus', 'infinity', 'hamiltonian', 'triangular'];
+export const CHAT_KERNEL_PHI_WEAVE = 0.007;
+export const CHAT_KERNEL_GEOMETRIES = ['torus', 'infinity', 'hamiltonian', 'triangular', 'klein'];
 
 export function evaluateChatKernel({
   theta,
@@ -62,6 +66,18 @@ export function evaluateChatKernel({
       x = major * Math.cos(tAngle) + minor * Math.cos(theta * 5);
       z = major * Math.sin(tAngle) + minor * Math.sin(theta * 5);
       y = (idx % 3 - 1) * major * 0.5 + Math.sin(t) * minor;
+      break;
+    }
+    case 'klein': {
+      const u = theta;
+      const v = phi;
+      const r = 4 + toroidalWeave;
+      x = (r + Math.cos(u / 2) * Math.sin(v) - Math.sin(u / 2) * Math.sin(2 * v)) * Math.cos(u) * 1.2;
+      z = (r + Math.cos(u / 2) * Math.sin(v) - Math.sin(u / 2) * Math.sin(2 * v)) * Math.sin(u) * 1.2;
+      y = Math.sin(u / 2) * Math.sin(v) + Math.cos(u / 2) * Math.sin(2 * v) + Math.sin(t * 0.2 + idx) * 0.3;
+      x *= major * 0.12;
+      y *= major * 0.18;
+      z *= major * 0.12;
       break;
     }
     case 'torus':
@@ -113,6 +129,7 @@ export const CHAT_KERNEL_SOURCE = `update(t) {
     this.material.uniforms.uGravity.value = state.gravityPull;
 
     this.theta += (0.01 + this.idx * 0.002) * state.gravityPull;
+    this.phi   += 0.007 * state.toroidalWeave;
     
     let x, y, z;
     let major = 10 + (this.idx * 2);
@@ -143,6 +160,19 @@ export const CHAT_KERNEL_SOURCE = `update(t) {
             x = major * Math.cos(tAngle) + minor * Math.cos(this.theta * 5);
             z = major * Math.sin(tAngle) + minor * Math.sin(this.theta * 5);
             y = (this.idx % 3 - 1) * major * 0.5 + Math.sin(t) * minor;
+            break;
+
+        case 'klein':
+            // Immersed Klein bottle — same mapping as geometry.js so blend can share the kernel
+            const u = this.theta;
+            const v = this.phi;
+            const r = 4 + state.toroidalWeave;
+            x = (r + Math.cos(u / 2) * Math.sin(v) - Math.sin(u / 2) * Math.sin(2 * v)) * Math.cos(u) * 1.2;
+            z = (r + Math.cos(u / 2) * Math.sin(v) - Math.sin(u / 2) * Math.sin(2 * v)) * Math.sin(u) * 1.2;
+            y = Math.sin(u / 2) * Math.sin(v) + Math.cos(u / 2) * Math.sin(2 * v) + Math.sin(t * 0.2 + this.idx) * 0.3;
+            x *= major * 0.12;
+            y *= major * 0.18;
+            z *= major * 0.12;
             break;
 
         case 'torus':
