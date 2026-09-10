@@ -1,5 +1,6 @@
 import { GEOMETRIES } from './geometry.js';
 import { applyKernelSnapshot, compactSeedsFromNodes, saveKernelSnapshot } from './kernelSnapshot.js';
+import { verifyKernelMac } from './kernelMac.js';
 
 export const CHANNEL = 'gaia-weave';
 export const POS_CHANNEL = 'gaia-positions';
@@ -106,8 +107,12 @@ export async function hydrateFromHealth(state, targetState, healthUrl) {
     }
     if (body.gaia?.geometry && targetState) targetState.geometry = body.gaia.geometry;
     if (body.kernel || body.gaia?.kernel) {
-      state.pendingKernel = body.kernel || body.gaia.kernel;
-      saveKernelSnapshot(state.pendingKernel);
+      const kernel = body.kernel || body.gaia.kernel;
+      if (acceptKernelMac(kernel, state)) {
+        state.pendingKernel = kernel;
+        saveKernelSnapshot(state.pendingKernel);
+        if (state.nodes) applyKernelSnapshot(state.nodes, state.gpu, kernel);
+      }
     }
     persistSnapshot(state, targetState);
     return body;
@@ -129,6 +134,20 @@ function acceptFrame(data, state) {
   if (!need) return true;
   const got = data?.token || data?.detail?.token || '';
   if (got === need) return true;
+  if (state) {
+    state.unsignedRefused = (state.unsignedRefused || 0) + 1;
+    state.lastUnsignedAt = Date.now();
+    persistSnapshot(state);
+  }
+  return false;
+}
+
+function acceptKernelMac(kernel, state) {
+  const need = expectedToken();
+  if (!need) return true;
+  if (!kernel) return true;
+  if (!kernel.hmac) return true;
+  if (verifyKernelMac(need, kernel)) return true;
   if (state) {
     state.unsignedRefused = (state.unsignedRefused || 0) + 1;
     state.lastUnsignedAt = Date.now();
@@ -168,6 +187,7 @@ function parsePeerList(raw) {
 function ingestKernel(data, state) {
   const kernel = data?.kernel || data?.detail?.kernel || (data?.type === 'gaia:kernel' ? data : null);
   if (!kernel || !Array.isArray(kernel.theta) || !Array.isArray(kernel.phi)) return null;
+  if (!acceptKernelMac(kernel, state)) return null;
   state.pendingKernel = kernel;
   saveKernelSnapshot(kernel);
   if (state.nodes) applyKernelSnapshot(state.nodes, state.gpu, kernel);
