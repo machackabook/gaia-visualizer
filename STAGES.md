@@ -23,28 +23,29 @@ Session kernel still allocates `new THREE.Vector3` inside lerp; live path uses a
 | 25 | Default HUD line for pulse + TF-bind; `reportTfBindHealth` after every `bindTfPosAttribute`; `stampPulse` on `state.lastPulse` |
 | 26 | Ledger sheet counts on the same HUD line as pulse (`topics` / `votes` / `bridges`); refuse unsigned frames when `?token=` is set (`state.unsignedRefused`) |
 | 27 | Persist last ledger snapshot + pulse age across reload (`localStorage` key `gaia:stage27:snapshot`; Hive `/api/health` + `?health=`) |
-| 28 | `phi += 0.007 * toroidalWeave`; `klein` first-class in evaluate so hamiltonian↔klein blend shares one path |
+| 28 | `phi += 0.007 * toroidalWeave`; `klein` first-class in evaluate so hamiltonian\u2194klein blend shares one path |
 | 29 | Re-pin `CHAT_KERNEL_SOURCE` to the exact session `update(t)` (four geometries, no phi line in the paste). Runtime still advances phi and evaluates klein. `src/kernelSnapshot.js` persists theta/phi seeds (`gaia:stage29:kernel`). |
 | 30 | `applyKernelSnapshot` wired in `main.js` on boot; Hive `/api/health` + `/api/gaia/kernel` carry compact theta/phi seeds; `?health=` hydrates `gaia:kernel`. |
 | 31 | `sampleChatGeometries()` fidelity-samples only `CHAT_KERNEL_CHAT_GEOMETRIES` (infinity / hamiltonian / triangular / torus). `?fidelity=1` logs both full and chat-four reports. |
 | 32 | Signed kernel contract frame (`stage`, FNV-1a `sourceHash`, geometries) on each Hive pulse and `window.__GAIA_KERNEL__`. |
 | 33 | Compact kernel seeds (`theta`/`phi`, cap 64) ride `gaia:positions` (`createPositionStreamer`). Inbound `gaia:positions` / `gaia:kernel` / pulse frames call `ingestKernel`. Health hydrate stores `pendingKernel`. |
-| 34 | HMAC-sign kernel frames when `GAIA_PULSE_TOKEN` / `?token=` is set (`src/kernelMac.js` ↔ Hive `kernelFrame.ts`). |
+| 34 | HMAC-sign kernel frames when `GAIA_PULSE_TOKEN` / `?token=` is set (`src/kernelMac.js` \u2194 Hive `kernelFrame.ts`). |
 | 35 | Apply `pendingKernel` (or `loadKernelSnapshot`) immediately after node construction so TF boot uses streamed seeds. |
 | 36 | BroadcastChannel HMAC verify: when `?token=` is set, peer kernel frames without a matching `hmac` are refused. Outgoing `gaia:positions` seeds are signed via `attachKernelMac`. |
 | 37 | Compact kernel-seed engram: `src/kernelEngram.js` writes `gaia:stage37:engram` + `window.__GAIA_ENGRAM__` on each stream tick (Drive copy is Hive stage-14). |
 | 38 | HUD line for `hmacOk` / `hmacRefused` peer counts. Session `update(t)` re-confirmed identical to current chat. |
+| 39 | nexus-repo-sync v1.2 speedway (hourly stamp + sibling fanout). Session paste re-confirmed 2026-09-10. |
+| 40 | Source-hash mismatch banner when inbound `sourceHash` \u2260 `beec41f1` (`state.hashMismatch` / HUD `hash-ok` | `hash-MISS`). Periodic engram POST to Hive `/api/gaia/engram` when `?relay=` is set. |
 
 ## Next
 
 | Stage | Owner repo | Work |
 |------|------------|------|
-| 13 | The-Hive + gaia-visualizer | Authenticated live `ledger_pulse` → Hive WS against live sheet counts. Token + HMAC already flow. |
-| 14 | The-Hive | Memory engrams into Drive folder `CRYPTIC-HEARTBEAT-NEXUS-ROOT` (consume `__GAIA_ENGRAM__`) |
+| 13 | The-Hive + gaia-visualizer | Authenticated live `ledger_pulse` \u2192 Hive WS against live sheet counts. Token + HMAC already flow. |
+| 14 | The-Hive | Memory engrams into Drive folder `CRYPTIC-HEARTBEAT-NEXUS-ROOT` (consume `/api/gaia/engram`) |
 | 16-public | gaia-visualizer | hamiltoniansingularity.ai public band; default geometry `blend` (host default already wired) |
 | 19-panels | The-Hive | Hook remaining Quine / NexusStudio editors to `emitWeaveChange` / `emitGeometry` / `emitBlend` |
-| 39 | both | Periodic engram POST to Hive `/api/gaia/engram` when `?relay=` is set |
-| 40 | both | Source-hash mismatch banner when inbound `sourceHash` ≠ `beec41f1` |
+| 41 | both | Auto-unpack watch on downloads / omdirectorytrew with env-check autocomplete |
 
 ## Drive from LLM
 

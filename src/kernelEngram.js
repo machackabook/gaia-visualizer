@@ -1,15 +1,31 @@
 /**
- * Stage 37 — compact kernel-seed engram.
- * Local persistence now; Hive can copy window.__GAIA_ENGRAM__ into
- * Drive folder CRYPTIC-HEARTBEAT-NEXUS-ROOT.
+ * Stage 37–41 — compact kernel-seed engram.
+ * Local persist + optional Hive POST /api/gaia/engram when ?relay= is set.
  */
+import { KERNEL_SOURCE_HASH } from './kernelMac.js';
+
 export const ENGRAM_KEY = 'gaia:stage37:engram';
+export const EXPECTED_SOURCE_HASH = KERNEL_SOURCE_HASH || 'beec41f1';
+
+export function noteSourceHash(kernel, state) {
+  if (!kernel || !state) return;
+  const got = kernel.sourceHash;
+  if (!got) return;
+  state.inboundHash = got;
+  if (got !== EXPECTED_SOURCE_HASH) {
+    state.hashMismatch = true;
+    state.hashMismatchCount = (state.hashMismatchCount || 0) + 1;
+  } else {
+    state.hashMismatch = false;
+  }
+}
 
 export function dumpKernelEngram(kernel, extra = {}) {
   if (!kernel || !Array.isArray(kernel.theta) || !Array.isArray(kernel.phi)) return null;
   const engram = {
-    stage: extra.stage || 38,
-    sourceHash: kernel.sourceHash || extra.sourceHash || 'beec41f1',
+    type: extra.type || 'gaia:engram',
+    stage: extra.stage || 40,
+    sourceHash: kernel.sourceHash || extra.sourceHash || EXPECTED_SOURCE_HASH,
     at: Date.now(),
     count: kernel.count ?? Math.min(kernel.theta.length, kernel.phi.length),
     theta: kernel.theta,
@@ -37,4 +53,31 @@ export function loadKernelEngram() {
   } catch {
     return null;
   }
+}
+
+export function engramUrlFromRelay(relay) {
+  if (!relay) return '';
+  const s = String(relay);
+  if (/\/api\/gaia\/positions\/?$/i.test(s)) return s.replace(/positions\/?$/i, 'engram');
+  if (/\/api\/gaia\/?$/i.test(s)) return s.replace(/\/?$/, '/engram');
+  if (/\/api\/gaia\/engram\/?$/i.test(s)) return s;
+  return s.replace(/\/?$/, '/api/gaia/engram');
+}
+
+let lastEngramPost = 0;
+export function postKernelEngram(engram, { relay, token } = {}) {
+  if (!engram || !relay) return;
+  const now = Date.now();
+  if (now - lastEngramPost < 4000) return;
+  lastEngramPost = now;
+  const url = engramUrlFromRelay(relay);
+  if (!url) return;
+  fetch(url, {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+      ...(token ? { 'x-gaia-token': token } : {}),
+    },
+    body: JSON.stringify(engram),
+  }).catch(() => {});
 }

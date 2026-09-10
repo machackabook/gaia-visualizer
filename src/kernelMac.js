@@ -1,5 +1,5 @@
-/** Stage 38 portable keyed MAC — matches The-Hive kernelFrame.signKernelMac. */
-export const KERNEL_STAGE = 38;
+/** Stage 40 portable keyed MAC — matches The-Hive kernelFrame.signKernelMac. */
+export const KERNEL_STAGE = 40;
 
 export function hashKernelSource(src) {
   let h = 2166136261;
