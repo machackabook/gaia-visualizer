@@ -29,17 +29,19 @@ Session kernel still allocates `new THREE.Vector3` inside lerp; live path uses a
 | 31 | `sampleChatGeometries()` fidelity-samples only `CHAT_KERNEL_CHAT_GEOMETRIES` (infinity / hamiltonian / triangular / torus). `?fidelity=1` logs both full and chat-four reports. |
 | 32 | Signed kernel contract frame (`stage`, FNV-1a `sourceHash`, geometries) on each Hive pulse and `window.__GAIA_KERNEL__`. |
 | 33 | Compact kernel seeds (`theta`/`phi`, cap 64) ride `gaia:positions` (`createPositionStreamer`). Inbound `gaia:positions` / `gaia:kernel` / pulse frames call `ingestKernel`. Health hydrate stores `pendingKernel`. |
+| 34 | HMAC-sign kernel frames when `GAIA_PULSE_TOKEN` / `?token=` is set (`src/kernelMac.js` ↔ Hive `kernelFrame.ts`). |
+| 35 | Apply `pendingKernel` (or `loadKernelSnapshot`) immediately after node construction so TF boot uses streamed seeds. |
 
 ## Next
 
 | Stage | Owner repo | Work |
 |------|------------|------|
-| 13 | The-Hive + gaia-visualizer | Authenticated live `ledger_pulse` → Hive WS against live sheet counts. Token already flows as `GAIA_PULSE_TOKEN` / `?token=` |
+| 13 | The-Hive + gaia-visualizer | Authenticated live `ledger_pulse` → Hive WS against live sheet counts. Token + HMAC already flow. |
 | 14 | The-Hive | Memory engrams into Drive folder `CRYPTIC-HEARTBEAT-NEXUS-ROOT` |
 | 16-public | gaia-visualizer | hamiltoniansingularity.ai public band; default geometry `blend` (host default already wired) |
 | 19-panels | The-Hive | Hook remaining Quine / NexusStudio editors to `emitWeaveChange` / `emitGeometry` / `emitBlend` |
-| 34 | The-Hive | Sign kernel frames with HMAC when `GAIA_PULSE_TOKEN` is set |
-| 35 | both | Apply `pendingKernel` in `main.js` immediately after node construction so TF boot uses streamed seeds without waiting for a later frame |
+| 36 | both | BroadcastChannel HMAC verify on visualizer peers when `?token=` is set |
+| 37 | The-Hive | Drive-folder engram dump of compact kernel seeds |
 
 ## Drive from LLM
 
