@@ -1,6 +1,7 @@
 import { GEOMETRIES } from './geometry.js';
 import { applyKernelSnapshot, compactSeedsFromNodes, saveKernelSnapshot } from './kernelSnapshot.js';
 import { attachKernelMac, verifyKernelMac } from './kernelMac.js';
+import { dumpKernelEngram } from './kernelEngram.js';
 
 export const CHANNEL = 'gaia-weave';
 export const POS_CHANNEL = 'gaia-positions';
@@ -42,11 +43,12 @@ export function applyContract(payload, state, targetState) {
 export function persistSnapshot(state, targetState) {
   try {
     const snap = {
-      stage: 27,
+      stage: 38,
       gravityPull: state.gravityPull,
       lastPulse: state.lastPulse,
       lastPulseAt: state.lastPulseAt || 0,
       unsignedRefused: state.unsignedRefused || 0,
+      hmacOk: state.hmacOk || 0,
       hmacRefused: state.hmacRefused || 0,
       ledger: state.ledger || { topics: 0, votes: 0, bridges: 0, nodes: 0, at: 0 },
       geometry: targetState?.geometry,
@@ -80,6 +82,7 @@ export function restoreSnapshot(state, targetState) {
     if (snap.lastPulse != null) state.lastPulse = Number(snap.lastPulse);
     if (snap.lastPulseAt) state.lastPulseAt = Number(snap.lastPulseAt);
     if (snap.unsignedRefused) state.unsignedRefused = Number(snap.unsignedRefused) || 0;
+    if (snap.hmacOk) state.hmacOk = Number(snap.hmacOk) || 0;
     if (snap.hmacRefused) state.hmacRefused = Number(snap.hmacRefused) || 0;
     if (Number.isFinite(Number(snap.gravityPull))) state.gravityPull = mapPulseToGravity(snap.gravityPull);
     if (Number.isFinite(Number(snap.toroidalWeave))) state.toroidalWeave = clamp(Number(snap.toroidalWeave), 0, 4);
@@ -113,6 +116,7 @@ export async function hydrateFromHealth(state, targetState, healthUrl) {
       if (acceptKernelMac(kernel, state, { requireMac: false })) {
         state.pendingKernel = kernel;
         saveKernelSnapshot(state.pendingKernel);
+        dumpKernelEngram(kernel);
         if (state.nodes) applyKernelSnapshot(state.nodes, state.gpu, kernel);
       }
     }
@@ -161,7 +165,10 @@ function acceptKernelMac(kernel, state, { requireMac } = {}) {
     }
     return false;
   }
-  if (verifyKernelMac(need, kernel)) return true;
+  if (verifyKernelMac(need, kernel)) {
+    if (state) state.hmacOk = (state.hmacOk || 0) + 1;
+    return true;
+  }
   if (state) {
     state.hmacRefused = (state.hmacRefused || 0) + 1;
     refuse(state);
@@ -203,6 +210,7 @@ function ingestKernel(data, state, opts) {
   if (!acceptKernelMac(kernel, state, opts)) return null;
   state.pendingKernel = kernel;
   saveKernelSnapshot(kernel);
+  dumpKernelEngram(kernel);
   if (state.nodes) applyKernelSnapshot(state.nodes, state.gpu, kernel);
   return kernel;
 }
@@ -329,6 +337,7 @@ export function createPositionStreamer(nodes, { relay, peers, token, buffers } =
         });
     const kernel = compactSeedsFromNodes(nodes, 64);
     if (kernel && token) attachKernelMac(token, kernel);
+    if (kernel) dumpKernelEngram(kernel);
     const payload = {
       type: 'gaia:positions',
       band: '192-network',
