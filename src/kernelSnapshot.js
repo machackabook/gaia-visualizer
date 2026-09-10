@@ -1,5 +1,5 @@
 /**
- * Stage 30/33/35/36 — persist / restore theta+phi seeds so geometry continuity survives reload.
+ * Stage 30/33/35/36/38 — persist / restore theta+phi seeds so geometry continuity survives reload.
  * Applied from main.js immediately after node construction (stage 35).
  * Keys remain gaia:stage29:kernel / gaia:stage30:kernel / gaia:stage33:kernel for backward compatibility.
  */
@@ -8,6 +8,7 @@ export const KERNEL_SNAPSHOT_KEY_30 = 'gaia:stage30:kernel';
 export const KERNEL_SNAPSHOT_KEY_33 = 'gaia:stage33:kernel';
 export const KERNEL_SNAPSHOT_KEY_35 = 'gaia:stage35:kernel';
 export const KERNEL_SNAPSHOT_KEY_36 = 'gaia:stage36:kernel';
+export const KERNEL_SNAPSHOT_KEY_38 = 'gaia:stage38:kernel';
 
 export function captureKernelSnapshot(nodes, extra = {}) {
   const theta = [];
@@ -17,7 +18,7 @@ export function captureKernelSnapshot(nodes, extra = {}) {
     phi[i] = nodes[i].phi ?? 0;
   }
   return {
-    stage: extra.stage || 36,
+    stage: extra.stage || 38,
     sourceHash: extra.sourceHash || 'beec41f1',
     at: Date.now(),
     count: nodes.length,
@@ -31,7 +32,7 @@ export function compactKernelSeeds(snapshot, cap = 64) {
   if (!snapshot || !Array.isArray(snapshot.theta) || !Array.isArray(snapshot.phi)) return null;
   const n = Math.min(cap, snapshot.theta.length, snapshot.phi.length);
   return {
-    stage: snapshot.stage || 36,
+    stage: snapshot.stage || 38,
     sourceHash: snapshot.sourceHash || 'beec41f1',
     at: snapshot.at || Date.now(),
     count: n,
@@ -54,6 +55,7 @@ export function saveKernelSnapshot(snapshot) {
     localStorage.setItem(KERNEL_SNAPSHOT_KEY_33, raw);
     localStorage.setItem(KERNEL_SNAPSHOT_KEY_35, raw);
     localStorage.setItem(KERNEL_SNAPSHOT_KEY_36, raw);
+    localStorage.setItem(KERNEL_SNAPSHOT_KEY_38, raw);
     return true;
   } catch {
     return false;
@@ -64,6 +66,7 @@ export function loadKernelSnapshot() {
   if (typeof localStorage === 'undefined') return null;
   try {
     const raw =
+      localStorage.getItem(KERNEL_SNAPSHOT_KEY_38) ||
       localStorage.getItem(KERNEL_SNAPSHOT_KEY_36) ||
       localStorage.getItem(KERNEL_SNAPSHOT_KEY_35) ||
       localStorage.getItem(KERNEL_SNAPSHOT_KEY_33) ||
