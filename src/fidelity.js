@@ -1,12 +1,13 @@
 /**
- * Stage-18 dual-path fidelity + stage-31 chat-four isolation.
+ * Stage-18 dual-path fidelity + stage-31 chat-four isolation + stage-42 hash-mismatch sample.
  * CPU evaluateGeometry vs verbatim chat kernel.
- * TF path is compared when a sample buffer is supplied (browser / ?tf=1).
  */
 import { evaluateGeometry } from './geometry.js';
 import {
   CHAT_KERNEL_CHAT_GEOMETRIES,
   CHAT_KERNEL_GEOMETRIES,
+  CHAT_KERNEL_SOURCE_HASH,
+  STAGE,
   evaluateChatKernel,
 } from './chatKernel.js';
 
@@ -60,7 +61,7 @@ export function sampleFidelity({
   }
 
   return {
-    stage: 31,
+    stage: STAGE,
     samples: rows.length,
     mismatches,
     maxDelta,
@@ -72,12 +73,28 @@ export function sampleFidelity({
   };
 }
 
-/** Stage 31 — four geometries named in the session update(t) only (no klein extras). */
 export function sampleChatGeometries(opts = {}) {
   return sampleFidelity({
     ...opts,
     geometries: opts.geometries || CHAT_KERNEL_CHAT_GEOMETRIES,
   });
+}
+
+export function sampleFidelityOnHashMismatch(inboundHash, opts = {}) {
+  const expected = opts.expectedHash || CHAT_KERNEL_SOURCE_HASH;
+  const inbound = inboundHash == null ? '' : String(inboundHash);
+  if (inbound && inbound === expected) {
+    return { stage: STAGE, match: true, skipped: true, expected, inbound };
+  }
+  const report = sampleChatGeometries(opts);
+  return {
+    ...report,
+    match: false,
+    skipped: false,
+    expected,
+    inbound: inbound || null,
+    reason: inbound ? 'sourceHash mismatch' : 'missing sourceHash',
+  };
 }
 
 export function fidelitySummary(report = sampleFidelity()) {
@@ -88,5 +105,7 @@ export function fidelitySummary(report = sampleFidelity()) {
     mismatches: report.mismatches,
     maxDelta: report.maxDelta,
     geometries: report.geometries,
+    match: report.match,
+    skipped: report.skipped,
   };
 }
