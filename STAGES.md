@@ -4,6 +4,7 @@ Band `137-visual`. Chat kernel is the `update(t)` posted in-session (uniforms â†
 Session kernel still allocates `new THREE.Vector3` inside lerp; live path uses a reused `_target` in `GaiaNode.update`.
 Stage 41 adds `evaluateChatKernelInto` for the same zero-alloc write from callers that are not GaiaNode.
 Stage 42 re-pins the paste (`beec41f1`) and samples fidelity on inbound hash mismatch.
+Stage 43 wires that sample into the HUD and Hive health on every inbound frame.
 
 ## Done
 
@@ -11,7 +12,8 @@ Stage 42 re-pins the paste (`beec41f1`) and samples fidelity on inbound hash mis
 |------|----------------|
 | 1â€“40 | See git history / prior STAGES. Kernel extract through source-hash banner + engram POST. |
 | 41 | Session `update(t)` re-pinned 2026-09-10. `evaluateChatKernelInto`. |
-| 42 | Re-confirm paste. `advanceChatKernelAngles`. `sampleFidelityOnHashMismatch`. Next-stage table in `docs/STAGE42.md`. |
+| 42 | Re-confirm paste. `advanceChatKernelAngles`. `sampleFidelityOnHashMismatch`. |
+| 43 | HUD + `/api/health` consume fidelity-on-mismatch on inbound kernel frames. |
 
 ## Next
 
@@ -22,7 +24,6 @@ Stage 42 re-pins the paste (`beec41f1`) and samples fidelity on inbound hash mis
 | 16-public | gaia-visualizer | hamiltoniansingularity.ai public band; default geometry `blend` (host default already wired) |
 | 19-panels | The-Hive | Hook remaining Quine / NexusStudio editors to `emitWeaveChange` / `emitGeometry` / `emitBlend` |
 | 42-enclave | ENCLAVE-ADAM-REUNITED | Auto-unpack watch on downloads / omdirectorytrew with env-check autocomplete |
-| 43 | both | Wire `sampleFidelityOnHashMismatch` into HUD + Hive health on every inbound frame |
 | 44 | The-Hive | Compact engram GET + replay into visualizer `pendingKernel` |
 | 45 | mesh | Continuity cascade carries `STAGE` + `sourceHash` on every sibling dispatch |
 
