@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { evaluateGeometry } from './geometry.js';
+import { CHAT_KERNEL_PHI_WEAVE, CHAT_KERNEL_THETA_BASE, CHAT_KERNEL_THETA_IDX } from './chatKernel.js';
 
 const _target = new THREE.Vector3();
 const _color = new THREE.Color();
@@ -17,10 +18,11 @@ export class GaiaNode {
   }
 
   /**
-   * Chat kernel reference (kept as the living update(t) contract):
+   * Chat kernel reference (living update(t) contract, stage 28):
    *   uniforms uTime / uGravity
    *   theta += (0.01 + idx * 0.002) * gravityPull
-   *   evaluate targetState.geometry (infinity | hamiltonian | triangular | torus)
+   *   phi   += 0.007 * toroidalWeave
+   *   evaluate targetState.geometry (infinity | hamiltonian | triangular | klein | torus)
    *   mesh.position.lerp(target, 0.05) — never allocate inside the loop
    */
   update(t, state, targetState) {
@@ -35,8 +37,9 @@ export class GaiaNode {
     }
 
     const pull = state.gravityPull ?? 1;
-    this.theta += (0.01 + this.idx * 0.002) * pull;
-    this.phi += (0.007 + this.idx * 0.0007) * Math.max(0.25, pull);
+    const weave = state.toroidalWeave ?? 1;
+    this.theta += (CHAT_KERNEL_THETA_BASE + this.idx * CHAT_KERNEL_THETA_IDX) * pull;
+    this.phi += CHAT_KERNEL_PHI_WEAVE * weave;
 
     const { x, y, z } = evaluateGeometry({
       theta: this.theta,
@@ -44,7 +47,7 @@ export class GaiaNode {
       t,
       idx: this.idx,
       gravityPull: pull,
-      toroidalWeave: state.toroidalWeave,
+      toroidalWeave: weave,
       geometry: targetState?.geometry || 'torus',
       blend: state.blend ?? 0.5,
     });
