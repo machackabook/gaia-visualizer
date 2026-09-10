@@ -57,6 +57,8 @@ const state = {
   unsignedRefused: 0,
   lastUnsignedAt: 0,
   ledger: { topics: 0, votes: 0, bridges: 0, nodes: 0, at: 0 },
+  snapshotRestored: false,
+  snapshotAge: 0,
 };
 const targetState = { geometry: hostDefault };
 bindRemoteContract(state, targetState);
@@ -256,14 +258,15 @@ function frame() {
     : (tfBound ? 'tfbind' : 'tfbind-off');
   const led = state.ledger || {};
   const tokenGate = token ? 'token-on' : 'token-off';
+  const snapBit = state.snapshotRestored ? 'snap-on' : 'snap-off';
   hud.textContent = [
-    `GAIA VISUALIZER  band-137  stage-${STAGE}  nodes=${count}${useInstancing || useGpu ? ' instanced' : ''}${useGpu ? ' gpu-buf' : ''}${chatOnGpu ? ' tf' : ''}${skipCpuPath ? ' no-cpu-rb' : ''}${zeroCopy ? ' zerocopy' : ''} ${bindBit} ${tokenGate}`,
+    `GAIA VISUALIZER  band-137  stage-${STAGE}  nodes=${count}${useInstancing || useGpu ? ' instanced' : ''}${useGpu ? ' gpu-buf' : ''}${chatOnGpu ? ' tf' : ''}${skipCpuPath ? ' no-cpu-rb' : ''}${zeroCopy ? ' zerocopy' : ''} ${bindBit} ${tokenGate} ${snapBit}`,
     `pulse: ${pulseVal}  age=${pulseAge}s   ledger: topics=${led.topics || 0} votes=${led.votes || 0} bridges=${led.bridges || 0}   refuse=${state.unsignedRefused || 0}   tfbind: ${bindReport ? (bindReport.bound ? 'OK' : 'MISS') : (chatOnGpu && zeroCopy ? 'pending' : 'n/a')}`,
     `geometry: ${targetState.geometry}   (1-9 / 0 / q w + e..l z x  l=cassini z=lorenz x=superformula)`,
     `gravityPull: ${state.gravityPull.toFixed(2)}   ([ / ])`,
     `toroidalWeave: ${state.toroidalWeave.toFixed(2)}   (- / =)`,
     `blend: ${state.blend.toFixed(2)}   (, / .)  hamiltonian<->klein`,
-    `lerp: ${state.lerp.toFixed(2)}   (?state= / ?pulse=ws / ?token= / ?relay= / ?peers= / ?gpu=1 / ?tf=1 / ?zerocopy=1 / ?fidelity=1 / ?nodes= / ?tfbind=0)`,
+    `lerp: ${state.lerp.toFixed(2)}   (?state= / ?pulse=ws / ?token= / ?health= / ?relay= / ?peers= / ?gpu=1 / ?tf=1 / ?zerocopy=1 / ?fidelity=1 / ?nodes= / ?tfbind=0)`,
   ].join('\n');
   if (showTfBind && typeof window !== 'undefined' && window.__GAIA_TFBIND__) {
     /* already stamped by reportTfBindHealth */
