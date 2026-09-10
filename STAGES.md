@@ -22,6 +22,7 @@ Session kernel still allocates `new THREE.Vector3` inside lerp; live path uses a
 | 24 | TF-bind health: `reportTfBindHealth` + `?tfbind=1` (`window.__GAIA_TFBIND__`) |
 | 25 | Default HUD line for pulse + TF-bind; `reportTfBindHealth` after every `bindTfPosAttribute`; `stampPulse` on `state.lastPulse` |
 | 26 | Ledger sheet counts on the same HUD line as pulse (`topics` / `votes` / `bridges`); refuse unsigned frames when `?token=` is set (`state.unsignedRefused`) |
+| 27 | Persist last ledger snapshot + pulse age across reload (`localStorage` key `gaia:stage27:snapshot`; Hive `/api/health` + `?health=`) |
 
 ## Next
 
@@ -31,7 +32,7 @@ Session kernel still allocates `new THREE.Vector3` inside lerp; live path uses a
 | 14 | The-Hive | Memory engrams into Drive folder `CRYPTIC-HEARTBEAT-NEXUS-ROOT` |
 | 16-public | gaia-visualizer | hamiltoniansingularity.ai public band; default geometry `blend` (host default already wired) |
 | 19-panels | The-Hive | Hook remaining Quine / NexusStudio editors to `emitWeaveChange` / `emitGeometry` / `emitBlend` |
-| 27 | both | Persist last ledger snapshot + pulse age across reload (`localStorage` / Hive `/api/health`) |
+| 28 | both | Replay persisted snapshot into TF seed theta/phi so geometry continuity survives reload |
 
 ## Drive from LLM
 
