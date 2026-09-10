@@ -28,6 +28,7 @@ Session kernel still allocates `new THREE.Vector3` inside lerp; live path uses a
 | 30 | `applyKernelSnapshot` wired in `main.js` on boot; Hive `/api/health` + `/api/gaia/kernel` carry compact theta/phi seeds; `?health=` hydrates `gaia:kernel`. |
 | 31 | `sampleChatGeometries()` fidelity-samples only `CHAT_KERNEL_CHAT_GEOMETRIES` (infinity / hamiltonian / triangular / torus). `?fidelity=1` logs both full and chat-four reports. |
 | 32 | Signed kernel contract frame (`stage`, FNV-1a `sourceHash`, geometries) on each Hive pulse and `window.__GAIA_KERNEL__`. |
+| 33 | Compact kernel seeds (`theta`/`phi`, cap 64) ride `gaia:positions` (`createPositionStreamer`). Inbound `gaia:positions` / `gaia:kernel` / pulse frames call `ingestKernel`. Health hydrate stores `pendingKernel`. |
 
 ## Next
 
@@ -37,8 +38,8 @@ Session kernel still allocates `new THREE.Vector3` inside lerp; live path uses a
 | 14 | The-Hive | Memory engrams into Drive folder `CRYPTIC-HEARTBEAT-NEXUS-ROOT` |
 | 16-public | gaia-visualizer | hamiltoniansingularity.ai public band; default geometry `blend` (host default already wired) |
 | 19-panels | The-Hive | Hook remaining Quine / NexusStudio editors to `emitWeaveChange` / `emitGeometry` / `emitBlend` |
-| 33 | both | Stream compact kernel seeds with `gaia:positions` so TF boot does not need a separate health fetch |
 | 34 | The-Hive | Sign kernel frames with HMAC when `GAIA_PULSE_TOKEN` is set |
+| 35 | both | Apply `pendingKernel` in `main.js` immediately after node construction so TF boot uses streamed seeds without waiting for a later frame |
 
 ## Drive from LLM
 
