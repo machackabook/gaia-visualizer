@@ -1,9 +1,14 @@
 /**
- * Stage-18 dual-path fidelity: CPU evaluateGeometry vs verbatim chat kernel.
+ * Stage-18 dual-path fidelity + stage-31 chat-four isolation.
+ * CPU evaluateGeometry vs verbatim chat kernel.
  * TF path is compared when a sample buffer is supplied (browser / ?tf=1).
  */
 import { evaluateGeometry } from './geometry.js';
-import { CHAT_KERNEL_GEOMETRIES, evaluateChatKernel } from './chatKernel.js';
+import {
+  CHAT_KERNEL_CHAT_GEOMETRIES,
+  CHAT_KERNEL_GEOMETRIES,
+  evaluateChatKernel,
+} from './chatKernel.js';
 
 function dist(a, b) {
   const dx = a.x - b.x;
@@ -55,15 +60,24 @@ export function sampleFidelity({
   }
 
   return {
-    stage: 18,
+    stage: 31,
     samples: rows.length,
     mismatches,
     maxDelta,
     pass: mismatches === 0,
+    geometries: geometries.slice(),
     note:
       'Chat kernel uses major = 10 + idx * 2; CPU evaluateGeometry uses 10 + (idx % 24) * 2. They match for idx < 24.',
     rows,
   };
+}
+
+/** Stage 31 — four geometries named in the session update(t) only (no klein extras). */
+export function sampleChatGeometries(opts = {}) {
+  return sampleFidelity({
+    ...opts,
+    geometries: opts.geometries || CHAT_KERNEL_CHAT_GEOMETRIES,
+  });
 }
 
 export function fidelitySummary(report = sampleFidelity()) {
@@ -73,5 +87,6 @@ export function fidelitySummary(report = sampleFidelity()) {
     samples: report.samples,
     mismatches: report.mismatches,
     maxDelta: report.maxDelta,
+    geometries: report.geometries,
   };
 }

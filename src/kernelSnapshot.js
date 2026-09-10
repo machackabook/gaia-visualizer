@@ -1,9 +1,10 @@
 /**
- * Stage 29 — persist / restore theta+phi seeds so geometry continuity survives reload.
- * Completes the work listed as "next stage 28" in STAGES.md.
- * Key is separate from stage-27 ledger snapshot.
+ * Stage 30 — persist / restore theta+phi seeds so geometry continuity survives reload.
+ * Applied from main.js on boot; compact seeds also ride Hive /api/health.
+ * Key remains gaia:stage29:kernel for backward compatibility, plus stage30 alias.
  */
 export const KERNEL_SNAPSHOT_KEY = 'gaia:stage29:kernel';
+export const KERNEL_SNAPSHOT_KEY_30 = 'gaia:stage30:kernel';
 
 export function captureKernelSnapshot(nodes, extra = {}) {
   const theta = [];
@@ -13,7 +14,7 @@ export function captureKernelSnapshot(nodes, extra = {}) {
     phi[i] = nodes[i].phi ?? 0;
   }
   return {
-    stage: 29,
+    stage: 30,
     at: Date.now(),
     count: nodes.length,
     theta,
@@ -22,10 +23,24 @@ export function captureKernelSnapshot(nodes, extra = {}) {
   };
 }
 
+export function compactKernelSeeds(snapshot, cap = 64) {
+  if (!snapshot || !Array.isArray(snapshot.theta) || !Array.isArray(snapshot.phi)) return null;
+  const n = Math.min(cap, snapshot.theta.length, snapshot.phi.length);
+  return {
+    stage: snapshot.stage || 30,
+    at: snapshot.at || Date.now(),
+    count: n,
+    theta: snapshot.theta.slice(0, n),
+    phi: snapshot.phi.slice(0, n),
+  };
+}
+
 export function saveKernelSnapshot(snapshot) {
   if (typeof localStorage === 'undefined' || !snapshot) return false;
   try {
-    localStorage.setItem(KERNEL_SNAPSHOT_KEY, JSON.stringify(snapshot));
+    const raw = JSON.stringify(snapshot);
+    localStorage.setItem(KERNEL_SNAPSHOT_KEY, raw);
+    localStorage.setItem(KERNEL_SNAPSHOT_KEY_30, raw);
     return true;
   } catch {
     return false;
@@ -35,7 +50,7 @@ export function saveKernelSnapshot(snapshot) {
 export function loadKernelSnapshot() {
   if (typeof localStorage === 'undefined') return null;
   try {
-    const raw = localStorage.getItem(KERNEL_SNAPSHOT_KEY);
+    const raw = localStorage.getItem(KERNEL_SNAPSHOT_KEY_30) || localStorage.getItem(KERNEL_SNAPSHOT_KEY);
     if (!raw) return null;
     const parsed = JSON.parse(raw);
     if (!parsed || !Array.isArray(parsed.theta) || !Array.isArray(parsed.phi)) return null;
