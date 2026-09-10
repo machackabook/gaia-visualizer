@@ -1,19 +1,14 @@
 /**
- * Living chat-kernel contract — Stage 38.
+ * Living chat-kernel contract — Stage 41.
  * CHAT_KERNEL_SOURCE is the exact update(t) posted in the current session.
  * Runtime extras (not in that paste) stay in evaluateChatKernel:
  *   phi += 0.007 * toroidalWeave
  *   klein manifold for hamiltonian↔klein blend
  * GaiaNode.update() implements this without allocating Vector3 inside the loop.
- * Stage 33 streams compact theta/phi seeds on gaia:positions.
- * Stage 34 HMAC-signs kernel frames when token is set.
- * Stage 35 applies pendingKernel immediately after node construction.
- * Stage 36 requires BroadcastChannel HMAC when ?token= is set.
- * Stage 37 dumps compact kernel seeds as a local engram (gaia:stage37:engram).
- * Stage 38 surfaces hmacOk / hmacRefused on the HUD.
+ * Stage 41: evaluateChatKernelInto writes into a reused out object.
  */
 
-export const STAGE = 38;
+export const STAGE = 41;
 export const CHAT_KERNEL_LERP = 0.05;
 export const CHAT_KERNEL_THETA_BASE = 0.01;
 export const CHAT_KERNEL_THETA_IDX = 0.002;
@@ -24,6 +19,18 @@ export const CHAT_KERNEL_CHAT_GEOMETRIES = ['infinity', 'hamiltonian', 'triangul
 export const CHAT_KERNEL_GEOMETRIES = ['torus', 'infinity', 'hamiltonian', 'triangular', 'klein'];
 
 export function evaluateChatKernel({
+  theta,
+  phi,
+  t,
+  idx,
+  toroidalWeave = 1,
+  geometry = 'torus',
+}) {
+  return evaluateChatKernelInto({}, { theta, phi, t, idx, toroidalWeave, geometry });
+}
+
+/** Zero-alloc write of {x,y,z,major,minor} into `out`. */
+export function evaluateChatKernelInto(out, {
   theta,
   phi,
   t,
@@ -81,7 +88,12 @@ export function evaluateChatKernel({
     }
   }
 
-  return { x, y, z, major, minor };
+  out.x = x;
+  out.y = y;
+  out.z = z;
+  out.major = major;
+  out.minor = minor;
+  return out;
 }
 
 export function chatKernelColor(idx, t, gravityPull = 1) {
