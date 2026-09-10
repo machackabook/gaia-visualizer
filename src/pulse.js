@@ -1,4 +1,5 @@
 import { GEOMETRIES } from './geometry.js';
+import { applyKernelSnapshot, compactSeedsFromNodes, saveKernelSnapshot } from './kernelSnapshot.js';
 
 export const CHANNEL = 'gaia-weave';
 export const POS_CHANNEL = 'gaia-positions';
@@ -104,6 +105,10 @@ export async function hydrateFromHealth(state, targetState, healthUrl) {
       state.gravityPull = mapPulseToGravity(body.lastPulse);
     }
     if (body.gaia?.geometry && targetState) targetState.geometry = body.gaia.geometry;
+    if (body.kernel || body.gaia?.kernel) {
+      state.pendingKernel = body.kernel || body.gaia.kernel;
+      saveKernelSnapshot(state.pendingKernel);
+    }
     persistSnapshot(state, targetState);
     return body;
   } catch {
@@ -160,6 +165,15 @@ function parsePeerList(raw) {
     .filter((s) => /^https?:\/\//i.test(s));
 }
 
+function ingestKernel(data, state) {
+  const kernel = data?.kernel || data?.detail?.kernel || (data?.type === 'gaia:kernel' ? data : null);
+  if (!kernel || !Array.isArray(kernel.theta) || !Array.isArray(kernel.phi)) return null;
+  state.pendingKernel = kernel;
+  saveKernelSnapshot(kernel);
+  if (state.nodes) applyKernelSnapshot(state.nodes, state.gpu, kernel);
+  return kernel;
+}
+
 export function bindRemoteContract(state, targetState) {
   restoreSnapshot(state, targetState);
   const apply = (payload) => applyContract(payload, state, targetState);
@@ -171,10 +185,19 @@ export function bindRemoteContract(state, targetState) {
     if (!acceptFrame(ev.detail || {}, state)) return;
     stampPulse(state, ev.detail?.pulse ?? ev.detail, targetState);
     if (ev.detail?.ledger) stampLedger(state, ev.detail.ledger, targetState);
+    if (ev.detail?.kernel) ingestKernel(ev.detail, state);
   });
   addEventListener('gaia:ledger', (ev) => {
     if (!acceptFrame(ev.detail || {}, state)) return;
     stampLedger(state, ev.detail?.ledger || ev.detail, targetState);
+  });
+  addEventListener('gaia:positions', (ev) => {
+    if (!acceptFrame(ev.detail || {}, state)) return;
+    if (ev.detail?.kernel) ingestKernel(ev.detail, state);
+  });
+  addEventListener('gaia:kernel', (ev) => {
+    if (!acceptFrame(ev.detail || {}, state)) return;
+    ingestKernel(ev.detail || ev, state);
   });
 
   try {
@@ -186,10 +209,12 @@ export function bindRemoteContract(state, targetState) {
       if (data.type === 'gaia:pulse') {
         stampPulse(state, data.detail?.pulse ?? data.pulse, targetState);
         if (data.ledger || data.detail?.ledger) stampLedger(state, data.ledger || data.detail.ledger, targetState);
+        if (data.kernel || data.detail?.kernel) ingestKernel(data, state);
       }
       if (data.type === 'gaia:ledger' || data.ledger) {
         stampLedger(state, data.ledger || data.detail?.ledger || data, targetState);
       }
+      if (data.type === 'gaia:kernel' || data.kernel) ingestKernel(data, state);
     };
   } catch {
     /* BroadcastChannel unavailable */
@@ -210,9 +235,14 @@ export function bindRemoteContract(state, targetState) {
           if (data.type === 'gaia:pulse' || data.pulse != null) {
             stampPulse(state, data.pulse ?? data.detail?.pulse, targetState);
             if (data.ledger) stampLedger(state, data.ledger, targetState);
+            if (data.kernel) ingestKernel(data, state);
           } else if (data.type === 'gaia:ledger') {
             stampLedger(state, data.ledger || data, targetState);
-          } else if (data.type !== 'gaia:positions') {
+          } else if (data.type === 'gaia:positions') {
+            if (data.kernel) ingestKernel(data, state);
+          } else if (data.type === 'gaia:kernel') {
+            ingestKernel(data, state);
+          } else {
             apply(data.detail || data);
           }
         } catch { /* ignore */ }
@@ -256,6 +286,7 @@ export function createPositionStreamer(nodes, { relay, peers, token, buffers } =
       band: '192-network',
       t,
       nodes: list,
+      kernel: compactSeedsFromNodes(nodes, 64),
     };
     if (token) payload.token = token;
     if (bc) bc.postMessage(payload);
