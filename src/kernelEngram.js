@@ -1,6 +1,7 @@
 /**
- * Stage 37–41 — compact kernel-seed engram.
+ * Stage 37–43 — compact kernel-seed engram.
  * Local persist + optional Hive POST /api/gaia/engram when ?relay= is set.
+ * Stage 43: noteSourceHash stamps inboundHash so the HUD can sample fidelity.
  */
 import { KERNEL_SOURCE_HASH } from './kernelMac.js';
 
@@ -10,8 +11,13 @@ export const EXPECTED_SOURCE_HASH = KERNEL_SOURCE_HASH || 'beec41f1';
 export function noteSourceHash(kernel, state) {
   if (!kernel || !state) return;
   const got = kernel.sourceHash;
-  if (!got) return;
-  state.inboundHash = got;
+  state.inboundHash = got == null ? '' : String(got);
+  state.inboundHashAt = Date.now();
+  if (!got) {
+    state.hashMismatch = true;
+    state.hashMismatchCount = (state.hashMismatchCount || 0) + 1;
+    return;
+  }
   if (got !== EXPECTED_SOURCE_HASH) {
     state.hashMismatch = true;
     state.hashMismatchCount = (state.hashMismatchCount || 0) + 1;
@@ -24,7 +30,7 @@ export function dumpKernelEngram(kernel, extra = {}) {
   if (!kernel || !Array.isArray(kernel.theta) || !Array.isArray(kernel.phi)) return null;
   const engram = {
     type: extra.type || 'gaia:engram',
-    stage: extra.stage || 40,
+    stage: extra.stage || 43,
     sourceHash: kernel.sourceHash || extra.sourceHash || EXPECTED_SOURCE_HASH,
     at: Date.now(),
     count: kernel.count ?? Math.min(kernel.theta.length, kernel.phi.length),
