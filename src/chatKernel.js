@@ -1,22 +1,22 @@
 /**
- * Living chat-kernel contract — Stage 44.
- * CHAT_KERNEL_SOURCE is the exact update(t) posted in the current session.
- * sourceHash remains beec41f1 (FNV-1a of CHAT_KERNEL_SOURCE).
- * Runtime extras (not in that paste) stay in evaluateChatKernel:
+ * Living chat-kernel contract — Stage 45.
+ * CHAT_KERNEL_SOURCE is the exact update(t) posted in the current session,
+ * plus Stage 45 promotions that were previously runtime-only:
  *   phi += 0.007 * toroidalWeave
- *   klein manifold for hamiltonian↔klein blend
- * GaiaNode.update() implements this without allocating Vector3 inside the loop.
- * Stage 44: compact engram GET replay into pendingKernel.
+ *   uniform existence guards
+ *   reused _kernelTarget Vector3 (no per-frame allocation)
+ * sourceHash is FNV-1a of CHAT_KERNEL_SOURCE.
+ * Runtime extras that stay in evaluateChatKernel: klein manifold for hamiltonian↔klein blend.
  */
 
-export const STAGE = 44;
+export const STAGE = 45;
 export const CHAT_KERNEL_LERP = 0.05;
 export const CHAT_KERNEL_THETA_BASE = 0.01;
 export const CHAT_KERNEL_THETA_IDX = 0.002;
 export const CHAT_KERNEL_PHI_WEAVE = 0.007;
 export const CHAT_KERNEL_CHAT_GEOMETRIES = ['infinity', 'hamiltonian', 'triangular', 'torus'];
 export const CHAT_KERNEL_GEOMETRIES = ['torus', 'infinity', 'hamiltonian', 'triangular', 'klein'];
-export const CHAT_KERNEL_SOURCE_HASH = 'beec41f1';
+export const CHAT_KERNEL_SOURCE_HASH = '7cd81012';
 
 export function advanceChatKernelAngles({ theta = 0, phi = 0, idx = 0, gravityPull = 1, toroidalWeave = 1 } = {}) {
   return {
@@ -133,10 +133,13 @@ export function hslToRgb(h, s, l) {
 }
 
 export const CHAT_KERNEL_SOURCE = `update(t) {
-    this.material.uniforms.uTime.value = t;
-    this.material.uniforms.uGravity.value = state.gravityPull;
+    if (this.material && this.material.uniforms) {
+        if (this.material.uniforms.uTime) this.material.uniforms.uTime.value = t;
+        if (this.material.uniforms.uGravity) this.material.uniforms.uGravity.value = state.gravityPull;
+    }
 
     this.theta += (0.01 + this.idx * 0.002) * state.gravityPull;
+    this.phi += 0.007 * state.toroidalWeave;
     
     let x, y, z;
     let major = 10 + (this.idx * 2);
@@ -179,5 +182,7 @@ export const CHAT_KERNEL_SOURCE = `update(t) {
     }
 
     // Smoothly interpolate current position to the new geometric state target
-    this.mesh.position.lerp(new THREE.Vector3(x, y, z), 0.05);
+    if (!this._kernelTarget) this._kernelTarget = new THREE.Vector3();
+    this._kernelTarget.set(x, y, z);
+    this.mesh.position.lerp(this._kernelTarget, 0.05);
 }`;
