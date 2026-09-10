@@ -1,34 +1,20 @@
 /**
- * Living chat-kernel contract — the exact update(t) from the conversation.
+ * Living chat-kernel contract — Stage 29.
+ * CHAT_KERNEL_SOURCE is the exact update(t) posted in the current session.
+ * Runtime extras (not in that paste) stay in evaluateChatKernel:
+ *   phi += 0.007 * toroidalWeave
+ *   klein manifold for hamiltonian↔klein blend
  * GaiaNode.update() implements this without allocating Vector3 inside the loop.
- * evaluateChatKernel() is the extracted switch(targetState.geometry) body.
- * Stage 18: CPU evaluateGeometry vs this verbatim mapping for torus/infinity/hamiltonian/triangular.
- * Stage 20: GPU TF path writes per-node color from gravity + time + idx.
- * Stage 21: TF vPos feeds InstancedMesh instanceOffset; CPU getBufferSubData only when peers stream.
- * Stage 22: skip CPU Float32 copy of vPos when ?zerocopy=1 / skipCpuPath (src/zeroCopy.js).
- * Stage 23: bind instanceOffset.__webglBuffer to TF currentPosBuffer() each frame.
- * Stage 24: TF-bind health HUD (?tfbind=1).
- * Stage 25: pulse + bind health always on the default HUD line.
- * Stage 26: ledger sheet counts on the same HUD line; unsigned pulse refused when ?token= is set.
- * Stage 27: persist last ledger snapshot + pulse age across reload (localStorage + Hive /api/health).
- * Stage 28: phi advances with toroidalWeave; klein is first-class in the chat kernel so
- *           hamiltonian↔klein blend can share the same evaluateChatKernel path.
- *
- * update(t) {
- *   this.material.uniforms.uTime.value = t;
- *   this.material.uniforms.uGravity.value = state.gravityPull;
- *   this.theta += (0.01 + this.idx * 0.002) * state.gravityPull;
- *   this.phi   += 0.007 * state.toroidalWeave;
- *   // infinity | hamiltonian | triangular | klein | torus
- *   this.mesh.position.lerp(new THREE.Vector3(x, y, z), 0.05);
- * }
  */
 
-export const STAGE = 28;
+export const STAGE = 29;
 export const CHAT_KERNEL_LERP = 0.05;
 export const CHAT_KERNEL_THETA_BASE = 0.01;
 export const CHAT_KERNEL_THETA_IDX = 0.002;
 export const CHAT_KERNEL_PHI_WEAVE = 0.007;
+/** Geometries named in the current-chat update(t) switch. */
+export const CHAT_KERNEL_CHAT_GEOMETRIES = ['infinity', 'hamiltonian', 'triangular', 'torus'];
+/** Runtime evaluate set (chat four + klein extra). */
 export const CHAT_KERNEL_GEOMETRIES = ['torus', 'infinity', 'hamiltonian', 'triangular', 'klein'];
 
 export function evaluateChatKernel({
@@ -129,7 +115,6 @@ export const CHAT_KERNEL_SOURCE = `update(t) {
     this.material.uniforms.uGravity.value = state.gravityPull;
 
     this.theta += (0.01 + this.idx * 0.002) * state.gravityPull;
-    this.phi   += 0.007 * state.toroidalWeave;
     
     let x, y, z;
     let major = 10 + (this.idx * 2);
@@ -160,19 +145,6 @@ export const CHAT_KERNEL_SOURCE = `update(t) {
             x = major * Math.cos(tAngle) + minor * Math.cos(this.theta * 5);
             z = major * Math.sin(tAngle) + minor * Math.sin(this.theta * 5);
             y = (this.idx % 3 - 1) * major * 0.5 + Math.sin(t) * minor;
-            break;
-
-        case 'klein':
-            // Immersed Klein bottle — same mapping as geometry.js so blend can share the kernel
-            const u = this.theta;
-            const v = this.phi;
-            const r = 4 + state.toroidalWeave;
-            x = (r + Math.cos(u / 2) * Math.sin(v) - Math.sin(u / 2) * Math.sin(2 * v)) * Math.cos(u) * 1.2;
-            z = (r + Math.cos(u / 2) * Math.sin(v) - Math.sin(u / 2) * Math.sin(2 * v)) * Math.sin(u) * 1.2;
-            y = Math.sin(u / 2) * Math.sin(v) + Math.cos(u / 2) * Math.sin(2 * v) + Math.sin(t * 0.2 + this.idx) * 0.3;
-            x *= major * 0.12;
-            y *= major * 0.18;
-            z *= major * 0.12;
             break;
 
         case 'torus':

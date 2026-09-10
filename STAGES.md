@@ -23,6 +23,8 @@ Session kernel still allocates `new THREE.Vector3` inside lerp; live path uses a
 | 25 | Default HUD line for pulse + TF-bind; `reportTfBindHealth` after every `bindTfPosAttribute`; `stampPulse` on `state.lastPulse` |
 | 26 | Ledger sheet counts on the same HUD line as pulse (`topics` / `votes` / `bridges`); refuse unsigned frames when `?token=` is set (`state.unsignedRefused`) |
 | 27 | Persist last ledger snapshot + pulse age across reload (`localStorage` key `gaia:stage27:snapshot`; Hive `/api/health` + `?health=`) |
+| 28 | `phi += 0.007 * toroidalWeave`; `klein` first-class in evaluate so hamiltonian↔klein blend shares one path |
+| 29 | Re-pin `CHAT_KERNEL_SOURCE` to the exact session `update(t)` (four geometries, no phi line in the paste). Runtime still advances phi and evaluates klein. `src/kernelSnapshot.js` persists theta/phi seeds (`gaia:stage29:kernel`). |
 
 ## Next
 
@@ -32,7 +34,9 @@ Session kernel still allocates `new THREE.Vector3` inside lerp; live path uses a
 | 14 | The-Hive | Memory engrams into Drive folder `CRYPTIC-HEARTBEAT-NEXUS-ROOT` |
 | 16-public | gaia-visualizer | hamiltoniansingularity.ai public band; default geometry `blend` (host default already wired) |
 | 19-panels | The-Hive | Hook remaining Quine / NexusStudio editors to `emitWeaveChange` / `emitGeometry` / `emitBlend` |
-| 28 | both | Replay persisted snapshot into TF seed theta/phi so geometry continuity survives reload |
+| 30 | both | Wire `applyKernelSnapshot` in `main.js` + Hive `/api/health` so TF seed theta/phi restore on boot |
+| 31 | gaia-visualizer | Fidelity sample the four chat geometries independently of klein extras (`CHAT_KERNEL_CHAT_GEOMETRIES`) |
+| 32 | both | Export a signed kernel contract frame (`stage`, source hash, geometries) on each pulse |
 
 ## Drive from LLM
 

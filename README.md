@@ -3,16 +3,15 @@
 **Band:** `137-visual`  
 **Nexus:** Cryptic-Heartbeat  
 **Numeral:** `137451921129154222`  
-**Stage:** `28`
+**Stage:** `29`
 
-LLM-assigned geometric states for Gaia nodes. Each node interpolates toward a target manifold. `GaiaNode.update(t, state, targetState)` is the living chat kernel. The verbatim `update(t)` from the current chat lives in `src/chatKernel.js` (`CHAT_KERNEL_SOURCE`). Stage-18 adds `evaluateChatKernel` plus `src/fidelity.js` so CPU `evaluateGeometry` can be checked against that contract for torus / infinity / hamiltonian / triangular. Stage-20 paints `instanceColor` from `chatKernelColor(idx, t, gravityPull)` on both CPU and TF frames. Stage-22 skips the CPU `vPos` copy on the visual TF path (`src/zeroCopy.js`, `?zerocopy=1`). Stage-25 always prints pulse + TF-bind health on the HUD (opt out with `?tfbind=0`). Stage-26 prints live ledger sheet counts on that same line and refuses unsigned pulse/contract frames when `?token=` is set. Stage-27 restores the last ledger snapshot and pulse age from `localStorage` (`gaia:stage27:snapshot`) and can hydrate from Hive `/api/health` via `?health=`. Stage-28 advances `phi` by `0.007 * toroidalWeave` and adds `klein` to the chat-kernel geometry set so hamiltonian↔klein blend shares one evaluate path.
+LLM-assigned geometric states for Gaia nodes. Each node interpolates toward a target manifold. `GaiaNode.update(t, state, targetState)` is the living chat kernel. The verbatim `update(t)` from the current chat lives in `src/chatKernel.js` (`CHAT_KERNEL_SOURCE`). That paste covers torus / infinity / hamiltonian / triangular and does **not** increment `phi` in-source. Stage-28 runtime extras remain: `phi += 0.007 * toroidalWeave` and first-class `klein`. Stage-29 pins the paste as the contract and adds `src/kernelSnapshot.js` for theta/phi continuity.
 
 ```
 this.material.uniforms.uTime.value = t;
 this.material.uniforms.uGravity.value = state.gravityPull;
 this.theta += (0.01 + this.idx * 0.002) * state.gravityPull;
-this.phi   += 0.007 * state.toroidalWeave;
-// evaluate targetState.geometry → {x,y,z}
+// evaluate targetState.geometry → {x,y,z}  (infinity | hamiltonian | triangular | torus)
 this.mesh.position.lerp(target, 0.05);
 ```
 
@@ -80,4 +79,4 @@ Query seeds:
 - `?tfbind=0` — hide bind reporting (stage-25 reports by default)
 - `?fidelity=1` — log stage-18 CPU vs chat-kernel sample report
 
-See `STAGES.md`, `src/chatKernel.js`, `src/fidelity.js`, `src/geometry.js`, `src/Node.js`, `src/evaluateKernel.glsl.js`, `src/gpuBuffer.js`, `src/transformFeedback.js`, `src/zeroCopy.js`.
+See `STAGES.md`, `src/chatKernel.js`, `src/kernelSnapshot.js`, `src/fidelity.js`, `src/geometry.js`, `src/Node.js`, `src/evaluateKernel.glsl.js`, `src/gpuBuffer.js`, `src/transformFeedback.js`, `src/zeroCopy.js`.
