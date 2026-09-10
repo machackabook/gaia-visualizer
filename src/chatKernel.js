@@ -1,5 +1,5 @@
 /**
- * Living chat-kernel contract — Stage 35.
+ * Living chat-kernel contract — Stage 36.
  * CHAT_KERNEL_SOURCE is the exact update(t) posted in the current session.
  * Runtime extras (not in that paste) stay in evaluateChatKernel:
  *   phi += 0.007 * toroidalWeave
@@ -8,9 +8,10 @@
  * Stage 33 streams compact theta/phi seeds on gaia:positions.
  * Stage 34 HMAC-signs kernel frames when token is set.
  * Stage 35 applies pendingKernel immediately after node construction.
+ * Stage 36 requires BroadcastChannel HMAC when ?token= is set.
  */
 
-export const STAGE = 35;
+export const STAGE = 36;
 export const CHAT_KERNEL_LERP = 0.05;
 export const CHAT_KERNEL_THETA_BASE = 0.01;
 export const CHAT_KERNEL_THETA_IDX = 0.002;

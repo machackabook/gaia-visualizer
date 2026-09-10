@@ -1,4 +1,6 @@
-/** Stage 34 portable keyed MAC — matches The-Hive kernelFrame.signKernelMac. */
+/** Stage 36 portable keyed MAC — matches The-Hive kernelFrame.signKernelMac. */
+export const KERNEL_STAGE = 36;
+
 export function hashKernelSource(src) {
   let h = 2166136261;
   const s = String(src || '');
@@ -13,7 +15,7 @@ export const KERNEL_SOURCE_HASH = 'beec41f1';
 
 export function kernelMacBasis(frame) {
   return [
-    frame?.stage ?? 35,
+    frame?.stage ?? KERNEL_STAGE,
     frame?.sourceHash ?? KERNEL_SOURCE_HASH,
     frame?.count ?? 0,
     Array.isArray(frame?.theta) ? frame.theta[0] ?? 0 : 0,
@@ -24,6 +26,15 @@ export function kernelMacBasis(frame) {
 export function signKernelMac(token, frame) {
   if (!token) return undefined;
   return hashKernelSource(`${token}:${kernelMacBasis(frame)}`);
+}
+
+export function attachKernelMac(token, frame) {
+  if (!frame || !token) return frame;
+  if (!frame.sourceHash) frame.sourceHash = KERNEL_SOURCE_HASH;
+  if (frame.stage == null) frame.stage = KERNEL_STAGE;
+  const hmac = signKernelMac(token, frame);
+  if (hmac) frame.hmac = hmac;
+  return frame;
 }
 
 export function verifyKernelMac(token, frame) {
