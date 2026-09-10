@@ -18,11 +18,13 @@ export class GaiaNode {
   }
 
   /**
-   * Chat kernel reference (living update(t) contract, stage 28):
+   * Chat kernel reference (living update(t) contract, stage 29):
    *   uniforms uTime / uGravity
    *   theta += (0.01 + idx * 0.002) * gravityPull
+   *   evaluate targetState.geometry (infinity | hamiltonian | triangular | torus)
+   * Runtime extras (stage 28, still live):
    *   phi   += 0.007 * toroidalWeave
-   *   evaluate targetState.geometry (infinity | hamiltonian | triangular | klein | torus)
+   *   klein remains first-class on evaluateGeometry / evaluateChatKernel
    *   mesh.position.lerp(target, 0.05) — never allocate inside the loop
    */
   update(t, state, targetState) {
