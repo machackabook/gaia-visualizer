@@ -8,6 +8,7 @@ import { createTransformFeedback } from './transformFeedback.js';
 import { KERNEL_GEOMETRY_ID } from './evaluateKernel.glsl.js';
 import { STAGE, chatKernelColor } from './chatKernel.js';
 import { fidelitySummary, sampleFidelity } from './fidelity.js';
+import { fidelityBit, refreshFidelity } from './fidelityHud.js';
 import {
   bindTfPosAttribute,
   markZeroCopyAttribute,
@@ -271,8 +272,10 @@ function frame() {
   const tokenGate = token ? 'token-on' : 'token-off';
   const snapBit = state.snapshotRestored ? 'snap-on' : 'snap-off';
   const kernelBit = state.kernelApplied ? 'kernel-on' : 'kernel-off';
+  const fid = refreshFidelity(state) || {};
+  const fidBit = fidelityBit(fid);
   hud.textContent = [
-    `GAIA VISUALIZER  band-137  stage-${STAGE}  nodes=${count}${useInstancing || useGpu ? ' instanced' : ''}${useGpu ? ' gpu-buf' : ''}${chatOnGpu ? ' tf' : ''}${skipCpuPath ? ' no-cpu-rb' : ''}${zeroCopy ? ' zerocopy' : ''} ${bindBit} ${tokenGate} ${snapBit} ${kernelBit}`,
+    `GAIA VISUALIZER  band-137  stage-${STAGE}  nodes=${count}${useInstancing || useGpu ? ' instanced' : ''}${useGpu ? ' gpu-buf' : ''}${chatOnGpu ? ' tf' : ''}${skipCpuPath ? ' no-cpu-rb' : ''}${zeroCopy ? ' zerocopy' : ''} ${bindBit} ${tokenGate} ${snapBit} ${kernelBit} ${fidBit}`,
     `pulse: ${pulseVal}  age=${pulseAge}s   ledger: topics=${led.topics || 0} votes=${led.votes || 0} bridges=${led.bridges || 0}   refuse=${state.unsignedRefused || 0}   hmacOk=${state.hmacOk || 0} hmacRefused=${state.hmacRefused || 0}   tfbind: ${bindReport ? (bindReport.bound ? 'OK' : 'MISS') : (chatOnGpu && zeroCopy ? 'pending' : 'n/a')}`,
     `geometry: ${targetState.geometry}   (1-9 / 0 / q w + e..l z x  l=cassini z=lorenz x=superformula)`,
     `gravityPull: ${state.gravityPull.toFixed(2)}   ([ / ])`,
