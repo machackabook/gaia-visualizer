@@ -1,10 +1,11 @@
 /**
- * Stage 30 — persist / restore theta+phi seeds so geometry continuity survives reload.
- * Applied from main.js on boot; compact seeds also ride Hive /api/health.
- * Key remains gaia:stage29:kernel for backward compatibility, plus stage30 alias.
+ * Stage 30/33 — persist / restore theta+phi seeds so geometry continuity survives reload.
+ * Applied from main.js on boot; compact seeds also ride Hive /api/health and gaia:positions.
+ * Keys remain gaia:stage29:kernel / gaia:stage30:kernel for backward compatibility.
  */
 export const KERNEL_SNAPSHOT_KEY = 'gaia:stage29:kernel';
 export const KERNEL_SNAPSHOT_KEY_30 = 'gaia:stage30:kernel';
+export const KERNEL_SNAPSHOT_KEY_33 = 'gaia:stage33:kernel';
 
 export function captureKernelSnapshot(nodes, extra = {}) {
   const theta = [];
@@ -14,7 +15,7 @@ export function captureKernelSnapshot(nodes, extra = {}) {
     phi[i] = nodes[i].phi ?? 0;
   }
   return {
-    stage: 30,
+    stage: extra.stage || 33,
     at: Date.now(),
     count: nodes.length,
     theta,
@@ -27,12 +28,17 @@ export function compactKernelSeeds(snapshot, cap = 64) {
   if (!snapshot || !Array.isArray(snapshot.theta) || !Array.isArray(snapshot.phi)) return null;
   const n = Math.min(cap, snapshot.theta.length, snapshot.phi.length);
   return {
-    stage: snapshot.stage || 30,
+    stage: snapshot.stage || 33,
     at: snapshot.at || Date.now(),
     count: n,
     theta: snapshot.theta.slice(0, n),
     phi: snapshot.phi.slice(0, n),
   };
+}
+
+export function compactSeedsFromNodes(nodes, cap = 64) {
+  if (!nodes?.length) return null;
+  return compactKernelSeeds(captureKernelSnapshot(nodes), cap);
 }
 
 export function saveKernelSnapshot(snapshot) {
@@ -41,6 +47,7 @@ export function saveKernelSnapshot(snapshot) {
     const raw = JSON.stringify(snapshot);
     localStorage.setItem(KERNEL_SNAPSHOT_KEY, raw);
     localStorage.setItem(KERNEL_SNAPSHOT_KEY_30, raw);
+    localStorage.setItem(KERNEL_SNAPSHOT_KEY_33, raw);
     return true;
   } catch {
     return false;
@@ -50,7 +57,10 @@ export function saveKernelSnapshot(snapshot) {
 export function loadKernelSnapshot() {
   if (typeof localStorage === 'undefined') return null;
   try {
-    const raw = localStorage.getItem(KERNEL_SNAPSHOT_KEY_30) || localStorage.getItem(KERNEL_SNAPSHOT_KEY);
+    const raw =
+      localStorage.getItem(KERNEL_SNAPSHOT_KEY_33) ||
+      localStorage.getItem(KERNEL_SNAPSHOT_KEY_30) ||
+      localStorage.getItem(KERNEL_SNAPSHOT_KEY);
     if (!raw) return null;
     const parsed = JSON.parse(raw);
     if (!parsed || !Array.isArray(parsed.theta) || !Array.isArray(parsed.phi)) return null;
