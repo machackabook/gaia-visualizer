@@ -1,17 +1,15 @@
 /**
- * Living chat-kernel contract — Stage 43.
+ * Living chat-kernel contract — Stage 44.
  * CHAT_KERNEL_SOURCE is the exact update(t) posted in the current session.
  * sourceHash remains beec41f1 (FNV-1a of CHAT_KERNEL_SOURCE).
  * Runtime extras (not in that paste) stay in evaluateChatKernel:
  *   phi += 0.007 * toroidalWeave
  *   klein manifold for hamiltonian↔klein blend
  * GaiaNode.update() implements this without allocating Vector3 inside the loop.
- * Stage 41: evaluateChatKernelInto writes into a reused out object.
- * Stage 42: advanceChatKernelAngles + fidelity hook when inbound sourceHash drifts.
- * Stage 43: HUD samples that hook on every inbound kernel frame.
+ * Stage 44: compact engram GET replay into pendingKernel.
  */
 
-export const STAGE = 43;
+export const STAGE = 44;
 export const CHAT_KERNEL_LERP = 0.05;
 export const CHAT_KERNEL_THETA_BASE = 0.01;
 export const CHAT_KERNEL_THETA_IDX = 0.002;

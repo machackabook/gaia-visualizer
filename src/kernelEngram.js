@@ -1,7 +1,7 @@
 /**
- * Stage 37–43 — compact kernel-seed engram.
- * Local persist + optional Hive POST /api/gaia/engram when ?relay= is set.
- * Stage 43: noteSourceHash stamps inboundHash so the HUD can sample fidelity.
+ * Stage 37–44 — compact kernel-seed engram.
+ * Local persist + Hive POST /api/gaia/engram when ?relay= is set.
+ * Stage 44: GET replay into pendingKernel.
  */
 import { KERNEL_SOURCE_HASH } from './kernelMac.js';
 
@@ -30,7 +30,7 @@ export function dumpKernelEngram(kernel, extra = {}) {
   if (!kernel || !Array.isArray(kernel.theta) || !Array.isArray(kernel.phi)) return null;
   const engram = {
     type: extra.type || 'gaia:engram',
-    stage: extra.stage || 43,
+    stage: extra.stage || 44,
     sourceHash: kernel.sourceHash || extra.sourceHash || EXPECTED_SOURCE_HASH,
     at: Date.now(),
     count: kernel.count ?? Math.min(kernel.theta.length, kernel.phi.length),
@@ -86,4 +86,37 @@ export function postKernelEngram(engram, { relay, token } = {}) {
     },
     body: JSON.stringify(engram),
   }).catch(() => {});
+}
+
+export async function fetchRemoteEngram({ relay, token } = {}) {
+  const url = engramUrlFromRelay(relay);
+  if (!url) return null;
+  try {
+    const res = await fetch(url, {
+      headers: token ? { 'x-gaia-token': token } : {},
+    });
+    if (!res.ok) return null;
+    const body = await res.json();
+    if (!body || !Array.isArray(body.theta) || !Array.isArray(body.phi) || !body.theta.length) return null;
+    return body;
+  } catch {
+    return null;
+  }
+}
+
+export function replayEngramIntoState(engram, state) {
+  if (!engram || !state) return false;
+  if (!Array.isArray(engram.theta) || !Array.isArray(engram.phi)) return false;
+  state.pendingKernel = {
+    stage: engram.stage || 44,
+    sourceHash: engram.sourceHash || EXPECTED_SOURCE_HASH,
+    at: engram.at || Date.now(),
+    count: engram.count ?? Math.min(engram.theta.length, engram.phi.length),
+    theta: engram.theta,
+    phi: engram.phi,
+    hmac: engram.hmac,
+  };
+  dumpKernelEngram(state.pendingKernel);
+  noteSourceHash(state.pendingKernel, state);
+  return true;
 }
