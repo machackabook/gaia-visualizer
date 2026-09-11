@@ -1,5 +1,5 @@
 /**
- * Living chat-kernel contract — Stage 48.
+ * Living chat-kernel contract — Stage 49.
  * CHAT_KERNEL_SESSION_SOURCE is the exact update(t) posted in the current session (hash beec41f1).
  * CHAT_KERNEL_SOURCE is the living runtime:
  *   phi += 0.007 * toroidalWeave
@@ -9,7 +9,7 @@
  * Runtime extras that stay in evaluateChatKernel: klein manifold for hamiltonian↔klein blend.
  */
 
-export const STAGE = 48;
+export const STAGE = 49;
 export const CHAT_KERNEL_LERP = 0.05;
 export const CHAT_KERNEL_THETA_BASE = 0.01;
 export const CHAT_KERNEL_THETA_IDX = 0.002;
@@ -18,6 +18,19 @@ export const CHAT_KERNEL_CHAT_GEOMETRIES = ['infinity', 'hamiltonian', 'triangul
 export const CHAT_KERNEL_GEOMETRIES = ['torus', 'infinity', 'hamiltonian', 'triangular', 'klein'];
 export const CHAT_KERNEL_SOURCE_HASH = '7cd81012';
 export const CHAT_KERNEL_SESSION_HASH = 'beec41f1';
+
+export function fnv1a32Hex(source) {
+  let h = 0x811c9dc5;
+  for (let i = 0; i < source.length; i++) {
+    h ^= source.charCodeAt(i);
+    h = Math.imul(h, 0x01000193);
+  }
+  return (h >>> 0).toString(16).padStart(8, '0');
+}
+
+export function hashChatKernelSource(source) {
+  return fnv1a32Hex(source);
+}
 
 export function advanceChatKernelAngles({ theta = 0, phi = 0, idx = 0, gravityPull = 1, toroidalWeave = 1 } = {}) {
   return {
@@ -141,7 +154,7 @@ export function confirmSessionKernel() {
     pinned: true,
     kleinInSession: false,
     geometries: [...CHAT_KERNEL_CHAT_GEOMETRIES],
-    note: 'Session paste 2026-09-10 21:07 CDT matches beec41f1. Klein stays runtime-only.',
+    note: 'Session paste 2026-09-10 22:02 CDT matches beec41f1. Klein stays runtime-only.',
   };
 }
 
