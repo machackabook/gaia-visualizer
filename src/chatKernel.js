@@ -1,5 +1,5 @@
 /**
- * Living chat-kernel contract — Stage 49.
+ * Living chat-kernel contract — Stage 51.
  * CHAT_KERNEL_SESSION_SOURCE is the exact update(t) posted in the current session (hash beec41f1).
  * CHAT_KERNEL_SOURCE is the living runtime:
  *   phi += 0.007 * toroidalWeave
@@ -7,9 +7,10 @@
  *   reused _kernelTarget Vector3 (no per-frame allocation)
  * sourceHash is FNV-1a of CHAT_KERNEL_SOURCE (7cd81012).
  * Runtime extras that stay in evaluateChatKernel: klein manifold for hamiltonian↔klein blend.
+ * Stage 51 next work: InstancedMesh + GPU attributes for >1k nodes. Klein still not in session switch.
  */
 
-export const STAGE = 49;
+export const STAGE = 51;
 export const CHAT_KERNEL_LERP = 0.05;
 export const CHAT_KERNEL_THETA_BASE = 0.01;
 export const CHAT_KERNEL_THETA_IDX = 0.002;
@@ -30,6 +31,17 @@ export function fnv1a32Hex(source) {
 
 export function hashChatKernelSource(source) {
   return fnv1a32Hex(source);
+}
+
+export function matchSessionPaste(source) {
+  const hash = fnv1a32Hex(source);
+  return {
+    stage: STAGE,
+    hash,
+    expected: CHAT_KERNEL_SESSION_HASH,
+    match: hash === CHAT_KERNEL_SESSION_HASH,
+    kleinInSession: false,
+  };
 }
 
 export function advanceChatKernelAngles({ theta = 0, phi = 0, idx = 0, gravityPull = 1, toroidalWeave = 1 } = {}) {
@@ -154,7 +166,7 @@ export function confirmSessionKernel() {
     pinned: true,
     kleinInSession: false,
     geometries: [...CHAT_KERNEL_CHAT_GEOMETRIES],
-    note: 'Session paste 2026-09-10 22:02 CDT matches beec41f1. Klein stays runtime-only.',
+    note: 'Session paste 2026-09-11 09:05 CDT matches beec41f1. Klein stays runtime-only. Stage 51 = InstancedMesh GPU attributes.',
   };
 }
 
