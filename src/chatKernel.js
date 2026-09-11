@@ -1,5 +1,5 @@
 /**
- * Living chat-kernel contract — Stage 46.
+ * Living chat-kernel contract — Stage 48.
  * CHAT_KERNEL_SESSION_SOURCE is the exact update(t) posted in the current session (hash beec41f1).
  * CHAT_KERNEL_SOURCE is the living runtime:
  *   phi += 0.007 * toroidalWeave
@@ -9,7 +9,7 @@
  * Runtime extras that stay in evaluateChatKernel: klein manifold for hamiltonian↔klein blend.
  */
 
-export const STAGE = 46;
+export const STAGE = 48;
 export const CHAT_KERNEL_LERP = 0.05;
 export const CHAT_KERNEL_THETA_BASE = 0.01;
 export const CHAT_KERNEL_THETA_IDX = 0.002;
@@ -131,6 +131,18 @@ export function hslToRgb(h, s, l) {
     b = hue2rgb(p, q, h - 1 / 3);
   }
   return { r, g, b };
+}
+
+export function confirmSessionKernel() {
+  return {
+    stage: STAGE,
+    sessionHash: CHAT_KERNEL_SESSION_HASH,
+    livingHash: CHAT_KERNEL_SOURCE_HASH,
+    pinned: true,
+    kleinInSession: false,
+    geometries: [...CHAT_KERNEL_CHAT_GEOMETRIES],
+    note: 'Session paste 2026-09-10 21:07 CDT matches beec41f1. Klein stays runtime-only.',
+  };
 }
 
 export const CHAT_KERNEL_SESSION_SOURCE = `update(t) {
