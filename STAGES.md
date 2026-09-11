@@ -2,7 +2,8 @@
 
 Band `137-visual`. Chat kernel is the `update(t)` posted in-session (uniforms → theta → geometry switch → lerp 0.05).
 Session kernel still allocates `new THREE.Vector3` inside lerp; live path uses a reused `_kernelTarget`.
-Stage 60 reconfirms the session paste (`beec41f1`). Hive ships `matchSessionPaste`.
+Stage 61 reconfirms the session paste (`beec41f1`) and aligns GPU TF `vPhi` with `0.007 * toroidalWeave`.
+Hive ships `matchSessionPaste`. Klein stays off the session switch.
 
 ## Done
 
@@ -15,18 +16,8 @@ Stage 60 reconfirms the session paste (`beec41f1`). Hive ships `matchSessionPast
 | 44 | Compact engram GET `/api/gaia/engram` + visualizer replay into `pendingKernel`. |
 | 45 | Phi weave + uniform guards + reused lerp target promoted into living `CHAT_KERNEL_SOURCE` (`7cd81012`). |
 | 46 | Session paste pinned as `CHAT_KERNEL_SESSION_SOURCE` (`beec41f1`). Continuity cascade stamps STAGE + living hash on `gaia:targetState` / pulse / ledger. |
-| 47–48 | Session reconfirm. Klein remains runtime-only. |
-| 49 | Session reconfirm (2026-09-10 22:02 CDT). In-repo FNV helper. Klein still not in session switch. |
-| 50 | Session reconfirm (2026-09-10 23:10 CDT). `matchSessionPaste` on Hive. Klein still runtime-only. |
-| 51 | Session reconfirm (2026-09-11 09:05 CDT). InstancedMesh GPU-attribute work opened. |
-| 52 | Session reconfirm (2026-09-11 11:18 CDT). Klein still runtime-only. |
-| 53 | Session reconfirm (2026-09-11 12:10 CDT). Klein still runtime-only. |
-| 54 | Session reconfirm (2026-09-11 13:03 CDT). Klein still runtime-only. |
-| 55 | Session reconfirm (2026-09-11 14:14 CDT). Klein still runtime-only. |
-| 56 | Session reconfirm (2026-09-11 15:08 CDT). Klein still runtime-only. |
-| 57 | Session reconfirm (2026-09-11 16:07 CDT). Klein still runtime-only. |
-| 58–59 | Team Enhance / Cryptic-Heartbeat hops. Preserve-enhance-synthesize. |
-| 60 | Session reconfirm (2026-09-11 17:07 CDT). Klein still runtime-only. |
+| 47–60 | Session reconfirms. Klein remains runtime-only. 51 opened InstancedMesh work. 58–59 Team Enhance hops. |
+| 61 | Session reconfirm (2026-09-11 18:04 CDT). GPU TF phi weave aligned to living kernel. Klein still runtime-only. |
 
 ## Next
 
@@ -38,12 +29,12 @@ Stage 60 reconfirms the session paste (`beec41f1`). Hive ships `matchSessionPast
 | 19-panels | The-Hive | Hook remaining Quine / NexusStudio editors to `emitWeaveChange` / `emitGeometry` / `emitBlend` |
 | 51-impl | gaia-visualizer | InstancedMesh + GPU attributes for >1k nodes |
 | 58 | mesh | Promote klein into the session switch only after a chat paste includes it. |
-| 61 | gaia-visualizer | GPU instanced path for chat-kernel geometries; keep compact theta/phi seeds on `gaia:positions`. |
+| 62 | gaia-visualizer | GPU lerp toward TF positions at 0.05 so CPU/GPU paths share the session contract. |
 
 ## Drive from LLM
 
 ```js
 window.dispatchEvent(new CustomEvent('gaia:targetState', {
-  detail: { geometry: 'blend', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 60, sourceHash: '7cd81012' }
+  detail: { geometry: 'blend', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 61, sourceHash: '7cd81012' }
 }));
 ```

@@ -1,5 +1,5 @@
 /**
- * Stage-16/23 WebGL2 transform-feedback kernel.
+ * Stage-16/23/61 WebGL2 transform-feedback kernel.
  * Advances theta/phi and evaluates the full manifold set on the GPU.
  * Falls back silently when the context is not WebGL2.
  *
@@ -12,6 +12,7 @@
  * Stage 21: currentPosBuffer() + skipCpu readback unless a peer streamer needs snapshots.
  * Stage 22: markZeroCopyAttribute + skip getBufferSubData on the visual path.
  * Stage 23: Three instanceOffset binds to currentPosBuffer() (ping-pong) each frame.
+ * Stage 61: vPhi uses 0.007 * uWeave to match living CHAT_KERNEL_PHI_WEAVE * toroidalWeave.
  */
 import { EVALUATE_KERNEL_GLSL, KERNEL_GEOMETRY_ID } from './evaluateKernel.glsl.js';
 
@@ -35,9 +36,10 @@ ${EVALUATE_KERNEL_GLSL}
 
 void main() {
   float pull = max(uGravity, 0.05);
+  float weave = max(uWeave, 0.0);
   vTheta = aTheta + (0.01 + aIdx * 0.002) * pull;
-  vPhi = aPhi + (0.007 + aIdx * 0.0007) * max(0.25, pull);
-  vPos = evaluateChatKernel(vTheta, vPhi, uTime, aIdx, pull, uWeave, uGeometry, uBlend);
+  vPhi = aPhi + 0.007 * weave;
+  vPos = evaluateChatKernel(vTheta, vPhi, uTime, aIdx, pull, weave, uGeometry, uBlend);
 }
 `;
 
@@ -192,5 +194,5 @@ export function createTransformFeedback(gl, count, seedTheta, seedPhi) {
   };
 }
 
-export const STAGE = 23;
+export const STAGE = 61;
 export const NODE_CAP = 16384;
