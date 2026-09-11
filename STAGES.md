@@ -2,7 +2,7 @@
 
 Band `137-visual`. Chat kernel is the `update(t)` posted in-session (uniforms → theta → geometry switch → lerp 0.05).
 Session kernel still allocates `new THREE.Vector3` inside lerp; live path uses a reused `_kernelTarget`.
-Stage 57 reconfirms the session paste (`beec41f1`). Hive ships `matchSessionPaste`.
+Stage 60 reconfirms the session paste (`beec41f1`). Hive ships `matchSessionPaste`.
 
 ## Done
 
@@ -25,6 +25,8 @@ Stage 57 reconfirms the session paste (`beec41f1`). Hive ships `matchSessionPast
 | 55 | Session reconfirm (2026-09-11 14:14 CDT). Klein still runtime-only. |
 | 56 | Session reconfirm (2026-09-11 15:08 CDT). Klein still runtime-only. |
 | 57 | Session reconfirm (2026-09-11 16:07 CDT). Klein still runtime-only. |
+| 58–59 | Team Enhance / Cryptic-Heartbeat hops. Preserve-enhance-synthesize. |
+| 60 | Session reconfirm (2026-09-11 17:07 CDT). Klein still runtime-only. |
 
 ## Next
 
@@ -36,11 +38,12 @@ Stage 57 reconfirms the session paste (`beec41f1`). Hive ships `matchSessionPast
 | 19-panels | The-Hive | Hook remaining Quine / NexusStudio editors to `emitWeaveChange` / `emitGeometry` / `emitBlend` |
 | 51-impl | gaia-visualizer | InstancedMesh + GPU attributes for >1k nodes |
 | 58 | mesh | Promote klein into the session switch only after a chat paste includes it. |
+| 61 | gaia-visualizer | GPU instanced path for chat-kernel geometries; keep compact theta/phi seeds on `gaia:positions`. |
 
 ## Drive from LLM
 
 ```js
 window.dispatchEvent(new CustomEvent('gaia:targetState', {
-  detail: { geometry: 'blend', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 57, sourceHash: '7cd81012' }
+  detail: { geometry: 'blend', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 60, sourceHash: '7cd81012' }
 }));
 ```

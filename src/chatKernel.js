@@ -1,5 +1,5 @@
 /**
- * Living chat-kernel contract — Stage 57.
+ * Living chat-kernel contract — Stage 60.
  * CHAT_KERNEL_SESSION_SOURCE is the exact update(t) posted in the current session (hash beec41f1).
  * CHAT_KERNEL_SOURCE is the living runtime:
  *   phi += 0.007 * toroidalWeave
@@ -7,10 +7,10 @@
  *   reused _kernelTarget Vector3 (no per-frame allocation)
  * sourceHash is FNV-1a of CHAT_KERNEL_SOURCE (7cd81012).
  * Runtime extras that stay in evaluateChatKernel: klein manifold for hamiltonian↔klein blend.
- * Stage 57: session paste reconfirmed 2026-09-11 16:07 CDT. Klein still not in session switch.
+ * Stage 60: session paste reconfirmed 2026-09-11 17:07 CDT. Klein still not in session switch.
  */
 
-export const STAGE = 57;
+export const STAGE = 60;
 export const CHAT_KERNEL_LERP = 0.05;
 export const CHAT_KERNEL_THETA_BASE = 0.01;
 export const CHAT_KERNEL_THETA_IDX = 0.002;
@@ -166,6 +166,6 @@ export function confirmSessionKernel() {
     pinned: true,
     kleinInSession: false,
     geometries: [...CHAT_KERNEL_CHAT_GEOMETRIES],
-    note: 'Session paste 2026-09-11 16:07 CDT matches beec41f1. Klein stays runtime-only. Stage 57 compile.',
+    note: 'Session paste 2026-09-11 17:07 CDT matches beec41f1. Klein stays runtime-only. Stage 60 compile.',
   };
 }
