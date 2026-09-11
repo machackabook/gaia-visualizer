@@ -2,7 +2,7 @@
 
 Band `137-visual`. Chat kernel is the `update(t)` posted in-session (uniforms → theta → geometry switch → lerp 0.05).
 Session kernel still allocates `new THREE.Vector3` inside lerp; live path uses a reused `_kernelTarget`.
-Stage 49 reconfirms the session paste (`beec41f1`) and ships `fnv1a32Hex` / `hashChatKernelSource`.
+Stage 50 reconfirms the session paste (`beec41f1`). Hive ships `matchSessionPaste`.
 
 ## Done
 
@@ -17,6 +17,7 @@ Stage 49 reconfirms the session paste (`beec41f1`) and ships `fnv1a32Hex` / `has
 | 46 | Session paste pinned as `CHAT_KERNEL_SESSION_SOURCE` (`beec41f1`). Continuity cascade stamps STAGE + living hash on `gaia:targetState` / pulse / ledger. |
 | 47–48 | Session reconfirm. Klein remains runtime-only. |
 | 49 | Session reconfirm (2026-09-10 22:02 CDT). In-repo FNV helper. Klein still not in session switch. |
+| 50 | Session reconfirm (2026-09-10 23:10 CDT). `matchSessionPaste` on Hive. Klein still runtime-only. |
 
 ## Next
 
@@ -26,14 +27,13 @@ Stage 49 reconfirms the session paste (`beec41f1`) and ships `fnv1a32Hex` / `has
 | 14 | The-Hive | Memory engrams into Drive folder `CRYPTIC-HEARTBEAT-NEXUS-ROOT` (consume `/api/gaia/engram`) |
 | 16-public | gaia-visualizer | hamiltoniansingularity.ai public band; default geometry `blend` (host default already wired) |
 | 19-panels | The-Hive | Hook remaining Quine / NexusStudio editors to `emitWeaveChange` / `emitGeometry` / `emitBlend` |
-| 42-enclave | ENCLAVE-ADAM-REUNITED | Auto-unpack watch on downloads / omdirectorytrew with env-check autocomplete |
-| 50 | gaia-visualizer | InstancedMesh + GPU attributes for >1k nodes |
-| 51 | mesh | Promote klein into the session switch only after a chat paste includes it. |
+| 51 | gaia-visualizer | InstancedMesh + GPU attributes for >1k nodes |
+| 52 | mesh | Promote klein into the session switch only after a chat paste includes it. |
 
 ## Drive from LLM
 
 ```js
 window.dispatchEvent(new CustomEvent('gaia:targetState', {
-  detail: { geometry: 'blend', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 49, sourceHash: '7cd81012' }
+  detail: { geometry: 'blend', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 50, sourceHash: '7cd81012' }
 }));
 ```
