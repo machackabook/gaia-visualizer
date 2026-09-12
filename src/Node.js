@@ -18,7 +18,7 @@ export class GaiaNode {
   }
 
   /**
-   * Chat kernel reference (living update(t) contract, stage 62):
+   * Chat kernel reference (living update(t) contract, stage 64):
    *   uniforms uTime / uGravity
    *   theta += (0.01 + idx * 0.002) * gravityPull
    *   evaluate targetState.geometry (infinity | hamiltonian | triangular | torus)
@@ -27,6 +27,7 @@ export class GaiaNode {
    *   klein remains first-class on evaluateGeometry / evaluateChatKernel
    *   mesh.position.lerp(target, 0.05) — never allocate inside the loop
    * Stage 62: GPU TF mix(aPrevPos, target, 0.05) matches this CPU lerp.
+   * Stage 64: GPU TF reseeds aPrevPos when geometry changes.
    */
   update(t, state, targetState) {
     if (this.material?.uniforms) {
