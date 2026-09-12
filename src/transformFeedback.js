@@ -1,5 +1,5 @@
 /**
- * Stage-16/23/63 WebGL2 transform-feedback kernel.
+ * Stage-16/23/64 WebGL2 transform-feedback kernel.
  * Advances theta/phi and evaluates the full manifold set on the GPU.
  * Falls back silently when the context is not WebGL2.
  *
@@ -15,6 +15,7 @@
  * Stage 61: vPhi uses 0.007 * uWeave to match living CHAT_KERNEL_PHI_WEAVE * toroidalWeave.
  * Stage 62: vPos = mix(aPrevPos, evaluateChatKernel(...), uLerp) with default 0.05.
  * Stage 63: aPrevPos is seeded from first CPU evaluateChatKernel so frame-0 does not bloom from origin.
+ * Stage 64: when geometry changes, re-seed aPrevPos from the new manifold so lerp does not drag through leftover positions.
  */
 import { EVALUATE_KERNEL_GLSL, KERNEL_GEOMETRY_ID } from './evaluateKernel.glsl.js';
 import { CHAT_KERNEL_LERP, seedPrevPositions } from './chatKernel.js';
@@ -157,6 +158,37 @@ export function createTransformFeedback(gl, count, seedTheta, seedPhi, seedPos) 
   const outPos = new Float32Array(count * 3);
   const outTheta = new Float32Array(count);
   const outPhi = new Float32Array(count);
+  let lastGeometry = null;
+
+  function uploadPosBoth(pos) {
+    gl.bindBuffer(gl.ARRAY_BUFFER, ping.pos);
+    gl.bufferSubData(gl.ARRAY_BUFFER, 0, pos);
+    gl.bindBuffer(gl.ARRAY_BUFFER, pong.pos);
+    gl.bufferSubData(gl.ARRAY_BUFFER, 0, pos);
+  }
+
+  function currentAngles() {
+    gl.bindBuffer(gl.ARRAY_BUFFER, read.theta);
+    gl.getBufferSubData(gl.ARRAY_BUFFER, 0, outTheta);
+    gl.bindBuffer(gl.ARRAY_BUFFER, read.phi);
+    gl.getBufferSubData(gl.ARRAY_BUFFER, 0, outPhi);
+    return { theta: outTheta, phi: outPhi };
+  }
+
+  function reseedGeometry(geometryName, t, toroidalWeave) {
+    const angles = currentAngles();
+    const pos = seedPrevPositions(
+      count,
+      angles.theta,
+      angles.phi,
+      t,
+      geometryName || 'torus',
+      toroidalWeave ?? 1,
+    );
+    uploadPosBoth(pos);
+    lastGeometry = geometryName || 'torus';
+    return pos;
+  }
 
   return {
     supported: true,
@@ -164,7 +196,13 @@ export function createTransformFeedback(gl, count, seedTheta, seedPhi, seedPos) 
     currentPosBuffer() {
       return read.pos;
     },
+    reseedGeometry,
     step(t, state, geometryName) {
+      if (lastGeometry == null) {
+        lastGeometry = geometryName || 'torus';
+      } else if (geometryName && geometryName !== lastGeometry) {
+        reseedGeometry(geometryName, t, state.toroidalWeave ?? 1);
+      }
       const geom = KERNEL_GEOMETRY_ID[geometryName] ?? 0;
       gl.useProgram(program);
       gl.uniform1f(loc.uTime, t);
@@ -210,5 +248,5 @@ export function createTransformFeedback(gl, count, seedTheta, seedPhi, seedPos) 
   };
 }
 
-export const STAGE = 63;
+export const STAGE = 64;
 export const NODE_CAP = 16384;
