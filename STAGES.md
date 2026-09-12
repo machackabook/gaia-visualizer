@@ -2,7 +2,7 @@
 
 Band `137-visual`. Chat kernel is the `update(t)` posted in-session (uniforms → theta → geometry switch → lerp 0.05).
 Session kernel still allocates `new THREE.Vector3` inside lerp; live path uses a reused `_kernelTarget`.
-Stage 66 reconfirms the session paste (`beec41f1`), adds CPU trefoil (GPU id 7), and scans paste case labels.
+Stage 73 reconfirms the session paste (`beec41f1`) from 2026-09-12 11:18 CDT. No new case labels.
 Hive ships `matchSessionPaste`. Klein / hopf / figure8 / trefoil stay off the session switch.
 
 ## Done
@@ -16,6 +16,8 @@ Hive ships `matchSessionPaste`. Klein / hopf / figure8 / trefoil stay off the se
 | 64 | Session paste 2026-09-11 21:12 CDT. Re-seed TF `aPrevPos` when geometry changes so lerp does not drag leftover manifolds. |
 | 65 | Session paste 2026-09-11 22:12 CDT. CPU evaluate now handles hopf + figure8 (GPU ids 13 / 8). |
 | 66 | Session paste 2026-09-11 23:03 CDT. CPU trefoil (GPU id 7). `matchSessionPaste` scans extras. |
+| 72 | Session paste 2026-09-12 10:02 CDT. Stage stamp only. |
+| 73 | Session paste 2026-09-12 11:18 CDT. Hash `beec41f1` still pinned. |
 
 ## Next
 
@@ -28,11 +30,12 @@ Hive ships `matchSessionPaste`. Klein / hopf / figure8 / trefoil stay off the se
 | 51-impl | gaia-visualizer | InstancedMesh + GPU attributes for >1k nodes |
 | 58 | mesh | Promote klein into the session switch only after a chat paste includes it. |
 | 66-session | mesh | Promote hopf/figure8/trefoil into the session switch only after a chat paste includes those cases. |
+| 73-gate | mesh | Keep session hash `beec41f1` pinned; do not rewrite the four-geometry paste. |
 
 ## Drive from LLM
 
 ```js
 window.dispatchEvent(new CustomEvent('gaia:targetState', {
-  detail: { geometry: 'blend', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 66, sourceHash: '7cd81012' }
+  detail: { geometry: 'blend', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 73, sourceHash: '7cd81012' }
 }));
 ```
