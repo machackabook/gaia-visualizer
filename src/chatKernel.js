@@ -1,5 +1,5 @@
 /**
- * Living chat-kernel contract — Stage 62.
+ * Living chat-kernel contract — Stage 63.
  * CHAT_KERNEL_SESSION_SOURCE is the exact update(t) posted in the current session (hash beec41f1).
  * CHAT_KERNEL_SOURCE is the living runtime:
  *   phi += 0.007 * toroidalWeave
@@ -7,11 +7,12 @@
  *   reused _kernelTarget Vector3 (no per-frame allocation)
  * sourceHash is FNV-1a of CHAT_KERNEL_SOURCE (7cd81012).
  * Runtime extras that stay in evaluateChatKernel: klein manifold for hamiltonian↔klein blend.
- * Stage 62: session paste reconfirmed 2026-09-11 19:00 CDT. Klein still not in session switch.
- * GPU TF now mixes previous position toward evaluateChatKernel at CHAT_KERNEL_LERP (0.05).
+ * Stage 63: session paste reconfirmed 2026-09-11 20:00 CDT. Klein still not in session switch.
+ * GPU TF mixes previous position toward evaluateChatKernel at CHAT_KERNEL_LERP (0.05).
+ * Stage 63 seeds aPrevPos from the first CPU evaluate so frame-0 does not bloom from the origin.
  */
 
-export const STAGE = 62;
+export const STAGE = 63;
 export const CHAT_KERNEL_LERP = 0.05;
 export const CHAT_KERNEL_THETA_BASE = 0.01;
 export const CHAT_KERNEL_THETA_IDX = 0.002;
@@ -129,6 +130,26 @@ export function evaluateChatKernelInto(out, {
   return out;
 }
 
+export function seedPrevPositions(count, seedTheta, seedPhi, t = 0, geometry = 'torus', toroidalWeave = 1) {
+  const pos = new Float32Array(count * 3);
+  const out = { x: 0, y: 0, z: 0, major: 0, minor: 0 };
+  for (let i = 0; i < count; i++) {
+    evaluateChatKernelInto(out, {
+      theta: seedTheta ? seedTheta[i] : 0,
+      phi: seedPhi ? seedPhi[i] : 0,
+      t,
+      idx: i,
+      toroidalWeave,
+      geometry,
+    });
+    const o = i * 3;
+    pos[o] = out.x;
+    pos[o + 1] = out.y;
+    pos[o + 2] = out.z;
+  }
+  return pos;
+}
+
 export function chatKernelColor(idx, t, gravityPull = 1) {
   const hue = ((idx / 24) + gravityPull * 0.08 + t * 0.01) % 1;
   const sat = 0.7;
@@ -167,6 +188,6 @@ export function confirmSessionKernel() {
     pinned: true,
     kleinInSession: false,
     geometries: [...CHAT_KERNEL_CHAT_GEOMETRIES],
-    note: 'Session paste 2026-09-11 19:00 CDT matches beec41f1. Klein stays runtime-only. Stage 62 GPU lerp 0.05.',
+    note: 'Session paste 2026-09-11 20:00 CDT matches beec41f1. Klein stays runtime-only. Stage 63 seeds TF aPrevPos from first CPU evaluate.',
   };
 }
