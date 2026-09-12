@@ -1,5 +1,5 @@
 /**
- * Stage-16/23/61 WebGL2 transform-feedback kernel.
+ * Stage-16/23/62 WebGL2 transform-feedback kernel.
  * Advances theta/phi and evaluates the full manifold set on the GPU.
  * Falls back silently when the context is not WebGL2.
  *
@@ -13,20 +13,24 @@
  * Stage 22: markZeroCopyAttribute + skip getBufferSubData on the visual path.
  * Stage 23: Three instanceOffset binds to currentPosBuffer() (ping-pong) each frame.
  * Stage 61: vPhi uses 0.007 * uWeave to match living CHAT_KERNEL_PHI_WEAVE * toroidalWeave.
+ * Stage 62: vPos = mix(aPrevPos, evaluateChatKernel(...), uLerp) with default 0.05.
  */
 import { EVALUATE_KERNEL_GLSL, KERNEL_GEOMETRY_ID } from './evaluateKernel.glsl.js';
+import { CHAT_KERNEL_LERP } from './chatKernel.js';
 
 const TF_VERT = /* glsl */ `#version 300 es
 precision highp float;
 layout(location = 0) in float aTheta;
 layout(location = 1) in float aPhi;
 layout(location = 2) in float aIdx;
+layout(location = 3) in vec3 aPrevPos;
 
 uniform float uTime;
 uniform float uGravity;
 uniform float uWeave;
 uniform int uGeometry;
 uniform float uBlend;
+uniform float uLerp;
 
 out float vTheta;
 out float vPhi;
@@ -39,7 +43,9 @@ void main() {
   float weave = max(uWeave, 0.0);
   vTheta = aTheta + (0.01 + aIdx * 0.002) * pull;
   vPhi = aPhi + 0.007 * weave;
-  vPos = evaluateChatKernel(vTheta, vPhi, uTime, aIdx, pull, weave, uGeometry, uBlend);
+  vec3 target = evaluateChatKernel(vTheta, vPhi, uTime, aIdx, pull, weave, uGeometry, uBlend);
+  float a = clamp(uLerp, 0.0, 1.0);
+  vPos = mix(aPrevPos, target, a);
 }
 `;
 
@@ -110,6 +116,9 @@ export function createTransformFeedback(gl, count, seedTheta, seedPhi) {
     gl.bindBuffer(gl.ARRAY_BUFFER, idxBuf);
     gl.enableVertexAttribArray(2);
     gl.vertexAttribPointer(2, 1, gl.FLOAT, false, 0, 0);
+    gl.bindBuffer(gl.ARRAY_BUFFER, src.pos);
+    gl.enableVertexAttribArray(3);
+    gl.vertexAttribPointer(3, 3, gl.FLOAT, false, 0, 0);
     gl.bindVertexArray(null);
     return vao;
   };
@@ -137,6 +146,7 @@ export function createTransformFeedback(gl, count, seedTheta, seedPhi) {
     uWeave: gl.getUniformLocation(program, 'uWeave'),
     uGeometry: gl.getUniformLocation(program, 'uGeometry'),
     uBlend: gl.getUniformLocation(program, 'uBlend'),
+    uLerp: gl.getUniformLocation(program, 'uLerp'),
   };
 
   const outPos = new Float32Array(count * 3);
@@ -157,6 +167,7 @@ export function createTransformFeedback(gl, count, seedTheta, seedPhi) {
       gl.uniform1f(loc.uWeave, state.toroidalWeave ?? 1);
       gl.uniform1i(loc.uGeometry, geom);
       gl.uniform1f(loc.uBlend, state.blend ?? 0.5);
+      gl.uniform1f(loc.uLerp, state.lerp ?? CHAT_KERNEL_LERP);
 
       const vao = read === ping ? vaoPing : vaoPong;
       const tfObj = read === ping ? tfPingToPong : tfPongToPing;
@@ -194,5 +205,5 @@ export function createTransformFeedback(gl, count, seedTheta, seedPhi) {
   };
 }
 
-export const STAGE = 61;
+export const STAGE = 62;
 export const NODE_CAP = 16384;
