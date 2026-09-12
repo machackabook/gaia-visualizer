@@ -1,5 +1,5 @@
 /**
- * Stage-16/23/64 WebGL2 transform-feedback kernel.
+ * Stage-16/23/65 WebGL2 transform-feedback kernel.
  * Advances theta/phi and evaluates the full manifold set on the GPU.
  * Falls back silently when the context is not WebGL2.
  *
@@ -16,6 +16,7 @@
  * Stage 62: vPos = mix(aPrevPos, evaluateChatKernel(...), uLerp) with default 0.05.
  * Stage 63: aPrevPos is seeded from first CPU evaluateChatKernel so frame-0 does not bloom from origin.
  * Stage 64: when geometry changes, re-seed aPrevPos from the new manifold so lerp does not drag through leftover positions.
+ * Stage 65: CPU hopf/figure8 extras now match this GPU kernel (ids 13 / 8).
  */
 import { EVALUATE_KERNEL_GLSL, KERNEL_GEOMETRY_ID } from './evaluateKernel.glsl.js';
 import { CHAT_KERNEL_LERP, seedPrevPositions } from './chatKernel.js';
@@ -248,5 +249,5 @@ export function createTransformFeedback(gl, count, seedTheta, seedPhi, seedPos) 
   };
 }
 
-export const STAGE = 64;
+export const STAGE = 65;
 export const NODE_CAP = 16384;
