@@ -18,7 +18,7 @@ export class GaiaNode {
   }
 
   /**
-   * Chat kernel reference (living update(t) contract, stage 60):
+   * Chat kernel reference (living update(t) contract, stage 62):
    *   uniforms uTime / uGravity
    *   theta += (0.01 + idx * 0.002) * gravityPull
    *   evaluate targetState.geometry (infinity | hamiltonian | triangular | torus)
@@ -26,7 +26,7 @@ export class GaiaNode {
    *   phi   += 0.007 * toroidalWeave
    *   klein remains first-class on evaluateGeometry / evaluateChatKernel
    *   mesh.position.lerp(target, 0.05) — never allocate inside the loop
-   * Stage 60: compact theta/phi seeds ride gaia:positions.
+   * Stage 62: GPU TF mix(aPrevPos, target, 0.05) matches this CPU lerp.
    */
   update(t, state, targetState) {
     if (this.material?.uniforms) {
