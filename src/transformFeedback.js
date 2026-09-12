@@ -1,5 +1,5 @@
 /**
- * Stage-16/23/62 WebGL2 transform-feedback kernel.
+ * Stage-16/23/63 WebGL2 transform-feedback kernel.
  * Advances theta/phi and evaluates the full manifold set on the GPU.
  * Falls back silently when the context is not WebGL2.
  *
@@ -14,9 +14,10 @@
  * Stage 23: Three instanceOffset binds to currentPosBuffer() (ping-pong) each frame.
  * Stage 61: vPhi uses 0.007 * uWeave to match living CHAT_KERNEL_PHI_WEAVE * toroidalWeave.
  * Stage 62: vPos = mix(aPrevPos, evaluateChatKernel(...), uLerp) with default 0.05.
+ * Stage 63: aPrevPos is seeded from first CPU evaluateChatKernel so frame-0 does not bloom from origin.
  */
 import { EVALUATE_KERNEL_GLSL, KERNEL_GEOMETRY_ID } from './evaluateKernel.glsl.js';
-import { CHAT_KERNEL_LERP } from './chatKernel.js';
+import { CHAT_KERNEL_LERP, seedPrevPositions } from './chatKernel.js';
 
 const TF_VERT = /* glsl */ `#version 300 es
 precision highp float;
@@ -67,7 +68,7 @@ function compile(gl, type, src) {
   return sh;
 }
 
-export function createTransformFeedback(gl, count, seedTheta, seedPhi) {
+export function createTransformFeedback(gl, count, seedTheta, seedPhi, seedPos) {
   if (!gl || typeof WebGL2RenderingContext === 'undefined' || !(gl instanceof WebGL2RenderingContext)) {
     return null;
   }
@@ -92,15 +93,19 @@ export function createTransformFeedback(gl, count, seedTheta, seedPhi) {
     return b;
   };
 
+  const initialPos = (seedPos && seedPos.length === count * 3)
+    ? seedPos
+    : seedPrevPositions(count, seedTheta, seedPhi, 0, 'torus', 1);
+
   const ping = {
     theta: makeBuf(seedTheta),
     phi: makeBuf(seedPhi),
-    pos: makeBuf(new Float32Array(count * 3)),
+    pos: makeBuf(initialPos),
   };
   const pong = {
     theta: makeBuf(new Float32Array(count)),
     phi: makeBuf(new Float32Array(count)),
-    pos: makeBuf(new Float32Array(count * 3)),
+    pos: makeBuf(new Float32Array(initialPos)),
   };
   const idxBuf = makeBuf(idx, gl.STATIC_DRAW);
 
@@ -205,5 +210,5 @@ export function createTransformFeedback(gl, count, seedTheta, seedPhi) {
   };
 }
 
-export const STAGE = 62;
+export const STAGE = 63;
 export const NODE_CAP = 16384;
