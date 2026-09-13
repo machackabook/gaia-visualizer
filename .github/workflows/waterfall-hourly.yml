@@ -1,0 +1,12 @@
+name: Gaia Visualizer Hourly
+on:
+  schedule:
+    - cron: "10 * * * *"
+  workflow_dispatch:
+jobs:
+  vis:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Pulse
+        run: echo "gaia-visualizer 137451921129154222 $(date -u +%FT%TZ)"
