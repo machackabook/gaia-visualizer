@@ -1,0 +1,20 @@
+name: Continuity Waterfall
+on:
+  schedule:
+    - cron: "10 * * * *"
+  workflow_dispatch:
+  pull_request:
+    types: [opened, synchronize, closed]
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  env-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          test -f README.md || echo "README missing — will catalog"
+          echo "NUMERAL=137451921129154222"
+          echo "${GITHUB_REPOSITORY} ${GITHUB_SHA}"
