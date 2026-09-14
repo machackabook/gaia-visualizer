@@ -8,7 +8,7 @@ Azazeleous Nexus visualizer. Mesh node after Cryptic-Heartbeat and The-Hive.
 - Default branch: `main`
 - Language: JavaScript
 - Numeral: `137451921129154222`
-- Stage: **106** — 2026-09-14T04:04:00Z
+- Stage: **107** — 2026-09-14T04:14:00Z
 
 ## Speedway
 
@@ -20,8 +20,10 @@ Hourly env-check at minute 10. Cascade files:
 - `scripts/env-check.sh`
 - `docs/WATERFALL.md`
 - `docs/SPEEDWAY.md`
+- `docs/SECURITY.md`
+- `docs/LEDGER-STAMP-107.md`
 
-A pull that lands on `main` is supposed to stamp a ledger entry and leave the next sibling ready. No null SHA. No empty README.
+A pull that lands on `main` stamps a ledger entry and leaves the next sibling ready. No null SHA. No empty README.
 
 ## Local
 
