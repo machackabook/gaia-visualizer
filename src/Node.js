@@ -18,7 +18,7 @@ export class GaiaNode {
   }
 
   /**
-   * Chat kernel reference (living update(t) contract, stage 106):
+   * Chat kernel reference (living update(t) contract, stage 107):
    *   uniforms uTime / uGravity / optional uWeave
    *   theta += (0.01 + idx * 0.002) * gravityPull
    *   evaluate targetState.geometry (infinity | hamiltonian | triangular | torus)
@@ -28,7 +28,7 @@ export class GaiaNode {
    *   mesh.position.lerp(target, 0.05) — never allocate inside the loop
    * Stage 62: GPU TF mix(aPrevPos, target, 0.05) matches this CPU lerp.
    * Stage 64: GPU TF reseeds aPrevPos when geometry changes.
-   * Stage 106: CPU path writes uWeave when the shader exposes it.
+   * Stage 107: CPU path writes uWeave when the shader exposes it.
    */
   update(t, state, targetState) {
     const pull = state.gravityPull ?? 1;
