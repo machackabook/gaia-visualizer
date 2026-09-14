@@ -18,8 +18,8 @@ export class GaiaNode {
   }
 
   /**
-   * Chat kernel reference (living update(t) contract, stage 105):
-   *   uniforms uTime / uGravity
+   * Chat kernel reference (living update(t) contract, stage 106):
+   *   uniforms uTime / uGravity / optional uWeave
    *   theta += (0.01 + idx * 0.002) * gravityPull
    *   evaluate targetState.geometry (infinity | hamiltonian | triangular | torus)
    * Runtime extras (still live, not in session switch):
@@ -28,20 +28,23 @@ export class GaiaNode {
    *   mesh.position.lerp(target, 0.05) — never allocate inside the loop
    * Stage 62: GPU TF mix(aPrevPos, target, 0.05) matches this CPU lerp.
    * Stage 64: GPU TF reseeds aPrevPos when geometry changes.
+   * Stage 106: CPU path writes uWeave when the shader exposes it.
    */
   update(t, state, targetState) {
+    const pull = state.gravityPull ?? 1;
+    const weave = state.toroidalWeave ?? 1;
+
     if (this.material?.uniforms) {
       if (this.material.uniforms.uTime) this.material.uniforms.uTime.value = t;
-      if (this.material.uniforms.uGravity) this.material.uniforms.uGravity.value = state.gravityPull;
+      if (this.material.uniforms.uGravity) this.material.uniforms.uGravity.value = pull;
+      if (this.material.uniforms.uWeave) this.material.uniforms.uWeave.value = weave;
       if (this.material.uniforms.uColor) {
-        const hue = (this.baseHue + state.gravityPull * 0.08 + t * 0.01) % 1;
-        _color.setHSL(hue, 0.7, 0.45 + Math.min(0.3, state.gravityPull * 0.08));
+        const hue = (this.baseHue + pull * 0.08 + t * 0.01) % 1;
+        _color.setHSL(hue, 0.7, 0.45 + Math.min(0.3, pull * 0.08));
         this.material.uniforms.uColor.value.lerp(_color, 0.08);
       }
     }
 
-    const pull = state.gravityPull ?? 1;
-    const weave = state.toroidalWeave ?? 1;
     this.theta += (CHAT_KERNEL_THETA_BASE + this.idx * CHAT_KERNEL_THETA_IDX) * pull;
     this.phi += CHAT_KERNEL_PHI_WEAVE * weave;
 
