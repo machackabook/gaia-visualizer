@@ -161,7 +161,7 @@ export function evaluateChatKernelInto(out, {
 
 export function seedPrevPositions(count, seedTheta, seedPhi, t = 0, geometry = 'torus', toroidalWeave = 1) {
   const pos = new Float32Array(count * 3);
-  const out = { x: 0, y: 0, y: 0, z: 0, major: 0, minor: 0 };
+  const out = { x: 0, y: 0, z: 0, major: 0, minor: 0 };
   for (let i = 0; i < count; i++) {
     evaluateChatKernelInto(out, {
       theta: seedTheta ? seedTheta[i] : 0,
