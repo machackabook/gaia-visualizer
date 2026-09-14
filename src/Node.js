@@ -18,7 +18,7 @@ export class GaiaNode {
   }
 
   /**
-   * Chat kernel reference (living update(t) contract, stage 104):
+   * Chat kernel reference (living update(t) contract, stage 105):
    *   uniforms uTime / uGravity
    *   theta += (0.01 + idx * 0.002) * gravityPull
    *   evaluate targetState.geometry (infinity | hamiltonian | triangular | torus)
