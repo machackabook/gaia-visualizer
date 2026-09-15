@@ -8,7 +8,7 @@ Azazeleous Nexus visualizer. Mesh node after The-Hive.
 - Default branch: `main`
 - Language: JavaScript
 - Numeral: `137451921129154222`
-- Stage: **117** — 2026-09-14T21:10Z
+- Stage: **125** — 2026-09-15T14:14Z
 - Team: Enhance / Continuity Engine / sSoS Operating
 - Upstream: The-Hive
 - Next hop: continuity-ledger-cycle
@@ -22,7 +22,7 @@ Hourly env-check. Cascade files:
 - `.github/workflows/hourly-enhance.yml`
 - `scripts/env-check.sh`
 - `docs/LEDGER-STAMP.md`
-- `docs/LEDGER-STAMP-117.md`
+- `docs/LEDGER-STAMP-125.md`
 
 A pull that lands on `main` stamps a ledger entry and leaves the next sibling ready. No null SHA. No empty README. Point-zero refused.
 
@@ -39,7 +39,7 @@ npm install
 1. ENCLAVE-ADAM-REUNITED
 2. Cryptic-Heartbeat
 3. The-Hive
-4. gaia-visualizer (stamped this hour — 117)
+4. gaia-visualizer (stamped this hour — 125)
 5. continuity-ledger-cycle
 
 ## Mesh siblings
