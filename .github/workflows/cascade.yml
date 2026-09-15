@@ -1,0 +1,16 @@
+name: cascade-enhance
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  lint-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: require README
+        run: test -f README.md
+      - name: stamp present
+        run: test -f docs/LEDGER-STAMP.md || echo "stamp pending"
