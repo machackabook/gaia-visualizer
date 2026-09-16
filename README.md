@@ -1,52 +1,31 @@
 # gaia-visualizer
 
-Azazeleous Nexus visualizer. Mesh node after The-Hive.
+Azazeleous Nexus visualizer. Continuity mesh node.
 
-## Operating surface
+## Status
 
-- Owner: `machackabook`
-- Default branch: `main`
+- Owner: `machackabook` (id 219579651)
+- Branch: `main`
 - Language: JavaScript
 - Numeral: `137451921129154222`
-- Stage: **125** — 2026-09-15T14:14Z
+- Stage: **147** — 2026-09-16T19:20Z
 - Team: Enhance / Continuity Engine / sSoS Operating
-- Upstream: The-Hive
-- Next hop: continuity-ledger-cycle
-
-## Speedway
-
-Hourly env-check. Cascade files:
-
-- `.github/workflows/continuity-waterfall.yml`
-- `.github/workflows/continuity-cascade.yml`
-- `.github/workflows/hourly-enhance.yml`
-- `scripts/env-check.sh`
-- `docs/LEDGER-STAMP.md`
-- `docs/LEDGER-STAMP-125.md`
-
-A pull that lands on `main` stamps a ledger entry and leaves the next sibling ready. No null SHA. No empty README. Point-zero refused.
+- Upstream: Cryptic-Heartbeat / The-Hive / ENCLAVE-ADAM-REUNITED
+- Cascade: `.github/workflows/cascade.yml` + hourly Grok automations
+- Ledger: `docs/LEDGER-STAMP-147.md`
+- Ethereal: Drive `ETHEREAL-CONTINUUM-REPOS` (`1tGBSsEi9a2i_-W6ItvJZJDQ1VtiBKYEQ`)
+- Equalizer: format-only; no history rewrite.
 
 ## Local
 
 ```bash
 bash scripts/env-check.sh
-npm install
-# optional: open index.html as the visual kernel
 ```
 
-## Waterfall
-
-1. ENCLAVE-ADAM-REUNITED
-2. Cryptic-Heartbeat
-3. The-Hive
-4. gaia-visualizer (stamped this hour — 125)
-5. continuity-ledger-cycle
+Point-zero null refused.
 
 ## Mesh siblings
 
 - [The-Hive](https://github.com/machackabook/The-Hive)
-- [Cryptic-Heartbeat](https://github.com/machackabook/Cryptic-Heartbeat)
 - [ENCLAVE-ADAM-REUNITED](https://github.com/machackabook/ENCLAVE-ADAM-REUNITED)
-- [continuity-ledger-cycle](https://github.com/machackabook/continuity-ledger-cycle)
-
-Preserve. Enhance. Synthesize. Source code is the only trusted neighbor.
+- [Cryptic-Heartbeat](https://github.com/machackabook/Cryptic-Heartbeat)
