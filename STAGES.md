@@ -1,8 +1,8 @@
 # Gaia visualizer + The-Hive — compiled stages
 
-Band `137-visual`. Chat kernel is the `update(t)` posted in-session (uniforms → theta → geometry switch → lerp 0.05).
+Band `141-visual`. Chat kernel is the `update(t)` posted in-session (uniforms → theta → geometry switch → lerp 0.05).
 Session kernel still allocates `new THREE.Vector3` inside lerp; live path uses a reused `_kernelTarget`.
-Stage 137 reconfirms the session paste (`beec41f1`) from 2026-09-15 22:06 CDT. No new case labels.
+Stage 141 reconfirms the session paste (`beec41f1`) from 2026-09-16 12:06 CDT. No new case labels.
 Hive ships `matchSessionPaste`. Klein / hopf / figure8 / trefoil stay off the session switch.
 
 ## Done
@@ -16,10 +16,11 @@ Hive ships `matchSessionPaste`. Klein / hopf / figure8 / trefoil stay off the se
 | 64 | Re-seed TF `aPrevPos` when geometry changes. |
 | 65 | CPU evaluate hopf + figure8 (GPU ids 13 / 8). |
 | 66 | CPU trefoil (GPU id 7). `matchSessionPaste` scans extras. |
-| 72–134 | Live chat + remembral stamps. Session pin `beec41f1` held. |
-| 135 | Live chat 2026-09-15 19:03 CDT. Same four-geometry paste. Session pin held. |
-| 136 | Live chat 2026-09-15 21:16 CDT. Same four-geometry paste. Session pin held. |
-| 137 | Live chat 2026-09-15 22:06 CDT. Same four-geometry paste. Session pin held. |
+| 72–137 | Live chat + remembral stamps. Session pin `beec41f1` held. |
+| 138 | Ledger stamp continuity. Session pin held. |
+| 139 | Cryptic-Heartbeat NEXT_STAGES (2026-09-16 09:27 CDT). |
+| 140 | Living kernel comment + Node.js contract notes. |
+| 141 | Live chat 2026-09-16 12:06 CDT. Same four-geometry paste. Session pin held. |
 
 ## Next
 
@@ -33,12 +34,12 @@ Hive ships `matchSessionPaste`. Klein / hopf / figure8 / trefoil stay off the se
 | 51-impl | gaia-visualizer | InstancedMesh + GPU attributes for >1k nodes |
 | 58 | mesh | Promote klein into the session switch only after a chat paste includes it. |
 | 66-session | mesh | Promote hopf/figure8/trefoil into the session switch only after a chat paste includes those cases. |
-| 137-gate | mesh | Keep session hash `beec41f1` pinned; do not rewrite the four-geometry paste. |
+| 141-gate | mesh | Keep session hash `beec41f1` pinned; do not rewrite the four-geometry paste. |
 
 ## Drive from LLM
 
 ```js
 window.dispatchEvent(new CustomEvent('gaia:targetState', {
-  detail: { geometry: 'blend', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 137, sourceHash: '7cd81012' }
+  detail: { geometry: 'blend', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 141, sourceHash: '7cd81012' }
 }));
 ```
