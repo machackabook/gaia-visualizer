@@ -1,13 +1,13 @@
 /**
- * Living chat-kernel contract — Stage 136.
+ * Living chat-kernel contract — Stage 137.
  * CHAT_KERNEL_SESSION_SOURCE is the exact update(t) posted in the current session (hash beec41f1).
  * sourceHash is FNV-1a of CHAT_KERNEL_SOURCE (7cd81012).
  * Runtime extras: klein, hopf, figure8, trefoil.
- * Stage 136: session paste reconfirmed 2026-09-15 21:16 CDT. matchSessionPaste scans case labels.
+ * Stage 137: session paste reconfirmed 2026-09-15 22:06 CDT. matchSessionPaste scans case labels.
  * Klein / hopf / figure8 / trefoil still not in the session switch.
  */
 
-export const STAGE = 136;
+export const STAGE = 137;
 export const CHAT_KERNEL_LERP = 0.05;
 export const CHAT_KERNEL_THETA_BASE = 0.01;
 export const CHAT_KERNEL_THETA_IDX = 0.002;
@@ -221,6 +221,6 @@ export function confirmSessionKernel() {
     trefoilInSession: false,
     geometries: [...CHAT_KERNEL_CHAT_GEOMETRIES],
     runtimeExtras: ['klein', 'hopf', 'figure8', 'trefoil'],
-    note: 'Session paste 2026-09-15 21:16 CDT matches beec41f1. Klein/hopf/figure8/trefoil stay runtime-only. Stage 136 CPU evaluate matches GPU ids 12/13/8/7.',
+    note: 'Session paste 2026-09-15 22:06 CDT matches beec41f1. Klein/hopf/figure8/trefoil stay runtime-only. Stage 137 CPU evaluate matches GPU ids 12/13/8/7.',
   };
 }
