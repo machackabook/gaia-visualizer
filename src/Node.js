@@ -18,7 +18,7 @@ export class GaiaNode {
   }
 
   /**
-   * Chat kernel reference (living update(t) contract, stage 159):
+   * Chat kernel reference (living update(t) contract, stage 160):
    *   uniforms uTime / uGravity / optional uWeave
    *   theta += (0.01 + idx * 0.002) * gravityPull
    *   evaluate targetState.geometry (infinity | hamiltonian | triangular | torus)
@@ -30,6 +30,7 @@ export class GaiaNode {
    * Stage 64: GPU TF reseeds aPrevPos when geometry changes.
    * Stage 107+: CPU path writes uWeave when the shader exposes it.
    * Stage 154+: evaluateChatKernelInto zeros non-finite x/y/z.
+   * Stage 160: GPU/TF auto path at count > 1024.
    */
   update(t, state, targetState) {
     const pull = state.gravityPull ?? 1;
