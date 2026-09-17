@@ -1,27 +1,30 @@
 # gaia-visualizer
 
 Azazeleous Nexus visualizer. Continuity mesh node. Operating sits in the middle.
+Vite + Three.js canvas for Gaia / Nexus stages. Source-only neighbor. No cookie trust.
 
 ## Status
 
 - Owner: `machackabook` (id 219579651)
 - Branch: `main`
-- Language: JavaScript
+- Language: JavaScript (Vite 5 / three ^0.169)
 - Numeral: `137451921129154222`
-- Stage: **156** — 2026-09-17T02:04Z
+- Stage: **157** — 2026-09-17T23:08Z (Team Enhance / Continuity waterfall)
 - Team: Enhance / Continuity Engine / sSoS Operating
-- Upstream: Cryptic-Heartbeat (155) / The-Hive / ENCLAVE-ADAM-REUNITED
-- Next hop: The-Hive then continuity-ledger-cycle
-- Cascade: `.github/workflows/cascade.yml` + hourly Grok automations
-- Ledger: `docs/LEDGER-STAMP.md` + `docs/LEDGER-STAMP-156.md`
-- Ethereal: Drive `ETHEREAL-CONTINUUM-REPOS` (`1tGBSsEi9a2i_-W6ItvJZJDQ1VtiBKYEQ`)
-- Equalizer: format-only; no history rewrite.
-- Security: no secrets in tree; CASCADE_TOKEN stays in GitHub Secrets if present.
+- Prior hop class: ENCLAVE-ADAM-REUNITED, Cryptic-Heartbeat, The-Hive, continuity-ledger-cycle (stamped ~22:12Z)
+- This hop: gaia-visualizer (first *other* recently-updated surface after the four)
+- Next hop: nexus-repo-sync (then TheLedgerIndex / Project-NexusCryptic)
+- Cascade: `.github/workflows/cascade.yml` (healthy; fail-closed README + stamp)
+- Ledger: `docs/LEDGER-STAMP.md` (current) + dated LEDGER / HOP files
+- Equalizer: append-only stamps; no history rewrite; no secret material in tree
+- Security: CASCADE_TOKEN stays in GitHub Secrets if present. Never echo tokens.
 
 ## Local
 
 ```bash
 bash scripts/env-check.sh
+npm install
+npm run dev
 ```
 
 Fails closed on empty SHA, missing README, or point-zero null.
@@ -30,9 +33,10 @@ Fails closed on empty SHA, missing README, or point-zero null.
 
 1. ENCLAVE-ADAM-REUNITED
 2. Cryptic-Heartbeat
-3. gaia-visualizer (this hop — stage 156)
-4. The-Hive
-5. other `user:machackabook` surfaces updated recently
+3. The-Hive
+4. continuity-ledger-cycle
+5. gaia-visualizer (this hop — stage 157)
+6. other `user:machackabook` surfaces updated recently
 
 A pull on `main` should leave a ledger stamp. Sibling hops require an operator-injected cascade secret. Do not clone extra hourly YAML.
 

@@ -11,6 +11,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: require README
-        run: test -f README.md
+        run: test -f README.md && test -s README.md
       - name: stamp present
-        run: test -f docs/LEDGER-STAMP.md || echo "stamp pending"
+        run: test -f docs/LEDGER-STAMP.md && test -s docs/LEDGER-STAMP.md
+      - name: no point-zero null
+        run: |
+          test -n "${GITHUB_SHA}"
+          grep -q "137451921129154222" README.md
+      - name: cascade file self-check
+        run: test -f .github/workflows/cascade.yml
