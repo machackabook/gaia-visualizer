@@ -3,9 +3,10 @@
  * CPU evaluateGeometry remains the reference mapping.
  * Positions + theta/phi live in packed Float32Arrays that feed
  * InstancedMesh matrices and the stage-12 transform-feedback kernel.
- * Node cap raised to 16384 when ?tf=1 and WebGL2 is available.
+ * Node cap 16384. Stage 160: main.js auto-enables gpu/tf when count > 1024.
  */
 export const NODE_CAP = 16384;
+export const GPU_AUTO_THRESHOLD = 1024;
 
 export function createGpuBuffers(count) {
   const positions = new Float32Array(count * 3);
