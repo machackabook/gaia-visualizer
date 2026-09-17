@@ -1,11 +1,4 @@
-# Continuity ledger stamp
+# LEDGER STAMP (current)
 
-- Engine: Team Enhance / sSoS Operating
-- Numeral: 137451921129154222
-- Repo: gaia-visualizer
-- Cycle: 2026-09-15T16:07Z
-- Posture: preserve → enhance → synthesize
-- Null at point zero: refused
-- Next waterfall: The-Hive
-
-This stamp is append-only documentation. No secrets. No credentials.
+Stage **156** on gaia-visualizer. See `docs/LEDGER-STAMP-156.md`.
+Numeral `137451921129154222`.
