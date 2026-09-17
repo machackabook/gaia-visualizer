@@ -1,8 +1,8 @@
 # Gaia visualizer + The-Hive — compiled stages
 
-Band `153-visual`. Chat kernel is the `update(t)` posted in-session (uniforms → theta → geometry switch → lerp 0.05).
+Band `156-visual`. Chat kernel is the `update(t)` posted in-session (uniforms → theta → geometry switch → lerp 0.05).
 Session kernel still allocates `new THREE.Vector3` inside lerp; live path uses a reused `_kernelTarget`.
-Stage 153 reconfirms the session paste (`beec41f1`) from 2026-09-17 09:33 CDT. No new case labels.
+Stage 156 reconfirms the session paste (`beec41f1`) from 2026-09-17 12:13 CDT. No new case labels.
 Hive ships `matchSessionPaste`. Klein / hopf / figure8 / trefoil stay off the session switch.
 
 ## Done
@@ -16,23 +16,10 @@ Hive ships `matchSessionPaste`. Klein / hopf / figure8 / trefoil stay off the se
 | 64 | Re-seed TF `aPrevPos` when geometry changes. |
 | 65 | CPU evaluate hopf + figure8 (GPU ids 13 / 8). |
 | 66 | CPU trefoil (GPU id 7). `matchSessionPaste` scans extras. |
-| 72–137 | Live chat + remembral stamps. Session pin `beec41f1` held. |
-| 138 | Ledger stamp continuity. Session pin held. |
-| 139 | Cryptic-Heartbeat NEXT_STAGES (2026-09-16 09:27 CDT). |
-| 140 | Living kernel comment + Node.js contract notes. |
-| 141 | Live chat 2026-09-16 12:06 CDT. Same four-geometry paste. Session pin held. |
-| 142 | Live chat 2026-09-16 13:19 CDT. Same four-geometry paste. Session pin held. |
-| 143 | Live chat 2026-09-16 14:03 CDT. Same four-geometry paste. Session pin held. |
-| 144 | Live chat 2026-09-16 15:12 CDT. Same four-geometry paste. Session pin held. |
-| 145 | Live chat 2026-09-16 16:09 CDT. Same four-geometry paste. Session pin held. |
-| 146 | Live chat 2026-09-16 17:18 CDT. Same four-geometry paste. Session pin held. |
-| 147 | Live chat 2026-09-16 18:11 CDT. Same four-geometry paste. Session pin held. |
-| 148 | Live chat 2026-09-16 19:16 CDT. Same four-geometry paste. Session pin held. |
-| 149 | Live chat 2026-09-16 20:20 CDT. Same four-geometry paste. Finite guards. Session pin held. |
-| 150 | Live chat 2026-09-16 21:13 CDT. Same four-geometry paste. STAGE constants synced to 150. |
-| 151 | Live chat 2026-09-16 22:12 CDT. Same four-geometry paste. STAGE constants synced to 151. |
-| 152 | Live chat 2026-09-16 23:19 CDT. Same four-geometry paste. STAGE constants synced to 152. |
-| 153 | Live chat 2026-09-17 09:33 CDT. Same four-geometry paste. STAGE constants synced to 153. |
+| 72–153 | Live chat + remembral stamps. Session pin `beec41f1` held. |
+| 154 | Live chat 2026-09-17 10:09 CDT. Same four-geometry paste. Session pin held. |
+| 155 | Live chat 2026-09-17 11:22 CDT. Same four-geometry paste. Session pin held. |
+| 156 | Live chat 2026-09-17 12:13 CDT. Same four-geometry paste. STAGE constants synced to 156. |
 
 ## Next
 
@@ -46,12 +33,12 @@ Hive ships `matchSessionPaste`. Klein / hopf / figure8 / trefoil stay off the se
 | 51-impl | gaia-visualizer | InstancedMesh + GPU attributes for >1k nodes |
 | 58 | mesh | Promote klein into the session switch only after a chat paste includes it. |
 | 66-session | mesh | Promote hopf/figure8/trefoil into the session switch only after a chat paste includes those cases. |
-| 153-gate | mesh | Keep session hash `beec41f1` pinned; do not rewrite the four-geometry paste. |
+| 156-gate | mesh | Keep session hash `beec41f1` pinned; do not rewrite the four-geometry paste. |
 
 ## Drive from LLM
 
 ```js
 window.dispatchEvent(new CustomEvent('gaia:targetState', {
-  detail: { geometry: 'blend', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 153, sourceHash: '7cd81012' }
+  detail: { geometry: 'blend', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 156, sourceHash: '7cd81012' }
 }));
 ```
