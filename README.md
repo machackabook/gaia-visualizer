@@ -9,13 +9,12 @@ Vite + Three.js canvas for Gaia / Nexus stages. Source-only neighbor. No cookie 
 - Branch: `main`
 - Language: JavaScript (Vite 5 / three ^0.169)
 - Numeral: `137451921129154222`
-- Stage: **170** — 2026-09-17T23:11Z (18:11 CDT) Team Enhance / Continuity waterfall
+- Stage: **171** — 2026-09-18T01:08Z adjacent (primary hop this cycle: The-Hive)
 - Team: Enhance / Continuity Engine / sSoS Operating
-- Prior: stage 157 at 23:08Z; ENCLAVE 168; The-Hive 169; continuity-ledger-cycle 165
-- This hop: gaia-visualizer (live enhance from operator prompt)
-- Next hop: nexus-repo-sync then Cryptic-Heartbeat wrap
+- Prior: stage 170 at 23:11Z; The-Hive 171 this hour
+- Next hop: nexus-repo-sync then ENCLAVE wrap
 - Cascade: keep existing `.github/workflows/cascade.yml` healthy. Do not clone more hourly YAML.
-- Ledger: `docs/LEDGER-STAMP.md` + `docs/LEDGER-STAMP-170.md`
+- Ledger: `docs/LEDGER-STAMP.md` + `docs/LEDGER-STAMP-171.md`
 - Equalizer: append-only stamps; no history rewrite; no secret material in tree
 - Security: CASCADE_TOKEN stays in GitHub Secrets if present. Never echo tokens.
 - Drive: GitHub is the versioned singularity. Do not spawn duplicate continuum folders.
@@ -34,10 +33,10 @@ Fails closed on empty SHA, missing README, or point-zero null.
 
 1. ENCLAVE-ADAM-REUNITED
 2. Cryptic-Heartbeat
-3. The-Hive
+3. The-Hive (primary this hour — stage 171)
 4. continuity-ledger-cycle
-5. gaia-visualizer (this hop — stage 170)
-6. other `user:machackabook` surfaces updated recently
+5. gaia-visualizer (adjacent stamp 171)
+6. nexus-repo-sync / other `user:machackabook` surfaces
 
 A pull on `main` should leave a ledger stamp. Sibling hops require an operator-injected cascade secret. That is skepticism, not a missing feature.
 
