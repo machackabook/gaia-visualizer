@@ -1,9 +1,9 @@
-# LEDGER STAMP — live pointer
+# LEDGER-STAMP (canonical)
 
-Stage: **179**
-Repo: gaia-visualizer
-UTC: 2026-09-19T01:07Z
-CDT: 2026-09-18 20:07
+Current stage: **187**
+UTC: 2026-09-19T03:12Z
 Numeral: 137451921129154222
-Session: beec41f1
-Living: 7cd81012
+Hop file: docs/HOP-187.md
+Prior: 179 @ 2026-09-19T01:07Z
+
+Append-only. Equalizer formats only. History is not rewritten.
