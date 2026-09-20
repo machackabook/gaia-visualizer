@@ -10,13 +10,13 @@ Team Enhance hops one repo per hour. Equalizer formats only. No history rewrite.
 - Branch: `main`
 - Language: JavaScript (Vite 5 / three ^0.169)
 - Numeral: `137451921129154222`
-- Stage: **203** — 2026-09-20T01:13Z (2026-09-19 20:13 CDT)
+- Stage: **204** — 2026-09-20T03:14Z (2026-09-19 22:14 CDT)
 - Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
-- Prior hop: gaia-visualizer README 202 @ 01:01Z with stale canonical stamp 187; continuity-ledger-cycle 201 @ 00:08Z; The-Hive updated ~01:02Z
-- This hop: catch-up append-only ledger stamp 203; README quality aligned to stamp; cascade.yml left intact; no extra hourly YAML; no secrets written
-- Next hour: ENCLAVE-ADAM-REUNITED (waterfall wrap) or sovereign-ai-factory-ai-polyglot / nexus-repo-sync
+- Prior hop: gaia-visualizer stamp 203 @ 01:13Z; The-Hive kernel 203
+- This hop: session `update(t)` reconfirmed (beec41f1 / 7cd81012); STAGE constant 204; append-only ledger stamp 204; cascade.yml left intact; no secrets written
+- Next hour: ENCLAVE-ADAM-REUNITED wrap or Cryptic-Heartbeat
 - Cascade: keep existing `.github/workflows/cascade.yml` healthy. Do not multiply hourly YAML.
-- Ledger: `docs/LEDGER-STAMP.md` (canonical 203) + `docs/LEDGER-STAMP-203.md` + `docs/HOP-203.md`
+- Ledger: `docs/LEDGER-STAMP.md` (canonical 204) + `docs/LEDGER-STAMP-204.md` + `docs/HOP-204.md` + `docs/STAGE204.md`
 - Drive mesh: GitHub remains the versioned singularity. Existing ethereal continuum folder is the mirror, not a second source of truth. Do not spawn duplicate continuum folders.
 - Equalizer: append-only stamps; no history rewrite; no secret material in tree
 - Security: CASCADE_TOKEN stays in GitHub Secrets if present. Never echo tokens. Cross-repo push-on-pull stays closed without the secret.
@@ -46,11 +46,11 @@ Pull on a sibling should dispatch enhance → stamp → next target.
 
 ## Waterfall (one repo per enhance hop)
 
-1. ENCLAVE-ADAM-REUNITED
+1. ENCLAVE-ADAM-REUNITED  ← next wrap
 2. Cryptic-Heartbeat
 3. The-Hive
-4. continuity-ledger-cycle (201)
-5. gaia-visualizer — **203 this hop** (canonical stamp caught up from 187)
+4. continuity-ledger-cycle
+5. gaia-visualizer — **204 this hop**
 6. sovereign-ai-factory-ai-polyglot / nexus-repo-sync
 7. TheLedgerIndex / other recently updated surfaces
 
