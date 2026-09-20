@@ -10,17 +10,18 @@ Team Enhance hops one repo per hour. Equalizer formats only. No history rewrite.
 - Branch: `main`
 - Language: JavaScript (Vite 5 / three ^0.169)
 - Numeral: `137451921129154222`
-- Stage: **210** — 2026-09-20T14:20Z (2026-09-20 09:20 CDT)
+- Stage: **220** — 2026-09-20T23:22Z (2026-09-20 18:22 CDT)
 - Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
-- Compounding tier: **T4 / 81%**
-- Prior mesh: continuity-ledger-cycle 209 @ 14:11Z; The-Hive 208 @ 13:35Z; Cryptic-Heartbeat 207 @ 12:36Z; ENCLAVE-ADAM-REUNITED 206 @ 11:03Z; this surface last stamped 204 @ 03:14Z
-- This hop: waterfall slot after private ledger wrap; README quality compound; append-only ledger stamp 210; cascade.yml left intact and healthy; no extra hourly YAML; no secrets written
-- Next hour: nexus-repo-sync then sovereign-ai-factory-ai-polyglot then continuity-mesh-speedway
+- Compounding tier: **T4 / 83%**
+- Kernel: session `beec41f1` (infinity | hamiltonian | triangular | torus); living `7cd81012`
+- Prior mesh: Stage 218 constants; The-Hive noted 219; live chat re-paste 18:22 CDT
+- This hop: session pin held; STAGE=220; HOP-220 + ledger stamp; no extras promoted; no secrets written
+- Next: instanceOffset 4k–16k; authenticated ledger_pulse; HeartbeatScan on The-Hive
 - Cascade: keep existing `.github/workflows/cascade.yml` healthy. Do not multiply hourly YAML.
-- Ledger: `docs/LEDGER-STAMP.md` + `docs/LEDGER-STAMP-210.md` + `docs/HOP-210.md`
-- Drive mesh: GitHub remains the versioned singularity. Existing ethereal continuum folder is the mirror, not a second source of truth. Do not spawn duplicate continuum folders.
+- Ledger: `docs/LEDGER-2026-09-20-1822.md` + `docs/HOP-220.md`
+- Drive mesh: GitHub remains the versioned singularity. Existing ethereal continuum folder is the mirror, not a second source of truth.
 - Equalizer: append-only stamps; no history rewrite; no secret material in tree
-- Security: CASCADE_TOKEN stays in GitHub Secrets if present. Never echo tokens. Cross-repo push-on-pull stays closed without the secret.
+- Security: CASCADE_TOKEN stays in GitHub Secrets if present. Never echo tokens.
 
 ## Compounding growth
 
@@ -36,7 +37,7 @@ Each hop compounds prior quality. Tiers climb toward 100% perfect. Fail closed o
 | T5 | 95–99% | Near-perfect; only unknown sought |
 | T6 | 100% | Perfect — refused as static; always seek next unknown |
 
-Current score for this surface: **81% (T4)**. Next hop compounds +2–5% when checks pass.
+Current score for this surface: **83% (T4)**. Next hop compounds +2–5% when checks pass.
 
 ## Local
 
@@ -64,11 +65,11 @@ Cross-repo push on pull stays closed until the operator injects `CASCADE_TOKEN`.
 
 ## Waterfall (one repo per enhance hop)
 
-1. ENCLAVE-ADAM-REUNITED (206 @ 11:03Z)
-2. Cryptic-Heartbeat (207 @ 12:36Z)
-3. The-Hive (208 @ 13:35Z)
-4. continuity-ledger-cycle (209 @ 14:11Z)
-5. gaia-visualizer — **210 this hop**
+1. ENCLAVE-ADAM-REUNITED
+2. Cryptic-Heartbeat
+3. The-Hive
+4. continuity-ledger-cycle
+5. gaia-visualizer — **220 this hop**
 6. nexus-repo-sync  ← next hour
 7. sovereign-ai-factory-ai-polyglot / continuity-mesh-speedway
 
