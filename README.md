@@ -10,14 +10,14 @@ Team Enhance hops one repo per hour. Equalizer formats only. No history rewrite.
 - Branch: `main`
 - Language: JavaScript (Vite 5 / three ^0.169)
 - Numeral: `137451921129154222`
-- Stage: **196** — 2026-09-19T20:20Z (2026-09-19 15:20 CDT)
+- Stage: **202** — 2026-09-20T01:01Z (2026-09-19 20:01 CDT)
 - Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
-- Prior hop: gaia-visualizer 193 @ 18:18Z; nexus-repo-sync 190 @ 12:23Z
-- This hop: gaia-visualizer live enhance from operator push-and-update directive. Cascade YAML not multiplied.
-- Next hour: sovereign-ai-factory-ai-polyglot, then TheLedgerIndex / other recently updated `user:machackabook` surfaces
+- Prior hop: gaia-visualizer 196 @ 20:20Z; The-Hive 200 @ 21:17Z; Cryptic-Heartbeat 200 @ 23:20Z; continuity-ledger-cycle 201 @ 00:08Z
+- This hop: live enhance from operator push-and-update directive. README quality. Append-only stamp 202. Cascade YAML not multiplied.
+- Next hour: sovereign-ai-factory-ai-polyglot / nexus-repo-sync, then wrap ENCLAVE-ADAM-REUNITED
 - Cascade: keep existing `.github/workflows/cascade.yml` healthy. Do not multiply hourly YAML.
-- Ledger: `docs/HOP-196.md` + `STAGES.md`
-- Drive mesh: GitHub remains the versioned singularity. Existing ethereal continuum folder `ETHEREAL-CONTINUUM-REPOS` / CONTINUUM-GITHUB-MESH is the mirror, not a second source of truth. Do not spawn duplicate continuum folders.
+- Ledger: `docs/HOP-202.md` + `STAGES.md`
+- Drive mesh: GitHub remains the versioned singularity. Existing ethereal continuum folder is the mirror, not a second source of truth. Do not spawn duplicate continuum folders.
 - Equalizer: append-only stamps; no history rewrite; no secret material in tree
 - Security: CASCADE_TOKEN stays in GitHub Secrets if present. Never echo tokens. Cross-repo push-on-pull stays closed without the secret.
 
@@ -42,18 +42,17 @@ Hourly waterfall + pull-close cascade. Source code is the only trusted neighbor.
 Catalog the unknown. Keep the known.
 One healthy cascade is a speedway. Ten copies are noise.
 
-Pull on a sibling should dispatch enhance → stamp → next target in `nexus-repo-sync/scripts/cascade_targets.txt`.
+Pull on a sibling should dispatch enhance → stamp → next target.
 
 ## Waterfall (one repo per enhance hop)
 
 1. ENCLAVE-ADAM-REUNITED
 2. Cryptic-Heartbeat
 3. The-Hive
-4. continuity-ledger-cycle
-5. nexus-repo-sync (stage 190)
-6. gaia-visualizer (this hop — stage 196)
-7. sovereign-ai-factory-ai-polyglot
-8. TheLedgerIndex / other recently updated surfaces
+4. continuity-ledger-cycle (201)
+5. gaia-visualizer — **202 this hop**
+6. sovereign-ai-factory-ai-polyglot / nexus-repo-sync
+7. TheLedgerIndex / other recently updated surfaces
 
 A pull on `main` should leave a ledger stamp.
 
