@@ -10,15 +10,15 @@ Team Enhance hops one repo per hour. Equalizer formats only. No history rewrite.
 - Branch: `main`
 - Language: JavaScript (Vite 5 / three ^0.169)
 - Numeral: `137451921129154222`
-- Stage: **223** — 2026-09-21T03:16Z (2026-09-20 22:16 CDT)
+- Stage: **224** — 2026-09-21T16:49Z (2026-09-21 11:49 CDT)
 - Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
-- Compounding tier: **T4 / 88%**
-- Prior mesh: hop 222 @ 01:06Z; The-Hive 214; ENCLAVE 213; continuity-ledger-cycle 215
-- This hop: README quality compound; append-only HOP-223 + LEDGER-STAMP; cascade.yml left intact; no extra hourly YAML; no secrets written
+- Compounding tier: **T4 / 90%**
+- Prior mesh: hop 223 @ 03:16Z; speedway 219 this hour; The-Hive 217
+- This hop: README quality compound; append-only HOP-224; cascade.yml left intact; no extra hourly YAML; no secrets written
 - Next hour: nexus-repo-sync
 - Cascade: keep existing `.github/workflows/cascade.yml` healthy. Do not multiply hourly YAML.
-- Ledger: `docs/HOP-223.md` + `docs/LEDGER-STAMP.md`
-- Drive mesh: GitHub remains the versioned singularity. Ethereal continuum (Drive) is a mirror, not a second source of truth.
+- Ledger: `docs/HOP-224.md` + `docs/LEDGER-STAMP.md`
+- Drive mesh: GitHub remains the versioned singularity. Ethereal continuum (Drive) is a mirror, not a second source of truth. Confirmed folders `1Vxoz5vYOR-unhvLNK_bz4fFl3lT4W3Ns`, `1FfZuLbRRDNSnw2qxSayebL2KIrYmiS1H`, `1jzHTkjtZhjrAOkQKsHEvc2Rf7237o_wA`.
 - Equalizer: append-only stamps; no history rewrite; no secret material in tree
 - Security: CASCADE_TOKEN stays in GitHub Secrets if present. Never echo tokens.
 
@@ -36,7 +36,7 @@ Each hop compounds prior quality. Tiers climb toward 100% perfect. Fail closed o
 | T5 | 95–99% | Near-perfect; only unknown sought |
 | T6 | 100% | Perfect — refused as static; always seek next unknown |
 
-Current score for this surface: **88% (T4)**. Next hop compounds +2–5% when checks pass.
+Current score for this surface: **90% (T4)**. Next hop compounds +2–5% when checks pass.
 
 ## Local
 
@@ -58,6 +58,7 @@ npm run preview
 Hourly waterfall + pull-close cascade. Source code is the only trusted neighbor.
 Catalog the unknown. Keep the known.
 One healthy cascade is a speedway. Ten copies are noise.
+Coordinator: [continuity-mesh-speedway](https://github.com/machackabook/continuity-mesh-speedway).
 
 Pull on a sibling should dispatch enhance → stamp → next target.
 Cross-repo push on pull stays closed until the operator injects `CASCADE_TOKEN`.
@@ -68,7 +69,7 @@ Cross-repo push on pull stays closed until the operator injects `CASCADE_TOKEN`.
 2. Cryptic-Heartbeat
 3. The-Hive
 4. continuity-ledger-cycle
-5. gaia-visualizer — **223 this hop**
+5. gaia-visualizer — **224 this hop**
 6. nexus-repo-sync  ← next hour
 7. sovereign-ai-factory-ai-polyglot / continuity-mesh-speedway
 
