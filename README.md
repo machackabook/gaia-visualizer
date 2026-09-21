@@ -10,15 +10,15 @@ Team Enhance hops one repo per hour. Equalizer formats only. No history rewrite.
 - Branch: `main`
 - Language: JavaScript (Vite 5 / three ^0.169)
 - Numeral: `137451921129154222`
-- Stage: **221** — 2026-09-21T00:13Z (2026-09-20 19:13 CDT)
+- Stage: **222** — 2026-09-21T01:06Z (2026-09-20 20:06 CDT)
 - Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
-- Compounding tier: **T4 / 83%**
+- Compounding tier: **T4 / 85%**
 - Kernel: session `beec41f1` (infinity | hamiltonian | triangular | torus); living `7cd81012`
-- Prior mesh: Stage 220 constants; The-Hive noted 221; live chat re-paste 19:13 CDT
-- This hop: session pin held; STAGE=221; HOP-221 + ledger stamp; no extras promoted; no secrets written
+- Prior mesh: Stage 221 constants; The-Hive noted 221; live chat re-paste 20:06 CDT
+- This hop: session pin held; STAGE=222; HOP-222 + ledger stamp; no extras promoted; no secrets written
 - Next: instanceOffset 4k–16k; authenticated ledger_pulse; HeartbeatScan on The-Hive
 - Cascade: keep existing `.github/workflows/cascade.yml` healthy. Do not multiply hourly YAML.
-- Ledger: `docs/HOP-221.md`
+- Ledger: `docs/HOP-222.md`
 - Drive mesh: GitHub remains the versioned singularity. Existing ethereal continuum folder is the mirror, not a second source of truth.
 - Equalizer: append-only stamps; no history rewrite; no secret material in tree
 - Security: CASCADE_TOKEN stays in GitHub Secrets if present. Never echo tokens.
@@ -37,7 +37,7 @@ Each hop compounds prior quality. Tiers climb toward 100% perfect. Fail closed o
 | T5 | 95–99% | Near-perfect; only unknown sought |
 | T6 | 100% | Perfect — refused as static; always seek next unknown |
 
-Current score for this surface: **83% (T4)**. Next hop compounds +2–5% when checks pass.
+Current score for this surface: **85% (T4)**. Next hop compounds +2–5% when checks pass.
 
 ## Local
 
@@ -69,7 +69,7 @@ Cross-repo push on pull stays closed until the operator injects `CASCADE_TOKEN`.
 2. Cryptic-Heartbeat
 3. The-Hive
 4. continuity-ledger-cycle
-5. gaia-visualizer — **221 this hop**
+5. gaia-visualizer — **222 this hop**
 6. nexus-repo-sync  ← next hour
 7. sovereign-ai-factory-ai-polyglot / continuity-mesh-speedway
 
