@@ -1,9 +1,10 @@
 # Gaia visualizer + The-Hive — compiled stages
 
-Band `235-visual`. Chat kernel is the `update(t)` posted in-session (uniforms → theta → geometry switch → lerp 0.05).
+Band `238-visual`. Chat kernel is the `update(t)` posted in-session (uniforms → theta → geometry switch → lerp 0.05).
 Session kernel still allocates `new THREE.Vector3` inside lerp; live path uses a reused `_kernelTarget`.
-Stage 235 reconfirms the session paste (`beec41f1`) from 2026-09-21 19:24 CDT. No new case labels.
+Stage 238 reconfirms the session paste (`beec41f1`) from 2026-09-21 22:17 CDT. No new case labels.
 Hive ships `matchSessionPaste`. Klein / hopf / figure8 / trefoil stay off the session switch.
+Hive Stage 238 dual-dispatches `postGaiaContract` onto `gaia-weave` + `gaia:targetState`.
 
 ## Done
 
@@ -30,6 +31,8 @@ Hive ships `matchSessionPaste`. Klein / hopf / figure8 / trefoil stay off the se
 | 233 | Live chat 2026-09-21 17:14 CDT. Same four-geometry paste. STAGE constants = 233. |
 | 234 | Live chat 2026-09-21 18:09 CDT. Same four-geometry paste. STAGE constants = 234. |
 | 235 | Live chat 2026-09-21 19:24 CDT. Same four-geometry paste. STAGE constants = 235. |
+| 236–237 | Same four-geometry paste. Hive weaveEmitter landed. |
+| 238 | Live chat 2026-09-21 22:17 CDT. Same four-geometry paste. STAGE constants = 238. |
 
 ## Next
 
@@ -39,16 +42,16 @@ Hive ships `matchSessionPaste`. Klein / hopf / figure8 / trefoil stay off the se
 | 13 | The-Hive + gaia-visualizer | Authenticated live `ledger_pulse` → Hive WS against live sheet counts. Token + HMAC already flow. |
 | 14 | The-Hive | Memory engrams into Drive folder `CRYPTIC-HEARTBEAT-NEXUS-ROOT` (consume `/api/gaia/engram`) |
 | 16-public | gaia-visualizer | hamiltoniansingularity.ai public band; default geometry `blend` (host default already wired) |
-| 19-panels | The-Hive | Hook remaining Quine / NexusStudio editors to `emitWeaveChange` / `emitGeometry` / `emitBlend` |
+| 19-panels | The-Hive | Hook remaining Quine / NexusStudio / Stream sliders to emitWeaveChange / emitGeometry / emitBlend |
 | 51-impl | gaia-visualizer | Tighter InstancedMesh instanceOffset shader path at 4k–16k |
 | 58 | mesh | Promote klein into the session switch only after a chat paste includes it. |
 | 66-session | mesh | Promote hopf/figure8/trefoil into the session switch only after a chat paste includes those cases. |
-| 235-gate | mesh | Keep session hash `beec41f1` pinned; do not rewrite the four-geometry paste. |
+| 238-gate | mesh | Keep session hash `beec41f1` pinned; do not rewrite the four-geometry paste. |
 
 ## Drive from LLM
 
 ```js
 window.dispatchEvent(new CustomEvent('gaia:targetState', {
-  detail: { geometry: 'blend', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 235, sourceHash: '7cd81012' }
+  detail: { geometry: 'blend', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 238, sourceHash: '7cd81012' }
 }));
 ```
