@@ -1,8 +1,8 @@
 # Gaia visualizer + The-Hive — compiled stages
 
-Band `241-visual`. Chat kernel is the `update(t)` posted in-session (uniforms → theta → geometry switch → lerp 0.05).
+Band `243-visual`. Chat kernel is the `update(t)` posted in-session (uniforms → theta → geometry switch → lerp 0.05).
 Session kernel still allocates `new THREE.Vector3` inside lerp; live path uses a reused `_kernelTarget`.
-Stage 241 reconfirms the session paste (`beec41f1`) from 2026-09-22 11:48 CDT. No new case labels.
+Stage 243 reconfirms the session paste (`beec41f1`) from 2026-09-22 13:19 CDT. No new case labels.
 Hive ships `matchSessionPaste`. Klein / hopf / figure8 / trefoil stay off the session switch.
 Hive dual-dispatches `postGaiaContract` onto `gaia-weave` + `gaia:targetState`.
 
@@ -18,8 +18,9 @@ Hive dual-dispatches `postGaiaContract` onto `gaia-weave` + `gaia:targetState`.
 | 65 | CPU evaluate hopf + figure8 (GPU ids 13 / 8). |
 | 66 | CPU trefoil (GPU id 7). `matchSessionPaste` scans extras. |
 | 72–220 | Live chat + remembral stamps. Session pin `beec41f1` held. |
-| 221–240 | Same four-geometry paste. STAGE constants advanced in lockstep with The-Hive. |
-| 241 | Live chat 2026-09-22 11:48 CDT. Same four-geometry paste. STAGE constants = 241. |
+| 221–241 | Same four-geometry paste. STAGE constants advanced in lockstep with The-Hive. |
+| 242 | README / hop stamp; session pin held. |
+| 243 | Live chat 2026-09-22 13:19 CDT. Same four-geometry paste. STAGE constants = 243. |
 
 ## Next
 
@@ -33,12 +34,12 @@ Hive dual-dispatches `postGaiaContract` onto `gaia-weave` + `gaia:targetState`.
 | 51-impl | gaia-visualizer | Tighter InstancedMesh instanceOffset shader path at 4k–16k |
 | 58 | mesh | Promote klein into the session switch only after a chat paste includes it. |
 | 66-session | mesh | Promote hopf/figure8/trefoil into the session switch only after a chat paste includes those cases. |
-| 241-gate | mesh | Keep session hash `beec41f1` pinned; do not rewrite the four-geometry paste. |
+| 243-gate | mesh | Keep session hash `beec41f1` pinned; do not rewrite the four-geometry paste. |
 
 ## Drive from LLM
 
 ```js
 window.dispatchEvent(new CustomEvent('gaia:targetState', {
-  detail: { geometry: 'blend', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 241, sourceHash: '7cd81012' }
+  detail: { geometry: 'blend', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 243, sourceHash: '7cd81012' }
 }));
 ```
