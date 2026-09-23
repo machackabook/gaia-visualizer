@@ -1,6 +1,7 @@
 # SINGULARITY UNITE STATUS
 
-Hop 238 live on gaia-visualizer. Kernel stage 238. Operating in the middle. Waterfall next: mesh siblings.
+Hop 261 pointer from continuity-mesh-speedway (2026-09-23T21:04Z).
+Kernel remains visualizer-local. Operating in the middle. Waterfall next: nexus-repo-sync.
 Numeral 137451921129154222. No extra YAML. No secrets in tree.
 Session pin `beec41f1`. Living source `7cd81012`.
 Live chat 2026-09-21 22:17 CDT re-pasted four-geometry update(t). No new case labels.
