@@ -1,8 +1,8 @@
 # Gaia visualizer + The-Hive — compiled stages
 
-Band `256-visual`. Chat kernel is the `update(t)` posted in-session (uniforms → theta → geometry switch → lerp 0.05).
+Band `257-visual`. Chat kernel is the `update(t)` posted in-session (uniforms → theta → geometry switch → lerp 0.05).
 Session kernel still allocates `new THREE.Vector3` inside lerp; live path uses a reused `_kernelTarget`.
-Stage 256 reconfirms the session paste (`beec41f1`) from 2026-09-23 11:52 CDT. No new case labels.
+Stage 257 reconfirms the session paste (`beec41f1`) from 2026-09-23 14:04 CDT. No new case labels.
 Hive ships `matchSessionPaste`. Klein / hopf / figure8 / trefoil stay off the session switch.
 Hive dual-dispatches `postGaiaContract` onto `gaia-weave` + `gaia:targetState`.
 
@@ -21,6 +21,7 @@ Hive dual-dispatches `postGaiaContract` onto `gaia-weave` + `gaia:targetState`.
 | 254 | Hive live-chat hop. Session pin held. |
 | 255 | Continuity engine hop. Session pin held. |
 | 256 | Live chat 2026-09-23 11:52 CDT. Same four-geometry paste. STAGE constants = 256. |
+| 257 | Live chat 2026-09-23 14:04 CDT. Same four-geometry paste. STAGE constants = 257. |
 
 ## Next
 
@@ -34,12 +35,12 @@ Hive dual-dispatches `postGaiaContract` onto `gaia-weave` + `gaia:targetState`.
 | 51-impl | gaia-visualizer | Tighter InstancedMesh instanceOffset shader path at 4k–16k |
 | 58 | mesh | Promote klein into the session switch only after a chat paste includes it. |
 | 66-session | mesh | Promote hopf/figure8/trefoil into the session switch only after a chat paste includes those cases. |
-| 256-gate | mesh | Keep session hash `beec41f1` pinned; do not rewrite the four-geometry paste. |
+| 257-gate | mesh | Keep session hash `beec41f1` pinned; do not rewrite the four-geometry paste. |
 
 ## Drive from LLM
 
 ```js
 window.dispatchEvent(new CustomEvent('gaia:targetState', {
-  detail: { geometry: 'blend', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 256, sourceHash: '7cd81012' }
+  detail: { geometry: 'blend', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 257, sourceHash: '7cd81012' }
 }));
 ```
