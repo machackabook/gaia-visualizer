@@ -10,14 +10,14 @@ Team Enhance hops one repo per hour. Equalizer formats only. No history rewrite.
 - Branch: `main`
 - Language: JavaScript (Vite 5 / three ^0.169)
 - Numeral: `137451921129154222`
-- Stage: **242** — 2026-09-22T18:03Z (2026-09-22 13:03 CDT)
+- Stage: **254** — 2026-09-23T04:46Z (2026-09-22 23:46 CDT)
 - Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
 - Compounding tier: **T5 / 96%**
-- Prior mesh: ENCLAVE hop 241 @ 15:10Z; Cryptic-Heartbeat hop 240 @ 16:32Z; The-Hive hop 241 @ 16:40Z; continuity-ledger-cycle hop 241 @ 17:13Z; this surface last README compound 224 @ 2026-09-21
-- This hop: waterfall other-recent slot; README quality refresh from stale 224; append-only HOP-242 + LEDGER-STAMP; cascade.yml left intact and healthy; no extra hourly YAML; no secrets written
-- Next hour: rotate ENCLAVE-ADAM-REUNITED then Cryptic-Heartbeat then The-Hive then continuity-ledger-cycle
+- Prior mesh: The-Hive hop 254 @ 04:46Z; this surface last primary 242 @ 18:03Z
+- This hop: sibling stamp from waterfall after The-Hive 254; README quality refresh; append-only HOP-254 + LEDGER-STAMP; cascade.yml left intact and healthy; no extra hourly YAML; no secrets written
+- Next hour: nexus-repo-sync then sovereign-ai-factory-ai-polyglot then continuity-mesh-speedway
 - Cascade: keep existing `.github/workflows/cascade.yml` healthy. Do not multiply hourly YAML.
-- Ledger: `docs/HOP-242.md` + `docs/LEDGER-STAMP.md`
+- Ledger: `docs/HOP-254.md` + `docs/LEDGER-STAMP.md`
 - Drive mesh: GitHub remains the versioned singularity. Ethereal continuum (Drive) is a mirror, not a second source of truth.
 - Equalizer: append-only stamps; no history rewrite; no secret material in tree
 - Security: CASCADE_TOKEN stays in GitHub Secrets if present. Never echo tokens.
@@ -65,11 +65,11 @@ Cross-repo push on pull stays closed until the operator injects `CASCADE_TOKEN`.
 
 ## Waterfall (one repo per enhance hop)
 
-1. ENCLAVE-ADAM-REUNITED (241 @ 15:10Z)
-2. Cryptic-Heartbeat (240 @ 16:32Z)
-3. The-Hive (241 @ 16:40Z)
-4. continuity-ledger-cycle (241 @ 17:13Z)
-5. gaia-visualizer — **242 this hop**
+1. ENCLAVE-ADAM-REUNITED
+2. Cryptic-Heartbeat
+3. The-Hive (254)
+4. continuity-ledger-cycle (254 sibling)
+5. gaia-visualizer — **254 this sibling hop**
 6. nexus-repo-sync / sovereign-ai-factory-ai-polyglot / continuity-mesh-speedway
 
 A pull on `main` should leave a ledger stamp.
