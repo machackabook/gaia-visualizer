@@ -1,14 +1,14 @@
 /**
- * Living chat-kernel contract — Stage 253.
+ * Living chat-kernel contract — Stage 256.
  * CHAT_KERNEL_SESSION_SOURCE is the exact update(t) posted in the current session (hash beec41f1).
  * sourceHash is FNV-1a of CHAT_KERNEL_SOURCE (7cd81012).
  * Runtime extras: klein, hopf, figure8, trefoil.
- * Stage 253: session paste reconfirmed 2026-09-22 23:08 CDT. matchSessionPaste scans case labels.
+ * Stage 256: session paste reconfirmed 2026-09-23 11:52 CDT. matchSessionPaste scans case labels.
  * Klein / hopf / figure8 / trefoil still not in the session switch.
  * GPU/TF auto path remains count > 1024.
  */
 
-export const STAGE = 253;
+export const STAGE = 256;
 export const CHAT_KERNEL_LERP = 0.05;
 export const CHAT_KERNEL_THETA_BASE = 0.01;
 export const CHAT_KERNEL_THETA_IDX = 0.002;
@@ -226,6 +226,6 @@ export function confirmSessionKernel() {
     trefoilInSession: false,
     geometries: [...CHAT_KERNEL_CHAT_GEOMETRIES],
     runtimeExtras: ['klein', 'hopf', 'figure8', 'trefoil'],
-    note: 'Session paste 2026-09-22 23:08 CDT matches beec41f1. Klein/hopf/figure8/trefoil stay runtime-only. Stage 253 Hive weaveEmitter dual-bus; GPU/TF auto-enable at count>1024; CPU evaluate zeros non-finite coords; GPU ids 12/13/8/7 unchanged.',
+    note: 'Session paste 2026-09-23 11:52 CDT matches beec41f1. Klein/hopf/figure8/trefoil stay runtime-only. Stage 256 Hive weaveEmitter dual-bus; GPU/TF auto-enable at count>1024; CPU evaluate zeros non-finite coords; GPU ids 12/13/8/7 unchanged.',
   };
 }
