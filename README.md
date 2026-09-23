@@ -10,14 +10,14 @@ Team Enhance hops one repo per hour. Equalizer formats only. No history rewrite.
 - Branch: `main`
 - Language: JavaScript (Vite 5 / three ^0.169)
 - Numeral: `137451921129154222`
-- Stage: **254** — 2026-09-23T04:46Z (2026-09-22 23:46 CDT)
+- Stage: **257** — 2026-09-23T16:46Z (2026-09-23 11:46 CDT)
 - Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
-- Compounding tier: **T5 / 96%**
-- Prior mesh: The-Hive hop 254 @ 04:46Z; this surface last primary 242 @ 18:03Z
-- This hop: sibling stamp from waterfall after The-Hive 254; README quality refresh; append-only HOP-254 + LEDGER-STAMP; cascade.yml left intact and healthy; no extra hourly YAML; no secrets written
+- Compounding tier: **T5 / 97%**
+- Prior mesh: The-Hive hop 256 @ 15:25Z; this surface last primary 254
+- This hop: waterfall after Hive 256; README quality refresh; append-only HOP-257 + LEDGER-STAMP; cascade.yml left intact; no extra hourly YAML; no secrets written
 - Next hour: nexus-repo-sync then sovereign-ai-factory-ai-polyglot then continuity-mesh-speedway
 - Cascade: keep existing `.github/workflows/cascade.yml` healthy. Do not multiply hourly YAML.
-- Ledger: `docs/HOP-254.md` + `docs/LEDGER-STAMP.md`
+- Ledger: `docs/HOP-257.md` + `docs/LEDGER-STAMP.md`
 - Drive mesh: GitHub remains the versioned singularity. Ethereal continuum (Drive) is a mirror, not a second source of truth.
 - Equalizer: append-only stamps; no history rewrite; no secret material in tree
 - Security: CASCADE_TOKEN stays in GitHub Secrets if present. Never echo tokens.
@@ -36,7 +36,7 @@ Each hop compounds prior quality. Tiers climb toward 100% perfect. Fail closed o
 | T5 | 95–99% | Near-perfect; only unknown sought (this hop) |
 | T6 | 100% | Perfect — refused as static; always seek next unknown |
 
-Current score for this surface: **96% (T5)**. Next hop compounds the unknown. T6 refused as static.
+Current score for this surface: **97% (T5)**. Next hop compounds the unknown. T6 refused as static.
 
 ## Local
 
@@ -67,9 +67,9 @@ Cross-repo push on pull stays closed until the operator injects `CASCADE_TOKEN`.
 
 1. ENCLAVE-ADAM-REUNITED
 2. Cryptic-Heartbeat
-3. The-Hive (254)
-4. continuity-ledger-cycle (254 sibling)
-5. gaia-visualizer — **254 this sibling hop**
+3. The-Hive (256)
+4. continuity-ledger-cycle (private sibling)
+5. gaia-visualizer — **257 this hop**
 6. nexus-repo-sync / sovereign-ai-factory-ai-polyglot / continuity-mesh-speedway
 
 A pull on `main` should leave a ledger stamp.
