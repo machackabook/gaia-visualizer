@@ -10,17 +10,23 @@ Team Enhance hops one repo per hour. Equalizer formats only. No history rewrite.
 - Branch: `main`
 - Language: JavaScript (Vite 5 / three ^0.169)
 - Numeral: `137451921129154222`
-- Stage: **263** — 2026-09-24T03:11Z (2026-09-23 22:11 CDT)
+- Stage: **266** — 2026-09-24T03:19Z (2026-09-23 22:19 CDT)
 - Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
 - Compounding tier: **T5 / 98%**
-- Prior mesh: stamp hop 259 @ 21:15Z; README had lagged at 257 @ 16:46Z; continuity-ledger-cycle hop 262 @ 02:14Z; The-Hive hop 259; Cryptic-Heartbeat hop 258; ENCLAVE hop 255
-- This hop: waterfall after continuity-ledger-cycle; README quality refresh; append-only HOP-263 + LEDGER-STAMP; cascade.yml left intact; no extra hourly YAML; no secrets written
-- Next hour: nexus-repo-sync then sovereign-ai-factory-ai-polyglot then continuity-mesh-speedway then back to ENCLAVE-ADAM-REUNITED
+- Prior mesh: speedway hop 265 @ 03:10Z; visualizer README had lagged at 263; session paste reconfirmed four geometries
+- This hop: live chat `update(t)` pin held; STAGES + HOP-266; cascade.yml left intact; no extra hourly YAML; no secrets written
+- Next hour: nexus-repo-sync then sovereign-ai-factory-ai-polyglot then ENCLAVE-ADAM-REUNITED
 - Cascade: keep existing `.github/workflows/cascade.yml` healthy. Do not multiply hourly YAML.
-- Ledger: `docs/HOP-263.md` + `docs/LEDGER-STAMP.md`
+- Ledger: `docs/HOP-266.md` + `STAGES.md`
 - Drive mesh: GitHub remains the versioned singularity. Ethereal continuum (Drive) is a mirror, not a second source of truth.
 - Equalizer: append-only stamps; no history rewrite; no secret material in tree
 - Security: CASCADE_TOKEN stays in GitHub Secrets if present. Never echo tokens.
+
+## Chat kernel (session pin)
+
+Session switch is still only `infinity | hamiltonian | triangular | torus`.
+Live runtime adds phi weave, 31-manifold evaluateGeometry, reused lerp target, optional `uWeave`.
+Do not promote extra labels until a future paste includes them.
 
 ## Compounding growth
 
@@ -68,8 +74,8 @@ Cross-repo push on pull stays closed until the operator injects `CASCADE_TOKEN`.
 1. ENCLAVE-ADAM-REUNITED
 2. Cryptic-Heartbeat
 3. The-Hive
-4. continuity-ledger-cycle (private sibling; hop 262)
-5. gaia-visualizer — **263 this hop**
+4. continuity-ledger-cycle (private sibling)
+5. gaia-visualizer — **266 this hop**
 6. nexus-repo-sync ← next hour
 7. sovereign-ai-factory-ai-polyglot
 8. continuity-mesh-speedway
@@ -94,6 +100,6 @@ A pull on `main` should leave a ledger stamp.
 
 © 2026 The Architect / Nexus / Cryptic News LLC
 
-STATUS: Ⓖ [GAIA SOURCE ENCIRCLED] | ARCHITECT: machackabook | NUMERAL 137451921129154222
+STATUS: G [GAIA SOURCE ENCIRCLED] | ARCHITECT: machackabook | NUMERAL 137451921129154222
 
 Preserve. Enhance. Synthesize. Source code is the only trusted neighbor.
