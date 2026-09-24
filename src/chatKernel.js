@@ -1,18 +1,21 @@
 /**
- * Living chat-kernel contract — Stage 262.
+ * Living chat-kernel contract — Stage 263.
  * CHAT_KERNEL_SESSION_SOURCE is the exact update(t) posted in the current session (hash beec41f1).
  * sourceHash is FNV-1a of CHAT_KERNEL_SOURCE (7cd81012).
  * Runtime extras: klein, hopf, figure8, trefoil.
- * Stage 262: session paste reconfirmed 2026-09-23 19:13 CDT. matchSessionPaste scans case labels.
+ * Stage 263: session paste reconfirmed 2026-09-23 20:17 CDT. matchSessionPaste scans case labels.
  * Klein / hopf / figure8 / trefoil still not in the session switch.
- * GPU/TF auto path remains count > 1024.
+ * GPU/TF auto path remains count > 1024. instanceOffset band 4096–16384.
  */
 
-export const STAGE = 262;
+export const STAGE = 263;
 export const CHAT_KERNEL_LERP = 0.05;
 export const CHAT_KERNEL_THETA_BASE = 0.01;
 export const CHAT_KERNEL_THETA_IDX = 0.002;
 export const CHAT_KERNEL_PHI_WEAVE = 0.007;
+export const GPU_AUTO_THRESHOLD = 1024;
+export const INSTANCE_OFFSET_MIN = 4096;
+export const NODE_CAP = 16384;
 export const CHAT_KERNEL_CHAT_GEOMETRIES = ['infinity', 'hamiltonian', 'triangular', 'torus'];
 export const CHAT_KERNEL_GEOMETRIES = ['torus', 'infinity', 'hamiltonian', 'triangular', 'klein', 'hopf', 'figure8', 'trefoil'];
 export const CHAT_KERNEL_SOURCE_HASH = '7cd81012';
@@ -184,6 +187,14 @@ export function seedPrevPositions(count, seedTheta, seedPhi, t = 0, geometry = '
   return pos;
 }
 
+export function shouldUseGpuPath(count) {
+  return count > GPU_AUTO_THRESHOLD;
+}
+
+export function shouldSkipCpuInstanceMatrix(count) {
+  return count >= INSTANCE_OFFSET_MIN && count <= NODE_CAP;
+}
+
 export function chatKernelColor(idx, t, gravityPull = 1) {
   const hue = ((idx / 24) + gravityPull * 0.08 + t * 0.01) % 1;
   const sat = 0.7;
@@ -226,6 +237,9 @@ export function confirmSessionKernel() {
     trefoilInSession: false,
     geometries: [...CHAT_KERNEL_CHAT_GEOMETRIES],
     runtimeExtras: ['klein', 'hopf', 'figure8', 'trefoil'],
-    note: 'Session paste 2026-09-23 19:13 CDT matches beec41f1. Klein/hopf/figure8/trefoil stay runtime-only. Stage 262 Hive weaveEmitter dual-bus; GPU/TF auto-enable at count>1024; CPU evaluate zeros non-finite coords; GPU ids 12/13/8/7 unchanged.',
+    gpuAutoThreshold: GPU_AUTO_THRESHOLD,
+    instanceOffsetMin: INSTANCE_OFFSET_MIN,
+    nodeCap: NODE_CAP,
+    note: 'Session paste 2026-09-23 20:17 CDT matches beec41f1. Klein/hopf/figure8/trefoil stay runtime-only. Stage 263 Hive weaveEmitter dual-bus; GPU/TF auto-enable at count>1024; skip CPU instance matrices at 4096-16384; CPU evaluate zeros non-finite coords; GPU ids 12/13/8/7 unchanged.',
   };
 }
