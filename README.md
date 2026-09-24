@@ -10,14 +10,14 @@ Team Enhance hops one repo per hour. Equalizer formats only. No history rewrite.
 - Branch: `main`
 - Language: JavaScript (Vite 5 / three ^0.169)
 - Numeral: `137451921129154222`
-- Stage: **257** — 2026-09-23T16:46Z (2026-09-23 11:46 CDT)
+- Stage: **263** — 2026-09-24T03:11Z (2026-09-23 22:11 CDT)
 - Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
-- Compounding tier: **T5 / 97%**
-- Prior mesh: The-Hive hop 256 @ 15:25Z; this surface last primary 254
-- This hop: waterfall after Hive 256; README quality refresh; append-only HOP-257 + LEDGER-STAMP; cascade.yml left intact; no extra hourly YAML; no secrets written
-- Next hour: nexus-repo-sync then sovereign-ai-factory-ai-polyglot then continuity-mesh-speedway
+- Compounding tier: **T5 / 98%**
+- Prior mesh: stamp hop 259 @ 21:15Z; README had lagged at 257 @ 16:46Z; continuity-ledger-cycle hop 262 @ 02:14Z; The-Hive hop 259; Cryptic-Heartbeat hop 258; ENCLAVE hop 255
+- This hop: waterfall after continuity-ledger-cycle; README quality refresh; append-only HOP-263 + LEDGER-STAMP; cascade.yml left intact; no extra hourly YAML; no secrets written
+- Next hour: nexus-repo-sync then sovereign-ai-factory-ai-polyglot then continuity-mesh-speedway then back to ENCLAVE-ADAM-REUNITED
 - Cascade: keep existing `.github/workflows/cascade.yml` healthy. Do not multiply hourly YAML.
-- Ledger: `docs/HOP-257.md` + `docs/LEDGER-STAMP.md`
+- Ledger: `docs/HOP-263.md` + `docs/LEDGER-STAMP.md`
 - Drive mesh: GitHub remains the versioned singularity. Ethereal continuum (Drive) is a mirror, not a second source of truth.
 - Equalizer: append-only stamps; no history rewrite; no secret material in tree
 - Security: CASCADE_TOKEN stays in GitHub Secrets if present. Never echo tokens.
@@ -36,7 +36,7 @@ Each hop compounds prior quality. Tiers climb toward 100% perfect. Fail closed o
 | T5 | 95–99% | Near-perfect; only unknown sought (this hop) |
 | T6 | 100% | Perfect — refused as static; always seek next unknown |
 
-Current score for this surface: **97% (T5)**. Next hop compounds the unknown. T6 refused as static.
+Current score for this surface: **98% (T5)**. Next hop compounds the unknown. T6 refused as static.
 
 ## Local
 
@@ -67,10 +67,12 @@ Cross-repo push on pull stays closed until the operator injects `CASCADE_TOKEN`.
 
 1. ENCLAVE-ADAM-REUNITED
 2. Cryptic-Heartbeat
-3. The-Hive (256)
-4. continuity-ledger-cycle (private sibling)
-5. gaia-visualizer — **257 this hop**
-6. nexus-repo-sync / sovereign-ai-factory-ai-polyglot / continuity-mesh-speedway
+3. The-Hive
+4. continuity-ledger-cycle (private sibling; hop 262)
+5. gaia-visualizer — **263 this hop**
+6. nexus-repo-sync ← next hour
+7. sovereign-ai-factory-ai-polyglot
+8. continuity-mesh-speedway
 
 A pull on `main` should leave a ledger stamp.
 
