@@ -18,23 +18,25 @@ export class GaiaNode {
   }
 
   /**
-   * Chat kernel reference (living update(t) contract, stage 270):
+   * Chat kernel reference (living update(t) contract, stage 273):
    *   uniforms uTime / uGravity / optional uWeave
    *   theta += (0.01 + idx * 0.002) * gravityPull
    *   evaluate targetState.geometry (infinity | hamiltonian | triangular | torus)
    * Runtime extras (still live, not in session switch):
    *   phi   += 0.007 * toroidalWeave
    *   klein / hopf / figure8 / trefoil on evaluateGeometry / evaluateChatKernel
-   *   mesh.position.lerp(target, 0.05) — never allocate inside the loop
-   * Stage 62: GPU TF mix(aPrevPos, target, 0.05) matches this CPU lerp.
+   *   mesh.position.lerp(target, alpha) — alpha = clamp(0.05 * pull, 0.02, 0.12)
+   *   never allocate inside the loop
+   * Stage 62: GPU TF mix(aPrevPos, target, 0.05) matches this CPU lerp baseline.
    * Stage 64: GPU TF reseeds aPrevPos when geometry changes.
    * Stage 107+: CPU path writes uWeave when the shader exposes it.
    * Stage 154+: evaluateChatKernelInto zeros non-finite x/y/z.
    * Stage 160: GPU/TF auto path at count > 1024.
+   * Stage 273: lerp rate tracks gravityPull so high-pull incursions snap, low-pull weaves drift.
    */
   update(t, state, targetState) {
-    const pull = state.gravityPull ?? 1;
-    const weave = state.toroidalWeave ?? 1;
+    const pull = Number.isFinite(state?.gravityPull) ? state.gravityPull : 1;
+    const weave = Number.isFinite(state?.toroidalWeave) ? state.toroidalWeave : 1;
 
     if (this.material?.uniforms) {
       if (this.material.uniforms.uTime) this.material.uniforms.uTime.value = t;
@@ -61,8 +63,13 @@ export class GaiaNode {
       blend: state.blend ?? 0.5,
     });
 
-    _target.set(x, y, z);
-    const alpha = state.lerp ?? 0.05;
+    _target.set(
+      Number.isFinite(x) ? x : 0,
+      Number.isFinite(y) ? y : 0,
+      Number.isFinite(z) ? z : 0,
+    );
+    const baseLerp = Number.isFinite(state?.lerp) ? state.lerp : 0.05;
+    const alpha = Math.min(0.12, Math.max(0.02, baseLerp * Math.max(0.4, pull)));
     const scale = 0.85 + Math.min(0.55, pull * 0.18);
     if (this.dummy) {
       this.dummy.position.lerp(_target, alpha);
