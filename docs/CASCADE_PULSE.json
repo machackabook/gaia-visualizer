@@ -1,10 +1,8 @@
 {
-  "repo": "gaia-visualizer",
-  "stage": 283,
+  "stage": 284,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
-  "utc": "2026-09-25T14:05:00Z",
-  "cdt": "2026-09-25 09:05 CDT",
-  "numeral": "137451921129154222",
-  "next": "Hive WS ledger_pulse + InstancedMesh skip-CPU at 4k–16k when TF off"
+  "hop": 284,
+  "at": "2026-09-25T15:00:00Z",
+  "source": "live-chat-update(t)"
 }
