@@ -1,14 +1,14 @@
 /**
- * Living chat-kernel contract — Stage 278.
+ * Living chat-kernel contract — Stage 279.
  * CHAT_KERNEL_SESSION_SOURCE is the exact update(t) posted in the current session (hash beec41f1).
  * sourceHash is FNV-1a of CHAT_KERNEL_SOURCE (7cd81012).
  * Runtime extras: klein, hopf, figure8, trefoil.
- * Stage 278: session paste reconfirmed 2026-09-24 19:11 CDT. matchSessionPaste scans case labels.
+ * Stage 279: session paste reconfirmed 2026-09-24 20:11 CDT. matchSessionPaste scans case labels.
  * Klein / hopf / figure8 / trefoil still not in the session switch.
  * GPU/TF auto path remains count > 1024. instanceOffset band 4096–16384.
  */
 
-export const STAGE = 278;
+export const STAGE = 279;
 export const CHAT_KERNEL_LERP = 0.05;
 export const CHAT_KERNEL_THETA_BASE = 0.01;
 export const CHAT_KERNEL_THETA_IDX = 0.002;
@@ -57,6 +57,12 @@ export function advanceChatKernelAngles({ theta = 0, phi = 0, idx = 0, gravityPu
     theta: theta + (CHAT_KERNEL_THETA_BASE + idx * CHAT_KERNEL_THETA_IDX) * gravityPull,
     phi: phi + CHAT_KERNEL_PHI_WEAVE * toroidalWeave,
   };
+}
+
+export function chatKernelLerpAlpha(pull = 1, baseLerp = CHAT_KERNEL_LERP) {
+  const p = Number.isFinite(pull) ? pull : 1;
+  const b = Number.isFinite(baseLerp) ? baseLerp : CHAT_KERNEL_LERP;
+  return Math.min(0.12, Math.max(0.02, b * Math.max(0.4, p)));
 }
 
 export function evaluateChatKernel({
@@ -240,6 +246,6 @@ export function confirmSessionKernel() {
     gpuAutoThreshold: GPU_AUTO_THRESHOLD,
     instanceOffsetMin: INSTANCE_OFFSET_MIN,
     nodeCap: NODE_CAP,
-    note: 'Session paste 2026-09-24 19:11 CDT matches beec41f1. Klein/hopf/figure8/trefoil stay runtime-only. Stage 278 Hive waterfall; GPU/TF auto-enable at count>1024; skip CPU instance matrices at 4096-16384; CPU evaluate zeros non-finite coords; GPU ids 12/13/8/7 unchanged.',
+    note: 'Session paste 2026-09-24 20:11 CDT matches beec41f1. Klein/hopf/figure8/trefoil stay runtime-only. Stage 279 Hive waterfall; GPU/TF auto-enable at count>1024; skip CPU instance matrices at 4096-16384; chatKernelLerpAlpha shared; CPU evaluate zeros non-finite coords; GPU ids 12/13/8/7 unchanged.',
   };
 }
