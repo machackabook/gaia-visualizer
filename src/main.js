@@ -6,7 +6,7 @@ import { nodeVertex, nodeFragment } from './shaders.js';
 import { createGpuBuffers, writeNode, NODE_CAP, GPU_AUTO_THRESHOLD } from './gpuBuffer.js';
 import { createTransformFeedback } from './transformFeedback.js';
 import { KERNEL_GEOMETRY_ID } from './evaluateKernel.glsl.js';
-import { STAGE, chatKernelColor } from './chatKernel.js';
+import { STAGE, chatKernelColor, chatKernelLerpAlpha, shouldSkipCpuInstanceMatrix } from './chatKernel.js';
 import { fidelitySummary, sampleFidelity } from './fidelity.js';
 import { fidelityBit, refreshFidelity } from './fidelityHud.js';
 import {
@@ -199,6 +199,7 @@ function frame() {
   const geom = targetState.geometry || 'torus';
   const chatOnGpu = useTfKernel && Object.prototype.hasOwnProperty.call(KERNEL_GEOMETRY_ID, geom);
   const skipCpuPath = chatOnGpu && nodes._instanced && !needStreamReadback;
+  const skipCpuMatrices = skipCpuPath || shouldSkipCpuInstanceMatrix(count);
   const zeroCopy = shouldZeroCopy(params, skipCpuPath);
   let tfBound = false;
   let bindReport = null;
@@ -219,7 +220,7 @@ function frame() {
     } else {
       tf.readback(gpu);
       paintInstanceOffsetsFromGpu();
-      const alpha = state.lerp ?? 0.05;
+      const alpha = chatKernelLerpAlpha(state.gravityPull, state.lerp);
       const scale = 0.85 + Math.min(0.55, (state.gravityPull ?? 1) * 0.18);
       for (let i = 0; i < nodes.length; i++) {
         const node = nodes[i];
@@ -260,7 +261,7 @@ function frame() {
     paintInstanceColors(t);
   }
 
-  if (nodes._instanced && !skipCpuPath) {
+  if (nodes._instanced && !skipCpuMatrices) {
     for (let i = 0; i < nodes.length; i++) {
       nodes._instanced.setMatrixAt(i, nodes[i].dummy.matrix);
     }
@@ -287,7 +288,7 @@ function frame() {
   const fid = refreshFidelity(state) || {};
   const fidBit = fidelityBit(fid);
   hud.textContent = [
-    `GAIA VISUALIZER  band-137  stage-${STAGE}  nodes=${count}${useInstancing || useGpu ? ' instanced' : ''}${useGpu ? ' gpu-buf' : ''}${chatOnGpu ? ' tf' : ''}${skipCpuPath ? ' no-cpu-rb' : ''}${zeroCopy ? ' zerocopy' : ''} ${bindBit} ${tokenGate} ${snapBit} ${kernelBit} ${engramBit} ${fidBit}`,
+    `GAIA VISUALIZER  band-137  stage-${STAGE}  nodes=${count}${useInstancing || useGpu ? ' instanced' : ''}${useGpu ? ' gpu-buf' : ''}${chatOnGpu ? ' tf' : ''}${skipCpuPath ? ' no-cpu-rb' : ''}${skipCpuMatrices ? ' no-cpu-mx' : ''}${zeroCopy ? ' zerocopy' : ''} ${bindBit} ${tokenGate} ${snapBit} ${kernelBit} ${engramBit} ${fidBit}`,
     `pulse: ${pulseVal}  age=${pulseAge}s   ledger: topics=${led.topics || 0} votes=${led.votes || 0} bridges=${led.bridges || 0}   refuse=${state.unsignedRefused || 0}   hmacOk=${state.hmacOk || 0} hmacRefused=${state.hmacRefused || 0}   tfbind: ${bindReport ? (bindReport.bound ? 'OK' : 'MISS') : (chatOnGpu && zeroCopy ? 'pending' : 'n/a')}`,
     `geometry: ${targetState.geometry}   (1-9 / 0 / q w + e..l z x  l=cassini z=lorenz x=superformula)`,
     `gravityPull: ${state.gravityPull.toFixed(2)}   ([ / ])`,
