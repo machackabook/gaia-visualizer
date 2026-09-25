@@ -18,7 +18,7 @@ export class GaiaNode {
   }
 
   /**
-   * Chat kernel reference (living update(t) contract, stage 279):
+   * Chat kernel reference (living update(t) contract, stage 281):
    *   uniforms uTime / uGravity / optional uWeave
    *   theta += (0.01 + idx * 0.002) * gravityPull
    *   evaluate targetState.geometry (infinity | hamiltonian | triangular | torus)
@@ -32,7 +32,7 @@ export class GaiaNode {
    * Stage 107+: CPU path writes uWeave when the shader exposes it.
    * Stage 154+: evaluateChatKernelInto zeros non-finite x/y/z.
    * Stage 160: GPU/TF auto path at count > 1024.
-   * Stage 273/279: lerp rate tracks gravityPull so high-pull incursions snap, low-pull weaves drift.
+   * Stage 273/279/281: lerp rate tracks gravityPull so high-pull incursions snap, low-pull weaves drift.
    */
   update(t, state, targetState) {
     const pull = Number.isFinite(state?.gravityPull) ? state.gravityPull : 1;
