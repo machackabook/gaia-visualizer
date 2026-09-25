@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import { evaluateGeometry } from './geometry.js';
-import { CHAT_KERNEL_PHI_WEAVE, CHAT_KERNEL_THETA_BASE, CHAT_KERNEL_THETA_IDX } from './chatKernel.js';
+import { CHAT_KERNEL_PHI_WEAVE, CHAT_KERNEL_THETA_BASE, CHAT_KERNEL_THETA_IDX, chatKernelLerpAlpha } from './chatKernel.js';
 
 const _target = new THREE.Vector3();
 const _color = new THREE.Color();
@@ -18,21 +18,21 @@ export class GaiaNode {
   }
 
   /**
-   * Chat kernel reference (living update(t) contract, stage 273):
+   * Chat kernel reference (living update(t) contract, stage 279):
    *   uniforms uTime / uGravity / optional uWeave
    *   theta += (0.01 + idx * 0.002) * gravityPull
    *   evaluate targetState.geometry (infinity | hamiltonian | triangular | torus)
    * Runtime extras (still live, not in session switch):
    *   phi   += 0.007 * toroidalWeave
    *   klein / hopf / figure8 / trefoil on evaluateGeometry / evaluateChatKernel
-   *   mesh.position.lerp(target, alpha) — alpha = clamp(0.05 * pull, 0.02, 0.12)
+   *   mesh.position.lerp(target, alpha) — chatKernelLerpAlpha(pull, baseLerp)
    *   never allocate inside the loop
    * Stage 62: GPU TF mix(aPrevPos, target, 0.05) matches this CPU lerp baseline.
    * Stage 64: GPU TF reseeds aPrevPos when geometry changes.
    * Stage 107+: CPU path writes uWeave when the shader exposes it.
    * Stage 154+: evaluateChatKernelInto zeros non-finite x/y/z.
    * Stage 160: GPU/TF auto path at count > 1024.
-   * Stage 273: lerp rate tracks gravityPull so high-pull incursions snap, low-pull weaves drift.
+   * Stage 273/279: lerp rate tracks gravityPull so high-pull incursions snap, low-pull weaves drift.
    */
   update(t, state, targetState) {
     const pull = Number.isFinite(state?.gravityPull) ? state.gravityPull : 1;
@@ -69,7 +69,7 @@ export class GaiaNode {
       Number.isFinite(z) ? z : 0,
     );
     const baseLerp = Number.isFinite(state?.lerp) ? state.lerp : 0.05;
-    const alpha = Math.min(0.12, Math.max(0.02, baseLerp * Math.max(0.4, pull)));
+    const alpha = chatKernelLerpAlpha(pull, baseLerp);
     const scale = 0.85 + Math.min(0.55, pull * 0.18);
     if (this.dummy) {
       this.dummy.position.lerp(_target, alpha);
