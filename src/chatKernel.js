@@ -1,14 +1,15 @@
 /**
- * Living chat-kernel contract — Stage 290.
+ * Living chat-kernel contract — Stage 292.
  * CHAT_KERNEL_SESSION_SOURCE is the exact update(t) posted in the current session (hash beec41f1).
  * sourceHash is FNV-1a of CHAT_KERNEL_SOURCE (7cd81012).
  * Runtime extras: klein, hopf, figure8, trefoil.
- * Stage 290: session paste reconfirmed 2026-09-25 16:07 CDT. matchSessionPaste scans case labels.
+ * Stage 292: session paste reconfirmed 2026-09-25 20:08 CDT. matchSessionPaste scans case labels.
  * Klein / hopf / figure8 / trefoil still not in the session switch.
  * GPU/TF auto path remains count > 1024. instanceOffset band 4096–16384.
+ * CPU lerp reuses _target; session paste still allocates Vector3 (documented, not copied into hot path).
  */
 
-export const STAGE = 290;
+export const STAGE = 292;
 export const CHAT_KERNEL_LERP = 0.05;
 export const CHAT_KERNEL_THETA_BASE = 0.01;
 export const CHAT_KERNEL_THETA_IDX = 0.002;
@@ -20,6 +21,56 @@ export const CHAT_KERNEL_CHAT_GEOMETRIES = ['infinity', 'hamiltonian', 'triangul
 export const CHAT_KERNEL_GEOMETRIES = ['torus', 'infinity', 'hamiltonian', 'triangular', 'klein', 'hopf', 'figure8', 'trefoil'];
 export const CHAT_KERNEL_SOURCE_HASH = '7cd81012';
 export const CHAT_KERNEL_SESSION_HASH = 'beec41f1';
+
+export const CHAT_KERNEL_SESSION_SOURCE = `update(t) {
+    this.material.uniforms.uTime.value = t;
+    this.material.uniforms.uGravity.value = state.gravityPull;
+
+    this.theta += (0.01 + this.idx * 0.002) * state.gravityPull;
+    
+    let x, y, z;
+    let major = 10 + (this.idx * 2);
+    let minor = 3 + (state.toroidalWeave * 2);
+
+    // Evaluate the target geometric state assigned by the LLM
+    switch(targetState.geometry) {
+        case 'infinity':
+            // Lemniscate of Bernoulli mathematical mapping
+            const scale = major * 1.5;
+            const denom = 1 + Math.pow(Math.sin(this.theta), 2);
+            x = (scale * Math.cos(this.theta)) / denom;
+            z = (scale * Math.sin(this.theta) * Math.cos(this.theta)) / denom;
+            y = minor * Math.sin(this.phi) * Math.sin(t * 0.5 + this.idx);
+            break;
+            
+        case 'hamiltonian':
+            // Parametric mapping favoring vertex traversal over a spherical grid
+            const hScale = major;
+            x = hScale * Math.cos(this.theta * 3) * Math.cos(this.theta);
+            z = hScale * Math.cos(this.theta * 3) * Math.sin(this.theta);
+            y = hScale * Math.sin(this.theta * 3) + (Math.sin(t) * 2);
+            break;
+            
+        case 'triangular':
+            // Modulo-based snapping to form a 3D tetrahedron/triangular lattice
+            const tAngle = (Math.floor(this.theta / (Math.PI * 2 / 3)) * (Math.PI * 2 / 3));
+            x = major * Math.cos(tAngle) + minor * Math.cos(this.theta * 5);
+            z = major * Math.sin(tAngle) + minor * Math.sin(this.theta * 5);
+            y = (this.idx % 3 - 1) * major * 0.5 + Math.sin(t) * minor;
+            break;
+
+        case 'torus':
+        default:
+            // Standard Toroidal Math
+            x = (major + minor * Math.cos(this.phi)) * Math.cos(this.theta);
+            z = (major + minor * Math.cos(this.phi)) * Math.sin(this.theta);
+            y = minor * Math.sin(this.phi) * Math.sin(t * 0.5 + this.idx);
+            break;
+    }
+
+    // Smoothly interpolate current position to the new geometric state target
+    this.mesh.position.lerp(new THREE.Vector3(x, y, z), 0.05);
+}`;
 
 export function fnv1a32Hex(source) {
   let h = 0x811c9dc5;
@@ -39,16 +90,17 @@ function caseInSource(source, name) {
 }
 
 export function matchSessionPaste(source) {
-  const hash = fnv1a32Hex(source);
+  const src = source == null ? CHAT_KERNEL_SESSION_SOURCE : source;
+  const hash = fnv1a32Hex(src);
   return {
     stage: STAGE,
     hash,
     expected: CHAT_KERNEL_SESSION_HASH,
     match: hash === CHAT_KERNEL_SESSION_HASH,
-    kleinInSource: caseInSource(source, 'klein'),
-    hopfInSession: caseInSource(source, 'hopf'),
-    figure8InSession: caseInSource(source, 'figure8'),
-    trefoilInSession: caseInSource(source, 'trefoil'),
+    kleinInSource: caseInSource(src, 'klein'),
+    hopfInSession: caseInSource(src, 'hopf'),
+    figure8InSession: caseInSource(src, 'figure8'),
+    trefoilInSession: caseInSource(src, 'trefoil'),
   };
 }
 
@@ -232,20 +284,21 @@ export function hslToRgb(h, s, l) {
 }
 
 export function confirmSessionKernel() {
+  const pin = matchSessionPaste(CHAT_KERNEL_SESSION_SOURCE);
   return {
     stage: STAGE,
     sessionHash: CHAT_KERNEL_SESSION_HASH,
     livingHash: CHAT_KERNEL_SOURCE_HASH,
-    pinned: true,
-    kleinInSession: false,
-    hopfInSession: false,
-    figure8InSession: false,
-    trefoilInSession: false,
+    pinned: pin.match,
+    kleinInSession: pin.kleinInSource,
+    hopfInSession: pin.hopfInSession,
+    figure8InSession: pin.figure8InSession,
+    trefoilInSession: pin.trefoilInSession,
     geometries: [...CHAT_KERNEL_CHAT_GEOMETRIES],
     runtimeExtras: ['klein', 'hopf', 'figure8', 'trefoil'],
     gpuAutoThreshold: GPU_AUTO_THRESHOLD,
     instanceOffsetMin: INSTANCE_OFFSET_MIN,
     nodeCap: NODE_CAP,
-    note: 'Session paste 2026-09-25 16:07 CDT matches beec41f1. Klein/hopf/figure8/trefoil stay runtime-only. Stage 290 compiled next hops; GPU/TF auto-enable at count>1024; skip CPU instance matrices at 4096-16384; chatKernelLerpAlpha shared; CPU evaluate zeros non-finite coords.',
+    note: 'Session paste 2026-09-25 20:08 CDT matches beec41f1. Klein/hopf/figure8/trefoil stay runtime-only. Stage 292 compiled next hops; GPU/TF auto-enable at count>1024; skip CPU instance matrices at 4096-16384; chatKernelLerpAlpha shared; CPU evaluate zeros non-finite coords.',
   };
 }
