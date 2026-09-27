@@ -18,8 +18,8 @@ export class GaiaNode {
   }
 
   /**
-   * Chat kernel reference (living update(t) contract, stage 281):
-   *   uniforms uTime / uGravity / optional uWeave
+   * Chat kernel reference (living update(t) contract, stage 307):
+   *   uniforms uTime / uGravity / optional uWeave / optional uBlend
    *   theta += (0.01 + idx * 0.002) * gravityPull
    *   evaluate targetState.geometry (infinity | hamiltonian | triangular | torus)
    * Runtime extras (still live, not in session switch):
@@ -27,21 +27,17 @@ export class GaiaNode {
    *   klein / hopf / figure8 / trefoil on evaluateGeometry / evaluateChatKernel
    *   mesh.position.lerp(target, alpha) — chatKernelLerpAlpha(pull, baseLerp)
    *   never allocate inside the loop
-   * Stage 62: GPU TF mix(aPrevPos, target, 0.05) matches this CPU lerp baseline.
-   * Stage 64: GPU TF reseeds aPrevPos when geometry changes.
-   * Stage 107+: CPU path writes uWeave when the shader exposes it.
-   * Stage 154+: evaluateChatKernelInto zeros non-finite x/y/z.
-   * Stage 160: GPU/TF auto path at count > 1024.
-   * Stage 273/279/281: lerp rate tracks gravityPull so high-pull incursions snap, low-pull weaves drift.
    */
   update(t, state, targetState) {
     const pull = Number.isFinite(state?.gravityPull) ? state.gravityPull : 1;
     const weave = Number.isFinite(state?.toroidalWeave) ? state.toroidalWeave : 1;
+    const blend = Number.isFinite(state?.blend) ? state.blend : 0.5;
 
     if (this.material?.uniforms) {
       if (this.material.uniforms.uTime) this.material.uniforms.uTime.value = t;
       if (this.material.uniforms.uGravity) this.material.uniforms.uGravity.value = pull;
       if (this.material.uniforms.uWeave) this.material.uniforms.uWeave.value = weave;
+      if (this.material.uniforms.uBlend) this.material.uniforms.uBlend.value = blend;
       if (this.material.uniforms.uColor) {
         const hue = (this.baseHue + pull * 0.08 + t * 0.01) % 1;
         _color.setHSL(hue, 0.7, 0.45 + Math.min(0.3, pull * 0.08));
@@ -60,7 +56,7 @@ export class GaiaNode {
       gravityPull: pull,
       toroidalWeave: weave,
       geometry: targetState?.geometry || 'torus',
-      blend: state.blend ?? 0.5,
+      blend,
     });
 
     _target.set(
