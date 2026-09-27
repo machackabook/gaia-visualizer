@@ -1,8 +1,8 @@
 # Gaia visualizer + The-Hive — compiled stages
 
-Band `302-visual`. Chat kernel is the `update(t)` posted in-session (uniforms → theta → geometry switch → lerp 0.05).
+Band `305-visual`. Chat kernel is the `update(t)` posted in-session (uniforms → theta → geometry switch → lerp 0.05).
 Session kernel still allocates `new THREE.Vector3` inside lerp; live path uses a reused `_kernelTarget` / `_target`.
-Stage 302 reconfirms the session paste (`beec41f1`) from 2026-09-26 22:06 CDT. No new case labels.
+Stage 305 reconfirms the session paste (`beec41f1`) from 2026-09-27 09:08 CDT. No new case labels.
 Hive ships `matchSessionPaste`. Klein / hopf / figure8 / trefoil stay off the session switch.
 Hive dual-dispatches `postGaiaContract` onto `gaia-weave` + `gaia:targetState`.
 Hive Quine sliders emit through `usePanelWeave` → `panelWeaveBridge`.
@@ -18,8 +18,8 @@ Hive Quine sliders emit through `usePanelWeave` → `panelWeaveBridge`.
 | 64 | Re-seed TF `aPrevPos` when geometry changes. |
 | 65 | CPU evaluate hopf + figure8 (GPU ids 13 / 8). |
 | 66 | CPU trefoil (GPU id 7). `matchSessionPaste` scans extras. |
-| 72–301 | Live chat + remembral stamps. Session pin `beec41f1` held. |
-| 302 | Live chat 2026-09-26 22:06 CDT. Session paste reconfirmed; next hops compiled. |
+| 72–304 | Live chat + remembral stamps. Session pin `beec41f1` held. |
+| 305 | Live chat 2026-09-27 09:08 CDT. Session paste reconfirmed; next hops compiled. |
 
 ## Next
 
@@ -34,12 +34,12 @@ Hive Quine sliders emit through `usePanelWeave` → `panelWeaveBridge`.
 | 58 | mesh | Promote klein into the session switch only after a chat paste includes it. |
 | 66-session | mesh | Promote hopf/figure8/trefoil into the session switch only after a chat paste includes those cases. |
 | 270-gate | mesh | Keep session hash `beec41f1` pinned; do not rewrite the four-geometry paste. |
-| 303 | continuity-ledger-cycle / nexus-repo-sync | Next waterfall hop. |
+| 306 | continuity-ledger-cycle / nexus-repo-sync | Next waterfall hop. |
 
 ## Drive from LLM
 
 ```js
 window.dispatchEvent(new CustomEvent('gaia:targetState', {
-  detail: { geometry: 'blend', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 302, sourceHash: '7cd81012' }
+  detail: { geometry: 'blend', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 305, sourceHash: '7cd81012' }
 }));
 ```
