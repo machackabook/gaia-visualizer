@@ -10,14 +10,14 @@ Team Enhance hops one repo per hour. Equalizer formats only. No history rewrite.
 * Branch: main
 * Language: JavaScript (Vite 5 / three ^0.169)
 * Numeral: 137451921129154222
-* Stage: **296** — 2026-09-26T21:08Z (2026-09-26 16:08 CDT)
+* Stage: **299** — 2026-09-27T00:10Z (2026-09-26 19:10 CDT)
 * Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
 * Compounding tier: **T5 / 99%**
-* Prior mesh: hop 295 live-chat reconfirm; session paste `beec41f1` held
-* This hop: live chat update(t) pin held and embedded as CHAT_KERNEL_SESSION_SOURCE; STAGES + HOP-296; cascade.yml left intact; no extra hourly YAML; no secrets written
-* Next hour: Cryptic-Heartbeat then continuity-mesh-speedway then nexus-repo-sync
+* Prior mesh: hop 296 README; Hive 298; session paste `beec41f1` held
+* This hop: live chat update(t) pin held and embedded as CHAT_KERNEL_SESSION_SOURCE; STAGES + HOP-299; cascade.yml left intact; no extra hourly YAML; no secrets written
+* Next hour: continuity-ledger-cycle then nexus-repo-sync then continuity-mesh-speedway
 * Cascade: keep existing .github/workflows/cascade.yml healthy. Do not multiply hourly YAML.
-* Ledger: docs/HOP-296.md + STAGES.md
+* Ledger: docs/HOP-299.md + STAGES.md
 * Drive mesh: GitHub remains the versioned singularity. Ethereal continuum (Drive) is a mirror, not a second source of truth.
 * Equalizer: append-only stamps; no history rewrite; no secret material in tree
 * Security: CASCADE_TOKEN stays in GitHub Secrets if present. Never echo tokens.
@@ -68,10 +68,10 @@ Cross-repo push on pull stays closed until the operator injects `CASCADE_TOKEN`.
 ## Waterfall (one repo per enhance hop)
 
 1. ENCLAVE-ADAM-REUNITED
-2. Cryptic-Heartbeat ← next hour
-3. The-Hive
-4. continuity-ledger-cycle (private sibling)
-5. gaia-visualizer — **296 this hop**
+2. Cryptic-Heartbeat
+3. The-Hive — paired hop 299
+4. continuity-ledger-cycle ← next hour
+5. gaia-visualizer — **299 this hop**
 6. nexus-repo-sync
 7. sovereign-ai-factory-ai-polyglot
 8. continuity-mesh-speedway
