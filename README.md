@@ -10,12 +10,11 @@ Team Enhance hops one repo per hour. Equalizer formats only. No history rewrite.
 * Branch: main
 * Language: JavaScript (Vite 5 / three ^0.169)
 * Numeral: 137451921129154222
-* Stage: **300** — 2026-09-27T06:10Z (2026-09-27 01:10 CDT)
+* Stage: **307** — 2026-09-27T16:07Z (2026-09-27 11:07 CDT)
 * Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
 * Compounding tier: **T5 / 99%**
-* Prior mesh: hop 299 README lagged stamp at 263; continuity-ledger-cycle last waterfall at 05:08Z
-* This hop: README quality pass; LEDGER-STAMP.md HEAD rewrite to hop 300; cascade.yml left intact; no extra hourly YAML; no secrets written
-* Next hour: nexus-repo-sync then sovereign-ai-factory-ai-polyglot then continuity-mesh-speedway then ENCLAVE-ADAM-REUNITED
+* This hop: live chat `update(t)` reconfirmed (`beec41f1`); optional `uBlend` on living CPU path; cascade.yml left intact; no extra hourly YAML; no secrets written
+* Next hour: The-Hive HeartbeatScan + authenticated ledger_pulse, then nexus-repo-sync
 * Cascade: keep existing .github/workflows/cascade.yml healthy. Do not multiply hourly YAML.
 * Ledger: docs/LEDGER-STAMP.md (HEAD) + historic HOP cards
 * Drive mesh: GitHub remains the versioned singularity. Ethereal continuum (Drive) is a mirror, not a second source of truth.
@@ -25,7 +24,7 @@ Team Enhance hops one repo per hour. Equalizer formats only. No history rewrite.
 ## Chat kernel (session pin)
 
 Session switch is still only `infinity | hamiltonian | triangular | torus`.
-Live runtime adds phi weave, reused lerp target, optional `uWeave`, plus runtime extras klein / hopf / figure8 / trefoil.
+Live runtime adds phi weave, reused lerp target, optional `uWeave` / `uBlend`, plus runtime extras klein / hopf / figure8 / trefoil.
 Do not promote extra labels until a future paste includes them.
 
 ## Compounding growth
@@ -70,8 +69,8 @@ Cross-repo push on pull stays closed until the operator injects `CASCADE_TOKEN`.
 1. ENCLAVE-ADAM-REUNITED
 2. Cryptic-Heartbeat
 3. The-Hive
-4. continuity-ledger-cycle — prior hour
-5. gaia-visualizer — **300 this hop**
+4. continuity-ledger-cycle
+5. gaia-visualizer — **307 this hop**
 6. nexus-repo-sync ← next hour
 7. sovereign-ai-factory-ai-polyglot
 8. continuity-mesh-speedway
