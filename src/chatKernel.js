@@ -1,15 +1,15 @@
 /**
- * Living chat-kernel contract — Stage 307.
+ * Living chat-kernel contract — Stage 311.
  * CHAT_KERNEL_SESSION_SOURCE is the exact update(t) posted in the current session (hash beec41f1).
  * sourceHash is FNV-1a of CHAT_KERNEL_SOURCE (7cd81012).
- * Runtime extras: klein, hopf, figure8, trefoil.
- * Stage 307: session paste reconfirmed 2026-09-27 11:06 CDT. matchSessionPaste scans case labels.
- * Klein / hopf / figure8 / trefoil still not in the session switch.
+ * Runtime extras: klein, hopf, figure8, trefoil, mobius.
+ * Stage 311: session paste reconfirmed 2026-09-27 17:06 CDT. matchSessionPaste scans case labels.
+ * Klein / hopf / figure8 / trefoil / mobius still not in the session switch.
  * GPU/TF auto path remains count > 1024. instanceOffset band 4096–16384.
  * CPU lerp reuses _target; session paste still allocates Vector3 (documented, not copied into hot path).
  */
 
-export const STAGE = 307;
+export const STAGE = 311;
 export const CHAT_KERNEL_LERP = 0.05;
 export const CHAT_KERNEL_THETA_BASE = 0.01;
 export const CHAT_KERNEL_THETA_IDX = 0.002;
@@ -18,7 +18,7 @@ export const GPU_AUTO_THRESHOLD = 1024;
 export const INSTANCE_OFFSET_MIN = 4096;
 export const NODE_CAP = 16384;
 export const CHAT_KERNEL_CHAT_GEOMETRIES = ['infinity', 'hamiltonian', 'triangular', 'torus'];
-export const CHAT_KERNEL_GEOMETRIES = ['torus', 'infinity', 'hamiltonian', 'triangular', 'klein', 'hopf', 'figure8', 'trefoil'];
+export const CHAT_KERNEL_GEOMETRIES = ['torus', 'infinity', 'hamiltonian', 'triangular', 'klein', 'hopf', 'figure8', 'trefoil', 'mobius'];
 export const CHAT_KERNEL_SOURCE_HASH = '7cd81012';
 export const CHAT_KERNEL_SESSION_HASH = 'beec41f1';
 
@@ -101,6 +101,7 @@ export function matchSessionPaste(source) {
     hopfInSession: caseInSource(src, 'hopf'),
     figure8InSession: caseInSource(src, 'figure8'),
     trefoilInSession: caseInSource(src, 'trefoil'),
+    mobiusInSession: caseInSource(src, 'mobius'),
   };
 }
 
@@ -204,6 +205,15 @@ export function evaluateChatKernelInto(out, {
       y = minor * 0.55 * Math.sin(3 * u) + Math.sin(t * 0.3 + idx) * 0.4;
       break;
     }
+    case 'mobius': {
+      const u = theta;
+      const v = (Math.sin(phi) * 0.5) * minor * 0.35;
+      const R = major * 0.45;
+      x = (R + v * Math.cos(u / 2)) * Math.cos(u);
+      z = (R + v * Math.cos(u / 2)) * Math.sin(u);
+      y = v * Math.sin(u / 2) + Math.sin(t * 0.25 + idx) * 0.35;
+      break;
+    }
     case 'torus':
     default: {
       x = (major + minor * Math.cos(phi)) * Math.cos(theta);
@@ -294,11 +304,12 @@ export function confirmSessionKernel() {
     hopfInSession: pin.hopfInSession,
     figure8InSession: pin.figure8InSession,
     trefoilInSession: pin.trefoilInSession,
+    mobiusInSession: pin.mobiusInSession,
     geometries: [...CHAT_KERNEL_CHAT_GEOMETRIES],
-    runtimeExtras: ['klein', 'hopf', 'figure8', 'trefoil'],
+    runtimeExtras: ['klein', 'hopf', 'figure8', 'trefoil', 'mobius'],
     gpuAutoThreshold: GPU_AUTO_THRESHOLD,
     instanceOffsetMin: INSTANCE_OFFSET_MIN,
     nodeCap: NODE_CAP,
-    note: 'Session paste 2026-09-27 11:06 CDT matches beec41f1. Klein/hopf/figure8/trefoil stay runtime-only. Stage 307 compiled next hops; GPU/TF auto-enable at count>1024; skip CPU instance matrices at 4096-16384; chatKernelLerpAlpha shared; CPU evaluate zeros non-finite coords.',
+    note: 'Session paste 2026-09-27 17:06 CDT matches beec41f1. Klein/hopf/figure8/trefoil/mobius stay runtime-only. Stage 311 compiled next hops; GPU/TF auto-enable at count>1024; skip CPU instance matrices at 4096-16384; chatKernelLerpAlpha shared; CPU evaluate zeros non-finite coords.',
   };
 }
