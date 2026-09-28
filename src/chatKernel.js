@@ -1,5 +1,5 @@
 /**
- * Living chat-kernel contract — Stage 323.
+ * Living chat-kernel contract — Stage 324.
  * Session paste 2026-09-28 15:06 CDT reconfirmed four base cases (infinity|hamiltonian|triangular|torus).
  * Stage 314 extras (klein, hopf, figure8, trefoil, mobius) remain in the living switch only.
  * Stage 315+: this.phi += CHAT_KERNEL_PHI_WEAVE * toroidalWeave; finite-guard x/y/z before lerp.
@@ -9,10 +9,12 @@
  *            pair-wise blend stays off the session switch.
  * Stage 323: applyChatKernelUniforms helper; optional uPhi on the living path;
  *            session paste still allocates Vector3 (documented). Living path reuses a caller target.
+ * Stage 324: advanceAndEvaluateChatKernel combines angle weave + four-case evaluate
+ *            so CPU / GPU seeds share one call site. Session paste unchanged.
  * GPU/TF auto path remains count > 1024. instanceOffset band 4096–16384.
  */
 
-export const STAGE = 323;
+export const STAGE = 324;
 export const CHAT_KERNEL_LERP = 0.05;
 export const CHAT_KERNEL_THETA_BASE = 0.01;
 export const CHAT_KERNEL_THETA_IDX = 0.002;
@@ -215,6 +217,31 @@ export function evaluateChatKernelPosition({
   };
 }
 
+/**
+ * Combined living step: weave theta/phi then evaluate the four-case session manifold.
+ * Does not allocate. Extras stay on evaluateGeometry.
+ */
+export function advanceAndEvaluateChatKernel({
+  theta = 0,
+  phi = 0,
+  t = 0,
+  idx = 0,
+  gravityPull = 1,
+  toroidalWeave = 1,
+  geometry = 'torus',
+} = {}) {
+  const angles = advanceChatKernelAngles({ theta, phi, idx, gravityPull, toroidalWeave });
+  const pos = evaluateChatKernelPosition({
+    theta: angles.theta,
+    phi: angles.phi,
+    t,
+    idx,
+    toroidalWeave,
+    geometry,
+  });
+  return { ...angles, ...pos, lerp: chatKernelLerpAlpha(gravityPull) };
+}
+
 export function confirmSessionKernel() {
   return {
     stage: STAGE,
@@ -226,6 +253,6 @@ export function confirmSessionKernel() {
     gpuAutoThreshold: GPU_AUTO_THRESHOLD,
     instanceOffsetMin: INSTANCE_OFFSET_MIN,
     nodeCap: NODE_CAP,
-    note: 'Session paste held beec41f1. Stage 323 applyChatKernelUniforms is the guarded uniform path. Pair-wise blend is runtime-only.',
+    note: 'Session paste held beec41f1. Stage 324 advanceAndEvaluateChatKernel is the combined living call. Pair-wise blend is runtime-only.',
   };
 }
