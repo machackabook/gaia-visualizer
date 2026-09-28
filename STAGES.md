@@ -1,11 +1,12 @@
 # Gaia visualizer + The-Hive — compiled stages
 
-Band `325-visual`. Chat kernel is the `update(t)` posted in-session (uniforms → theta → geometry switch → lerp 0.05).
+Band `326-visual`. Chat kernel is the `update(t)` posted in-session (uniforms → theta → geometry switch → lerp 0.05).
 Raw session kernel still allocates `new THREE.Vector3` inside lerp (hash `beec41f1`). Enhanced / live path uses a reused `_kernelTarget` / `_target`.
 Stage 317 ships that reuse. Stage 315 weave + finite x/y/z stay on the enhanced pin. Extras remain runtime-only.
 Stage 321 exports living helpers from `src/chatKernel.js` and pair-wise `blendFrom`/`blendTo` on evaluateGeometry.
 Stage 323 ships `applyChatKernelUniforms`. Stage 324 ships `advanceAndEvaluateChatKernel`.
 Stage 325 routes the four session geometries through that combined call on GaiaNode.
+Stage 326 ships `applyChatKernelTarget` so living lerp never allocates.
 
 ## Done
 
@@ -30,6 +31,7 @@ Stage 325 routes the four session geometries through that combined call on GaiaN
 | 323 | applyChatKernelUniforms + optional uPhi. |
 | 324 | advanceAndEvaluateChatKernel combined living step. |
 | 325 | GaiaNode four-case path calls advanceAndEvaluateChatKernel. |
+| 326 | applyChatKernelTarget reused lerp destination. Session paste 2026-09-28 18:06 CDT reconfirmed. |
 
 ## Next
 
@@ -42,12 +44,12 @@ Stage 325 routes the four session geometries through that combined call on GaiaN
 | 16-public | gaia-visualizer | hamiltoniansingularity.ai public band; default geometry `blend` |
 | 19-panels | The-Hive | Hook remaining NexusStudio / Stream sliders |
 | 51-impl | gaia-visualizer | Tighter InstancedMesh instanceOffset shader path at 4k–16k |
-| 326 | continuity-ledger-cycle / nexus-repo-sync | Next waterfall hop. |
+| 327 | continuity-ledger-cycle / nexus-repo-sync | Next waterfall hop. |
 
 ## Drive from LLM
 
 ```js
 window.dispatchEvent(new CustomEvent('gaia:targetState', {
-  detail: { geometry: 'blend', blendFrom: 'hamiltonian', blendTo: 'klein', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 325, sourceHash: '7cd81012', sessionHash: 'beec41f1' }
+  detail: { geometry: 'blend', blendFrom: 'hamiltonian', blendTo: 'klein', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 326, sourceHash: '7cd81012', sessionHash: 'beec41f1' }
 }));
 ```
