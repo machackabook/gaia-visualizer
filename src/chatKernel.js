@@ -1,6 +1,6 @@
 /**
- * Living chat-kernel contract — Stage 324.
- * Session paste 2026-09-28 15:06 CDT reconfirmed four base cases (infinity|hamiltonian|triangular|torus).
+ * Living chat-kernel contract — Stage 325.
+ * Session paste 2026-09-28 17:06 CDT reconfirmed four base cases (infinity|hamiltonian|triangular|torus).
  * Stage 314 extras (klein, hopf, figure8, trefoil, mobius) remain in the living switch only.
  * Stage 315+: this.phi += CHAT_KERNEL_PHI_WEAVE * toroidalWeave; finite-guard x/y/z before lerp.
  * Stage 319: uniform existence guards; gravity-scaled lerp alpha on living path.
@@ -11,10 +11,11 @@
  *            session paste still allocates Vector3 (documented). Living path reuses a caller target.
  * Stage 324: advanceAndEvaluateChatKernel combines angle weave + four-case evaluate
  *            so CPU / GPU seeds share one call site. Session paste unchanged.
+ * Stage 325: isChatKernelGeometry gates GaiaNode onto that combined call.
  * GPU/TF auto path remains count > 1024. instanceOffset band 4096–16384.
  */
 
-export const STAGE = 324;
+export const STAGE = 325;
 export const CHAT_KERNEL_LERP = 0.05;
 export const CHAT_KERNEL_THETA_BASE = 0.01;
 export const CHAT_KERNEL_THETA_IDX = 0.002;
@@ -117,6 +118,10 @@ export function shouldUseGpuPath(count) {
 
 export function shouldSkipCpuInstanceMatrix(count) {
   return count >= INSTANCE_OFFSET_MIN && count <= NODE_CAP;
+}
+
+export function isChatKernelGeometry(geometry) {
+  return CHAT_KERNEL_CHAT_GEOMETRIES.includes(geometry);
 }
 
 /** Gravity-scaled lerp used by CPU nodes and GPU follow-up. */
@@ -253,6 +258,6 @@ export function confirmSessionKernel() {
     gpuAutoThreshold: GPU_AUTO_THRESHOLD,
     instanceOffsetMin: INSTANCE_OFFSET_MIN,
     nodeCap: NODE_CAP,
-    note: 'Session paste held beec41f1. Stage 324 advanceAndEvaluateChatKernel is the combined living call. Pair-wise blend is runtime-only.',
+    note: 'Session paste held beec41f1. Stage 325 GaiaNode four-case path uses advanceAndEvaluateChatKernel. Pair-wise blend is runtime-only.',
   };
 }
