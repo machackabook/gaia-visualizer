@@ -1,17 +1,18 @@
 /**
- * Living chat-kernel contract — Stage 322.
- * Session paste 2026-09-28 14:06 CDT reconfirmed four base cases (infinity|hamiltonian|triangular|torus).
+ * Living chat-kernel contract — Stage 323.
+ * Session paste 2026-09-28 15:06 CDT reconfirmed four base cases (infinity|hamiltonian|triangular|torus).
  * Stage 314 extras (klein, hopf, figure8, trefoil, mobius) remain in the living switch only.
  * Stage 315+: this.phi += CHAT_KERNEL_PHI_WEAVE * toroidalWeave; finite-guard x/y/z before lerp.
  * Stage 319: uniform existence guards; gravity-scaled lerp alpha on living path.
  * Stage 321: helpers live on this module so Node.js / main.js imports resolve.
  * Stage 322: evaluateChatKernelPosition extracted; optional uWeave/uBlend/uPhi documented;
  *            pair-wise blend stays off the session switch.
- * Session paste still allocates Vector3 (documented). Living path reuses a caller target.
+ * Stage 323: applyChatKernelUniforms helper; optional uPhi on the living path;
+ *            session paste still allocates Vector3 (documented). Living path reuses a caller target.
  * GPU/TF auto path remains count > 1024. instanceOffset band 4096–16384.
  */
 
-export const STAGE = 322;
+export const STAGE = 323;
 export const CHAT_KERNEL_LERP = 0.05;
 export const CHAT_KERNEL_THETA_BASE = 0.01;
 export const CHAT_KERNEL_THETA_IDX = 0.002;
@@ -142,6 +143,20 @@ export function advanceChatKernelAngles({
 }
 
 /**
+ * Optional shader uniforms shared by the living Node path.
+ * Session paste only writes uTime / uGravity; extras are existence-guarded.
+ */
+export function applyChatKernelUniforms(material, { t = 0, gravityPull = 1, toroidalWeave = 1, blend = 0.5, phi } = {}) {
+  const uniforms = material && material.uniforms;
+  if (!uniforms) return;
+  if (uniforms.uTime) uniforms.uTime.value = t;
+  if (uniforms.uGravity) uniforms.uGravity.value = gravityPull;
+  if (uniforms.uWeave) uniforms.uWeave.value = toroidalWeave;
+  if (uniforms.uBlend) uniforms.uBlend.value = blend;
+  if (uniforms.uPhi && Number.isFinite(phi)) uniforms.uPhi.value = phi;
+}
+
+/**
  * Session four-case evaluator. No allocation. Finite-guarded.
  * Living extras stay in geometry.js evaluateGeometry.
  */
@@ -211,6 +226,6 @@ export function confirmSessionKernel() {
     gpuAutoThreshold: GPU_AUTO_THRESHOLD,
     instanceOffsetMin: INSTANCE_OFFSET_MIN,
     nodeCap: NODE_CAP,
-    note: 'Session paste held beec41f1. Stage 322 evaluateChatKernelPosition is the allocation-free living path. Pair-wise blend is runtime-only.',
+    note: 'Session paste held beec41f1. Stage 323 applyChatKernelUniforms is the guarded uniform path. Pair-wise blend is runtime-only.',
   };
 }
