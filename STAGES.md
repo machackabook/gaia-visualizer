@@ -1,10 +1,8 @@
 # Gaia visualizer + The-Hive — compiled stages
 
-Band `311-visual`. Chat kernel is the `update(t)` posted in-session (uniforms → theta → geometry switch → lerp 0.05).
+Band `315-visual`. Chat kernel is the `update(t)` posted in-session (uniforms → theta → phi weave → geometry switch → finite guard → lerp 0.05).
 Session kernel still allocates `new THREE.Vector3` inside lerp; live path uses a reused `_kernelTarget` / `_target`.
-Stage 311 reconfirms the session paste (`beec41f1`) from 2026-09-27 17:06 CDT. No new case labels.
-Hive ships `matchSessionPaste`. Klein / hopf / figure8 / trefoil / mobius stay off the session switch.
-Living CPU path writes optional `uBlend` when the shader exposes it. `evaluateChatKernelInto` now maps `mobius`.
+Stage 315 enhances the 2026-09-27 21:06 CDT paste: phi weave + finite x/y/z. Extras remain in the session switch from 314.
 
 ## Done
 
@@ -18,27 +16,29 @@ Living CPU path writes optional `uBlend` when the shader exposes it. `evaluateCh
 | 65 | CPU evaluate hopf + figure8 (GPU ids 13 / 8). |
 | 66 | CPU trefoil (GPU id 7). `matchSessionPaste` scans extras. |
 | 72–310 | Live chat + remembral stamps. Session pin `beec41f1` held. |
-| 311 | Live chat 2026-09-27 17:06 CDT. Session paste reconfirmed; mobius runtime extra; next hops compiled. |
+| 311 | Live chat 2026-09-27 17:06 CDT. Session paste reconfirmed; mobius runtime extra. |
+| 314 | Session switch extras klein/figure8/hopf/trefoil/mobius. Hash `67185cf3`. |
+| 315 | Session phi weave + finite guards. Hash `c315e7a1`. |
 
 ## Next
 
 | Stage | Owner repo | Work |
 |------|------------|------|
+| 316-gpu | gaia-visualizer | TF/shader parity for klein hopf figure8 trefoil mobius |
+| 317-lerp | gaia-visualizer | Session paste reuse `_kernelTarget`; drop per-frame Vector3 |
+| 318-blend | gaia-visualizer | Geometry blender via `state.blend` between two keys |
 | 4-gov | The-Hive | HeartbeatScan on HTTP mutation + WS (issue #4). |
-| 13 | The-Hive + gaia-visualizer | Authenticated live `ledger_pulse` → Hive WS against live sheet counts. Token + HMAC already flow. |
-| 14 | The-Hive | Memory engrams into Drive folder `CRYPTIC-HEARTBEAT-NEXUS-ROOT` (consume `/api/gaia/engram`) |
-| 16-public | gaia-visualizer | hamiltoniansingularity.ai public band; default geometry `blend` (host default already wired) |
+| 13 | The-Hive + gaia-visualizer | Authenticated live `ledger_pulse` → Hive WS against live sheet counts. |
+| 14 | The-Hive | Memory engrams into Drive folder `CRYPTIC-HEARTBEAT-NEXUS-ROOT` |
+| 16-public | gaia-visualizer | hamiltoniansingularity.ai public band; default geometry `blend` |
 | 19-panels | The-Hive | Hook remaining NexusStudio / Stream sliders |
 | 51-impl | gaia-visualizer | Tighter InstancedMesh instanceOffset shader path at 4k–16k |
-| 58 | mesh | Promote klein into the session switch only after a chat paste includes it. |
-| 66-session | mesh | Promote hopf/figure8/trefoil into the session switch only after a chat paste includes those cases. |
-| 270-gate | mesh | Keep session hash `beec41f1` pinned; do not rewrite the four-geometry paste. |
-| 312 | continuity-ledger-cycle / nexus-repo-sync | Next waterfall hop. |
+| 319 | continuity-ledger-cycle / nexus-repo-sync | Next waterfall hop. |
 
 ## Drive from LLM
 
 ```js
 window.dispatchEvent(new CustomEvent('gaia:targetState', {
-  detail: { geometry: 'blend', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 311, sourceHash: '7cd81012' }
+  detail: { geometry: 'blend', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 315, sourceHash: '7cd81012', sessionHash: 'c315e7a1' }
 }));
 ```
