@@ -1,8 +1,8 @@
 # Gaia visualizer + The-Hive — compiled stages
 
-Band `315-visual`. Chat kernel is the `update(t)` posted in-session (uniforms → theta → phi weave → geometry switch → finite guard → lerp 0.05).
-Session kernel still allocates `new THREE.Vector3` inside lerp; live path uses a reused `_kernelTarget` / `_target`.
-Stage 315 enhances the 2026-09-27 21:06 CDT paste: phi weave + finite x/y/z. Extras remain in the session switch from 314.
+Band `317-visual`. Chat kernel is the `update(t)` posted in-session (uniforms → theta → geometry switch → lerp 0.05).
+Raw session kernel still allocates `new THREE.Vector3` inside lerp (hash `beec41f1`). Enhanced / live path uses a reused `_kernelTarget`.
+Stage 317 ships that reuse. Stage 315 weave + finite x/y/z stay on the enhanced pin. Extras remain runtime-only.
 
 ## Done
 
@@ -19,14 +19,15 @@ Stage 315 enhances the 2026-09-27 21:06 CDT paste: phi weave + finite x/y/z. Ext
 | 311 | Live chat 2026-09-27 17:06 CDT. Session paste reconfirmed; mobius runtime extra. |
 | 314 | Session switch extras klein/figure8/hopf/trefoil/mobius. Hash `67185cf3`. |
 | 315 | Session phi weave + finite guards. Hash `c315e7a1`. |
+| 316 | GPU four-case shader parity vs this paste. |
+| 317 | Enhanced session `_kernelTarget` reuse. |
 
 ## Next
 
 | Stage | Owner repo | Work |
 |------|------------|------|
-| 316-gpu | gaia-visualizer | TF/shader parity for klein hopf figure8 trefoil mobius |
-| 317-lerp | gaia-visualizer | Session paste reuse `_kernelTarget`; drop per-frame Vector3 |
 | 318-blend | gaia-visualizer | Geometry blender via `state.blend` between two keys |
+| 316-gpu | gaia-visualizer | TF/shader parity for klein hopf figure8 trefoil mobius |
 | 4-gov | The-Hive | HeartbeatScan on HTTP mutation + WS (issue #4). |
 | 13 | The-Hive + gaia-visualizer | Authenticated live `ledger_pulse` → Hive WS against live sheet counts. |
 | 14 | The-Hive | Memory engrams into Drive folder `CRYPTIC-HEARTBEAT-NEXUS-ROOT` |
@@ -39,6 +40,6 @@ Stage 315 enhances the 2026-09-27 21:06 CDT paste: phi weave + finite x/y/z. Ext
 
 ```js
 window.dispatchEvent(new CustomEvent('gaia:targetState', {
-  detail: { geometry: 'blend', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 315, sourceHash: '7cd81012', sessionHash: 'c315e7a1' }
+  detail: { geometry: 'blend', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 317, sourceHash: '7cd81012', sessionHash: 'beec41f1' }
 }));
 ```
