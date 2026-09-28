@@ -3,6 +3,7 @@
  * Pure mapping: (theta, phi, t, idx, state, geometry) -> {x,y,z}
  * Chat kernel remains torus / infinity / hamiltonian / triangular + lerp.
  * Stage-16: CPU reference for the full 31-manifold set; TF kernel now covers all ids 0–30.
+ * Stage 321: blend accepts blendFrom / blendTo (default hamiltonian → klein).
  */
 export const GEOMETRIES = [
   'torus',
@@ -57,6 +58,46 @@ function hamiltonianPath(theta, t, major) {
     z: major * Math.cos(theta * 3) * Math.sin(theta),
     y: major * Math.sin(theta * 3) + Math.sin(t) * 2,
   };
+}
+
+function torusPath(theta, phi, t, idx, major, minor) {
+  return {
+    x: (major + minor * Math.cos(phi)) * Math.cos(theta),
+    z: (major + minor * Math.cos(phi)) * Math.sin(theta),
+    y: minor * Math.sin(phi) * Math.sin(t * 0.5 + idx),
+  };
+}
+
+function infinityPath(theta, phi, t, idx, major, minor) {
+  const scale = major * 1.5;
+  const denom = 1 + Math.sin(theta) * Math.sin(theta);
+  return {
+    x: (scale * Math.cos(theta)) / denom,
+    z: (scale * Math.sin(theta) * Math.cos(theta)) / denom,
+    y: minor * Math.sin(phi) * Math.sin(t * 0.5 + idx),
+  };
+}
+
+function triangularPath(theta, t, idx, major, minor) {
+  const step = (Math.PI * 2) / 3;
+  const tAngle = Math.floor(theta / step) * step;
+  return {
+    x: major * Math.cos(tAngle) + minor * Math.cos(theta * 5),
+    z: major * Math.sin(tAngle) + minor * Math.sin(theta * 5),
+    y: (idx % 3 - 1) * major * 0.5 + Math.sin(t) * minor,
+  };
+}
+
+function sampleNamed(name, ctx) {
+  const { theta, phi, t, idx, major, minor, toroidalWeave, gravityPull } = ctx;
+  switch (name) {
+    case 'infinity': return infinityPath(theta, phi, t, idx, major, minor);
+    case 'hamiltonian': return hamiltonianPath(theta, t, major);
+    case 'triangular': return triangularPath(theta, t, idx, major, minor);
+    case 'klein': return kleinBottle(theta, phi, t, idx, major, toroidalWeave);
+    case 'torus':
+    default: return torusPath(theta, phi, t, idx, major, minor);
+  }
 }
 
 function cliffordTorus(theta, phi, t, major, minor) {
@@ -326,18 +367,18 @@ export function evaluateGeometry({
   toroidalWeave = 1,
   geometry = 'torus',
   blend = 0.5,
+  blendFrom = 'hamiltonian',
+  blendTo = 'klein',
 }) {
   const major = 10 + (idx % 24) * 2;
   const minor = 3 + toroidalWeave * 2;
   let x = 0, y = 0, z = 0;
+  const ctx = { theta, phi, t, idx, major, minor, toroidalWeave, gravityPull };
 
   switch (geometry) {
     case 'infinity': {
-      const scale = major * 1.5;
-      const denom = 1 + Math.sin(theta) * Math.sin(theta);
-      x = (scale * Math.cos(theta)) / denom;
-      z = (scale * Math.sin(theta) * Math.cos(theta)) / denom;
-      y = minor * Math.sin(phi) * Math.sin(t * 0.5 + idx);
+      const p = infinityPath(theta, phi, t, idx, major, minor);
+      x = p.x; y = p.y; z = p.z;
       break;
     }
     case 'hamiltonian': {
@@ -346,11 +387,8 @@ export function evaluateGeometry({
       break;
     }
     case 'triangular': {
-      const step = (Math.PI * 2) / 3;
-      const tAngle = Math.floor(theta / step) * step;
-      x = major * Math.cos(tAngle) + minor * Math.cos(theta * 5);
-      z = major * Math.sin(tAngle) + minor * Math.sin(theta * 5);
-      y = (idx % 3 - 1) * major * 0.5 + Math.sin(t) * minor;
+      const p = triangularPath(theta, t, idx, major, minor);
+      x = p.x; y = p.y; z = p.z;
       break;
     }
     case 'helix': {
@@ -407,12 +445,12 @@ export function evaluateGeometry({
       break;
     }
     case 'blend': {
-      const h = hamiltonianPath(theta, t, major);
-      const k = kleinBottle(theta, phi, t, idx, major, toroidalWeave);
       const a = Math.min(1, Math.max(0, blend));
-      x = h.x * (1 - a) + k.x * a;
-      y = h.y * (1 - a) + k.y * a;
-      z = h.z * (1 - a) + k.z * a;
+      const from = sampleNamed(blendFrom, ctx);
+      const to = sampleNamed(blendTo, ctx);
+      x = from.x * (1 - a) + to.x * a;
+      y = from.y * (1 - a) + to.y * a;
+      z = from.z * (1 - a) + to.z * a;
       break;
     }
     case 'trefoil': {
@@ -519,9 +557,8 @@ export function evaluateGeometry({
     }
     case 'torus':
     default: {
-      x = (major + minor * Math.cos(phi)) * Math.cos(theta);
-      z = (major + minor * Math.cos(phi)) * Math.sin(theta);
-      y = minor * Math.sin(phi) * Math.sin(t * 0.5 + idx);
+      const p = torusPath(theta, phi, t, idx, major, minor);
+      x = p.x; y = p.y; z = p.z;
       break;
     }
   }
