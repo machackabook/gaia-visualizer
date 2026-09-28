@@ -1,14 +1,16 @@
 /**
- * Living chat-kernel contract — Stage 319.
- * Session paste 2026-09-28 12:06 CDT reconfirmed four base cases (infinity|hamiltonian|triangular|torus).
+ * Living chat-kernel contract — Stage 321.
+ * Session paste 2026-09-28 13:06 CDT reconfirmed four base cases (infinity|hamiltonian|triangular|torus).
  * Stage 314 extras (klein, hopf, figure8, trefoil, mobius) remain in the living switch only.
  * Stage 315+: this.phi += CHAT_KERNEL_PHI_WEAVE * toroidalWeave; finite-guard x/y/z before lerp.
  * Stage 319: uniform existence guards; gravity-scaled lerp alpha on living path.
+ * Stage 321: helpers live on this module so Node.js / main.js imports resolve;
+ *            pair-wise blend (blendFrom/blendTo) stays off the session switch.
  * Session paste still allocates Vector3 (documented). Living path reuses _target.
  * GPU/TF auto path remains count > 1024. instanceOffset band 4096–16384.
  */
 
-export const STAGE = 319;
+export const STAGE = 321;
 export const CHAT_KERNEL_LERP = 0.05;
 export const CHAT_KERNEL_THETA_BASE = 0.01;
 export const CHAT_KERNEL_THETA_IDX = 0.002;
@@ -71,3 +73,84 @@ export const CHAT_KERNEL_SESSION_SOURCE = `update(t) {
     // Smoothly interpolate current position to the new geometric state target
     this.mesh.position.lerp(new THREE.Vector3(x, y, z), 0.05);
 }`;
+
+export function fnv1a32Hex(source) {
+  let h = 0x811c9dc5;
+  const s = source == null ? '' : String(source);
+  for (let i = 0; i < s.length; i++) {
+    h ^= s.charCodeAt(i);
+    h = Math.imul(h, 0x01000193);
+  }
+  return (h >>> 0).toString(16).padStart(8, '0');
+}
+
+export function hashChatKernelSource(source) {
+  return fnv1a32Hex(source);
+}
+
+function caseInSource(source, name) {
+  return new RegExp("case\\s*['\"]" + name + "['\"]").test(source || '');
+}
+
+export function matchSessionPaste(source) {
+  const hash = fnv1a32Hex(source);
+  return {
+    stage: STAGE,
+    hash,
+    expected: CHAT_KERNEL_SESSION_HASH,
+    match: hash === CHAT_KERNEL_SESSION_HASH,
+    kleinInSession: caseInSource(source, 'klein'),
+    hopfInSession: caseInSource(source, 'hopf'),
+    figure8InSession: caseInSource(source, 'figure8'),
+    trefoilInSession: caseInSource(source, 'trefoil'),
+    mobiusInSession: caseInSource(source, 'mobius'),
+  };
+}
+
+export function shouldUseGpuPath(count) {
+  return count > GPU_AUTO_THRESHOLD;
+}
+
+export function shouldSkipCpuInstanceMatrix(count) {
+  return count >= INSTANCE_OFFSET_MIN && count <= NODE_CAP;
+}
+
+/** Gravity-scaled lerp used by CPU nodes and GPU follow-up. */
+export function chatKernelLerpAlpha(pull = 1, baseLerp = CHAT_KERNEL_LERP) {
+  const p = Number.isFinite(pull) ? pull : 1;
+  const b = Number.isFinite(baseLerp) ? baseLerp : CHAT_KERNEL_LERP;
+  return Math.min(0.12, Math.max(0.02, b * Math.max(0.4, p)));
+}
+
+export function chatKernelColor(idx = 0, pull = 1, t = 0) {
+  const hue = ((idx / 24) + pull * 0.08 + t * 0.01) % 1;
+  return { h: hue, s: 0.7, l: 0.45 + Math.min(0.3, pull * 0.08) };
+}
+
+export function advanceChatKernelAngles({
+  theta = 0,
+  phi = 0,
+  idx = 0,
+  gravityPull = 1,
+  toroidalWeave = 1,
+} = {}) {
+  return {
+    theta: theta + (CHAT_KERNEL_THETA_BASE + idx * CHAT_KERNEL_THETA_IDX) * gravityPull,
+    phi: phi + CHAT_KERNEL_PHI_WEAVE * toroidalWeave,
+  };
+}
+
+export function confirmSessionKernel() {
+  return {
+    stage: STAGE,
+    sessionHash: CHAT_KERNEL_SESSION_HASH,
+    livingHash: CHAT_KERNEL_SOURCE_HASH,
+    pinned: true,
+    geometries: [...CHAT_KERNEL_CHAT_GEOMETRIES],
+    runtimeExtras: ['klein', 'hopf', 'figure8', 'trefoil', 'mobius', 'blend'],
+    gpuAutoThreshold: GPU_AUTO_THRESHOLD,
+    instanceOffsetMin: INSTANCE_OFFSET_MIN,
+    nodeCap: NODE_CAP,
+    note: 'Session paste held beec41f1. Helpers exported from chatKernel.js. Pair-wise blend is runtime-only.',
+  };
+}

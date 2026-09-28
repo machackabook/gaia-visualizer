@@ -1,8 +1,9 @@
 # Gaia visualizer + The-Hive — compiled stages
 
-Band `317-visual`. Chat kernel is the `update(t)` posted in-session (uniforms → theta → geometry switch → lerp 0.05).
-Raw session kernel still allocates `new THREE.Vector3` inside lerp (hash `beec41f1`). Enhanced / live path uses a reused `_kernelTarget`.
+Band `321-visual`. Chat kernel is the `update(t)` posted in-session (uniforms → theta → geometry switch → lerp 0.05).
+Raw session kernel still allocates `new THREE.Vector3` inside lerp (hash `beec41f1`). Enhanced / live path uses a reused `_kernelTarget` / `_target`.
 Stage 317 ships that reuse. Stage 315 weave + finite x/y/z stay on the enhanced pin. Extras remain runtime-only.
+Stage 321 exports living helpers from `src/chatKernel.js` and pair-wise `blendFrom`/`blendTo` on evaluateGeometry.
 
 ## Done
 
@@ -21,12 +22,14 @@ Stage 317 ships that reuse. Stage 315 weave + finite x/y/z stay on the enhanced 
 | 315 | Session phi weave + finite guards. Hash `c315e7a1`. |
 | 316 | GPU four-case shader parity vs this paste. |
 | 317 | Enhanced session `_kernelTarget` reuse. |
+| 318 | Geometry blender (hamiltonian ↔ klein) via `state.blend`. |
+| 319 | Uniform guards + gravity-scaled lerp on living path. |
+| 321 | Helpers exported from chatKernel.js; pair-wise blendFrom/blendTo. |
 
 ## Next
 
 | Stage | Owner repo | Work |
 |------|------------|------|
-| 318-blend | gaia-visualizer | Geometry blender via `state.blend` between two keys |
 | 316-gpu | gaia-visualizer | TF/shader parity for klein hopf figure8 trefoil mobius |
 | 4-gov | The-Hive | HeartbeatScan on HTTP mutation + WS (issue #4). |
 | 13 | The-Hive + gaia-visualizer | Authenticated live `ledger_pulse` → Hive WS against live sheet counts. |
@@ -34,12 +37,12 @@ Stage 317 ships that reuse. Stage 315 weave + finite x/y/z stay on the enhanced 
 | 16-public | gaia-visualizer | hamiltoniansingularity.ai public band; default geometry `blend` |
 | 19-panels | The-Hive | Hook remaining NexusStudio / Stream sliders |
 | 51-impl | gaia-visualizer | Tighter InstancedMesh instanceOffset shader path at 4k–16k |
-| 319 | continuity-ledger-cycle / nexus-repo-sync | Next waterfall hop. |
+| 322 | continuity-ledger-cycle / nexus-repo-sync | Next waterfall hop. |
 
 ## Drive from LLM
 
 ```js
 window.dispatchEvent(new CustomEvent('gaia:targetState', {
-  detail: { geometry: 'blend', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 317, sourceHash: '7cd81012', sessionHash: 'beec41f1' }
+  detail: { geometry: 'blend', blendFrom: 'hamiltonian', blendTo: 'klein', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 321, sourceHash: '7cd81012', sessionHash: 'beec41f1' }
 }));
 ```
