@@ -1,6 +1,12 @@
 import * as THREE from 'three';
 import { evaluateGeometry } from './geometry.js';
-import { CHAT_KERNEL_PHI_WEAVE, CHAT_KERNEL_THETA_BASE, CHAT_KERNEL_THETA_IDX, chatKernelLerpAlpha } from './chatKernel.js';
+import {
+  CHAT_KERNEL_PHI_WEAVE,
+  CHAT_KERNEL_THETA_BASE,
+  CHAT_KERNEL_THETA_IDX,
+  applyChatKernelUniforms,
+  chatKernelLerpAlpha,
+} from './chatKernel.js';
 
 const _target = new THREE.Vector3();
 const _color = new THREE.Color();
@@ -18,8 +24,8 @@ export class GaiaNode {
   }
 
   /**
-   * Chat kernel reference (living update(t) contract, stage 322):
-   *   uniforms uTime / uGravity / optional uWeave / optional uBlend
+   * Chat kernel reference (living update(t) contract, stage 323):
+   *   uniforms uTime / uGravity / optional uWeave / optional uBlend / optional uPhi
    *   theta += (0.01 + idx * 0.002) * gravityPull
    *   evaluate targetState.geometry (infinity | hamiltonian | triangular | torus)
    * Runtime extras (still live, not in session switch):
@@ -33,16 +39,18 @@ export class GaiaNode {
     const weave = Number.isFinite(state?.toroidalWeave) ? state.toroidalWeave : 1;
     const blend = Number.isFinite(state?.blend) ? state.blend : 0.5;
 
-    if (this.material?.uniforms) {
-      if (this.material.uniforms.uTime) this.material.uniforms.uTime.value = t;
-      if (this.material.uniforms.uGravity) this.material.uniforms.uGravity.value = pull;
-      if (this.material.uniforms.uWeave) this.material.uniforms.uWeave.value = weave;
-      if (this.material.uniforms.uBlend) this.material.uniforms.uBlend.value = blend;
-      if (this.material.uniforms.uColor) {
-        const hue = (this.baseHue + pull * 0.08 + t * 0.01) % 1;
-        _color.setHSL(hue, 0.7, 0.45 + Math.min(0.3, pull * 0.08));
-        this.material.uniforms.uColor.value.lerp(_color, 0.08);
-      }
+    applyChatKernelUniforms(this.material, {
+      t,
+      gravityPull: pull,
+      toroidalWeave: weave,
+      blend,
+      phi: this.phi,
+    });
+
+    if (this.material?.uniforms?.uColor) {
+      const hue = (this.baseHue + pull * 0.08 + t * 0.01) % 1;
+      _color.setHSL(hue, 0.7, 0.45 + Math.min(0.3, pull * 0.08));
+      this.material.uniforms.uColor.value.lerp(_color, 0.08);
     }
 
     this.theta += (CHAT_KERNEL_THETA_BASE + this.idx * CHAT_KERNEL_THETA_IDX) * pull;
