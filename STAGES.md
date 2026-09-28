@@ -1,9 +1,10 @@
 # Gaia visualizer + The-Hive — compiled stages
 
-Band `321-visual`. Chat kernel is the `update(t)` posted in-session (uniforms → theta → geometry switch → lerp 0.05).
+Band `324-visual`. Chat kernel is the `update(t)` posted in-session (uniforms → theta → geometry switch → lerp 0.05).
 Raw session kernel still allocates `new THREE.Vector3` inside lerp (hash `beec41f1`). Enhanced / live path uses a reused `_kernelTarget` / `_target`.
 Stage 317 ships that reuse. Stage 315 weave + finite x/y/z stay on the enhanced pin. Extras remain runtime-only.
 Stage 321 exports living helpers from `src/chatKernel.js` and pair-wise `blendFrom`/`blendTo` on evaluateGeometry.
+Stage 323 ships `applyChatKernelUniforms`. Stage 324 ships `advanceAndEvaluateChatKernel`.
 
 ## Done
 
@@ -25,6 +26,8 @@ Stage 321 exports living helpers from `src/chatKernel.js` and pair-wise `blendFr
 | 318 | Geometry blender (hamiltonian ↔ klein) via `state.blend`. |
 | 319 | Uniform guards + gravity-scaled lerp on living path. |
 | 321 | Helpers exported from chatKernel.js; pair-wise blendFrom/blendTo. |
+| 323 | applyChatKernelUniforms + optional uPhi. |
+| 324 | advanceAndEvaluateChatKernel combined living step. |
 
 ## Next
 
@@ -37,12 +40,12 @@ Stage 321 exports living helpers from `src/chatKernel.js` and pair-wise `blendFr
 | 16-public | gaia-visualizer | hamiltoniansingularity.ai public band; default geometry `blend` |
 | 19-panels | The-Hive | Hook remaining NexusStudio / Stream sliders |
 | 51-impl | gaia-visualizer | Tighter InstancedMesh instanceOffset shader path at 4k–16k |
-| 322 | continuity-ledger-cycle / nexus-repo-sync | Next waterfall hop. |
+| 325 | continuity-ledger-cycle / nexus-repo-sync | Next waterfall hop. |
 
 ## Drive from LLM
 
 ```js
 window.dispatchEvent(new CustomEvent('gaia:targetState', {
-  detail: { geometry: 'blend', blendFrom: 'hamiltonian', blendTo: 'klein', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 321, sourceHash: '7cd81012', sessionHash: 'beec41f1' }
+  detail: { geometry: 'blend', blendFrom: 'hamiltonian', blendTo: 'klein', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 324, sourceHash: '7cd81012', sessionHash: 'beec41f1' }
 }));
 ```
