@@ -1,11 +1,10 @@
 import * as THREE from 'three';
 import { evaluateGeometry } from './geometry.js';
 import {
-  CHAT_KERNEL_PHI_WEAVE,
-  CHAT_KERNEL_THETA_BASE,
-  CHAT_KERNEL_THETA_IDX,
   applyChatKernelUniforms,
+  advanceAndEvaluateChatKernel,
   chatKernelLerpAlpha,
+  isChatKernelGeometry,
 } from './chatKernel.js';
 
 const _target = new THREE.Vector3();
@@ -24,13 +23,13 @@ export class GaiaNode {
   }
 
   /**
-   * Chat kernel reference (living update(t) contract, stage 324):
+   * Chat kernel reference (living update(t) contract, stage 325):
    *   uniforms uTime / uGravity / optional uWeave / optional uBlend / optional uPhi
    *   theta += (0.01 + idx * 0.002) * gravityPull
    *   evaluate targetState.geometry (infinity | hamiltonian | triangular | torus)
    * Runtime extras (still live, not in session switch):
    *   phi   += 0.007 * toroidalWeave
-   *   klein / hopf / figure8 / trefoil on evaluateGeometry / evaluateChatKernel
+   *   klein / hopf / figure8 / trefoil on evaluateGeometry
    *   mesh.position.lerp(target, alpha) — chatKernelLerpAlpha(pull, baseLerp)
    *   never allocate inside the loop
    */
@@ -38,6 +37,7 @@ export class GaiaNode {
     const pull = Number.isFinite(state?.gravityPull) ? state.gravityPull : 1;
     const weave = Number.isFinite(state?.toroidalWeave) ? state.toroidalWeave : 1;
     const blend = Number.isFinite(state?.blend) ? state.blend : 0.5;
+    const geometry = targetState?.geometry || 'torus';
 
     applyChatKernelUniforms(this.material, {
       t,
@@ -53,19 +53,48 @@ export class GaiaNode {
       this.material.uniforms.uColor.value.lerp(_color, 0.08);
     }
 
-    this.theta += (CHAT_KERNEL_THETA_BASE + this.idx * CHAT_KERNEL_THETA_IDX) * pull;
-    this.phi += CHAT_KERNEL_PHI_WEAVE * weave;
-
-    const { x, y, z } = evaluateGeometry({
-      theta: this.theta,
-      phi: this.phi,
-      t,
-      idx: this.idx,
-      gravityPull: pull,
-      toroidalWeave: weave,
-      geometry: targetState?.geometry || 'torus',
-      blend,
-    });
+    let x;
+    let y;
+    let z;
+    if (isChatKernelGeometry(geometry)) {
+      const stepped = advanceAndEvaluateChatKernel({
+        theta: this.theta,
+        phi: this.phi,
+        t,
+        idx: this.idx,
+        gravityPull: pull,
+        toroidalWeave: weave,
+        geometry,
+      });
+      this.theta = stepped.theta;
+      this.phi = stepped.phi;
+      x = stepped.x;
+      y = stepped.y;
+      z = stepped.z;
+    } else {
+      const { CHAT_KERNEL_THETA_BASE, CHAT_KERNEL_THETA_IDX, CHAT_KERNEL_PHI_WEAVE } = {
+        CHAT_KERNEL_THETA_BASE: 0.01,
+        CHAT_KERNEL_THETA_IDX: 0.002,
+        CHAT_KERNEL_PHI_WEAVE: 0.007,
+      };
+      this.theta += (CHAT_KERNEL_THETA_BASE + this.idx * CHAT_KERNEL_THETA_IDX) * pull;
+      this.phi += CHAT_KERNEL_PHI_WEAVE * weave;
+      const extra = evaluateGeometry({
+        theta: this.theta,
+        phi: this.phi,
+        t,
+        idx: this.idx,
+        gravityPull: pull,
+        toroidalWeave: weave,
+        geometry,
+        blend,
+        blendFrom: targetState?.blendFrom,
+        blendTo: targetState?.blendTo,
+      });
+      x = extra.x;
+      y = extra.y;
+      z = extra.z;
+    }
 
     _target.set(
       Number.isFinite(x) ? x : 0,
