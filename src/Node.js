@@ -1,6 +1,9 @@
 import * as THREE from 'three';
 import { evaluateGeometry } from './geometry.js';
 import {
+  CHAT_KERNEL_PHI_WEAVE,
+  CHAT_KERNEL_THETA_BASE,
+  CHAT_KERNEL_THETA_IDX,
   applyChatKernelUniforms,
   advanceAndEvaluateChatKernel,
   chatKernelLerpAlpha,
@@ -72,11 +75,6 @@ export class GaiaNode {
       y = stepped.y;
       z = stepped.z;
     } else {
-      const { CHAT_KERNEL_THETA_BASE, CHAT_KERNEL_THETA_IDX, CHAT_KERNEL_PHI_WEAVE } = {
-        CHAT_KERNEL_THETA_BASE: 0.01,
-        CHAT_KERNEL_THETA_IDX: 0.002,
-        CHAT_KERNEL_PHI_WEAVE: 0.007,
-      };
       this.theta += (CHAT_KERNEL_THETA_BASE + this.idx * CHAT_KERNEL_THETA_IDX) * pull;
       this.phi += CHAT_KERNEL_PHI_WEAVE * weave;
       const extra = evaluateGeometry({
