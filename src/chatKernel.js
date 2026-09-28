@@ -1,16 +1,17 @@
 /**
- * Living chat-kernel contract — Stage 321.
- * Session paste 2026-09-28 13:06 CDT reconfirmed four base cases (infinity|hamiltonian|triangular|torus).
+ * Living chat-kernel contract — Stage 322.
+ * Session paste 2026-09-28 14:06 CDT reconfirmed four base cases (infinity|hamiltonian|triangular|torus).
  * Stage 314 extras (klein, hopf, figure8, trefoil, mobius) remain in the living switch only.
  * Stage 315+: this.phi += CHAT_KERNEL_PHI_WEAVE * toroidalWeave; finite-guard x/y/z before lerp.
  * Stage 319: uniform existence guards; gravity-scaled lerp alpha on living path.
- * Stage 321: helpers live on this module so Node.js / main.js imports resolve;
- *            pair-wise blend (blendFrom/blendTo) stays off the session switch.
- * Session paste still allocates Vector3 (documented). Living path reuses _target.
+ * Stage 321: helpers live on this module so Node.js / main.js imports resolve.
+ * Stage 322: evaluateChatKernelPosition extracted; optional uWeave/uBlend/uPhi documented;
+ *            pair-wise blend stays off the session switch.
+ * Session paste still allocates Vector3 (documented). Living path reuses a caller target.
  * GPU/TF auto path remains count > 1024. instanceOffset band 4096–16384.
  */
 
-export const STAGE = 321;
+export const STAGE = 322;
 export const CHAT_KERNEL_LERP = 0.05;
 export const CHAT_KERNEL_THETA_BASE = 0.01;
 export const CHAT_KERNEL_THETA_IDX = 0.002;
@@ -140,6 +141,65 @@ export function advanceChatKernelAngles({
   };
 }
 
+/**
+ * Session four-case evaluator. No allocation. Finite-guarded.
+ * Living extras stay in geometry.js evaluateGeometry.
+ */
+export function evaluateChatKernelPosition({
+  theta = 0,
+  phi = 0,
+  t = 0,
+  idx = 0,
+  toroidalWeave = 1,
+  geometry = 'torus',
+} = {}) {
+  const major = 10 + idx * 2;
+  const minor = 3 + toroidalWeave * 2;
+  let x = 0;
+  let y = 0;
+  let z = 0;
+
+  switch (geometry) {
+    case 'infinity': {
+      const scale = major * 1.5;
+      const denom = 1 + Math.pow(Math.sin(theta), 2);
+      x = (scale * Math.cos(theta)) / denom;
+      z = (scale * Math.sin(theta) * Math.cos(theta)) / denom;
+      y = minor * Math.sin(phi) * Math.sin(t * 0.5 + idx);
+      break;
+    }
+    case 'hamiltonian': {
+      const hScale = major;
+      x = hScale * Math.cos(theta * 3) * Math.cos(theta);
+      z = hScale * Math.cos(theta * 3) * Math.sin(theta);
+      y = hScale * Math.sin(theta * 3) + Math.sin(t) * 2;
+      break;
+    }
+    case 'triangular': {
+      const tAngle = Math.floor(theta / (Math.PI * 2 / 3)) * (Math.PI * 2 / 3);
+      x = major * Math.cos(tAngle) + minor * Math.cos(theta * 5);
+      z = major * Math.sin(tAngle) + minor * Math.sin(theta * 5);
+      y = (idx % 3 - 1) * major * 0.5 + Math.sin(t) * minor;
+      break;
+    }
+    case 'torus':
+    default: {
+      x = (major + minor * Math.cos(phi)) * Math.cos(theta);
+      z = (major + minor * Math.cos(phi)) * Math.sin(theta);
+      y = minor * Math.sin(phi) * Math.sin(t * 0.5 + idx);
+      break;
+    }
+  }
+
+  return {
+    x: Number.isFinite(x) ? x : 0,
+    y: Number.isFinite(y) ? y : 0,
+    z: Number.isFinite(z) ? z : 0,
+    major,
+    minor,
+  };
+}
+
 export function confirmSessionKernel() {
   return {
     stage: STAGE,
@@ -151,6 +211,6 @@ export function confirmSessionKernel() {
     gpuAutoThreshold: GPU_AUTO_THRESHOLD,
     instanceOffsetMin: INSTANCE_OFFSET_MIN,
     nodeCap: NODE_CAP,
-    note: 'Session paste held beec41f1. Helpers exported from chatKernel.js. Pair-wise blend is runtime-only.',
+    note: 'Session paste held beec41f1. Stage 322 evaluateChatKernelPosition is the allocation-free living path. Pair-wise blend is runtime-only.',
   };
 }
