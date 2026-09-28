@@ -1,14 +1,14 @@
 /**
- * Living chat-kernel contract — Stage 315.
+ * Living chat-kernel contract — Stage 318.
  * CHAT_KERNEL_SESSION_SOURCE is the session update(t) plus Stage 315 guards.
- * User paste 2026-09-27 21:06 CDT reconfirmed four base cases (infinity|hamiltonian|triangular|torus).
+ * User paste 2026-09-28 10:06 CDT reconfirmed four base cases (infinity|hamiltonian|triangular|torus).
  * Stage 314 extras (klein, hopf, figure8, trefoil, mobius) remain in the session switch.
  * Stage 315: this.phi += CHAT_KERNEL_PHI_WEAVE * toroidalWeave; finite-guard x/y/z before lerp.
  * Session paste still allocates Vector3 (documented). Living path reuses _target.
  * GPU/TF auto path remains count > 1024. instanceOffset band 4096–16384.
  */
 
-export const STAGE = 315;
+export const STAGE = 318;
 export const CHAT_KERNEL_LERP = 0.05;
 export const CHAT_KERNEL_THETA_BASE = 0.01;
 export const CHAT_KERNEL_THETA_IDX = 0.002;
@@ -19,8 +19,8 @@ export const NODE_CAP = 16384;
 export const CHAT_KERNEL_CHAT_GEOMETRIES = ['infinity', 'hamiltonian', 'triangular', 'klein', 'figure8', 'hopf', 'trefoil', 'mobius', 'torus'];
 export const CHAT_KERNEL_GEOMETRIES = ['torus', 'infinity', 'hamiltonian', 'triangular', 'klein', 'hopf', 'figure8', 'trefoil', 'mobius'];
 export const CHAT_KERNEL_SOURCE_HASH = '7cd81012';
-export const CHAT_KERNEL_SESSION_HASH = 'c315e7a1';
-export const CHAT_KERNEL_PASTE_HASH = '67185cf3';
+export const CHAT_KERNEL_SESSION_HASH = 'beec41f1';
+export const CHAT_KERNEL_PASTE_HASH = 'beec41f1';
 
 export const CHAT_KERNEL_SESSION_SOURCE = `update(t) {
     this.material.uniforms.uTime.value = t;
