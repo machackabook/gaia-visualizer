@@ -1,6 +1,6 @@
 /**
- * Living chat-kernel contract — Stage 325.
- * Session paste 2026-09-28 17:06 CDT reconfirmed four base cases (infinity|hamiltonian|triangular|torus).
+ * Living chat-kernel contract — Stage 326.
+ * Session paste 2026-09-28 18:06 CDT reconfirmed four base cases (infinity|hamiltonian|triangular|torus).
  * Stage 314 extras (klein, hopf, figure8, trefoil, mobius) remain in the living switch only.
  * Stage 315+: this.phi += CHAT_KERNEL_PHI_WEAVE * toroidalWeave; finite-guard x/y/z before lerp.
  * Stage 319: uniform existence guards; gravity-scaled lerp alpha on living path.
@@ -12,10 +12,11 @@
  * Stage 324: advanceAndEvaluateChatKernel combines angle weave + four-case evaluate
  *            so CPU / GPU seeds share one call site. Session paste unchanged.
  * Stage 325: isChatKernelGeometry gates GaiaNode onto that combined call.
+ * Stage 326: applyChatKernelTarget writes into a reused destination (no new Vector3).
  * GPU/TF auto path remains count > 1024. instanceOffset band 4096–16384.
  */
 
-export const STAGE = 325;
+export const STAGE = 326;
 export const CHAT_KERNEL_LERP = 0.05;
 export const CHAT_KERNEL_THETA_BASE = 0.01;
 export const CHAT_KERNEL_THETA_IDX = 0.002;
@@ -247,6 +248,18 @@ export function advanceAndEvaluateChatKernel({
   return { ...angles, ...pos, lerp: chatKernelLerpAlpha(gravityPull) };
 }
 
+/**
+ * Stage 326 — write evaluated x/y/z into a reused target (mesh.position.lerp(target, alpha)).
+ * Session paste still allocates new THREE.Vector3 by contract.
+ */
+export function applyChatKernelTarget(target, step) {
+  if (!target || !step) return target;
+  target.x = Number.isFinite(step.x) ? step.x : 0;
+  target.y = Number.isFinite(step.y) ? step.y : 0;
+  target.z = Number.isFinite(step.z) ? step.z : 0;
+  return target;
+}
+
 export function confirmSessionKernel() {
   return {
     stage: STAGE,
@@ -258,6 +271,6 @@ export function confirmSessionKernel() {
     gpuAutoThreshold: GPU_AUTO_THRESHOLD,
     instanceOffsetMin: INSTANCE_OFFSET_MIN,
     nodeCap: NODE_CAP,
-    note: 'Session paste held beec41f1. Stage 325 GaiaNode four-case path uses advanceAndEvaluateChatKernel. Pair-wise blend is runtime-only.',
+    note: 'Session paste held beec41f1. Stage 326 living path uses applyChatKernelTarget. Pair-wise blend is runtime-only.',
   };
 }
