@@ -1,6 +1,6 @@
 /**
- * Living chat-kernel contract — Stage 328.
- * Session paste 2026-09-28 20:06 CDT reconfirmed four base cases (infinity|hamiltonian|triangular|torus).
+ * Living chat-kernel contract — Stage 329.
+ * Session paste 2026-09-28 21:06 CDT reconfirmed four base cases (infinity|hamiltonian|triangular|torus).
  * Stage 314 extras (klein, hopf, figure8, trefoil, mobius) remain in the living switch only.
  * Stage 315+: this.phi += CHAT_KERNEL_PHI_WEAVE * toroidalWeave; finite-guard x/y/z before lerp.
  * Stage 319: uniform existence guards; gravity-scaled lerp alpha on living path.
@@ -15,10 +15,11 @@
  * Stage 326: applyChatKernelTarget writes into a reused destination (no new Vector3).
  * Stage 327: connecting chat re-pasted update(t).
  * Stage 328: heartbeatScan four-gov; GaiaNode consumes applyChatKernelTarget.
+ * Stage 329: blendChatKernelPositions — runtime pair-wise blend of two evaluated targets.
  * GPU/TF auto path remains count > 1024. instanceOffset band 4096–16384.
  */
 
-export const STAGE = 328;
+export const STAGE = 329;
 export const CHAT_KERNEL_LERP = 0.05;
 export const CHAT_KERNEL_THETA_BASE = 0.01;
 export const CHAT_KERNEL_THETA_IDX = 0.002;
@@ -245,6 +246,23 @@ export function applyChatKernelTarget(target, step) {
   return target;
 }
 
+/** Runtime-only pair-wise blend. Does not touch the four-case session switch. */
+export function blendChatKernelPositions(from, to, blend = 0.5, out) {
+  const a = Number.isFinite(blend) ? Math.min(1, Math.max(0, blend)) : 0.5;
+  const dest = out || {};
+  const fx = Number.isFinite(from && from.x) ? from.x : 0;
+  const fy = Number.isFinite(from && from.y) ? from.y : 0;
+  const fz = Number.isFinite(from && from.z) ? from.z : 0;
+  const tx = Number.isFinite(to && to.x) ? to.x : fx;
+  const ty = Number.isFinite(to && to.y) ? to.y : fy;
+  const tz = Number.isFinite(to && to.z) ? to.z : fz;
+  dest.x = fx + (tx - fx) * a;
+  dest.y = fy + (ty - fy) * a;
+  dest.z = fz + (tz - fz) * a;
+  dest.blend = a;
+  return dest;
+}
+
 export function heartbeatScan() {
   return {
     stage: STAGE,
@@ -254,6 +272,7 @@ export function heartbeatScan() {
     cap: NODE_CAP,
     geometries: [...CHAT_KERNEL_CHAT_GEOMETRIES],
     extrasOffSession: true,
+    blendRuntime: true,
   };
 }
 
@@ -268,6 +287,6 @@ export function confirmSessionKernel() {
     gpuAutoThreshold: GPU_AUTO_THRESHOLD,
     instanceOffsetMin: INSTANCE_OFFSET_MIN,
     nodeCap: NODE_CAP,
-    note: 'Session paste held beec41f1. Stage 328 living path uses applyChatKernelTarget. Pair-wise blend is runtime-only.',
+    note: 'Session paste held beec41f1. Stage 329 living path adds blendChatKernelPositions. Pair-wise blend is runtime-only.',
   };
 }
