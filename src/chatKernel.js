@@ -1,6 +1,6 @@
 /**
- * Living chat-kernel contract — Stage 327.
- * Session paste 2026-09-28 19:06 CDT reconfirmed four base cases (infinity|hamiltonian|triangular|torus).
+ * Living chat-kernel contract — Stage 328.
+ * Session paste 2026-09-28 20:06 CDT reconfirmed four base cases (infinity|hamiltonian|triangular|torus).
  * Stage 314 extras (klein, hopf, figure8, trefoil, mobius) remain in the living switch only.
  * Stage 315+: this.phi += CHAT_KERNEL_PHI_WEAVE * toroidalWeave; finite-guard x/y/z before lerp.
  * Stage 319: uniform existence guards; gravity-scaled lerp alpha on living path.
@@ -13,11 +13,12 @@
  *            so CPU / GPU seeds share one call site. Session paste unchanged.
  * Stage 325: isChatKernelGeometry gates GaiaNode onto that combined call.
  * Stage 326: applyChatKernelTarget writes into a reused destination (no new Vector3).
- * Stage 327: connecting chat re-pasted update(t); next stages compiled (GPU/TF extras parity).
+ * Stage 327: connecting chat re-pasted update(t).
+ * Stage 328: heartbeatScan four-gov; GaiaNode consumes applyChatKernelTarget.
  * GPU/TF auto path remains count > 1024. instanceOffset band 4096–16384.
  */
 
-export const STAGE = 327;
+export const STAGE = 328;
 export const CHAT_KERNEL_LERP = 0.05;
 export const CHAT_KERNEL_THETA_BASE = 0.01;
 export const CHAT_KERNEL_THETA_IDX = 0.002;
@@ -126,7 +127,6 @@ export function isChatKernelGeometry(geometry) {
   return CHAT_KERNEL_CHAT_GEOMETRIES.includes(geometry);
 }
 
-/** Gravity-scaled lerp used by CPU nodes and GPU follow-up. */
 export function chatKernelLerpAlpha(pull = 1, baseLerp = CHAT_KERNEL_LERP) {
   const p = Number.isFinite(pull) ? pull : 1;
   const b = Number.isFinite(baseLerp) ? baseLerp : CHAT_KERNEL_LERP;
@@ -151,10 +151,6 @@ export function advanceChatKernelAngles({
   };
 }
 
-/**
- * Optional shader uniforms shared by the living Node path.
- * Session paste only writes uTime / uGravity; extras are existence-guarded.
- */
 export function applyChatKernelUniforms(material, { t = 0, gravityPull = 1, toroidalWeave = 1, blend = 0.5, phi } = {}) {
   const uniforms = material && material.uniforms;
   if (!uniforms) return;
@@ -165,10 +161,6 @@ export function applyChatKernelUniforms(material, { t = 0, gravityPull = 1, toro
   if (uniforms.uPhi && Number.isFinite(phi)) uniforms.uPhi.value = phi;
 }
 
-/**
- * Session four-case evaluator. No allocation. Finite-guarded.
- * Living extras stay in geometry.js evaluateGeometry.
- */
 export function evaluateChatKernelPosition({
   theta = 0,
   phi = 0,
@@ -224,10 +216,6 @@ export function evaluateChatKernelPosition({
   };
 }
 
-/**
- * Combined living step: weave theta/phi then evaluate the four-case session manifold.
- * Does not allocate. Extras stay on evaluateGeometry.
- */
 export function advanceAndEvaluateChatKernel({
   theta = 0,
   phi = 0,
@@ -249,16 +237,24 @@ export function advanceAndEvaluateChatKernel({
   return { ...angles, ...pos, lerp: chatKernelLerpAlpha(gravityPull) };
 }
 
-/**
- * Stage 326 — write evaluated x/y/z into a reused target (mesh.position.lerp(target, alpha)).
- * Session paste still allocates new THREE.Vector3 by contract.
- */
 export function applyChatKernelTarget(target, step) {
   if (!target || !step) return target;
   target.x = Number.isFinite(step.x) ? step.x : 0;
   target.y = Number.isFinite(step.y) ? step.y : 0;
   target.z = Number.isFinite(step.z) ? step.z : 0;
   return target;
+}
+
+export function heartbeatScan() {
+  return {
+    stage: STAGE,
+    session: CHAT_KERNEL_SESSION_HASH,
+    living: CHAT_KERNEL_SOURCE_HASH,
+    gpu: GPU_AUTO_THRESHOLD,
+    cap: NODE_CAP,
+    geometries: [...CHAT_KERNEL_CHAT_GEOMETRIES],
+    extrasOffSession: true,
+  };
 }
 
 export function confirmSessionKernel() {
@@ -272,6 +268,6 @@ export function confirmSessionKernel() {
     gpuAutoThreshold: GPU_AUTO_THRESHOLD,
     instanceOffsetMin: INSTANCE_OFFSET_MIN,
     nodeCap: NODE_CAP,
-    note: 'Session paste held beec41f1. Stage 327 living path uses applyChatKernelTarget. Pair-wise blend is runtime-only.',
+    note: 'Session paste held beec41f1. Stage 328 living path uses applyChatKernelTarget. Pair-wise blend is runtime-only.',
   };
 }
