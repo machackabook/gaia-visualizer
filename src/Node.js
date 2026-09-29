@@ -6,10 +6,10 @@ import {
   CHAT_KERNEL_THETA_IDX,
   applyChatKernelUniforms,
   applyChatKernelTarget,
-  stepChatKernelNode,
   chatKernelLerpAlpha,
   isChatKernelGeometry,
 } from './chatKernel.js';
+import { applyChatKernelFrame } from './chatKernelFrame.js';
 
 const _target = new THREE.Vector3();
 const _color = new THREE.Color();
@@ -27,19 +27,15 @@ export class GaiaNode {
   }
 
   /**
-   * Chat kernel reference (living update(t) contract, stage 334):
+   * Chat kernel reference (living update(t) contract, stage 335):
    *   uniforms uTime / uGravity / optional uWeave / optional uBlend / optional uPhi
    *   theta += (0.01 + idx * 0.002) * gravityPull
    *   evaluate targetState.geometry (infinity | hamiltonian | triangular | torus)
    * Runtime extras (still live, not in session switch):
    *   phi   += 0.007 * toroidalWeave
-   *   wrapChatKernelAngle keeps theta/phi in [0, 2π)
-   *   clampChatKernelRadii bounds major/minor
-   *   selectChatKernelGeometry gates unknown labels to torus
-   *   stepChatKernelNode is the four-case living call site
+   *   applyChatKernelFrame is the four-case living frame (uniforms + step + target)
    *   klein / hopf / figure8 / trefoil on evaluateGeometry
    *   mesh.position.lerp(target, alpha) — chatKernelLerpAlpha(pull, baseLerp)
-   *   applyChatKernelTarget writes the reused _target
    *   never allocate inside the loop
    */
   update(t, state, targetState) {
@@ -48,29 +44,22 @@ export class GaiaNode {
     const blend = Number.isFinite(state?.blend) ? state.blend : 0.5;
     const geometry = targetState?.geometry || 'torus';
 
-    applyChatKernelUniforms(this.material, {
-      t,
-      gravityPull: pull,
-      toroidalWeave: weave,
-      blend,
-      phi: this.phi,
-    });
-
-    if (this.material?.uniforms?.uColor) {
-      const hue = (this.baseHue + pull * 0.08 + t * 0.01) % 1;
-      _color.setHSL(hue, 0.7, 0.45 + Math.min(0.3, pull * 0.08));
-      this.material.uniforms.uColor.value.lerp(_color, 0.08);
-    }
-
     let x;
     let y;
     let z;
     if (isChatKernelGeometry(geometry)) {
-      const stepped = stepChatKernelNode(this, t, state, targetState);
+      const stepped = applyChatKernelFrame(this, t, state, targetState, _target);
       x = stepped.x;
       y = stepped.y;
       z = stepped.z;
     } else {
+      applyChatKernelUniforms(this.material, {
+        t,
+        gravityPull: pull,
+        toroidalWeave: weave,
+        blend,
+        phi: this.phi,
+      });
       this.theta += (CHAT_KERNEL_THETA_BASE + this.idx * CHAT_KERNEL_THETA_IDX) * pull;
       this.phi += CHAT_KERNEL_PHI_WEAVE * weave;
       const extra = evaluateGeometry({
@@ -88,9 +77,15 @@ export class GaiaNode {
       x = extra.x;
       y = extra.y;
       z = extra.z;
+      applyChatKernelTarget(_target, { x, y, z });
     }
 
-    applyChatKernelTarget(_target, { x, y, z });
+    if (this.material?.uniforms?.uColor) {
+      const hue = (this.baseHue + pull * 0.08 + t * 0.01) % 1;
+      _color.setHSL(hue, 0.7, 0.45 + Math.min(0.3, pull * 0.08));
+      this.material.uniforms.uColor.value.lerp(_color, 0.08);
+    }
+
     const baseLerp = Number.isFinite(state?.lerp) ? state.lerp : 0.05;
     const alpha = chatKernelLerpAlpha(pull, baseLerp);
     const scale = 0.85 + Math.min(0.55, pull * 0.18);
