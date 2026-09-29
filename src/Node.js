@@ -5,6 +5,7 @@ import {
   CHAT_KERNEL_THETA_BASE,
   CHAT_KERNEL_THETA_IDX,
   applyChatKernelUniforms,
+  applyChatKernelTarget,
   advanceAndEvaluateChatKernel,
   chatKernelLerpAlpha,
   isChatKernelGeometry,
@@ -26,7 +27,7 @@ export class GaiaNode {
   }
 
   /**
-   * Chat kernel reference (living update(t) contract, stage 325):
+   * Chat kernel reference (living update(t) contract, stage 328):
    *   uniforms uTime / uGravity / optional uWeave / optional uBlend / optional uPhi
    *   theta += (0.01 + idx * 0.002) * gravityPull
    *   evaluate targetState.geometry (infinity | hamiltonian | triangular | torus)
@@ -34,6 +35,7 @@ export class GaiaNode {
    *   phi   += 0.007 * toroidalWeave
    *   klein / hopf / figure8 / trefoil on evaluateGeometry
    *   mesh.position.lerp(target, alpha) — chatKernelLerpAlpha(pull, baseLerp)
+   *   applyChatKernelTarget writes the reused _target
    *   never allocate inside the loop
    */
   update(t, state, targetState) {
@@ -94,11 +96,7 @@ export class GaiaNode {
       z = extra.z;
     }
 
-    _target.set(
-      Number.isFinite(x) ? x : 0,
-      Number.isFinite(y) ? y : 0,
-      Number.isFinite(z) ? z : 0,
-    );
+    applyChatKernelTarget(_target, { x, y, z });
     const baseLerp = Number.isFinite(state?.lerp) ? state.lerp : 0.05;
     const alpha = chatKernelLerpAlpha(pull, baseLerp);
     const scale = 0.85 + Math.min(0.55, pull * 0.18);
