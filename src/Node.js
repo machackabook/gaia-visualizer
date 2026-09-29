@@ -6,7 +6,7 @@ import {
   CHAT_KERNEL_THETA_IDX,
   applyChatKernelUniforms,
   applyChatKernelTarget,
-  advanceAndEvaluateChatKernel,
+  stepChatKernelNode,
   chatKernelLerpAlpha,
   isChatKernelGeometry,
 } from './chatKernel.js';
@@ -27,7 +27,7 @@ export class GaiaNode {
   }
 
   /**
-   * Chat kernel reference (living update(t) contract, stage 331):
+   * Chat kernel reference (living update(t) contract, stage 334):
    *   uniforms uTime / uGravity / optional uWeave / optional uBlend / optional uPhi
    *   theta += (0.01 + idx * 0.002) * gravityPull
    *   evaluate targetState.geometry (infinity | hamiltonian | triangular | torus)
@@ -35,6 +35,8 @@ export class GaiaNode {
    *   phi   += 0.007 * toroidalWeave
    *   wrapChatKernelAngle keeps theta/phi in [0, 2π)
    *   clampChatKernelRadii bounds major/minor
+   *   selectChatKernelGeometry gates unknown labels to torus
+   *   stepChatKernelNode is the four-case living call site
    *   klein / hopf / figure8 / trefoil on evaluateGeometry
    *   mesh.position.lerp(target, alpha) — chatKernelLerpAlpha(pull, baseLerp)
    *   applyChatKernelTarget writes the reused _target
@@ -64,17 +66,7 @@ export class GaiaNode {
     let y;
     let z;
     if (isChatKernelGeometry(geometry)) {
-      const stepped = advanceAndEvaluateChatKernel({
-        theta: this.theta,
-        phi: this.phi,
-        t,
-        idx: this.idx,
-        gravityPull: pull,
-        toroidalWeave: weave,
-        geometry,
-      });
-      this.theta = stepped.theta;
-      this.phi = stepped.phi;
+      const stepped = stepChatKernelNode(this, t, state, targetState);
       x = stepped.x;
       y = stepped.y;
       z = stepped.z;
