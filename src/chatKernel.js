@@ -1,6 +1,6 @@
 /**
- * Living chat-kernel contract — Stage 329.
- * Session paste 2026-09-28 21:06 CDT reconfirmed four base cases (infinity|hamiltonian|triangular|torus).
+ * Living chat-kernel contract — Stage 330.
+ * Session paste 2026-09-28 22:06 CDT reconfirmed four base cases (infinity|hamiltonian|triangular|torus).
  * Stage 314 extras (klein, hopf, figure8, trefoil, mobius) remain in the living switch only.
  * Stage 315+: this.phi += CHAT_KERNEL_PHI_WEAVE * toroidalWeave; finite-guard x/y/z before lerp.
  * Stage 319: uniform existence guards; gravity-scaled lerp alpha on living path.
@@ -16,14 +16,16 @@
  * Stage 327: connecting chat re-pasted update(t).
  * Stage 328: heartbeatScan four-gov; GaiaNode consumes applyChatKernelTarget.
  * Stage 329: blendChatKernelPositions — runtime pair-wise blend of two evaluated targets.
+ * Stage 330: wrapChatKernelAngle keeps theta/phi in [0, 2π) on the living path.
  * GPU/TF auto path remains count > 1024. instanceOffset band 4096–16384.
  */
 
-export const STAGE = 329;
+export const STAGE = 330;
 export const CHAT_KERNEL_LERP = 0.05;
 export const CHAT_KERNEL_THETA_BASE = 0.01;
 export const CHAT_KERNEL_THETA_IDX = 0.002;
 export const CHAT_KERNEL_PHI_WEAVE = 0.007;
+export const CHAT_KERNEL_TWO_PI = Math.PI * 2;
 export const GPU_AUTO_THRESHOLD = 1024;
 export const INSTANCE_OFFSET_MIN = 4096;
 export const NODE_CAP = 16384;
@@ -128,6 +130,12 @@ export function isChatKernelGeometry(geometry) {
   return CHAT_KERNEL_CHAT_GEOMETRIES.includes(geometry);
 }
 
+export function wrapChatKernelAngle(angle) {
+  const a = Number.isFinite(angle) ? angle : 0;
+  const wrapped = a % CHAT_KERNEL_TWO_PI;
+  return wrapped < 0 ? wrapped + CHAT_KERNEL_TWO_PI : wrapped;
+}
+
 export function chatKernelLerpAlpha(pull = 1, baseLerp = CHAT_KERNEL_LERP) {
   const p = Number.isFinite(pull) ? pull : 1;
   const b = Number.isFinite(baseLerp) ? baseLerp : CHAT_KERNEL_LERP;
@@ -147,8 +155,8 @@ export function advanceChatKernelAngles({
   toroidalWeave = 1,
 } = {}) {
   return {
-    theta: theta + (CHAT_KERNEL_THETA_BASE + idx * CHAT_KERNEL_THETA_IDX) * gravityPull,
-    phi: phi + CHAT_KERNEL_PHI_WEAVE * toroidalWeave,
+    theta: wrapChatKernelAngle(theta + (CHAT_KERNEL_THETA_BASE + idx * CHAT_KERNEL_THETA_IDX) * gravityPull),
+    phi: wrapChatKernelAngle(phi + CHAT_KERNEL_PHI_WEAVE * toroidalWeave),
   };
 }
 
@@ -273,6 +281,7 @@ export function heartbeatScan() {
     geometries: [...CHAT_KERNEL_CHAT_GEOMETRIES],
     extrasOffSession: true,
     blendRuntime: true,
+    angleWrap: true,
   };
 }
 
@@ -283,10 +292,10 @@ export function confirmSessionKernel() {
     livingHash: CHAT_KERNEL_SOURCE_HASH,
     pinned: true,
     geometries: [...CHAT_KERNEL_CHAT_GEOMETRIES],
-    runtimeExtras: ['klein', 'hopf', 'figure8', 'trefoil', 'mobius', 'blend'],
+    runtimeExtras: ['klein', 'hopf', 'figure8', 'trefoil', 'mobius', 'blend', 'wrap'],
     gpuAutoThreshold: GPU_AUTO_THRESHOLD,
     instanceOffsetMin: INSTANCE_OFFSET_MIN,
     nodeCap: NODE_CAP,
-    note: 'Session paste held beec41f1. Stage 329 living path adds blendChatKernelPositions. Pair-wise blend is runtime-only.',
+    note: 'Session paste held beec41f1. Stage 330 living path wraps theta/phi. Pair-wise blend remains runtime-only.',
   };
 }
