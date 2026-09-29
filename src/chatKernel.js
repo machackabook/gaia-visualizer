@@ -1,6 +1,6 @@
 /**
- * Living chat-kernel contract — Stage 326.
- * Session paste 2026-09-28 18:06 CDT reconfirmed four base cases (infinity|hamiltonian|triangular|torus).
+ * Living chat-kernel contract — Stage 327.
+ * Session paste 2026-09-28 19:06 CDT reconfirmed four base cases (infinity|hamiltonian|triangular|torus).
  * Stage 314 extras (klein, hopf, figure8, trefoil, mobius) remain in the living switch only.
  * Stage 315+: this.phi += CHAT_KERNEL_PHI_WEAVE * toroidalWeave; finite-guard x/y/z before lerp.
  * Stage 319: uniform existence guards; gravity-scaled lerp alpha on living path.
@@ -13,10 +13,11 @@
  *            so CPU / GPU seeds share one call site. Session paste unchanged.
  * Stage 325: isChatKernelGeometry gates GaiaNode onto that combined call.
  * Stage 326: applyChatKernelTarget writes into a reused destination (no new Vector3).
+ * Stage 327: connecting chat re-pasted update(t); next stages compiled (GPU/TF extras parity).
  * GPU/TF auto path remains count > 1024. instanceOffset band 4096–16384.
  */
 
-export const STAGE = 326;
+export const STAGE = 327;
 export const CHAT_KERNEL_LERP = 0.05;
 export const CHAT_KERNEL_THETA_BASE = 0.01;
 export const CHAT_KERNEL_THETA_IDX = 0.002;
@@ -271,6 +272,6 @@ export function confirmSessionKernel() {
     gpuAutoThreshold: GPU_AUTO_THRESHOLD,
     instanceOffsetMin: INSTANCE_OFFSET_MIN,
     nodeCap: NODE_CAP,
-    note: 'Session paste held beec41f1. Stage 326 living path uses applyChatKernelTarget. Pair-wise blend is runtime-only.',
+    note: 'Session paste held beec41f1. Stage 327 living path uses applyChatKernelTarget. Pair-wise blend is runtime-only.',
   };
 }
