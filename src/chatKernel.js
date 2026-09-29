@@ -1,6 +1,6 @@
 /**
- * Living chat-kernel contract — Stage 330.
- * Session paste 2026-09-28 22:06 CDT reconfirmed four base cases (infinity|hamiltonian|triangular|torus).
+ * Living chat-kernel contract — Stage 331.
+ * Session paste 2026-09-28 23:06 CDT reconfirmed four base cases (infinity|hamiltonian|triangular|torus).
  * Stage 314 extras (klein, hopf, figure8, trefoil, mobius) remain in the living switch only.
  * Stage 315+: this.phi += CHAT_KERNEL_PHI_WEAVE * toroidalWeave; finite-guard x/y/z before lerp.
  * Stage 319: uniform existence guards; gravity-scaled lerp alpha on living path.
@@ -17,15 +17,20 @@
  * Stage 328: heartbeatScan four-gov; GaiaNode consumes applyChatKernelTarget.
  * Stage 329: blendChatKernelPositions — runtime pair-wise blend of two evaluated targets.
  * Stage 330: wrapChatKernelAngle keeps theta/phi in [0, 2π) on the living path.
+ * Stage 331: clampChatKernelRadii bounds major/minor so high idx cannot explode the field.
  * GPU/TF auto path remains count > 1024. instanceOffset band 4096–16384.
  */
 
-export const STAGE = 330;
+export const STAGE = 331;
 export const CHAT_KERNEL_LERP = 0.05;
 export const CHAT_KERNEL_THETA_BASE = 0.01;
 export const CHAT_KERNEL_THETA_IDX = 0.002;
 export const CHAT_KERNEL_PHI_WEAVE = 0.007;
 export const CHAT_KERNEL_TWO_PI = Math.PI * 2;
+export const CHAT_KERNEL_MAJOR_MIN = 2;
+export const CHAT_KERNEL_MAJOR_MAX = 96;
+export const CHAT_KERNEL_MINOR_MIN = 0.25;
+export const CHAT_KERNEL_MINOR_MAX = 24;
 export const GPU_AUTO_THRESHOLD = 1024;
 export const INSTANCE_OFFSET_MIN = 4096;
 export const NODE_CAP = 16384;
@@ -136,6 +141,15 @@ export function wrapChatKernelAngle(angle) {
   return wrapped < 0 ? wrapped + CHAT_KERNEL_TWO_PI : wrapped;
 }
 
+export function clampChatKernelRadii(major, minor) {
+  const m = Number.isFinite(major) ? major : 10;
+  const n = Number.isFinite(minor) ? minor : 3;
+  return {
+    major: Math.min(CHAT_KERNEL_MAJOR_MAX, Math.max(CHAT_KERNEL_MAJOR_MIN, m)),
+    minor: Math.min(CHAT_KERNEL_MINOR_MAX, Math.max(CHAT_KERNEL_MINOR_MIN, n)),
+  };
+}
+
 export function chatKernelLerpAlpha(pull = 1, baseLerp = CHAT_KERNEL_LERP) {
   const p = Number.isFinite(pull) ? pull : 1;
   const b = Number.isFinite(baseLerp) ? baseLerp : CHAT_KERNEL_LERP;
@@ -178,8 +192,9 @@ export function evaluateChatKernelPosition({
   toroidalWeave = 1,
   geometry = 'torus',
 } = {}) {
-  const major = 10 + idx * 2;
-  const minor = 3 + toroidalWeave * 2;
+  const radii = clampChatKernelRadii(10 + idx * 2, 3 + toroidalWeave * 2);
+  const major = radii.major;
+  const minor = radii.minor;
   let x = 0;
   let y = 0;
   let z = 0;
@@ -282,6 +297,7 @@ export function heartbeatScan() {
     extrasOffSession: true,
     blendRuntime: true,
     angleWrap: true,
+    radiiClamp: true,
   };
 }
 
@@ -292,10 +308,10 @@ export function confirmSessionKernel() {
     livingHash: CHAT_KERNEL_SOURCE_HASH,
     pinned: true,
     geometries: [...CHAT_KERNEL_CHAT_GEOMETRIES],
-    runtimeExtras: ['klein', 'hopf', 'figure8', 'trefoil', 'mobius', 'blend', 'wrap'],
+    runtimeExtras: ['klein', 'hopf', 'figure8', 'trefoil', 'mobius', 'blend', 'wrap', 'radiiClamp'],
     gpuAutoThreshold: GPU_AUTO_THRESHOLD,
     instanceOffsetMin: INSTANCE_OFFSET_MIN,
     nodeCap: NODE_CAP,
-    note: 'Session paste held beec41f1. Stage 330 living path wraps theta/phi. Pair-wise blend remains runtime-only.',
+    note: 'Session paste held beec41f1. Stage 331 living path clamps major/minor. Pair-wise blend remains runtime-only.',
   };
 }
