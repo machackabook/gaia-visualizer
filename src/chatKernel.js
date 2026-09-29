@@ -1,6 +1,6 @@
 /**
- * Living chat-kernel contract — Stage 334.
- * Session paste 2026-09-29 11:06 CDT reconfirmed four base cases (infinity|hamiltonian|triangular|torus).
+ * Living chat-kernel contract — Stage 337.
+ * Session paste 2026-09-29 17:06 CDT reconfirmed four base cases (infinity|hamiltonian|triangular|torus).
  * Stage 314 extras (klein, hopf, figure8, trefoil, mobius) remain in the living switch only.
  * Stage 315+: this.phi += CHAT_KERNEL_PHI_WEAVE * toroidalWeave; finite-guard x/y/z before lerp.
  * Stage 319: uniform existence guards; gravity-scaled lerp alpha on living path.
@@ -21,10 +21,11 @@
  * Stage 332: sanitizeChatKernelScalar rejects NaN/Inf gravity and weave before advance.
  * Stage 333: GPU/TF GLSL clamp matches CPU radii; session paste hash beec41f1 held.
  * Stage 334: selectChatKernelGeometry + stepChatKernelNode; session paste reconfirmed beec41f1.
+ * Stage 337: chatKernelPulse maps inbound pulse onto gravityPull; connecting chat re-pasted update(t).
  * GPU/TF auto path remains count > 1024. instanceOffset band 4096–16384.
  */
 
-export const STAGE = 334;
+export const STAGE = 337;
 export const CHAT_KERNEL_LERP = 0.05;
 export const CHAT_KERNEL_THETA_BASE = 0.01;
 export const CHAT_KERNEL_THETA_IDX = 0.002;
@@ -167,6 +168,16 @@ export function chatKernelLerpAlpha(pull = 1, baseLerp = CHAT_KERNEL_LERP) {
   const p = Number.isFinite(pull) ? pull : 1;
   const b = Number.isFinite(baseLerp) ? baseLerp : CHAT_KERNEL_LERP;
   return Math.min(0.12, Math.max(0.02, b * Math.max(0.4, p)));
+}
+
+/** Map an inbound pulse onto gravityPull without leaving the living contract. */
+export function chatKernelPulse(state, pulse) {
+  const dest = state || {};
+  const value = sanitizeChatKernelScalar(pulse && pulse.pulse != null ? pulse.pulse : pulse, dest.gravityPull ?? 1);
+  dest.gravityPull = Math.min(3, Math.max(0.1, value));
+  dest.lastPulse = dest.gravityPull;
+  dest.lastPulseAt = Date.now();
+  return dest;
 }
 
 export function chatKernelColor(idx = 0, pull = 1, t = 0) {
@@ -339,6 +350,7 @@ export function heartbeatScan() {
     gpuRadiiClamp: true,
     selectGeometry: true,
     stepNode: true,
+    pulse: true,
   };
 }
 
@@ -349,10 +361,10 @@ export function confirmSessionKernel() {
     livingHash: CHAT_KERNEL_SOURCE_HASH,
     pinned: true,
     geometries: [...CHAT_KERNEL_CHAT_GEOMETRIES],
-    runtimeExtras: ['klein', 'hopf', 'figure8', 'trefoil', 'mobius', 'blend', 'wrap', 'radiiClamp', 'scalarSanitize', 'selectGeometry', 'stepNode'],
+    runtimeExtras: ['klein', 'hopf', 'figure8', 'trefoil', 'mobius', 'blend', 'wrap', 'radiiClamp', 'scalarSanitize', 'selectGeometry', 'stepNode', 'pulse'],
     gpuAutoThreshold: GPU_AUTO_THRESHOLD,
     instanceOffsetMin: INSTANCE_OFFSET_MIN,
     nodeCap: NODE_CAP,
-    note: 'Session paste held beec41f1. Stage 334 living path selects four-case geometry and steps the node in one call. Pair-wise blend remains runtime-only.',
+    note: 'Session paste 2026-09-29 17:06 CDT held beec41f1. Stage 337 living path adds chatKernelPulse. Pair-wise blend remains runtime-only.',
   };
 }
