@@ -1,4 +1,4 @@
-/** Stage 336 living ledger pulse seed. Session switch unchanged. */
+/** Stage 336 living ledger pulse seed. Session switch unchanged. Stage 337 consumes this. */
 import { chatKernelEnergy } from './chatKernelEnergy.js';
 
 export const PULSE_STAGE = 336;
