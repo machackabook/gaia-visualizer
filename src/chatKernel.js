@@ -1,6 +1,6 @@
 /**
- * Living chat-kernel contract — Stage 331.
- * Session paste 2026-09-28 23:06 CDT reconfirmed four base cases (infinity|hamiltonian|triangular|torus).
+ * Living chat-kernel contract — Stage 332.
+ * Session paste 2026-09-29 09:07 CDT reconfirmed four base cases (infinity|hamiltonian|triangular|torus).
  * Stage 314 extras (klein, hopf, figure8, trefoil, mobius) remain in the living switch only.
  * Stage 315+: this.phi += CHAT_KERNEL_PHI_WEAVE * toroidalWeave; finite-guard x/y/z before lerp.
  * Stage 319: uniform existence guards; gravity-scaled lerp alpha on living path.
@@ -18,10 +18,11 @@
  * Stage 329: blendChatKernelPositions — runtime pair-wise blend of two evaluated targets.
  * Stage 330: wrapChatKernelAngle keeps theta/phi in [0, 2π) on the living path.
  * Stage 331: clampChatKernelRadii bounds major/minor so high idx cannot explode the field.
+ * Stage 332: sanitizeChatKernelScalar rejects NaN/Inf gravity and weave before advance.
  * GPU/TF auto path remains count > 1024. instanceOffset band 4096–16384.
  */
 
-export const STAGE = 331;
+export const STAGE = 332;
 export const CHAT_KERNEL_LERP = 0.05;
 export const CHAT_KERNEL_THETA_BASE = 0.01;
 export const CHAT_KERNEL_THETA_IDX = 0.002;
@@ -135,6 +136,11 @@ export function isChatKernelGeometry(geometry) {
   return CHAT_KERNEL_CHAT_GEOMETRIES.includes(geometry);
 }
 
+export function sanitizeChatKernelScalar(value, fallback = 1) {
+  const n = typeof value === 'number' ? value : Number(value);
+  return Number.isFinite(n) ? n : fallback;
+}
+
 export function wrapChatKernelAngle(angle) {
   const a = Number.isFinite(angle) ? angle : 0;
   const wrapped = a % CHAT_KERNEL_TWO_PI;
@@ -168,9 +174,11 @@ export function advanceChatKernelAngles({
   gravityPull = 1,
   toroidalWeave = 1,
 } = {}) {
+  const pull = sanitizeChatKernelScalar(gravityPull, 1);
+  const weave = sanitizeChatKernelScalar(toroidalWeave, 1);
   return {
-    theta: wrapChatKernelAngle(theta + (CHAT_KERNEL_THETA_BASE + idx * CHAT_KERNEL_THETA_IDX) * gravityPull),
-    phi: wrapChatKernelAngle(phi + CHAT_KERNEL_PHI_WEAVE * toroidalWeave),
+    theta: wrapChatKernelAngle(theta + (CHAT_KERNEL_THETA_BASE + idx * CHAT_KERNEL_THETA_IDX) * pull),
+    phi: wrapChatKernelAngle(phi + CHAT_KERNEL_PHI_WEAVE * weave),
   };
 }
 
@@ -178,9 +186,9 @@ export function applyChatKernelUniforms(material, { t = 0, gravityPull = 1, toro
   const uniforms = material && material.uniforms;
   if (!uniforms) return;
   if (uniforms.uTime) uniforms.uTime.value = t;
-  if (uniforms.uGravity) uniforms.uGravity.value = gravityPull;
-  if (uniforms.uWeave) uniforms.uWeave.value = toroidalWeave;
-  if (uniforms.uBlend) uniforms.uBlend.value = blend;
+  if (uniforms.uGravity) uniforms.uGravity.value = sanitizeChatKernelScalar(gravityPull, 1);
+  if (uniforms.uWeave) uniforms.uWeave.value = sanitizeChatKernelScalar(toroidalWeave, 1);
+  if (uniforms.uBlend) uniforms.uBlend.value = sanitizeChatKernelScalar(blend, 0.5);
   if (uniforms.uPhi && Number.isFinite(phi)) uniforms.uPhi.value = phi;
 }
 
@@ -192,7 +200,7 @@ export function evaluateChatKernelPosition({
   toroidalWeave = 1,
   geometry = 'torus',
 } = {}) {
-  const radii = clampChatKernelRadii(10 + idx * 2, 3 + toroidalWeave * 2);
+  const radii = clampChatKernelRadii(10 + idx * 2, 3 + sanitizeChatKernelScalar(toroidalWeave, 1) * 2);
   const major = radii.major;
   const minor = radii.minor;
   let x = 0;
@@ -249,16 +257,18 @@ export function advanceAndEvaluateChatKernel({
   toroidalWeave = 1,
   geometry = 'torus',
 } = {}) {
-  const angles = advanceChatKernelAngles({ theta, phi, idx, gravityPull, toroidalWeave });
+  const pull = sanitizeChatKernelScalar(gravityPull, 1);
+  const weave = sanitizeChatKernelScalar(toroidalWeave, 1);
+  const angles = advanceChatKernelAngles({ theta, phi, idx, gravityPull: pull, toroidalWeave: weave });
   const pos = evaluateChatKernelPosition({
     theta: angles.theta,
     phi: angles.phi,
     t,
     idx,
-    toroidalWeave,
+    toroidalWeave: weave,
     geometry,
   });
-  return { ...angles, ...pos, lerp: chatKernelLerpAlpha(gravityPull) };
+  return { ...angles, ...pos, lerp: chatKernelLerpAlpha(pull) };
 }
 
 export function applyChatKernelTarget(target, step) {
@@ -298,6 +308,7 @@ export function heartbeatScan() {
     blendRuntime: true,
     angleWrap: true,
     radiiClamp: true,
+    scalarSanitize: true,
   };
 }
 
@@ -308,10 +319,10 @@ export function confirmSessionKernel() {
     livingHash: CHAT_KERNEL_SOURCE_HASH,
     pinned: true,
     geometries: [...CHAT_KERNEL_CHAT_GEOMETRIES],
-    runtimeExtras: ['klein', 'hopf', 'figure8', 'trefoil', 'mobius', 'blend', 'wrap', 'radiiClamp'],
+    runtimeExtras: ['klein', 'hopf', 'figure8', 'trefoil', 'mobius', 'blend', 'wrap', 'radiiClamp', 'scalarSanitize'],
     gpuAutoThreshold: GPU_AUTO_THRESHOLD,
     instanceOffsetMin: INSTANCE_OFFSET_MIN,
     nodeCap: NODE_CAP,
-    note: 'Session paste held beec41f1. Stage 331 living path clamps major/minor. Pair-wise blend remains runtime-only.',
+    note: 'Session paste held beec41f1. Stage 332 living path sanitizes gravity/weave scalars. Pair-wise blend remains runtime-only.',
   };
 }
