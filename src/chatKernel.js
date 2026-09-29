@@ -1,6 +1,6 @@
 /**
- * Living chat-kernel contract — Stage 333.
- * Session paste 2026-09-29 10:07 CDT reconfirmed four base cases (infinity|hamiltonian|triangular|torus).
+ * Living chat-kernel contract — Stage 334.
+ * Session paste 2026-09-29 11:06 CDT reconfirmed four base cases (infinity|hamiltonian|triangular|torus).
  * Stage 314 extras (klein, hopf, figure8, trefoil, mobius) remain in the living switch only.
  * Stage 315+: this.phi += CHAT_KERNEL_PHI_WEAVE * toroidalWeave; finite-guard x/y/z before lerp.
  * Stage 319: uniform existence guards; gravity-scaled lerp alpha on living path.
@@ -20,10 +20,11 @@
  * Stage 331: clampChatKernelRadii bounds major/minor so high idx cannot explode the field.
  * Stage 332: sanitizeChatKernelScalar rejects NaN/Inf gravity and weave before advance.
  * Stage 333: GPU/TF GLSL clamp matches CPU radii; session paste hash beec41f1 held.
+ * Stage 334: selectChatKernelGeometry + stepChatKernelNode; session paste reconfirmed beec41f1.
  * GPU/TF auto path remains count > 1024. instanceOffset band 4096–16384.
  */
 
-export const STAGE = 333;
+export const STAGE = 334;
 export const CHAT_KERNEL_LERP = 0.05;
 export const CHAT_KERNEL_THETA_BASE = 0.01;
 export const CHAT_KERNEL_THETA_IDX = 0.002;
@@ -135,6 +136,11 @@ export function shouldSkipCpuInstanceMatrix(count) {
 
 export function isChatKernelGeometry(geometry) {
   return CHAT_KERNEL_CHAT_GEOMETRIES.includes(geometry);
+}
+
+export function selectChatKernelGeometry(geometry, fallback = 'torus') {
+  if (isChatKernelGeometry(geometry)) return geometry;
+  return fallback || 'torus';
 }
 
 export function sanitizeChatKernelScalar(value, fallback = 1) {
@@ -267,9 +273,29 @@ export function advanceAndEvaluateChatKernel({
     t,
     idx,
     toroidalWeave: weave,
+    geometry: selectChatKernelGeometry(geometry, 'torus'),
+  });
+  return { ...angles, ...pos, lerp: chatKernelLerpAlpha(pull), geometry: selectChatKernelGeometry(geometry, 'torus') };
+}
+
+export function stepChatKernelNode(node, t, state, targetState) {
+  const pull = sanitizeChatKernelScalar(state && state.gravityPull, 1);
+  const weave = sanitizeChatKernelScalar(state && state.toroidalWeave, 1);
+  const geometry = selectChatKernelGeometry(targetState && targetState.geometry, 'torus');
+  const stepped = advanceAndEvaluateChatKernel({
+    theta: node && node.theta,
+    phi: node && node.phi,
+    t,
+    idx: node && node.idx,
+    gravityPull: pull,
+    toroidalWeave: weave,
     geometry,
   });
-  return { ...angles, ...pos, lerp: chatKernelLerpAlpha(pull) };
+  if (node) {
+    node.theta = stepped.theta;
+    node.phi = stepped.phi;
+  }
+  return stepped;
 }
 
 export function applyChatKernelTarget(target, step) {
@@ -311,6 +337,8 @@ export function heartbeatScan() {
     radiiClamp: true,
     scalarSanitize: true,
     gpuRadiiClamp: true,
+    selectGeometry: true,
+    stepNode: true,
   };
 }
 
@@ -321,10 +349,10 @@ export function confirmSessionKernel() {
     livingHash: CHAT_KERNEL_SOURCE_HASH,
     pinned: true,
     geometries: [...CHAT_KERNEL_CHAT_GEOMETRIES],
-    runtimeExtras: ['klein', 'hopf', 'figure8', 'trefoil', 'mobius', 'blend', 'wrap', 'radiiClamp', 'scalarSanitize'],
+    runtimeExtras: ['klein', 'hopf', 'figure8', 'trefoil', 'mobius', 'blend', 'wrap', 'radiiClamp', 'scalarSanitize', 'selectGeometry', 'stepNode'],
     gpuAutoThreshold: GPU_AUTO_THRESHOLD,
     instanceOffsetMin: INSTANCE_OFFSET_MIN,
     nodeCap: NODE_CAP,
-    note: 'Session paste held beec41f1. Stage 333 living path clamps radii on CPU and GPU. Pair-wise blend remains runtime-only.',
+    note: 'Session paste held beec41f1. Stage 334 living path selects four-case geometry and steps the node in one call. Pair-wise blend remains runtime-only.',
   };
 }
