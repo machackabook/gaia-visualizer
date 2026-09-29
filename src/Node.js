@@ -27,13 +27,14 @@ export class GaiaNode {
   }
 
   /**
-   * Chat kernel reference (living update(t) contract, stage 330):
+   * Chat kernel reference (living update(t) contract, stage 331):
    *   uniforms uTime / uGravity / optional uWeave / optional uBlend / optional uPhi
    *   theta += (0.01 + idx * 0.002) * gravityPull
    *   evaluate targetState.geometry (infinity | hamiltonian | triangular | torus)
    * Runtime extras (still live, not in session switch):
    *   phi   += 0.007 * toroidalWeave
    *   wrapChatKernelAngle keeps theta/phi in [0, 2π)
+   *   clampChatKernelRadii bounds major/minor
    *   klein / hopf / figure8 / trefoil on evaluateGeometry
    *   mesh.position.lerp(target, alpha) — chatKernelLerpAlpha(pull, baseLerp)
    *   applyChatKernelTarget writes the reused _target
