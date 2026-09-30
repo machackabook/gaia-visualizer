@@ -1,6 +1,6 @@
-/** Stage 348 compiled next-stage queue. Session switch stays four-case (beec41f1). */
+/** Stage 349 compiled next-stage queue. Session switch stays four-case (beec41f1). */
 
-export const STAGE = 348;
+export const STAGE = 349;
 export const CHAT_KERNEL_SESSION_HASH = 'beec41f1';
 export const CHAT_KERNEL_LIVING_HASH = '7cd81012';
 export const CHAT_KERNEL_CHAT_GEOMETRIES = ['infinity', 'hamiltonian', 'triangular', 'torus'];
@@ -10,9 +10,9 @@ export const CHAT_KERNEL_HUD_BUS = 'quine-weave';
 
 export const CHAT_KERNEL_NEXT_STAGES = [
   {
-    stage: 349,
-    title: 'heartbeat mutation + ledger_pulse',
-    note: 'HeartbeatScan on HTTP mutation + WS + authenticated ledger_pulse.',
+    stage: 350,
+    title: 'public band / Quine HUD bind polish',
+    note: 'Public band catalog + 19-panel HUD bind without touching session switch.',
   },
   {
     stage: 14,
@@ -91,7 +91,25 @@ export function compileChatKernelNextStages() {
     extras: chatKernelExtrasParity(),
     sliders: chatKernelWeaveSliders(),
     hud: chatKernelHudCatalogBind(),
+    heartbeat: chatKernelHeartbeatMutation(),
     next: CHAT_KERNEL_NEXT_STAGES.map((row) => ({ ...row })),
+  };
+}
+
+export function chatKernelHeartbeatMutation(scan) {
+  const src = scan || {};
+  return {
+    event: 'heartbeat_mutation',
+    stage: STAGE,
+    session: CHAT_KERNEL_SESSION_HASH,
+    living: CHAT_KERNEL_LIVING_HASH,
+    http: true,
+    ws: true,
+    geometries: [...CHAT_KERNEL_CHAT_GEOMETRIES],
+    extrasOffSession: true,
+    frozen: !!src.frozen,
+    energy: Number.isFinite(src.energy) ? src.energy : null,
+    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 350,
   };
 }
 
