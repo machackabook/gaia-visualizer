@@ -1,6 +1,6 @@
 /**
- * Living chat-kernel contract — Stage 337.
- * Session paste 2026-09-29 17:06 CDT reconfirmed four base cases (infinity|hamiltonian|triangular|torus).
+ * Living chat-kernel contract — Stage 339.
+ * Session paste 2026-09-29 19:06 CDT reconfirmed four base cases (infinity|hamiltonian|triangular|torus).
  * Stage 314 extras (klein, hopf, figure8, trefoil, mobius) remain in the living switch only.
  * Stage 315+: this.phi += CHAT_KERNEL_PHI_WEAVE * toroidalWeave; finite-guard x/y/z before lerp.
  * Stage 319: uniform existence guards; gravity-scaled lerp alpha on living path.
@@ -22,10 +22,13 @@
  * Stage 333: GPU/TF GLSL clamp matches CPU radii; session paste hash beec41f1 held.
  * Stage 334: selectChatKernelGeometry + stepChatKernelNode; session paste reconfirmed beec41f1.
  * Stage 337: chatKernelPulse maps inbound pulse onto gravityPull; connecting chat re-pasted update(t).
+ * Stage 338: cycleChatKernelGeometry + ledger envelope (sibling modules).
+ * Stage 339: cycle lives on this module; shouldSkipCpuInstanceMatrixWhenTfOff skips CPU
+ *            instance-matrix writes in the 4096–16384 band when Transform Feedback is off.
  * GPU/TF auto path remains count > 1024. instanceOffset band 4096–16384.
  */
 
-export const STAGE = 337;
+export const STAGE = 339;
 export const CHAT_KERNEL_LERP = 0.05;
 export const CHAT_KERNEL_THETA_BASE = 0.01;
 export const CHAT_KERNEL_THETA_IDX = 0.002;
@@ -135,6 +138,11 @@ export function shouldSkipCpuInstanceMatrix(count) {
   return count >= INSTANCE_OFFSET_MIN && count <= NODE_CAP;
 }
 
+/** Stage 339: when TF is off, still skip CPU instance-matrix writes in the 4k–16k band. */
+export function shouldSkipCpuInstanceMatrixWhenTfOff(count, tfEnabled = false) {
+  return !tfEnabled && shouldSkipCpuInstanceMatrix(count);
+}
+
 export function isChatKernelGeometry(geometry) {
   return CHAT_KERNEL_CHAT_GEOMETRIES.includes(geometry);
 }
@@ -142,6 +150,14 @@ export function isChatKernelGeometry(geometry) {
 export function selectChatKernelGeometry(geometry, fallback = 'torus') {
   if (isChatKernelGeometry(geometry)) return geometry;
   return fallback || 'torus';
+}
+
+export function cycleChatKernelGeometry(current, direction = 1) {
+  const list = CHAT_KERNEL_CHAT_GEOMETRIES;
+  const idx = list.indexOf(current);
+  const start = idx >= 0 ? idx : list.indexOf('torus');
+  const step = direction < 0 ? -1 : 1;
+  return list[(start + step + list.length) % list.length];
 }
 
 export function sanitizeChatKernelScalar(value, fallback = 1) {
@@ -351,6 +367,8 @@ export function heartbeatScan() {
     selectGeometry: true,
     stepNode: true,
     pulse: true,
+    cycleGeometry: true,
+    skipCpuWhenTfOff: true,
   };
 }
 
@@ -361,10 +379,10 @@ export function confirmSessionKernel() {
     livingHash: CHAT_KERNEL_SOURCE_HASH,
     pinned: true,
     geometries: [...CHAT_KERNEL_CHAT_GEOMETRIES],
-    runtimeExtras: ['klein', 'hopf', 'figure8', 'trefoil', 'mobius', 'blend', 'wrap', 'radiiClamp', 'scalarSanitize', 'selectGeometry', 'stepNode', 'pulse'],
+    runtimeExtras: ['klein', 'hopf', 'figure8', 'trefoil', 'mobius', 'blend', 'wrap', 'radiiClamp', 'scalarSanitize', 'selectGeometry', 'stepNode', 'pulse', 'cycle', 'skipCpuWhenTfOff'],
     gpuAutoThreshold: GPU_AUTO_THRESHOLD,
     instanceOffsetMin: INSTANCE_OFFSET_MIN,
     nodeCap: NODE_CAP,
-    note: 'Session paste 2026-09-29 17:06 CDT held beec41f1. Stage 337 living path adds chatKernelPulse. Pair-wise blend remains runtime-only.',
+    note: 'Session paste 2026-09-29 19:06 CDT held beec41f1. Stage 339 living path adds cycleChatKernelGeometry and TF-off CPU skip. Pair-wise blend remains runtime-only.',
   };
 }
