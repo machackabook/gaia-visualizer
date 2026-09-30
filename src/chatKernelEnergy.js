@@ -1,16 +1,16 @@
-/**
- * Stage 335 — radial energy of an evaluated kernel step.
- * Living path only. Session four-case switch unchanged (beec41f1).
- */
-export function chatKernelEnergy(step) {
-  const x = Number.isFinite(step && step.x) ? step.x : 0;
-  const y = Number.isFinite(step && step.y) ? step.y : 0;
-  const z = Number.isFinite(step && step.z) ? step.z : 0;
-  return Math.sqrt(x * x + y * y + z * z);
+/** Stage 340 energy field. Session four-case switch stays off this module. */
+export const ENERGY_STAGE = 340;
+export const CHAT_KERNEL_ENERGY_MIN = 0.05;
+export const CHAT_KERNEL_ENERGY_MAX = 4;
+export const CHAT_KERNEL_FREEZE_BELOW = 0.12;
+
+export function chatKernelEnergy(gravityPull = 1, toroidalWeave = 1) {
+  const pull = Number.isFinite(gravityPull) ? gravityPull : 1;
+  const weave = Number.isFinite(toroidalWeave) ? toroidalWeave : 1;
+  return Math.min(CHAT_KERNEL_ENERGY_MAX, Math.max(CHAT_KERNEL_ENERGY_MIN, pull * (0.5 + weave * 0.5)));
 }
 
-export function attachChatKernelEnergy(step) {
-  if (!step) return step;
-  step.energy = chatKernelEnergy(step);
-  return step;
+export function shouldFreezeChatKernel(energy) {
+  const e = Number.isFinite(energy) ? energy : 0;
+  return e < CHAT_KERNEL_FREEZE_BELOW;
 }
