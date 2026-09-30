@@ -1,16 +1,12 @@
-/** Stage 343 compiled next-stage queue. Session switch stays four-case (beec41f1). */
+/** Stage 344 compiled next-stage queue. Session switch stays four-case (beec41f1). */
 
-export const STAGE = 343;
+export const STAGE = 344;
 export const CHAT_KERNEL_SESSION_HASH = 'beec41f1';
 export const CHAT_KERNEL_LIVING_HASH = '7cd81012';
 export const CHAT_KERNEL_CHAT_GEOMETRIES = ['infinity', 'hamiltonian', 'triangular', 'torus'];
+export const CHAT_KERNEL_PANEL_COUNT = 19;
 
 export const CHAT_KERNEL_NEXT_STAGES = [
-  {
-    stage: 344,
-    title: '19-panel weave sliders',
-    note: 'NexusStudio / Stream sliders on the Quine weave bus.',
-  },
   {
     stage: 345,
     title: 'TF/shader extras parity',
@@ -21,7 +17,35 @@ export const CHAT_KERNEL_NEXT_STAGES = [
     title: 'drive engram write-through',
     note: 'Persist compact ledger seed to Drive mesh without copying secrets.',
   },
+  {
+    stage: 347,
+    title: 'quine HUD catalog bind',
+    note: 'Bind 19-panel sliders into the living HUD catalog without touching the session switch.',
+  },
 ];
+
+export function chatKernelWeaveSliders(toroidalWeave = 1, gravityPull = 1) {
+  const weave = Number.isFinite(toroidalWeave) ? toroidalWeave : 1;
+  const pull = Number.isFinite(gravityPull) ? gravityPull : 1;
+  const panels = [];
+  for (let i = 0; i < CHAT_KERNEL_PANEL_COUNT; i++) {
+    const lane = i % 4;
+    const value = Math.min(2, Math.max(0, weave * (0.55 + lane * 0.12) * Math.max(0.4, pull)));
+    panels.push({
+      panel: i + 1,
+      lane,
+      geometry: CHAT_KERNEL_CHAT_GEOMETRIES[lane],
+      value,
+    });
+  }
+  return {
+    stage: STAGE,
+    count: CHAT_KERNEL_PANEL_COUNT,
+    weave,
+    pull,
+    panels,
+  };
+}
 
 export function compileChatKernelNextStages() {
   return {
@@ -29,6 +53,7 @@ export function compileChatKernelNextStages() {
     session: CHAT_KERNEL_SESSION_HASH,
     living: CHAT_KERNEL_LIVING_HASH,
     geometries: [...CHAT_KERNEL_CHAT_GEOMETRIES],
+    sliders: chatKernelWeaveSliders(),
     next: CHAT_KERNEL_NEXT_STAGES.map((row) => ({ ...row })),
   };
 }
