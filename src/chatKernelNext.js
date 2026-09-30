@@ -1,6 +1,6 @@
-/** Stage 344 compiled next-stage queue. Session switch stays four-case (beec41f1). */
+/** Stage 345 compiled next-stage queue. Session switch stays four-case (beec41f1). */
 
-export const STAGE = 344;
+export const STAGE = 345;
 export const CHAT_KERNEL_SESSION_HASH = 'beec41f1';
 export const CHAT_KERNEL_LIVING_HASH = '7cd81012';
 export const CHAT_KERNEL_CHAT_GEOMETRIES = ['infinity', 'hamiltonian', 'triangular', 'torus'];
@@ -8,17 +8,17 @@ export const CHAT_KERNEL_PANEL_COUNT = 19;
 
 export const CHAT_KERNEL_NEXT_STAGES = [
   {
-    stage: 345,
+    stage: 346,
     title: 'TF/shader extras parity',
     note: 'klein / hopf / figure8 / trefoil / mobius remain runtime-only unless chat pastes them.',
   },
   {
-    stage: 346,
+    stage: 347,
     title: 'drive engram write-through',
     note: 'Persist compact ledger seed to Drive mesh without copying secrets.',
   },
   {
-    stage: 347,
+    stage: 348,
     title: 'quine HUD catalog bind',
     note: 'Bind 19-panel sliders into the living HUD catalog without touching the session switch.',
   },
