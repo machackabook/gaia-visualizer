@@ -10,6 +10,7 @@ import {
   isChatKernelGeometry,
 } from './chatKernel.js';
 import { applyChatKernelFrame } from './chatKernelFrame.js';
+import { shouldFreezeChatKernel, chatKernelEnergy } from './chatKernelEnergy.js';
 
 const _target = new THREE.Vector3();
 const _color = new THREE.Color();
@@ -27,15 +28,16 @@ export class GaiaNode {
   }
 
   /**
-   * Chat kernel reference (living update(t) contract, stage 335):
-   *   uniforms uTime / uGravity / optional uWeave / optional uBlend / optional uPhi
+   * Chat kernel reference (living update(t) contract, stage 341):
+   *   uniforms uTime / uGravity / optional uWeave / optional uBlend / optional uPhi / optional uEnergy
    *   theta += (0.01 + idx * 0.002) * gravityPull
    *   evaluate targetState.geometry (infinity | hamiltonian | triangular | torus)
    * Runtime extras (still live, not in session switch):
    *   phi   += 0.007 * toroidalWeave
-   *   applyChatKernelFrame is the four-case living frame (uniforms + step + target)
+   *   applyChatKernelFrame is the four-case living frame (uniforms + step + target + energy)
    *   klein / hopf / figure8 / trefoil on evaluateGeometry
    *   mesh.position.lerp(target, alpha) — chatKernelLerpAlpha(pull, baseLerp)
+   *   freeze skip when energy < 0.12
    *   never allocate inside the loop
    */
   update(t, state, targetState) {
@@ -43,6 +45,18 @@ export class GaiaNode {
     const weave = Number.isFinite(state?.toroidalWeave) ? state.toroidalWeave : 1;
     const blend = Number.isFinite(state?.blend) ? state.blend : 0.5;
     const geometry = targetState?.geometry || 'torus';
+    const energy = chatKernelEnergy(pull, weave);
+    if (shouldFreezeChatKernel(energy)) {
+      applyChatKernelUniforms(this.material, {
+        t,
+        gravityPull: pull,
+        toroidalWeave: weave,
+        blend,
+        phi: this.phi,
+        energy,
+      });
+      return;
+    }
 
     let x;
     let y;
@@ -59,6 +73,7 @@ export class GaiaNode {
         toroidalWeave: weave,
         blend,
         phi: this.phi,
+        energy,
       });
       this.theta += (CHAT_KERNEL_THETA_BASE + this.idx * CHAT_KERNEL_THETA_IDX) * pull;
       this.phi += CHAT_KERNEL_PHI_WEAVE * weave;
