@@ -1,5 +1,5 @@
-/** Stage 339 living cycler. Session switch unchanged. Walks only four chat geometries. */
-export const CYCLE_STAGE = 339;
+/** Stage 340 living cycler. Session switch unchanged. Walks only four chat geometries. */
+export const CYCLE_STAGE = 340;
 export const CHAT_KERNEL_CHAT_GEOMETRIES = ['infinity', 'hamiltonian', 'triangular', 'torus'];
 
 export function cycleChatKernelGeometry(current, direction = 1) {
