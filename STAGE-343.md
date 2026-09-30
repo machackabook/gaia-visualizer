@@ -1,6 +1,7 @@
-# STAGE-343 (compiled next)
+# STAGE-343
 
-Owner: The-Hive + gaia-visualizer.
-Work: authenticated `ledger_pulse` envelope over Hive WS against live sheet counts.
-Token (`GAIA_PULSE_TOKEN`) stays in secrets — envelope remains token-free.
-Do not add geometry cases to the session paste unless chat pastes them.
+- When: 2026-09-30T14:07Z / 2026-09-30 09:07 CDT
+- Sibling of The-Hive Stage 343.
+- Session hash `beec41f1` held. Living hash `7cd81012` held.
+- `wireChatKernelLedgerPulse` + sheet-count match. Envelope next = 344.
+- Session paste still four cases only.
