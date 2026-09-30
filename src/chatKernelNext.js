@@ -1,18 +1,19 @@
-/** Stage 349 compiled next-stage queue. Session switch stays four-case (beec41f1). */
+/** Stage 350 compiled next-stage queue. Session switch stays four-case (beec41f1). */
 
-export const STAGE = 349;
+export const STAGE = 350;
 export const CHAT_KERNEL_SESSION_HASH = 'beec41f1';
 export const CHAT_KERNEL_LIVING_HASH = '7cd81012';
 export const CHAT_KERNEL_CHAT_GEOMETRIES = ['infinity', 'hamiltonian', 'triangular', 'torus'];
 export const CHAT_KERNEL_RUNTIME_EXTRAS = ['klein', 'hopf', 'figure8', 'trefoil', 'mobius'];
 export const CHAT_KERNEL_PANEL_COUNT = 19;
 export const CHAT_KERNEL_HUD_BUS = 'quine-weave';
+export const CHAT_KERNEL_PUBLIC_BAND = 'hamiltoniansingularity.ai';
 
 export const CHAT_KERNEL_NEXT_STAGES = [
   {
-    stage: 350,
-    title: 'public band / Quine HUD bind polish',
-    note: 'Public band catalog + 19-panel HUD bind without touching session switch.',
+    stage: 351,
+    title: 'hamiltoniansingularity.ai public band',
+    note: 'Public-band catalog bind for hamiltoniansingularity.ai without touching session switch.',
   },
   {
     stage: 14,
@@ -65,6 +66,7 @@ export function chatKernelHudCatalogBind(toroidalWeave = 1, gravityPull = 1) {
   return {
     stage: STAGE,
     bus: CHAT_KERNEL_HUD_BUS,
+    band: CHAT_KERNEL_PUBLIC_BAND,
     session: CHAT_KERNEL_SESSION_HASH,
     living: CHAT_KERNEL_LIVING_HASH,
     sessionSwitchUntouched: true,
@@ -109,7 +111,7 @@ export function chatKernelHeartbeatMutation(scan) {
     extrasOffSession: true,
     frozen: !!src.frozen,
     energy: Number.isFinite(src.energy) ? src.energy : null,
-    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 350,
+    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 351,
   };
 }
 
