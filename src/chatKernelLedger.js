@@ -1,10 +1,10 @@
 /**
- * Stage 338 living ledger seed + token-free envelope.
+ * Stage 339 living ledger seed + token-free envelope.
  * Does not touch the four-case session switch (beec41f1).
  */
 import { chatKernelPulse, PULSE_SESSION_HASH } from './chatKernelPulse.js';
 
-export const LEDGER_STAGE = 338;
+export const LEDGER_STAGE = 339;
 export const LEDGER_SESSION_HASH = PULSE_SESSION_HASH;
 export const LEDGER_EVENT = 'ledger_pulse';
 
