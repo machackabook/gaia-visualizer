@@ -1,18 +1,14 @@
-/** Stage 347 compiled next-stage queue. Session switch stays four-case (beec41f1). */
+/** Stage 348 compiled next-stage queue. Session switch stays four-case (beec41f1). */
 
-export const STAGE = 347;
+export const STAGE = 348;
 export const CHAT_KERNEL_SESSION_HASH = 'beec41f1';
 export const CHAT_KERNEL_LIVING_HASH = '7cd81012';
 export const CHAT_KERNEL_CHAT_GEOMETRIES = ['infinity', 'hamiltonian', 'triangular', 'torus'];
 export const CHAT_KERNEL_RUNTIME_EXTRAS = ['klein', 'hopf', 'figure8', 'trefoil', 'mobius'];
 export const CHAT_KERNEL_PANEL_COUNT = 19;
+export const CHAT_KERNEL_HUD_BUS = 'quine-weave';
 
 export const CHAT_KERNEL_NEXT_STAGES = [
-  {
-    stage: 348,
-    title: 'quine HUD catalog bind',
-    note: 'Bind 19-panel sliders into the living HUD catalog without touching the session switch.',
-  },
   {
     stage: 349,
     title: 'heartbeat mutation + ledger_pulse',
@@ -64,6 +60,28 @@ export function chatKernelWeaveSliders(toroidalWeave = 1, gravityPull = 1) {
   };
 }
 
+export function chatKernelHudCatalogBind(toroidalWeave = 1, gravityPull = 1) {
+  const sliders = chatKernelWeaveSliders(toroidalWeave, gravityPull);
+  return {
+    stage: STAGE,
+    bus: CHAT_KERNEL_HUD_BUS,
+    session: CHAT_KERNEL_SESSION_HASH,
+    living: CHAT_KERNEL_LIVING_HASH,
+    sessionSwitchUntouched: true,
+    catalog: sliders.panels.map((panel) => ({
+      id: 'hud-' + panel.panel,
+      label: panel.geometry + ' lane ' + panel.lane,
+      min: 0,
+      max: 2,
+      step: 0.01,
+      value: panel.value,
+      geometry: panel.geometry,
+      lane: panel.lane,
+    })),
+    count: CHAT_KERNEL_PANEL_COUNT,
+  };
+}
+
 export function compileChatKernelNextStages() {
   return {
     current: STAGE,
@@ -72,6 +90,7 @@ export function compileChatKernelNextStages() {
     geometries: [...CHAT_KERNEL_CHAT_GEOMETRIES],
     extras: chatKernelExtrasParity(),
     sliders: chatKernelWeaveSliders(),
+    hud: chatKernelHudCatalogBind(),
     next: CHAT_KERNEL_NEXT_STAGES.map((row) => ({ ...row })),
   };
 }
