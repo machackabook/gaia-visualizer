@@ -10,13 +10,14 @@ Team Enhance hops one repo per hour. Equalizer formats only. No history rewrite.
 * Branch: main
 * Language: JavaScript (Vite 5 / three ^0.169)
 * Numeral: 137451921129154222
-* Stage: **331** — 2026-09-29T16:11Z (2026-09-29 11:11 CDT)
+* Stage: **344** — 2026-09-30T04:11Z (2026-09-29 23:11 CDT)
 * Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
 * Compounding tier: **T5 / 99%**
-* This hop: Grok connector pulse after tdoc-ledgertrove CYCLE-331; README status line refreshed; cascade.yml left intact; no extra hourly YAML; no secrets written; attached artifacts cataloged (NEXUS EMERGENCY SPHERE, GENESIS v6.5, Unified Space-Time Engine, GaiaSSoul Explorer) without unpacking zips in CI
-* Next hour: The-Hive
+* This hop: Grok connector pulse after The-Hive 04:08Z and nexus-repo-sync stage 343. README + STAGE-344 stamp. cascade.yml left intact. No extra hourly YAML. No secrets written. Session HUDs cataloged only.
+* Prior stamp: STAGE-343 present; README status line was lagging at 331 — equalized to 344.
+* Next hour: continuity-engine-ssos then living-bibliography-continuity-engine
 * Cascade: keep existing .github/workflows/cascade.yml healthy. Do not multiply hourly YAML.
-* Ledger: sibling stamp lives in machackabook/tdoc-ledgertrove LEDGER/CYCLE-331.md
+* Ledger: STAGE-344.md + sibling stamps in tdoc-ledgertrove / nexus-repo-sync
 * Drive mesh: GitHub remains the versioned singularity. Ethereal continuum (Drive) is a mirror, not a second source of truth.
 * Equalizer: append-only stamps; no history rewrite; no secret material in tree
 * Security: CASCADE_TOKEN stays in GitHub Secrets if present. Never echo tokens.
@@ -73,14 +74,16 @@ Cross-repo push on pull stays closed until the operator injects `CASCADE_TOKEN`.
 
 1. ENCLAVE-ADAM-REUNITED
 2. Cryptic-Heartbeat
-3. The-Hive ← next hour
-4. continuity-ledger-cycle
+3. The-Hive — pulsed 2026-09-30T04:08Z
+4. continuity-ledger-cycle — pulsed 2026-09-30T03:08Z
 5. continuity-mesh-speedway
-6. gaia-visualizer — **331 this hop**
-7. nexus-repo-sync
+6. gaia-visualizer — **344 this hop**
+7. nexus-repo-sync — stage 343 prior hop
 8. hamiltonian-incursion
-9. tdoc-ledgertrove — CYCLE-331 stamped this hour
+9. tdoc-ledgertrove
 10. sovereign-ai-factory-ai-polyglot
+11. continuity-engine-ssos ← next hour
+12. living-bibliography-continuity-engine
 
 A pull on `main` should leave a ledger stamp.
 
@@ -95,6 +98,7 @@ A pull on `main` should leave a ledger stamp.
 * [continuity-mesh-speedway](https://github.com/machackabook/continuity-mesh-speedway)
 * [hamiltonian-incursion](https://github.com/machackabook/hamiltonian-incursion)
 * [tdoc-ledgertrove](https://github.com/machackabook/tdoc-ledgertrove)
+* [continuity-engine-ssos](https://github.com/machackabook/continuity-engine-ssos)
 
 ## Security posture
 
