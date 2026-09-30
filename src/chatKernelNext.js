@@ -1,6 +1,6 @@
-/** Stage 350 compiled next-stage queue. Session switch stays four-case (beec41f1). */
+/** Stage 351 compiled next-stage queue. Session switch stays four-case (beec41f1). */
 
-export const STAGE = 350;
+export const STAGE = 351;
 export const CHAT_KERNEL_SESSION_HASH = 'beec41f1';
 export const CHAT_KERNEL_LIVING_HASH = '7cd81012';
 export const CHAT_KERNEL_CHAT_GEOMETRIES = ['infinity', 'hamiltonian', 'triangular', 'torus'];
@@ -8,12 +8,13 @@ export const CHAT_KERNEL_RUNTIME_EXTRAS = ['klein', 'hopf', 'figure8', 'trefoil'
 export const CHAT_KERNEL_PANEL_COUNT = 19;
 export const CHAT_KERNEL_HUD_BUS = 'quine-weave';
 export const CHAT_KERNEL_PUBLIC_BAND = 'hamiltoniansingularity.ai';
+export const CHAT_KERNEL_PUBLIC_BAND_READY = true;
 
 export const CHAT_KERNEL_NEXT_STAGES = [
   {
-    stage: 351,
-    title: 'hamiltoniansingularity.ai public band',
-    note: 'Public-band catalog bind for hamiltoniansingularity.ai without touching session switch.',
+    stage: 352,
+    title: 'HeartbeatScan 4-gov + ledger_pulse',
+    note: 'HeartbeatScan on HTTP mutation + WS + authenticated ledger_pulse. Token stays in secrets only.',
   },
   {
     stage: 14,
@@ -67,6 +68,8 @@ export function chatKernelHudCatalogBind(toroidalWeave = 1, gravityPull = 1) {
     stage: STAGE,
     bus: CHAT_KERNEL_HUD_BUS,
     band: CHAT_KERNEL_PUBLIC_BAND,
+    bandReady: CHAT_KERNEL_PUBLIC_BAND_READY,
+    publicBand: CHAT_KERNEL_PUBLIC_BAND,
     session: CHAT_KERNEL_SESSION_HASH,
     living: CHAT_KERNEL_LIVING_HASH,
     sessionSwitchUntouched: true,
@@ -111,7 +114,7 @@ export function chatKernelHeartbeatMutation(scan) {
     extrasOffSession: true,
     frozen: !!src.frozen,
     energy: Number.isFinite(src.energy) ? src.energy : null,
-    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 351,
+    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 352,
   };
 }
 
