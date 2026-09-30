@@ -1,10 +1,11 @@
 /**
- * Living chat-kernel contract — Stage 341.
- * Session paste 2026-09-29 21:06 CDT reconfirmed four base cases (infinity|hamiltonian|triangular|torus).
+ * Living chat-kernel contract — Stage 342.
+ * Session paste 2026-09-29 23:06 CDT reconfirmed four base cases (infinity|hamiltonian|triangular|torus).
  * Stage 314 extras (klein, hopf, figure8, trefoil, mobius) remain in the living switch only.
  * Stage 339: cycle lives on this module; shouldSkipCpuInstanceMatrixWhenTfOff.
  * Stage 340: energy/freeze live on chatKernelEnergy.js.
- * Stage 341: optional uEnergy; heartbeat energyFreeze; connecting chat re-pasted update(t).
+ * Stage 341: optional uEnergy; heartbeat energyFreeze.
+ * Stage 342: compileChatKernelNextStages + pairBlendChatKernelGeometries (runtime-only).
  * GPU/TF auto path remains count > 1024. instanceOffset band 4096–16384.
  */
 
@@ -17,7 +18,14 @@ export {
   CHAT_KERNEL_FREEZE_BELOW,
 } from './chatKernelEnergy.js';
 
-export const STAGE = 341;
+export {
+  compileChatKernelNextStages,
+  pairBlendChatKernelGeometries,
+  CHAT_KERNEL_NEXT_STAGES,
+  CHAT_KERNEL_LIVING_HASH,
+} from './chatKernelNext.js';
+
+export const STAGE = 342;
 export const CHAT_KERNEL_LERP = 0.05;
 export const CHAT_KERNEL_THETA_BASE = 0.01;
 export const CHAT_KERNEL_THETA_IDX = 0.002;
@@ -358,6 +366,8 @@ export function heartbeatScan() {
     skipCpuWhenTfOff: true,
     energyFreeze: true,
     uEnergy: true,
+    nextStages: true,
+    pairBlend: true,
   };
 }
 
@@ -368,10 +378,10 @@ export function confirmSessionKernel() {
     livingHash: CHAT_KERNEL_SOURCE_HASH,
     pinned: true,
     geometries: [...CHAT_KERNEL_CHAT_GEOMETRIES],
-    runtimeExtras: ['klein', 'hopf', 'figure8', 'trefoil', 'mobius', 'blend', 'wrap', 'radiiClamp', 'scalarSanitize', 'selectGeometry', 'stepNode', 'pulse', 'cycle', 'skipCpuWhenTfOff', 'energy', 'freeze', 'uEnergy'],
+    runtimeExtras: ['klein', 'hopf', 'figure8', 'trefoil', 'mobius', 'blend', 'wrap', 'radiiClamp', 'scalarSanitize', 'selectGeometry', 'stepNode', 'pulse', 'cycle', 'skipCpuWhenTfOff', 'energy', 'freeze', 'uEnergy', 'nextStages', 'pairBlend'],
     gpuAutoThreshold: GPU_AUTO_THRESHOLD,
     instanceOffsetMin: INSTANCE_OFFSET_MIN,
     nodeCap: NODE_CAP,
-    note: 'Session paste 2026-09-29 21:06 CDT held beec41f1. Stage 341 living path adds uEnergy + freeze-skip. Pair-wise blend remains runtime-only.',
+    note: 'Session paste 2026-09-29 23:06 CDT held beec41f1. Stage 342 living path exports next-stage queue + pair blend. Pair-wise blend remains runtime-only.',
   };
 }
