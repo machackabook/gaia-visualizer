@@ -1,17 +1,13 @@
-/** Stage 345 compiled next-stage queue. Session switch stays four-case (beec41f1). */
+/** Stage 346 compiled next-stage queue. Session switch stays four-case (beec41f1). */
 
-export const STAGE = 345;
+export const STAGE = 346;
 export const CHAT_KERNEL_SESSION_HASH = 'beec41f1';
 export const CHAT_KERNEL_LIVING_HASH = '7cd81012';
 export const CHAT_KERNEL_CHAT_GEOMETRIES = ['infinity', 'hamiltonian', 'triangular', 'torus'];
+export const CHAT_KERNEL_RUNTIME_EXTRAS = ['klein', 'hopf', 'figure8', 'trefoil', 'mobius'];
 export const CHAT_KERNEL_PANEL_COUNT = 19;
 
 export const CHAT_KERNEL_NEXT_STAGES = [
-  {
-    stage: 346,
-    title: 'TF/shader extras parity',
-    note: 'klein / hopf / figure8 / trefoil / mobius remain runtime-only unless chat pastes them.',
-  },
   {
     stage: 347,
     title: 'drive engram write-through',
@@ -22,7 +18,28 @@ export const CHAT_KERNEL_NEXT_STAGES = [
     title: 'quine HUD catalog bind',
     note: 'Bind 19-panel sliders into the living HUD catalog without touching the session switch.',
   },
+  {
+    stage: 349,
+    title: 'heartbeat mutation + ledger_pulse',
+    note: 'HeartbeatScan on HTTP mutation + WS + authenticated ledger_pulse.',
+  },
 ];
+
+export function chatKernelExtrasParity() {
+  return {
+    stage: STAGE,
+    session: CHAT_KERNEL_SESSION_HASH,
+    living: CHAT_KERNEL_LIVING_HASH,
+    sessionCases: [...CHAT_KERNEL_CHAT_GEOMETRIES],
+    extras: CHAT_KERNEL_RUNTIME_EXTRAS.map((name, i) => ({
+      name,
+      id: i + 4,
+      path: 'runtime-only',
+      vector3HotPath: false,
+    })),
+    note: 'TF/shader extras share CPU formulas from geometry.js. Not in session switch.',
+  };
+}
 
 export function chatKernelWeaveSliders(toroidalWeave = 1, gravityPull = 1) {
   const weave = Number.isFinite(toroidalWeave) ? toroidalWeave : 1;
@@ -53,6 +70,7 @@ export function compileChatKernelNextStages() {
     session: CHAT_KERNEL_SESSION_HASH,
     living: CHAT_KERNEL_LIVING_HASH,
     geometries: [...CHAT_KERNEL_CHAT_GEOMETRIES],
+    extras: chatKernelExtrasParity(),
     sliders: chatKernelWeaveSliders(),
     next: CHAT_KERNEL_NEXT_STAGES.map((row) => ({ ...row })),
   };
