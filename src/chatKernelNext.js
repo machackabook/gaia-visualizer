@@ -1,4 +1,4 @@
-/** Stage 365 compiled next-stage queue. Session switch stays four-case (beec41f1). Connecting chat 2026-10-01 17:07 CDT. */
+/** Stage 366 compiled next-stage queue. Session switch stays four-case (beec41f1). Connecting chat 2026-10-01 18:07 CDT. */
 import { reuseSessionLerpTarget, SESSION_LERP } from './sessionScratchLerp.js';
 import { publicKernelEnvelope, assertPublicEnvelope } from './publicKernelEnvelope.js';
 import { samplePublicBandFidelity } from './publicBandFidelity.js';
@@ -8,10 +8,11 @@ import { sampleWeaveSliderBind } from './weaveSliderBind.js';
 import { noteSessionVector3Alloc } from './sessionVector3Alloc.js';
 import { noteSessionMajorClamp } from './sessionMajorClamp.js';
 import { noteSessionPhiStill } from './sessionPhiStill.js';
+import { noteSessionInfinityDenom } from './sessionInfinityDenom.js';
 
-export { reuseSessionLerpTarget, SESSION_LERP, publicKernelEnvelope, assertPublicEnvelope, samplePublicBandFidelity, reportSessionPhiGap, sampleInstanceBandHealth, sampleWeaveSliderBind, noteSessionVector3Alloc, noteSessionMajorClamp, noteSessionPhiStill };
+export { reuseSessionLerpTarget, SESSION_LERP, publicKernelEnvelope, assertPublicEnvelope, samplePublicBandFidelity, reportSessionPhiGap, sampleInstanceBandHealth, sampleWeaveSliderBind, noteSessionVector3Alloc, noteSessionMajorClamp, noteSessionPhiStill, noteSessionInfinityDenom };
 
-export const STAGE = 365;
+export const STAGE = 366;
 export const CHAT_KERNEL_SESSION_HASH = 'beec41f1';
 export const CHAT_KERNEL_LIVING_HASH = '7cd81012';
 export const CHAT_KERNEL_CHAT_GEOMETRIES = ['infinity', 'hamiltonian', 'triangular', 'torus'];
@@ -27,11 +28,6 @@ export const INSTANCE_OFFSET_MIN = 4096;
 
 export const CHAT_KERNEL_NEXT_STAGES = [
   {
-    stage: 366,
-    title: 'session infinity denom always >= 1',
-    note: 'Document 1 + sin(theta)^2 never zero. No paste rewrite. Do not invent a session case.',
-  },
-  {
     stage: 367,
     title: 'session triangular y uses idx % 3',
     note: 'Document the lattice y term. Living path already matches. Do not rewrite the paste.',
@@ -40,6 +36,11 @@ export const CHAT_KERNEL_NEXT_STAGES = [
     stage: 368,
     title: 'session hamiltonian ignores phi and minor',
     note: 'Document that the hamiltonian case uses major only. Do not rewrite the paste.',
+  },
+  {
+    stage: 369,
+    title: 'session torus reuses the same phi',
+    note: 'Document cos(phi) and both sin(phi) share one unread phi. Do not rewrite the paste.',
   },
 ];
 
@@ -60,6 +61,7 @@ export function chatKernelFourGovernors() {
     vector3AllocNote: true,
     majorClampNote: true,
     phiStillNote: true,
+    infinityDenomNote: true,
   };
 }
 
@@ -87,8 +89,9 @@ export function chatKernelMemoryEngram(scan) {
     vector3AllocNote: true,
     majorClampNote: true,
     phiStillNote: true,
+    infinityDenomNote: true,
     ready: !frozen,
-    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 366,
+    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 367,
   };
 }
 
@@ -105,7 +108,7 @@ export function chatKernelExtrasParity() {
       vector3HotPath: false,
       gpuTfParity: true,
     })),
-    note: 'Stage 365: phi-still note has no new case. Extras still off the session switch.',
+    note: 'Stage 366: infinity-denom note has no new case. Extras still off the session switch.',
   };
 }
 
@@ -167,6 +170,7 @@ export function compileChatKernelNextStages(sessionSource) {
   const vector3 = noteSessionVector3Alloc(sessionSource);
   const majorClamp = noteSessionMajorClamp(sessionSource);
   const phiStill = noteSessionPhiStill(sessionSource);
+  const infinityDenom = noteSessionInfinityDenom(sessionSource);
   return {
     current: STAGE,
     session: CHAT_KERNEL_SESSION_HASH,
@@ -184,6 +188,8 @@ export function compileChatKernelNextStages(sessionSource) {
     majorClampOk: majorClamp.ok,
     phiStill,
     phiStillOk: phiStill.ok,
+    infinityDenom,
+    infinityDenomOk: infinityDenom.ok,
     heartbeat: chatKernelHeartbeatMutation(),
     ledger: chatKernelLedgerPulseScan(),
     engram: chatKernelMemoryEngram(),
@@ -209,6 +215,7 @@ export function chatKernelHeartbeatMutation(scan) {
   const vector3 = noteSessionVector3Alloc();
   const majorClamp = noteSessionMajorClamp();
   const phiStill = noteSessionPhiStill();
+  const infinityDenom = noteSessionInfinityDenom();
   return {
     event: 'heartbeat_mutation',
     stage: STAGE,
@@ -231,9 +238,10 @@ export function chatKernelHeartbeatMutation(scan) {
     vector3AllocOk: vector3.ok,
     majorClampOk: majorClamp.ok,
     phiStillOk: phiStill.ok,
+    infinityDenomOk: infinityDenom.ok,
     frozen: !!src.frozen,
     energy: Number.isFinite(src.energy) ? src.energy : null,
-    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 366,
+    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 367,
   };
 }
 
@@ -265,7 +273,8 @@ export function chatKernelLedgerPulseScan(scan) {
     vector3AllocNote: true,
     majorClampNote: true,
     phiStillNote: true,
-    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 366,
+    infinityDenomNote: true,
+    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 367,
   };
 }
 
