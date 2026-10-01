@@ -10,12 +10,12 @@ Team Enhance hops one repo per run. Equalizer formats only. No history rewrite. 
 * Branch: main
 * Language: JavaScript (Vite 5 / three ^0.169)
 * Numeral: 137451921129154222
-* Stage: **346** — 2026-10-01T19:11Z (2026-10-01 14:11 CDT)
+* Stage: **347** — 2026-10-01T22:13Z (2026-10-01 17:13 CDT)
 * Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
 * Compounding tier: **T5 / 99%**
-* Prior surface: stage 345 @ 2026-09-30T19:13Z
-* Sibling pulse: Cryptic-Heartbeat hop 320 @ 2026-10-01T18:06Z pointed here
-* This hop: README clarity; env-check note; LEDGER-STAMP refresh; cascade.yml left intact; no extra hourly YAML; no secrets written
+* Prior surface: stage 346 @ 2026-10-01T19:11Z
+* Sibling pulse: Cryptic-Heartbeat hop 323 @ 2026-10-01T22:11Z pointed here
+* This hop: README clarity (waterfall pointer refreshed); env-check note retained; LEDGER-STAMP append; cascade.yml left intact; no extra hourly YAML; no secrets written
 * Next in waterfall: living-bibliography-continuity-engine
 * Cascade: keep existing `.github/workflows/cascade.yml` healthy. Do not multiply hourly YAML.
 * Ledger: `docs/LEDGER-STAMP.md`
@@ -54,7 +54,7 @@ npm install
 npm run dev
 ```
 
-Env-check note: `scripts/env-check.sh` fails closed if `README.md` is missing, if `HEAD` SHA is empty, or if the numeral `137451921129154222` is absent from the tree. A green check means the docs surface is present. It does not pair devices, does not read Tailscale state, does not consume ADB pair codes, and does not claim a device was rooted.
+Env-check note: `scripts/env-check.sh` fails closed if `README.md` is missing, if `HEAD` SHA is empty, or if the numeral `137451921129154222` is absent from the tree. A green check means the docs surface is present. It does not pair devices, does not read Tailscale state, does not consume ADB pair codes, and does not claim a device was rooted. It does not upload binaries to the Drive index.
 
 ```bash
 bash scripts/env-check.sh
@@ -80,8 +80,8 @@ Rotation order locked by the operator:
 2. continuity-engine-ssos
 3. hamiltonian-incursion
 4. The-Hive
-5. Cryptic-Heartbeat — hop 320 @ 2026-10-01T18:06Z (prior pulse)
-6. gaia-visualizer — **346 this hop**
+5. Cryptic-Heartbeat — hop 323 @ 2026-10-01T22:11Z (prior pulse)
+6. gaia-visualizer — **347 this hop**
 7. living-bibliography-continuity-engine — next
 8. continuity-ledger-cycle
 
