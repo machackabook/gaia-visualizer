@@ -1,6 +1,6 @@
-/** Stage 354 compiled next-stage queue. Session switch stays four-case (beec41f1). Connecting chat 2026-09-30 21:06 CDT. */
+/** Stage 355 compiled next-stage queue. Session switch stays four-case (beec41f1). Connecting chat 2026-09-30 22:06 CDT. */
 
-export const STAGE = 354;
+export const STAGE = 355;
 export const CHAT_KERNEL_SESSION_HASH = 'beec41f1';
 export const CHAT_KERNEL_LIVING_HASH = '7cd81012';
 export const CHAT_KERNEL_CHAT_GEOMETRIES = ['infinity', 'hamiltonian', 'triangular', 'torus'];
@@ -14,14 +14,19 @@ export const NODE_CAP = 16384;
 
 export const CHAT_KERNEL_NEXT_STAGES = [
   {
-    stage: 355,
+    stage: 356,
     title: 'memory engrams Drive folder',
     note: 'Memory engrams into Drive folder CRYPTIC-HEARTBEAT-NEXUS-ROOT (no secrets).',
   },
   {
-    stage: 356,
+    stage: 357,
     title: 'Tailscale gaia-positions fan-out',
     note: 'Peer fan-out of band-192 gaia-positions. Session switch stays four-case.',
+  },
+  {
+    stage: 358,
+    title: 'signed kernel frame hop',
+    note: 'Authenticated kernel-frame hop after positions fan-out. No secrets in envelope.',
   },
 ];
 
@@ -47,7 +52,7 @@ export function chatKernelExtrasParity() {
       vector3HotPath: false,
       gpuTfParity: true,
     })),
-    note: 'Stage 354: TF/shader extras share CPU formulas. No Vector3 in the hot path. Still off session switch.',
+    note: 'Stage 355: TF/shader extras share CPU formulas. No Vector3 in the hot path. Still off session switch.',
   };
 }
 
@@ -133,7 +138,7 @@ export function chatKernelHeartbeatMutation(scan) {
     gpuTfParity: true,
     frozen: !!src.frozen,
     energy: Number.isFinite(src.energy) ? src.energy : null,
-    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 355,
+    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 356,
   };
 }
 
@@ -158,7 +163,7 @@ export function chatKernelLedgerPulseScan(scan) {
     authenticated,
     ready: authenticated && !frozen && (expectedSheetCount === null || sheetMatch),
     tokenInEnvelope: false,
-    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 355,
+    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 356,
   };
 }
 
