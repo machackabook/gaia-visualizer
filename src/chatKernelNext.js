@@ -1,14 +1,15 @@
-/** Stage 362 compiled next-stage queue. Session switch stays four-case (beec41f1). Connecting chat 2026-10-01 14:06 CDT. */
+/** Stage 363 compiled next-stage queue. Session switch stays four-case (beec41f1). Connecting chat 2026-10-01 15:06 CDT. */
 import { reuseSessionLerpTarget, SESSION_LERP } from './sessionScratchLerp.js';
 import { publicKernelEnvelope, assertPublicEnvelope } from './publicKernelEnvelope.js';
 import { samplePublicBandFidelity } from './publicBandFidelity.js';
 import { reportSessionPhiGap } from './sessionPhiGap.js';
 import { sampleInstanceBandHealth } from './instanceBandHealth.js';
 import { sampleWeaveSliderBind } from './weaveSliderBind.js';
+import { noteSessionVector3Alloc } from './sessionVector3Alloc.js';
 
-export { reuseSessionLerpTarget, SESSION_LERP, publicKernelEnvelope, assertPublicEnvelope, samplePublicBandFidelity, reportSessionPhiGap, sampleInstanceBandHealth, sampleWeaveSliderBind };
+export { reuseSessionLerpTarget, SESSION_LERP, publicKernelEnvelope, assertPublicEnvelope, samplePublicBandFidelity, reportSessionPhiGap, sampleInstanceBandHealth, sampleWeaveSliderBind, noteSessionVector3Alloc };
 
-export const STAGE = 362;
+export const STAGE = 363;
 export const CHAT_KERNEL_SESSION_HASH = 'beec41f1';
 export const CHAT_KERNEL_LIVING_HASH = '7cd81012';
 export const CHAT_KERNEL_CHAT_GEOMETRIES = ['infinity', 'hamiltonian', 'triangular', 'torus'];
@@ -24,11 +25,6 @@ export const INSTANCE_OFFSET_MIN = 4096;
 
 export const CHAT_KERNEL_NEXT_STAGES = [
   {
-    stage: 363,
-    title: 'residual session Vector3 allocation note',
-    note: 'Document that the session paste still allocates THREE.Vector3. Do not invent a session case.',
-  },
-  {
     stage: 364,
     title: 'session major-clamp gap at node cap',
     note: 'Document major = 10 + idx * 2 at 16384. Living path already clamps. Do not rewrite the paste.',
@@ -37,6 +33,11 @@ export const CHAT_KERNEL_NEXT_STAGES = [
     stage: 365,
     title: 'session phi still not advanced',
     note: 'Document that the session paste does not step phi. Living path already does. Do not rewrite the paste.',
+  },
+  {
+    stage: 366,
+    title: 'session infinity denom always >= 1',
+    note: 'Document 1 + sin(theta)^2 never zero. No paste rewrite. Do not invent a session case.',
   },
 ];
 
@@ -54,6 +55,7 @@ export function chatKernelFourGovernors() {
     phiGapReport: true,
     instanceBand: true,
     weaveBind: true,
+    vector3AllocNote: true,
   };
 }
 
@@ -78,8 +80,9 @@ export function chatKernelMemoryEngram(scan) {
     phiGapReport: true,
     instanceBand: true,
     weaveBind: true,
+    vector3AllocNote: true,
     ready: !frozen,
-    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 363,
+    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 364,
   };
 }
 
@@ -88,7 +91,7 @@ export function chatKernelExtrasParity() {
     stage: STAGE,
     session: CHAT_KERNEL_SESSION_HASH,
     living: CHAT_KERNEL_LIVING_HASH,
-    sessionCases: [...CHAT_KERNEL_CHAT_GEOMETRIES],
+    sessionCases: CHAT_KERNEL_CHAT_GEOMETRIES.slice(),
     extras: CHAT_KERNEL_RUNTIME_EXTRAS.map((name, i) => ({
       name,
       id: i + 4,
@@ -96,7 +99,7 @@ export function chatKernelExtrasParity() {
       vector3HotPath: false,
       gpuTfParity: true,
     })),
-    note: 'Stage 362: weave-slider bind has no new case. Extras still off the session switch.',
+    note: 'Stage 363: Vector3 allocation note has no new case. Extras still off the session switch.',
   };
 }
 
@@ -155,17 +158,20 @@ export function compileChatKernelNextStages(sessionSource) {
   const band = sampleInstanceBandHealth();
   const hud = chatKernelHudCatalogBind();
   const weaveBind = sampleWeaveSliderBind(hud.catalog, hud.band);
+  const vector3 = noteSessionVector3Alloc(sessionSource);
   return {
     current: STAGE,
     session: CHAT_KERNEL_SESSION_HASH,
     living: CHAT_KERNEL_LIVING_HASH,
-    geometries: [...CHAT_KERNEL_CHAT_GEOMETRIES],
+    geometries: CHAT_KERNEL_CHAT_GEOMETRIES.slice(),
     governors: chatKernelFourGovernors(),
     extras: chatKernelExtrasParity(),
     sliders: chatKernelWeaveSliders(),
     hud,
     weaveBind,
     weaveBindOk: weaveBind.ok,
+    vector3,
+    vector3AllocOk: vector3.ok,
     heartbeat: chatKernelHeartbeatMutation(),
     ledger: chatKernelLedgerPulseScan(),
     engram: chatKernelMemoryEngram(),
@@ -188,6 +194,7 @@ export function chatKernelHeartbeatMutation(scan) {
   const band = sampleInstanceBandHealth();
   const hud = chatKernelHudCatalogBind();
   const weaveBind = sampleWeaveSliderBind(hud.catalog, hud.band);
+  const vector3 = noteSessionVector3Alloc();
   return {
     event: 'heartbeat_mutation',
     stage: STAGE,
@@ -198,7 +205,7 @@ export function chatKernelHeartbeatMutation(scan) {
     governors: gov,
     http: true,
     ws: true,
-    geometries: [...CHAT_KERNEL_CHAT_GEOMETRIES],
+    geometries: CHAT_KERNEL_CHAT_GEOMETRIES.slice(),
     extrasOffSession: true,
     gpuTfParity: true,
     scratchLerp: true,
@@ -207,9 +214,10 @@ export function chatKernelHeartbeatMutation(scan) {
     phiGapReport: true,
     instanceBandOk: band.ok,
     weaveBindOk: weaveBind.ok,
+    vector3AllocOk: vector3.ok,
     frozen: !!src.frozen,
     energy: Number.isFinite(src.energy) ? src.energy : null,
-    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 363,
+    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 364,
   };
 }
 
@@ -238,7 +246,8 @@ export function chatKernelLedgerPulseScan(scan) {
     phiGapReport: true,
     instanceBand: true,
     weaveBind: true,
-    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 363,
+    vector3AllocNote: true,
+    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 364,
   };
 }
 
