@@ -1,12 +1,12 @@
 /**
- * Living chat-kernel contract — Stage 357.
- * Session paste 2026-10-01 09:07 CDT reconfirmed four base cases (infinity|hamiltonian|triangular|torus).
+ * Living chat-kernel contract — Stage 358.
+ * Session paste 2026-10-01 10:06 CDT reconfirmed four base cases (infinity|hamiltonian|triangular|torus).
  * Stage 314 extras (klein, hopf, figure8, trefoil, mobius) remain in the living switch only.
  * Stage 339: cycle lives on this module; shouldSkipCpuInstanceMatrixWhenTfOff.
  * Stage 340: energy/freeze live on chatKernelEnergy.js.
  * Stage 341: optional uEnergy; heartbeat energyFreeze.
  * Stage 342: compileChatKernelNextStages + pairBlendChatKernelGeometries (runtime-only).
- * Stage 357: scratch-vector session lerp; next queue 358+.
+ * Stage 358: public kernel envelope; scratch lerp held; next queue 359+.
  * GPU/TF auto path remains count > 1024. instanceOffset band 4096–16384.
  */
 
@@ -30,7 +30,7 @@ export {
   CHAT_KERNEL_ENGRAM_FOLDER,
 } from './chatKernelNext.js';
 
-export const STAGE = 357;
+export const STAGE = 358;
 export const CHAT_KERNEL_LERP = 0.05;
 export const CHAT_KERNEL_THETA_BASE = 0.01;
 export const CHAT_KERNEL_THETA_IDX = 0.002;
@@ -389,6 +389,6 @@ export function confirmSessionKernel() {
     gpuAutoThreshold: GPU_AUTO_THRESHOLD,
     instanceOffsetMin: INSTANCE_OFFSET_MIN,
     nodeCap: NODE_CAP,
-    note: 'Session paste 2026-10-01 09:07 CDT held beec41f1. Stage 357 scratch lerp. Pair-wise blend remains runtime-only.',
+    note: 'Session paste 2026-10-01 10:06 CDT held beec41f1. Stage 358 public envelope. Pair-wise blend remains runtime-only.',
   };
 }
