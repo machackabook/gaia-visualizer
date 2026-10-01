@@ -1,10 +1,11 @@
-/** Stage 358 compiled next-stage queue. Session switch stays four-case (beec41f1). Connecting chat 2026-10-01 10:06 CDT. */
+/** Stage 359 compiled next-stage queue. Session switch stays four-case (beec41f1). Connecting chat 2026-10-01 11:32 CDT. */
 import { reuseSessionLerpTarget, SESSION_LERP } from './sessionScratchLerp.js';
 import { publicKernelEnvelope, assertPublicEnvelope } from './publicKernelEnvelope.js';
+import { samplePublicBandFidelity } from './publicBandFidelity.js';
 
-export { reuseSessionLerpTarget, SESSION_LERP, publicKernelEnvelope, assertPublicEnvelope };
+export { reuseSessionLerpTarget, SESSION_LERP, publicKernelEnvelope, assertPublicEnvelope, samplePublicBandFidelity };
 
-export const STAGE = 358;
+export const STAGE = 359;
 export const CHAT_KERNEL_SESSION_HASH = 'beec41f1';
 export const CHAT_KERNEL_LIVING_HASH = '7cd81012';
 export const CHAT_KERNEL_CHAT_GEOMETRIES = ['infinity', 'hamiltonian', 'triangular', 'torus'];
@@ -19,11 +20,6 @@ export const NODE_CAP = 16384;
 
 export const CHAT_KERNEL_NEXT_STAGES = [
   {
-    stage: 359,
-    title: 'public-band fidelity sample',
-    note: 'Sample fidelity on the public band after signed frames land. Extras stay off session.',
-  },
-  {
     stage: 360,
     title: 'session phi-gap report',
     note: 'Document that the session paste does not advance phi. Living weave stays 0.007 * toroidalWeave.',
@@ -32,6 +28,11 @@ export const CHAT_KERNEL_NEXT_STAGES = [
     stage: 361,
     title: 'instance-band health sample',
     note: 'Report 4096-16384 instanceOffset band. Do not change the four-case session switch.',
+  },
+  {
+    stage: 362,
+    title: 'weave-slider public-band bind check',
+    note: 'Confirm HUD catalog still binds four session lanes only.',
   },
 ];
 
@@ -44,6 +45,7 @@ export function chatKernelFourGovernors() {
     sessionLerp: SESSION_LERP,
     scratchLerp: true,
     publicEnvelope: true,
+    fidelitySample: true,
   };
 }
 
@@ -64,8 +66,9 @@ export function chatKernelMemoryEngram(scan) {
     tokenInEnvelope: false,
     scratchLerp: true,
     publicEnvelope: true,
+    fidelitySample: true,
     ready: !frozen,
-    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 359,
+    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 360,
   };
 }
 
@@ -82,7 +85,7 @@ export function chatKernelExtrasParity() {
       vector3HotPath: false,
       gpuTfParity: true,
     })),
-    note: 'Stage 358: public envelope has no token. Extras still off the session switch.',
+    note: 'Stage 359: fidelity sample has no token. Extras still off the session switch.',
   };
 }
 
@@ -136,6 +139,7 @@ export function chatKernelHudCatalogBind(toroidalWeave = 1, gravityPull = 1) {
 
 export function compileChatKernelNextStages() {
   const envelope = publicKernelEnvelope();
+  const fidelity = samplePublicBandFidelity();
   return {
     current: STAGE,
     session: CHAT_KERNEL_SESSION_HASH,
@@ -151,6 +155,8 @@ export function compileChatKernelNextStages() {
     scratchLerp: typeof reuseSessionLerpTarget === 'function',
     envelope,
     envelopeOk: assertPublicEnvelope(envelope).ok,
+    fidelity,
+    fidelityOk: fidelity.ok,
     next: CHAT_KERNEL_NEXT_STAGES.map((row) => ({ ...row })),
   };
 }
@@ -173,9 +179,10 @@ export function chatKernelHeartbeatMutation(scan) {
     gpuTfParity: true,
     scratchLerp: true,
     publicEnvelope: true,
+    fidelitySample: true,
     frozen: !!src.frozen,
     energy: Number.isFinite(src.energy) ? src.energy : null,
-    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 359,
+    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 360,
   };
 }
 
@@ -200,7 +207,8 @@ export function chatKernelLedgerPulseScan(scan) {
     authenticated,
     ready: authenticated && !frozen && (expectedSheetCount === null || sheetMatch),
     tokenInEnvelope: false,
-    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 359,
+    fidelitySample: true,
+    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 360,
   };
 }
 
