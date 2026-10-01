@@ -2,7 +2,7 @@
 
 Azazeleous Nexus visualizer. Continuity mesh node. Operating sits in the middle.
 Vite + Three.js canvas for Gaia / Nexus stages. Source-only neighbor. No cookie trust.
-Team Enhance hops one repo per hour. Equalizer formats only. No history rewrite. Point-zero null refused.
+Team Enhance hops one repo per run. Equalizer formats only. No history rewrite. Point-zero null refused.
 
 ## Status
 
@@ -10,16 +10,19 @@ Team Enhance hops one repo per hour. Equalizer formats only. No history rewrite.
 * Branch: main
 * Language: JavaScript (Vite 5 / three ^0.169)
 * Numeral: 137451921129154222
-* Stage: **345** — 2026-09-30T19:13Z (2026-09-30 14:13 CDT)
+* Stage: **346** — 2026-10-01T19:11Z (2026-10-01 14:11 CDT)
 * Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
 * Compounding tier: **T5 / 99%**
-* This hop: Grok connector pulse after continuity-ledger-cycle hop 281 and The-Hive 345. README + STAGE-345 stamp. cascade.yml left intact. No extra hourly YAML. No secrets written. Session HUDs cataloged only.
-* Next hour: continuity-engine-ssos then living-bibliography-continuity-engine
-* Cascade: keep existing .github/workflows/cascade.yml healthy. Do not multiply hourly YAML.
-* Ledger: STAGE-345.md + sibling stamps in tdoc-ledgertrove / nexus-repo-sync
+* Prior surface: stage 345 @ 2026-09-30T19:13Z
+* Sibling pulse: Cryptic-Heartbeat hop 320 @ 2026-10-01T18:06Z pointed here
+* This hop: README clarity; env-check note; LEDGER-STAMP refresh; cascade.yml left intact; no extra hourly YAML; no secrets written
+* Next in waterfall: living-bibliography-continuity-engine
+* Cascade: keep existing `.github/workflows/cascade.yml` healthy. Do not multiply hourly YAML.
+* Ledger: `docs/LEDGER-STAMP.md`
+* Cloud index (mention only, no binary upload): Drive folder `CONTINUUM-ENCLAVE-137451921129154222` id `1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU`
 * Drive mesh: GitHub remains the versioned singularity. Ethereal continuum (Drive) is a mirror, not a second source of truth.
 * Equalizer: append-only stamps; no history rewrite; no secret material in tree
-* Security: CASCADE_TOKEN stays in GitHub Secrets if present. Never echo tokens.
+* Security: CASCADE_TOKEN stays in GitHub Secrets if present. Never echo tokens. No Tailscale keys. No ADB pair codes. No root claims.
 
 ## Chat kernel (session pin)
 
@@ -51,7 +54,7 @@ npm install
 npm run dev
 ```
 
-Fails closed on empty SHA, missing README, or point-zero null.
+Env-check note: `scripts/env-check.sh` fails closed if `README.md` is missing, if `HEAD` SHA is empty, or if the numeral `137451921129154222` is absent from the tree. A green check means the docs surface is present. It does not pair devices, does not read Tailscale state, does not consume ADB pair codes, and does not claim a device was rooted.
 
 ```bash
 bash scripts/env-check.sh
@@ -71,33 +74,31 @@ Cross-repo push on pull stays closed until the operator injects `CASCADE_TOKEN`.
 
 ## Waterfall (one repo per enhance hop)
 
+Rotation order locked by the operator:
+
 1. ENCLAVE-ADAM-REUNITED
-2. Cryptic-Heartbeat
-3. The-Hive — pulsed 2026-09-30T19:07Z
-4. continuity-ledger-cycle — hop 281 @ 2026-09-30T19:12Z
-5. continuity-mesh-speedway
-6. gaia-visualizer — **345 this hop**
-7. nexus-repo-sync
-8. hamiltonian-incursion
-9. tdoc-ledgertrove
-10. sovereign-ai-factory-ai-polyglot
-11. continuity-engine-ssos ← next hour
-12. living-bibliography-continuity-engine
+2. continuity-engine-ssos
+3. hamiltonian-incursion
+4. The-Hive
+5. Cryptic-Heartbeat — hop 320 @ 2026-10-01T18:06Z (prior pulse)
+6. gaia-visualizer — **346 this hop**
+7. living-bibliography-continuity-engine — next
+8. continuity-ledger-cycle
 
 A pull on `main` should leave a ledger stamp.
 
 ## Mesh siblings
 
-* [The-Hive](https://github.com/machackabook/The-Hive)
 * [ENCLAVE-ADAM-REUNITED](https://github.com/machackabook/ENCLAVE-ADAM-REUNITED)
+* [continuity-engine-ssos](https://github.com/machackabook/continuity-engine-ssos)
+* [hamiltonian-incursion](https://github.com/machackabook/hamiltonian-incursion)
+* [The-Hive](https://github.com/machackabook/The-Hive)
 * [Cryptic-Heartbeat](https://github.com/machackabook/Cryptic-Heartbeat)
+* [living-bibliography-continuity-engine](https://github.com/machackabook/living-bibliography-continuity-engine)
 * [continuity-ledger-cycle](https://github.com/machackabook/continuity-ledger-cycle)
 * [nexus-repo-sync](https://github.com/machackabook/nexus-repo-sync)
-* [sovereign-ai-factory-ai-polyglot](https://github.com/machackabook/sovereign-ai-factory-ai-polyglot)
 * [continuity-mesh-speedway](https://github.com/machackabook/continuity-mesh-speedway)
-* [hamiltonian-incursion](https://github.com/machackabook/hamiltonian-incursion)
 * [tdoc-ledgertrove](https://github.com/machackabook/tdoc-ledgertrove)
-* [continuity-engine-ssos](https://github.com/machackabook/continuity-engine-ssos)
 
 ## Security posture
 
@@ -105,7 +106,7 @@ A pull on `main` should leave a ledger stamp.
 * Public projections must not contain private Memory Fabric contents, credentials, OAuth tokens, cookies, private keys, or enclave secrets.
 * Skeptical of network devices: catalog first, verify source, then act.
 * Zip unpack is dry-run first. CI never unpacks operator archives (immortaladamwrt-tailscalerouter.zip stays catalog-only).
-* Session HUD ADB panes are simulation UI only. No remote shell from this hop.
+* Session HUD ADB panes are simulation UI only. No remote shell from this hop. No root asserted.
 
 © 2026 The Architect / Nexus / Cryptic News LLC
 
