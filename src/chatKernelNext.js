@@ -1,6 +1,6 @@
-/** Stage 352 compiled next-stage queue. Session switch stays four-case (beec41f1). */
+/** Stage 353 compiled next-stage queue. Session switch stays four-case (beec41f1). */
 
-export const STAGE = 352;
+export const STAGE = 353;
 export const CHAT_KERNEL_SESSION_HASH = 'beec41f1';
 export const CHAT_KERNEL_LIVING_HASH = '7cd81012';
 export const CHAT_KERNEL_CHAT_GEOMETRIES = ['infinity', 'hamiltonian', 'triangular', 'torus'];
@@ -14,7 +14,7 @@ export const NODE_CAP = 16384;
 
 export const CHAT_KERNEL_NEXT_STAGES = [
   {
-    stage: 353,
+    stage: 354,
     title: 'GPU/TF extras parity',
     note: 'TF/shader extras share CPU formulas. No Vector3 in the hot path. Still off session switch.',
   },
@@ -131,7 +131,7 @@ export function chatKernelHeartbeatMutation(scan) {
     extrasOffSession: true,
     frozen: !!src.frozen,
     energy: Number.isFinite(src.energy) ? src.energy : null,
-    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 353,
+    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 354,
   };
 }
 
@@ -156,7 +156,7 @@ export function chatKernelLedgerPulseScan(scan) {
     authenticated,
     ready: authenticated && !frozen && (expectedSheetCount === null || sheetMatch),
     tokenInEnvelope: false,
-    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 353,
+    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 354,
   };
 }
 
