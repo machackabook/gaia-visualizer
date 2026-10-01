@@ -1,5 +1,5 @@
-/** Stage 358 — public signed kernel envelope. Token never enters the object. */
-export const PUBLIC_ENVELOPE_STAGE = 358;
+/** Stage 359 — public signed kernel envelope. Token never enters the object. */
+export const PUBLIC_ENVELOPE_STAGE = 359;
 export const PUBLIC_ENVELOPE_SESSION_HASH = 'beec41f1';
 export const PUBLIC_ENVELOPE_LIVING_HASH = '7cd81012';
 export const PUBLIC_ENVELOPE_GEOMETRIES = ['infinity', 'hamiltonian', 'triangular', 'torus'];
