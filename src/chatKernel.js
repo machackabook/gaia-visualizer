@@ -1,12 +1,12 @@
 /**
- * Living chat-kernel contract — Stage 355.
- * Session paste 2026-09-30 22:06 CDT reconfirmed four base cases (infinity|hamiltonian|triangular|torus).
+ * Living chat-kernel contract — Stage 356.
+ * Session paste 2026-09-30 23:06 CDT reconfirmed four base cases (infinity|hamiltonian|triangular|torus).
  * Stage 314 extras (klein, hopf, figure8, trefoil, mobius) remain in the living switch only.
  * Stage 339: cycle lives on this module; shouldSkipCpuInstanceMatrixWhenTfOff.
  * Stage 340: energy/freeze live on chatKernelEnergy.js.
  * Stage 341: optional uEnergy; heartbeat energyFreeze.
  * Stage 342: compileChatKernelNextStages + pairBlendChatKernelGeometries (runtime-only).
- * Stage 355: connecting-chat reconfirm; next queue 356+.
+ * Stage 356: memory-engram compile hop; next queue 357+.
  * GPU/TF auto path remains count > 1024. instanceOffset band 4096–16384.
  */
 
@@ -22,11 +22,13 @@ export {
 export {
   compileChatKernelNextStages,
   pairBlendChatKernelGeometries,
+  chatKernelMemoryEngram,
   CHAT_KERNEL_NEXT_STAGES,
   CHAT_KERNEL_LIVING_HASH,
+  CHAT_KERNEL_ENGRAM_FOLDER,
 } from './chatKernelNext.js';
 
-export const STAGE = 355;
+export const STAGE = 356;
 export const CHAT_KERNEL_LERP = 0.05;
 export const CHAT_KERNEL_THETA_BASE = 0.01;
 export const CHAT_KERNEL_THETA_IDX = 0.002;
@@ -369,6 +371,7 @@ export function heartbeatScan() {
     uEnergy: true,
     nextStages: true,
     pairBlend: true,
+    memoryEngram: true,
   };
 }
 
@@ -379,10 +382,10 @@ export function confirmSessionKernel() {
     livingHash: CHAT_KERNEL_SOURCE_HASH,
     pinned: true,
     geometries: [...CHAT_KERNEL_CHAT_GEOMETRIES],
-    runtimeExtras: ['klein', 'hopf', 'figure8', 'trefoil', 'mobius', 'blend', 'wrap', 'radiiClamp', 'scalarSanitize', 'selectGeometry', 'stepNode', 'pulse', 'cycle', 'skipCpuWhenTfOff', 'energy', 'freeze', 'uEnergy', 'nextStages', 'pairBlend'],
+    runtimeExtras: ['klein', 'hopf', 'figure8', 'trefoil', 'mobius', 'blend', 'wrap', 'radiiClamp', 'scalarSanitize', 'selectGeometry', 'stepNode', 'pulse', 'cycle', 'skipCpuWhenTfOff', 'energy', 'freeze', 'uEnergy', 'nextStages', 'pairBlend', 'memoryEngram'],
     gpuAutoThreshold: GPU_AUTO_THRESHOLD,
     instanceOffsetMin: INSTANCE_OFFSET_MIN,
     nodeCap: NODE_CAP,
-    note: 'Session paste 2026-09-30 22:06 CDT held beec41f1. Stage 355 living path keeps next-stage queue + pair blend. Pair-wise blend remains runtime-only.',
+    note: 'Session paste 2026-09-30 23:06 CDT held beec41f1. Stage 356 compiles memory engrams (no secrets). Pair-wise blend remains runtime-only.',
   };
 }
