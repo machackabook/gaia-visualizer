@@ -1,6 +1,6 @@
-/** Stage 355 compiled next-stage queue. Session switch stays four-case (beec41f1). Connecting chat 2026-09-30 22:06 CDT. */
+/** Stage 356 compiled next-stage queue. Session switch stays four-case (beec41f1). Connecting chat 2026-09-30 23:06 CDT. */
 
-export const STAGE = 355;
+export const STAGE = 356;
 export const CHAT_KERNEL_SESSION_HASH = 'beec41f1';
 export const CHAT_KERNEL_LIVING_HASH = '7cd81012';
 export const CHAT_KERNEL_CHAT_GEOMETRIES = ['infinity', 'hamiltonian', 'triangular', 'torus'];
@@ -9,15 +9,11 @@ export const CHAT_KERNEL_PANEL_COUNT = 19;
 export const CHAT_KERNEL_HUD_BUS = 'quine-weave';
 export const CHAT_KERNEL_PUBLIC_BAND = 'hamiltoniansingularity.ai';
 export const CHAT_KERNEL_PUBLIC_BAND_READY = true;
+export const CHAT_KERNEL_ENGRAM_FOLDER = 'CRYPTIC-HEARTBEAT-NEXUS-ROOT';
 export const GPU_AUTO_THRESHOLD = 1024;
 export const NODE_CAP = 16384;
 
 export const CHAT_KERNEL_NEXT_STAGES = [
-  {
-    stage: 356,
-    title: 'memory engrams Drive folder',
-    note: 'Memory engrams into Drive folder CRYPTIC-HEARTBEAT-NEXUS-ROOT (no secrets).',
-  },
   {
     stage: 357,
     title: 'Tailscale gaia-positions fan-out',
@@ -28,6 +24,11 @@ export const CHAT_KERNEL_NEXT_STAGES = [
     title: 'signed kernel frame hop',
     note: 'Authenticated kernel-frame hop after positions fan-out. No secrets in envelope.',
   },
+  {
+    stage: 359,
+    title: 'public-band fidelity sample',
+    note: 'Sample fidelity on the public band after signed frames land. Extras stay off session.',
+  },
 ];
 
 export function chatKernelFourGovernors() {
@@ -36,6 +37,26 @@ export function chatKernelFourGovernors() {
     living: CHAT_KERNEL_LIVING_HASH,
     gpu: GPU_AUTO_THRESHOLD,
     cap: NODE_CAP,
+  };
+}
+
+export function chatKernelMemoryEngram(scan) {
+  const src = scan || {};
+  const energy = Number.isFinite(src.energy) ? src.energy : null;
+  const frozen = src.frozen != null ? !!src.frozen : (energy != null && energy < 0.12);
+  return {
+    event: 'memory_engram',
+    stage: STAGE,
+    folder: CHAT_KERNEL_ENGRAM_FOLDER,
+    session: CHAT_KERNEL_SESSION_HASH,
+    living: CHAT_KERNEL_LIVING_HASH,
+    geometry: src.geometry || 'torus',
+    energy,
+    frozen,
+    secrets: false,
+    tokenInEnvelope: false,
+    ready: !frozen,
+    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 357,
   };
 }
 
@@ -52,7 +73,7 @@ export function chatKernelExtrasParity() {
       vector3HotPath: false,
       gpuTfParity: true,
     })),
-    note: 'Stage 355: TF/shader extras share CPU formulas. No Vector3 in the hot path. Still off session switch.',
+    note: 'Stage 356: TF/shader extras share CPU formulas. No Vector3 in the hot path. Still off session switch.',
   };
 }
 
@@ -116,6 +137,7 @@ export function compileChatKernelNextStages() {
     hud: chatKernelHudCatalogBind(),
     heartbeat: chatKernelHeartbeatMutation(),
     ledger: chatKernelLedgerPulseScan(),
+    engram: chatKernelMemoryEngram(),
     next: CHAT_KERNEL_NEXT_STAGES.map((row) => ({ ...row })),
   };
 }
@@ -138,7 +160,7 @@ export function chatKernelHeartbeatMutation(scan) {
     gpuTfParity: true,
     frozen: !!src.frozen,
     energy: Number.isFinite(src.energy) ? src.energy : null,
-    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 356,
+    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 357,
   };
 }
 
@@ -163,7 +185,7 @@ export function chatKernelLedgerPulseScan(scan) {
     authenticated,
     ready: authenticated && !frozen && (expectedSheetCount === null || sheetMatch),
     tokenInEnvelope: false,
-    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 356,
+    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 357,
   };
 }
 
