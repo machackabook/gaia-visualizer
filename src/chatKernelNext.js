@@ -1,6 +1,9 @@
-/** Stage 356 compiled next-stage queue. Session switch stays four-case (beec41f1). Connecting chat 2026-09-30 23:06 CDT. */
+/** Stage 357 compiled next-stage queue. Session switch stays four-case (beec41f1). Connecting chat 2026-10-01 09:07 CDT. */
+import { reuseSessionLerpTarget, SESSION_LERP } from './sessionScratchLerp.js';
 
-export const STAGE = 356;
+export { reuseSessionLerpTarget, SESSION_LERP };
+
+export const STAGE = 357;
 export const CHAT_KERNEL_SESSION_HASH = 'beec41f1';
 export const CHAT_KERNEL_LIVING_HASH = '7cd81012';
 export const CHAT_KERNEL_CHAT_GEOMETRIES = ['infinity', 'hamiltonian', 'triangular', 'torus'];
@@ -15,19 +18,19 @@ export const NODE_CAP = 16384;
 
 export const CHAT_KERNEL_NEXT_STAGES = [
   {
-    stage: 357,
-    title: 'Tailscale gaia-positions fan-out',
-    note: 'Peer fan-out of band-192 gaia-positions. Session switch stays four-case.',
-  },
-  {
     stage: 358,
     title: 'signed kernel frame hop',
-    note: 'Authenticated kernel-frame hop after positions fan-out. No secrets in envelope.',
+    note: 'Authenticated kernel-frame hop. No secrets in envelope. Session switch stays four-case.',
   },
   {
     stage: 359,
     title: 'public-band fidelity sample',
     note: 'Sample fidelity on the public band after signed frames land. Extras stay off session.',
+  },
+  {
+    stage: 360,
+    title: 'session phi-gap report',
+    note: 'Document that the session paste does not advance phi. Living weave stays 0.007 * toroidalWeave.',
   },
 ];
 
@@ -37,6 +40,8 @@ export function chatKernelFourGovernors() {
     living: CHAT_KERNEL_LIVING_HASH,
     gpu: GPU_AUTO_THRESHOLD,
     cap: NODE_CAP,
+    sessionLerp: SESSION_LERP,
+    scratchLerp: true,
   };
 }
 
@@ -55,8 +60,9 @@ export function chatKernelMemoryEngram(scan) {
     frozen,
     secrets: false,
     tokenInEnvelope: false,
+    scratchLerp: true,
     ready: !frozen,
-    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 357,
+    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 358,
   };
 }
 
@@ -73,7 +79,7 @@ export function chatKernelExtrasParity() {
       vector3HotPath: false,
       gpuTfParity: true,
     })),
-    note: 'Stage 356: TF/shader extras share CPU formulas. No Vector3 in the hot path. Still off session switch.',
+    note: 'Stage 357: session lerp reuses a scratch vector. Extras still off the session switch.',
   };
 }
 
@@ -138,6 +144,7 @@ export function compileChatKernelNextStages() {
     heartbeat: chatKernelHeartbeatMutation(),
     ledger: chatKernelLedgerPulseScan(),
     engram: chatKernelMemoryEngram(),
+    scratchLerp: typeof reuseSessionLerpTarget === 'function',
     next: CHAT_KERNEL_NEXT_STAGES.map((row) => ({ ...row })),
   };
 }
@@ -158,9 +165,10 @@ export function chatKernelHeartbeatMutation(scan) {
     geometries: [...CHAT_KERNEL_CHAT_GEOMETRIES],
     extrasOffSession: true,
     gpuTfParity: true,
+    scratchLerp: true,
     frozen: !!src.frozen,
     energy: Number.isFinite(src.energy) ? src.energy : null,
-    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 357,
+    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 358,
   };
 }
 
@@ -185,7 +193,7 @@ export function chatKernelLedgerPulseScan(scan) {
     authenticated,
     ready: authenticated && !frozen && (expectedSheetCount === null || sheetMatch),
     tokenInEnvelope: false,
-    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 357,
+    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 358,
   };
 }
 
