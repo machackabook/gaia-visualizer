@@ -1,6 +1,6 @@
-/** Stage 351 compiled next-stage queue. Session switch stays four-case (beec41f1). */
+/** Stage 352 compiled next-stage queue. Session switch stays four-case (beec41f1). */
 
-export const STAGE = 351;
+export const STAGE = 352;
 export const CHAT_KERNEL_SESSION_HASH = 'beec41f1';
 export const CHAT_KERNEL_LIVING_HASH = '7cd81012';
 export const CHAT_KERNEL_CHAT_GEOMETRIES = ['infinity', 'hamiltonian', 'triangular', 'torus'];
@@ -9,12 +9,14 @@ export const CHAT_KERNEL_PANEL_COUNT = 19;
 export const CHAT_KERNEL_HUD_BUS = 'quine-weave';
 export const CHAT_KERNEL_PUBLIC_BAND = 'hamiltoniansingularity.ai';
 export const CHAT_KERNEL_PUBLIC_BAND_READY = true;
+export const GPU_AUTO_THRESHOLD = 1024;
+export const NODE_CAP = 16384;
 
 export const CHAT_KERNEL_NEXT_STAGES = [
   {
-    stage: 352,
-    title: 'HeartbeatScan 4-gov + ledger_pulse',
-    note: 'HeartbeatScan on HTTP mutation + WS + authenticated ledger_pulse. Token stays in secrets only.',
+    stage: 353,
+    title: 'GPU/TF extras parity',
+    note: 'TF/shader extras share CPU formulas. No Vector3 in the hot path. Still off session switch.',
   },
   {
     stage: 14,
@@ -22,6 +24,15 @@ export const CHAT_KERNEL_NEXT_STAGES = [
     note: 'Memory engrams into Drive folder CRYPTIC-HEARTBEAT-NEXUS-ROOT (no secrets).',
   },
 ];
+
+export function chatKernelFourGovernors() {
+  return {
+    session: CHAT_KERNEL_SESSION_HASH,
+    living: CHAT_KERNEL_LIVING_HASH,
+    gpu: GPU_AUTO_THRESHOLD,
+    cap: NODE_CAP,
+  };
+}
 
 export function chatKernelExtrasParity() {
   return {
@@ -93,28 +104,59 @@ export function compileChatKernelNextStages() {
     session: CHAT_KERNEL_SESSION_HASH,
     living: CHAT_KERNEL_LIVING_HASH,
     geometries: [...CHAT_KERNEL_CHAT_GEOMETRIES],
+    governors: chatKernelFourGovernors(),
     extras: chatKernelExtrasParity(),
     sliders: chatKernelWeaveSliders(),
     hud: chatKernelHudCatalogBind(),
     heartbeat: chatKernelHeartbeatMutation(),
+    ledger: chatKernelLedgerPulseScan(),
     next: CHAT_KERNEL_NEXT_STAGES.map((row) => ({ ...row })),
   };
 }
 
 export function chatKernelHeartbeatMutation(scan) {
   const src = scan || {};
+  const gov = chatKernelFourGovernors();
   return {
     event: 'heartbeat_mutation',
     stage: STAGE,
-    session: CHAT_KERNEL_SESSION_HASH,
-    living: CHAT_KERNEL_LIVING_HASH,
+    session: gov.session,
+    living: gov.living,
+    gpu: gov.gpu,
+    cap: gov.cap,
+    governors: gov,
     http: true,
     ws: true,
     geometries: [...CHAT_KERNEL_CHAT_GEOMETRIES],
     extrasOffSession: true,
     frozen: !!src.frozen,
     energy: Number.isFinite(src.energy) ? src.energy : null,
-    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 352,
+    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 353,
+  };
+}
+
+export function chatKernelLedgerPulseScan(scan) {
+  const src = scan || {};
+  const energy = Number.isFinite(src.energy) ? src.energy : null;
+  const frozen = src.frozen != null ? !!src.frozen : (energy != null && energy < 0.12);
+  const sheetCount = Number.isFinite(src.sheetCount) ? src.sheetCount : null;
+  const expectedSheetCount = Number.isFinite(src.expectedSheetCount) ? src.expectedSheetCount : null;
+  const sheetMatch = sheetCount !== null && expectedSheetCount !== null && sheetCount === expectedSheetCount;
+  const authenticated = !!src.authenticated;
+  return {
+    event: 'ledger_pulse',
+    stage: STAGE,
+    session: CHAT_KERNEL_SESSION_HASH,
+    living: CHAT_KERNEL_LIVING_HASH,
+    energy,
+    frozen,
+    geometry: src.geometry || 'torus',
+    sheetCount,
+    sheetMatch,
+    authenticated,
+    ready: authenticated && !frozen && (expectedSheetCount === null || sheetMatch),
+    tokenInEnvelope: false,
+    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 353,
   };
 }
 
