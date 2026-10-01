@@ -1,11 +1,12 @@
-/** Stage 359 compiled next-stage queue. Session switch stays four-case (beec41f1). Connecting chat 2026-10-01 11:32 CDT. */
+/** Stage 360 compiled next-stage queue. Session switch stays four-case (beec41f1). Connecting chat 2026-10-01 12:12 CDT. */
 import { reuseSessionLerpTarget, SESSION_LERP } from './sessionScratchLerp.js';
 import { publicKernelEnvelope, assertPublicEnvelope } from './publicKernelEnvelope.js';
 import { samplePublicBandFidelity } from './publicBandFidelity.js';
+import { reportSessionPhiGap } from './sessionPhiGap.js';
 
-export { reuseSessionLerpTarget, SESSION_LERP, publicKernelEnvelope, assertPublicEnvelope, samplePublicBandFidelity };
+export { reuseSessionLerpTarget, SESSION_LERP, publicKernelEnvelope, assertPublicEnvelope, samplePublicBandFidelity, reportSessionPhiGap };
 
-export const STAGE = 359;
+export const STAGE = 360;
 export const CHAT_KERNEL_SESSION_HASH = 'beec41f1';
 export const CHAT_KERNEL_LIVING_HASH = '7cd81012';
 export const CHAT_KERNEL_CHAT_GEOMETRIES = ['infinity', 'hamiltonian', 'triangular', 'torus'];
@@ -17,13 +18,9 @@ export const CHAT_KERNEL_PUBLIC_BAND_READY = true;
 export const CHAT_KERNEL_ENGRAM_FOLDER = 'CRYPTIC-HEARTBEAT-NEXUS-ROOT';
 export const GPU_AUTO_THRESHOLD = 1024;
 export const NODE_CAP = 16384;
+export const INSTANCE_OFFSET_MIN = 4096;
 
 export const CHAT_KERNEL_NEXT_STAGES = [
-  {
-    stage: 360,
-    title: 'session phi-gap report',
-    note: 'Document that the session paste does not advance phi. Living weave stays 0.007 * toroidalWeave.',
-  },
   {
     stage: 361,
     title: 'instance-band health sample',
@@ -34,6 +31,11 @@ export const CHAT_KERNEL_NEXT_STAGES = [
     title: 'weave-slider public-band bind check',
     note: 'Confirm HUD catalog still binds four session lanes only.',
   },
+  {
+    stage: 363,
+    title: 'residual session Vector3 allocation note',
+    note: 'Document that the session paste still allocates THREE.Vector3. Do not invent a session case.',
+  },
 ];
 
 export function chatKernelFourGovernors() {
@@ -42,10 +44,12 @@ export function chatKernelFourGovernors() {
     living: CHAT_KERNEL_LIVING_HASH,
     gpu: GPU_AUTO_THRESHOLD,
     cap: NODE_CAP,
+    instanceOffsetMin: INSTANCE_OFFSET_MIN,
     sessionLerp: SESSION_LERP,
     scratchLerp: true,
     publicEnvelope: true,
     fidelitySample: true,
+    phiGapReport: true,
   };
 }
 
@@ -67,8 +71,9 @@ export function chatKernelMemoryEngram(scan) {
     scratchLerp: true,
     publicEnvelope: true,
     fidelitySample: true,
+    phiGapReport: true,
     ready: !frozen,
-    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 360,
+    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 361,
   };
 }
 
@@ -85,7 +90,7 @@ export function chatKernelExtrasParity() {
       vector3HotPath: false,
       gpuTfParity: true,
     })),
-    note: 'Stage 359: fidelity sample has no token. Extras still off the session switch.',
+    note: 'Stage 360: phi-gap report has no new case. Extras still off the session switch.',
   };
 }
 
@@ -137,9 +142,10 @@ export function chatKernelHudCatalogBind(toroidalWeave = 1, gravityPull = 1) {
   };
 }
 
-export function compileChatKernelNextStages() {
+export function compileChatKernelNextStages(sessionSource) {
   const envelope = publicKernelEnvelope();
   const fidelity = samplePublicBandFidelity();
+  const phiGap = reportSessionPhiGap(sessionSource);
   return {
     current: STAGE,
     session: CHAT_KERNEL_SESSION_HASH,
@@ -157,6 +163,8 @@ export function compileChatKernelNextStages() {
     envelopeOk: assertPublicEnvelope(envelope).ok,
     fidelity,
     fidelityOk: fidelity.ok,
+    phiGap,
+    phiGapOk: phiGap.ok,
     next: CHAT_KERNEL_NEXT_STAGES.map((row) => ({ ...row })),
   };
 }
@@ -180,9 +188,10 @@ export function chatKernelHeartbeatMutation(scan) {
     scratchLerp: true,
     publicEnvelope: true,
     fidelitySample: true,
+    phiGapReport: true,
     frozen: !!src.frozen,
     energy: Number.isFinite(src.energy) ? src.energy : null,
-    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 360,
+    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 361,
   };
 }
 
@@ -208,7 +217,8 @@ export function chatKernelLedgerPulseScan(scan) {
     ready: authenticated && !frozen && (expectedSheetCount === null || sheetMatch),
     tokenInEnvelope: false,
     fidelitySample: true,
-    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 360,
+    phiGapReport: true,
+    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 361,
   };
 }
 
