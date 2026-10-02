@@ -1,4 +1,4 @@
-/** Stage 369 compiled next-stage queue. Session switch stays four-case (beec41f1). Connecting chat 2026-10-01 21:07 CDT. */
+/** Stage 370 compiled next-stage queue. Session switch stays four-case (beec41f1). Connecting chat 2026-10-01 22:06 CDT. */
 import { reuseSessionLerpTarget, SESSION_LERP } from './sessionScratchLerp.js';
 import { publicKernelEnvelope, assertPublicEnvelope } from './publicKernelEnvelope.js';
 import { samplePublicBandFidelity } from './publicBandFidelity.js';
@@ -12,10 +12,11 @@ import { noteSessionInfinityDenom } from './sessionInfinityDenom.js';
 import { noteSessionTriangularLattice } from './sessionTriangularLattice.js';
 import { noteSessionHamiltonianIgnore } from './sessionHamiltonianIgnore.js';
 import { noteSessionTorusPhiReuse } from './sessionTorusPhiReuse.js';
+import { noteSessionTriangularFloor } from './sessionTriangularFloor.js';
 
-export { reuseSessionLerpTarget, SESSION_LERP, publicKernelEnvelope, assertPublicEnvelope, samplePublicBandFidelity, reportSessionPhiGap, sampleInstanceBandHealth, sampleWeaveSliderBind, noteSessionVector3Alloc, noteSessionMajorClamp, noteSessionPhiStill, noteSessionInfinityDenom, noteSessionTriangularLattice, noteSessionHamiltonianIgnore, noteSessionTorusPhiReuse };
+export { reuseSessionLerpTarget, SESSION_LERP, publicKernelEnvelope, assertPublicEnvelope, samplePublicBandFidelity, reportSessionPhiGap, sampleInstanceBandHealth, sampleWeaveSliderBind, noteSessionVector3Alloc, noteSessionMajorClamp, noteSessionPhiStill, noteSessionInfinityDenom, noteSessionTriangularLattice, noteSessionHamiltonianIgnore, noteSessionTorusPhiReuse, noteSessionTriangularFloor };
 
-export const STAGE = 369;
+export const STAGE = 370;
 export const CHAT_KERNEL_SESSION_HASH = 'beec41f1';
 export const CHAT_KERNEL_LIVING_HASH = '7cd81012';
 export const CHAT_KERNEL_CHAT_GEOMETRIES = ['infinity', 'hamiltonian', 'triangular', 'torus'];
@@ -31,11 +32,6 @@ export const INSTANCE_OFFSET_MIN = 4096;
 
 export const CHAT_KERNEL_NEXT_STAGES = [
   {
-    stage: 370,
-    title: 'session triangular floor snaps theta to 2pi/3',
-    note: 'Document tAngle floor snap. Living path already matches. Do not rewrite the paste.',
-  },
-  {
     stage: 371,
     title: 'session infinity y shares the torus tube formula',
     note: 'Document minor * sin(phi) * sin(t * 0.5 + idx) on infinity y. Do not rewrite the paste.',
@@ -44,6 +40,11 @@ export const CHAT_KERNEL_NEXT_STAGES = [
     stage: 372,
     title: 'session default falls through to torus',
     note: 'Document case torus / default share one body. Do not rewrite the paste.',
+  },
+  {
+    stage: 373,
+    title: 'session triangular minor ripple keeps raw theta * 5',
+    note: 'Document cos/sin(theta * 5) is not floored. Do not rewrite the paste.',
   },
 ];
 
@@ -68,6 +69,7 @@ export function chatKernelFourGovernors() {
     triangularLatticeNote: true,
     hamiltonianIgnoreNote: true,
     torusPhiReuseNote: true,
+    triangularFloorNote: true,
   };
 }
 
@@ -81,7 +83,7 @@ export function chatKernelMemoryEngram(scan) {
     folder: CHAT_KERNEL_ENGRAM_FOLDER,
     session: CHAT_KERNEL_SESSION_HASH,
     living: CHAT_KERNEL_LIVING_HASH,
-    geometry: src.geometry || 'torus',
+    geometry: src.geometry || 'triangular',
     energy,
     frozen,
     secrets: false,
@@ -99,8 +101,9 @@ export function chatKernelMemoryEngram(scan) {
     triangularLatticeNote: true,
     hamiltonianIgnoreNote: true,
     torusPhiReuseNote: true,
+    triangularFloorNote: true,
     ready: !frozen,
-    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 370,
+    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 371,
   };
 }
 
@@ -117,7 +120,7 @@ export function chatKernelExtrasParity() {
       vector3HotPath: false,
       gpuTfParity: true,
     })),
-    note: 'Stage 369: torus-phi-reuse note has no new case. Extras still off the session switch.',
+    note: 'Stage 370: triangular-floor note has no new case. Extras still off the session switch.',
   };
 }
 
@@ -183,6 +186,7 @@ export function compileChatKernelNextStages(sessionSource) {
   const triangularLattice = noteSessionTriangularLattice(sessionSource);
   const hamiltonianIgnore = noteSessionHamiltonianIgnore(sessionSource);
   const torusPhiReuse = noteSessionTorusPhiReuse(sessionSource);
+  const triangularFloor = noteSessionTriangularFloor(sessionSource);
   return {
     current: STAGE,
     session: CHAT_KERNEL_SESSION_HASH,
@@ -208,6 +212,8 @@ export function compileChatKernelNextStages(sessionSource) {
     hamiltonianIgnoreOk: hamiltonianIgnore.ok,
     torusPhiReuse,
     torusPhiReuseOk: torusPhiReuse.ok,
+    triangularFloor,
+    triangularFloorOk: triangularFloor.ok,
     heartbeat: chatKernelHeartbeatMutation(),
     ledger: chatKernelLedgerPulseScan(),
     engram: chatKernelMemoryEngram(),
@@ -237,6 +243,7 @@ export function chatKernelHeartbeatMutation(scan) {
   const triangularLattice = noteSessionTriangularLattice();
   const hamiltonianIgnore = noteSessionHamiltonianIgnore();
   const torusPhiReuse = noteSessionTorusPhiReuse();
+  const triangularFloor = noteSessionTriangularFloor();
   return {
     event: 'heartbeat_mutation',
     stage: STAGE,
@@ -263,9 +270,10 @@ export function chatKernelHeartbeatMutation(scan) {
     triangularLatticeOk: triangularLattice.ok,
     hamiltonianIgnoreOk: hamiltonianIgnore.ok,
     torusPhiReuseOk: torusPhiReuse.ok,
+    triangularFloorOk: triangularFloor.ok,
     frozen: !!src.frozen,
     energy: Number.isFinite(src.energy) ? src.energy : null,
-    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 370,
+    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 371,
   };
 }
 
@@ -284,7 +292,7 @@ export function chatKernelLedgerPulseScan(scan) {
     living: CHAT_KERNEL_LIVING_HASH,
     energy,
     frozen,
-    geometry: src.geometry || 'torus',
+    geometry: src.geometry || 'triangular',
     sheetCount,
     sheetMatch,
     authenticated,
@@ -301,7 +309,8 @@ export function chatKernelLedgerPulseScan(scan) {
     triangularLatticeNote: true,
     hamiltonianIgnoreNote: true,
     torusPhiReuseNote: true,
-    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 370,
+    triangularFloorNote: true,
+    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 371,
   };
 }
 
