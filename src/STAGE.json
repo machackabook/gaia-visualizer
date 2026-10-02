@@ -1,10 +1,10 @@
 {
-  "stage": 374,
+  "stage": 379,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
-  "paste": "2026-10-02 12:06 CDT",
-  "next": [375, 376, 377],
+  "paste": "2026-10-02 17:07 CDT",
+  "next": [380, 381, 382],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stage 374 documents infinity scale = major * 1.5 and denom = 1 + sin(theta)^2. Living path already matches. Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stage 379 documents infinity x = (scale * cos(theta)) / denom with scale = major * 1.5. Living path already matches. Paste not rewritten."
 }
