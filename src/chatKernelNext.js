@@ -1,4 +1,4 @@
-/** Stage 379 compiled next-stage queue. Session switch stays four-case (beec41f1). Connecting chat 2026-10-02 17:07 CDT. */
+/** Stage 380 compiled next-stage queue. Session switch stays four-case (beec41f1). Connecting chat 2026-10-02 18:08 CDT. */
 import { reuseSessionLerpTarget, SESSION_LERP } from './sessionScratchLerp.js';
 import { publicKernelEnvelope, assertPublicEnvelope } from './publicKernelEnvelope.js';
 import { samplePublicBandFidelity } from './publicBandFidelity.js';
@@ -22,10 +22,11 @@ import { noteSessionTriangularY } from './sessionTriangularY.js';
 import { noteSessionLemniscateZ } from './sessionLemniscateZ.js';
 import { noteSessionTorusY } from './sessionTorusY.js';
 import { noteSessionInfinityX } from './sessionInfinityX.js';
+import { noteSessionHamiltonianX } from './sessionHamiltonianX.js';
 
-export { reuseSessionLerpTarget, SESSION_LERP, publicKernelEnvelope, assertPublicEnvelope, samplePublicBandFidelity, reportSessionPhiGap, sampleInstanceBandHealth, sampleWeaveSliderBind, noteSessionVector3Alloc, noteSessionMajorClamp, noteSessionPhiStill, noteSessionInfinityDenom, noteSessionTriangularLattice, noteSessionHamiltonianIgnore, noteSessionTorusPhiReuse, noteSessionTriangularFloor, noteSessionInfinityTube, noteSessionTorusFallthrough, noteSessionTriangularRipple, noteSessionInfinityScale, noteSessionHamiltonianY, noteSessionTriangularY, noteSessionLemniscateZ, noteSessionTorusY, noteSessionInfinityX };
+export { reuseSessionLerpTarget, SESSION_LERP, publicKernelEnvelope, assertPublicEnvelope, samplePublicBandFidelity, reportSessionPhiGap, sampleInstanceBandHealth, sampleWeaveSliderBind, noteSessionVector3Alloc, noteSessionMajorClamp, noteSessionPhiStill, noteSessionInfinityDenom, noteSessionTriangularLattice, noteSessionHamiltonianIgnore, noteSessionTorusPhiReuse, noteSessionTriangularFloor, noteSessionInfinityTube, noteSessionTorusFallthrough, noteSessionTriangularRipple, noteSessionInfinityScale, noteSessionHamiltonianY, noteSessionTriangularY, noteSessionLemniscateZ, noteSessionTorusY, noteSessionInfinityX, noteSessionHamiltonianX };
 
-export const STAGE = 379;
+export const STAGE = 380;
 export const CHAT_KERNEL_SESSION_HASH = 'beec41f1';
 export const CHAT_KERNEL_LIVING_HASH = '7cd81012';
 export const CHAT_KERNEL_CHAT_GEOMETRIES = ['infinity', 'hamiltonian', 'triangular', 'torus'];
@@ -41,11 +42,6 @@ export const INSTANCE_OFFSET_MIN = 4096;
 
 export const CHAT_KERNEL_NEXT_STAGES = [
   {
-    stage: 380,
-    title: 'session hamiltonian x is hScale * cos(theta * 3) * cos(theta)',
-    note: 'Document the x term only. Do not rewrite the paste.',
-  },
-  {
     stage: 381,
     title: 'session hamiltonian z is hScale * cos(theta * 3) * sin(theta)',
     note: 'Document the z term only. Do not rewrite the paste.',
@@ -54,6 +50,11 @@ export const CHAT_KERNEL_NEXT_STAGES = [
     stage: 382,
     title: 'session triangular x is major * cos(tAngle) + minor * cos(theta * 5)',
     note: 'Document the x term only. Do not rewrite the paste.',
+  },
+  {
+    stage: 383,
+    title: 'session triangular z is major * sin(tAngle) + minor * sin(theta * 5)',
+    note: 'Document the z term only. Do not rewrite the paste.',
   },
 ];
 
@@ -81,6 +82,7 @@ const STAGE_FLAGS = {
   lemniscateZNote: true,
   torusYNote: true,
   infinityXNote: true,
+  hamiltonianXNote: true,
 };
 
 export function chatKernelFourGovernors() {
@@ -105,14 +107,14 @@ export function chatKernelMemoryEngram(scan) {
     folder: CHAT_KERNEL_ENGRAM_FOLDER,
     session: CHAT_KERNEL_SESSION_HASH,
     living: CHAT_KERNEL_LIVING_HASH,
-    geometry: src.geometry || 'torus',
+    geometry: src.geometry || 'hamiltonian',
     energy,
     frozen,
     secrets: false,
     tokenInEnvelope: false,
     ...STAGE_FLAGS,
     ready: !frozen,
-    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 380,
+    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 381,
   };
 }
 
@@ -129,7 +131,7 @@ export function chatKernelExtrasParity() {
       vector3HotPath: false,
       gpuTfParity: true,
     })),
-    note: 'Stage 379: infinity-x note has no new case. Extras still off the session switch.',
+    note: 'Stage 380: hamiltonian-x note has no new case. Extras still off the session switch.',
   };
 }
 
@@ -205,6 +207,7 @@ export function compileChatKernelNextStages(sessionSource) {
   const lemniscateZ = noteSessionLemniscateZ(sessionSource);
   const torusY = noteSessionTorusY(sessionSource);
   const infinityX = noteSessionInfinityX(sessionSource);
+  const hamiltonianX = noteSessionHamiltonianX(sessionSource);
   return {
     current: STAGE,
     session: CHAT_KERNEL_SESSION_HASH,
@@ -250,6 +253,8 @@ export function compileChatKernelNextStages(sessionSource) {
     torusYOk: torusY.ok,
     infinityX,
     infinityXOk: infinityX.ok,
+    hamiltonianX,
+    hamiltonianXOk: hamiltonianX.ok,
     heartbeat: chatKernelHeartbeatMutation(),
     ledger: chatKernelLedgerPulseScan(),
     engram: chatKernelMemoryEngram(),
@@ -289,6 +294,7 @@ export function chatKernelHeartbeatMutation(scan) {
   const lemniscateZ = noteSessionLemniscateZ();
   const torusY = noteSessionTorusY();
   const infinityX = noteSessionInfinityX();
+  const hamiltonianX = noteSessionHamiltonianX();
   return {
     event: 'heartbeat_mutation',
     stage: STAGE,
@@ -322,9 +328,10 @@ export function chatKernelHeartbeatMutation(scan) {
     lemniscateZOk: lemniscateZ.ok,
     torusYOk: torusY.ok,
     infinityXOk: infinityX.ok,
+    hamiltonianXOk: hamiltonianX.ok,
     frozen: !!src.frozen,
     energy: Number.isFinite(src.energy) ? src.energy : null,
-    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 380,
+    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 381,
   };
 }
 
@@ -343,14 +350,14 @@ export function chatKernelLedgerPulseScan(scan) {
     living: CHAT_KERNEL_LIVING_HASH,
     energy,
     frozen,
-    geometry: src.geometry || 'torus',
+    geometry: src.geometry || 'hamiltonian',
     sheetCount,
     sheetMatch,
     authenticated,
     ready: authenticated && !frozen && (expectedSheetCount === null || sheetMatch),
     tokenInEnvelope: false,
     ...STAGE_FLAGS,
-    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 380,
+    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 381,
   };
 }
 
