@@ -1,4 +1,4 @@
-/** Stage 376 compiled next-stage queue. Session switch stays four-case (beec41f1). Connecting chat 2026-10-02 14:06 CDT. */
+/** Stage 377 compiled next-stage queue. Session switch stays four-case (beec41f1). Connecting chat 2026-10-02 15:10 CDT. */
 import { reuseSessionLerpTarget, SESSION_LERP } from './sessionScratchLerp.js';
 import { publicKernelEnvelope, assertPublicEnvelope } from './publicKernelEnvelope.js';
 import { samplePublicBandFidelity } from './publicBandFidelity.js';
@@ -19,10 +19,11 @@ import { noteSessionTriangularRipple } from './sessionTriangularRipple.js';
 import { noteSessionInfinityScale } from './sessionInfinityScale.js';
 import { noteSessionHamiltonianY } from './sessionHamiltonianY.js';
 import { noteSessionTriangularY } from './sessionTriangularY.js';
+import { noteSessionLemniscateZ } from './sessionLemniscateZ.js';
 
-export { reuseSessionLerpTarget, SESSION_LERP, publicKernelEnvelope, assertPublicEnvelope, samplePublicBandFidelity, reportSessionPhiGap, sampleInstanceBandHealth, sampleWeaveSliderBind, noteSessionVector3Alloc, noteSessionMajorClamp, noteSessionPhiStill, noteSessionInfinityDenom, noteSessionTriangularLattice, noteSessionHamiltonianIgnore, noteSessionTorusPhiReuse, noteSessionTriangularFloor, noteSessionInfinityTube, noteSessionTorusFallthrough, noteSessionTriangularRipple, noteSessionInfinityScale, noteSessionHamiltonianY, noteSessionTriangularY };
+export { reuseSessionLerpTarget, SESSION_LERP, publicKernelEnvelope, assertPublicEnvelope, samplePublicBandFidelity, reportSessionPhiGap, sampleInstanceBandHealth, sampleWeaveSliderBind, noteSessionVector3Alloc, noteSessionMajorClamp, noteSessionPhiStill, noteSessionInfinityDenom, noteSessionTriangularLattice, noteSessionHamiltonianIgnore, noteSessionTorusPhiReuse, noteSessionTriangularFloor, noteSessionInfinityTube, noteSessionTorusFallthrough, noteSessionTriangularRipple, noteSessionInfinityScale, noteSessionHamiltonianY, noteSessionTriangularY, noteSessionLemniscateZ };
 
-export const STAGE = 376;
+export const STAGE = 377;
 export const CHAT_KERNEL_SESSION_HASH = 'beec41f1';
 export const CHAT_KERNEL_LIVING_HASH = '7cd81012';
 export const CHAT_KERNEL_CHAT_GEOMETRIES = ['infinity', 'hamiltonian', 'triangular', 'torus'];
@@ -38,11 +39,6 @@ export const INSTANCE_OFFSET_MIN = 4096;
 
 export const CHAT_KERNEL_NEXT_STAGES = [
   {
-    stage: 377,
-    title: 'session lemniscate z is (scale * sin(theta) * cos(theta)) / denom',
-    note: 'Document the z term only. Do not rewrite the paste.',
-  },
-  {
     stage: 378,
     title: 'session torus y is minor * sin(phi) * sin(t * 0.5 + idx)',
     note: 'Document the shared tube lift only. Do not rewrite the paste.',
@@ -52,7 +48,36 @@ export const CHAT_KERNEL_NEXT_STAGES = [
     title: 'session infinity x is (scale * cos(theta)) / denom',
     note: 'Document the x term only. Do not rewrite the paste.',
   },
+  {
+    stage: 380,
+    title: 'session hamiltonian x is hScale * cos(theta * 3) * cos(theta)',
+    note: 'Document the x term only. Do not rewrite the paste.',
+  },
 ];
+
+const STAGE_FLAGS = {
+  scratchLerp: true,
+  publicEnvelope: true,
+  fidelitySample: true,
+  phiGapReport: true,
+  instanceBand: true,
+  weaveBind: true,
+  vector3AllocNote: true,
+  majorClampNote: true,
+  phiStillNote: true,
+  infinityDenomNote: true,
+  triangularLatticeNote: true,
+  hamiltonianIgnoreNote: true,
+  torusPhiReuseNote: true,
+  triangularFloorNote: true,
+  infinityTubeNote: true,
+  torusFallthroughNote: true,
+  triangularRippleNote: true,
+  infinityScaleNote: true,
+  hamiltonianYNote: true,
+  triangularYNote: true,
+  lemniscateZNote: true,
+};
 
 export function chatKernelFourGovernors() {
   return {
@@ -62,26 +87,7 @@ export function chatKernelFourGovernors() {
     cap: NODE_CAP,
     instanceOffsetMin: INSTANCE_OFFSET_MIN,
     sessionLerp: SESSION_LERP,
-    scratchLerp: true,
-    publicEnvelope: true,
-    fidelitySample: true,
-    phiGapReport: true,
-    instanceBand: true,
-    weaveBind: true,
-    vector3AllocNote: true,
-    majorClampNote: true,
-    phiStillNote: true,
-    infinityDenomNote: true,
-    triangularLatticeNote: true,
-    hamiltonianIgnoreNote: true,
-    torusPhiReuseNote: true,
-    triangularFloorNote: true,
-    infinityTubeNote: true,
-    torusFallthroughNote: true,
-    triangularRippleNote: true,
-    infinityScaleNote: true,
-    hamiltonianYNote: true,
-    triangularYNote: true,
+    ...STAGE_FLAGS,
   };
 }
 
@@ -100,28 +106,9 @@ export function chatKernelMemoryEngram(scan) {
     frozen,
     secrets: false,
     tokenInEnvelope: false,
-    scratchLerp: true,
-    publicEnvelope: true,
-    fidelitySample: true,
-    phiGapReport: true,
-    instanceBand: true,
-    weaveBind: true,
-    vector3AllocNote: true,
-    majorClampNote: true,
-    phiStillNote: true,
-    infinityDenomNote: true,
-    triangularLatticeNote: true,
-    hamiltonianIgnoreNote: true,
-    torusPhiReuseNote: true,
-    triangularFloorNote: true,
-    infinityTubeNote: true,
-    torusFallthroughNote: true,
-    triangularRippleNote: true,
-    infinityScaleNote: true,
-    hamiltonianYNote: true,
-    triangularYNote: true,
+    ...STAGE_FLAGS,
     ready: !frozen,
-    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 377,
+    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 378,
   };
 }
 
@@ -138,7 +125,7 @@ export function chatKernelExtrasParity() {
       vector3HotPath: false,
       gpuTfParity: true,
     })),
-    note: 'Stage 376: triangular-y note has no new case. Extras still off the session switch.',
+    note: 'Stage 377: lemniscate-z note has no new case. Extras still off the session switch.',
   };
 }
 
@@ -211,6 +198,7 @@ export function compileChatKernelNextStages(sessionSource) {
   const infinityScale = noteSessionInfinityScale(sessionSource);
   const hamiltonianY = noteSessionHamiltonianY(sessionSource);
   const triangularY = noteSessionTriangularY(sessionSource);
+  const lemniscateZ = noteSessionLemniscateZ(sessionSource);
   return {
     current: STAGE,
     session: CHAT_KERNEL_SESSION_HASH,
@@ -250,6 +238,8 @@ export function compileChatKernelNextStages(sessionSource) {
     hamiltonianYOk: hamiltonianY.ok,
     triangularY,
     triangularYOk: triangularY.ok,
+    lemniscateZ,
+    lemniscateZOk: lemniscateZ.ok,
     heartbeat: chatKernelHeartbeatMutation(),
     ledger: chatKernelLedgerPulseScan(),
     engram: chatKernelMemoryEngram(),
@@ -286,6 +276,7 @@ export function chatKernelHeartbeatMutation(scan) {
   const infinityScale = noteSessionInfinityScale();
   const hamiltonianY = noteSessionHamiltonianY();
   const triangularY = noteSessionTriangularY();
+  const lemniscateZ = noteSessionLemniscateZ();
   return {
     event: 'heartbeat_mutation',
     stage: STAGE,
@@ -299,10 +290,7 @@ export function chatKernelHeartbeatMutation(scan) {
     geometries: CHAT_KERNEL_CHAT_GEOMETRIES.slice(),
     extrasOffSession: true,
     gpuTfParity: true,
-    scratchLerp: true,
-    publicEnvelope: true,
-    fidelitySample: true,
-    phiGapReport: true,
+    ...STAGE_FLAGS,
     instanceBandOk: band.ok,
     weaveBindOk: weaveBind.ok,
     vector3AllocOk: vector3.ok,
@@ -319,9 +307,10 @@ export function chatKernelHeartbeatMutation(scan) {
     infinityScaleOk: infinityScale.ok,
     hamiltonianYOk: hamiltonianY.ok,
     triangularYOk: triangularY.ok,
+    lemniscateZOk: lemniscateZ.ok,
     frozen: !!src.frozen,
     energy: Number.isFinite(src.energy) ? src.energy : null,
-    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 377,
+    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 378,
   };
 }
 
@@ -346,25 +335,8 @@ export function chatKernelLedgerPulseScan(scan) {
     authenticated,
     ready: authenticated && !frozen && (expectedSheetCount === null || sheetMatch),
     tokenInEnvelope: false,
-    fidelitySample: true,
-    phiGapReport: true,
-    instanceBand: true,
-    weaveBind: true,
-    vector3AllocNote: true,
-    majorClampNote: true,
-    phiStillNote: true,
-    infinityDenomNote: true,
-    triangularLatticeNote: true,
-    hamiltonianIgnoreNote: true,
-    torusPhiReuseNote: true,
-    triangularFloorNote: true,
-    infinityTubeNote: true,
-    torusFallthroughNote: true,
-    triangularRippleNote: true,
-    infinityScaleNote: true,
-    hamiltonianYNote: true,
-    triangularYNote: true,
-    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 377,
+    ...STAGE_FLAGS,
+    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 378,
   };
 }
 
