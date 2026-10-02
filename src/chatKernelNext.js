@@ -1,4 +1,4 @@
-/** Stage 368 compiled next-stage queue. Session switch stays four-case (beec41f1). Connecting chat 2026-10-01 20:08 CDT. */
+/** Stage 369 compiled next-stage queue. Session switch stays four-case (beec41f1). Connecting chat 2026-10-01 21:07 CDT. */
 import { reuseSessionLerpTarget, SESSION_LERP } from './sessionScratchLerp.js';
 import { publicKernelEnvelope, assertPublicEnvelope } from './publicKernelEnvelope.js';
 import { samplePublicBandFidelity } from './publicBandFidelity.js';
@@ -11,10 +11,11 @@ import { noteSessionPhiStill } from './sessionPhiStill.js';
 import { noteSessionInfinityDenom } from './sessionInfinityDenom.js';
 import { noteSessionTriangularLattice } from './sessionTriangularLattice.js';
 import { noteSessionHamiltonianIgnore } from './sessionHamiltonianIgnore.js';
+import { noteSessionTorusPhiReuse } from './sessionTorusPhiReuse.js';
 
-export { reuseSessionLerpTarget, SESSION_LERP, publicKernelEnvelope, assertPublicEnvelope, samplePublicBandFidelity, reportSessionPhiGap, sampleInstanceBandHealth, sampleWeaveSliderBind, noteSessionVector3Alloc, noteSessionMajorClamp, noteSessionPhiStill, noteSessionInfinityDenom, noteSessionTriangularLattice, noteSessionHamiltonianIgnore };
+export { reuseSessionLerpTarget, SESSION_LERP, publicKernelEnvelope, assertPublicEnvelope, samplePublicBandFidelity, reportSessionPhiGap, sampleInstanceBandHealth, sampleWeaveSliderBind, noteSessionVector3Alloc, noteSessionMajorClamp, noteSessionPhiStill, noteSessionInfinityDenom, noteSessionTriangularLattice, noteSessionHamiltonianIgnore, noteSessionTorusPhiReuse };
 
-export const STAGE = 368;
+export const STAGE = 369;
 export const CHAT_KERNEL_SESSION_HASH = 'beec41f1';
 export const CHAT_KERNEL_LIVING_HASH = '7cd81012';
 export const CHAT_KERNEL_CHAT_GEOMETRIES = ['infinity', 'hamiltonian', 'triangular', 'torus'];
@@ -30,11 +31,6 @@ export const INSTANCE_OFFSET_MIN = 4096;
 
 export const CHAT_KERNEL_NEXT_STAGES = [
   {
-    stage: 369,
-    title: 'session torus reuses the same phi',
-    note: 'Document cos(phi) and both sin(phi) share one unread phi. Do not rewrite the paste.',
-  },
-  {
     stage: 370,
     title: 'session triangular floor snaps theta to 2pi/3',
     note: 'Document tAngle floor snap. Living path already matches. Do not rewrite the paste.',
@@ -43,6 +39,11 @@ export const CHAT_KERNEL_NEXT_STAGES = [
     stage: 371,
     title: 'session infinity y shares the torus tube formula',
     note: 'Document minor * sin(phi) * sin(t * 0.5 + idx) on infinity y. Do not rewrite the paste.',
+  },
+  {
+    stage: 372,
+    title: 'session default falls through to torus',
+    note: 'Document case torus / default share one body. Do not rewrite the paste.',
   },
 ];
 
@@ -66,6 +67,7 @@ export function chatKernelFourGovernors() {
     infinityDenomNote: true,
     triangularLatticeNote: true,
     hamiltonianIgnoreNote: true,
+    torusPhiReuseNote: true,
   };
 }
 
@@ -96,8 +98,9 @@ export function chatKernelMemoryEngram(scan) {
     infinityDenomNote: true,
     triangularLatticeNote: true,
     hamiltonianIgnoreNote: true,
+    torusPhiReuseNote: true,
     ready: !frozen,
-    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 369,
+    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 370,
   };
 }
 
@@ -114,7 +117,7 @@ export function chatKernelExtrasParity() {
       vector3HotPath: false,
       gpuTfParity: true,
     })),
-    note: 'Stage 368: hamiltonian-ignore note has no new case. Extras still off the session switch.',
+    note: 'Stage 369: torus-phi-reuse note has no new case. Extras still off the session switch.',
   };
 }
 
@@ -179,6 +182,7 @@ export function compileChatKernelNextStages(sessionSource) {
   const infinityDenom = noteSessionInfinityDenom(sessionSource);
   const triangularLattice = noteSessionTriangularLattice(sessionSource);
   const hamiltonianIgnore = noteSessionHamiltonianIgnore(sessionSource);
+  const torusPhiReuse = noteSessionTorusPhiReuse(sessionSource);
   return {
     current: STAGE,
     session: CHAT_KERNEL_SESSION_HASH,
@@ -202,6 +206,8 @@ export function compileChatKernelNextStages(sessionSource) {
     triangularLatticeOk: triangularLattice.ok,
     hamiltonianIgnore,
     hamiltonianIgnoreOk: hamiltonianIgnore.ok,
+    torusPhiReuse,
+    torusPhiReuseOk: torusPhiReuse.ok,
     heartbeat: chatKernelHeartbeatMutation(),
     ledger: chatKernelLedgerPulseScan(),
     engram: chatKernelMemoryEngram(),
@@ -230,6 +236,7 @@ export function chatKernelHeartbeatMutation(scan) {
   const infinityDenom = noteSessionInfinityDenom();
   const triangularLattice = noteSessionTriangularLattice();
   const hamiltonianIgnore = noteSessionHamiltonianIgnore();
+  const torusPhiReuse = noteSessionTorusPhiReuse();
   return {
     event: 'heartbeat_mutation',
     stage: STAGE,
@@ -255,9 +262,10 @@ export function chatKernelHeartbeatMutation(scan) {
     infinityDenomOk: infinityDenom.ok,
     triangularLatticeOk: triangularLattice.ok,
     hamiltonianIgnoreOk: hamiltonianIgnore.ok,
+    torusPhiReuseOk: torusPhiReuse.ok,
     frozen: !!src.frozen,
     energy: Number.isFinite(src.energy) ? src.energy : null,
-    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 369,
+    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 370,
   };
 }
 
@@ -292,7 +300,8 @@ export function chatKernelLedgerPulseScan(scan) {
     infinityDenomNote: true,
     triangularLatticeNote: true,
     hamiltonianIgnoreNote: true,
-    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 369,
+    torusPhiReuseNote: true,
+    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 370,
   };
 }
 
