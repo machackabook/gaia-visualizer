@@ -10,12 +10,12 @@ Team Enhance hops one repo per run. Equalizer formats only. No history rewrite. 
 * Branch: main
 * Language: JavaScript (Vite 5 / three ^0.169)
 * Numeral: 137451921129154222
-* Stage: **347** — 2026-10-01T22:13Z (2026-10-01 17:13 CDT)
+* Stage: **364** — 2026-10-02T22:08Z (2026-10-02 17:08 CDT)
 * Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
 * Compounding tier: **T5 / 99%**
-* Prior surface: stage 346 @ 2026-10-01T19:11Z
-* Sibling pulse: Cryptic-Heartbeat hop 323 @ 2026-10-01T22:11Z pointed here
-* This hop: README clarity (waterfall pointer refreshed); env-check note retained; LEDGER-STAMP append; cascade.yml left intact; no extra hourly YAML; no secrets written
+* Prior surface: stage 347 @ 2026-10-01T22:13Z
+* Prior mesh: hamiltonian-incursion hop 363 @ 2026-10-02T21:08Z named this repo next
+* This hop: README status refreshed (stale 347 pointer caught up); env-check note retained; LEDGER-STAMP append; cascade.yml left intact; no extra hourly YAML; no secrets written
 * Next in waterfall: living-bibliography-continuity-engine
 * Cascade: keep existing `.github/workflows/cascade.yml` healthy. Do not multiply hourly YAML.
 * Ledger: `docs/LEDGER-STAMP.md`
@@ -74,16 +74,16 @@ Cross-repo push on pull stays closed until the operator injects `CASCADE_TOKEN`.
 
 ## Waterfall (one repo per enhance hop)
 
-Rotation order locked by the operator:
+Rotation order locked by the operator, then recently updated siblings:
 
 1. ENCLAVE-ADAM-REUNITED
-2. continuity-engine-ssos
-3. hamiltonian-incursion
-4. The-Hive
-5. Cryptic-Heartbeat — hop 323 @ 2026-10-01T22:11Z (prior pulse)
-6. gaia-visualizer — **347 this hop**
-7. living-bibliography-continuity-engine — next
-8. continuity-ledger-cycle
+2. Cryptic-Heartbeat
+3. The-Hive
+4. continuity-ledger-cycle
+5. continuity-engine-ssos — hop 362 @ 2026-10-02T20:07Z (prior mesh)
+6. hamiltonian-incursion — hop 363 @ 2026-10-02T21:08Z (named this repo)
+7. gaia-visualizer — **364 this hop**
+8. living-bibliography-continuity-engine — next
 
 A pull on `main` should leave a ledger stamp.
 
