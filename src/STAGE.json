@@ -1,10 +1,10 @@
 {
-  "stage": 365,
+  "stage": 374,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
-  "paste": "2026-10-01 17:07 CDT",
-  "next": [366, 367, 368],
+  "paste": "2026-10-02 12:06 CDT",
+  "next": [375, 376, 377],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stage 365 documents that the paste reads phi and does not advance it. Living path already steps phi. Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stage 374 documents infinity scale = major * 1.5 and denom = 1 + sin(theta)^2. Living path already matches. Paste not rewritten."
 }
