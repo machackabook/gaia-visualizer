@@ -1,8 +1,8 @@
 # Gaia visualizer + The-Hive — compiled stages
 
-Band `395-visual`. Chat kernel is the `update(t)` posted in-session (uniforms → theta → radii → geometry switch → lerp 0.05).
+Band `396-visual`. Chat kernel is the `update(t)` posted in-session (uniforms → theta → radii → geometry switch → lerp 0.05).
 Raw session kernel still allocates `new THREE.Vector3` inside lerp (hash `beec41f1`). Enhanced / live path uses a reused `_kernelTarget` / `_target`.
-Stage 395 holds infinity y identical to torus y: `minor * sin(phi) * sin(t * 0.5 + idx)`. Extras remain runtime-only.
+Stage 396 holds the hamiltonian additive lift `sin(t) * 2`, independent of idx. Extras remain runtime-only.
 
 ## Done
 
@@ -19,20 +19,21 @@ Stage 395 holds infinity y identical to torus y: `minor * sin(phi) * sin(t * 0.5
 | 393 | Hold hamiltonian frequency-3 vertex map `theta * 3` (`noteSessionHamiltonianFreqHold`). |
 | 394 | Hold triangular sector `floor(theta / (2π/3)) * (2π/3)` (`noteSessionTriangularSectorHold`). |
 | 395 | Hold infinity y shared with torus y (`noteSessionInfinityYHold`). |
+| 396 | Hold hamiltonian lift `sin(t) * 2` independent of idx (`noteSessionHamiltonianLiftHold`). |
 
 ## Next
 
 | Stage | Owner repo | Work |
 |------|------------|------|
-| 396 | both | Hold hamiltonian lift `sin(t) * 2` independent of idx. |
 | 397 | both | Hold triangular lane `(idx % 3 - 1) * major * 0.5`. |
 | 398 | both | Hold lemniscate scale `major * 1.5`. |
+| 399 | both | Hold torus tube radius `major + minor * cos(phi)` against the shared y. |
 | 14 | The-Hive | Memory engrams into Drive folder `CRYPTIC-HEARTBEAT-NEXUS-ROOT` |
 
 ## Drive from LLM
 
 ```js
 window.dispatchEvent(new CustomEvent('gaia:targetState', {
-  detail: { geometry: 'infinity', blendFrom: 'torus', blendTo: 'infinity', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 395, sourceHash: '7cd81012', sessionHash: 'beec41f1' }
+  detail: { geometry: 'hamiltonian', blendFrom: 'torus', blendTo: 'hamiltonian', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 396, sourceHash: '7cd81012', sessionHash: 'beec41f1' }
 }));
 ```
