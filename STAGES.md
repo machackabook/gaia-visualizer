@@ -1,8 +1,8 @@
 # Gaia visualizer + The-Hive — compiled stages
 
-Band `392-visual`. Chat kernel is the `update(t)` posted in-session (uniforms → theta → radii → geometry switch → lerp 0.05).
+Band `393-visual`. Chat kernel is the `update(t)` posted in-session (uniforms → theta → radii → geometry switch → lerp 0.05).
 Raw session kernel still allocates `new THREE.Vector3` inside lerp (hash `beec41f1`). Enhanced / live path uses a reused `_kernelTarget` / `_target`.
-Stage 392 holds the infinity-arm lemniscate denom. Extras remain runtime-only.
+Stage 393 holds the hamiltonian frequency-3 vertex map. Extras remain runtime-only.
 
 ## Done
 
@@ -16,20 +16,21 @@ Stage 392 holds the infinity-arm lemniscate denom. Extras remain runtime-only.
 | 390 | Hold theta step `(0.01 + idx * 0.002) * gravityPull` (`noteSessionThetaStep`). |
 | 391 | Hold `major = 10 + idx * 2` and `minor = 3 + toroidalWeave * 2` (`noteSessionRadiiHold`). |
 | 392 | Hold lemniscate denom `1 + sin(theta)^2` (`noteSessionLemniscateDenomHold`). |
+| 393 | Hold hamiltonian frequency-3 vertex map `theta * 3` (`noteSessionHamiltonianFreqHold`). |
 
 ## Next
 
 | Stage | Owner repo | Work |
 |------|------------|------|
-| 393 | both | Hold hamiltonian frequency-3 vertex map `theta * 3`. |
-| 394 | both | Hold triangular sector angle `2π/3`. |
+| 394 | both | Hold triangular sector angle `floor(theta / (2π/3)) * (2π/3)`. |
 | 395 | both | Hold infinity y shared with torus y. |
+| 396 | both | Hold hamiltonian lift `sin(t) * 2` independent of idx. |
 | 14 | The-Hive | Memory engrams into Drive folder `CRYPTIC-HEARTBEAT-NEXUS-ROOT` |
 
 ## Drive from LLM
 
 ```js
 window.dispatchEvent(new CustomEvent('gaia:targetState', {
-  detail: { geometry: 'infinity', blendFrom: 'torus', blendTo: 'infinity', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 392, sourceHash: '7cd81012', sessionHash: 'beec41f1' }
+  detail: { geometry: 'hamiltonian', blendFrom: 'infinity', blendTo: 'hamiltonian', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 393, sourceHash: '7cd81012', sessionHash: 'beec41f1' }
 }));
 ```
