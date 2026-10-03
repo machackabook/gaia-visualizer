@@ -1,10 +1,10 @@
 {
-  "stage": 382,
+  "stage": 384,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
-  "paste": "2026-10-02 20:07 CDT",
-  "next": [383, 384, 385],
+  "paste": "2026-10-02 22:06 CDT",
+  "next": [385, 386, 387],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stage 382 documents triangular x = major * cos(tAngle) + minor * cos(theta * 5) with tAngle snapped to 2π/3. Living path already matches. Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stage 384 documents torus x = (major + minor * cos(phi)) * cos(theta). Living path already matches. Paste not rewritten."
 }
