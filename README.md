@@ -10,12 +10,12 @@ Team Enhance hops one repo per run. Equalizer formats only. No history rewrite. 
 * Branch: main
 * Language: JavaScript (Vite 5 / three ^0.169)
 * Numeral: 137451921129154222
-* Stage: **364** — 2026-10-02T22:08Z (2026-10-02 17:08 CDT)
+* Stage: **369** — 2026-10-03T02:11Z (2026-10-02 21:11 CDT)
 * Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
 * Compounding tier: **T5 / 99%**
-* Prior surface: stage 347 @ 2026-10-01T22:13Z
-* Prior mesh: hamiltonian-incursion hop 363 @ 2026-10-02T21:08Z named this repo next
-* This hop: README status refreshed (stale 347 pointer caught up); env-check note retained; LEDGER-STAMP append; cascade.yml left intact; no extra hourly YAML; no secrets written
+* Prior local: stage 364 @ 2026-10-02T22:08Z
+* Prior mesh: Cryptic-Heartbeat hop 368 @ 2026-10-03T02:08Z named this repo next in the operator rotation
+* This hop: README status caught up from stale 364 pointer; operator rotation order written plainly; env-check note retained; LEDGER-STAMP append; cascade.yml left intact; no extra hourly YAML; no secrets written
 * Next in waterfall: living-bibliography-continuity-engine
 * Cascade: keep existing `.github/workflows/cascade.yml` healthy. Do not multiply hourly YAML.
 * Ledger: `docs/LEDGER-STAMP.md`
@@ -74,16 +74,16 @@ Cross-repo push on pull stays closed until the operator injects `CASCADE_TOKEN`.
 
 ## Waterfall (one repo per enhance hop)
 
-Rotation order locked by the operator, then recently updated siblings:
+Operator rotation, locked. This hop touches only gaia-visualizer, then stops.
 
-1. ENCLAVE-ADAM-REUNITED
-2. Cryptic-Heartbeat
-3. The-Hive
-4. continuity-ledger-cycle
-5. continuity-engine-ssos — hop 362 @ 2026-10-02T20:07Z (prior mesh)
-6. hamiltonian-incursion — hop 363 @ 2026-10-02T21:08Z (named this repo)
-7. gaia-visualizer — **364 this hop**
-8. living-bibliography-continuity-engine — next
+1. ENCLAVE-ADAM-REUNITED — hop 367 @ 2026-10-03T01:10Z
+2. continuity-engine-ssos — hop 368 @ 2026-10-03T01:15Z
+3. hamiltonian-incursion
+4. The-Hive
+5. Cryptic-Heartbeat — hop 368 @ 2026-10-03T02:08Z (named this repo next)
+6. gaia-visualizer — **369 this hop**
+7. living-bibliography-continuity-engine — next
+8. continuity-ledger-cycle
 
 A pull on `main` should leave a ledger stamp.
 
