@@ -1,10 +1,10 @@
 {
-  "stage": 385,
+  "stage": 394,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
-  "paste": "2026-10-02 23:06 CDT",
-  "next": [386, 387, 388],
+  "paste": "2026-10-03 15:06 CDT",
+  "next": [395, 396, 397],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stage 385 documents torus z = (major + minor * cos(phi)) * sin(theta). Living path already matches. Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stage 394 holds triangular tAngle = floor(theta / (2π/3)) * (2π/3). Ripple stays on raw theta*5. Paste not rewritten."
 }
