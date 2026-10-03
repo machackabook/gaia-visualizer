@@ -1,4 +1,4 @@
-/** Stage 384 compiled next-stage queue. Session switch stays four-case (beec41f1). Connecting chat 2026-10-02 22:06 CDT. */
+/** Stage 385 compiled next-stage queue. Session switch stays four-case (beec41f1). Connecting chat 2026-10-02 23:06 CDT. */
 import { reuseSessionLerpTarget, SESSION_LERP } from './sessionScratchLerp.js';
 import { publicKernelEnvelope, assertPublicEnvelope } from './publicKernelEnvelope.js';
 import { samplePublicBandFidelity } from './publicBandFidelity.js';
@@ -27,10 +27,11 @@ import { noteSessionHamiltonianZ } from './sessionHamiltonianZ.js';
 import { noteSessionTriangularX } from './sessionTriangularX.js';
 import { noteSessionTriangularZ } from './sessionTriangularZ.js';
 import { noteSessionTorusX } from './sessionTorusX.js';
+import { noteSessionTorusZ } from './sessionTorusZ.js';
 
-export { reuseSessionLerpTarget, SESSION_LERP, publicKernelEnvelope, assertPublicEnvelope, samplePublicBandFidelity, reportSessionPhiGap, sampleInstanceBandHealth, sampleWeaveSliderBind, noteSessionVector3Alloc, noteSessionMajorClamp, noteSessionPhiStill, noteSessionInfinityDenom, noteSessionTriangularLattice, noteSessionHamiltonianIgnore, noteSessionTorusPhiReuse, noteSessionTriangularFloor, noteSessionInfinityTube, noteSessionTorusFallthrough, noteSessionTriangularRipple, noteSessionInfinityScale, noteSessionHamiltonianY, noteSessionTriangularY, noteSessionLemniscateZ, noteSessionTorusY, noteSessionInfinityX, noteSessionHamiltonianX, noteSessionHamiltonianZ, noteSessionTriangularX, noteSessionTriangularZ, noteSessionTorusX };
+export { reuseSessionLerpTarget, SESSION_LERP, publicKernelEnvelope, assertPublicEnvelope, samplePublicBandFidelity, reportSessionPhiGap, sampleInstanceBandHealth, sampleWeaveSliderBind, noteSessionVector3Alloc, noteSessionMajorClamp, noteSessionPhiStill, noteSessionInfinityDenom, noteSessionTriangularLattice, noteSessionHamiltonianIgnore, noteSessionTorusPhiReuse, noteSessionTriangularFloor, noteSessionInfinityTube, noteSessionTorusFallthrough, noteSessionTriangularRipple, noteSessionInfinityScale, noteSessionHamiltonianY, noteSessionTriangularY, noteSessionLemniscateZ, noteSessionTorusY, noteSessionInfinityX, noteSessionHamiltonianX, noteSessionHamiltonianZ, noteSessionTriangularX, noteSessionTriangularZ, noteSessionTorusX, noteSessionTorusZ };
 
-export const STAGE = 384;
+export const STAGE = 385;
 export const CHAT_KERNEL_SESSION_HASH = 'beec41f1';
 export const CHAT_KERNEL_LIVING_HASH = '7cd81012';
 export const CHAT_KERNEL_CHAT_GEOMETRIES = ['infinity', 'hamiltonian', 'triangular', 'torus'];
@@ -46,11 +47,6 @@ export const INSTANCE_OFFSET_MIN = 4096;
 
 export const CHAT_KERNEL_NEXT_STAGES = [
   {
-    stage: 385,
-    title: 'session torus z is (major + minor * cos(phi)) * sin(theta)',
-    note: 'Document the tube z term only. Do not rewrite the paste.',
-  },
-  {
     stage: 386,
     title: 'hold session torus y unless the paste changes',
     note: 'Already noted as minor * sin(phi) * sin(t * 0.5 + idx). Do not rewrite the paste.',
@@ -59,6 +55,11 @@ export const CHAT_KERNEL_NEXT_STAGES = [
     stage: 387,
     title: 'hold the four-case switch unless the paste adds a case',
     note: 'Klein / hopf / figure8 / trefoil / mobius stay runtime-only. Do not rewrite the paste.',
+  },
+  {
+    stage: 388,
+    title: 'document tube identity x^2 + z^2 = (major + minor * cos(phi))^2',
+    note: 'Document only. Do not rewrite the paste.',
   },
 ];
 
@@ -91,6 +92,7 @@ const STAGE_FLAGS = {
   triangularXNote: true,
   triangularZNote: true,
   torusXNote: true,
+  torusZNote: true,
 };
 
 export function chatKernelFourGovernors() {
@@ -122,7 +124,7 @@ export function chatKernelMemoryEngram(scan) {
     tokenInEnvelope: false,
     ...STAGE_FLAGS,
     ready: !frozen,
-    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 385,
+    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 386,
   };
 }
 
@@ -139,7 +141,7 @@ export function chatKernelExtrasParity() {
       vector3HotPath: false,
       gpuTfParity: true,
     })),
-    note: 'Stage 384: torus-x note has no new case. Extras still off the session switch.',
+    note: 'Stage 385: torus-z note has no new case. Extras still off the session switch.',
   };
 }
 
@@ -220,6 +222,7 @@ export function compileChatKernelNextStages(sessionSource) {
   const triangularX = noteSessionTriangularX(sessionSource);
   const triangularZ = noteSessionTriangularZ(sessionSource);
   const torusX = noteSessionTorusX(sessionSource);
+  const torusZ = noteSessionTorusZ(sessionSource);
   return {
     current: STAGE,
     session: CHAT_KERNEL_SESSION_HASH,
@@ -275,6 +278,8 @@ export function compileChatKernelNextStages(sessionSource) {
     triangularZOk: triangularZ.ok,
     torusX,
     torusXOk: torusX.ok,
+    torusZ,
+    torusZOk: torusZ.ok,
     heartbeat: chatKernelHeartbeatMutation(),
     ledger: chatKernelLedgerPulseScan(),
     engram: chatKernelMemoryEngram(),
@@ -319,6 +324,7 @@ export function chatKernelHeartbeatMutation(scan) {
   const triangularX = noteSessionTriangularX();
   const triangularZ = noteSessionTriangularZ();
   const torusX = noteSessionTorusX();
+  const torusZ = noteSessionTorusZ();
   return {
     event: 'heartbeat_mutation',
     stage: STAGE,
@@ -357,9 +363,10 @@ export function chatKernelHeartbeatMutation(scan) {
     triangularXOk: triangularX.ok,
     triangularZOk: triangularZ.ok,
     torusXOk: torusX.ok,
+    torusZOk: torusZ.ok,
     frozen: !!src.frozen,
     energy: Number.isFinite(src.energy) ? src.energy : null,
-    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 385,
+    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 386,
   };
 }
 
@@ -385,7 +392,7 @@ export function chatKernelLedgerPulseScan(scan) {
     ready: authenticated && !frozen && (expectedSheetCount === null || sheetMatch),
     tokenInEnvelope: false,
     ...STAGE_FLAGS,
-    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 385,
+    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 386,
   };
 }
 
