@@ -1,10 +1,10 @@
 {
-  "stage": 409,
+  "stage": 410,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
-  "paste": "2026-10-04 13:06 CDT",
-  "next": [410, 411, 412],
+  "paste": "2026-10-04 15:06 CDT",
+  "next": [411, 412, 413],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stage 409 holds lemniscate z = (scale * sin(theta) * cos(theta)) / denom on the same denom as x. No second denom. Y does not take the crossing factor. Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stage 410 holds triangular high frequency theta*5 on both x and z offsets. Y does not take theta*5. Paste not rewritten."
 }

@@ -10,15 +10,15 @@ Team Enhance hops one repo per run. Equalizer formats only. No history rewrite. 
 * Branch: main
 * Language: JavaScript (Vite 5 / three ^0.169)
 * Numeral: 137451921129154222
-* Stage: **409** — 2026-10-04T18:06Z (2026-10-04 13:06 CDT)
+* Stage: **410** — 2026-10-04T20:06Z (2026-10-04 15:06 CDT)
 * Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
 * Compounding tier: **T5 / 99%**
-* Prior local: hop 418 @ 2026-10-04T16:08Z (stamp preserved, not rewritten)
+* Prior local: hop 419 @ 2026-10-04T18:06Z (stamp preserved, not rewritten)
 * Sibling pulse: connecting chat re-pasted `update(t)` (session `beec41f1`). Honored on The-Hive, this repo, Cryptic-Heartbeat, continuity-ledger-cycle.
 * Declared waterfall: ENCLAVE-ADAM-REUNITED → continuity-engine-ssos → hamiltonian-incursion → The-Hive → Cryptic-Heartbeat → gaia-visualizer → living-bibliography-continuity-engine → continuity-ledger-cycle
-* This hop: `noteSessionLemniscateZFactor`; STAGE-409.md; STAGES pointer; LEDGER-STAMP append; cascade.yml left intact; no secrets written
+* This hop: `noteSessionTriangularHighFreq`; STAGE-410.md; STAGES pointer; LEDGER-STAMP append; cascade.yml left intact; no secrets written
 * Next in waterfall: living-bibliography-continuity-engine
-* Next in stage band: 410 triangular `theta * 5` on x and z offsets, not on y
+* Next in stage band: 411 session lerp allocation `new THREE.Vector3` vs living `_kernelTarget`
 * Cascade: keep existing `.github/workflows/cascade.yml` healthy. Do not multiply hourly YAML.
 * Ledger: `docs/LEDGER-STAMP.md`
 * Cloud index (mention only, no binary upload): Drive folder `CONTINUUM-ENCLAVE-137451921129154222` id `1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU`
@@ -32,6 +32,7 @@ Session switch is still only `infinity | hamiltonian | triangular | torus`.
 Live runtime adds phi weave, reused lerp target, optional `uWeave` / `uBlend`, plus runtime extras klein / hopf / figure8 / trefoil.
 Do not promote extra labels until a future paste includes them.
 `default` shares the torus tube. It is not a fifth session case.
+Triangular high frequency `theta * 5` is an offset on x and z only. Y stays the sector lift.
 
 ## Compounding growth
 
@@ -77,16 +78,16 @@ Cross-repo push on pull stays closed until the operator injects `CASCADE_TOKEN`.
 
 ## Waterfall (one repo per enhance hop)
 
-Declared order. Connecting-chat kernel hop lands on gaia-visualizer (409) with sibling pins.
+Declared order. Connecting-chat kernel hop lands on gaia-visualizer (410) with sibling pins.
 
 1. ENCLAVE-ADAM-REUNITED — hop 398 @ 2026-10-03T22:08Z
 2. continuity-engine-ssos — hop 407 @ 2026-10-04T03:11Z (earlier seat; not reopened)
 3. hamiltonian-incursion — hop 395 seat already closed earlier in the cycle
-4. The-Hive — stage 409 pin this cycle (connecting chat); waterfall README hop left intact
-5. Cryptic-Heartbeat — stage 409 pin this cycle
-6. gaia-visualizer — **409 this hop**
+4. The-Hive — stage 410 pin this cycle (connecting chat); waterfall README hop left intact
+5. Cryptic-Heartbeat — stage 410 pin this cycle
+6. gaia-visualizer — **410 this hop**
 7. living-bibliography-continuity-engine — next
-8. continuity-ledger-cycle — receipt `STAGE-409-session.md`
+8. continuity-ledger-cycle — receipt `STAGE-410-session.md`
 
 A pull on `main` should leave a ledger stamp.
 
