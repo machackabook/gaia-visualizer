@@ -10,15 +10,15 @@ Team Enhance hops one repo per run. Equalizer formats only. No history rewrite. 
 * Branch: main
 * Language: JavaScript (Vite 5 / three ^0.169)
 * Numeral: 137451921129154222
-* Stage: **405** — 2026-10-04T14:09Z (2026-10-04 09:09 CDT)
+* Stage: **408** — 2026-10-04T16:08Z (2026-10-04 11:08 CDT)
 * Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
 * Compounding tier: **T5 / 99%**
-* Prior local: hop 402 @ 2026-10-04T04:06Z (stamp preserved, not rewritten)
+* Prior local: hop 417 @ 2026-10-04T14:10Z (stamp preserved, not rewritten)
 * Sibling pulse: connecting chat re-pasted `update(t)` (session `beec41f1`). Honored on The-Hive, this repo, Cryptic-Heartbeat, continuity-ledger-cycle.
 * Declared waterfall: ENCLAVE-ADAM-REUNITED → continuity-engine-ssos → hamiltonian-incursion → The-Hive → Cryptic-Heartbeat → gaia-visualizer → living-bibliography-continuity-engine → continuity-ledger-cycle
-* This hop: `noteSessionTriangularSectorSnapHold`, `noteSessionHamiltonianProductHold`, `noteSessionUnknownLabelHold`; STAGE-403/404/405.md; STAGES pointer; LEDGER-STAMP append; cascade.yml left intact; no secrets written
+* This hop: `noteSessionInfinityDenomShare`, `noteSessionPhiExternal`, `noteSessionUniformOrder`; STAGE-406/407/408.md; STAGES pointer; LEDGER-STAMP append; cascade.yml left intact; no secrets written
 * Next in waterfall: living-bibliography-continuity-engine
-* Next in stage band: 406 infinity denom shared by x and z, not applied to y
+* Next in stage band: 409 lemniscate z factor on the same denom, not a second denom
 * Cascade: keep existing `.github/workflows/cascade.yml` healthy. Do not multiply hourly YAML.
 * Ledger: `docs/LEDGER-STAMP.md`
 * Cloud index (mention only, no binary upload): Drive folder `CONTINUUM-ENCLAVE-137451921129154222` id `1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU`
@@ -77,16 +77,16 @@ Cross-repo push on pull stays closed until the operator injects `CASCADE_TOKEN`.
 
 ## Waterfall (one repo per enhance hop)
 
-Declared order. One repo, then stop. This hop is gaia-visualizer (405).
+Declared order. One repo, then stop. This hop is gaia-visualizer (408).
 
 1. ENCLAVE-ADAM-REUNITED — hop 398 @ 2026-10-03T22:08Z
 2. continuity-engine-ssos — hop 407 @ 2026-10-04T03:11Z (earlier seat; not reopened)
 3. hamiltonian-incursion — hop 395 seat already closed earlier in the cycle
-4. The-Hive — stage 403–405 notes this cycle (connecting chat); waterfall README hop 415 left intact
-5. Cryptic-Heartbeat — stage 403/405 notes this cycle; prior STAGE-404 stamp kept and session product note appended
-6. gaia-visualizer — **405 this hop**
+4. The-Hive — stage 406–408 notes this cycle (connecting chat); waterfall README hop 415 left intact
+5. Cryptic-Heartbeat — stage 406/408 notes this cycle; prior STAGE-405 stamp kept and session denom note appended
+6. gaia-visualizer — **408 this hop**
 7. living-bibliography-continuity-engine — next
-8. continuity-ledger-cycle — receipt `STAGE-405-session.md`
+8. continuity-ledger-cycle — receipt `STAGE-408-session.md`
 
 A pull on `main` should leave a ledger stamp.
 
