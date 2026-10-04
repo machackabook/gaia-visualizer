@@ -1,4 +1,4 @@
-# Stage 401 — hold hamiltonian hScale = major (2026-10-03 22:06 CDT)
+# Stage 401 — hold hamiltonian hScale = major (2026-10-04 16:06 CDT)
 
 Connecting chat re-pasted `update(t)`.
 
@@ -6,28 +6,27 @@ Connecting chat re-pasted `update(t)`.
 - uniforms `uTime` / `uGravity`
 - `theta += (0.01 + idx * 0.002) * gravityPull`
 - `major = 10 + idx * 2`, `minor = 3 + toroidalWeave * 2`
-- geometries: infinity (lemniscate) | hamiltonian | triangular | torus default
-- session paste still calls `lerp(new THREE.Vector3(x, y, z), 0.05)`
-- session hash `beec41f1` held. Living hash `7cd81012` held.
-- Klein / hopf / figure8 / trefoil / mobius stay runtime-only (not in the session switch).
+- hamiltonian sets `const hScale = major` (factor 1, not the lemniscate 1.5)
+- infinity scale `major * 1.5` from stage 398 stays on that arm only
+- hamiltonian lift stays `sin(t) * 2` and does not take minor or hScale
+- triangular ripple `sin(t) * minor` from stage 400 stays on that arm only
+- session hash `beec41f1`. Living hash `7cd81012`.
+- paste still calls `lerp(new THREE.Vector3(x, y, z), 0.05)`
 
 ## Enhancement this hop
-Hamiltonian scale is the bare major. `noteSessionHamiltonianScaleHold` lives on gaia-visualizer and confirms:
+`noteSessionHamiltonianScaleHold` pins `hScale = major` off the lemniscate factor. It does not rewrite the paste and does not add a session case.
 
-- `const hScale = major` (not `major * 1.5`)
-- infinity keeps `const scale = major * 1.5` on its own arm
-- major 10 → hScale 10, lemniscate scale 15; theta 0 → x 10, z 0, vertex 0
-- major 14 → hScale 14, not 21
-- theta = π/3, major 10 → x -5 (freq cos(π) * cos(π/3))
-- theta = π/2, major 10 → x 0, z 0, vertex -10
-- hScale ignores minor, phi, idx, and gravityPull
-- stage 396 lift `sin(t) * 2` is unchanged and is not scaled by 1.5
-- paste is not rewritten. No session case was added.
+- major 10, theta 0, t 0 keeps hScale `10` (x `10`, z `0`, y `0`); lemniscate scale would be `15`
+- theta = π/2 keeps hScale `10` while the triple-angle ring vanishes (x `0`, z `0`, y `-10`)
+- major 14 keeps hScale `14` against a lemniscate scale of `21`
+- t = π/2 adds lift `2` without changing hScale
+- hScale ignores minor, phi, t, and gravityPull
+- triangular and torus arms do not declare hScale
 
 ## Next
 - 402 hold default fallthrough sharing the torus tube radius
 - 403 hold triangular sector snap independent of the y ripple
-- 404 hold hamiltonian xz product `cos(theta * 3) * cos/sin(theta)` against hScale
+- 404 hold hamiltonian lift `sin(t) * 2` independent of hScale
 
-Connecting repos: The-Hive, gaia-visualizer, Cryptic-Heartbeat.
+Connecting repos: gaia-visualizer, The-Hive, Cryptic-Heartbeat, continuity-engine-ssos, continuity-ledger-cycle.
 Numeral `137451921129154222`. No secrets.
