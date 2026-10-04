@@ -10,15 +10,15 @@ Team Enhance hops one repo per run. Equalizer formats only. No history rewrite. 
 * Branch: main
 * Language: JavaScript (Vite 5 / three ^0.169)
 * Numeral: 137451921129154222
-* Stage: **401** — 2026-10-04T03:06Z (2026-10-03 22:06 CDT)
+* Stage: **402** — 2026-10-04T04:06Z (2026-10-03 23:06 CDT)
 * Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
 * Compounding tier: **T5 / 99%**
-* Prior local: hop 400 @ 2026-10-03T23:12Z (stamp preserved, not rewritten)
-* Sibling pulse: connecting chat re-pasted `update(t)` (session `beec41f1`). Honored on The-Hive, this repo, Cryptic-Heartbeat.
+* Prior local: hop 401 @ 2026-10-04T03:06Z (stamp preserved, not rewritten)
+* Sibling pulse: connecting chat re-pasted `update(t)` (session `beec41f1`). Honored on The-Hive, this repo, Cryptic-Heartbeat, continuity-ledger-cycle.
 * Declared waterfall: ENCLAVE-ADAM-REUNITED → continuity-engine-ssos → hamiltonian-incursion → The-Hive → Cryptic-Heartbeat → gaia-visualizer → living-bibliography-continuity-engine → continuity-ledger-cycle
-* This hop: `noteSessionHamiltonianScaleHold` holds `hScale = major` (not lemniscate `major * 1.5`); STAGE-401.md; STAGES pointer; LEDGER-STAMP append; cascade.yml left intact; no secrets written
+* This hop: `noteSessionDefaultTubeHold` holds `case 'torus': default:` on tube radius `major + minor * cos(phi)`; STAGE-402.md; STAGES pointer; LEDGER-STAMP append; cascade.yml left intact; no secrets written
 * Next in waterfall: living-bibliography-continuity-engine
-* Next in stage band: 402 default fallthrough sharing the torus tube radius
+* Next in stage band: 403 triangular sector snap independent of the y ripple
 * Cascade: keep existing `.github/workflows/cascade.yml` healthy. Do not multiply hourly YAML.
 * Ledger: `docs/LEDGER-STAMP.md`
 * Cloud index (mention only, no binary upload): Drive folder `CONTINUUM-ENCLAVE-137451921129154222` id `1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU`
@@ -31,6 +31,7 @@ Team Enhance hops one repo per run. Equalizer formats only. No history rewrite. 
 Session switch is still only `infinity | hamiltonian | triangular | torus`.
 Live runtime adds phi weave, reused lerp target, optional `uWeave` / `uBlend`, plus runtime extras klein / hopf / figure8 / trefoil.
 Do not promote extra labels until a future paste includes them.
+`default` shares the torus tube. It is not a fifth session case.
 
 ## Compounding growth
 
@@ -76,14 +77,14 @@ Cross-repo push on pull stays closed until the operator injects `CASCADE_TOKEN`.
 
 ## Waterfall (one repo per enhance hop)
 
-Declared order. One repo, then stop. This hop is gaia-visualizer (401).
+Declared order. One repo, then stop. This hop is gaia-visualizer (402).
 
 1. ENCLAVE-ADAM-REUNITED — hop 398 @ 2026-10-03T22:08Z
-2. continuity-engine-ssos — hop 394 @ 2026-10-03T18:07Z (earlier seat; not reopened)
+2. continuity-engine-ssos — hop 407 @ 2026-10-04T03:11Z (earlier seat; not reopened)
 3. hamiltonian-incursion — hop 395 seat already closed earlier in the cycle
-4. The-Hive — stage 401 stamp this cycle (connecting chat)
-5. Cryptic-Heartbeat — stage 401 stamp this cycle (connecting chat)
-6. gaia-visualizer — **401 this hop**
+4. The-Hive — stage 402 note this cycle (connecting chat); waterfall README hop 405 left intact
+5. Cryptic-Heartbeat — stage 402 note this cycle (connecting chat); waterfall README hop 404 left intact
+6. gaia-visualizer — **402 this hop**
 7. living-bibliography-continuity-engine — next
 8. continuity-ledger-cycle
 
