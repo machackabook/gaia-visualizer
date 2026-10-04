@@ -10,16 +10,17 @@ Team Enhance hops one repo per run. Equalizer formats only. No history rewrite. 
 * Branch: main
 * Language: JavaScript (Vite 5 / three ^0.169)
 * Numeral: 137451921129154222
-* Stage: **402** — 2026-10-04T04:06Z (2026-10-03 23:06 CDT)
+* Stage: **417** — 2026-10-04T14:10Z (2026-10-04 09:10 CDT)
 * Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
 * Compounding tier: **T5 / 99%**
-* Prior local: hop 401 @ 2026-10-04T03:06Z (stamp preserved, not rewritten)
+* Prior local: hop 402 @ 2026-10-04T04:06Z (stamp preserved, not rewritten)
+* Prior named: continuity-ledger-cycle hop 416 @ 2026-10-04T13:14Z (`953558ef2235614b16b536ee706c708433c6f0e5`) named this repo next. Honored.
 * Sibling pulse: connecting chat re-pasted `update(t)` (session `beec41f1`). Honored on The-Hive, this repo, Cryptic-Heartbeat, continuity-ledger-cycle.
-* Declared waterfall: ENCLAVE-ADAM-REUNITED → continuity-engine-ssos → hamiltonian-incursion → The-Hive → Cryptic-Heartbeat → gaia-visualizer → living-bibliography-continuity-engine → continuity-ledger-cycle
-* This hop: `noteSessionDefaultTubeHold` holds `case 'torus': default:` on tube radius `major + minor * cos(phi)`; STAGE-402.md; STAGES pointer; LEDGER-STAMP append; cascade.yml left intact; no secrets written
+* Declared waterfall: ENCLAVE-ADAM-REUNITED → Cryptic-Heartbeat → The-Hive → continuity-ledger-cycle → gaia-visualizer → living-bibliography-continuity-engine
+* This hop: README waterfall receipt refreshed; LEDGER-STAMP append; cascade.yml left intact; no secrets written
 * Next in waterfall: living-bibliography-continuity-engine
-* Next in stage band: 403 triangular sector snap independent of the y ripple
-* Cascade: keep existing `.github/workflows/cascade.yml` healthy. Do not multiply hourly YAML.
+* Next in stage band: 403 triangular sector snap independent of the y ripple (still open; not invented this hop)
+* Cascade: keep existing `.github/workflows/cascade.yml` healthy. Do not multiply hourly YAML. Verified present this hop; not rewritten.
 * Ledger: `docs/LEDGER-STAMP.md`
 * Cloud index (mention only, no binary upload): Drive folder `CONTINUUM-ENCLAVE-137451921129154222` id `1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU`
 * Drive mesh: GitHub remains the versioned singularity. Ethereal continuum (Drive) is a mirror, not a second source of truth.
@@ -57,7 +58,7 @@ npm install
 npm run dev
 ```
 
-Env-check note: `scripts/env-check.sh` fails closed if `README.md` is missing, if `HEAD` SHA is empty, or if the numeral `137451921129154222` is absent from the tree. A green check means the docs surface is present. It does not pair devices, does not read Tailscale state, does not consume ADB pair codes, and does not claim a device was rooted. It does not upload binaries to the Drive index.
+Env-check note: `scripts/env-check.sh` fails closed if `README.md` is missing, if `HEAD` SHA is empty, or if the numeral `137451921129154222` is absent from the tree. A green check means the docs surface is present. It does not pair devices, does not read Tailscale state, does not consume ADB pair codes, and does not claim a device was rooted. It does not upload binaries to the Drive index. A found key is a stop, not a stamp.
 
 ```bash
 bash scripts/env-check.sh
@@ -77,16 +78,14 @@ Cross-repo push on pull stays closed until the operator injects `CASCADE_TOKEN`.
 
 ## Waterfall (one repo per enhance hop)
 
-Declared order. One repo, then stop. This hop is gaia-visualizer (402).
+Declared order. One repo, then stop. This hop is gaia-visualizer (417).
 
-1. ENCLAVE-ADAM-REUNITED — hop 398 @ 2026-10-03T22:08Z
-2. continuity-engine-ssos — hop 407 @ 2026-10-04T03:11Z (earlier seat; not reopened)
-3. hamiltonian-incursion — hop 395 seat already closed earlier in the cycle
-4. The-Hive — stage 402 note this cycle (connecting chat); waterfall README hop 405 left intact
-5. Cryptic-Heartbeat — stage 402 note this cycle (connecting chat); waterfall README hop 404 left intact
-6. gaia-visualizer — **402 this hop**
-7. living-bibliography-continuity-engine — next
-8. continuity-ledger-cycle
+1. ENCLAVE-ADAM-REUNITED — hop 413 @ 2026-10-04T09:08Z already closed
+2. Cryptic-Heartbeat — hop 414 @ 2026-10-04T11:11Z already closed
+3. The-Hive — hop 415 @ 2026-10-04T12:15Z already closed
+4. continuity-ledger-cycle — hop 416 @ 2026-10-04T13:14Z named this repo next
+5. gaia-visualizer — **417 this hop**
+6. living-bibliography-continuity-engine — next
 
 A pull on `main` should leave a ledger stamp.
 
