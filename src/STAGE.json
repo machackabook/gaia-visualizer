@@ -1,10 +1,10 @@
 {
-  "stage": 413,
+  "stage": 416,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
-  "paste": "2026-10-04 17:08 CDT",
-  "next": [414, 415, 416],
+  "paste": "2026-10-04 18:07 CDT",
+  "next": [417, 418, 419],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stages 411-413 hold session lerp allocation vs living _kernelTarget, hamiltonian lift sin(t)*2 independent of hScale, and triangular y sector independent of the theta*5 weave. Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stages 414-416 hold infinity scale major * 1.5 before the lemniscate map, theta step as a product with gravityPull, and the shared y tube on torus and infinity only. Paste not rewritten."
 }
