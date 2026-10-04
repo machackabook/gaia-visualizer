@@ -1,10 +1,10 @@
 {
-  "stage": 398,
+  "stage": 399,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
-  "paste": "2026-10-03 19:09 CDT",
-  "next": [399, 400, 401],
+  "paste": "2026-10-03 20:08 CDT",
+  "next": [400, 401, 402],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stage 398 holds infinity scale = major * 1.5. Denom hold from 392 stays. Hamiltonian hScale remains major. Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stage 399 holds torus tube radius = major + minor * cos(phi) on x and z only. Shared y stays off the tube. Infinity scale hold from 398 stays. Paste not rewritten."
 }

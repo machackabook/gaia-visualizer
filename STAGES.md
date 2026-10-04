@@ -1,8 +1,8 @@
 # Gaia visualizer + The-Hive — compiled stages
 
-Band `398-visual`. Chat kernel is the `update(t)` posted in-session (uniforms → theta → radii → geometry switch → lerp 0.05).
+Band `399-visual`. Chat kernel is the `update(t)` posted in-session (uniforms → theta → radii → geometry switch → lerp 0.05).
 Raw session kernel still allocates `new THREE.Vector3` inside lerp (hash `beec41f1`). Enhanced / live path uses a reused `_kernelTarget` / `_target`.
-Stage 398 holds the infinity-arm scale `major * 1.5`. Denom `1 + sin(theta)^2` stays on the 392 hold. Extras remain runtime-only.
+Stage 399 holds the torus tube radius `major + minor * cos(phi)` on x and z. Shared y stays off that radius. Stage 398 infinity scale `major * 1.5` stays on that arm only. Extras remain runtime-only.
 
 ## Done
 
@@ -22,20 +22,21 @@ Stage 398 holds the infinity-arm scale `major * 1.5`. Denom `1 + sin(theta)^2` s
 | 396 | Hold hamiltonian lift `sin(t) * 2` independent of idx (`noteSessionHamiltonianLiftHold`). |
 | 397 | Hold triangular lane `(idx % 3 - 1) * major * 0.5` (`noteSessionTriangularLaneHold`). |
 | 398 | Hold lemniscate scale `major * 1.5` (`noteSessionLemniscateScaleHold`). |
+| 399 | Hold torus tube radius `major + minor * cos(phi)` against shared y (`noteSessionTorusTubeRadiusHold`). |
 
 ## Next
 
 | Stage | Owner repo | Work |
 |------|------------|------|
-| 399 | both | Hold torus tube radius `major + minor * cos(phi)` against the shared y. |
 | 400 | both | Hold triangular ripple `sin(t) * minor` separate from the lane. |
 | 401 | both | Hold hamiltonian `hScale = major` (not the lemniscate 1.5). |
+| 402 | both | Hold default fallthrough sharing the torus tube radius. |
 | 14 | The-Hive | Memory engrams into Drive folder `CRYPTIC-HEARTBEAT-NEXUS-ROOT` |
 
 ## Drive from LLM
 
 ```js
 window.dispatchEvent(new CustomEvent('gaia:targetState', {
-  detail: { geometry: 'infinity', blendFrom: 'triangular', blendTo: 'infinity', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 398, sourceHash: '7cd81012', sessionHash: 'beec41f1' }
+  detail: { geometry: 'torus', blendFrom: 'infinity', blendTo: 'torus', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 399, sourceHash: '7cd81012', sessionHash: 'beec41f1' }
 }));
 ```
