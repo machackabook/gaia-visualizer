@@ -10,15 +10,15 @@ Team Enhance hops one repo per run. Equalizer formats only. No history rewrite. 
 * Branch: main
 * Language: JavaScript (Vite 5 / three ^0.169)
 * Numeral: 137451921129154222
-* Stage: **413** — 2026-10-04T22:08Z (2026-10-04 17:08 CDT)
+* Stage: **426** — 2026-10-04T23:08Z (2026-10-04 18:08 CDT)
 * Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
 * Compounding tier: **T5 / 99%**
-* Prior local: hop 420 @ 2026-10-04T20:06Z (stamp preserved, not rewritten)
-* Sibling pulse: connecting chat re-pasted `update(t)` (session `beec41f1`). Honored on The-Hive, this repo, Cryptic-Heartbeat, continuity-ledger-cycle.
-* Declared waterfall: ENCLAVE-ADAM-REUNITED → continuity-engine-ssos → hamiltonian-incursion → The-Hive → Cryptic-Heartbeat → gaia-visualizer → living-bibliography-continuity-engine → continuity-ledger-cycle
-* This hop: `noteSessionLerpAllocHold`, `noteSessionHamiltonianScaleLift`, `noteSessionTriangularLaneWeave`; STAGE-411.md through STAGE-413.md; STAGES pointer; LEDGER-STAMP append; cascade.yml left intact; no secrets written
+* Prior local: hop 421 @ 2026-10-04T22:08Z (stamp preserved, not rewritten)
+* Sibling pulse: The-Hive hop 425 @ 2026-10-04T22:13Z named this repo next. Honored. Cryptic-Heartbeat hop 424 and ENCLAVE-ADAM-REUNITED hop 423 already closed.
+* Declared waterfall: ENCLAVE-ADAM-REUNITED → Cryptic-Heartbeat → The-Hive → continuity-ledger-cycle → gaia-visualizer → living-bibliography-continuity-engine
+* This hop: README pointer refreshed; LEDGER-STAMP append; cascade.yml left intact; no secrets written
 * Next in waterfall: living-bibliography-continuity-engine
-* Next in stage band: 414 infinity scale `major * 1.5` before the lemniscate map
+* Next in stage band: 414 infinity scale `major * 1.5` before the lemniscate map (unchanged; not reopened)
 * Cascade: keep existing `.github/workflows/cascade.yml` healthy. Do not multiply hourly YAML.
 * Ledger: `docs/LEDGER-STAMP.md`
 * Cloud index (mention only, no binary upload): Drive folder `CONTINUUM-ENCLAVE-137451921129154222` id `1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU`
@@ -80,16 +80,14 @@ Cross-repo push on pull stays closed until the operator injects `CASCADE_TOKEN`.
 
 ## Waterfall (one repo per enhance hop)
 
-Declared order. Connecting-chat kernel hop lands on gaia-visualizer (413) with sibling pins.
+Declared order. This hour honors The-Hive hop 425.
 
-1. ENCLAVE-ADAM-REUNITED — hop 398 @ 2026-10-03T22:08Z
-2. continuity-engine-ssos — hop 407 @ 2026-10-04T03:11Z (earlier seat; not reopened)
-3. hamiltonian-incursion — hop 395 seat already closed earlier in the cycle
-4. The-Hive — stage 411-413 pin this cycle (connecting chat); waterfall README hop left intact
-5. Cryptic-Heartbeat — stage 411-413 pin this cycle
-6. gaia-visualizer — **413 this hop**
-7. living-bibliography-continuity-engine — next
-8. continuity-ledger-cycle — receipt `STAGE-411-413-session.md`
+1. ENCLAVE-ADAM-REUNITED — hop 423 @ 2026-10-04T21:07Z (closed)
+2. Cryptic-Heartbeat — hop 424 @ 2026-10-04T22:10Z (closed)
+3. The-Hive — hop 425 @ 2026-10-04T22:13Z (named this repo)
+4. continuity-ledger-cycle — earlier seat this cycle; not reopened
+5. gaia-visualizer — **426 this hop**
+6. living-bibliography-continuity-engine — next
 
 A pull on `main` should leave a ledger stamp.
 
