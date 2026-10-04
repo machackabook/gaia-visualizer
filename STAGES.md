@@ -1,8 +1,8 @@
 # Gaia visualizer + The-Hive — compiled stages
 
-Band `400-visual`. Chat kernel is the `update(t)` posted in-session (uniforms → theta → radii → geometry switch → lerp 0.05).
+Band `401-visual`. Chat kernel is the `update(t)` posted in-session (uniforms → theta → radii → geometry switch → lerp 0.05).
 Raw session kernel still allocates `new THREE.Vector3` inside lerp (hash `beec41f1`). Enhanced / live path uses a reused `_kernelTarget` / `_target`.
-Stage 400 holds the triangular ripple `sin(t) * minor` beside the lane. Stage 399 torus tube radius stays on that arm only. Extras remain runtime-only.
+Stage 401 holds hamiltonian `hScale = major` (not the lemniscate `major * 1.5`). Stage 400 triangular ripple stays `sin(t) * minor` beside the lane. Extras remain runtime-only.
 
 ## Done
 
@@ -24,20 +24,21 @@ Stage 400 holds the triangular ripple `sin(t) * minor` beside the lane. Stage 39
 | 398 | Hold lemniscate scale `major * 1.5` (`noteSessionLemniscateScaleHold`). |
 | 399 | Hold torus tube radius `major + minor * cos(phi)` against shared y (`noteSessionTorusTubeRadiusHold`). |
 | 400 | Hold triangular ripple `sin(t) * minor` separate from the lane (`noteSessionTriangularRippleHold`). |
+| 401 | Hold hamiltonian `hScale = major`, not the lemniscate 1.5 (`noteSessionHamiltonianScaleHold`). |
 
 ## Next
 
 | Stage | Owner repo | Work |
 |------|------------|------|
-| 401 | both | Hold hamiltonian `hScale = major` (not the lemniscate 1.5). |
 | 402 | both | Hold default fallthrough sharing the torus tube radius. |
 | 403 | both | Hold triangular sector snap independent of the y ripple. |
+| 404 | both | Hold hamiltonian xz product `cos(theta * 3) * cos/sin(theta)` against hScale. |
 | 14 | The-Hive | Memory engrams into Drive folder `CRYPTIC-HEARTBEAT-NEXUS-ROOT` |
 
 ## Drive from LLM
 
 ```js
 window.dispatchEvent(new CustomEvent('gaia:targetState', {
-  detail: { geometry: 'triangular', blendFrom: 'torus', blendTo: 'triangular', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 400, sourceHash: '7cd81012', sessionHash: 'beec41f1' }
+  detail: { geometry: 'hamiltonian', blendFrom: 'torus', blendTo: 'hamiltonian', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 401, sourceHash: '7cd81012', sessionHash: 'beec41f1' }
 }));
 ```
