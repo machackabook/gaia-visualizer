@@ -1,10 +1,10 @@
 {
-  "stage": 394,
+  "stage": 398,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
-  "paste": "2026-10-03 15:06 CDT",
-  "next": [395, 396, 397],
+  "paste": "2026-10-03 19:09 CDT",
+  "next": [399, 400, 401],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stage 394 holds triangular tAngle = floor(theta / (2π/3)) * (2π/3). Ripple stays on raw theta*5. Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stage 398 holds infinity scale = major * 1.5. Denom hold from 392 stays. Hamiltonian hScale remains major. Paste not rewritten."
 }
