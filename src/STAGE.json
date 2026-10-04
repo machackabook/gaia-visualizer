@@ -1,10 +1,10 @@
 {
-  "stage": 410,
+  "stage": 413,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
-  "paste": "2026-10-04 15:06 CDT",
-  "next": [411, 412, 413],
+  "paste": "2026-10-04 17:08 CDT",
+  "next": [414, 415, 416],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stage 410 holds triangular high frequency theta*5 on both x and z offsets. Y does not take theta*5. Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stages 411-413 hold session lerp allocation vs living _kernelTarget, hamiltonian lift sin(t)*2 independent of hScale, and triangular y sector independent of the theta*5 weave. Paste not rewritten."
 }
