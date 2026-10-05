@@ -10,11 +10,11 @@ Team Enhance hops one repo per run. Equalizer formats only. No history rewrite. 
 * Branch: main
 * Language: JavaScript (Vite 5 / three ^0.169)
 * Numeral: 137451921129154222
-* Stage: **438** — 2026-10-05T10:10Z (2026-10-05 05:10 CDT)
+* Stage: **444** — 2026-10-05T17:07Z (2026-10-05 12:07 CDT)
 * Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
 * Compounding tier: **T5 / 99%**
-* Prior local: hop 434 @ 2026-10-05T04:12Z (stamp preserved, not rewritten)
-* Sibling pulse: continuity-ledger-cycle hop 437 @ 2026-10-05T09:07Z named this repo next. Honored. The-Hive hop 436 and Cryptic-Heartbeat hop 434 already closed. Not re-touched.
+* Prior local: hop 438 @ 2026-10-05T10:10Z (stamp preserved, not rewritten)
+* Sibling pulse: Cryptic-Heartbeat hop 443 @ 2026-10-05T16:18Z named this repo next. Honored. The-Hive hop 442 and continuity-engine-ssos hop 441 already closed. Not re-touched.
 * Declared waterfall: ENCLAVE-ADAM-REUNITED → Cryptic-Heartbeat → The-Hive → continuity-ledger-cycle → gaia-visualizer → living-bibliography-continuity-engine
 * This hop: README pointer refreshed; LEDGER-STAMP append; cascade.yml left intact; no secrets written
 * Next in waterfall: living-bibliography-continuity-engine
@@ -80,13 +80,13 @@ Cross-repo push on pull stays closed until the operator injects `CASCADE_TOKEN`.
 
 ## Waterfall (one repo per enhance hop)
 
-Declared order. This hour honors continuity-ledger-cycle hop 437.
+Declared order. This hour honors Cryptic-Heartbeat hop 443.
 
 1. ENCLAVE-ADAM-REUNITED — hop 435 closed; not reopened
-2. Cryptic-Heartbeat — hop 434 @ 2026-10-05T07:12Z closed; not reopened
-3. The-Hive — hop 436 @ 2026-10-05T08:09Z closed; not reopened
-4. continuity-ledger-cycle — hop 437 @ 2026-10-05T09:07Z (named this repo)
-5. gaia-visualizer — **438 this hop**
+2. Cryptic-Heartbeat — hop 443 @ 2026-10-05T16:18Z (named this repo)
+3. The-Hive — hop 442 @ 2026-10-05T15:16Z closed; not reopened
+4. continuity-ledger-cycle — hop 437 closed; not reopened this hour
+5. gaia-visualizer — **444 this hop**
 6. living-bibliography-continuity-engine — next
 
 A pull on `main` should leave a ledger stamp.
