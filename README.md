@@ -10,12 +10,12 @@ Team Enhance hops one repo per run. Equalizer formats only. No history rewrite. 
 * Branch: main
 * Language: JavaScript (Vite 5 / three ^0.169)
 * Numeral: 137451921129154222
-* Stage: **432** — 2026-10-05T02:08Z (2026-10-04 21:08 CDT)
+* Stage: **434** — 2026-10-05T04:12Z (2026-10-04 23:12 CDT)
 * Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
 * Compounding tier: **T5 / 99%**
-* Prior local: hop 426 @ 2026-10-04T23:08Z (stamp preserved, not rewritten)
-* Sibling pulse: Cryptic-Heartbeat hop 431 @ 2026-10-05T01:19Z named this repo next. Honored. continuity-engine-ssos hop 430 and ENCLAVE-ADAM-REUNITED hop 429 already closed.
-* Declared waterfall: ENCLAVE-ADAM-REUNITED → Cryptic-Heartbeat → The-Hive → continuity-ledger-cycle → gaia-visualizer → living-bibliography-continuity-engine
+* Prior local: hop 432 @ 2026-10-05T02:08Z (stamp preserved, not rewritten)
+* Sibling pulse: Cryptic-Heartbeat hop 433 @ 2026-10-05T04:08Z named this repo next. Honored. The-Hive hop 432 already closed.
+* Declared waterfall: ENCLAVE-ADAM-REUNITED → continuity-engine-ssos → hamiltonian-incursion → The-Hive → Cryptic-Heartbeat → gaia-visualizer → living-bibliography-continuity-engine → continuity-ledger-cycle
 * This hop: README pointer refreshed; LEDGER-STAMP append; cascade.yml left intact; no secrets written
 * Next in waterfall: living-bibliography-continuity-engine
 * Next in stage band: 414 infinity scale `major * 1.5` before the lemniscate map (unchanged; not reopened)
@@ -80,14 +80,16 @@ Cross-repo push on pull stays closed until the operator injects `CASCADE_TOKEN`.
 
 ## Waterfall (one repo per enhance hop)
 
-Declared order. This hour honors Cryptic-Heartbeat hop 431.
+Declared order. This hour honors Cryptic-Heartbeat hop 433.
 
-1. ENCLAVE-ADAM-REUNITED — hop 429 @ 2026-10-05T00:21Z (closed)
-2. Cryptic-Heartbeat — hop 431 @ 2026-10-05T01:19Z (named this repo)
-3. The-Hive — hop 425 earlier this cycle; not reopened
-4. continuity-ledger-cycle — hop 428 @ 2026-10-05T00:15Z (closed)
-5. gaia-visualizer — **432 this hop**
-6. living-bibliography-continuity-engine — next
+1. ENCLAVE-ADAM-REUNITED — earlier this cycle; not reopened
+2. continuity-engine-ssos — earlier this cycle; not reopened
+3. hamiltonian-incursion — hop 431 closed; not reopened
+4. The-Hive — hop 432 @ 2026-10-05T03:13Z (named Cryptic-Heartbeat)
+5. Cryptic-Heartbeat — hop 433 @ 2026-10-05T04:08Z (named this repo)
+6. gaia-visualizer — **434 this hop**
+7. living-bibliography-continuity-engine — next
+8. continuity-ledger-cycle — after the bibliography seat
 
 A pull on `main` should leave a ledger stamp.
 
