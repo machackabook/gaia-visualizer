@@ -1,10 +1,10 @@
 {
-  "stage": 424,
+  "stage": 425,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
-  "paste": "2026-10-05 10:12 CDT",
-  "next": [425, 426, 427],
+  "paste": "2026-10-05 12:06 CDT",
+  "next": [426, 427, 428],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stage 424 holds infinity y on the shared tube minor * sin(phi) * sin(t * 0.5 + idx). Lemniscate scale and denom stay on x and z. Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stage 425 holds triangular y on (idx % 3 - 1) * major * 0.5 + sin(t) * minor. theta * 5 stays on the x and z ripple. Paste not rewritten."
 }
