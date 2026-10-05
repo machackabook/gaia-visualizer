@@ -1,10 +1,10 @@
 {
-  "stage": 421,
+  "stage": 424,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
-  "paste": "2026-10-04 21:07 CDT",
-  "next": [422, 423, 424],
+  "paste": "2026-10-05 10:12 CDT",
+  "next": [425, 426, 427],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stage 421 holds the lemniscate denom on x and z only. y stays minor * sin(phi) * sin(t * 0.5 + idx) and is not divided. Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stage 424 holds infinity y on the shared tube minor * sin(phi) * sin(t * 0.5 + idx). Lemniscate scale and denom stay on x and z. Paste not rewritten."
 }
