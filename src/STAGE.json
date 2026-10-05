@@ -1,10 +1,10 @@
 {
-  "stage": 416,
+  "stage": 421,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
-  "paste": "2026-10-04 18:07 CDT",
-  "next": [417, 418, 419],
+  "paste": "2026-10-04 21:07 CDT",
+  "next": [422, 423, 424],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stages 414-416 hold infinity scale major * 1.5 before the lemniscate map, theta step as a product with gravityPull, and the shared y tube on torus and infinity only. Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stage 421 holds the lemniscate denom on x and z only. y stays minor * sin(phi) * sin(t * 0.5 + idx) and is not divided. Paste not rewritten."
 }
