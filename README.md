@@ -10,13 +10,13 @@ Team Enhance hops one repo per run. Equalizer formats only. No history rewrite. 
 * Branch: main
 * Language: JavaScript (Vite 5 / three ^0.169)
 * Numeral: 137451921129154222
-* Stage: **459** — 2026-10-06T03:07Z (2026-10-05 22:07 CDT)
+* Stage: **481** — 2026-10-06T23:14Z (2026-10-06 18:14 CDT)
 * Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
 * Compounding tier: **T5 / 99%**
-* Prior local: hop 453 @ 2026-10-06T00:10Z (stamp preserved, not rewritten)
-* Sibling pulse: Cryptic-Heartbeat hop 458 @ 2026-10-06T02:12Z (`e405020`) named this repo next. Honored.
-* Declared waterfall: ENCLAVE-ADAM-REUNITED → Cryptic-Heartbeat → The-Hive → continuity-ledger-cycle → gaia-visualizer → living-bibliography-continuity-engine → hamiltonian-incursion
-* This hop: README receipt refreshed to hop 459. Session switch not rewritten. cascade.yml left intact. No secrets written.
+* Prior local: hop 459 @ 2026-10-06T03:07Z (stamp preserved, not rewritten)
+* Sibling pulse: Cryptic-Heartbeat hop 480 @ 2026-10-06T23:10Z (`3779907760c96df22b31bc86cc4c22f79fa70b41`) closed the seat ahead of this one in the operator rotation. Honored. That stamp named continuity-ledger-cycle; this run follows the stated order instead and does not reopen Cryptic-Heartbeat.
+* Declared waterfall: ENCLAVE-ADAM-REUNITED → continuity-engine-ssos → hamiltonian-incursion → The-Hive → Cryptic-Heartbeat → gaia-visualizer → living-bibliography-continuity-engine → continuity-ledger-cycle
+* This hop: README waterfall receipt refreshed to hop 481. Session switch not rewritten. cascade.yml left intact. No secrets written. No device rooted.
 * Next in waterfall: living-bibliography-continuity-engine
 * Cascade: keep existing `.github/workflows/cascade.yml` healthy. Do not multiply hourly YAML. This hop did not rewrite it.
 * Ledger: `docs/LEDGER-STAMP.md`
@@ -61,7 +61,7 @@ npm install
 npm run dev
 ```
 
-Env-check note: `scripts/env-check.sh` fails closed if `README.md` is missing, if `HEAD` SHA is empty, or if the numeral `137451921129154222` is absent from the tree. A green check means the docs surface is present. It does not pair devices, does not read Tailscale state, does not consume ADB pair codes, and does not claim a device was rooted. It does not upload binaries to the Drive index.
+Env-check note (hop 481): `scripts/env-check.sh` fails closed if `README.md` is missing, if `HEAD` SHA is empty, or if the numeral `137451921129154222` is absent from the tree. A zero exit means the docs surface is present. It is a tree gate only. It does not pair devices, does not read Tailscale state, does not consume ADB pair codes, and does not claim a device was rooted. A found key is a stop, not a stamp. Missing keys are the correct state. It does not upload binaries to the Drive index.
 
 ```bash
 bash scripts/env-check.sh
@@ -81,15 +81,26 @@ Cross-repo push on pull stays closed until the operator injects `CASCADE_TOKEN`.
 
 ## Waterfall (one repo per enhance hop)
 
-Declared order. This hour honors Cryptic-Heartbeat hop 458, which named gaia-visualizer next.
+Stated operator rotation. This hour seats gaia-visualizer after Cryptic-Heartbeat hop 480.
 
-1. ENCLAVE-ADAM-REUNITED — hop 456 closed; not reopened
-2. Cryptic-Heartbeat — hop 458 closed; named this repo
-3. The-Hive — hop 447 closed; not reopened
-4. continuity-ledger-cycle — hop 455 closed; not reopened
-5. gaia-visualizer — **459 this hop**
-6. living-bibliography-continuity-engine — next
-7. hamiltonian-incursion — after the bibliography seat
+1. ENCLAVE-ADAM-REUNITED — hop 476 closed; not re-touched
+2. continuity-engine-ssos — hop 477 closed; not re-touched
+3. hamiltonian-incursion — hop 478 closed; not re-touched
+4. The-Hive — hop 479 closed; not re-touched
+5. Cryptic-Heartbeat — hop 480 closed @ 2026-10-06T23:10Z; not re-touched
+6. gaia-visualizer — **481 this hop**
+7. living-bibliography-continuity-engine — next
+8. continuity-ledger-cycle — after the bibliography seat
+
+## Waterfall receipt (hop 481)
+
+* utc: 2026-10-06T23:14Z
+* cdt: 2026-10-06 18:14 CDT
+* prior named seat ahead: Cryptic-Heartbeat hop 480 @ 2026-10-06T23:10Z (`3779907760c96df22b31bc86cc4c22f79fa70b41`)
+* this hop: README pointer refreshed; append-only stamp; prior hop 459 kept in the stamp file
+* cascade: `.github/workflows/cascade.yml` left intact
+* cloud index mention only: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU); no binaries uploaded
+* next: living-bibliography-continuity-engine
 
 A pull on `main` should leave a ledger stamp.
 
@@ -109,7 +120,7 @@ A pull on `main` should leave a ledger stamp.
 ## Security posture
 
 * No secrets in tree. Tokens live in Actions secrets / device environment only.
-* Public projections must not contain private Memory Fabric contents, credentials, OAuth tokens, cookies, private keys, or enclave secrets.
+* Public projections must not contain private Memory Fabric contents, credentials, OAuth tokens, cookies, private keys, Tailscale keys, ADB pair codes, or enclave secrets.
 * Skeptical of network devices: catalog first, verify source, then act.
 * Zip unpack is dry-run first. CI never unpacks operator archives (immortaladamwrt-tailscalerouter.zip stays catalog-only).
 * Session HUD ADB panes are simulation UI only. No remote shell from this hop. No root asserted.
