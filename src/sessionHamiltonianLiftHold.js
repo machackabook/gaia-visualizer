@@ -1,70 +1,83 @@
-/** Stage 396 — hold hamiltonian lift sin(t) * 2 independent of idx. Document only. Paste not rewritten. No secrets. */
-export const HAMILTONIAN_LIFT_HOLD_STAGE = 396;
+/** Stage 451 — hold hamiltonian y lift as sin(t) * 2, not hScale and not minor. Document only. Do not rewrite the paste. No secrets. */
+export const HAMILTONIAN_LIFT_HOLD_STAGE = 451;
 export const HAMILTONIAN_LIFT_HOLD_SESSION_HASH = 'beec41f1';
 export const HAMILTONIAN_LIFT_HOLD_LIVING_HASH = '7cd81012';
+export const HAMILTONIAN_LIFT_HOLD_EXTRAS = ['klein', 'hopf', 'figure8', 'trefoil', 'mobius'];
 
-const PINNED_LINE = 'y = hScale * Math.sin(this.theta * 3) + (Math.sin(t) * 2);';
+const PINNED_HAMILTONIAN = [
+  "case 'hamiltonian':",
+  'const hScale = major;',
+  'x = hScale * Math.cos(this.theta * 3) * Math.cos(this.theta);',
+  'z = hScale * Math.cos(this.theta * 3) * Math.sin(this.theta);',
+  'y = hScale * Math.sin(this.theta * 3) + (Math.sin(t) * 2);',
+].join('\n');
 
-function caseBody(source, name) {
-  const re = new RegExp("case\\s*['\"]" + name + "['\"]([\\s\\S]*?)break;");
-  const hit = re.exec(source || '');
-  return hit ? hit[1] : '';
+function hasCase(source, name) {
+  return new RegExp("case\\s*['\"]" + name + "['\"]").test(source || '');
 }
 
-export function sessionHamiltonianLift(theta, t, major) {
-  const angle = Number.isFinite(theta) ? theta : 0;
-  const time = Number.isFinite(t) ? t : 0;
-  const hScale = Number.isFinite(major) ? major : 10;
-  const vertex = hScale * Math.sin(angle * 3);
-  const lift = Math.sin(time) * 2;
-  return { hScale, vertex, lift, y: vertex + lift };
+export function hamiltonianLift(theta, t, major) {
+  const hScale = major;
+  const orbit = hScale * Math.sin(theta * 3);
+  const lift = Math.sin(t) * 2;
+  return { hScale, orbit, lift, y: orbit + lift, liftUsesHScale: false, liftUsesMinor: false };
 }
 
 export function noteSessionHamiltonianLiftHold(source) {
   const pinned = source == null;
-  const text = pinned ? PINNED_LINE : String(source);
-  const yRe = /y\s*=\s*hScale\s*\*\s*Math\.sin\(this\.theta\s*\*\s*3\)\s*\+\s*\(Math\.sin\(t\)\s*\*\s*2\)/;
-  const hamiltonian = pinned ? PINNED_LINE : caseBody(text, 'hamiltonian');
-  const infinity = pinned ? '' : caseBody(text, 'infinity');
-  const torus = pinned ? '' : caseBody(text, 'torus');
-  const triangular = pinned ? '' : caseBody(text, 'triangular');
-  const hamiltonianHas = yRe.test(hamiltonian);
-  const infinityDifferent = !yRe.test(infinity);
-  const torusDifferent = !yRe.test(torus);
-  const triangularDifferent = !yRe.test(triangular);
-  const node = sessionHamiltonianLift(0, 0, 10);
-  const crest = sessionHamiltonianLift(0, Math.PI / 2, 10);
-  const trough = sessionHamiltonianLift(0, Math.PI * 1.5, 10);
-  const otherMajor = sessionHamiltonianLift(0, Math.PI / 2, 14);
-  const vertex = sessionHamiltonianLift(Math.PI / 6, Math.PI / 2, 10);
-  const near = (a, b) => Math.abs(a - b) < 1e-12;
+  const text = pinned ? PINNED_HAMILTONIAN : String(source);
+  const arm = (text.split("case 'hamiltonian':")[1] || text).split('break;')[0];
+  const scaleHeld = /const\s+hScale\s*=\s*major\s*;/.test(arm);
+  const yLine = (arm.match(/y\s*=\s*[^;]+;/) || [''])[0];
+  const liftHeld = /\(\s*Math\.sin\(t\)\s*\*\s*2\s*\)/.test(yLine);
+  const liftUnscaled = liftHeld && !/hScale\s*\*\s*Math\.sin\(t\)/.test(yLine);
+  const liftSkipsMinor = yLine.length > 0 && !/minor/.test(yLine);
+  const orbitHeld = /hScale\s*\*\s*Math\.sin\(this\.theta\s*\*\s*3\)/.test(yLine);
+  const invented = HAMILTONIAN_LIFT_HOLD_EXTRAS.filter((name) => hasCase(text, name));
+  const sample = hamiltonianLift(Math.PI / 6, Math.PI / 2, 10);
   return {
     stage: HAMILTONIAN_LIFT_HOLD_STAGE,
     session: HAMILTONIAN_LIFT_HOLD_SESSION_HASH,
     living: HAMILTONIAN_LIFT_HOLD_LIVING_HASH,
     pinned,
-    formula: 'y = hScale * sin(theta * 3) + sin(t) * 2',
-    hamiltonianHas,
-    infinityDifferent,
-    torusDifferent,
-    triangularDifferent,
-    ignoresIdx: true,
-    ignoresPhi: true,
-    ignoresMinor: true,
-    liftAmplitude: 2,
-    node,
-    crest,
-    trough,
-    otherMajor,
-    vertex,
+    scaleHeld,
+    liftHeld,
+    liftUnscaled,
+    liftSkipsMinor,
+    orbitHeld,
+    sample,
+    inventedCases: invented,
+    sessionSwitchUntouched: invented.length === 0,
     pasteRewritten: false,
     secrets: false,
-    ok: hamiltonianHas && infinityDifferent && torusDifferent && triangularDifferent
-      && near(node.lift, 0) && near(node.y, 0)
-      && near(crest.lift, 2) && near(crest.y, 2)
-      && near(trough.lift, -2)
-      && near(otherMajor.lift, crest.lift)
-      && near(vertex.vertex, 10) && near(vertex.y, 12),
-    note: 'Stage 396 holds the hamiltonian additive lift sin(t) * 2. Amplitude is fixed at 2. idx, phi, and minor do not enter the lift. Paste not rewritten.',
+    ok:
+      scaleHeld &&
+      liftHeld &&
+      liftUnscaled &&
+      liftSkipsMinor &&
+      orbitHeld &&
+      invented.length === 0 &&
+      sample.hScale === 10 &&
+      sample.lift === 2 &&
+      sample.liftUsesHScale === false &&
+      sample.liftUsesMinor === false,
+    note: 'Hamiltonian time lift stays (Math.sin(t) * 2). It does not take hScale and does not take minor. Paste not rewritten.',
+  };
+}
+
+export function compileSessionStage451(source) {
+  const hold = noteSessionHamiltonianLiftHold(source);
+  return {
+    current: HAMILTONIAN_LIFT_HOLD_STAGE,
+    session: HAMILTONIAN_LIFT_HOLD_SESSION_HASH,
+    living: HAMILTONIAN_LIFT_HOLD_LIVING_HASH,
+    paste: '2026-10-06 12:06 CDT',
+    geometries: ['infinity', 'hamiltonian', 'triangular', 'torus'],
+    hold,
+    next: [
+      { stage: 452, title: 'hold triangular sector y without theta * 5' },
+      { stage: 453, title: 'hold torus tube identity on x and z only' },
+      { stage: 454, title: 'hold infinity z as scale * sin(theta) * cos(theta) / denom' },
+    ],
   };
 }
