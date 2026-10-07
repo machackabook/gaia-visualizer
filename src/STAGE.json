@@ -1,10 +1,10 @@
 {
-  "stage": 453,
+  "stage": 463,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
-  "paste": "2026-10-06 12:06 CDT",
-  "next": [454, 455, 456],
+  "paste": "2026-10-06 22:06 CDT",
+  "next": [464, 465, 466],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stage 453 holds torus x^2 + z^2 = (major + minor * cos(phi))^2. Stage 452 holds triangular y off theta*5. Stage 451 holds hamiltonian lift sin(t)*2. Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stage 463 holds triangular tAngle as floor(theta / (2pi/3)) * (2pi/3). Stage 462 holds torus default fallthrough. Paste not rewritten."
 }
