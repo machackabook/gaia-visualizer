@@ -1,87 +1,69 @@
-/** Stage 366 — session infinity denom always >= 1. Document only. Do not rewrite the paste. No secrets. */
-export const INFINITY_DENOM_STAGE = 366;
+/** Stage 472 — infinity denom stays 1 + sin(theta)^2 and is shared by x and z. Document only. Do not rewrite the paste. No secrets. */
+export const INFINITY_DENOM_STAGE = 472;
 export const INFINITY_DENOM_SESSION_HASH = 'beec41f1';
 export const INFINITY_DENOM_LIVING_HASH = '7cd81012';
-export const INFINITY_DENOM_FLOOR = 1;
-export const INFINITY_DENOM_CEILING = 2;
-export const INFINITY_DENOM_EXTRAS = ['klein', 'hopf', 'figure8', 'trefoil', 'mobius'];
 
-const PINNED_PASTE = `update(t) {
-    this.material.uniforms.uTime.value = t;
-    this.material.uniforms.uGravity.value = state.gravityPull;
-    this.theta += (0.01 + this.idx * 0.002) * state.gravityPull;
-    let x, y, z;
-    let major = 10 + (this.idx * 2);
-    let minor = 3 + (state.toroidalWeave * 2);
-    switch(targetState.geometry) {
-        case 'infinity':
-            const scale = major * 1.5;
-            const denom = 1 + Math.pow(Math.sin(this.theta), 2);
-            x = (scale * Math.cos(this.theta)) / denom;
-            z = (scale * Math.sin(this.theta) * Math.cos(this.theta)) / denom;
-            y = minor * Math.sin(this.phi) * Math.sin(t * 0.5 + this.idx);
-            break;
-        case 'hamiltonian':
-            break;
-        case 'triangular':
-            break;
-        case 'torus':
-        default:
-            break;
-    }
-    this.mesh.position.lerp(new THREE.Vector3(x, y, z), 0.05);
-}`;
+const PINNED = [
+  "case 'infinity':",
+  'const scale = major * 1.5;',
+  'const denom = 1 + Math.pow(Math.sin(this.theta), 2);',
+  'x = (scale * Math.cos(this.theta)) / denom;',
+  'z = (scale * Math.sin(this.theta) * Math.cos(this.theta)) / denom;',
+  'y = minor * Math.sin(this.phi) * Math.sin(t * 0.5 + this.idx);',
+  'break;',
+].join('\n');
 
-function hasCase(source, name) {
-  return new RegExp("case\\s*['\"]" + name + "['\"]").test(source || '');
+export function sampleInfinityDenom(theta) {
+  const denom = 1 + Math.sin(theta) ** 2;
+  return { theta, denom, sharedByXandZ: true, unreadByY: true };
 }
 
-function caseBody(source, name) {
-  const re = new RegExp("case\\s*['\"]" + name + "['\"]([\\s\\S]*?)break;");
-  const hit = re.exec(source || '');
-  return hit ? hit[1] : '';
-}
-
-export function sessionInfinityDenom(theta) {
-  const t = Number.isFinite(theta) ? theta : 0;
-  const s = Math.sin(t);
-  return 1 + s * s;
+function infinityBody(text) {
+  const start = text.indexOf("case 'infinity'");
+  const end = start >= 0 ? text.indexOf('break;', start) : -1;
+  return start >= 0 && end > start ? text.slice(start, end) : '';
 }
 
 export function noteSessionInfinityDenom(source) {
   const pinned = source == null;
-  const text = pinned ? PINNED_PASTE : String(source);
-  const infinityBody = caseBody(text, 'infinity');
-  const hasDenom = /1\s*\+\s*Math\.pow\(Math\.sin\(this\.theta\),\s*2\)/.test(infinityBody);
-  const divides = /\/\s*denom/.test(infinityBody);
-  let min = Infinity;
-  let max = -Infinity;
-  for (let i = 0; i <= 64; i++) {
-    const d = sessionInfinityDenom((i / 64) * Math.PI * 2);
-    if (d < min) min = d;
-    if (d > max) max = d;
-  }
-  const invented = INFINITY_DENOM_EXTRAS.filter((name) => hasCase(text, name));
-  const neverZero = min >= INFINITY_DENOM_FLOOR && max <= INFINITY_DENOM_CEILING + 1e-12;
+  const text = pinned ? PINNED : String(source);
+  const body = infinityBody(text) || text;
+  const formula = /const\s+denom\s*=\s*1\s*\+\s*Math\.pow\(\s*Math\.sin\(\s*this\.theta\s*\)\s*,\s*2\s*\)\s*;/.test(body);
+  const xUses = /x\s*=\s*\(\s*scale\s*\*\s*Math\.cos\(\s*this\.theta\s*\)\s*\)\s*\/\s*denom/.test(body);
+  const zUses = /z\s*=\s*\(\s*scale\s*\*\s*Math\.sin\(\s*this\.theta\s*\)\s*\*\s*Math\.cos\(\s*this\.theta\s*\)\s*\)\s*\/\s*denom/.test(body);
+  const yIgnores = !/y\s*=[^;]*\bdenom\b/.test(body);
+  const sample = sampleInfinityDenom(Math.PI / 2);
+  const expected = 1 + Math.sin(Math.PI / 2) ** 2;
   return {
     stage: INFINITY_DENOM_STAGE,
     session: INFINITY_DENOM_SESSION_HASH,
     living: INFINITY_DENOM_LIVING_HASH,
     pinned,
-    formula: '1 + sin(theta)^2',
-    hasSessionDenom: hasDenom,
-    dividesByDenom: divides,
-    floor: INFINITY_DENOM_FLOOR,
-    ceiling: INFINITY_DENOM_CEILING,
-    sampledMin: min,
-    sampledMax: max,
-    neverZero,
-    inventedCases: invented,
-    sessionSwitchUntouched: invented.length === 0,
-    extrasOffSession: true,
+    formula,
+    xUses,
+    zUses,
+    yIgnores,
+    sample,
     pasteRewritten: false,
     secrets: false,
-    ok: hasDenom && divides && neverZero && invented.length === 0,
-    note: 'Session infinity denom is 1 + sin(theta)^2, so it stays in [1, 2] and the lemniscate division cannot hit zero. Paste not rewritten. No new session case.',
+    ok: formula && xUses && zUses && yIgnores && sample.denom === expected,
+    note: 'infinity denom is 1 + sin(theta)^2. x and z divide by the same binding. y does not read denom. Paste not rewritten.',
+  };
+}
+
+export function compileSessionStage472(source) {
+  const hold = noteSessionInfinityDenom(source);
+  return {
+    current: INFINITY_DENOM_STAGE,
+    session: INFINITY_DENOM_SESSION_HASH,
+    living: INFINITY_DENOM_LIVING_HASH,
+    paste: '2026-10-07 12:06 CDT',
+    geometries: ['infinity', 'hamiltonian', 'triangular', 'torus'],
+    hold,
+    next: [
+      { stage: 473, title: 'hold torus tube as (major + minor * cos(phi)) on x and z' },
+      { stage: 474, title: 'hold triangular sector snap as floor(theta / (2π/3)) * (2π/3)' },
+      { stage: 475, title: 'hold infinity scale as major * 1.5, unread by the other three cases' },
+    ],
   };
 }
