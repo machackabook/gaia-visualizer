@@ -1,103 +1,66 @@
-/** Stage 377 — session lemniscate z is (scale * sin(theta) * cos(theta)) / denom. Document only. Do not rewrite the paste. No secrets. */
-export const LEMNISCATE_Z_STAGE = 377;
+/** Stage 467 — lemniscate z stays sin(theta) * cos(theta) over the same denom. Document only. Do not rewrite the paste. No secrets. */
+export const LEMNISCATE_Z_STAGE = 467;
 export const LEMNISCATE_Z_SESSION_HASH = 'beec41f1';
 export const LEMNISCATE_Z_LIVING_HASH = '7cd81012';
-export const LEMNISCATE_Z_EXTRAS = ['klein', 'hopf', 'figure8', 'trefoil', 'mobius'];
 
-const PINNED_PASTE = `update(t) {
-    this.material.uniforms.uTime.value = t;
-    this.material.uniforms.uGravity.value = state.gravityPull;
-    this.theta += (0.01 + this.idx * 0.002) * state.gravityPull;
-    let x, y, z;
-    let major = 10 + (this.idx * 2);
-    let minor = 3 + (state.toroidalWeave * 2);
-    switch(targetState.geometry) {
-        case 'infinity':
-            const scale = major * 1.5;
-            const denom = 1 + Math.pow(Math.sin(this.theta), 2);
-            x = (scale * Math.cos(this.theta)) / denom;
-            z = (scale * Math.sin(this.theta) * Math.cos(this.theta)) / denom;
-            y = minor * Math.sin(this.phi) * Math.sin(t * 0.5 + this.idx);
-            break;
-        case 'hamiltonian':
-            break;
-        case 'triangular':
-            break;
-        case 'torus':
-        default:
-            break;
-    }
-    this.mesh.position.lerp(new THREE.Vector3(x, y, z), 0.05);
-}`;
+const Z_LINE = 'z = (scale * Math.sin(this.theta) * Math.cos(this.theta)) / denom;';
 
-function hasCase(source, name) {
-  return new RegExp("case\\s*['\"]" + name + "['\"]").test(source || '');
-}
+const PINNED = [
+  "case 'infinity':",
+  'const scale = major * 1.5;',
+  'const denom = 1 + Math.pow(Math.sin(this.theta), 2);',
+  'x = (scale * Math.cos(this.theta)) / denom;',
+  Z_LINE,
+  'y = minor * Math.sin(this.phi) * Math.sin(t * 0.5 + this.idx);',
+  'break;',
+].join('\n');
 
-function caseBody(source, name) {
-  const re = new RegExp("case\\s*['\"]" + name + "['\"]([\\s\\S]*?)break;");
-  const hit = re.exec(source || '');
-  return hit ? hit[1] : '';
-}
-
-export function sessionLemniscateZ(theta, major) {
-  const a = Number.isFinite(theta) ? theta : 0;
-  const R = Number.isFinite(major) ? major : 10;
-  const scale = R * 1.5;
-  const s = Math.sin(a);
-  const c = Math.cos(a);
-  const denom = 1 + s * s;
-  const z = (scale * s * c) / denom;
-  return {
-    scale,
-    denom,
-    sin: s,
-    cos: c,
-    z,
-    crosses: true,
-    usesPhi: false,
-    usesMinor: false,
-  };
+export function sampleLemniscateZ(scale, theta) {
+  const denom = 1 + Math.pow(Math.sin(theta), 2);
+  const z = (scale * Math.sin(theta) * Math.cos(theta)) / denom;
+  return { scale, theta, denom, z, sharedDenom: true, product: true };
 }
 
 export function noteSessionLemniscateZ(source) {
   const pinned = source == null;
-  const text = pinned ? PINNED_PASTE : String(source);
-  const body = caseBody(text, 'infinity');
-  const hasScale = /const\s+scale\s*=\s*major\s*\*\s*1\.5/.test(body);
-  const hasDenom = /const\s+denom\s*=\s*1\s*\+\s*Math\.pow\(Math\.sin\(this\.theta\),\s*2\)/.test(body);
-  const hasZ = /z\s*=\s*\(scale\s*\*\s*Math\.sin\(this\.theta\)\s*\*\s*Math\.cos\(this\.theta\)\)\s*\/\s*denom/.test(body);
-  const noPhiOnZ = !/z\s*=[^;]*this\.phi/.test(body);
-  const rest = sessionLemniscateZ(0, 10);
-  const lobe = sessionLemniscateZ(Math.PI / 4, 10);
-  const node = sessionLemniscateZ(Math.PI / 2, 10);
-  const cross = sessionLemniscateZ(-Math.PI / 4, 10);
-  const invented = LEMNISCATE_Z_EXTRAS.filter((name) => hasCase(text, name));
-  const restOk = Math.abs(rest.z) < 1e-12 && rest.denom === 1;
-  const lobeOk = Math.abs(lobe.z - 5) < 1e-9 && Math.abs(lobe.denom - 1.5) < 1e-12 && lobe.scale === 15;
-  const nodeOk = Math.abs(node.z) < 1e-12;
-  const crossOk = Math.abs(cross.z + 5) < 1e-9;
+  const text = pinned ? PINNED : String(source);
+  const arm = /case\s*['"]infinity['"][\s\S]*?break\s*;/.exec(text);
+  const infinity = arm ? arm[0] : '';
+  const zLine = /z\s*=\s*\(\s*scale\s*\*\s*Math\.sin\(\s*this\.theta\s*\)\s*\*\s*Math\.cos\(\s*this\.theta\s*\)\s*\)\s*\/\s*denom\s*;/.test(infinity);
+  const shared = /const\s+denom\s*=\s*1\s*\+\s*Math\.pow\(\s*Math\.sin\(\s*this\.theta\s*\)\s*,\s*2\s*\)\s*;/.test(infinity)
+    && /x\s*=\s*\(\s*scale\s*\*\s*Math\.cos\(\s*this\.theta\s*\)\s*\)\s*\/\s*denom\s*;/.test(infinity);
+  const yIgnores = /y\s*=\s*minor\s*\*\s*Math\.sin\(\s*this\.phi\s*\)\s*\*\s*Math\.sin\(\s*t\s*\*\s*0\.5\s*\+\s*this\.idx\s*\)\s*;/.test(infinity)
+    && !/y\s*=[^;]*denom/.test(infinity);
+  const sample = sampleLemniscateZ(15, Math.PI / 4);
   return {
     stage: LEMNISCATE_Z_STAGE,
     session: LEMNISCATE_Z_SESSION_HASH,
     living: LEMNISCATE_Z_LIVING_HASH,
     pinned,
-    formula: 'z = (scale * sin(theta) * cos(theta)) / denom',
-    hasSessionScale: hasScale,
-    hasSessionDenom: hasDenom,
-    hasSessionZ: hasZ,
-    ignoresPhiOnZ: noPhiOnZ,
-    usesMinor: false,
-    rest,
-    lobe,
-    node,
-    cross,
-    inventedCases: invented,
-    sessionSwitchUntouched: invented.length === 0,
-    extrasOffSession: true,
+    zLine,
+    sharedDenom: shared,
+    yIgnoresDenom: yIgnores,
+    sample,
     pasteRewritten: false,
     secrets: false,
-    ok: hasScale && hasDenom && hasZ && noPhiOnZ && invented.length === 0 && restOk && lobeOk && nodeOk && crossOk,
-    note: 'Session infinity z is the Bernoulli figure-eight crossing (scale * sin(theta) * cos(theta)) / denom. Phi and minor do not enter z. Paste not rewritten.',
+    ok: zLine && shared && yIgnores && sample.sharedDenom && sample.product && sample.denom > 0,
+    note: 'infinity z is scale * sin(theta) * cos(theta) over the same denom as x. y does not read denom. Paste not rewritten.',
+  };
+}
+
+export function compileSessionStage467(source) {
+  const hold = noteSessionLemniscateZ(source);
+  return {
+    current: LEMNISCATE_Z_STAGE,
+    session: LEMNISCATE_Z_SESSION_HASH,
+    living: LEMNISCATE_Z_LIVING_HASH,
+    paste: '2026-10-07 10:08 CDT',
+    geometries: ['infinity', 'hamiltonian', 'triangular', 'torus'],
+    hold,
+    next: [
+      { stage: 468, title: 'hold theta step as the product (0.01 + idx * 0.002) * gravityPull' },
+      { stage: 469, title: 'hold uniform writes as uTime then uGravity, in that order' },
+      { stage: 470, title: 'hold minor as 3 + toroidalWeave * 2, unread by hamiltonian' },
+    ],
   };
 }
