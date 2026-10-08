@@ -1,4 +1,4 @@
-/** Stage 385 compiled next-stage queue. Session switch stays four-case (beec41f1). Connecting chat 2026-10-02 23:06 CDT. */
+/** Stage 385 compiled next-stage queue. Session switch stays four-case (beec41f1). Connecting chat 2026-10-02 23:06 CDT. Stage 501 wires infinity-y unread-by-scale. */
 import { reuseSessionLerpTarget, SESSION_LERP } from './sessionScratchLerp.js';
 import { publicKernelEnvelope, assertPublicEnvelope } from './publicKernelEnvelope.js';
 import { samplePublicBandFidelity } from './publicBandFidelity.js';
@@ -8,6 +8,7 @@ import { sampleWeaveSliderBind } from './weaveSliderBind.js';
 import { noteSessionVector3Alloc } from './sessionVector3Alloc.js';
 import { noteSessionMajorClamp } from './sessionMajorClamp.js';
 import { noteSessionPhiStill } from './sessionPhiStill.js';
+import { noteSessionInfinityYUnreadByScale } from './sessionInfinityYUnreadByScale.js';
 import { noteSessionInfinityDenom } from './sessionInfinityDenom.js';
 import { noteSessionTriangularLattice } from './sessionTriangularLattice.js';
 import { noteSessionHamiltonianIgnore } from './sessionHamiltonianIgnore.js';
@@ -29,7 +30,7 @@ import { noteSessionTriangularZ } from './sessionTriangularZ.js';
 import { noteSessionTorusX } from './sessionTorusX.js';
 import { noteSessionTorusZ } from './sessionTorusZ.js';
 
-export { reuseSessionLerpTarget, SESSION_LERP, publicKernelEnvelope, assertPublicEnvelope, samplePublicBandFidelity, reportSessionPhiGap, sampleInstanceBandHealth, sampleWeaveSliderBind, noteSessionVector3Alloc, noteSessionMajorClamp, noteSessionPhiStill, noteSessionInfinityDenom, noteSessionTriangularLattice, noteSessionHamiltonianIgnore, noteSessionTorusPhiReuse, noteSessionTriangularFloor, noteSessionInfinityTube, noteSessionTorusFallthrough, noteSessionTriangularRipple, noteSessionInfinityScale, noteSessionHamiltonianY, noteSessionTriangularY, noteSessionLemniscateZ, noteSessionTorusY, noteSessionInfinityX, noteSessionHamiltonianX, noteSessionHamiltonianZ, noteSessionTriangularX, noteSessionTriangularZ, noteSessionTorusX, noteSessionTorusZ };
+export { reuseSessionLerpTarget, SESSION_LERP, publicKernelEnvelope, assertPublicEnvelope, samplePublicBandFidelity, reportSessionPhiGap, sampleInstanceBandHealth, sampleWeaveSliderBind, noteSessionVector3Alloc, noteSessionMajorClamp, noteSessionPhiStill, noteSessionInfinityYUnreadByScale, noteSessionInfinityDenom, noteSessionTriangularLattice, noteSessionHamiltonianIgnore, noteSessionTorusPhiReuse, noteSessionTriangularFloor, noteSessionInfinityTube, noteSessionTorusFallthrough, noteSessionTriangularRipple, noteSessionInfinityScale, noteSessionHamiltonianY, noteSessionTriangularY, noteSessionLemniscateZ, noteSessionTorusY, noteSessionInfinityX, noteSessionHamiltonianX, noteSessionHamiltonianZ, noteSessionTriangularX, noteSessionTriangularZ, noteSessionTorusX, noteSessionTorusZ };
 
 export const STAGE = 385;
 export const CHAT_KERNEL_SESSION_HASH = 'beec41f1';
@@ -47,18 +48,18 @@ export const INSTANCE_OFFSET_MIN = 4096;
 
 export const CHAT_KERNEL_NEXT_STAGES = [
   {
-    stage: 386,
-    title: 'hold session torus y unless the paste changes',
-    note: 'Already noted as minor * sin(phi) * sin(t * 0.5 + idx). Do not rewrite the paste.',
+    stage: 502,
+    title: 'hold triangular tAngle unread by the theta * 5 weave',
+    note: 'Document only. Do not rewrite the paste.',
   },
   {
-    stage: 387,
-    title: 'hold the four-case switch unless the paste adds a case',
-    note: 'Klein / hopf / figure8 / trefoil / mobius stay runtime-only. Do not rewrite the paste.',
+    stage: 503,
+    title: 'hold hamiltonian lift unread by hScale',
+    note: 'Document only. Do not rewrite the paste.',
   },
   {
-    stage: 388,
-    title: 'document tube identity x^2 + z^2 = (major + minor * cos(phi))^2',
+    stage: 504,
+    title: 'hold session lerp alpha as the literal 0.05',
     note: 'Document only. Do not rewrite the paste.',
   },
 ];
@@ -73,6 +74,7 @@ const STAGE_FLAGS = {
   vector3AllocNote: true,
   majorClampNote: true,
   phiStillNote: true,
+  infinityYUnreadNote: true,
   infinityDenomNote: true,
   triangularLatticeNote: true,
   hamiltonianIgnoreNote: true,
@@ -124,7 +126,7 @@ export function chatKernelMemoryEngram(scan) {
     tokenInEnvelope: false,
     ...STAGE_FLAGS,
     ready: !frozen,
-    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 386,
+    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 502,
   };
 }
 
@@ -141,7 +143,7 @@ export function chatKernelExtrasParity() {
       vector3HotPath: false,
       gpuTfParity: true,
     })),
-    note: 'Stage 385: torus-z note has no new case. Extras still off the session switch.',
+    note: 'Stage 501: infinity-y unread-by-scale has no new case. Extras still off the session switch.',
   };
 }
 
@@ -203,6 +205,7 @@ export function compileChatKernelNextStages(sessionSource) {
   const vector3 = noteSessionVector3Alloc(sessionSource);
   const majorClamp = noteSessionMajorClamp(sessionSource);
   const phiStill = noteSessionPhiStill(sessionSource);
+  const infinityYUnread = noteSessionInfinityYUnreadByScale(sessionSource);
   const infinityDenom = noteSessionInfinityDenom(sessionSource);
   const triangularLattice = noteSessionTriangularLattice(sessionSource);
   const hamiltonianIgnore = noteSessionHamiltonianIgnore(sessionSource);
@@ -240,6 +243,8 @@ export function compileChatKernelNextStages(sessionSource) {
     majorClampOk: majorClamp.ok,
     phiStill,
     phiStillOk: phiStill.ok,
+    infinityYUnread,
+    infinityYUnreadOk: infinityYUnread.ok,
     infinityDenom,
     infinityDenomOk: infinityDenom.ok,
     triangularLattice,
@@ -305,6 +310,7 @@ export function chatKernelHeartbeatMutation(scan) {
   const vector3 = noteSessionVector3Alloc();
   const majorClamp = noteSessionMajorClamp();
   const phiStill = noteSessionPhiStill();
+  const infinityYUnread = noteSessionInfinityYUnreadByScale();
   const infinityDenom = noteSessionInfinityDenom();
   const triangularLattice = noteSessionTriangularLattice();
   const hamiltonianIgnore = noteSessionHamiltonianIgnore();
@@ -344,6 +350,7 @@ export function chatKernelHeartbeatMutation(scan) {
     vector3AllocOk: vector3.ok,
     majorClampOk: majorClamp.ok,
     phiStillOk: phiStill.ok,
+    infinityYUnreadOk: infinityYUnread.ok,
     infinityDenomOk: infinityDenom.ok,
     triangularLatticeOk: triangularLattice.ok,
     hamiltonianIgnoreOk: hamiltonianIgnore.ok,
@@ -366,7 +373,7 @@ export function chatKernelHeartbeatMutation(scan) {
     torusZOk: torusZ.ok,
     frozen: !!src.frozen,
     energy: Number.isFinite(src.energy) ? src.energy : null,
-    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 386,
+    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 502,
   };
 }
 
@@ -392,7 +399,7 @@ export function chatKernelLedgerPulseScan(scan) {
     ready: authenticated && !frozen && (expectedSheetCount === null || sheetMatch),
     tokenInEnvelope: false,
     ...STAGE_FLAGS,
-    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 386,
+    next: CHAT_KERNEL_NEXT_STAGES[0] ? CHAT_KERNEL_NEXT_STAGES[0].stage : 502,
   };
 }
 
