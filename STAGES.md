@@ -1,8 +1,8 @@
 # Gaia visualizer + The-Hive — compiled stages
 
-Band `491-visual`. Chat kernel is the `update(t)` posted in-session (uniforms → theta → radii → geometry switch → lerp 0.05).
+Band `494-visual`. Chat kernel is the `update(t)` posted in-session (uniforms → theta → radii → geometry switch → lerp 0.05).
 Raw session kernel still allocates `new THREE.Vector3` inside lerp (hash `beec41f1`). Enhanced / live path uses a reused `_kernelTarget` / `_target`.
-Stage 491 holds minor = 3 + toroidalWeave * 2 as the only weave consumer in the radii block. Stage 490 holds the hamiltonian lift `(Math.sin(t) * 2)` unread by `hScale`. Stage 489 holds the torus tube on x and z only. Extras remain runtime-only.
+Stage 494 holds the triangular sector snap unread by the theta*5 weave. Stage 493 holds the infinity denom on x and z only. Stage 492 holds uTime then uGravity as the only material writes. Extras remain runtime-only.
 
 ## Done
 
@@ -25,20 +25,23 @@ Stage 491 holds minor = 3 + toroidalWeave * 2 as the only weave consumer in the 
 | 489 | Hold torus tube `(major + minor * cos(phi))` on x and z only (`noteSessionTorusTube`, `compileSessionStage489`). |
 | 490 | Hold hamiltonian lift `(Math.sin(t) * 2)` unread by hScale (`noteSessionHamiltonianLift`, `compileSessionStage490`). |
 | 491 | Hold minor = 3 + toroidalWeave * 2 as the only weave consumer in the radii block (`noteSessionRadiiWeave`, `compileSessionStage491`). |
+| 492 | Hold uTime then uGravity as the only material writes (`noteSessionMaterialWrites`, `compileSessionStage492`). |
+| 493 | Hold infinity denom `1 + sin(theta)^2` shared by x and z only (`noteSessionInfinityDenom`, `compileSessionStage493`). |
+| 494 | Hold triangular sector snap unread by the theta*5 weave (`noteSessionTriangularSnap`, `compileSessionStage494`). Band `compileSessionStages492to494`. |
 
 ## Next
 
 | Stage | Owner repo | Work |
 |------|------------|------|
-| 492 | gaia-visualizer | Hold uTime then uGravity as the only material writes. |
-| 493 | gaia-visualizer | Hold infinity denom `1 + sin(theta)^2` shared by x and z only. |
-| 494 | gaia-visualizer | Hold triangular sector snap unread by the theta*5 weave. |
+| 495 | gaia-visualizer | Hold shared y tube identical on infinity and torus, unread by tube radius. |
+| 496 | gaia-visualizer | Hold theta step as `(0.01 + idx * 0.002) * gravityPull`. |
+| 497 | gaia-visualizer | Hold lerp alpha as the literal 0.05. |
 | 14 | The-Hive | Memory engrams into Drive folder `CRYPTIC-HEARTBEAT-NEXUS-ROOT` |
 
 ## Drive from LLM
 
 ```js
 window.dispatchEvent(new CustomEvent('gaia:targetState', {
-  detail: { geometry: 'torus', blendFrom: 'hamiltonian', blendTo: 'torus', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 491, sourceHash: '7cd81012', sessionHash: 'beec41f1' }
+  detail: { geometry: 'torus', blendFrom: 'hamiltonian', blendTo: 'torus', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 494, sourceHash: '7cd81012', sessionHash: 'beec41f1' }
 }));
 ```
