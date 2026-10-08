@@ -1,10 +1,10 @@
 {
-  "stage": 475,
+  "stage": 499,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
-  "paste": "2026-10-07 16:06 CDT",
-  "next": [476, 477, 478],
+  "paste": "2026-10-08 16:06 CDT",
+  "next": [500, 501, 502],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stage 475 holds infinity scale as major * 1.5, unread by hamiltonian, triangular, and torus. Stage 474 holds triangular sector snap. Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stage 499 holds default as sharing the torus tube, not a fifth session case. Stage 498 holds lemniscate scale as major * 1.5, unread by minor. Paste not rewritten."
 }

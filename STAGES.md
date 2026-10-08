@@ -1,8 +1,8 @@
 # Gaia visualizer + The-Hive — compiled stages
 
-Band `498-visual`. Chat kernel is the `update(t)` posted in-session (uniforms → theta → radii → geometry switch → lerp 0.05).
+Band `499-visual`. Chat kernel is the `update(t)` posted in-session (uniforms → theta → radii → geometry switch → lerp 0.05).
 Raw session kernel still allocates `new THREE.Vector3` inside lerp (hash `beec41f1`). Enhanced / live path uses a reused `_kernelTarget` / `_target`.
-Stage 498 holds the lemniscate scale as `major * 1.5`, unread by minor. Stage 497 holds the session blend as `lerp(new THREE.Vector3(x, y, z), 0.05)` with alpha the literal `0.05`, unread by gravityPull. Stage 496 holds the theta step as `(0.01 + idx * 0.002) * gravityPull` and does not increment phi. Extras remain runtime-only.
+Stage 499 holds `case 'torus':` / `default:` as one shared tube, not a fifth session case. Stage 498 holds the lemniscate scale as `major * 1.5`, unread by minor. Stage 497 holds the session blend as `lerp(new THREE.Vector3(x, y, z), 0.05)` with alpha the literal `0.05`, unread by gravityPull. Extras remain runtime-only.
 
 ## Done
 
@@ -32,20 +32,21 @@ Stage 498 holds the lemniscate scale as `major * 1.5`, unread by minor. Stage 49
 | 496 | Hold theta step as `(0.01 + idx * 0.002) * gravityPull`; phi is not incremented (`noteSessionThetaStep`, `compileSessionStage496`). |
 | 497 | Hold lerp alpha as the literal `0.05`, unread by gravityPull (`noteSessionLerpAlphaLiteral`, `compileSessionStage497`). |
 | 498 | Hold lemniscate scale as `major * 1.5`, unread by minor (`noteSessionLemniscateScale`, `compileSessionStage498`). Band `compileSessionStages497to498`. |
+| 499 | Hold default as sharing the torus tube, not a fifth session case (`noteSessionDefaultSharesTorus`, `compileSessionStage499`). Band `compileSessionStages498to499`. |
 
 ## Next
 
 | Stage | Owner repo | Work |
 |------|------------|------|
-| 499 | gaia-visualizer | Hold default as sharing the torus tube, not a fifth session case. |
 | 500 | gaia-visualizer | Hold phi still: the session paste does not increment phi. |
 | 501 | gaia-visualizer | Hold infinity y as the shared tube, unread by scale. |
+| 502 | gaia-visualizer | Hold triangular tAngle unread by the theta * 5 weave. |
 | 14 | The-Hive | Memory engrams into Drive folder `CRYPTIC-HEARTBEAT-NEXUS-ROOT` |
 
 ## Drive from LLM
 
 ```js
 window.dispatchEvent(new CustomEvent('gaia:targetState', {
-  detail: { geometry: 'infinity', blendFrom: 'torus', blendTo: 'infinity', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 498, sourceHash: '7cd81012', sessionHash: 'beec41f1' }
+  detail: { geometry: 'torus', blendFrom: 'infinity', blendTo: 'torus', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 499, sourceHash: '7cd81012', sessionHash: 'beec41f1' }
 }));
 ```
