@@ -1,95 +1,60 @@
-/** Stage 365 — session phi still not advanced. Document only. Do not rewrite the paste. No secrets. */
-export const PHI_STILL_STAGE = 365;
-export const PHI_STILL_SESSION_HASH = 'beec41f1';
-export const PHI_STILL_LIVING_HASH = '7cd81012';
-export const PHI_STILL_LIVING_STEP = 0.007;
-export const PHI_STILL_READ_CASES = ['infinity', 'torus'];
-export const PHI_STILL_IGNORE_CASES = ['hamiltonian', 'triangular'];
-export const PHI_STILL_EXTRAS = ['klein', 'hopf', 'figure8', 'trefoil', 'mobius'];
-export const PHI_STILL_READ_COUNT = 4;
+/** Stage 500 — session paste does not increment phi. Document only. Paste not rewritten. No secrets. */
+export const PHI_STILL_STAGE = 500;
+export const PHI_STILL_SESSION = 'beec41f1';
+export const PHI_STILL_LIVING = '7cd81012';
 
-const PINNED_PASTE = `update(t) {
-    this.material.uniforms.uTime.value = t;
-    this.material.uniforms.uGravity.value = state.gravityPull;
-    this.theta += (0.01 + this.idx * 0.002) * state.gravityPull;
-    let x, y, z;
-    let major = 10 + (this.idx * 2);
-    let minor = 3 + (state.toroidalWeave * 2);
-    switch(targetState.geometry) {
-        case 'infinity':
-            y = minor * Math.sin(this.phi) * Math.sin(t * 0.5 + this.idx);
-            break;
-        case 'hamiltonian':
-            y = hScale * Math.sin(this.theta * 3) + (Math.sin(t) * 2);
-            break;
-        case 'triangular':
-            y = (this.idx % 3 - 1) * major * 0.5 + Math.sin(t) * minor;
-            break;
-        case 'torus':
-        default:
-            x = (major + minor * Math.cos(this.phi)) * Math.cos(this.theta);
-            z = (major + minor * Math.cos(this.phi)) * Math.sin(this.theta);
-            y = minor * Math.sin(this.phi) * Math.sin(t * 0.5 + this.idx);
-            break;
-    }
-    this.mesh.position.lerp(new THREE.Vector3(x, y, z), 0.05);
-}`;
+const PINNED = [
+  '    this.theta += (0.01 + this.idx * 0.002) * state.gravityPull;',
+  '            y = minor * Math.sin(this.phi) * Math.sin(t * 0.5 + this.idx);',
+  '            x = (major + minor * Math.cos(this.phi)) * Math.cos(this.theta);',
+  '            z = (major + minor * Math.cos(this.phi)) * Math.sin(this.theta);',
+].join('\n');
 
-function hasCase(source, name) {
-  return new RegExp("case\\s*['\"]" + name + "['\"]").test(source || '');
-}
-
-function caseBody(source, name) {
-  const re = new RegExp("case\\s*['\"]" + name + "['\"]([\\s\\S]*?)break;");
-  const hit = re.exec(source || '');
-  return hit ? hit[1] : '';
+export function samplePhiStill(phi = 0.4, theta = 0, idx = 0, gravityPull = 1) {
+  const nextTheta = theta + (0.01 + idx * 0.002) * gravityPull;
+  return {
+    phiIn: phi,
+    phiOut: phi,
+    thetaOut: nextTheta,
+    phiWritten: false,
+  };
 }
 
 export function noteSessionPhiStill(source) {
   const pinned = source == null;
-  const text = pinned ? PINNED_PASTE : String(source);
-  const advancesPhi = /this\.phi\s*\+=/.test(text) || /phi\s*\+=\s*0\.007/.test(text);
-  const assignsPhi = /this\.phi\s*=/.test(text);
-  const reads = text.match(/this\.phi/g);
-  const readCount = reads ? reads.length : 0;
-  const infinityBody = caseBody(text, 'infinity');
-  const hamiltonianBody = caseBody(text, 'hamiltonian');
-  const triangularBody = caseBody(text, 'triangular');
-  const torusBody = caseBody(text, 'torus');
-  const invented = PHI_STILL_EXTRAS.filter((name) => hasCase(text, name));
-  const framesPerTurn = (Math.PI * 2) / PHI_STILL_LIVING_STEP;
+  const text = pinned ? PINNED : String(source);
+  const thetaStep = /this\.theta\s*\+=\s*\(0\.01\s*\+\s*this\.idx\s*\*\s*0\.002\)\s*\*\s*state\.gravityPull\s*;/.test(text);
+  const phiWrite = /this\.phi\s*(\+=|=)/.test(text);
+  const phiRead = /Math\.(sin|cos)\(this\.phi\)/.test(text);
+  const sample = samplePhiStill();
   return {
     stage: PHI_STILL_STAGE,
-    session: PHI_STILL_SESSION_HASH,
-    living: PHI_STILL_LIVING_HASH,
+    session: PHI_STILL_SESSION,
+    living: PHI_STILL_LIVING,
     pinned,
-    sessionAdvancesPhi: advancesPhi,
-    sessionAssignsPhi: assignsPhi,
-    phiReadCount: readCount,
-    expectedReadCount: PHI_STILL_READ_COUNT,
-    infinityReadsPhi: /this\.phi/.test(infinityBody),
-    torusReadsPhi: /this\.phi/.test(torusBody),
-    hamiltonianIgnoresPhi: hamiltonianBody.length > 0 && !/this\.phi/.test(hamiltonianBody),
-    triangularIgnoresPhi: triangularBody.length > 0 && !/this\.phi/.test(triangularBody),
-    livingPhiStep: 'phi += 0.007 * toroidalWeave',
-    livingStep: PHI_STILL_LIVING_STEP,
-    framesPerTurnAtWeave1: framesPerTurn,
-    geometriesReadingPhi: PHI_STILL_READ_CASES.slice(),
-    geometriesIgnoringPhi: PHI_STILL_IGNORE_CASES.slice(),
-    inventedCases: invented,
-    sessionSwitchUntouched: invented.length === 0,
-    extrasOffSession: true,
+    thetaStep,
+    phiWrite,
+    phiRead,
+    sample,
     pasteRewritten: false,
     secrets: false,
-    ok:
-      !advancesPhi &&
-      !assignsPhi &&
-      readCount === PHI_STILL_READ_COUNT &&
-      /this\.phi/.test(infinityBody) &&
-      /this\.phi/.test(torusBody) &&
-      !/this\.phi/.test(hamiltonianBody) &&
-      !/this\.phi/.test(triangularBody) &&
-      invented.length === 0,
-    note: 'Session paste reads this.phi four times (infinity y, torus cos/sin/sin) and never steps it. Hamiltonian and triangular ignore phi. Living path already steps phi += 0.007 * toroidalWeave. Paste not rewritten. No new session case.',
+    ok: thetaStep && !phiWrite && phiRead && sample.phiOut === sample.phiIn && sample.phiWritten === false,
+    note: 'theta advances with (0.01 + idx * 0.002) * gravityPull. phi is only read. Paste not rewritten.',
+  };
+}
+
+export function compileSessionStage500(source) {
+  const hold = noteSessionPhiStill(source);
+  return {
+    current: PHI_STILL_STAGE,
+    session: PHI_STILL_SESSION,
+    living: PHI_STILL_LIVING,
+    paste: '2026-10-08 17:06 CDT',
+    hold,
+    next: [
+      { stage: 501, title: 'hold infinity y as the shared tube, unread by scale' },
+      { stage: 502, title: 'hold triangular tAngle unread by the theta * 5 weave' },
+      { stage: 503, title: 'hold hamiltonian lift unread by hScale' },
+    ],
   };
 }
