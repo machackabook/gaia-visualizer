@@ -1,63 +1,56 @@
-/** Stage 466 — lerp alpha stays the literal 0.05, unscaled by gravityPull. Document only. Do not rewrite the paste. No secrets. */
-export const LERP_ALPHA_STAGE = 466;
+/** Stage 482 — session lerp alpha stays 0.05 and is the only blend into the geometric target. Document only. Do not rewrite the paste. No secrets. */
+export const LERP_ALPHA_STAGE = 482;
 export const LERP_ALPHA_SESSION_HASH = 'beec41f1';
 export const LERP_ALPHA_LIVING_HASH = '7cd81012';
-
-const LERP_LINE = 'this.mesh.position.lerp(new THREE.Vector3(x, y, z), 0.05);';
+export const LERP_ALPHA = 0.05;
 
 const PINNED = [
-  'this.material.uniforms.uTime.value = t;',
-  'this.material.uniforms.uGravity.value = state.gravityPull;',
-  'this.theta += (0.01 + this.idx * 0.002) * state.gravityPull;',
-  LERP_LINE,
+  "this.mesh.position.lerp(new THREE.Vector3(x, y, z), 0.05);",
 ].join('\n');
 
-export function sampleLerpAlpha(gravityPull) {
-  const alpha = 0.05;
+export function sampleLerpAlpha() {
   return {
-    alpha,
-    gravityPull,
-    literal: alpha === 0.05,
-    scaledByGravity: false,
+    alpha: LERP_ALPHA,
+    allocatesVector3: true,
+    otherBlends: 0,
   };
 }
 
 export function noteSessionLerpAlpha(source) {
   const pinned = source == null;
   const text = pinned ? PINNED : String(source);
-  const literal = /this\.mesh\.position\.lerp\(\s*new\s+THREE\.Vector3\(\s*x\s*,\s*y\s*,\s*z\s*\)\s*,\s*0\.05\s*\)\s*;/.test(text);
-  const scaled = /\.lerp\([\s\S]{0,180}gravityPull/.test(text);
-  const allocates = /new\s+THREE\.Vector3\(\s*x\s*,\s*y\s*,\s*z\s*\)/.test(text);
-  const sample = sampleLerpAlpha(1);
+  const lerpLine = /this\.mesh\.position\.lerp\(\s*new\s+THREE\.Vector3\(\s*x\s*,\s*y\s*,\s*z\s*\)\s*,\s*0\.05\s*\)\s*;/.test(text);
+  const singleLerp = (text.match(/\.lerp\(/g) || []).length <= 1;
+  const noSet = !/this\.mesh\.position\.set\(/.test(text);
+  const sample = sampleLerpAlpha();
   return {
     stage: LERP_ALPHA_STAGE,
     session: LERP_ALPHA_SESSION_HASH,
     living: LERP_ALPHA_LIVING_HASH,
     pinned,
-    literal,
-    unscaled: literal && !scaled,
-    allocates,
+    lerpLine,
+    singleLerp,
+    noSet,
     sample,
     pasteRewritten: false,
     secrets: false,
-    ok: literal && !scaled && allocates && sample.alpha === 0.05 && sample.literal && !sample.scaledByGravity,
-    note: 'lerp alpha is the literal 0.05. gravityPull does not scale it. Paste still allocates Vector3 inside lerp. Paste not rewritten.',
+    ok: lerpLine && singleLerp && noSet && sample.alpha === 0.05,
+    note: 'session blend is lerp(new THREE.Vector3(x, y, z), 0.05). Living path may reuse _kernelTarget. Paste not rewritten.',
   };
 }
 
-export function compileSessionStage466(source) {
+export function compileSessionStage482(source) {
   const hold = noteSessionLerpAlpha(source);
   return {
     current: LERP_ALPHA_STAGE,
     session: LERP_ALPHA_SESSION_HASH,
     living: LERP_ALPHA_LIVING_HASH,
-    paste: '2026-10-07 10:08 CDT',
-    geometries: ['infinity', 'hamiltonian', 'triangular', 'torus'],
+    paste: '2026-10-07 19:07 CDT',
     hold,
     next: [
-      { stage: 467, title: 'hold lemniscate z as sin(theta) * cos(theta) over the same denom' },
-      { stage: 468, title: 'hold theta step as the product (0.01 + idx * 0.002) * gravityPull' },
-      { stage: 469, title: 'hold uniform writes as uTime then uGravity, in that order' },
+      { stage: 483, title: 'hold major = 10 + idx * 2 and minor = 3 + toroidalWeave * 2 as the shared radii before the switch' },
+      { stage: 484, title: 'hold uniforms uTime and uGravity as the only material writes in update(t)' },
+      { stage: 485, title: 'hold switch(targetState.geometry) as the only case dispatch' },
     ],
   };
 }
