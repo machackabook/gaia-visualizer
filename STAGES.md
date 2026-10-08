@@ -1,8 +1,8 @@
 # Gaia visualizer + The-Hive — compiled stages
 
-Band `495-visual`. Chat kernel is the `update(t)` posted in-session (uniforms → theta → radii → geometry switch → lerp 0.05).
+Band `496-visual`. Chat kernel is the `update(t)` posted in-session (uniforms → theta → radii → geometry switch → lerp 0.05).
 Raw session kernel still allocates `new THREE.Vector3` inside lerp (hash `beec41f1`). Enhanced / live path uses a reused `_kernelTarget` / `_target`.
-Stage 495 holds the shared y tube identical on infinity and torus, unread by tube radius. Stage 494 holds the triangular sector snap unread by the theta*5 weave. Stage 493 holds the infinity denom on x and z only. Extras remain runtime-only.
+Stage 496 holds the theta step as `(0.01 + idx * 0.002) * gravityPull` and does not increment phi. Stage 495 holds the shared y tube identical on infinity and torus, unread by tube radius. Stage 494 holds the triangular sector snap unread by the theta*5 weave. Extras remain runtime-only.
 
 ## Done
 
@@ -29,20 +29,21 @@ Stage 495 holds the shared y tube identical on infinity and torus, unread by tub
 | 493 | Hold infinity denom `1 + sin(theta)^2` shared by x and z only (`noteSessionInfinityDenom`, `compileSessionStage493`). |
 | 494 | Hold triangular sector snap unread by the theta*5 weave (`noteSessionTriangularSnap`, `compileSessionStage494`). Band `compileSessionStages492to494`. |
 | 495 | Hold shared y tube identical on infinity and torus, unread by tube radius (`noteSessionSharedYUnread`, `compileSessionStage495`). |
+| 496 | Hold theta step as `(0.01 + idx * 0.002) * gravityPull`; phi is not incremented (`noteSessionThetaStep`, `compileSessionStage496`). |
 
 ## Next
 
 | Stage | Owner repo | Work |
 |------|------------|------|
-| 496 | gaia-visualizer | Hold theta step as `(0.01 + idx * 0.002) * gravityPull`. |
 | 497 | gaia-visualizer | Hold lerp alpha as the literal 0.05. |
 | 498 | gaia-visualizer | Hold lemniscate scale as `major * 1.5`, unread by minor. |
+| 499 | gaia-visualizer | Hold default as sharing the torus tube, not a fifth session case. |
 | 14 | The-Hive | Memory engrams into Drive folder `CRYPTIC-HEARTBEAT-NEXUS-ROOT` |
 
 ## Drive from LLM
 
 ```js
 window.dispatchEvent(new CustomEvent('gaia:targetState', {
-  detail: { geometry: 'torus', blendFrom: 'hamiltonian', blendTo: 'torus', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 495, sourceHash: '7cd81012', sessionHash: 'beec41f1' }
+  detail: { geometry: 'torus', blendFrom: 'hamiltonian', blendTo: 'torus', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 496, sourceHash: '7cd81012', sessionHash: 'beec41f1' }
 }));
 ```
