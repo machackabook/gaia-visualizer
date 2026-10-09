@@ -10,15 +10,15 @@ Team Enhance hops one repo per run. Equalizer formats only. No history rewrite. 
 * Branch: main
 * Language: JavaScript (Vite 5 / three ^0.169)
 * Numeral: 137451921129154222
-* Stage: **538** — 2026-10-09T04:11Z (2026-10-08 23:11 CDT)
+* Stage: **546** — 2026-10-09T13:15Z (2026-10-09 08:15 CDT)
 * Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
 * Compounding tier: **T5 / 99%**
-* Prior local: hop 531 @ 2026-10-08T23:12Z (stamp preserved, not rewritten)
-* Sibling pulse: Cryptic-Heartbeat hop 537 @ 2026-10-09T04:09Z (`d983d8fe442fbbab0135a00a9fe9ee9dc71845f5`) closed and named gaia-visualizer next. Honored. Not re-touched.
-* Closed already this cycle: ENCLAVE-ADAM-REUNITED hop 533, continuity-engine-ssos hop 534, hamiltonian-incursion hop 535, The-Hive hop 536, Cryptic-Heartbeat hop 537
-* Declared waterfall: ENCLAVE-ADAM-REUNITED → continuity-engine-ssos → hamiltonian-incursion → The-Hive → Cryptic-Heartbeat → gaia-visualizer → living-bibliography-continuity-engine → continuity-ledger-cycle
-* This hop: README waterfall receipt refreshed to hop 538. Env-check note restated as a tree gate only. Session switch not rewritten. cascade.yml left intact (hourly cron `53 * * * *`, `contents: read`). No secrets written. No device rooted.
-* Next in waterfall: living-bibliography-continuity-engine
+* Prior local: hop 538 @ 2026-10-09T04:11Z (stamp preserved, not rewritten)
+* Sibling pulse: continuity-ledger-cycle hop 545 @ 2026-10-09T12:15Z (`da6fb1a30bedf0e629b19ae58817e64772035289`) closed and named gaia-visualizer next. Honored. Not re-touched.
+* Closed already this cycle: ENCLAVE-ADAM-REUNITED hop 542, Cryptic-Heartbeat hop 543, The-Hive hop 544, continuity-ledger-cycle hop 545
+* Declared waterfall: ENCLAVE-ADAM-REUNITED → Cryptic-Heartbeat → The-Hive → continuity-ledger-cycle → gaia-visualizer → ENCLAVE-ADAM-REUNITED
+* This hop: README waterfall receipt refreshed to hop 546. Env-check note restated as a tree gate only. Session switch not rewritten. cascade.yml left intact (hourly cron `53 * * * *`, `contents: read`). No secrets written. No device rooted.
+* Next in waterfall: ENCLAVE-ADAM-REUNITED
 * Cascade: `.github/workflows/cascade.yml` left intact. Not rewritten this hop. No second hourly YAML.
 * Ledger: `docs/LEDGER-STAMP.md`
 * Cloud index (mention only, no binary upload): Drive folder `CONTINUUM-ENCLAVE-137451921129154222` id `1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU`
@@ -62,7 +62,7 @@ npm install
 npm run dev
 ```
 
-Env-check note (hop 538): `scripts/env-check.sh` fails closed if `README.md` is missing, if `HEAD` SHA is empty, or if the numeral `137451921129154222` is absent from the tree. A zero exit means the docs surface is present. It is a tree gate only. It does not pair devices, does not read Tailscale state, does not consume ADB pair codes, and does not claim a device was rooted. A found key is a stop, not a stamp. Missing keys are the correct state. It does not upload binaries to the Drive index. Do not run the installer from CI. This hop does not probe wireless debugging and does not open a Tailscale socket.
+Env-check note (hop 546): `scripts/env-check.sh` fails closed if `README.md` is missing, if `HEAD` SHA is empty, or if the numeral `137451921129154222` is absent from the tree. A zero exit means the docs surface is present. It is a tree gate only. It does not pair devices, does not read Tailscale state, does not consume ADB pair codes, and does not claim a device was rooted. A found key is a stop, not a stamp. Missing keys are the correct state. It does not upload binaries to the Drive index. Do not run the installer from CI. This hop does not probe wireless debugging and does not open a Tailscale socket.
 
 ```bash
 bash scripts/env-check.sh
@@ -82,26 +82,24 @@ Cross-repo push on pull stays closed until the operator injects `CASCADE_TOKEN`.
 
 ## Waterfall (one repo per enhance hop)
 
-Stated operator rotation. This hour seats gaia-visualizer after Cryptic-Heartbeat closed.
+Stated operator rotation. This hour seats gaia-visualizer after continuity-ledger-cycle closed.
 
-1. ENCLAVE-ADAM-REUNITED — hop 533 closed; not re-touched
-2. continuity-engine-ssos — hop 534 closed; not re-touched
-3. hamiltonian-incursion — hop 535 closed; not re-touched
-4. The-Hive — hop 536 closed; not re-touched
-5. Cryptic-Heartbeat — hop 537 closed @ 2026-10-09T04:09Z (`d983d8fe442fbbab0135a00a9fe9ee9dc71845f5`); not re-touched
-6. gaia-visualizer — **538 this hop**
-7. living-bibliography-continuity-engine — next
-8. continuity-ledger-cycle — later in the ring; not this run
+1. ENCLAVE-ADAM-REUNITED — hop 542 closed; not re-touched
+2. Cryptic-Heartbeat — hop 543 closed; not re-touched
+3. The-Hive — hop 544 closed; not re-touched
+4. continuity-ledger-cycle — hop 545 closed @ 2026-10-09T12:15Z (`da6fb1a30bedf0e629b19ae58817e64772035289`); not re-touched
+5. gaia-visualizer — **546 this hop**
+6. ENCLAVE-ADAM-REUNITED — next hour; ring restarts
 
-## Waterfall receipt (hop 538)
+## Waterfall receipt (hop 546)
 
-* utc: 2026-10-09T04:11Z
-* cdt: 2026-10-08 23:11 CDT
-* prior named seat: Cryptic-Heartbeat hop 537 @ 2026-10-09T04:09Z (`d983d8fe442fbbab0135a00a9fe9ee9dc71845f5`)
-* this hop: README pointer refreshed; append-only stamp; prior hop 531 kept in the stamp file
+* utc: 2026-10-09T13:15Z
+* cdt: 2026-10-09 08:15 CDT
+* prior named seat: continuity-ledger-cycle hop 545 @ 2026-10-09T12:15Z (`da6fb1a30bedf0e629b19ae58817e64772035289`)
+* this hop: README pointer refreshed; append-only stamp; prior hop 538 kept in the stamp file
 * cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`). Not rewritten.
 * cloud index mention only: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU); no binaries uploaded
-* next: living-bibliography-continuity-engine
+* next: ENCLAVE-ADAM-REUNITED
 
 A pull on `main` should leave a ledger stamp.
 
