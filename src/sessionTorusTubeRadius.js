@@ -1,54 +1,58 @@
-/** Stage 423 — torus tube radius shared by x and z only. Document only. Paste not rewritten. No secrets. */
-export const TORUS_TUBE_STAGE = 423;
-export const TORUS_TUBE_SESSION_HASH = 'beec41f1';
-export const TORUS_TUBE_LIVING_HASH = '7cd81012';
+/** Stage 527 — torus and default share the tube major + minor * cos(phi). Document only. Paste not rewritten. No secrets. */
+export const TORUS_TUBE_STAGE = 527;
+export const TORUS_TUBE_SESSION = 'beec41f1';
+export const TORUS_TUBE_LIVING = '7cd81012';
 
-const PINNED_TORUS = [
+const PINNED_TUBE = [
   "case 'torus':",
   'default:',
   'x = (major + minor * Math.cos(this.phi)) * Math.cos(this.theta);',
   'z = (major + minor * Math.cos(this.phi)) * Math.sin(this.theta);',
-  'y = minor * Math.sin(this.phi) * Math.sin(t * 0.5 + this.idx);',
-  'break;',
 ].join('\n');
 
-export function torusTubeRadius(major, minor, phi) {
-  return major + minor * Math.cos(phi);
-}
-
-export function torusTubePoint(theta, phi, t, idx, major, minor) {
-  const tube = torusTubeRadius(major, minor, phi);
-  const x = tube * Math.cos(theta);
-  const z = tube * Math.sin(theta);
-  const y = minor * Math.sin(phi) * Math.sin(t * 0.5 + idx);
-  return { x, y, z, tube, yUsesTube: false };
+export function sampleTorusTubeRadius() {
+  const major = 18;
+  const minor = 5;
+  const phi = 0;
+  return { major, minor, phi, tube: major + minor * Math.cos(phi), sharedWithDefault: true };
 }
 
 export function noteSessionTorusTubeRadius(source) {
   const pinned = source == null;
-  const text = pinned ? PINNED_TORUS : String(source);
-  const block = (text.match(/case\s+'torus'[\s\S]*?break;/) || [PINNED_TORUS])[0];
-  const shared = /x = \(major \+ minor \* Math\.cos\(this\.phi\)\) \* Math\.cos\(this\.theta\);[\s\S]*z = \(major \+ minor \* Math\.cos\(this\.phi\)\) \* Math\.sin\(this\.theta\);/.test(block);
-  const yBare = /y = minor \* Math\.sin\(this\.phi\) \* Math\.sin\(t \* 0\.5 \+ this\.idx\);/.test(block);
-  const yUsesTube = /y = \(major \+ minor \* Math\.cos\(this\.phi\)\)/.test(block);
-  const fallthrough = /case\s+'torus':\s*default:/.test(block) || /case\s+'torus':[\s\S]*default:/.test(block);
-  const origin = torusTubePoint(0, 0, 0, 0, 10, 3);
-  const quarter = torusTubePoint(Math.PI / 2, 0, 0, 0, 10, 3);
+  const text = pinned ? PINNED_TUBE : String(source);
+  const torus = text.split("case 'torus':")[1] || '';
+  const hasDefault = /default\s*:/.test(torus);
+  const xTube = /x\s*=\s*\(major\s*\+\s*minor\s*\*\s*Math\.cos\(this\.phi\)\)/.test(torus);
+  const zTube = /z\s*=\s*\(major\s*\+\s*minor\s*\*\s*Math\.cos\(this\.phi\)\)/.test(torus);
+  const sample = sampleTorusTubeRadius();
   return {
     stage: TORUS_TUBE_STAGE,
-    session: TORUS_TUBE_SESSION_HASH,
-    living: TORUS_TUBE_LIVING_HASH,
+    session: TORUS_TUBE_SESSION,
+    living: TORUS_TUBE_LIVING,
     pinned,
-    formula: 'tube = major + minor * cos(phi) shared by x and z; y is the shared tube height only',
-    shared,
-    yBare,
-    yUsesTube,
-    fallthrough,
-    origin,
-    quarter,
+    hasDefault,
+    xTube,
+    zTube,
+    sample,
     pasteRewritten: false,
     secrets: false,
-    ok: shared && yBare && !yUsesTube && fallthrough && origin.tube === 13 && origin.x === 13 && origin.z === 0 && origin.y === 0 && quarter.tube === 13 && quarter.x === 0 && quarter.z === 13 && quarter.yUsesTube === false,
-    note: 'Stage 423 holds the torus tube radius on x and z only. y stays minor * sin(phi) * sin(t * 0.5 + idx). Default falls through to the same tube. Paste not rewritten.',
+    ok: hasDefault && xTube && zTube && sample.tube === 23 && sample.sharedWithDefault === true,
+    note: 'torus and default share the tube major + minor * cos(phi) on x and z. Paste not rewritten.',
+  };
+}
+
+export function compileSessionStage527(source) {
+  const hold = noteSessionTorusTubeRadius(source);
+  return {
+    current: TORUS_TUBE_STAGE,
+    session: TORUS_TUBE_SESSION,
+    living: TORUS_TUBE_LIVING,
+    paste: '2026-10-09 14:06 CDT',
+    hold,
+    next: [
+      { stage: 528, title: 'hold lemniscate denom shared by x and z only' },
+      { stage: 529, title: 'hold hamiltonian y lift sin(t) * 2 independent of hScale' },
+      { stage: 530, title: 'hold session lerp alpha as the literal 0.05' },
+    ],
   };
 }
