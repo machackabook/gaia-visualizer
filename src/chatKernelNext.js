@@ -32,6 +32,7 @@ import { noteSessionTorusZ } from './sessionTorusZ.js';
 import { chatKernelStage505Notes, CHAT_KERNEL_STAGE_505_NEXT } from './chatKernelStage505Bind.js';
 
 export { reuseSessionLerpTarget, SESSION_LERP, publicKernelEnvelope, assertPublicEnvelope, samplePublicBandFidelity, reportSessionPhiGap, sampleInstanceBandHealth, sampleWeaveSliderBind, noteSessionVector3Alloc, noteSessionMajorClamp, noteSessionPhiStill, noteSessionInfinityYUnreadByScale, noteSessionInfinityDenom, noteSessionTriangularLattice, noteSessionHamiltonianIgnore, noteSessionTorusPhiReuse, noteSessionTriangularFloor, noteSessionInfinityTube, noteSessionTorusFallthrough, noteSessionTriangularRipple, noteSessionInfinityScale, noteSessionHamiltonianY, noteSessionTriangularY, noteSessionLemniscateZ, noteSessionTorusY, noteSessionInfinityX, noteSessionHamiltonianX, noteSessionHamiltonianZ, noteSessionTriangularX, noteSessionTriangularZ, noteSessionTorusX, noteSessionTorusZ };
+export { chatKernelFourGovernors, chatKernelMemoryEngram, chatKernelExtrasParity, chatKernelWeaveSliders, chatKernelHudCatalogBind, compileChatKernelNextStages, chatKernelHeartbeatMutation, chatKernelLedgerPulseScan, pairBlendChatKernelGeometries } from './chatKernelNextTail.js';
 
 export const STAGE = 385;
 export const CHAT_KERNEL_SESSION_HASH = 'beec41f1';
@@ -46,10 +47,9 @@ export const CHAT_KERNEL_ENGRAM_FOLDER = 'CRYPTIC-HEARTBEAT-NEXUS-ROOT';
 export const GPU_AUTO_THRESHOLD = 1024;
 export const NODE_CAP = 16384;
 export const INSTANCE_OFFSET_MIN = 4096;
-
 export const CHAT_KERNEL_NEXT_STAGES = CHAT_KERNEL_STAGE_505_NEXT;
 
-const STAGE_FLAGS = {
+export const STAGE_FLAGS = {
   scratchLerp: true,
   publicEnvelope: true,
   fidelitySample: true,
