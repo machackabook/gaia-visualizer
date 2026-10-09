@@ -1,54 +1,66 @@
-/** Stage 507 — theta step is (0.01 + idx * 0.002) * gravityPull. Phi is not incremented. Document only. Paste not rewritten. No secrets. */
-export const THETA_STEP_HOLD_STAGE = 507;
+/** Stage 531 — theta step stays (0.01 + idx * 0.002) * gravityPull. Document only. Paste not rewritten. No secrets. */
+export const THETA_STEP_HOLD_STAGE = 531;
 export const THETA_STEP_HOLD_SESSION = 'beec41f1';
 export const THETA_STEP_HOLD_LIVING = '7cd81012';
 
-const STEP = 'this.theta += (0.01 + this.idx * 0.002) * state.gravityPull;';
+const PINNED_THETA = 'this.theta += (0.01 + this.idx * 0.002) * state.gravityPull;';
 
 export function sampleThetaStepHold(idx = 4, gravityPull = 1.4) {
-  const step = (0.01 + idx * 0.002) * gravityPull;
+  const base = 0.01 + idx * 0.002;
   return {
     idx,
     gravityPull,
-    step,
-    phiIncremented: false,
+    base,
+    step: base * gravityPull,
+    idxInsideParens: true,
+    pullIsMultiplier: true,
+    readsPhi: false,
   };
 }
 
 export function noteSessionThetaStepHold(source) {
   const pinned = source == null;
-  const text = pinned ? STEP : String(source);
-  const stepAt = text.indexOf(STEP);
-  const phiAssign = /this\.phi\s*\+=/.test(text);
+  const text = pinned ? PINNED_THETA : String(source);
+  const form = /this\.theta \+= \(0\.01 \+ this\.idx \* 0\.002\) \* state\.gravityPull;/.test(text);
+  const idxOutside = /this\.theta \+= \(0\.01\) \* this\.idx/.test(text);
+  const pullAdded = /this\.theta \+= \(0\.01 \+ this\.idx \* 0\.002 \+ state\.gravityPull\)/.test(text);
+  const readsPhi = /this\.theta[^\n]*this\.phi/.test(text);
   const sample = sampleThetaStepHold();
-  const product = Math.abs(sample.step - 0.0252) < 1e-12;
+  const near = (a, b) => Math.abs(a - b) < 1e-12;
   return {
     stage: THETA_STEP_HOLD_STAGE,
     session: THETA_STEP_HOLD_SESSION,
     living: THETA_STEP_HOLD_LIVING,
     pinned,
-    stepAt,
-    phiAssign,
+    form,
+    idxOutside,
+    pullAdded,
+    readsPhi,
     sample,
     pasteRewritten: false,
     secrets: false,
-    ok: stepAt >= 0 && phiAssign === false && product && sample.phiIncremented === false,
-    note: 'theta advances by (0.01 + idx * 0.002) * gravityPull only. phi is not incremented. Paste not rewritten.',
+    ok: form && !idxOutside && !pullAdded && !readsPhi
+      && sample.idxInsideParens === true
+      && sample.pullIsMultiplier === true
+      && sample.readsPhi === false
+      && near(sample.base, 0.018)
+      && near(sample.step, 0.0252),
+    note: 'theta step stays (0.01 + this.idx * 0.002) * state.gravityPull. idx stays inside the parentheses. gravityPull multiplies; it is not added. phi is not in the step. Paste not rewritten.',
   };
 }
 
-export function compileSessionStage507(source) {
+export function compileSessionStage531(source) {
   const hold = noteSessionThetaStepHold(source);
   return {
     current: THETA_STEP_HOLD_STAGE,
     session: THETA_STEP_HOLD_SESSION,
     living: THETA_STEP_HOLD_LIVING,
-    paste: '2026-10-08 21:06 CDT',
+    paste: '2026-10-09 17:07 CDT',
     hold,
     next: [
-      { stage: 508, title: 'hold uniform writes as uTime then uGravity only' },
-      { stage: 509, title: 'hold infinity denom 1 + sin(theta)^2 shared by x and z only' },
-      { stage: 510, title: 'hold triangular sector snap unread by the theta*5 weave' },
+      { stage: 532, title: 'hold minor as 3 + (toroidalWeave * 2) before the switch' },
+      { stage: 533, title: 'hold phi read-only in the session paste' },
+      { stage: 534, title: 'hold major parentheses form 10 + (idx * 2) distinct from the 0.002 theta coefficient' },
     ],
   };
 }
