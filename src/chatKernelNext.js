@@ -1,4 +1,4 @@
-/** Stage 385 compiled next-stage queue. Session switch stays four-case (beec41f1). Connecting chat 2026-10-09 10:16 CDT. Stage 520 wires gravityPull as the theta multiplier, phi read-only, and the idx 0.002 term inside the theta step. */
+/** Stage 385 compiled next-stage queue. Session switch stays four-case (beec41f1). Connecting chat 2026-10-09 11:07 CDT. Stage 521 wires uGravity as a copy of gravityPull, not a second multiplier. */
 import { reuseSessionLerpTarget, SESSION_LERP } from './sessionScratchLerp.js';
 import { publicKernelEnvelope, assertPublicEnvelope } from './publicKernelEnvelope.js';
 import { samplePublicBandFidelity } from './publicBandFidelity.js';
@@ -35,10 +35,11 @@ import { chatKernelStage511Notes, CHAT_KERNEL_STAGE_511_NEXT } from './chatKerne
 import { chatKernelStage514Notes, CHAT_KERNEL_STAGE_514_NEXT } from './chatKernelStage514Bind.js';
 import { chatKernelStage517Notes, CHAT_KERNEL_STAGE_517_NEXT } from './chatKernelStage517Bind.js';
 import { chatKernelStage520Notes, CHAT_KERNEL_STAGE_520_NEXT } from './chatKernelStage520Bind.js';
+import { chatKernelStage521Notes, CHAT_KERNEL_STAGE_521_NEXT } from './chatKernelStage521Bind.js';
 
 export { reuseSessionLerpTarget, SESSION_LERP, publicKernelEnvelope, assertPublicEnvelope, samplePublicBandFidelity, reportSessionPhiGap, sampleInstanceBandHealth, sampleWeaveSliderBind, noteSessionVector3Alloc, noteSessionMajorClamp, noteSessionPhiStill, noteSessionInfinityYUnreadByScale, noteSessionInfinityDenom, noteSessionTriangularLattice, noteSessionHamiltonianIgnore, noteSessionTorusPhiReuse, noteSessionTriangularFloor, noteSessionInfinityTube, noteSessionTorusFallthrough, noteSessionTriangularRipple, noteSessionInfinityScale, noteSessionHamiltonianY, noteSessionTriangularY, noteSessionLemniscateZ, noteSessionTorusY, noteSessionInfinityX, noteSessionHamiltonianX, noteSessionHamiltonianZ, noteSessionTriangularX, noteSessionTriangularZ, noteSessionTorusX, noteSessionTorusZ };
 export { chatKernelFourGovernors, chatKernelMemoryEngram, chatKernelExtrasParity, chatKernelWeaveSliders, chatKernelHudCatalogBind, compileChatKernelNextStages, chatKernelHeartbeatMutation, chatKernelLedgerPulseScan, pairBlendChatKernelGeometries } from './chatKernelNextTail.js';
-export { chatKernelStage505Notes, CHAT_KERNEL_STAGE_505_NEXT, chatKernelStage508Notes, CHAT_KERNEL_STAGE_508_NEXT, chatKernelStage511Notes, CHAT_KERNEL_STAGE_511_NEXT, chatKernelStage514Notes, CHAT_KERNEL_STAGE_514_NEXT, chatKernelStage517Notes, CHAT_KERNEL_STAGE_517_NEXT, chatKernelStage520Notes, CHAT_KERNEL_STAGE_520_NEXT };
+export { chatKernelStage505Notes, CHAT_KERNEL_STAGE_505_NEXT, chatKernelStage508Notes, CHAT_KERNEL_STAGE_508_NEXT, chatKernelStage511Notes, CHAT_KERNEL_STAGE_511_NEXT, chatKernelStage514Notes, CHAT_KERNEL_STAGE_514_NEXT, chatKernelStage517Notes, CHAT_KERNEL_STAGE_517_NEXT, chatKernelStage520Notes, CHAT_KERNEL_STAGE_520_NEXT, chatKernelStage521Notes, CHAT_KERNEL_STAGE_521_NEXT };
 
 export const STAGE = 385;
 export const CHAT_KERNEL_SESSION_HASH = 'beec41f1';
@@ -53,7 +54,7 @@ export const CHAT_KERNEL_ENGRAM_FOLDER = 'CRYPTIC-HEARTBEAT-NEXUS-ROOT';
 export const GPU_AUTO_THRESHOLD = 1024;
 export const NODE_CAP = 16384;
 export const INSTANCE_OFFSET_MIN = 4096;
-export const CHAT_KERNEL_NEXT_STAGES = CHAT_KERNEL_STAGE_520_NEXT;
+export const CHAT_KERNEL_NEXT_STAGES = CHAT_KERNEL_STAGE_521_NEXT;
 
 export const STAGE_FLAGS = {
   scratchLerp: true,
@@ -104,4 +105,5 @@ export const STAGE_FLAGS = {
   gravityPullThetaMultiplierNote: true,
   phiReadOnlyPasteNote: true,
   idxInsideThetaStepNote: true,
+  gravityCopyNote: true,
 };
