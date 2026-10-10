@@ -1,4 +1,4 @@
-/** Stage 546 compiled next-stage queue. Session switch stays four-case (beec41f1). Connecting chat 2026-10-10 10:09 CDT re-paste of update(t). Stages 544-546 hold major, minor, lemniscate scale. */
+/** Stage 552 compiled next-stage queue. Session switch stays four-case (beec41f1). Connecting chat 2026-10-10 12:06 CDT re-paste of update(t). Stages 550-552 hold theta step, lerp alloc, uniform order. */
 import { reuseSessionLerpTarget, SESSION_LERP } from './sessionScratchLerp.js';
 import { publicKernelEnvelope, assertPublicEnvelope } from './publicKernelEnvelope.js';
 import { samplePublicBandFidelity } from './publicBandFidelity.js';
@@ -32,6 +32,9 @@ import { noteSessionTorusZ } from './sessionTorusZ.js';
 import { noteSessionMajorParenHold } from './sessionMajorParenHold.js';
 import { noteSessionUniformOrderHold } from './sessionUniformOrderHold.js';
 import { noteSessionTorusDefaultOnly } from './sessionTorusDefaultOnly.js';
+import { noteSessionThetaStep } from './sessionThetaStep.js';
+import { noteSessionLerpAlloc } from './sessionLerpAlloc.js';
+import { noteSessionUniformOrder } from './sessionUniformOrder.js';
 import { chatKernelStage505Notes, CHAT_KERNEL_STAGE_505_NEXT } from './chatKernelStage505Bind.js';
 import { chatKernelStage508Notes, CHAT_KERNEL_STAGE_508_NEXT } from './chatKernelStage508Bind.js';
 import { chatKernelStage511Notes, CHAT_KERNEL_STAGE_511_NEXT } from './chatKernelStage511Bind.js';
@@ -46,12 +49,12 @@ import { chatKernelStage533Notes, CHAT_KERNEL_STAGE_533_NEXT } from './chatKerne
 import { chatKernelStage536Notes, CHAT_KERNEL_STAGE_536_NEXT } from './chatKernelStage536Bind.js';
 import { chatKernelStage538Notes, CHAT_KERNEL_STAGE_538_NEXT } from './chatKernelStage538Bind.js';
 
-export { reuseSessionLerpTarget, SESSION_LERP, publicKernelEnvelope, assertPublicEnvelope, samplePublicBandFidelity, reportSessionPhiGap, sampleInstanceBandHealth, sampleWeaveSliderBind, noteSessionVector3Alloc, noteSessionMajorClamp, noteSessionPhiStill, noteSessionInfinityYUnreadByScale, noteSessionInfinityDenom, noteSessionTriangularLattice, noteSessionHamiltonianIgnore, noteSessionTorusPhiReuse, noteSessionTriangularFloor, noteSessionInfinityTube, noteSessionTorusFallthrough, noteSessionTriangularRipple, noteSessionInfinityScale, noteSessionHamiltonianY, noteSessionTriangularY, noteSessionLemniscateZ, noteSessionTorusY, noteSessionInfinityX, noteSessionHamiltonianX, noteSessionHamiltonianZ, noteSessionTriangularX, noteSessionTriangularZ, noteSessionTorusX, noteSessionTorusZ, noteSessionMajorParenHold, noteSessionUniformOrderHold, noteSessionTorusDefaultOnly };
+export { reuseSessionLerpTarget, SESSION_LERP, publicKernelEnvelope, assertPublicEnvelope, samplePublicBandFidelity, reportSessionPhiGap, sampleInstanceBandHealth, sampleWeaveSliderBind, noteSessionVector3Alloc, noteSessionMajorClamp, noteSessionPhiStill, noteSessionInfinityYUnreadByScale, noteSessionInfinityDenom, noteSessionTriangularLattice, noteSessionHamiltonianIgnore, noteSessionTorusPhiReuse, noteSessionTriangularFloor, noteSessionInfinityTube, noteSessionTorusFallthrough, noteSessionTriangularRipple, noteSessionInfinityScale, noteSessionHamiltonianY, noteSessionTriangularY, noteSessionLemniscateZ, noteSessionTorusY, noteSessionInfinityX, noteSessionHamiltonianX, noteSessionHamiltonianZ, noteSessionTriangularX, noteSessionTriangularZ, noteSessionTorusX, noteSessionTorusZ, noteSessionMajorParenHold, noteSessionUniformOrderHold, noteSessionTorusDefaultOnly, noteSessionThetaStep, noteSessionLerpAlloc, noteSessionUniformOrder };
 export { chatKernelFourGovernors, chatKernelMemoryEngram, chatKernelExtrasParity, chatKernelWeaveSliders, chatKernelHudCatalogBind, compileChatKernelNextStages, chatKernelHeartbeatMutation, chatKernelLedgerPulseScan, pairBlendChatKernelGeometries } from './chatKernelNextTail.js';
 export { chatKernelStage505Notes, CHAT_KERNEL_STAGE_505_NEXT, chatKernelStage508Notes, CHAT_KERNEL_STAGE_508_NEXT, chatKernelStage511Notes, CHAT_KERNEL_STAGE_511_NEXT, chatKernelStage514Notes, CHAT_KERNEL_STAGE_514_NEXT, chatKernelStage517Notes, CHAT_KERNEL_STAGE_517_NEXT, chatKernelStage520Notes, CHAT_KERNEL_STAGE_520_NEXT, chatKernelStage521Notes, CHAT_KERNEL_STAGE_521_NEXT, chatKernelStage524Notes, CHAT_KERNEL_STAGE_524_NEXT, chatKernelStage527Notes, CHAT_KERNEL_STAGE_527_NEXT, chatKernelStage530Notes, CHAT_KERNEL_STAGE_530_NEXT, chatKernelStage533Notes, CHAT_KERNEL_STAGE_533_NEXT, chatKernelStage536Notes, CHAT_KERNEL_STAGE_536_NEXT, chatKernelStage538Notes, CHAT_KERNEL_STAGE_538_NEXT };
 
-export const STAGE = 546;
-export const CHAT_KERNEL_PIN_STAGE = 546;
+export const STAGE = 552;
+export const CHAT_KERNEL_PIN_STAGE = 552;
 export const CHAT_KERNEL_SESSION_HASH = 'beec41f1';
 export const CHAT_KERNEL_LIVING_HASH = '7cd81012';
 export const CHAT_KERNEL_CHAT_GEOMETRIES = ['infinity', 'hamiltonian', 'triangular', 'torus'];
@@ -64,7 +67,11 @@ export const CHAT_KERNEL_ENGRAM_FOLDER = 'CRYPTIC-HEARTBEAT-NEXUS-ROOT';
 export const GPU_AUTO_THRESHOLD = 1024;
 export const NODE_CAP = 16384;
 export const INSTANCE_OFFSET_MIN = 4096;
-export const CHAT_KERNEL_NEXT_STAGES = CHAT_KERNEL_STAGE_538_NEXT;
+export const CHAT_KERNEL_NEXT_STAGES = [
+  { stage: 553, title: 'hold phi as read-only in session paste (no phi +=)' },
+  { stage: 554, title: 'hold major and minor computed before switch' },
+  { stage: 555, title: 'hold lemniscate denom shared by x and z only' },
+];
 
 export const STAGE_FLAGS = {
   scratchLerp: true,
@@ -130,4 +137,7 @@ export const STAGE_FLAGS = {
   phiReadOnlySessionNote: true,
   majorParenHoldNote: true,
   torusDefaultOnlyNote: true,
+  thetaStepNote: true,
+  lerpAllocNote: true,
+  uniformOrderNote: true,
 };
