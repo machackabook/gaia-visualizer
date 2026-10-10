@@ -1,4 +1,4 @@
-/** Stage 386 compiled next-stage queue. Session switch stays four-case (beec41f1). Connecting chat 2026-10-09 22:08 CDT. Stage 538 holds infinity denom unread by minor or phi. */
+/** Stage 546 compiled next-stage queue. Session switch stays four-case (beec41f1). Connecting chat 2026-10-10 10:09 CDT re-paste of update(t). Stages 544-546 hold major, minor, lemniscate scale. */
 import { reuseSessionLerpTarget, SESSION_LERP } from './sessionScratchLerp.js';
 import { publicKernelEnvelope, assertPublicEnvelope } from './publicKernelEnvelope.js';
 import { samplePublicBandFidelity } from './publicBandFidelity.js';
@@ -50,8 +50,8 @@ export { reuseSessionLerpTarget, SESSION_LERP, publicKernelEnvelope, assertPubli
 export { chatKernelFourGovernors, chatKernelMemoryEngram, chatKernelExtrasParity, chatKernelWeaveSliders, chatKernelHudCatalogBind, compileChatKernelNextStages, chatKernelHeartbeatMutation, chatKernelLedgerPulseScan, pairBlendChatKernelGeometries } from './chatKernelNextTail.js';
 export { chatKernelStage505Notes, CHAT_KERNEL_STAGE_505_NEXT, chatKernelStage508Notes, CHAT_KERNEL_STAGE_508_NEXT, chatKernelStage511Notes, CHAT_KERNEL_STAGE_511_NEXT, chatKernelStage514Notes, CHAT_KERNEL_STAGE_514_NEXT, chatKernelStage517Notes, CHAT_KERNEL_STAGE_517_NEXT, chatKernelStage520Notes, CHAT_KERNEL_STAGE_520_NEXT, chatKernelStage521Notes, CHAT_KERNEL_STAGE_521_NEXT, chatKernelStage524Notes, CHAT_KERNEL_STAGE_524_NEXT, chatKernelStage527Notes, CHAT_KERNEL_STAGE_527_NEXT, chatKernelStage530Notes, CHAT_KERNEL_STAGE_530_NEXT, chatKernelStage533Notes, CHAT_KERNEL_STAGE_533_NEXT, chatKernelStage536Notes, CHAT_KERNEL_STAGE_536_NEXT, chatKernelStage538Notes, CHAT_KERNEL_STAGE_538_NEXT };
 
-export const STAGE = 386;
-export const CHAT_KERNEL_PIN_STAGE = 538;
+export const STAGE = 546;
+export const CHAT_KERNEL_PIN_STAGE = 546;
 export const CHAT_KERNEL_SESSION_HASH = 'beec41f1';
 export const CHAT_KERNEL_LIVING_HASH = '7cd81012';
 export const CHAT_KERNEL_CHAT_GEOMETRIES = ['infinity', 'hamiltonian', 'triangular', 'torus'];
