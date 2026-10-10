@@ -3,19 +3,19 @@ import { noteSessionInfinityDenom } from './sessionInfinityDenom.js';
 
 export const CHAT_KERNEL_STAGE_538_NEXT = [
   {
-    stage: 539,
-    title: 'hold hamiltonian hScale = major (no 1.5 factor)',
-    note: 'Document only. Do not rewrite the paste.',
+    stage: 544,
+    title: 'hold major = 10 + (this.idx * 2)',
+    note: 'Document only. Do not rewrite the paste. Computed before switch, used by all arms.',
   },
   {
-    stage: 540,
-    title: 'hold lerp alpha literal 0.05 distinct from gravityPull',
-    note: 'Document only. Do not rewrite the paste.',
+    stage: 545,
+    title: 'hold minor = 3 + (state.toroidalWeave * 2)',
+    note: 'Document only. Do not rewrite the paste. Used by infinity/triangular/torus; hamiltonian ignores.',
   },
   {
-    stage: 541,
-    title: 'hold theta step as (0.01 + this.idx * 0.002) * state.gravityPull with paren order',
-    note: 'Document only. Do not rewrite the paste.',
+    stage: 546,
+    title: 'hold lemniscate scale = major * 1.5',
+    note: 'Document only. Do not rewrite the paste. Infinity arm only; y independent of scale.',
   },
 ];
 
