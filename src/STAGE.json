@@ -1,10 +1,10 @@
 {
-  "stage": 514,
+  "stage": 563,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
-  "paste": "2026-10-08 23:06 CDT",
-  "next": [515, 516, 517],
+  "paste": "2026-10-10 17:06 CDT",
+  "next": [564, 565, 566],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stage 512 holds hamiltonian y unread by minor and phi. Stage 513 holds torus tube radius unread by y. Stage 514 holds torus case then default as one shared body, not a fifth session case. Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stage 562 holds major/minor radii assignment before the switch. Stage 563 holds switch(targetState.geometry) as sole four-case dispatch. Paste not rewritten."
 }
