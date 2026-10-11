@@ -1,8 +1,8 @@
 # Gaia visualizer + The-Hive — compiled stages
 
-Band `571-visual`. Chat kernel is the `update(t)` posted in-session (uniforms → theta → radii → geometry switch → lerp 0.05).
+Band `572-visual`. Chat kernel is the `update(t)` posted in-session (uniforms → theta → radii → geometry switch → lerp 0.05).
 Raw session kernel still allocates `new THREE.Vector3` inside lerp (hash `beec41f1`). Enhanced / live path uses a reused `_kernelTarget` / `_target`.
-Stage 571 holds major = 10 + (idx * 2), minor = 3 + (toroidalWeave * 2) before switch. Stage 570 holds final lerp session allocates Vector3 alpha 0.05. Stage 569 holds uniform writes uTime then uGravity. Extras remain runtime-only.
+Stage 572 holds switch(targetState.geometry) sole four-case dispatch. Stage 571 holds major = 10 + (idx * 2), minor = 3 + (toroidalWeave * 2) before switch. Stage 570 holds final lerp session allocates Vector3 alpha 0.05. Extras remain runtime-only.
 
 ## Done
 
@@ -20,20 +20,21 @@ Stage 571 holds major = 10 + (idx * 2), minor = 3 + (toroidalWeave * 2) before s
 | 569 | Hold uniform writes uTime then uGravity. |
 | 570 | Hold final lerp session allocates Vector3 alpha 0.05. |
 | 571 | Hold major = 10 + (idx * 2), minor = 3 + (toroidalWeave * 2) before switch. |
+| 572 | Hold switch(targetState.geometry) sole four-case dispatch. |
 
 ## Next
 
 | Stage | Owner repo | Work |
 |------|------------|------|
-| 572 | gaia-visualizer | Hold switch(targetState.geometry) sole four-case dispatch. |
 | 573 | gaia-visualizer | Hold infinity lemniscate denom shared by x and z. |
 | 574 | gaia-visualizer | Hold phi read-only in shared y formulas. |
+| 575 | gaia-visualizer | Hold theta step (0.01 + idx * 0.002) * gravityPull. |
 | 14 | The-Hive | Memory engrams into Drive folder `CRYPTIC-HEARTBEAT-NEXUS-ROOT` |
 
 ## Drive from LLM
 
 ```js
 window.dispatchEvent(new CustomEvent('gaia:targetState', {
-  detail: { geometry: 'hamiltonian', blendFrom: 'triangular', blendTo: 'hamiltonian', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 571, sourceHash: '7cd81012', sessionHash: 'beec41f1' }
+  detail: { geometry: 'hamiltonian', blendFrom: 'triangular', blendTo: 'hamiltonian', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 572, sourceHash: '7cd81012', sessionHash: 'beec41f1' }
 }));
 ```
