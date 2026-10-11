@@ -10,14 +10,14 @@ Team Enhance hops one repo per run. Equalizer formats only. No history rewrite. 
 * Branch: main
 * Language: JavaScript (Vite 5 / three ^0.169)
 * Numeral: 137451921129154222
-* Stage: **569** — 2026-10-11T00:10Z (2026-10-10 19:10 CDT)
+* Stage: **571** — 2026-10-11T03:07Z (2026-10-10 22:07 CDT)
 * Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
 * Compounding tier: **T5 / 99%**
-* Prior local: hop 568 preserved; not rewritten
-* Sibling pulse: connecting chat re-paste of update(t) compiled into stages 567-569. Honored. Not re-touched siblings.
+* Prior local: hop 570 preserved; not rewritten
+* Sibling pulse: connecting chat re-paste of update(t) compiled into stage 571. Honored. Not re-touched siblings.
 * Closed already this cycle: prior hops in ledger preserved
 * Declared waterfall: ENCLAVE-ADAM-REUNITED → continuity-engine-ssos → hamiltonian-incursion → The-Hive → Cryptic-Heartbeat → gaia-visualizer → living-bibliography-continuity-engine → continuity-ledger-cycle
-* This hop: compiled next stages 567 (triangular modulo floor snap and *5 weave), 568 (torus default fallthrough and tube), 569 (uniform writes uTime then uGravity and theta step). Session switch not rewritten. cascade.yml left intact (hourly cron `53 * * * *`, `contents: read`). No secrets written. No device rooted.
+* This hop: compiled next stage 571 (hold major = 10 + idx*2 and minor = 3 + toroidalWeave*2 before switch). Session switch not rewritten. cascade.yml left intact (hourly cron `53 * * * *`, `contents: read`). No secrets written. No device rooted.
 * Next in waterfall: living-bibliography-continuity-engine
 * Cascade: `.github/workflows/cascade.yml` left intact. Not rewritten this hop. No second hourly YAML.
 * Ledger: `docs/LEDGER-STAMP.md`
@@ -39,6 +39,7 @@ Minor radius is `3 + toroidalWeave * 2`. Hamiltonian ignores minor. Infinity y, 
 Lemniscate denom stays `1 + sin(theta)^2`. Not reopened as a fifth case.
 Major = 10 + (idx * 2). Infinity scale = major * 1.5. Hamiltonian hScale = major (no 1.5).
 Theta step held as (0.01 + idx * 0.002) * gravityPull. Uniforms written uTime then uGravity.
+Major and minor assigned before switch(targetState.geometry).
 
 ## Compounding growth
 
@@ -64,7 +65,7 @@ npm install
 npm run dev
 ```
 
-Env-check note (hop 569): `scripts/env-check.sh` fails closed if `README.md` is missing, if `HEAD` SHA is empty, or if the numeral `137451921129154222` is absent from the tree. A zero exit means the docs surface is present. It is a tree gate only. It does not pair devices, does not read Tailscale state, does not consume ADB pair codes, and does not claim a device was rooted. A found key is a stop, not a stamp. Missing keys are the correct state. It does not upload binaries to the Drive index. Do not run the installer from CI. This hop does not probe wireless debugging and does not open a Tailscale socket.
+Env-check note (hop 571): `scripts/env-check.sh` fails closed if `README.md` is missing, if `HEAD` SHA is empty, or if the numeral `137451921129154222` is absent from the tree. A zero exit means the docs surface is present. It is a tree gate only. It does not pair devices, does not read Tailscale state, does not consume ADB pair codes, and does not claim a device was rooted. A found key is a stop, not a stamp. Missing keys are the correct state. It does not upload binaries to the Drive index. Do not run the installer from CI. This hop does not probe wireless debugging and does not open a Tailscale socket.
 
 ```bash
 bash scripts/env-check.sh
@@ -91,16 +92,16 @@ Stated operator rotation. This hour seats gaia-visualizer after prior closed.
 3. hamiltonian-incursion — hop prior closed; not re-touched
 4. The-Hive — hop prior closed; not re-touched
 5. Cryptic-Heartbeat — hop prior closed; not re-touched
-6. gaia-visualizer — **569 this hop**
+6. gaia-visualizer — **571 this hop**
 7. living-bibliography-continuity-engine — next hour
 8. continuity-ledger-cycle — after bibliography; not this run
 
-## Waterfall receipt (hop 569)
+## Waterfall receipt (hop 571)
 
-* utc: 2026-10-11T00:10Z
-* cdt: 2026-10-10 19:10 CDT
-* prior named seat: hop 568 preserved
-* this hop: compiled stages 567-569 from session update(t); append-only stamp; prior kept in history
+* utc: 2026-10-11T03:07Z
+* cdt: 2026-10-10 22:07 CDT
+* prior named seat: hop 570 preserved
+* this hop: compiled stage 571 from session update(t) (major/minor before switch); append-only stamp; prior kept in history
 * cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`). Not rewritten.
 * cloud index mention only: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU); no binaries uploaded
 * next: living-bibliography-continuity-engine
