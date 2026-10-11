@@ -1,10 +1,10 @@
 {
-  "stage": 581,
+  "stage": 582,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
-  "paste": "2026-10-11 16:08 CDT",
-  "next": [582, 583, 584],
+  "paste": "2026-10-11 17:08 CDT",
+  "next": [583, 584, 585],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stage 581 holds final lerp session allocates Vector3 alpha 0.05. Prior: 580 lemniscate denom shared by x and z. Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stage 582 holds major = 10 + (idx * 2) before switch. Prior: 581 final lerp session allocates Vector3 alpha 0.05. Paste not rewritten."
 }
