@@ -1,10 +1,10 @@
 {
-  "stage": 569,
+  "stage": 571,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
-  "paste": "2026-10-10 19:08 CDT",
-  "next": [570, 571, 572],
+  "paste": "2026-10-10 22:06 CDT",
+  "next": [572, 573, 574],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stage 567 holds triangular modulo floor snap and *5 weave. Stage 568 holds torus default fallthrough and tube. Stage 569 holds uniform writes uTime then uGravity and theta step. Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stage 570 holds final lerp session allocates Vector3 alpha 0.05. Stage 571 holds major = 10 + idx*2 and minor = 3 + toroidalWeave*2 before switch. Paste not rewritten."
 }
