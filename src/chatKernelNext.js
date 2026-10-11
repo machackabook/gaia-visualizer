@@ -1,4 +1,4 @@
-/** Stage 552 compiled next-stage queue. Session switch stays four-case (beec41f1). Connecting chat 2026-10-10 12:06 CDT re-paste of update(t). Stages 550-552 hold theta step, lerp alloc, uniform order. */
+/** Stage 570 compiled next-stage queue. Session switch stays four-case (beec41f1). Connecting chat 2026-10-10 21:06 CDT re-paste of update(t). Stages 569-570 hold uniform order, theta step, lerp alloc. */
 import { reuseSessionLerpTarget, SESSION_LERP } from './sessionScratchLerp.js';
 import { publicKernelEnvelope, assertPublicEnvelope } from './publicKernelEnvelope.js';
 import { samplePublicBandFidelity } from './publicBandFidelity.js';
@@ -53,8 +53,8 @@ export { reuseSessionLerpTarget, SESSION_LERP, publicKernelEnvelope, assertPubli
 export { chatKernelFourGovernors, chatKernelMemoryEngram, chatKernelExtrasParity, chatKernelWeaveSliders, chatKernelHudCatalogBind, compileChatKernelNextStages, chatKernelHeartbeatMutation, chatKernelLedgerPulseScan, pairBlendChatKernelGeometries } from './chatKernelNextTail.js';
 export { chatKernelStage505Notes, CHAT_KERNEL_STAGE_505_NEXT, chatKernelStage508Notes, CHAT_KERNEL_STAGE_508_NEXT, chatKernelStage511Notes, CHAT_KERNEL_STAGE_511_NEXT, chatKernelStage514Notes, CHAT_KERNEL_STAGE_514_NEXT, chatKernelStage517Notes, CHAT_KERNEL_STAGE_517_NEXT, chatKernelStage520Notes, CHAT_KERNEL_STAGE_520_NEXT, chatKernelStage521Notes, CHAT_KERNEL_STAGE_521_NEXT, chatKernelStage524Notes, CHAT_KERNEL_STAGE_524_NEXT, chatKernelStage527Notes, CHAT_KERNEL_STAGE_527_NEXT, chatKernelStage530Notes, CHAT_KERNEL_STAGE_530_NEXT, chatKernelStage533Notes, CHAT_KERNEL_STAGE_533_NEXT, chatKernelStage536Notes, CHAT_KERNEL_STAGE_536_NEXT, chatKernelStage538Notes, CHAT_KERNEL_STAGE_538_NEXT };
 
-export const STAGE = 552;
-export const CHAT_KERNEL_PIN_STAGE = 552;
+export const STAGE = 570;
+export const CHAT_KERNEL_PIN_STAGE = 570;
 export const CHAT_KERNEL_SESSION_HASH = 'beec41f1';
 export const CHAT_KERNEL_LIVING_HASH = '7cd81012';
 export const CHAT_KERNEL_CHAT_GEOMETRIES = ['infinity', 'hamiltonian', 'triangular', 'torus'];
@@ -68,9 +68,9 @@ export const GPU_AUTO_THRESHOLD = 1024;
 export const NODE_CAP = 16384;
 export const INSTANCE_OFFSET_MIN = 4096;
 export const CHAT_KERNEL_NEXT_STAGES = [
-  { stage: 553, title: 'hold phi as read-only in session paste (no phi +=)' },
-  { stage: 554, title: 'hold major and minor computed before switch' },
-  { stage: 555, title: 'hold lemniscate denom shared by x and z only' },
+  { stage: 571, title: 'hold major = 10 + idx*2 and minor = 3 + toroidalWeave*2 before switch' },
+  { stage: 572, title: 'hold switch(targetState.geometry) sole four-case dispatch' },
+  { stage: 573, title: 'hold infinity lemniscate denom shared by x and z' },
 ];
 
 export const STAGE_FLAGS = {
