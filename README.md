@@ -10,14 +10,14 @@ Team Enhance hops one repo per run. Equalizer formats only. No history rewrite. 
 * Branch: main
 * Language: JavaScript (Vite 5 / three ^0.169)
 * Numeral: 137451921129154222
-* Stage: **569** — 2026-10-10T21:09Z (2026-10-10 16:09 CDT)
+* Stage: **569** — 2026-10-11T00:10Z (2026-10-10 19:10 CDT)
 * Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
 * Compounding tier: **T5 / 99%**
 * Prior local: hop 568 preserved; not rewritten
-* Sibling pulse: connecting chat re-paste of update(t) compiled into stages 559-561. Honored. Not re-touched siblings.
+* Sibling pulse: connecting chat re-paste of update(t) compiled into stages 567-569. Honored. Not re-touched siblings.
 * Closed already this cycle: prior hops in ledger preserved
 * Declared waterfall: ENCLAVE-ADAM-REUNITED → continuity-engine-ssos → hamiltonian-incursion → The-Hive → Cryptic-Heartbeat → gaia-visualizer → living-bibliography-continuity-engine → continuity-ledger-cycle
-* This hop: compiled next stages 559 (torus tube hold), 560 (theta step and uniforms hold), 561 (lerp alpha 0.05 hold). Session switch not rewritten. cascade.yml left intact (hourly cron `53 * * * *`, `contents: read`). No secrets written. No device rooted.
+* This hop: compiled next stages 567 (triangular modulo floor snap and *5 weave), 568 (torus default fallthrough and tube), 569 (uniform writes uTime then uGravity and theta step). Session switch not rewritten. cascade.yml left intact (hourly cron `53 * * * *`, `contents: read`). No secrets written. No device rooted.
 * Next in waterfall: living-bibliography-continuity-engine
 * Cascade: `.github/workflows/cascade.yml` left intact. Not rewritten this hop. No second hourly YAML.
 * Ledger: `docs/LEDGER-STAMP.md`
@@ -97,10 +97,10 @@ Stated operator rotation. This hour seats gaia-visualizer after prior closed.
 
 ## Waterfall receipt (hop 569)
 
-* utc: 2026-10-10T21:09Z
-* cdt: 2026-10-10 16:09 CDT
+* utc: 2026-10-11T00:10Z
+* cdt: 2026-10-10 19:10 CDT
 * prior named seat: hop 568 preserved
-* this hop: compiled stages 559-561 from session update(t); append-only stamp; prior kept in history
+* this hop: compiled stages 567-569 from session update(t); append-only stamp; prior kept in history
 * cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`). Not rewritten.
 * cloud index mention only: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU); no binaries uploaded
 * next: living-bibliography-continuity-engine
