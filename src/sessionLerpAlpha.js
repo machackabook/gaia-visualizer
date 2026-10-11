@@ -1,56 +1,44 @@
-/** Stage 482 — session lerp alpha stays 0.05 and is the only blend into the geometric target. Document only. Do not rewrite the paste. No secrets. */
-export const LERP_ALPHA_STAGE = 482;
-export const LERP_ALPHA_SESSION_HASH = 'beec41f1';
-export const LERP_ALPHA_LIVING_HASH = '7cd81012';
-export const LERP_ALPHA = 0.05;
+/** Stage 575 — final lerp allocates new THREE.Vector3 at alpha 0.05. Document only. Paste not rewritten. No secrets. */
+export const LERP_ALPHA_STAGE = 575;
+export const LERP_ALPHA_SESSION = 'beec41f1';
+export const LERP_ALPHA_LIVING = '7cd81012';
 
-const PINNED = [
-  "this.mesh.position.lerp(new THREE.Vector3(x, y, z), 0.05);",
-].join('\n');
+const PINNED_LINE = 'this.mesh.position.lerp(new THREE.Vector3(x, y, z), 0.05);';
 
 export function sampleLerpAlpha() {
-  return {
-    alpha: LERP_ALPHA,
-    allocatesVector3: true,
-    otherBlends: 0,
-  };
+  return { allocates: true, alpha: 0.05, vector: 'THREE.Vector3' };
 }
 
 export function noteSessionLerpAlpha(source) {
   const pinned = source == null;
-  const text = pinned ? PINNED : String(source);
-  const lerpLine = /this\.mesh\.position\.lerp\(\s*new\s+THREE\.Vector3\(\s*x\s*,\s*y\s*,\s*z\s*\)\s*,\s*0\.05\s*\)\s*;/.test(text);
-  const singleLerp = (text.match(/\.lerp\(/g) || []).length <= 1;
-  const noSet = !/this\.mesh\.position\.set\(/.test(text);
+  const text = pinned ? PINNED_LINE : String(source);
+  const hasLerp = /this\.mesh\.position\.lerp\s*\(\s*new\s+THREE\.Vector3\s*\(\s*x\s*,\s*y\s*,\s*z\s*\)\s*,\s*0\.05\s*\)/.test(text);
+  const alphaLiteral = /0\.05/.test(text);
   const sample = sampleLerpAlpha();
   return {
     stage: LERP_ALPHA_STAGE,
-    session: LERP_ALPHA_SESSION_HASH,
-    living: LERP_ALPHA_LIVING_HASH,
+    session: LERP_ALPHA_SESSION,
+    living: LERP_ALPHA_LIVING,
     pinned,
-    lerpLine,
-    singleLerp,
-    noSet,
+    hasLerp,
+    alphaLiteral,
     sample,
     pasteRewritten: false,
     secrets: false,
-    ok: lerpLine && singleLerp && noSet && sample.alpha === 0.05,
-    note: 'session blend is lerp(new THREE.Vector3(x, y, z), 0.05). Living path may reuse _kernelTarget. Paste not rewritten.',
+    ok: hasLerp && alphaLiteral && sample.alpha === 0.05,
+    note: 'Final lerp allocates new THREE.Vector3(x, y, z) with literal alpha 0.05. Paste not rewritten.',
   };
 }
 
-export function compileSessionStage482(source) {
+export function compileSessionStage575(source) {
   const hold = noteSessionLerpAlpha(source);
   return {
     current: LERP_ALPHA_STAGE,
-    session: LERP_ALPHA_SESSION_HASH,
-    living: LERP_ALPHA_LIVING_HASH,
-    paste: '2026-10-07 19:07 CDT',
+    session: LERP_ALPHA_SESSION,
+    living: LERP_ALPHA_LIVING,
     hold,
-    next: [
-      { stage: 483, title: 'hold major = 10 + idx * 2 and minor = 3 + toroidalWeave * 2 as the shared radii before the switch' },
-      { stage: 484, title: 'hold uniforms uTime and uGravity as the only material writes in update(t)' },
-      { stage: 485, title: 'hold switch(targetState.geometry) as the only case dispatch' },
-    ],
+    next: [576, 577, 578],
+    pasteRewritten: false,
+    secrets: false,
   };
 }

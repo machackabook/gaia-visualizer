@@ -1,10 +1,10 @@
 {
-  "stage": 574,
+  "stage": 575,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
-  "paste": "2026-10-11 09:11 CDT",
-  "next": [575, 576, 577],
+  "paste": "2026-10-11 11:08 CDT",
+  "next": [576, 577, 578],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stage 572 holds switch sole four-case dispatch. Stage 573 holds infinity lemniscate denom shared by x and z. Stage 574 holds phi read-only in shared y formulas. Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stage 575 holds final lerp allocates Vector3 alpha 0.05. Prior: 574 phi read-only shared y. Paste not rewritten."
 }
