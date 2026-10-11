@@ -1,10 +1,10 @@
 {
-  "stage": 563,
+  "stage": 569,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
-  "paste": "2026-10-10 17:06 CDT",
-  "next": [564, 565, 566],
+  "paste": "2026-10-10 19:08 CDT",
+  "next": [570, 571, 572],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stage 562 holds major/minor radii assignment before the switch. Stage 563 holds switch(targetState.geometry) as sole four-case dispatch. Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stage 567 holds triangular modulo floor snap and *5 weave. Stage 568 holds torus default fallthrough and tube. Stage 569 holds uniform writes uTime then uGravity and theta step. Paste not rewritten."
 }
