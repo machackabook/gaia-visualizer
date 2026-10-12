@@ -1,10 +1,10 @@
 {
-  "stage": 591,
+  "stage": 606,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
-  "paste": "2026-10-11 21:07 CDT",
-  "next": [592, 593, 594],
+  "paste": "2026-10-12 11:09 CDT",
+  "next": [607, 608, 609],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stage 591 holds infinity scale = major * 1.5. Prior: 590 minor before switch, 589 major before switch. Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stage 606 holds major = 10 + (idx * 2) assigned before switch. Prior hops preserved. Paste not rewritten."
 }
