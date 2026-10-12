@@ -10,14 +10,14 @@ Team Enhance hops one repo per run. Equalizer formats only. No history rewrite. 
 * Branch: main
 * Language: JavaScript (Vite 5 / three ^0.169)
 * Numeral: 137451921129154222
-* Stage: **608** — 2026-10-12T19:09Z (2026-10-12 14:09 CDT)
+* Stage: **609** — 2026-10-12T20:06Z (2026-10-12 15:06 CDT)
 * Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
 * Compounding tier: **T5 / 99%**
-* Prior local: hop 607 preserved; not rewritten
+* Prior local: hop 608 preserved; not rewritten
 * Sibling pulse: continuity-ledger-cycle hop 608 named next in prior. This is local kernel enhancement from chat paste.
 * Closed already this cycle: prior hops in ledger preserved
 * Declared waterfall: ENCLAVE-ADAM-REUNITED → continuity-engine-ssos → hamiltonian-incursion → The-Hive → Cryptic-Heartbeat → gaia-visualizer → living-bibliography-continuity-engine → continuity-ledger-cycle
-* This hop: pin session paste theta step (0.01 + idx * 0.002) * gravityPull; new checker src/sessionThetaStep608.js; STAGE-608.md compiled; STAGE.json advanced. Cascade.yml left intact. No secrets written. No device rooted.
+* This hop: pin session paste uniform writes as uTime then uGravity only; new checker src/sessionUniformsOrder609.js; STAGE-609.md compiled; STAGE.json advanced. Cascade.yml left intact. No secrets written. No device rooted.
 * Next in waterfall: continuity-ledger-cycle
 * Cascade: `.github/workflows/cascade.yml` left intact. Not rewritten this hop. No second hourly YAML.
 * Ledger: `docs/LEDGER-STAMP.md`
@@ -66,7 +66,7 @@ npm install
 npm run dev
 ```
 
-Env-check note (hop 608): `scripts/env-check.sh` fails closed if `README.md` is missing, if `HEAD` SHA is empty, or if the numeral `137451921129154222` is absent from the tree. A zero exit means the docs surface is present. It is a tree gate only. It does not pair devices, does not read Tailscale state, does not consume ADB pair codes, and does not claim a device was rooted. A found key is a stop, not a stamp. Missing keys are the correct state. It does not upload binaries to the Drive index. Do not run the installer from CI. This hop does not probe wireless debugging and does not open a Tailscale socket. Green is presence, not privilege.
+Env-check note (hop 609): `scripts/env-check.sh` fails closed if `README.md` is missing, if `HEAD` SHA is empty, or if the numeral `137451921129154222` is absent from the tree. A zero exit means the docs surface is present. It is a tree gate only. It does not pair devices, does not read Tailscale state, does not consume ADB pair codes, and does not claim a device was rooted. A found key is a stop, not a stamp. Missing keys are the correct state. It does not upload binaries to the Drive index. Do not run the installer from CI. This hop does not probe wireless debugging and does not open a Tailscale socket. Green is presence, not privilege.
 
 ```bash
 bash scripts/env-check.sh
@@ -93,16 +93,16 @@ Stated operator rotation. This hour seats gaia-visualizer for kernel enhancement
 3. hamiltonian-incursion — hop prior closed; not re-touched
 4. The-Hive — hop prior closed; not re-touched
 5. Cryptic-Heartbeat — hop prior closed; not re-touched
-6. gaia-visualizer — **608 this hop**
+6. gaia-visualizer — **609 this hop**
 7. living-bibliography-continuity-engine — hop 606 closed; not re-touched
 8. continuity-ledger-cycle — next
 
-## Waterfall receipt (hop 608)
+## Waterfall receipt (hop 609)
 
-* utc: 2026-10-12T19:09Z
-* cdt: 2026-10-12 14:09 CDT
+* utc: 2026-10-12T20:06Z
+* cdt: 2026-10-12 15:06 CDT
 * prior named seat: continuity-ledger-cycle hop 608 / living-bibliography-continuity-engine hop 606
-* this hop: pin paste theta step; compile STAGE-608.md; advance STAGE.json; append-only stamp; cascade left intact
+* this hop: pin paste uniforms order; compile STAGE-609.md; advance STAGE.json; append-only stamp; cascade left intact
 * cascade: `.github/workflows/cascade.yml` left intact. Not rewritten.
 * cloud index mention only: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU); no binaries uploaded
 * next: continuity-ledger-cycle

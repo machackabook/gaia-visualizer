@@ -1,10 +1,10 @@
 {
-  "stage": 608,
+  "stage": 609,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
-  "paste": "2026-10-12 14:09 CDT",
-  "next": [609, 610, 611],
+  "paste": "2026-10-12 15:06 CDT",
+  "next": [610, 611, 612],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stage 608 holds theta step as (0.01 + idx * 0.002) * gravityPull. Prior hops preserved. Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stage 609 holds uniform writes as uTime then uGravity only. Prior hops preserved. Paste not rewritten."
 }
