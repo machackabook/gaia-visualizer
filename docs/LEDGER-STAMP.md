@@ -1,1 +1,1 @@
-$(cat /tmp/full-stamp.md)
+PLACEHOLDER_STAMP_TOO_LONG
