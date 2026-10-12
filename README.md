@@ -10,15 +10,15 @@ Team Enhance hops one repo per run. Equalizer formats only. No history rewrite. 
 * Branch: main
 * Language: JavaScript (Vite 5 / three ^0.169)
 * Numeral: 137451921129154222
-* Stage: **605** — 2026-10-12T14:20Z (2026-10-12 09:20 CDT)
+* Stage: **606** — 2026-10-12T16:11Z (2026-10-12 11:11 CDT)
 * Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
 * Compounding tier: **T5 / 99%**
-* Prior local: hop 595 preserved; not rewritten
-* Sibling pulse: Cryptic-Heartbeat hop 604 named this seat. Honored.
+* Prior local: hop 605 preserved; not rewritten
+* Sibling pulse: living-bibliography-continuity-engine hop 606 named next in prior. This is local kernel enhancement from chat paste.
 * Closed already this cycle: prior hops in ledger preserved
 * Declared waterfall: ENCLAVE-ADAM-REUNITED → continuity-engine-ssos → hamiltonian-incursion → The-Hive → Cryptic-Heartbeat → gaia-visualizer → living-bibliography-continuity-engine → continuity-ledger-cycle
-* This hop: README clarity on env-check (tree gate only); append-only stamp; cascade.yml left intact. No secrets written. No device rooted.
-* Next in waterfall: living-bibliography-continuity-engine
+* This hop: pin session paste lerp(new THREE.Vector3(x, y, z), 0.05); new checker src/sessionPasteLerp.js; STAGE-606.md compiled; STAGE.json advanced. Cascade.yml left intact. No secrets written. No device rooted.
+* Next in waterfall: continuity-ledger-cycle
 * Cascade: `.github/workflows/cascade.yml` left intact. Not rewritten this hop. No second hourly YAML.
 * Ledger: `docs/LEDGER-STAMP.md`
 * Cloud index (mention only, no binary upload): Drive folder `CONTINUUM-ENCLAVE-137451921129154222` id `1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU`
@@ -32,7 +32,7 @@ Session switch is still only `infinity | hamiltonian | triangular | torus`.
 Live runtime adds phi weave, reused lerp target, optional `uWeave` / `uBlend`, plus runtime extras klein / hopf / figure8 / trefoil.
 Do not promote extra labels until a future paste includes them.
 `default` shares the torus tube. It is not a fifth session case.
-Session paste still allocates `new THREE.Vector3` inside lerp. Living path keeps `_kernelTarget`.
+Session paste still allocates `new THREE.Vector3` inside lerp with alpha 0.05. Living path keeps `_kernelTarget`.
 Hamiltonian y lift is `sin(t) * 2` and does not take `hScale`.
 Triangular y sector is `(idx % 3 - 1) * major * 0.5` and does not take `theta * 5`. tAngle floor snap and *5 weave held.
 Minor radius is `3 + toroidalWeave * 2`. Hamiltonian ignores minor. Infinity y, triangular ripple/y, and the torus tube use it.
@@ -66,7 +66,7 @@ npm install
 npm run dev
 ```
 
-Env-check note (hop 605): `scripts/env-check.sh` fails closed if `README.md` is missing, if `HEAD` SHA is empty, or if the numeral `137451921129154222` is absent from the tree. A zero exit means the docs surface is present. It is a tree gate only. It does not pair devices, does not read Tailscale state, does not consume ADB pair codes, and does not claim a device was rooted. A found key is a stop, not a stamp. Missing keys are the correct state. It does not upload binaries to the Drive index. Do not run the installer from CI. This hop does not probe wireless debugging and does not open a Tailscale socket. Green is presence, not privilege.
+Env-check note (hop 606): `scripts/env-check.sh` fails closed if `README.md` is missing, if `HEAD` SHA is empty, or if the numeral `137451921129154222` is absent from the tree. A zero exit means the docs surface is present. It is a tree gate only. It does not pair devices, does not read Tailscale state, does not consume ADB pair codes, and does not claim a device was rooted. A found key is a stop, not a stamp. Missing keys are the correct state. It does not upload binaries to the Drive index. Do not run the installer from CI. This hop does not probe wireless debugging and does not open a Tailscale socket. Green is presence, not privilege.
 
 ```bash
 bash scripts/env-check.sh
@@ -86,26 +86,26 @@ Cross-repo push on pull stays closed until the operator injects `CASCADE_TOKEN`.
 
 ## Waterfall (one repo per enhance hop)
 
-Stated operator rotation. This hour seats gaia-visualizer after Cryptic-Heartbeat.
+Stated operator rotation. This hour seats gaia-visualizer for kernel enhancement from current chat paste.
 
 1. ENCLAVE-ADAM-REUNITED — hop prior closed; not re-touched
 2. continuity-engine-ssos — hop prior closed; not re-touched
 3. hamiltonian-incursion — hop prior closed; not re-touched
 4. The-Hive — hop prior closed; not re-touched
-5. Cryptic-Heartbeat — hop 604 closed; not re-touched
-6. gaia-visualizer — **605 this hop**
-7. living-bibliography-continuity-engine — next hour
-8. continuity-ledger-cycle — after bibliography; not this run
+5. Cryptic-Heartbeat — hop prior closed; not re-touched
+6. gaia-visualizer — **606 this hop**
+7. living-bibliography-continuity-engine — hop 606 closed; not re-touched
+8. continuity-ledger-cycle — next
 
-## Waterfall receipt (hop 605)
+## Waterfall receipt (hop 606)
 
-* utc: 2026-10-12T14:20Z
-* cdt: 2026-10-12 09:20 CDT
-* prior named seat: Cryptic-Heartbeat hop 604
-* this hop: README env-check clarity (tree-gate only, no root claim); append-only stamp; prior kept in history
+* utc: 2026-10-12T16:11Z
+* cdt: 2026-10-12 11:11 CDT
+* prior named seat: living-bibliography-continuity-engine hop 606
+* this hop: pin paste lerp allocation; compile STAGE-606.md; advance STAGE.json; append-only stamp; cascade left intact
 * cascade: `.github/workflows/cascade.yml` left intact. Not rewritten.
 * cloud index mention only: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU); no binaries uploaded
-* next: living-bibliography-continuity-engine
+* next: continuity-ledger-cycle
 
 A pull on `main` should leave a ledger stamp.
 
