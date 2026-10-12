@@ -2,7 +2,7 @@
 
 Band `580-visual`. Chat kernel is the `update(t)` posted in-session (uniforms → theta → radii → geometry switch → lerp 0.05).
 Raw session kernel still allocates `new THREE.Vector3` inside lerp (hash `beec41f1`). Enhanced / live path uses a reused `_kernelTarget` / `_target`.
-Stage 609 holds uniform writes as uTime then uGravity only. Stage 608 holds theta step (0.01 + idx * 0.002) * gravityPull. Stage 607 holds minor assignment before switch. Extras remain runtime-only.
+Stage 610 holds infinity denom 1 + sin(theta)^2 shared by x and z only. Stage 609 holds uniform writes as uTime then uGravity only. Stage 608 holds theta step (0.01 + idx * 0.002) * gravityPull. Extras remain runtime-only.
 
 ## Done
 
@@ -58,20 +58,21 @@ Stage 609 holds uniform writes as uTime then uGravity only. Stage 608 holds thet
 | 607 | Hold minor = 3 + (toroidalWeave * 2) assigned before switch. |
 | 608 | Hold theta step (0.01 + idx * 0.002) * gravityPull. |
 | 609 | Hold uniform writes as uTime then uGravity only. |
+| 610 | Hold infinity denom 1 + sin(theta)^2 shared by x and z only. |
 
 ## Next
 
 | Stage | Owner repo | Work |
 |------|------------|------|
-| 610 | gaia-visualizer | Hold infinity denom 1 + sin(theta)^2 shared by x and z only. |
 | 611 | gaia-visualizer | Hold major = 10 + (idx * 2) before switch. |
 | 612 | gaia-visualizer | Hold minor = 3 + (toroidalWeave * 2) before switch. |
+| 613 | gaia-visualizer | Hold switch(targetState.geometry) sole four-case dispatch. |
 | 14 | The-Hive | Memory engrams into Drive folder `CRYPTIC-HEARTBEAT-NEXUS-ROOT` |
 
 ## Drive from LLM
 
 ```js
 window.dispatchEvent(new CustomEvent('gaia:targetState', {
-  detail: { geometry: 'infinity', blendFrom: 'torus', blendTo: 'infinity', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 609, sourceHash: '7cd81012', sessionHash: 'beec41f1' }
+  detail: { geometry: 'infinity', blendFrom: 'torus', blendTo: 'infinity', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 610, sourceHash: '7cd81012', sessionHash: 'beec41f1' }
 }));
 ```
