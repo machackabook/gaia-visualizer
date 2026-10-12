@@ -1,10 +1,10 @@
 {
-  "stage": 607,
+  "stage": 608,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
-  "paste": "2026-10-12 13:07 CDT",
-  "next": [608, 609, 610],
+  "paste": "2026-10-12 14:09 CDT",
+  "next": [609, 610, 611],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stage 607 holds minor = 3 + (toroidalWeave * 2) assigned before switch beside major. Prior hops preserved. Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stage 608 holds theta step as (0.01 + idx * 0.002) * gravityPull. Prior hops preserved. Paste not rewritten."
 }
