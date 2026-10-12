@@ -2,7 +2,7 @@
 
 Band `580-visual`. Chat kernel is the `update(t)` posted in-session (uniforms → theta → radii → geometry switch → lerp 0.05).
 Raw session kernel still allocates `new THREE.Vector3` inside lerp (hash `beec41f1`). Enhanced / live path uses a reused `_kernelTarget` / `_target`.
-Stage 594 holds triangular tAngle floor snap and *5 weave. Stage 593 holds hamiltonian hScale = major. Stage 592 holds lemniscate denom shared by x and z. Extras remain runtime-only.
+Stage 597 holds sole four-case switch on targetState.geometry. Stage 596 holds final lerp session allocates Vector3 alpha 0.05. Stage 595 holds torus default fallthrough and tube radii. Extras remain runtime-only.
 
 ## Done
 
@@ -43,20 +43,23 @@ Stage 594 holds triangular tAngle floor snap and *5 weave. Stage 593 holds hamil
 | 592 | Hold lemniscate denom 1 + sin(theta)^2 shared by x and z. |
 | 593 | Hold hamiltonian hScale = major. |
 | 594 | Hold triangular tAngle floor snap and *5 weave. |
+| 595 | Hold torus default fallthrough and tube radii. |
+| 596 | Hold final lerp session allocates Vector3 alpha 0.05. |
+| 597 | Hold switch(targetState.geometry) sole four-case dispatch. |
 
 ## Next
 
 | Stage | Owner repo | Work |
 |------|------------|------|
-| 595 | gaia-visualizer | Hold torus default fallthrough and tube radii. |
-| 596 | gaia-visualizer | Hold final lerp session allocates Vector3 alpha 0.05. |
-| 597 | gaia-visualizer | Hold switch(targetState.geometry) sole four-case dispatch. |
+| 598 | gaia-visualizer | Hold uniforms order uTime then uGravity. |
+| 599 | gaia-visualizer | Hold theta step (0.01 + idx * 0.002) * gravityPull. |
+| 600 | gaia-visualizer | Hold major = 10 + (idx * 2) before switch. |
 | 14 | The-Hive | Memory engrams into Drive folder `CRYPTIC-HEARTBEAT-NEXUS-ROOT` |
 
 ## Drive from LLM
 
 ```js
 window.dispatchEvent(new CustomEvent('gaia:targetState', {
-  detail: { geometry: 'infinity', blendFrom: 'torus', blendTo: 'infinity', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 594, sourceHash: '7cd81012', sessionHash: 'beec41f1' }
+  detail: { geometry: 'infinity', blendFrom: 'torus', blendTo: 'infinity', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 597, sourceHash: '7cd81012', sessionHash: 'beec41f1' }
 }));
 ```
