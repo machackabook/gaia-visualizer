@@ -1,10 +1,10 @@
 {
-  "stage": 611,
+  "stage": 612,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
-  "paste": "2026-10-12 17:07 CDT",
-  "next": [612, 613, 614],
+  "paste": "2026-10-12 18:09 CDT",
+  "next": [613, 614, 615],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stage 611 holds major = 10 + (idx * 2) assigned before switch. Prior hops preserved. Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stage 612 holds minor = 3 + (toroidalWeave * 2) assigned before switch. Prior hops preserved. Paste not rewritten."
 }
