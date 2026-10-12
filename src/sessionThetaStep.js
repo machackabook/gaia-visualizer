@@ -1,58 +1,47 @@
-/** Stage 550 — hold theta step = (0.01 + this.idx * 0.002) * state.gravityPull. Document only. Do not rewrite the paste. No secrets. */
-export const THETA_STEP_STAGE = 550;
+/** Stage 584 — session theta step (0.01 + idx * 0.002) * gravityPull. Document only. Do not rewrite the paste. No secrets. */
+export const THETA_STEP_STAGE = 584;
 export const THETA_STEP_SESSION_HASH = 'beec41f1';
 export const THETA_STEP_LIVING_HASH = '7cd81012';
 export const THETA_BASE = 0.01;
 export const THETA_IDX = 0.002;
 
-const PINNED = [
-  'this.theta += (0.01 + this.idx * 0.002) * state.gravityPull;',
-].join('\n');
+const PINNED_PASTE = `update(t) {
+    this.material.uniforms.uTime.value = t;
+    this.material.uniforms.uGravity.value = state.gravityPull;
+    this.theta += (0.01 + this.idx * 0.002) * state.gravityPull;
+    let major = 10 + (this.idx * 2);
+    let minor = 3 + (state.toroidalWeave * 2);
+    switch(targetState.geometry) { default: break; }
+    this.mesh.position.lerp(new THREE.Vector3(0, 0, 0), 0.05);
+}`;
 
-export function sampleThetaStep(idx = 0, gravityPull = 1) {
-  const step = (THETA_BASE + idx * THETA_IDX) * gravityPull;
-  return {
-    idx,
-    gravityPull,
-    base: THETA_BASE,
-    idxFactor: THETA_IDX,
-    step,
-    usesPull: true,
-  };
+export function sampleThetaStep(idx, gravityPull) {
+  const pull = Number.isFinite(gravityPull) ? gravityPull : 1;
+  const step = (THETA_BASE + idx * THETA_IDX) * pull;
+  return { idx, pull, base: THETA_BASE, idxCoeff: THETA_IDX, step };
 }
 
 export function noteSessionThetaStep(source) {
   const pinned = source == null;
-  const text = pinned ? PINNED : String(source);
-  const step = /this\.theta\s*\+=\s*\(\s*0\.01\s*\+\s*this\.idx\s*\*\s*0\.002\s*\)\s*\*\s*state\.gravityPull\s*;/.test(text);
-  const sample = sampleThetaStep(5, 1.2);
+  const text = pinned ? PINNED_PASTE : String(source);
+  const stepAssign = /this\.theta\s*\+=\s*\(\s*0\.01\s*\+\s*this\.idx\s*\*\s*0\.002\s*\)\s*\*\s*state\.gravityPull\s*;/.test(text);
+  const sample = sampleThetaStep(0, 1);
+  const invented = ['klein', 'hopf', 'figure8', 'trefoil', 'mobius'].filter((name) =>
+    new RegExp("case\\s*['\"]" + name + "['\"]").test(text)
+  );
   return {
     stage: THETA_STEP_STAGE,
     session: THETA_STEP_SESSION_HASH,
     living: THETA_STEP_LIVING_HASH,
     pinned,
-    step,
+    formula: 'theta += (0.01 + idx * 0.002) * gravityPull',
+    stepAssign,
     sample,
+    inventedCases: invented,
+    sessionSwitchUntouched: invented.length === 0,
     pasteRewritten: false,
     secrets: false,
-    ok: step && sample.usesPull,
-    note: 'theta step is (0.01 + this.idx * 0.002) * state.gravityPull. Multiplies the base+idx term by gravityPull. Paste not rewritten.',
-  };
-}
-
-export function compileSessionStage550(source) {
-  const hold = noteSessionThetaStep(source);
-  return {
-    current: THETA_STEP_STAGE,
-    session: THETA_STEP_SESSION_HASH,
-    living: THETA_STEP_LIVING_HASH,
-    paste: '2026-10-10 12:06 CDT',
-    geometries: ['infinity', 'hamiltonian', 'triangular', 'torus'],
-    hold,
-    next: [
-      { stage: 551, title: 'hold lerp alpha literal 0.05 and Vector3 alloc inside lerp' },
-      { stage: 552, title: 'hold uniform write order uTime then uGravity' },
-      { stage: 553, title: 'hold phi as read-only in session paste (no phi +=)' },
-    ],
+    ok: stepAssign && invented.length === 0 && sample.step === 0.01,
+    note: 'Session theta step is (0.01 + idx * 0.002) * gravityPull. Applied after uniforms, before geometry switch. Paste not rewritten.',
   };
 }
