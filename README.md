@@ -10,14 +10,14 @@ Team Enhance hops one repo per run. Equalizer formats only. No history rewrite. 
 * Branch: main
 * Language: JavaScript (Vite 5 / three ^0.169)
 * Numeral: 137451921129154222
-* Stage: **622** — 2026-10-13 (chat paste hold)
+* Stage: **623** — 2026-10-13 (chat paste hold)
 * Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
 * Compounding tier: **T5 / 99%**
-* Prior local: hop 621 preserved; not rewritten
+* Prior local: hop 622 preserved; not rewritten
 * Sibling pulse: continuity-ledger-cycle prior. This is local kernel enhancement from chat paste.
 * Closed already this cycle: prior hops in ledger preserved
 * Declared waterfall: ENCLAVE-ADAM-REUNITED → continuity-engine-ssos → hamiltonian-incursion → The-Hive → Cryptic-Heartbeat → gaia-visualizer → living-bibliography-continuity-engine → continuity-ledger-cycle
-* This hop: pin session paste triangular tAngle floor snap; new checker src/sessionTriangularFloorHold622.js; STAGE-622.md compiled; STAGE.json advanced. Cascade.yml left intact. No secrets written. No device rooted.
+* This hop: pin session paste torus default fallthrough (case 'torus': default shares tube); new checker src/sessionTorusDefaultHold623.js; STAGE-623.md compiled; STAGE.json advanced. Cascade.yml left intact. No secrets written. No device rooted.
 * Next in waterfall: continuity-ledger-cycle
 * Cascade: `.github/workflows/cascade.yml` left intact. Not rewritten this hop. No second hourly YAML.
 * Ledger: `docs/LEDGER-STAMP.md`
@@ -31,7 +31,7 @@ Team Enhance hops one repo per run. Equalizer formats only. No history rewrite. 
 Session switch is still only `infinity | hamiltonian | triangular | torus`.
 Live runtime adds phi weave, reused lerp target, optional `uWeave` / `uBlend`, plus runtime extras klein / hopf / figure8 / trefoil.
 Do not promote extra labels until a future paste includes them.
-`default` shares the torus tube. It is not a fifth session case.
+`default` shares the torus tube. It is not a fifth session case. Stage 623 holds this fallthrough.
 Session paste still allocates `new THREE.Vector3` inside lerp with alpha 0.05. Living path keeps `_kernelTarget`.
 Hamiltonian y lift is `sin(t) * 2` and does not take `hScale`.
 Triangular y sector is `(idx % 3 - 1) * major * 0.5` and does not take `theta * 5`. tAngle floor snap and *5 weave held.
@@ -66,7 +66,7 @@ npm install
 npm run dev
 ```
 
-Env-check note (hop 622): `scripts/env-check.sh` fails closed if `README.md` is missing, if `HEAD` SHA is empty, or if the numeral `137451921129154222` is absent from the tree. A zero exit means the docs surface is present. It is a tree gate only. It does not pair devices, does not read Tailscale state, does not consume ADB pair codes, and does not claim a device was rooted. A found key is a stop, not a stamp. Missing keys are the correct state. It does not upload binaries to the Drive index. Do not run the installer from CI. This hop does not probe wireless debugging and does not open a Tailscale socket. Green is presence, not privilege.
+Env-check note (hop 623): `scripts/env-check.sh` fails closed if `README.md` is missing, if `HEAD` SHA is empty, or if the numeral `137451921129154222` is absent from the tree. A zero exit means the docs surface is present. It is a tree gate only. It does not pair devices, does not read Tailscale state, does not consume ADB pair codes, and does not claim a device was rooted. A found key is a stop, not a stamp. Missing keys are the correct state. It does not upload binaries to the Drive index. Do not run the installer from CI. This hop does not probe wireless debugging and does not open a Tailscale socket. Green is presence, not privilege.
 
 ```bash
 bash scripts/env-check.sh
@@ -93,15 +93,15 @@ Stated operator rotation. This hour seats gaia-visualizer for kernel enhancement
 3. hamiltonian-incursion — hop prior closed; not re-touched
 4. The-Hive — hop prior closed; not re-touched
 5. Cryptic-Heartbeat — hop prior closed; not re-touched
-6. gaia-visualizer — **622 this hop**
+6. gaia-visualizer — **623 this hop**
 7. living-bibliography-continuity-engine — hop prior closed; not re-touched
 8. continuity-ledger-cycle — next
 
-## Waterfall receipt (hop 622)
+## Waterfall receipt (hop 623)
 
 * utc: 2026-10-13
 * prior named seat: continuity-ledger-cycle / prior hops
-* this hop: pin paste triangular tAngle floor snap; compile STAGE-622.md; advance STAGE.json; append-only stamp; cascade left intact
+* this hop: pin paste torus default fallthrough; compile STAGE-623.md; advance STAGE.json; append-only stamp; cascade left intact
 * cascade: `.github/workflows/cascade.yml` left intact. Not rewritten.
 * cloud index mention only: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU); no binaries uploaded
 * next: continuity-ledger-cycle
