@@ -2,7 +2,7 @@
 
 Band `580-visual`. Chat kernel is the `update(t)` posted in-session (uniforms → theta → radii → geometry switch → lerp 0.05).
 Raw session kernel still allocates `new THREE.Vector3` inside lerp (hash `beec41f1`). Enhanced / live path uses a reused `_kernelTarget` / `_target`.
-Stage 613 holds switch(targetState.geometry) sole four-case dispatch. Stage 612 holds minor = 3 + (toroidalWeave * 2) before switch. Stage 611 holds major = 10 + (idx * 2) before switch. Stage 610 holds infinity denom 1 + sin(theta)^2 shared by x and z only. Stage 609 holds uniform writes as uTime then uGravity only. Stage 608 holds theta step (0.01 + idx * 0.002) * gravityPull. Extras remain runtime-only.
+Stage 615 holds theta step (0.01 + idx * 0.002) * gravityPull. Stage 614 holds phi read-only in shared y formulas. Stage 613 holds switch(targetState.geometry) sole four-case dispatch. Stage 612 holds minor = 3 + (toroidalWeave * 2) before switch. Stage 611 holds major = 10 + (idx * 2) before switch. Stage 610 holds infinity denom 1 + sin(theta)^2 shared by x and z only. Stage 609 holds uniform writes as uTime then uGravity only. Stage 608 holds theta step (0.01 + idx * 0.002) * gravityPull. Extras remain runtime-only.
 
 ## Done
 
@@ -62,20 +62,22 @@ Stage 613 holds switch(targetState.geometry) sole four-case dispatch. Stage 612 
 | 611 | Hold major = 10 + (idx * 2) before switch. |
 | 612 | Hold minor = 3 + (toroidalWeave * 2) before switch. |
 | 613 | Hold switch(targetState.geometry) sole four-case dispatch. |
+| 614 | Hold phi read-only in shared y formulas. |
+| 615 | Hold theta step (0.01 + idx * 0.002) * gravityPull. |
 
 ## Next
 
 | Stage | Owner repo | Work |
 |------|------------|------|
-| 614 | gaia-visualizer | Hold phi read-only in shared y formulas. |
-| 615 | gaia-visualizer | Hold theta step (0.01 + idx * 0.002) * gravityPull. |
 | 616 | gaia-visualizer | Hold final lerp session allocates Vector3 alpha 0.05. |
+| 617 | gaia-visualizer | Hold major = 10 + (idx * 2) unread by pull. |
+| 618 | gaia-visualizer | Hold minor = 3 + (toroidalWeave * 2) before switch. |
 | 14 | The-Hive | Memory engrams into Drive folder `CRYPTIC-HEARTBEAT-NEXUS-ROOT` |
 
 ## Drive from LLM
 
 ```js
 window.dispatchEvent(new CustomEvent('gaia:targetState', {
-  detail: { geometry: 'infinity', blendFrom: 'torus', blendTo: 'infinity', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 613, sourceHash: '7cd81012', sessionHash: 'beec41f1' }
+  detail: { geometry: 'infinity', blendFrom: 'torus', blendTo: 'infinity', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 615, sourceHash: '7cd81012', sessionHash: 'beec41f1' }
 }));
 ```
