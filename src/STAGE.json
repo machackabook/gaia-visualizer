@@ -1,10 +1,10 @@
 {
-  "stage": 625,
+  "stage": 626,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
   "paste": "2026-10-13",
-  "next": [626, 627, 628],
+  "next": [627, 628, 629],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stage 625 holds triangular y sector formula ((idx % 3 - 1) * major * 0.5 + sin(t) * minor). Prior hops preserved. Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stage 626 holds torus y shared with infinity (minor * sin(phi) * sin(t*0.5 + idx)). Prior hops preserved. Paste not rewritten."
 }
