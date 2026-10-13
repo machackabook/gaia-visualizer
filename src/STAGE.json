@@ -1,10 +1,10 @@
 {
-  "stage": 622,
+  "stage": 623,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
   "paste": "2026-10-13",
-  "next": [623, 624, 625],
+  "next": [624, 625, 626],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stage 622 holds triangular floor snap tAngle. Prior hops preserved. Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stage 623 holds torus default fallthrough (case torus: default shares tube). Prior hops preserved. Paste not rewritten."
 }
