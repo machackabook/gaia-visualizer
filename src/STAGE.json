@@ -1,10 +1,10 @@
 {
-  "stage": 619,
+  "stage": 620,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
   "paste": "2026-10-13",
-  "next": [620, 621, 622],
+  "next": [621, 622, 623],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stage 619 holds switch sole four-case dispatch. Prior hops preserved. Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stage 620 holds infinity scale = major * 1.5. Prior hops preserved. Paste not rewritten."
 }
