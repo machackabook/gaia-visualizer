@@ -1,22 +1,22 @@
-# Stage 574 — hold phi read-only in shared y formulas (2026-10-11 09:11 CDT)
+# Stage 574 — hold phi read-only in shared y formulas (2026-10-12 19:09 CDT)
 
 Connecting chat re-pasted `update(t)`.
 
 ## Session pin
 - session hash `beec41f1`. Living hash `7cd81012`.
-- infinity y: y = minor * Math.sin(this.phi) * Math.sin(t * 0.5 + this.idx);
-- torus/default y: y = minor * Math.sin(this.phi) * Math.sin(t * 0.5 + this.idx);
-- phi is read-only in the shared y tube formulas. Not incremented inside update(t).
-- triangular y does not use phi. Hamiltonian y does not use phi.
+- no this.phi += in session paste
+- infinity y: minor * Math.sin(this.phi) * Math.sin(t * 0.5 + this.idx)
+- torus y: minor * Math.sin(this.phi) * Math.sin(t * 0.5 + this.idx)
+- phi is read-only in the shared y formulas for infinity and torus
+- hamiltonian and triangular y do not use phi
 
 ## Enhancement this hop
-- phi held read-only in the shared infinity/torus y formulas exactly as session paste.
-- paste not rewritten. No secrets.
+Phi remains read-only in the session paste shared y formulas. Paste not rewritten. No secrets.
 
 ## Next
-- 575 hold final lerp allocates Vector3 alpha 0.05
-- 576 hold theta step (0.01 + idx*0.002)*gravityPull
-- 577 hold uniforms written uTime then uGravity
+- 575 hold theta step as the only angle write
+- 576 hold major = 10 + (this.idx * 2) before switch
+- 577 hold minor = 3 + (state.toroidalWeave * 2) before switch
 
-Connecting repos: The-Hive, gaia-visualizer, Cryptic-Heartbeat, continuity-engine-ssos, continuity-ledger-cycle.
+Connecting repos: gaia-visualizer, The-Hive, Cryptic-Heartbeat, continuity-engine-ssos, continuity-ledger-cycle.
 Numeral `137451921129154222`.
