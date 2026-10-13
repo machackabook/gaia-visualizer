@@ -1,10 +1,10 @@
 {
-  "stage": 618,
+  "stage": 619,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
   "paste": "2026-10-13",
-  "next": [619, 620, 621],
+  "next": [620, 621, 622],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stage 618 holds minor = 3 + (toroidalWeave * 2) before switch. Prior hops preserved. Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stage 619 holds switch sole four-case dispatch. Prior hops preserved. Paste not rewritten."
 }
