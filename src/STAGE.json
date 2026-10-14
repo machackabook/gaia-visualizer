@@ -1,10 +1,10 @@
 {
-  "stage": 634,
+  "stage": 635,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
   "paste": "2026-10-14",
-  "next": [635, 636, 637],
+  "next": [636, 637, 638],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stage 634 holds torus/default tube (major + minor * cos(phi)) on x and z only. Prior holds 631-633 preserved. Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stage 635 holds shared y tube formula identical on infinity and torus: minor * sin(phi) * sin(t * 0.5 + idx). Prior holds 631-634 preserved. Paste not rewritten."
 }
