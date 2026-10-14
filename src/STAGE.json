@@ -1,10 +1,10 @@
 {
-  "stage": 628,
+  "stage": 629,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
   "paste": "2026-10-14",
-  "next": [629, 630, 631],
+  "next": [630, 631, 632],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stage 628 holds lerp alpha literal 0.05 and session Vector3 allocation. Prior hops preserved. Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stage 629 holds major/minor assignment before switch unread by pull. Prior hops preserved. Paste not rewritten."
 }
