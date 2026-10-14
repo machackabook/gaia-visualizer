@@ -1,10 +1,10 @@
 {
-  "stage": 629,
+  "stage": 630,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
   "paste": "2026-10-14",
-  "next": [630, 631, 632],
+  "next": [631, 632, 633],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stage 629 holds major/minor assignment before switch unread by pull. Prior hops preserved. Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stage 630 holds full update(t) session pin from current chat (uniforms uTime then uGravity, theta step, major/minor before switch, infinity lemniscate, hamiltonian parametric, triangular floor snap, torus default, lerp Vector3 alpha 0.05). Prior hops preserved. Paste not rewritten."
 }
