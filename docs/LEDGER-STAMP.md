@@ -2,12 +2,12 @@
 
 Append-only Continuity stamp. Do not rewrite history.
 
-## Current stamp (hop 627)
+## Current stamp (hop 628)
 
 - repo: machackabook/gaia-visualizer
-- hop: 627
-- utc: 2026-10-14T02:06Z
-- cdt: 2026-10-13 21:06 CDT
+- hop: 628
+- utc: 2026-10-14T03:07Z
+- cdt: 2026-10-13 22:07 CDT
 - numeral: 137451921129154222
 - team: Enhance / Continuity Engine / sSoS Operating
 - cascade.yml: intact. Not rewritten this hop.
@@ -17,24 +17,24 @@ Append-only Continuity stamp. Do not rewrite history.
 - adb pair codes: none written
 - root claim: none (device root not asserted)
 - history: append-only; no rewrite; no force-push
-- prior local: hop 626 preserved; not rewritten.
+- prior local: hop 627 preserved; not rewritten.
 - prior mesh: continuity-ledger-cycle hop prior closed. Local kernel enhancement from current chat paste of update(t).
 - next in waterfall: continuity-ledger-cycle
 - cloud index: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU) — mention only; no binaries uploaded
 - unknowns kept: pair-code, Tailscale auth key, device voiceprint, SD mount path. Not invented.
 - encode: source-only authority
-- token: hop-627.gaia-visualizer.137451921129154222
-- token_b64: aG9wLTYyNy5nYWlhLXZpc3VhbGl6ZXIuMTM3NDUxOTIxMTI5MTU0MjIy
+- token: hop-628.gaia-visualizer.137451921129154222
+- token_b64: aG9wLTYyOC5nYWlhLXZpc3VhbGl6ZXIuMTM3NDUxOTIxMTI5MTU0MjIy
 
 ```
 NUMERAL=137451921129154222
 REPO=machackabook/gaia-visualizer
-HOP=627
-UTC=2026-10-14T02:06Z
-CDT=2026-10-13 21:06 CDT
+HOP=628
+UTC=2026-10-14T03:07Z
+CDT=2026-10-13 22:07 CDT
 CASCADE=intact_untouched
 NULL_POINT_ZERO=REFUSED
-PRIOR=local@626
+PRIOR=local@627
 NEXT=continuity-ledger-cycle
 DRIVE_INDEX=CONTINUUM-ENCLAVE-137451921129154222
 DRIVE_ID=1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU
@@ -43,11 +43,11 @@ OPERATOR=Team Enhance / Continuity Engine / sSoS Operating
 CONTRACT=preserve enhance synthesize; no history rewrite; no secrets; no force-push; no root claim
 ```
 
+## Prior stamp (hop 627, preserved)
+
+- hop: 627
+- utc: 2026-10-14T02:06Z
+- not rewritten
+
 Older stamps remain in git history. Nearest prior block kept above. No history rewrite.
 CASCADE_TOKEN stays in GitHub Secrets. Never committed.
-
-## Prior stamp (hop 625, preserved)
-
-- hop: 625
-- utc: 2026-10-13T21:09Z
-- not rewritten
