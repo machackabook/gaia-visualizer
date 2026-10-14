@@ -1,10 +1,10 @@
 {
-  "stage": 635,
+  "stage": 636,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
   "paste": "2026-10-14",
-  "next": [636, 637, 638],
+  "next": [637, 638, 639],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stage 635 holds shared y tube formula identical on infinity and torus: minor * sin(phi) * sin(t * 0.5 + idx). Prior holds 631-634 preserved. Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stage 636 holds theta step (0.01 + idx * 0.002) * gravityPull after uniforms, before radii and switch. Prior holds 631-635 preserved. Paste not rewritten."
 }
