@@ -1,10 +1,10 @@
 {
-  "stage": 645,
+  "stage": 646,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
   "paste": "2026-10-15",
-  "next": [646, 647, 648],
+  "next": [647, 648, 649],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stage 645 holds torus/default tube on x/z only; y shared with infinity. Prior holds 631-644 preserved. Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stage 646 holds final lerp session allocates new THREE.Vector3(x, y, z) alpha 0.05. Prior holds 631-645 preserved. Paste not rewritten."
 }
