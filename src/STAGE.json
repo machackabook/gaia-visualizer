@@ -1,10 +1,10 @@
 {
-  "stage": 639,
+  "stage": 640,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
   "paste": "2026-10-14",
-  "next": [640, 641, 642],
+  "next": [641, 642, 643],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stage 639 holds uniforms write order uTime then uGravity first in update(t). Prior holds 631-638 preserved. Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stage 640 holds phi unused in hamiltonian/triangular and no this.phi += in session paste. Prior holds 631-639 preserved. Paste not rewritten."
 }
