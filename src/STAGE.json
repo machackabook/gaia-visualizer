@@ -1,10 +1,10 @@
 {
-  "stage": 643,
+  "stage": 644,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
   "paste": "2026-10-15",
-  "next": [644, 645, 646],
+  "next": [645, 646, 647],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stage 643 holds triangular tAngle floor snap to 2π/3 with raw theta*5 ripple. Prior holds 631-642 preserved. Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stage 644 holds hamiltonian parametric x/z and y lift free of minor. Prior holds 631-643 preserved. Paste not rewritten."
 }
