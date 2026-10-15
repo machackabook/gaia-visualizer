@@ -2,7 +2,7 @@
 
 Band `580-visual`. Chat kernel is the `update(t)` posted in-session (uniforms → theta → radii → geometry switch → lerp 0.05).
 Raw session kernel still allocates `new THREE.Vector3` inside lerp (hash `beec41f1`). Enhanced / live path uses a reused `_kernelTarget` / `_target`.
-Stage 636 holds the theta step from current chat. Prior holds preserved. Extras remain runtime-only.
+Stage 643 holds the triangular floor snap from current chat. Prior holds preserved. Extras remain runtime-only.
 
 ## Done
 
@@ -15,28 +15,34 @@ Stage 636 holds the theta step from current chat. Prior holds preserved. Extras 
 | 619 | Hold switch(targetState.geometry) sole four-case dispatch. |
 | 620 | Hold infinity scale = major * 1.5. |
 | 621 | Hold hamiltonian hScale = major. |
-| 622–629 | Additional holds on triangular floor, torus fallthrough, lemniscate denom, major/minor pre-switch, lerp, etc. (prior preserved) |
-| 630 | Hold full session update(t) kernel paste (four-case, uniforms, theta, radii, geometries, lerp 0.05). |
+| 622–630 | Additional holds on triangular floor, torus fallthrough, lemniscate denom, major/minor pre-switch, lerp, full paste, etc. (prior preserved) |
 | 631 | Hold infinity lemniscate denom shared by x and z. |
 | 632 | Hold hamiltonian parametric and y lift. |
 | 633 | Hold triangular floor snap and y sector. |
 | 634 | Hold torus/default tube on x/z only. |
 | 635 | Hold shared y tube formula identical on infinity and torus. |
 | 636 | Hold theta step `(0.01 + this.idx * 0.002) * state.gravityPull`. |
+| 637 | Hold lerp `new THREE.Vector3(x, y, z)` with alpha 0.05 session allocation. |
+| 638 | Hold major = 10 + (this.idx * 2) and minor = 3 + (state.toroidalWeave * 2) assigned before the switch. |
+| 639 | Hold uniforms write order uTime then uGravity. |
+| 640 | Hold phi unused in hamiltonian/triangular; no this.phi += in session paste. |
+| 641 | Hold y formula identical on infinity and torus (shared tube). |
+| 642 | Hold infinity scale = major * 1.5 and denom = 1 + Math.pow(Math.sin(this.theta), 2). |
+| 643 | Hold triangular tAngle floor snap to 2π/3 sectors with raw theta*5 ripple. |
 
 ## Next
 
 | Stage | Owner repo | Work |
 |------|------------|------|
-| 637 | gaia-visualizer | Hold lerp `new THREE.Vector3(x, y, z)` with alpha 0.05 session allocation. |
-| 638 | gaia-visualizer | Hold major = 10 + (this.idx * 2) and minor = 3 + (state.toroidalWeave * 2) assigned before the switch. |
-| 639 | gaia-visualizer | Hold uniforms write order uTime then uGravity. |
+| 644 | gaia-visualizer | Hold hamiltonian parametric x/z and y lift free of minor. |
+| 645 | gaia-visualizer | Hold torus/default tube on x/z only; y shared. |
+| 646 | gaia-visualizer | Hold final lerp session allocates new THREE.Vector3(x, y, z) alpha 0.05. |
 | 14 | The-Hive | Memory engrams into Drive folder `CRYPTIC-HEARTBEAT-NEXUS-ROOT` |
 
 ## Drive from LLM
 
 ```js
 window.dispatchEvent(new CustomEvent('gaia:targetState', {
-  detail: { geometry: 'hamiltonian', blendFrom: 'infinity', blendTo: 'hamiltonian', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 636, sourceHash: '7cd81012', sessionHash: 'beec41f1' }
+  detail: { geometry: 'triangular', blendFrom: 'infinity', blendTo: 'triangular', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 643, sourceHash: '7cd81012', sessionHash: 'beec41f1' }
 }));
 ```
