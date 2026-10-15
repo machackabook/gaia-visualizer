@@ -1,10 +1,10 @@
 {
-  "stage": 646,
+  "stage": 647,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
   "paste": "2026-10-15",
-  "next": [647, 648, 649],
+  "next": [648, 649, 650],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stage 646 holds final lerp session allocates new THREE.Vector3(x, y, z) alpha 0.05. Prior holds 631-645 preserved. Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stage 647 holds theta step as (0.01 + this.idx * 0.002) * state.gravityPull. Prior holds 631-646 preserved. Paste not rewritten."
 }
