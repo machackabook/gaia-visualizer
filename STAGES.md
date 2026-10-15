@@ -2,7 +2,7 @@
 
 Band `580-visual`. Chat kernel is the `update(t)` posted in-session (uniforms → theta → radii → geometry switch → lerp 0.05).
 Raw session kernel still allocates `new THREE.Vector3` inside lerp (hash `beec41f1`). Enhanced / live path uses a reused `_kernelTarget` / `_target`.
-Stage 660 holds switch sole four-case dispatch from current chat. Prior holds preserved. Extras remain runtime-only.
+Stage 663 holds triangular floor snap to 2π/3 from current chat. Prior holds preserved. Extras remain runtime-only.
 
 ## Done
 
@@ -46,20 +46,23 @@ Stage 660 holds switch sole four-case dispatch from current chat. Prior holds pr
 | 658 | Hold uniforms write order uTime then uGravity. |
 | 659 | Hold major/minor assigned before the switch. |
 | 660 | Hold switch sole four-case dispatch. |
+| 661 | Hold infinity lemniscate denom shared by x and z only. |
+| 662 | Hold hamiltonian parametric x/z free of minor. |
+| 663 | Hold triangular floor snap to 2π/3. |
 
 ## Next
 
 | Stage | Owner repo | Work |
 |------|------------|------|
-| 661 | gaia-visualizer | Hold infinity lemniscate denom shared by x and z only. |
-| 662 | gaia-visualizer | Hold hamiltonian parametric x/z free of minor. |
-| 663 | gaia-visualizer | Hold triangular floor snap to 2π/3. |
+| 664 | gaia-visualizer | Hold torus/default tube on x/z only; y shared with infinity. |
+| 665 | gaia-visualizer | Hold phi unused in hamiltonian/triangular; no this.phi += in session paste. |
+| 666 | gaia-visualizer | Hold final lerp session allocates new THREE.Vector3(x, y, z) alpha 0.05. |
 | 14 | The-Hive | Memory engrams into Drive folder `CRYPTIC-HEARTBEAT-NEXUS-ROOT` |
 
 ## Drive from LLM
 
 ```js
 window.dispatchEvent(new CustomEvent('gaia:targetState', {
-  detail: { geometry: 'torus', blendFrom: 'hamiltonian', blendTo: 'torus', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 660, sourceHash: '7cd81012', sessionHash: 'beec41f1' }
+  detail: { geometry: 'torus', blendFrom: 'hamiltonian', blendTo: 'torus', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 663, sourceHash: '7cd81012', sessionHash: 'beec41f1' }
 }));
 ```
