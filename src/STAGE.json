@@ -1,10 +1,10 @@
 {
-  "stage": 644,
+  "stage": 645,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
   "paste": "2026-10-15",
-  "next": [645, 646, 647],
+  "next": [646, 647, 648],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stage 644 holds hamiltonian parametric x/z and y lift free of minor. Prior holds 631-643 preserved. Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stage 645 holds torus/default tube on x/z only; y shared with infinity. Prior holds 631-644 preserved. Paste not rewritten."
 }
