@@ -1,10 +1,10 @@
 {
-  "stage": 640,
+  "stage": 643,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
-  "paste": "2026-10-14",
-  "next": [641, 642, 643],
+  "paste": "2026-10-15",
+  "next": [644, 645, 646],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stage 640 holds phi unused in hamiltonian/triangular and no this.phi += in session paste. Prior holds 631-639 preserved. Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stage 643 holds triangular tAngle floor snap to 2π/3 with raw theta*5 ripple. Prior holds 631-642 preserved. Paste not rewritten."
 }
