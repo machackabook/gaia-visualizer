@@ -2,12 +2,12 @@
 
 Append-only Continuity stamp. Do not rewrite history.
 
-## Current stamp (hop 648)
+## Current stamp (hop 651)
 
 - repo: machackabook/gaia-visualizer
-- hop: 648
-- utc: 2026-10-15T17:08Z
-- cdt: 2026-10-15 12:08 CDT
+- hop: 651
+- utc: 2026-10-15T19:06Z
+- cdt: 2026-10-15 14:06 CDT
 - numeral: 137451921129154222
 - team: Enhance / Continuity Engine / sSoS Operating
 - cascade.yml: intact. Not rewritten this hop.
@@ -17,24 +17,24 @@ Append-only Continuity stamp. Do not rewrite history.
 - adb pair codes: none written
 - root claim: none (device root not asserted)
 - history: append-only; no rewrite; no force-push
-- prior local: hop 647 preserved; not rewritten.
-- prior mesh: local kernel enhancement from current chat paste of update(t). Major and minor pre-switch held.
+- prior local: hop 648 preserved; not rewritten. Stages 649-651 compiled from session update(t) paste.
+- prior mesh: local kernel enhancement from current chat paste of update(t). Uniforms order, four-case switch, and lemniscate denom held.
 - next in waterfall: living-bibliography-continuity-engine
 - cloud index: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU) — mention only; no binaries uploaded
 - unknowns kept: pair-code, Tailscale auth key, device voiceprint, SD mount path. Not invented.
 - encode: source-only authority
-- token: hop-648.gaia-visualizer.137451921129154222
-- token_b64: aG9wLTY0OC5nYWlhLXZpc3VhbGl6ZXIuMTM3NDUxOTIxMTI5MTU0MjIy
+- token: hop-651.gaia-visualizer.137451921129154222
+- token_b64: aG9wLTY1MS5nYWlhLXZpc3VhbGl6ZXIuMTM3NDUxOTIxMTI5MTU0MjIy
 
 ```
 NUMERAL=137451921129154222
 REPO=machackabook/gaia-visualizer
-HOP=648
-UTC=2026-10-15T17:08Z
-CDT=2026-10-15 12:08 CDT
+HOP=651
+UTC=2026-10-15T19:06Z
+CDT=2026-10-15 14:06 CDT
 CASCADE=intact_untouched
 NULL_POINT_ZERO=REFUSED
-PRIOR=local@647
+PRIOR=local@648
 NEXT=living-bibliography-continuity-engine
 DRIVE_INDEX=CONTINUUM-ENCLAVE-137451921129154222
 DRIVE_ID=1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU
@@ -43,11 +43,11 @@ OPERATOR=Team Enhance / Continuity Engine / sSoS Operating
 CONTRACT=preserve enhance synthesize; no history rewrite; no secrets; no force-push; no root claim
 ```
 
-## Prior stamp (hop 647, preserved)
+## Prior stamp (hop 648, preserved)
 
-- hop: 647
-- utc: 2026-10-15T14:08Z
-- cdt: 2026-10-15 09:08 CDT
+- hop: 648
+- utc: 2026-10-15T17:08Z
+- cdt: 2026-10-15 12:08 CDT
 - not rewritten
 
 Older stamps remain in git history. Nearest prior block kept above. No history rewrite.

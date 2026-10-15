@@ -1,10 +1,10 @@
 {
-  "stage": 648,
+  "stage": 651,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
   "paste": "2026-10-15",
-  "next": [649, 650, 651],
+  "next": [652, 653, 654],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stage 648 holds major = 10 + (this.idx * 2), minor = 3 + (state.toroidalWeave * 2) assigned before the switch. Prior holds 631-647 preserved. Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stage 651 holds infinity lemniscate denom shared by x and z only. Prior holds 631-650 preserved. Paste not rewritten."
 }
