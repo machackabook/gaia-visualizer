@@ -1,10 +1,10 @@
 {
-  "stage": 677,
+  "stage": 679,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
   "paste": "2026-10-16",
-  "next": [678, 679, 680],
+  "next": [680, 681, 682],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stage 677 holds uniforms written uTime then uGravity. Prior holds 676 theta step (0.01 + idx*0.002)*gravityPull, 675 lerp alpha 0.05. Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stage 679 holds switch(targetState.geometry) sole four-case dispatch. Prior holds 678 major/minor assigned before switch, 677 uniforms uTime then uGravity. Paste not rewritten."
 }
