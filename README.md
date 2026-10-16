@@ -10,14 +10,14 @@ Team Enhance hops one repo per run. Equalizer formats only. No history rewrite. 
 * Branch: main
 * Language: JavaScript (Vite 5 / three ^0.169)
 * Numeral: 137451921129154222
-* Stage: **671** — 2026-10-16 (chat paste hold infinity lemniscate denom shared by x and z only; prior 670 switch sole four-case, 669 major/minor pre-switch, 668 uniforms order, 667 theta step)
+* Stage: **672** — 2026-10-16 (chat paste hold hamiltonian parametric x/z free of minor and y lift sin(t)*2; prior 671 infinity lemniscate denom shared by x and z only, 670 switch sole four-case, 669 major/minor pre-switch)
 * Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
 * Compounding tier: **T5 / 99%**
-* Prior local: hop 670 preserved; not rewritten
+* Prior local: hop 671 preserved; not rewritten
 * Sibling pulse: The-Hive and Cryptic-Heartbeat parallel pins advanced. This is local kernel enhancement from current chat paste.
 * Closed already this cycle: prior hops in ledger preserved
 * Declared waterfall: ENCLAVE-ADAM-REUNITED → continuity-engine-ssos → hamiltonian-incursion → The-Hive → Cryptic-Heartbeat → gaia-visualizer → living-bibliography-continuity-engine → continuity-ledger-cycle
-* This hop: pin infinity lemniscate denom shared by x and z only; compile STAGE-671.md; advance STAGES.md; append-only stamp. Cascade.yml left intact. No secrets written. No device rooted.
+* This hop: pin hamiltonian parametric x/z free of minor and y lift sin(t)*2; compile STAGE-672.md; advance STAGES.md; append-only stamp. Cascade.yml left intact. No secrets written. No device rooted.
 * Next in waterfall: living-bibliography-continuity-engine
 * Cascade: `.github/workflows/cascade.yml` left intact. Not rewritten this hop. No second hourly YAML.
 * Ledger: `docs/LEDGER-STAMP.md`
@@ -39,7 +39,7 @@ Minor radius is `3 + toroidalWeave * 2`. Hamiltonian ignores minor. Infinity y, 
 Lemniscate denom stays `1 + sin(theta)^2`. Shared by x and z only.
 Major = 10 + (idx * 2) held unread by pull. Infinity scale = major * 1.5. Hamiltonian hScale = major.
 Theta step held as (0.01 + idx * 0.002) * gravityPull. Uniforms written uTime then uGravity.
-Major and minor assigned before switch(targetState.geometry). Stage 671 holds infinity lemniscate denom shared by x and z only; prior holds switch sole four-case (670), major/minor pre-switch (669), uniforms order (668), theta step (667).
+Major and minor assigned before switch(targetState.geometry). Stage 672 holds hamiltonian parametric x/z free of minor and y lift sin(t)*2; prior holds infinity lemniscate denom shared by x and z only (671), switch sole four-case (670), major/minor pre-switch (669).
 Switch is sole four-case dispatch. All formulas held as in the pasted kernel. Paste not rewritten.
 
 ## Compounding growth
@@ -66,7 +66,7 @@ npm install
 npm run dev
 ```
 
-Env-check note (hop 671): `scripts/env-check.sh` fails closed if `README.md` is missing, if `HEAD` SHA is empty, or if the numeral `137451921129154222` is absent from the tree. A zero exit means the docs surface is present. It is a tree gate only. It does not pair devices, does not read Tailscale state, does not consume ADB pair codes, and does not claim a device was rooted. A found key is a stop, not a stamp. Missing keys are the correct state. It does not upload binaries to the Drive index. Do not run the installer from CI. This hop does not probe wireless debugging and does not open a Tailscale socket. Green is presence, not privilege.
+Env-check note (hop 672): `scripts/env-check.sh` fails closed if `README.md` is missing, if `HEAD` SHA is empty, or if the numeral `137451921129154222` is absent from the tree. A zero exit means the docs surface is present. It is a tree gate only. It does not pair devices, does not read Tailscale state, does not consume ADB pair codes, and does not claim a device was rooted. A found key is a stop, not a stamp. Missing keys are the correct state. It does not upload binaries to the Drive index. Do not run the installer from CI. This hop does not probe wireless debugging and does not open a Tailscale socket. Green is presence, not privilege.
 
 ```bash
 bash scripts/env-check.sh
@@ -93,16 +93,16 @@ Stated operator rotation. This hour seats gaia-visualizer for kernel enhancement
 3. hamiltonian-incursion — hop prior closed; not re-touched
 4. The-Hive — hop prior closed; not re-touched
 5. Cryptic-Heartbeat — hop prior closed; not re-touched
-6. gaia-visualizer — **671 this hop**
+6. gaia-visualizer — **672 this hop**
 7. living-bibliography-continuity-engine — next
 8. continuity-ledger-cycle — hop prior closed; not re-touched
 
-## Waterfall receipt (hop 671)
+## Waterfall receipt (hop 672)
 
-* utc: 2026-10-16T14:12Z
-* cdt: 2026-10-16 09:12 CDT
-* prior named seat: hop 670 / prior hops
-* this hop: pin infinity lemniscate denom shared by x and z only; compile STAGE-671.md; advance STAGES.md; append-only stamp; cascade left intact
+* utc: 2026-10-16T16:08Z
+* cdt: 2026-10-16 11:08 CDT
+* prior named seat: hop 671 / prior hops
+* this hop: pin hamiltonian parametric x/z free of minor and y lift sin(t)*2; compile STAGE-672.md; advance STAGES.md; append-only stamp; cascade left intact
 * cascade: `.github/workflows/cascade.yml` left intact. Not rewritten.
 * cloud index mention only: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU); no binaries uploaded
 * next: living-bibliography-continuity-engine
