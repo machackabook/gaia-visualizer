@@ -1,10 +1,10 @@
 {
-  "stage": 663,
+  "stage": 666,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
   "paste": "2026-10-15",
-  "next": [664, 665, 666],
+  "next": [667, 668, 669],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stage 663 holds triangular floor snap to 2π/3. Prior holds 661 infinity lemniscate denom shared by x and z only, 662 hamiltonian parametric x/z free of minor. Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stage 666 holds final lerp session allocates new THREE.Vector3(x, y, z) alpha 0.05. Prior holds 665 phi unused in hamiltonian/triangular no this.phi +=, 664 torus tube, 663 triangular floor snap. Paste not rewritten."
 }
