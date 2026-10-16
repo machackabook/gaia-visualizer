@@ -1,10 +1,10 @@
 {
-  "stage": 666,
+  "stage": 677,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
-  "paste": "2026-10-15",
-  "next": [667, 668, 669],
+  "paste": "2026-10-16",
+  "next": [678, 679, 680],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stage 666 holds final lerp session allocates new THREE.Vector3(x, y, z) alpha 0.05. Prior holds 665 phi unused in hamiltonian/triangular no this.phi +=, 664 torus tube, 663 triangular floor snap. Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stage 677 holds uniforms written uTime then uGravity. Prior holds 676 theta step (0.01 + idx*0.002)*gravityPull, 675 lerp alpha 0.05. Paste not rewritten."
 }
