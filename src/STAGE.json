@@ -1,10 +1,10 @@
 {
-  "stage": 683,
+  "stage": 699,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
-  "paste": "2026-10-16",
-  "next": [684, 685, 686],
+  "paste": "2026-10-17",
+  "next": [700, 701, 702],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stage 683 holds torus/default tube on x/z only; y shared with infinity. Prior holds 682 triangular floor snap, 681 hamiltonian parametric. Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stage 699 holds hamiltonian parametric mapping and y lift Math.sin(t)*2 independent of hScale. Prior holds 698 infinity lemniscate denom, 697 switch sole four-case. Paste not rewritten."
 }
