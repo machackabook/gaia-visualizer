@@ -2,7 +2,7 @@
 
 Band `580-visual`. Chat kernel is the `update(t)` posted in-session (uniforms → theta → radii → geometry switch → lerp 0.05).
 Raw session kernel still allocates `new THREE.Vector3` inside lerp (hash `beec41f1`). Enhanced / live path uses a reused `_kernelTarget` / `_target`.
-Stage 697 holds switch(targetState.geometry) as sole four-case dispatch. Prior holds preserved. Extras remain runtime-only.
+Stage 698 holds infinity lemniscate denom shared by x and z only. Prior holds preserved. Extras remain runtime-only.
 
 ## Done
 
@@ -83,20 +83,21 @@ Stage 697 holds switch(targetState.geometry) as sole four-case dispatch. Prior h
 | 695 | Hold uniforms write order uTime then uGravity. |
 | 696 | Hold major = 10 + (this.idx * 2), minor = 3 + (state.toroidalWeave * 2) assigned before the switch. |
 | 697 | Hold switch(targetState.geometry) as sole four-case dispatch. |
+| 698 | Hold infinity lemniscate denom shared by x and z only. |
 
 ## Next
 
 | Stage | Owner repo | Work |
 |------|------------|------|
-| 698 | gaia-visualizer | Hold infinity lemniscate denom shared by x and z only. |
 | 699 | gaia-visualizer | Hold hamiltonian parametric mapping and y lift Math.sin(t)*2 independent of hScale. |
 | 700 | gaia-visualizer | Hold triangular floor snap to 2π/3 and y sector free of theta*5 on y. |
+| 701 | gaia-visualizer | Hold torus/default tube on x/z only; y shared with infinity. |
 | 14 | The-Hive | Memory engrams into Drive folder `CRYPTIC-HEARTBEAT-NEXUS-ROOT` |
 
 ## Drive from LLM
 
 ```js
 window.dispatchEvent(new CustomEvent('gaia:targetState', {
-  detail: { geometry: 'torus', blendFrom: 'hamiltonian', blendTo: 'torus', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 697, sourceHash: '7cd81012', sessionHash: 'beec41f1' }
+  detail: { geometry: 'torus', blendFrom: 'hamiltonian', blendTo: 'torus', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 698, sourceHash: '7cd81012', sessionHash: 'beec41f1' }
 }));
 ```
