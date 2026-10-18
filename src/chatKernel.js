@@ -1,5 +1,5 @@
 /**
- * Living chat-kernel contract — Stage 714.
+ * Living chat-kernel contract — Stage 715.
  * Session paste 2026-10-01 12:12 CDT reconfirmed four base cases (infinity|hamiltonian|triangular|torus).
  * Stage 314 extras (klein, hopf, figure8, trefoil, mobius) remain in the living switch only.
  * Stage 339: cycle lives on this module; shouldSkipCpuInstanceMatrixWhenTfOff.
@@ -13,6 +13,7 @@
  * Stage 705: major = 10 + (idx * 2), minor = 3 + (toroidalWeave * 2) assigned before switch.
  * Stage 713: major/minor before switch held.
  * Stage 714: switch(targetState.geometry) sole four-case dispatch held.
+ * Stage 715: infinity lemniscate denom shared by x and z only; y unread by denom.
  * GPU/TF auto path remains count > 1024. instanceOffset band 4096–16384.
  */
 
@@ -38,7 +39,7 @@ export {
   CHAT_KERNEL_ENGRAM_FOLDER,
 } from './chatKernelNext.js';
 
-export const STAGE = 714;
+export const STAGE = 715;
 export const CHAT_KERNEL_LERP = 0.05;
 export const CHAT_KERNEL_THETA_BASE = 0.01;
 export const CHAT_KERNEL_THETA_IDX = 0.002;
@@ -399,6 +400,6 @@ export function confirmSessionKernel() {
     gpuAutoThreshold: GPU_AUTO_THRESHOLD,
     instanceOffsetMin: INSTANCE_OFFSET_MIN,
     nodeCap: NODE_CAP,
-    note: 'Session paste 2026-10-01 12:12 CDT held beec41f1. Stage 714 holds switch sole four-case, major/minor before switch, uniforms order, theta step. Pair-wise blend remains runtime-only.',
+    note: 'Session paste 2026-10-01 12:12 CDT held beec41f1. Stage 715 holds infinity denom shared by x/z only (y unread), switch sole four-case, major/minor before switch, uniforms order, theta step. Pair-wise blend remains runtime-only.',
   };
 }
