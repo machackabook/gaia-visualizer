@@ -1,5 +1,5 @@
 /**
- * Living chat-kernel contract — Stage 360.
+ * Living chat-kernel contract — Stage 705.
  * Session paste 2026-10-01 12:12 CDT reconfirmed four base cases (infinity|hamiltonian|triangular|torus).
  * Stage 314 extras (klein, hopf, figure8, trefoil, mobius) remain in the living switch only.
  * Stage 339: cycle lives on this module; shouldSkipCpuInstanceMatrixWhenTfOff.
@@ -7,6 +7,10 @@
  * Stage 341: optional uEnergy; heartbeat energyFreeze.
  * Stage 342: compileChatKernelNextStages + pairBlendChatKernelGeometries (runtime-only).
  * Stage 360: session phi-gap report; public-band fidelity sample held; next queue 361+.
+ * Stage 702: session lerp allocates new THREE.Vector3 alpha 0.05.
+ * Stage 703: theta step (0.01 + idx * 0.002) * gravityPull.
+ * Stage 704: uniforms write order uTime then uGravity.
+ * Stage 705: major = 10 + (idx * 2), minor = 3 + (toroidalWeave * 2) assigned before switch.
  * GPU/TF auto path remains count > 1024. instanceOffset band 4096–16384.
  */
 
@@ -32,7 +36,7 @@ export {
   CHAT_KERNEL_ENGRAM_FOLDER,
 } from './chatKernelNext.js';
 
-export const STAGE = 360;
+export const STAGE = 705;
 export const CHAT_KERNEL_LERP = 0.05;
 export const CHAT_KERNEL_THETA_BASE = 0.01;
 export const CHAT_KERNEL_THETA_IDX = 0.002;
@@ -393,6 +397,6 @@ export function confirmSessionKernel() {
     gpuAutoThreshold: GPU_AUTO_THRESHOLD,
     instanceOffsetMin: INSTANCE_OFFSET_MIN,
     nodeCap: NODE_CAP,
-    note: 'Session paste 2026-10-01 12:12 CDT held beec41f1. Stage 360 phi-gap report. Pair-wise blend remains runtime-only.',
+    note: 'Session paste 2026-10-01 12:12 CDT held beec41f1. Stage 705 holds major/minor before switch, uniforms order, theta step. Pair-wise blend remains runtime-only.',
   };
 }
