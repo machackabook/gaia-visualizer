@@ -2,12 +2,12 @@
 
 Append-only Continuity stamp. Do not rewrite history.
 
-## Current stamp (hop 711)
+## Current stamp (hop 714)
 
 - repo: machackabook/gaia-visualizer
-- hop: 711
-- utc: 2026-10-18T14:09Z
-- cdt: 2026-10-18 09:09 CDT
+- hop: 714
+- utc: 2026-10-18T18:07Z
+- cdt: 2026-10-18 13:07 CDT
 - numeral: 137451921129154222
 - team: Enhance / Continuity Engine / sSoS Operating
 - cascade.yml: intact. Not rewritten this hop.
@@ -17,24 +17,24 @@ Append-only Continuity stamp. Do not rewrite history.
 - adb pair codes: none written
 - root claim: none (device root not asserted)
 - history: append-only; no rewrite; no force-push
-- prior local: hop 710 preserved; not rewritten. Stage 711 compiled from session update(t) paste (theta step as (0.01 + this.idx * 0.002) * state.gravityPull).
-- prior mesh: local kernel enhancement from current chat paste of update(t). Session theta step hold pinned.
+- prior local: hop 713 preserved; not rewritten. Stage 714 compiled from session update(t) paste (switch(targetState.geometry) as sole four-case dispatch).
+- prior mesh: local kernel enhancement from current chat paste of update(t). Session switch hold pinned.
 - next in waterfall: living-bibliography-continuity-engine
 - cloud index: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU) — mention only; no binaries uploaded
 - unknowns kept: pair-code, Tailscale auth key, device voiceprint, SD mount path. Not invented.
 - encode: source-only authority
-- token: hop-711.gaia-visualizer.137451921129154222
-- token_b64: aG9wLTcxMS5nYWlhLXZpc3VhbGl6ZXIuMTM3NDUxOTIxMTI5MTU0MjIy
+- token: hop-714.gaia-visualizer.137451921129154222
+- token_b64: aG9wLTcxNC5nYWlhLXZpc3VhbGl6ZXIuMTM3NDUxOTIxMTI5MTU0MjIy
 
 ```
 NUMERAL=137451921129154222
 REPO=machackabook/gaia-visualizer
-HOP=711
-UTC=2026-10-18T14:09Z
-CDT=2026-10-18 09:09 CDT
+HOP=714
+UTC=2026-10-18T18:07Z
+CDT=2026-10-18 13:07 CDT
 CASCADE=intact_untouched
 NULL_POINT_ZERO=REFUSED
-PRIOR=local@710
+PRIOR=local@713
 NEXT=living-bibliography-continuity-engine
 DRIVE_INDEX=CONTINUUM-ENCLAVE-137451921129154222
 DRIVE_ID=1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU
@@ -43,11 +43,11 @@ OPERATOR=Team Enhance / Continuity Engine / sSoS Operating
 CONTRACT=preserve enhance synthesize; no history rewrite; no secrets; no force-push; no root claim
 ```
 
-## Prior stamp (hop 710, preserved)
+## Prior stamp (hop 711, preserved)
 
-- hop: 710
-- utc: 2026-10-18T04:08Z
-- cdt: 2026-10-17 23:08 CDT
+- hop: 711
+- utc: 2026-10-18T14:09Z
+- cdt: 2026-10-18 09:09 CDT
 - not rewritten
 
 Older stamps remain in git history. Nearest prior block kept above. No history rewrite.
