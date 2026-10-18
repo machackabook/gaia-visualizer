@@ -1,4 +1,4 @@
-/** Stage 602 compiled next-stage queue. Session switch stays four-case (beec41f1). Connecting chat 2026-10-17 10:08 CDT re-paste of update(t). Stages 598-602 hold uniforms order, theta step, major/minor before switch, sole four-case dispatch, final lerp Vector3 alloc alpha 0.05. */
+/** Stage 715 compiled next-stage queue. Session switch stays four-case (beec41f1). Connecting chat 2026-10-18 re-paste of update(t). Stages 711-715 hold theta step, uniforms order, major/minor before switch, sole four-case dispatch, infinity denom shared by x/z only. */
 import { reuseSessionLerpTarget, SESSION_LERP } from './sessionScratchLerp.js';
 import { publicKernelEnvelope, assertPublicEnvelope } from './publicKernelEnvelope.js';
 import { samplePublicBandFidelity } from './publicBandFidelity.js';
@@ -56,8 +56,8 @@ export { reuseSessionLerpTarget, SESSION_LERP, publicKernelEnvelope, assertPubli
 export { chatKernelFourGovernors, chatKernelMemoryEngram, chatKernelExtrasParity, chatKernelWeaveSliders, chatKernelHudCatalogBind, compileChatKernelNextStages, chatKernelHeartbeatMutation, chatKernelLedgerPulseScan, pairBlendChatKernelGeometries } from './chatKernelNextTail.js';
 export { chatKernelStage505Notes, CHAT_KERNEL_STAGE_505_NEXT, chatKernelStage508Notes, CHAT_KERNEL_STAGE_508_NEXT, chatKernelStage511Notes, CHAT_KERNEL_STAGE_511_NEXT, chatKernelStage514Notes, CHAT_KERNEL_STAGE_514_NEXT, chatKernelStage517Notes, CHAT_KERNEL_STAGE_517_NEXT, chatKernelStage520Notes, CHAT_KERNEL_STAGE_520_NEXT, chatKernelStage521Notes, CHAT_KERNEL_STAGE_521_NEXT, chatKernelStage524Notes, CHAT_KERNEL_STAGE_524_NEXT, chatKernelStage527Notes, CHAT_KERNEL_STAGE_527_NEXT, chatKernelStage530Notes, CHAT_KERNEL_STAGE_530_NEXT, chatKernelStage533Notes, CHAT_KERNEL_STAGE_533_NEXT, chatKernelStage536Notes, CHAT_KERNEL_STAGE_536_NEXT, chatKernelStage538Notes, CHAT_KERNEL_STAGE_538_NEXT };
 
-export const STAGE = 602;
-export const CHAT_KERNEL_PIN_STAGE = 602;
+export const STAGE = 715;
+export const CHAT_KERNEL_PIN_STAGE = 715;
 export const CHAT_KERNEL_SESSION_HASH = 'beec41f1';
 export const CHAT_KERNEL_LIVING_HASH = '7cd81012';
 export const CHAT_KERNEL_CHAT_GEOMETRIES = ['infinity', 'hamiltonian', 'triangular', 'torus'];
@@ -71,9 +71,9 @@ export const GPU_AUTO_THRESHOLD = 1024;
 export const NODE_CAP = 16384;
 export const INSTANCE_OFFSET_MIN = 4096;
 export const CHAT_KERNEL_NEXT_STAGES = [
-  { stage: 603, title: 'hold infinity lemniscate scale major * 1.5' },
-  { stage: 604, title: 'hold hamiltonian hScale = major (no 1.5 factor)' },
-  { stage: 605, title: 'hold triangular sector floor (2π/3) and y lane' },
+  { stage: 716, title: 'hold hamiltonian hScale = major (no 1.5 factor); x/z free of minor; y lift sin(t)*2' },
+  { stage: 717, title: 'hold triangular sector floor (2π/3) and y lane (idx % 3 - 1) * major * 0.5' },
+  { stage: 718, title: 'hold torus/default tube radius (major + minor * cos(phi)) on x/z only; y shared infinity' },
 ];
 
 export const STAGE_FLAGS = {
