@@ -2,7 +2,7 @@
 
 Band `580-visual`. Chat kernel is the `update(t)` posted in-session (uniforms → theta → radii → geometry switch → lerp 0.05).
 Raw session kernel still allocates `new THREE.Vector3` inside lerp (hash `beec41f1`). Enhanced / live path uses a reused `_kernelTarget` / `_target`.
-Stage 708 holds triangular floor snap to 2π/3 and y sector free of theta*5 on y. Prior holds preserved. Extras remain runtime-only.
+Stage 711 holds theta step as (0.01 + this.idx * 0.002) * state.gravityPull. Prior holds preserved. Extras remain runtime-only.
 
 ## Done
 
@@ -94,20 +94,23 @@ Stage 708 holds triangular floor snap to 2π/3 and y sector free of theta*5 on y
 | 706 | Hold infinity lemniscate scale = major * 1.5 before denom. |
 | 707 | Hold hamiltonian hScale = major (no 1.5 factor). |
 | 708 | Hold triangular floor snap to 2π/3 and y sector free of theta*5 on y. |
+| 709 | Hold torus/default tube on x/z only; y shared with infinity. |
+| 710 | Hold final lerp session allocates new THREE.Vector3(x, y, z) alpha 0.05. |
+| 711 | Hold theta step as (0.01 + this.idx * 0.002) * state.gravityPull. |
 
 ## Next
 
 | Stage | Owner repo | Work |
 |------|------------|------|
-| 709 | gaia-visualizer | Hold torus/default tube on x/z only; y shared with infinity. |
-| 710 | gaia-visualizer | Hold final lerp session allocates new THREE.Vector3(x, y, z) alpha 0.05. |
-| 711 | gaia-visualizer | Hold theta step as (0.01 + this.idx * 0.002) * state.gravityPull. |
+| 712 | gaia-visualizer | Hold uniforms written uTime then uGravity. |
+| 713 | gaia-visualizer | Hold major = 10 + (this.idx * 2), minor = 3 + (state.toroidalWeave * 2) assigned before the switch. |
+| 714 | gaia-visualizer | Hold switch(targetState.geometry) as sole four-case dispatch. |
 | 14 | The-Hive | Memory engrams into Drive folder `CRYPTIC-HEARTBEAT-NEXUS-ROOT` |
 
 ## Drive from LLM
 
 ```js
 window.dispatchEvent(new CustomEvent('gaia:targetState', {
-  detail: { geometry: 'torus', blendFrom: 'hamiltonian', blendTo: 'torus', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 708, sourceHash: '7cd81012', sessionHash: 'beec41f1' }
+  detail: { geometry: 'torus', blendFrom: 'hamiltonian', blendTo: 'torus', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 711, sourceHash: '7cd81012', sessionHash: 'beec41f1' }
 }));
 ```
