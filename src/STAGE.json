@@ -1,10 +1,10 @@
 {
-  "stage": 720,
+  "stage": 736,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
-  "paste": "2026-10-18",
-  "next": [721, 722, 723],
+  "paste": "2026-10-19",
+  "next": [737, 738, 739],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stage 720 holds phi unread (no assignment in paste). Prior holds 719 lerp alpha 0.05 + Vector3 alloc, 718 torus tube radius on x/z only, 717 triangular floor, 716 hamiltonian, 715 infinity denom, 714 switch, 713 major/minor, 712 uniforms, 711 theta. Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stage 736 holds triangular tAngle floor (2π/3) and y sector (idx % 3 - 1)*major*0.5 free of theta*5. Prior holds 735 hamiltonian hScale=major and y lift sin(t)*2 free of minor, 734 infinity scale=major*1.5 and denom shared by x/z, 733 theta step, 732 switch, 731 major/minor. Paste not rewritten."
 }
