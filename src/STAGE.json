@@ -1,10 +1,10 @@
 {
-  "stage": 712,
+  "stage": 720,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
   "paste": "2026-10-18",
-  "next": [713, 714, 715],
+  "next": [721, 722, 723],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stage 712 holds uniforms written uTime then uGravity. Prior holds 711 theta step, 710 lerp allocation. Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stage 720 holds phi unread (no assignment in paste). Prior holds 719 lerp alpha 0.05 + Vector3 alloc, 718 torus tube radius on x/z only, 717 triangular floor, 716 hamiltonian, 715 infinity denom, 714 switch, 713 major/minor, 712 uniforms, 711 theta. Paste not rewritten."
 }
