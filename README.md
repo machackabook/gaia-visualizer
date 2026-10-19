@@ -10,12 +10,12 @@ Team Enhance hops one repo per run. Equalizer formats only. No history rewrite. 
 * Branch: main
 * Language: JavaScript (Vite 5 / three ^0.169)
 * Numeral: 137451921129154222
-* Stage: **742** — 2026-10-19T20:06Z (2026-10-19 15:06 CDT) (compiled 740 theta step, 741 major/minor before switch, 742 switch sole four-case; prior 739 phi unread, 738 lerp, 737 torus)
+* Stage: **745** — 2026-10-19T22:10Z (2026-10-19 17:10 CDT) (compiled 743 uniforms uTime then uGravity, 744 infinity scale=major*1.5 + denom shared x/z, 745 hamiltonian hScale=major + y lift sin(t)*2; prior 742 switch sole four-case)
 * Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
 * Compounding tier: **T5 / 99%**
-* Prior local: hop 739 @ 2026-10-19T19:07Z preserved; not rewritten. Stages 740-742 compiled from STAGE-739 next list and current chat paste of update(t).
+* Prior local: hop 742 @ 2026-10-19T20:06Z preserved; not rewritten. Stages 743-745 compiled from STAGE-742 next list and current chat paste of update(t).
 * Prior mesh: living-bibliography-continuity-engine hop 727 @ 2026-10-19T12:13Z named. Honored. Not re-touched.
-* This hop: compile stages 740-742 from current chat paste of update(t); hold theta step, major/minor pre-switch, sole four-case switch; append-only stamp. Cascade.yml left intact. No secrets written. No device rooted.
+* This hop: compile stages 743-745 from current chat paste of update(t); hold uniforms order, infinity scale/denom, hamiltonian hScale/y; append-only stamp. Cascade.yml left intact. No secrets written. No device rooted.
 * Next in waterfall: continuity-engine-ssos or next recent
 * Cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`, lint-docs requires README, SECURITY.md, stamp, numeral, no .env / secrets.yml / id_rsa). Not rewritten this hop.
 * Ledger: `docs/LEDGER-STAMP.md`
@@ -31,14 +31,14 @@ Live runtime adds phi weave, reused lerp target, optional `uWeave` / `uBlend`, p
 Do not promote extra labels until a future paste includes them.
 `default` shares the torus tube. It is not a fifth session case.
 Session paste still allocates `new THREE.Vector3` inside lerp with alpha 0.05. Living path keeps `_kernelTarget`. Stage 738 holds the session allocation and alpha.
-Hamiltonian y lift is `sin(t) * 2` and does not take `hScale` or minor. X/Z free of minor. Stage 735 holds hScale = major (no minor); infinity scale = major * 1.5. Stage 734 holds the scale and denom shared by x/z.
+Hamiltonian y lift is `sin(t) * 2` and does not take `hScale` or minor. X/Z free of minor. Stage 745 holds hScale = major (no minor); infinity scale = major * 1.5. Stage 744 holds the scale and denom shared by x/z.
 Triangular y sector is `(idx % 3 - 1) * major * 0.5` and does not take `theta * 5`. Floor snap to 2π/3. Stage 736 holds the floor and y sector.
 Torus/default tube radius (major + minor * cos(phi)) shared by x and z only. Y is shared infinity formula. Stage 737 holds the tube on x/z and shared y.
 Minor radius is `3 + toroidalWeave * 2`. Hamiltonian ignores minor. Infinity y, triangular ripple/y, and the torus tube use it. Stage 722 holds toroidalWeave external.
-Lemniscate denom stays `1 + sin(theta)^2`. Shared by x and z only. Stage 715 holds the denom shared by x/z; y unread by denom. Stage 734 reconfirms.
-Major = 10 + (idx * 2) held unread by pull. Infinity scale = major * 1.5. Hamiltonian hScale = major. Stage 741 holds major/minor before switch. Stage 734/735 hold the scales.
+Lemniscate denom stays `1 + sin(theta)^2`. Shared by x and z only. Stage 715 holds the denom shared by x/z; y unread by denom. Stage 744 reconfirms.
+Major = 10 + (idx * 2) held unread by pull. Infinity scale = major * 1.5. Hamiltonian hScale = major. Stage 741 holds major/minor before switch. Stage 744/745 hold the scales.
 Theta step held as (0.01 + idx * 0.002) * gravityPull. Stage 740 holds the step.
-Uniforms written uTime then uGravity. Stage 730 holds the uniforms order.
+Uniforms written uTime then uGravity. Stage 743 holds the uniforms order.
 Major and minor assigned before switch(targetState.geometry). Stage 741 holds major/minor before switch.
 Switch is sole four-case dispatch. Stage 742 holds the switch. All formulas held as in the pasted kernel. Paste not rewritten.
 Phi is referenced but never assigned inside the session paste. Stage 739 holds phi unread / external.
@@ -68,7 +68,7 @@ npm install
 npm run dev
 ```
 
-Env-check note (hop 742): `scripts/env-check.sh` fails closed if `README.md` is missing, if `HEAD` SHA is empty, or if the numeral `137451921129154222` is absent from the tree. A zero exit means the docs surface is present. It is a tree gate only. It does not pair devices, does not read Tailscale state, does not consume ADB pair codes, and does not claim a device was rooted. A found key is a stop, not a stamp. Missing keys are the correct state. It does not upload binaries to the Drive index. Do not run the installer from CI. This hop does not probe wireless debugging and does not open a Tailscale socket. Green is presence, not privilege.
+Env-check note (hop 745): `scripts/env-check.sh` fails closed if `README.md` is missing, if `HEAD` SHA is empty, or if the numeral `137451921129154222` is absent from the tree. A zero exit means the docs surface is present. It is a tree gate only. It does not pair devices, does not read Tailscale state, does not consume ADB pair codes, and does not claim a device was rooted. A found key is a stop, not a stamp. Missing keys are the correct state. It does not upload binaries to the Drive index. Do not run the installer from CI. This hop does not probe wireless debugging and does not open a Tailscale socket. Green is presence, not privilege.
 
 ```bash
 bash scripts/env-check.sh
@@ -95,15 +95,15 @@ Declared operator rotation. One repo, then stop.
 3. The-Hive — hop 725 closed. Not re-touched.
 4. continuity-ledger-cycle — hop 726 closed. Not re-touched.
 5. living-bibliography-continuity-engine — hop 727 closed. Honored. Not re-touched.
-6. gaia-visualizer — **742 this hop** (stages 740-742 compiled)
+6. gaia-visualizer — **745 this hop** (stages 743-745 compiled)
 7. other recent machackabook — next
 
-## Waterfall receipt (hop 742)
+## Waterfall receipt (hop 745)
 
-* utc: 2026-10-19T20:06Z
-* cdt: 2026-10-19 15:06 CDT
+* utc: 2026-10-19T22:10Z
+* cdt: 2026-10-19 17:10 CDT
 * prior named seat: living-bibliography-continuity-engine hop 727 @ 2026-10-19T12:13Z. Honored.
-* this hop: compile stages 740-742 from STAGE-739 next list and current chat paste of update(t); hold theta step, major/minor before switch, sole four-case switch; append-only stamp
+* this hop: compile stages 743-745 from STAGE-742 next list and current chat paste of update(t); hold uniforms order, infinity scale/denom, hamiltonian hScale/y; append-only stamp
 * cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, contents: read)
 * cloud index mention only: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU); no binaries uploaded
 * next: other recent machackabook
