@@ -10,16 +10,14 @@ Team Enhance hops one repo per run. Equalizer formats only. No history rewrite. 
 * Branch: main
 * Language: JavaScript (Vite 5 / three ^0.169)
 * Numeral: 137451921129154222
-* Stage: **727** — 2026-10-18 (compiled 725 infinity scale = major * 1.5 / hamiltonian hScale = major; 726 lerp alpha 0.05 + Vector3 alloc; 727 phi unread external weave; prior 724 major/minor, 723 dispatcher, 722 external drivers, 721 full kernel pin)
+* Stage: **728** — 2026-10-19T14:12Z (2026-10-19 09:12 CDT)
 * Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
 * Compounding tier: **T5 / 99%**
-* Prior local: hop 722 preserved; not rewritten
-* Sibling pulse: The-Hive parallel PINNED_PASTE enhanced to full mappings. This is local kernel enhancement from current chat paste.
-* Closed already this cycle: prior hops in ledger preserved
-* Declared waterfall: ENCLAVE-ADAM-REUNITED → continuity-engine-ssos → hamiltonian-incursion → The-Hive → Cryptic-Heartbeat → gaia-visualizer → living-bibliography-continuity-engine → continuity-ledger-cycle
-* This hop: compile next stages 725-727 from STAGE-724 compiled list; hold session formulas; append-only stamp. Cascade.yml left intact. No secrets written. No device rooted.
-* Next in waterfall: living-bibliography-continuity-engine
-* Cascade: `.github/workflows/cascade.yml` left intact. Not rewritten this hop. No second hourly YAML.
+* Prior local: hop 727 @ 2026-10-19T04:07Z preserved; not rewritten
+* Prior mesh: living-bibliography-continuity-engine hop 727 @ 2026-10-19T12:13Z named this seat. Honored. Not re-touched.
+* This hop: README waterfall realigned after living-bibliography-continuity-engine hop 727. Append-only stamp. Cascade.yml left intact. No secrets written. No device rooted.
+* Next in waterfall: continuity-engine-ssos or next recent
+* Cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`, lint-docs requires README, SECURITY.md, stamp, numeral, no .env / secrets.yml / id_rsa). Not rewritten this hop.
 * Ledger: `docs/LEDGER-STAMP.md`
 * Cloud index (mention only, no binary upload): Drive folder `CONTINUUM-ENCLAVE-137451921129154222` id `1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU`
 * Drive mesh: GitHub remains the versioned singularity. Ethereal continuum (Drive) is a mirror, not a second source of truth.
@@ -70,7 +68,7 @@ npm install
 npm run dev
 ```
 
-Env-check note (hop 727): `scripts/env-check.sh` fails closed if `README.md` is missing, if `HEAD` SHA is empty, or if the numeral `137451921129154222` is absent from the tree. A zero exit means the docs surface is present. It is a tree gate only. It does not pair devices, does not read Tailscale state, does not consume ADB pair codes, and does not claim a device was rooted. A found key is a stop, not a stamp. Missing keys are the correct state. It does not upload binaries to the Drive index. Do not run the installer from CI. This hop does not probe wireless debugging and does not open a Tailscale socket. Green is presence, not privilege.
+Env-check note (hop 728): `scripts/env-check.sh` fails closed if `README.md` is missing, if `HEAD` SHA is empty, or if the numeral `137451921129154222` is absent from the tree. A zero exit means the docs surface is present. It is a tree gate only. It does not pair devices, does not read Tailscale state, does not consume ADB pair codes, and does not claim a device was rooted. A found key is a stop, not a stamp. Missing keys are the correct state. It does not upload binaries to the Drive index. Do not run the installer from CI. This hop does not probe wireless debugging and does not open a Tailscale socket. Green is presence, not privilege.
 
 ```bash
 bash scripts/env-check.sh
@@ -90,38 +88,35 @@ Cross-repo push on pull stays closed until the operator injects `CASCADE_TOKEN`.
 
 ## Waterfall (one repo per enhance hop)
 
-Stated operator rotation. This hour seats gaia-visualizer for kernel enhancement from current chat paste.
+Declared operator rotation. One repo, then stop.
 
-1. ENCLAVE-ADAM-REUNITED — hop prior closed; not re-touched
-2. continuity-engine-ssos — hop prior closed; not re-touched
-3. hamiltonian-incursion — hop prior closed; not re-touched
-4. The-Hive — hop prior closed; not re-touched
-5. Cryptic-Heartbeat — hop prior closed; not re-touched
-6. gaia-visualizer — **725-727 this hop**
-7. living-bibliography-continuity-engine — next
-8. continuity-ledger-cycle — hop prior closed; not re-touched
+1. ENCLAVE-ADAM-REUNITED — hop 723 closed. Not re-touched.
+2. Cryptic-Heartbeat — hop 724 closed. Not re-touched.
+3. The-Hive — hop 725 closed. Not re-touched.
+4. continuity-ledger-cycle — hop 726 closed. Not re-touched.
+5. living-bibliography-continuity-engine — hop 727 closed. Honored. Not re-touched.
+6. gaia-visualizer — **728 this hop**
+7. other recent machackabook — next
 
-## Waterfall receipt (hop 727)
+## Waterfall receipt (hop 728)
 
-* utc: 2026-10-19T04:07Z
-* cdt: 2026-10-18 23:07 CDT
-* prior named seat: hop 722 / stages 722-724
-* this hop: compile stages 725-727 from prior compiled list; hold infinity/hamiltonian scales, lerp alpha + alloc, phi external; append-only stamp; cascade left intact
-* cascade: `.github/workflows/cascade.yml` left intact. Not rewritten.
+* utc: 2026-10-19T14:12Z
+* cdt: 2026-10-19 09:12 CDT
+* prior named seat: living-bibliography-continuity-engine hop 727 @ 2026-10-19T12:13Z. Honored.
+* this hop: README waterfall refresh + env-check clarity; append-only stamp
+* cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, contents: read)
 * cloud index mention only: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU); no binaries uploaded
-* next: living-bibliography-continuity-engine
-
-A pull on `main` should leave a ledger stamp.
+* next: other recent machackabook
 
 ## Mesh siblings
 
 * [ENCLAVE-ADAM-REUNITED](https://github.com/machackabook/ENCLAVE-ADAM-REUNITED)
+* [Cryptic-Heartbeat](https://github.com/machackabook/Cryptic-Heartbeat)
+* [The-Hive](https://github.com/machackabook/The-Hive)
+* [continuity-ledger-cycle](https://github.com/machackabook/continuity-ledger-cycle)
+* [living-bibliography-continuity-engine](https://github.com/machackabook/living-bibliography-continuity-engine)
 * [continuity-engine-ssos](https://github.com/machackabook/continuity-engine-ssos)
 * [hamiltonian-incursion](https://github.com/machackabook/hamiltonian-incursion)
-* [The-Hive](https://github.com/machackabook/The-Hive)
-* [Cryptic-Heartbeat](https://github.com/machackabook/Cryptic-Heartbeat)
-* [living-bibliography-continuity-engine](https://github.com/machackabook/living-bibliography-continuity-engine)
-* [continuity-ledger-cycle](https://github.com/machackabook/continuity-ledger-cycle)
 * [nexus-repo-sync](https://github.com/machackabook/nexus-repo-sync)
 * [continuity-mesh-speedway](https://github.com/machackabook/continuity-mesh-speedway)
 * [tdoc-ledgertrove](https://github.com/machackabook/tdoc-ledgertrove)
