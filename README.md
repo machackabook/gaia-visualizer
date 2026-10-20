@@ -10,13 +10,13 @@ Team Enhance hops one repo per run. Equalizer formats only. No history rewrite. 
 * Branch: main
 * Language: JavaScript (Vite 5 / three ^0.169)
 * Numeral: 137451921129154222
-* Stage: **760** — 2026-10-20T16:07Z (2026-10-20 11:07 CDT) (compiled 759 phi referenced but never assigned inside session paste (external), 760 session lerp allocates new THREE.Vector3 with alpha 0.05; prior 758 torus/default tube shared by x/z y minor*sin(phi)*sin, 757 triangular tAngle floor)
+* Stage: **762** — 2026-10-20T18:06Z (2026-10-20 13:06 CDT) (compiled 761 uniforms write order uTime then uGravity before theta, 762 theta step (0.01 + idx * 0.002) * gravityPull and major/minor assigned before switch; prior 760 session lerp allocates new THREE.Vector3 with alpha 0.05, 759 phi external)
 * Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
 * Compounding tier: **T5 / 99%**
-* Prior local: hop 758 @ 2026-10-20T15:08Z preserved; not rewritten. Stages 759-760 compiled from STAGE-758 next list and current chat paste of update(t).
+* Prior local: hop 760 @ 2026-10-20T16:07Z preserved; not rewritten. Stages 761-762 compiled from STAGE-760 next list and current chat paste of update(t).
 * Prior mesh: living-bibliography-continuity-engine hop 727 @ 2026-10-19T12:13Z named. Honored. Not re-touched.
-* This hop: compile stages 759-760 from current chat paste of update(t); hold phi external/unread, session lerp allocation and literal alpha 0.05; append-only stamp. Cascade.yml left intact. No secrets written. No device rooted.
-* Next in waterfall: continuity-engine-ssos or next recent
+* This hop: compile stages 761-762 from current chat paste of update(t); hold uniforms uTime then uGravity, theta step scaled by gravityPull, major = 10 + (idx * 2) and minor = 3 + (toroidalWeave * 2) before switch; append-only stamp. Cascade.yml left intact. No secrets written. No device rooted.
+* Next in waterfall: other recent machackabook
 * Cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`, lint-docs requires README, SECURITY.md, stamp, numeral, no .env / secrets.yml / id_rsa). Not rewritten this hop.
 * Ledger: `docs/LEDGER-STAMP.md`
 * Cloud index (mention only, no binary upload): Drive folder `CONTINUUM-ENCLAVE-137451921129154222` id `1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU`
@@ -36,10 +36,10 @@ Infinity lemniscate denom `1 + sin(theta)^2` shared by x and z only; y unread by
 Triangular y sector is `(idx % 3 - 1) * major * 0.5` and does not take `theta * 5`. Floor snap to 2π/3. Stage 757 holds the floor and y sector.
 Torus/default tube radius (major + minor * cos(phi)) shared by x and z only. Y is minor * sin(phi) * sin(t * 0.5 + idx). Stage 758 holds the tube on x/z and shared y.
 Minor radius is `3 + toroidalWeave * 2`. Hamiltonian ignores minor. Infinity y, triangular ripple/y, and the torus tube use it. Stage 722 holds toroidalWeave external.
-Major = 10 + (idx * 2) held unread by pull. Infinity scale = major * 1.5. Hamiltonian hScale = major. Stage 751 holds major/minor before switch. Stage 744/745 hold the scales.
-Theta step held as (0.01 + idx * 0.002) * gravityPull. Stage 752 holds the step.
-Uniforms written uTime then uGravity. Stage 753 holds the uniforms order.
-Major and minor assigned before switch(targetState.geometry). Stage 751 holds major/minor before switch.
+Major = 10 + (idx * 2) held unread by pull. Infinity scale = major * 1.5. Hamiltonian hScale = major. Stage 762 holds major/minor before switch. Stage 744/745 hold the scales.
+Theta step held as (0.01 + idx * 0.002) * gravityPull. Stage 762 holds the step.
+Uniforms written uTime then uGravity. Stage 761 holds the uniforms order.
+Major and minor assigned before switch(targetState.geometry). Stage 762 holds major/minor before switch.
 Switch is sole four-case dispatch. Stage 754 holds the switch. All formulas held as in the pasted kernel. Paste not rewritten.
 Phi is referenced but never assigned inside the session paste. Stage 759 holds phi unread / external.
 Full update(t) kernel held as pinned session source. Living path may optimize allocations. Stage 749 holds the full kernel pin. PINNED_PASTE enhanced to include complete infinity / hamiltonian / triangular / torus mappings from current chat.
@@ -68,7 +68,7 @@ npm install
 npm run dev
 ```
 
-Env-check note (hop 760): `scripts/env-check.sh` fails closed if `README.md` is missing, if `HEAD` SHA is empty, or if the numeral `137451921129154222` is absent from the tree. A zero exit means the docs surface is present. It is a tree gate only. It does not pair devices, does not read Tailscale state, does not consume ADB pair codes, and does not claim a device was rooted. A found key is a stop, not a stamp. Missing keys are the correct state. It does not upload binaries to the Drive index. Do not run the installer from CI. This hop does not probe wireless debugging and does not open a Tailscale socket. Green is presence, not privilege.
+Env-check note (hop 762): `scripts/env-check.sh` fails closed if `README.md` is missing, if `HEAD` SHA is empty, or if the numeral `137451921129154222` is absent from the tree. A zero exit means the docs surface is present. It is a tree gate only. It does not pair devices, does not read Tailscale state, does not consume ADB pair codes, and does not claim a device was rooted. A found key is a stop, not a stamp. Missing keys are the correct state. It does not upload binaries to the Drive index. Do not run the installer from CI. This hop does not probe wireless debugging and does not open a Tailscale socket. Green is presence, not privilege.
 
 ```bash
 bash scripts/env-check.sh
@@ -95,15 +95,15 @@ Declared operator rotation. One repo, then stop.
 3. The-Hive — hop 725 closed. Not re-touched.
 4. continuity-ledger-cycle — hop 726 closed. Not re-touched.
 5. living-bibliography-continuity-engine — hop 727 closed. Honored. Not re-touched.
-6. gaia-visualizer — **760 this hop** (stages 759-760 compiled)
+6. gaia-visualizer — **762 this hop** (stages 761-762 compiled)
 7. other recent machackabook — next
 
-## Waterfall receipt (hop 760)
+## Waterfall receipt (hop 762)
 
-* utc: 2026-10-20T16:07Z
-* cdt: 2026-10-20 11:07 CDT
+* utc: 2026-10-20T18:06Z
+* cdt: 2026-10-20 13:06 CDT
 * prior named seat: living-bibliography-continuity-engine hop 727 @ 2026-10-19T12:13Z. Honored.
-* this hop: compile stages 759-760 from STAGE-758 next list and current chat paste of update(t); hold phi referenced but never assigned inside session paste (external), session lerp to new THREE.Vector3 with literal alpha 0.05; append-only stamp
+* this hop: compile stages 761-762 from STAGE-760 next list and current chat paste of update(t); hold uniforms write order uTime then uGravity before theta step, theta step (0.01 + idx * 0.002) * gravityPull and major/minor assigned before switch; append-only stamp
 * cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, contents: read)
 * cloud index mention only: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU); no binaries uploaded
 * next: other recent machackabook
