@@ -10,12 +10,12 @@ Team Enhance hops one repo per run. Equalizer formats only. No history rewrite. 
 * Branch: main
 * Language: JavaScript (Vite 5 / three ^0.169)
 * Numeral: 137451921129154222
-* Stage: **756** — 2026-10-20T14:09Z (2026-10-20 09:09 CDT) (compiled 755 infinity lemniscate denom shared by x/z only, 756 hamiltonian hScale=major y-lift unread by minor; prior 754 switch sole four-case, 753 uniforms order)
+* Stage: **758** — 2026-10-20T15:08Z (2026-10-20 10:08 CDT) (compiled 757 triangular tAngle floor snap to 2π/3 y-sector unread by theta*5, 758 torus/default tube shared by x/z y minor*sin(phi)*sin; prior 756 hamiltonian hScale=major y-lift unread by minor, 755 infinity denom)
 * Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
 * Compounding tier: **T5 / 99%**
-* Prior local: hop 754 @ 2026-10-20T03:06Z preserved; not rewritten. Stages 755-756 compiled from STAGE-754 next list and current chat paste of update(t).
+* Prior local: hop 756 @ 2026-10-20T14:09Z preserved; not rewritten. Stages 757-758 compiled from STAGE-756 next list and current chat paste of update(t).
 * Prior mesh: living-bibliography-continuity-engine hop 727 @ 2026-10-19T12:13Z named. Honored. Not re-touched.
-* This hop: compile stages 755-756 from current chat paste of update(t); hold infinity denom shared by x/z, hamiltonian hScale and y lift; append-only stamp. Cascade.yml left intact. No secrets written. No device rooted.
+* This hop: compile stages 757-758 from current chat paste of update(t); hold triangular floor snap and y sector, torus tube radius shared by x/z; append-only stamp. Cascade.yml left intact. No secrets written. No device rooted.
 * Next in waterfall: continuity-engine-ssos or next recent
 * Cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`, lint-docs requires README, SECURITY.md, stamp, numeral, no .env / secrets.yml / id_rsa). Not rewritten this hop.
 * Ledger: `docs/LEDGER-STAMP.md`
@@ -33,8 +33,8 @@ Do not promote extra labels until a future paste includes them.
 Session paste still allocates `new THREE.Vector3` inside lerp with alpha 0.05. Living path keeps `_kernelTarget`. Stage 748 holds the session allocation and alpha.
 Hamiltonian y lift is `sin(t) * 2` and does not take `hScale` or minor. X/Z free of minor. Stage 756 holds hScale = major (no minor); y lift sin(t)*2 unread by hScale/minor/phi. Stage 745 reconfirms.
 Infinity lemniscate denom `1 + sin(theta)^2` shared by x and z only; y unread by denom. Stage 755 holds the denom. Stage 744 reconfirms scale = major * 1.5.
-Triangular y sector is `(idx % 3 - 1) * major * 0.5` and does not take `theta * 5`. Floor snap to 2π/3. Stage 746 holds the floor and y sector.
-Torus/default tube radius (major + minor * cos(phi)) shared by x and z only. Y is minor * sin(phi) * sin(t * 0.5 + idx). Stage 747 holds the tube on x/z and shared y.
+Triangular y sector is `(idx % 3 - 1) * major * 0.5` and does not take `theta * 5`. Floor snap to 2π/3. Stage 757 holds the floor and y sector.
+Torus/default tube radius (major + minor * cos(phi)) shared by x and z only. Y is minor * sin(phi) * sin(t * 0.5 + idx). Stage 758 holds the tube on x/z and shared y.
 Minor radius is `3 + toroidalWeave * 2`. Hamiltonian ignores minor. Infinity y, triangular ripple/y, and the torus tube use it. Stage 722 holds toroidalWeave external.
 Major = 10 + (idx * 2) held unread by pull. Infinity scale = major * 1.5. Hamiltonian hScale = major. Stage 751 holds major/minor before switch. Stage 744/745 hold the scales.
 Theta step held as (0.01 + idx * 0.002) * gravityPull. Stage 752 holds the step.
@@ -68,7 +68,7 @@ npm install
 npm run dev
 ```
 
-Env-check note (hop 756): `scripts/env-check.sh` fails closed if `README.md` is missing, if `HEAD` SHA is empty, or if the numeral `137451921129154222` is absent from the tree. A zero exit means the docs surface is present. It is a tree gate only. It does not pair devices, does not read Tailscale state, does not consume ADB pair codes, and does not claim a device was rooted. A found key is a stop, not a stamp. Missing keys are the correct state. It does not upload binaries to the Drive index. Do not run the installer from CI. This hop does not probe wireless debugging and does not open a Tailscale socket. Green is presence, not privilege.
+Env-check note (hop 758): `scripts/env-check.sh` fails closed if `README.md` is missing, if `HEAD` SHA is empty, or if the numeral `137451921129154222` is absent from the tree. A zero exit means the docs surface is present. It is a tree gate only. It does not pair devices, does not read Tailscale state, does not consume ADB pair codes, and does not claim a device was rooted. A found key is a stop, not a stamp. Missing keys are the correct state. It does not upload binaries to the Drive index. Do not run the installer from CI. This hop does not probe wireless debugging and does not open a Tailscale socket. Green is presence, not privilege.
 
 ```bash
 bash scripts/env-check.sh
@@ -95,15 +95,15 @@ Declared operator rotation. One repo, then stop.
 3. The-Hive — hop 725 closed. Not re-touched.
 4. continuity-ledger-cycle — hop 726 closed. Not re-touched.
 5. living-bibliography-continuity-engine — hop 727 closed. Honored. Not re-touched.
-6. gaia-visualizer — **756 this hop** (stages 755-756 compiled)
+6. gaia-visualizer — **758 this hop** (stages 757-758 compiled)
 7. other recent machackabook — next
 
-## Waterfall receipt (hop 756)
+## Waterfall receipt (hop 758)
 
-* utc: 2026-10-20T14:09Z
-* cdt: 2026-10-20 09:09 CDT
+* utc: 2026-10-20T15:08Z
+* cdt: 2026-10-20 10:08 CDT
 * prior named seat: living-bibliography-continuity-engine hop 727 @ 2026-10-19T12:13Z. Honored.
-* this hop: compile stages 755-756 from STAGE-754 next list and current chat paste of update(t); hold infinity lemniscate denom shared by x/z only, hamiltonian hScale=major and y lift unread by minor; append-only stamp
+* this hop: compile stages 757-758 from STAGE-756 next list and current chat paste of update(t); hold triangular tAngle floor snap to 2π/3 and y sector unread by theta*5, torus/default tube radius shared by x/z; append-only stamp
 * cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, contents: read)
 * cloud index mention only: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU); no binaries uploaded
 * next: other recent machackabook
