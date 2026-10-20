@@ -1,5 +1,5 @@
-/** Stage 370 — session triangular floor snaps theta to 2π/3. Document only. Do not rewrite the paste. No secrets. */
-export const TRIANGULAR_FLOOR_STAGE = 370;
+/** Stage 717 — session triangular floor snaps theta to 2π/3 and y sector free of theta*5. Document only. Do not rewrite the paste. No secrets. */
+export const TRIANGULAR_FLOOR_STAGE = 717;
 export const TRIANGULAR_FLOOR_SESSION_HASH = 'beec41f1';
 export const TRIANGULAR_FLOOR_LIVING_HASH = '7cd81012';
 export const TRIANGULAR_FLOOR_SECTORS = 3;
@@ -89,6 +89,8 @@ export function noteSessionTriangularFloor(source) {
   const floorSnap = /Math\.floor\(this\.theta\s*\/\s*\(Math\.PI\s*\*\s*2\s*\/\s*3\)\)\s*\*\s*\(Math\.PI\s*\*\s*2\s*\/\s*3\)/.test(body);
   const usesTAngle = /Math\.cos\(tAngle\)/.test(body) && /Math\.sin\(tAngle\)/.test(body);
   const ripple = /Math\.cos\(this\.theta\s*\*\s*5\)/.test(body) && /Math\.sin\(this\.theta\s*\*\s*5\)/.test(body);
+  const yLine = (body.match(/y\s*=\s*[^;]+;/) || [''])[0];
+  const yFreeOfTheta5 = !/theta\s*\*\s*5/.test(yLine);
   const sample = sessionTriangularFloor(Math.PI);
   const sector = triangularSector();
   const snapHolds = sample.tAngle === Math.floor(Math.PI / sector) * sector;
@@ -102,6 +104,7 @@ export function noteSessionTriangularFloor(source) {
     floorSnap,
     usesTAngle,
     rippleOnRawTheta: ripple,
+    yFreeOfTheta5,
     sample,
     snapHolds,
     inventedCases: invented,
@@ -109,7 +112,7 @@ export function noteSessionTriangularFloor(source) {
     extrasOffSession: true,
     pasteRewritten: false,
     secrets: false,
-    ok: floorSnap && usesTAngle && snapHolds && invented.length === 0,
-    note: 'Session triangular floor snaps theta to 2π/3 before cos/sin of the lattice vertex. Raw theta*5 stays on the minor ripple. Living path already matches. Paste not rewritten.',
+    ok: floorSnap && usesTAngle && snapHolds && yFreeOfTheta5 && invented.length === 0,
+    note: 'Session triangular floor snaps theta to 2π/3 before cos/sin of the lattice vertex. Raw theta*5 stays on the minor ripple (x/z only). Y sector free of theta*5. Living path already matches. Paste not rewritten.',
   };
 }
