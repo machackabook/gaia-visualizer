@@ -2,12 +2,12 @@
 
 Append-only Continuity stamp. Do not rewrite history.
 
-## Current stamp (hop 758)
+## Current stamp (hop 760)
 
 - repo: machackabook/gaia-visualizer
-- hop: 758
-- utc: 2026-10-20T15:08Z
-- cdt: 2026-10-20 10:08 CDT
+- hop: 760
+- utc: 2026-10-20T16:07Z
+- cdt: 2026-10-20 11:07 CDT
 - numeral: 137451921129154222
 - team: Enhance / Continuity Engine / sSoS Operating
 - cascade.yml: intact (cron 53 * * * *, contents: read). Not rewritten this hop.
@@ -17,24 +17,24 @@ Append-only Continuity stamp. Do not rewrite history.
 - adb pair codes: none written
 - root claim: none (device root not asserted)
 - history: append-only; no rewrite; no force-push
-- prior local: hop 756 @ 2026-10-20T14:09Z preserved; not rewritten. Stages 757-758 compiled from STAGE-756 next list and current chat paste of update(t): triangular tAngle floor snap to 2π/3 and y sector (idx%3-1)*major*0.5 unread by theta*5; torus/default tube (major + minor*cos(phi)) shared by x/z, y minor*sin(phi)*sin(t*0.5+idx).
+- prior local: hop 758 @ 2026-10-20T15:08Z preserved; not rewritten. Stages 759-760 compiled from STAGE-758 next list and current chat paste of update(t): phi referenced but never assigned inside session paste (external/unread); session lerp allocates new THREE.Vector3(x, y, z) with literal alpha 0.05 (does not take pull/idx/weave/t).
 - prior mesh: living-bibliography-continuity-engine hop 727 @ 2026-10-19T12:13Z closed. Honored. Not re-touched.
 - next in waterfall: other recent machackabook
 - cloud index: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU) — mention only; no binaries uploaded
 - unknowns kept: pair-code, Tailscale auth key, device voiceprint, SD mount path. Not invented.
 - encode: source-only authority
-- token: hop-758.gaia-visualizer.137451921129154222
-- token_b64: aG9wLTc1OC5nYWlhLXZpc3VhbGl6ZXIuMTM3NDUxOTIxMTI5MTU0MjIy
+- token: hop-760.gaia-visualizer.137451921129154222
+- token_b64: aG9wLTc2MC5nYWlhLXZpc3VhbGl6ZXIuMTM3NDUxOTIxMTI5MTU0MjIy
 
 ```
 NUMERAL=137451921129154222
 REPO=machackabook/gaia-visualizer
-HOP=758
-UTC=2026-10-20T15:08Z
-CDT=2026-10-20 10:08 CDT
+HOP=760
+UTC=2026-10-20T16:07Z
+CDT=2026-10-20 11:07 CDT
 CASCADE=left_intact_cron_53_contents_read
 NULL_POINT_ZERO=REFUSED
-PRIOR=living-bibliography-continuity-engine@727@2026-10-19T12:13Z; local@756
+PRIOR=living-bibliography-continuity-engine@727@2026-10-19T12:13Z; local@758
 NEXT=other-recent-machackabook
 DRIVE_INDEX=CONTINUUM-ENCLAVE-137451921129154222
 DRIVE_ID=1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU
@@ -43,11 +43,11 @@ OPERATOR=Team Enhance / Continuity Engine / sSoS Operating
 CONTRACT=preserve enhance synthesize; no history rewrite; no secrets; no force-push; no root claim
 ```
 
-## Prior stamp (hop 753, preserved)
+## Prior stamp (hop 758, preserved)
 
-- hop: 753
-- utc: 2026-10-20T03:06Z
-- cdt: 2026-10-19 22:06 CDT
+- hop: 758
+- utc: 2026-10-20T15:08Z
+- cdt: 2026-10-20 10:08 CDT
 - not rewritten
 
 Older stamps remain in git history. Nearest prior block kept above. No history rewrite.
