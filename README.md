@@ -10,12 +10,12 @@ Team Enhance hops one repo per run. Equalizer formats only. No history rewrite. 
 * Branch: main
 * Language: JavaScript (Vite 5 / three ^0.169)
 * Numeral: 137451921129154222
-* Stage: **750** — 2026-10-20T01:07Z (2026-10-19 20:07 CDT) (compiled 749 full update(t) kernel pin, 750 phi external/unread; prior 748 lerp, 747 torus tube, 746 triangular floor)
+* Stage: **752** — 2026-10-20T02:06Z (2026-10-19 21:06 CDT) (compiled 751 major/minor before switch, 752 theta step; prior 750 phi external, 749 full kernel pin)
 * Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
 * Compounding tier: **T5 / 99%**
-* Prior local: hop 748 @ 2026-10-20T00:09Z preserved; not rewritten. Stages 749-750 compiled from STAGE-748 next list and current chat paste of update(t).
+* Prior local: hop 750 @ 2026-10-20T01:07Z preserved; not rewritten. Stages 751-752 compiled from STAGE-750 next list and current chat paste of update(t).
 * Prior mesh: living-bibliography-continuity-engine hop 727 @ 2026-10-19T12:13Z named. Honored. Not re-touched.
-* This hop: compile stages 749-750 from current chat paste of update(t); hold full kernel pin, phi external; append-only stamp. Cascade.yml left intact. No secrets written. No device rooted.
+* This hop: compile stages 751-752 from current chat paste of update(t); hold major/minor assignment before switch, theta step multiplier; append-only stamp. Cascade.yml left intact. No secrets written. No device rooted.
 * Next in waterfall: continuity-engine-ssos or next recent
 * Cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`, lint-docs requires README, SECURITY.md, stamp, numeral, no .env / secrets.yml / id_rsa). Not rewritten this hop.
 * Ledger: `docs/LEDGER-STAMP.md`
@@ -36,10 +36,10 @@ Triangular y sector is `(idx % 3 - 1) * major * 0.5` and does not take `theta * 
 Torus/default tube radius (major + minor * cos(phi)) shared by x and z only. Y is minor * sin(phi) * sin(t * 0.5 + idx). Stage 747 holds the tube on x/z and shared y.
 Minor radius is `3 + toroidalWeave * 2`. Hamiltonian ignores minor. Infinity y, triangular ripple/y, and the torus tube use it. Stage 722 holds toroidalWeave external.
 Lemniscate denom stays `1 + sin(theta)^2`. Shared by x and z only. Stage 715 holds the denom shared by x/z; y unread by denom. Stage 744 reconfirms.
-Major = 10 + (idx * 2) held unread by pull. Infinity scale = major * 1.5. Hamiltonian hScale = major. Stage 741 holds major/minor before switch. Stage 744/745 hold the scales.
-Theta step held as (0.01 + idx * 0.002) * gravityPull. Stage 740 holds the step.
+Major = 10 + (idx * 2) held unread by pull. Infinity scale = major * 1.5. Hamiltonian hScale = major. Stage 751 holds major/minor before switch. Stage 744/745 hold the scales.
+Theta step held as (0.01 + idx * 0.002) * gravityPull. Stage 752 holds the step.
 Uniforms written uTime then uGravity. Stage 743 holds the uniforms order.
-Major and minor assigned before switch(targetState.geometry). Stage 741 holds major/minor before switch.
+Major and minor assigned before switch(targetState.geometry). Stage 751 holds major/minor before switch.
 Switch is sole four-case dispatch. Stage 742 holds the switch. All formulas held as in the pasted kernel. Paste not rewritten.
 Phi is referenced but never assigned inside the session paste. Stage 750 holds phi unread / external.
 Full update(t) kernel held as pinned session source. Living path may optimize allocations. Stage 749 holds the full kernel pin. PINNED_PASTE enhanced to include complete infinity / hamiltonian / triangular / torus mappings from current chat.
@@ -68,7 +68,7 @@ npm install
 npm run dev
 ```
 
-Env-check note (hop 750): `scripts/env-check.sh` fails closed if `README.md` is missing, if `HEAD` SHA is empty, or if the numeral `137451921129154222` is absent from the tree. A zero exit means the docs surface is present. It is a tree gate only. It does not pair devices, does not read Tailscale state, does not consume ADB pair codes, and does not claim a device was rooted. A found key is a stop, not a stamp. Missing keys are the correct state. It does not upload binaries to the Drive index. Do not run the installer from CI. This hop does not probe wireless debugging and does not open a Tailscale socket. Green is presence, not privilege.
+Env-check note (hop 752): `scripts/env-check.sh` fails closed if `README.md` is missing, if `HEAD` SHA is empty, or if the numeral `137451921129154222` is absent from the tree. A zero exit means the docs surface is present. It is a tree gate only. It does not pair devices, does not read Tailscale state, does not consume ADB pair codes, and does not claim a device was rooted. A found key is a stop, not a stamp. Missing keys are the correct state. It does not upload binaries to the Drive index. Do not run the installer from CI. This hop does not probe wireless debugging and does not open a Tailscale socket. Green is presence, not privilege.
 
 ```bash
 bash scripts/env-check.sh
@@ -95,15 +95,15 @@ Declared operator rotation. One repo, then stop.
 3. The-Hive — hop 725 closed. Not re-touched.
 4. continuity-ledger-cycle — hop 726 closed. Not re-touched.
 5. living-bibliography-continuity-engine — hop 727 closed. Honored. Not re-touched.
-6. gaia-visualizer — **750 this hop** (stages 749-750 compiled)
+6. gaia-visualizer — **752 this hop** (stages 751-752 compiled)
 7. other recent machackabook — next
 
-## Waterfall receipt (hop 750)
+## Waterfall receipt (hop 752)
 
-* utc: 2026-10-20T01:07Z
-* cdt: 2026-10-19 20:07 CDT
+* utc: 2026-10-20T02:06Z
+* cdt: 2026-10-19 21:06 CDT
 * prior named seat: living-bibliography-continuity-engine hop 727 @ 2026-10-19T12:13Z. Honored.
-* this hop: compile stages 749-750 from STAGE-748 next list and current chat paste of update(t); hold full kernel pin, phi external/unread; append-only stamp
+* this hop: compile stages 751-752 from STAGE-750 next list and current chat paste of update(t); hold major/minor before switch, theta step; append-only stamp
 * cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, contents: read)
 * cloud index mention only: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU); no binaries uploaded
 * next: other recent machackabook
