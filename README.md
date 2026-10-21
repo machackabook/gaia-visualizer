@@ -10,12 +10,12 @@ Team Enhance hops one repo per run. Equalizer formats only. No history rewrite. 
 * Branch: main
 * Language: JavaScript (Vite 5 / three ^0.169)
 * Numeral: 137451921129154222
-* Stage: **768** — 2026-10-20T22:07Z (2026-10-20 17:07 CDT) (compiled 767 torus/default tube radius (major + minor*cos(phi)) shared by x/z, y = minor*sin(phi)*sin(t*0.5+idx); 768 final lerp new THREE.Vector3(x,y,z) alpha 0.05 literal; prior 766 triangular floor and y sector, 765 hamiltonian parametric)
+* Stage: **770** — 2026-10-21T00:09Z (2026-10-20 19:09 CDT) (compiled 769 phi unread/external; 770 uniforms write order uTime then uGravity; prior 768 final lerp new THREE.Vector3(x,y,z) alpha 0.05 literal, 767 torus tube)
 * Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
 * Compounding tier: **T5 / 99%**
-* Prior local: hop 766 @ 2026-10-20T21:07Z preserved; not rewritten. Stages 767-768 compiled from STAGE-766 next list and current chat paste of update(t).
+* Prior local: hop 768 @ 2026-10-20T22:07Z preserved; not rewritten. Stages 769-770 compiled from STAGE-768 next list and current chat paste of update(t).
 * Prior mesh: living-bibliography-continuity-engine hop 727 @ 2026-10-19T12:13Z named. Honored. Not re-touched.
-* This hop: compile stages 767-768 from current chat paste of update(t); hold torus/default shared tube radius on x/z and y = minor*sin(phi)*sin(t*0.5+idx), final lerp allocation of new THREE.Vector3 with literal alpha 0.05; append-only stamp. Cascade.yml left intact. No secrets written. No device rooted.
+* This hop: compile stages 769-770 from current chat paste of update(t); hold phi referenced but never assigned inside the session paste (external ownership), uniforms written uTime then uGravity; append-only stamp. Cascade.yml left intact. No secrets written. No device rooted.
 * Next in waterfall: other recent machackabook
 * Cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`, lint-docs requires README, SECURITY.md, stamp, numeral, no .env / secrets.yml / id_rsa). Not rewritten this hop.
 * Ledger: `docs/LEDGER-STAMP.md`
@@ -30,19 +30,19 @@ Session switch is still only `infinity | hamiltonian | triangular | torus`.
 Live runtime adds phi weave, reused lerp target, optional `uWeave` / `uBlend`, plus runtime extras klein / hopf / figure8 / trefoil.
 Do not promote extra labels until a future paste includes them.
 `default` shares the torus tube. It is not a fifth session case.
-Session paste still allocates `new THREE.Vector3` inside lerp with alpha 0.05. Living path keeps `_kernelTarget`. Stage 768 holds the session allocation and literal alpha 0.05. Stage 760 reconfirms.
-Hamiltonian y lift is `sin(t) * 2` and does not take `hScale` or minor. X/Z free of minor. Stage 765 holds hScale = major (no minor); y lift sin(t)*2 unread by hScale/minor/phi. Stage 756 reconfirms.
-Infinity lemniscate denom `1 + sin(theta)^2` shared by x and z only; y unread by denom. Stage 764 holds the denom. Stage 755 holds the denom. Stage 744 reconfirms scale = major * 1.5.
+Session paste still allocates `new THREE.Vector3` inside lerp with alpha 0.05. Living path keeps `_kernelTarget`. Stage 768 holds the session allocation and literal alpha 0.05.
+Hamiltonian y lift is `sin(t) * 2` and does not take `hScale` or minor. X/Z free of minor. Stage 765 holds hScale = major (no minor); y lift sin(t)*2 unread by hScale/minor/phi.
+Infinity lemniscate denom `1 + sin(theta)^2` shared by x and z only; y unread by denom. Stage 764 holds the denom.
 Triangular y sector is `(idx % 3 - 1) * major * 0.5` and does not take `theta * 5`. Floor snap to 2π/3. Stage 766 holds the floor and y sector.
-Torus/default tube radius (major + minor * cos(phi)) shared by x and z only. Y is minor * sin(phi) * sin(t * 0.5 + idx). Stage 767 holds the tube on x/z and shared y. Stage 758 reconfirms.
+Torus/default tube radius (major + minor * cos(phi)) shared by x and z only. Y is minor * sin(phi) * sin(t * 0.5 + idx). Stage 767 holds the tube on x/z and shared y.
 Minor radius is `3 + toroidalWeave * 2`. Hamiltonian ignores minor. Infinity y, triangular ripple/y, and the torus tube use it. Stage 722 holds toroidalWeave external.
-Major = 10 + (idx * 2) held unread by pull. Infinity scale = major * 1.5. Hamiltonian hScale = major. Stage 762 holds major/minor before switch. Stage 744/745 hold the scales.
+Major = 10 + (idx * 2) held unread by pull. Infinity scale = major * 1.5. Hamiltonian hScale = major. Stage 762 holds major/minor before switch.
 Theta step held as (0.01 + idx * 0.002) * gravityPull. Stage 762 holds the step.
-Uniforms written uTime then uGravity. Stage 761 holds the uniforms order.
+Uniforms written uTime then uGravity. Stage 770 holds the uniforms order.
 Major and minor assigned before switch(targetState.geometry). Stage 762 holds major/minor before switch.
 Switch is sole four-case dispatch. Stage 763 holds the switch. All formulas held as in the pasted kernel. Paste not rewritten.
-Phi is referenced but never assigned inside the session paste. Stage 759 holds phi unread / external.
-Full update(t) kernel held as pinned session source. Living path may optimize allocations. Stage 749 holds the full kernel pin. PINNED_PASTE enhanced to include complete infinity / hamiltonian / triangular / torus mappings from current chat.
+Phi is referenced but never assigned inside the session paste. Stage 769 holds phi unread / external.
+Full update(t) kernel held as pinned session source. Living path may optimize allocations. Stage 749 holds the full kernel pin.
 
 ## Compounding growth
 
@@ -68,7 +68,7 @@ npm install
 npm run dev
 ```
 
-Env-check note (hop 768): `scripts/env-check.sh` fails closed if `README.md` is missing, if `HEAD` SHA is empty, or if the numeral `137451921129154222` is absent from the tree. A zero exit means the docs surface is present. It is a tree gate only. It does not pair devices, does not read Tailscale state, does not consume ADB pair codes, and does not claim a device was rooted. A found key is a stop, not a stamp. Missing keys are the correct state. It does not upload binaries to the Drive index. Do not run the installer from CI. This hop does not probe wireless debugging and does not open a Tailscale socket. Green is presence, not privilege.
+Env-check note (hop 770): `scripts/env-check.sh` fails closed if `README.md` is missing, if `HEAD` SHA is empty, or if the numeral `137451921129154222` is absent from the tree. A zero exit means the docs surface is present. It is a tree gate only. It does not pair devices, does not read Tailscale state, does not consume ADB pair codes, and does not claim a device was rooted. A found key is a stop, not a stamp. Missing keys are the correct state. It does not upload binaries to the Drive index. Do not run the installer from CI. This hop does not probe wireless debugging and does not open a Tailscale socket. Green is presence, not privilege.
 
 ```bash
 bash scripts/env-check.sh
@@ -95,15 +95,15 @@ Declared operator rotation. One repo, then stop.
 3. The-Hive — hop 725 closed. Not re-touched.
 4. continuity-ledger-cycle — hop 726 closed. Not re-touched.
 5. living-bibliography-continuity-engine — hop 727 closed. Honored. Not re-touched.
-6. gaia-visualizer — **768 this hop** (stages 767-768 compiled)
+6. gaia-visualizer — **770 this hop** (stages 769-770 compiled)
 7. other recent machackabook — next
 
-## Waterfall receipt (hop 768)
+## Waterfall receipt (hop 770)
 
-* utc: 2026-10-20T22:07Z
-* cdt: 2026-10-20 17:07 CDT
+* utc: 2026-10-21T00:09Z
+* cdt: 2026-10-20 19:09 CDT
 * prior named seat: living-bibliography-continuity-engine hop 727 @ 2026-10-19T12:13Z. Honored.
-* this hop: compile stages 767-768 from STAGE-766 next list and current chat paste of update(t); hold torus/default tube radius shared by x/z and y = minor*sin(phi)*sin(t*0.5+idx), final lerp allocation of new THREE.Vector3 with literal alpha 0.05; append-only stamp
+* this hop: compile stages 769-770 from STAGE-768 next list and current chat paste of update(t); hold phi unread/external, uniforms order uTime then uGravity; append-only stamp
 * cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, contents: read)
 * cloud index mention only: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU); no binaries uploaded
 * next: other recent machackabook
