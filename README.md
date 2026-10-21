@@ -10,13 +10,13 @@ Team Enhance hops one repo per run. Equalizer formats only. No history rewrite. 
 * Branch: main
 * Language: JavaScript (Vite 5 / three ^0.169)
 * Numeral: 137451921129154222
-* Stage: **774** — 2026-10-21T03:06Z (2026-10-20 22:06 CDT) (compiled 774 hamiltonian hScale=major y lift sin(t)*2 free of hScale/minor; prior 773 infinity denom 1+sin(theta)^2 shared x/z only, 772 major/minor before switch, 771 theta step)
+* Stage: **781** — 2026-10-21T12:14Z (2026-10-21 07:14 CDT)
 * Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
 * Compounding tier: **T5 / 99%**
-* Prior local: hop 772 @ 2026-10-21T02:06Z preserved; not rewritten. Stages 773-774 compiled from STAGE-772 next list and current chat paste of update(t).
-* Prior mesh: living-bibliography-continuity-engine hop 727 @ 2026-10-19T12:13Z named. Honored. Not re-touched.
-* This hop: compile stages 773-774 from current chat paste of update(t); hold infinity lemniscate denom and hamiltonian parametric mapping exactly; append-only stamp. Cascade.yml left intact. No secrets written. No device rooted.
-* Next in waterfall: other recent machackabook
+* Prior local: hop 772 @ 2026-10-21T02:07Z preserved; not rewritten.
+* Prior mesh: continuity-ledger-cycle hop 780 @ 2026-10-21T09:07Z named. Honored. Not re-touched.
+* This hop: waterfall realigned to current named ring; append-only stamp advanced to 781. Cascade.yml left intact. No secrets written. No device rooted.
+* Next in waterfall: other recent machackabook seats
 * Cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`, lint-docs requires README, SECURITY.md, stamp, numeral, no .env / secrets.yml / id_rsa). Not rewritten this hop.
 * Ledger: `docs/LEDGER-STAMP.md`
 * Cloud index (mention only, no binary upload): Drive folder `CONTINUUM-ENCLAVE-137451921129154222` id `1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU`
@@ -68,7 +68,7 @@ npm install
 npm run dev
 ```
 
-Env-check note (hop 774): `scripts/env-check.sh` fails closed if `README.md` is missing, if `HEAD` SHA is empty, or if the numeral `137451921129154222` is absent from the tree. A zero exit means the docs surface is present. It is a tree gate only. It does not pair devices, does not read Tailscale state, does not consume ADB pair codes, and does not claim a device was rooted. A found key is a stop, not a stamp. Missing keys are the correct state. It does not upload binaries to the Drive index. Do not run the installer from CI. This hop does not probe wireless debugging and does not open a Tailscale socket. Green is presence, not privilege.
+Env-check note (hop 781): `scripts/env-check.sh` fails closed if `README.md` is missing, if `HEAD` SHA is empty, or if the numeral `137451921129154222` is absent from the tree. A zero exit means the docs surface is present. It is a tree gate only. It does not pair devices, does not read Tailscale state, does not consume ADB pair codes, and does not claim a device was rooted. A found key is a stop, not a stamp. Missing keys are the correct state. It does not upload binaries to the Drive index. Do not run the installer from CI. This hop does not probe wireless debugging and does not open a Tailscale socket. Green is presence, not privilege.
 
 ```bash
 bash scripts/env-check.sh
@@ -90,20 +90,19 @@ Cross-repo push on pull stays closed until the operator injects `CASCADE_TOKEN`.
 
 Declared operator rotation. One repo, then stop.
 
-1. ENCLAVE-ADAM-REUNITED — hop 723 closed. Not re-touched.
-2. Cryptic-Heartbeat — hop 724 closed. Not re-touched.
-3. The-Hive — hop 725 closed. Not re-touched.
-4. continuity-ledger-cycle — hop 726 closed. Not re-touched.
-5. living-bibliography-continuity-engine — hop 727 closed. Honored. Not re-touched.
-6. gaia-visualizer — **774 this hop** (stages 773-774 compiled)
-7. other recent machackabook — next
+1. ENCLAVE-ADAM-REUNITED — hop 779 closed 2026-10-21T10:07Z. Not re-touched.
+2. Cryptic-Heartbeat — hop 778 closed 2026-10-21T06:13Z. Not re-touched.
+3. The-Hive — hop 779 closed 2026-10-21T08:13Z. Not re-touched.
+4. continuity-ledger-cycle — hop 780 closed 2026-10-21T09:07Z. Not re-touched.
+5. gaia-visualizer — **781 this hop**
+6. other recent machackabook — next
 
-## Waterfall receipt (hop 774)
+## Waterfall receipt (hop 781)
 
-* utc: 2026-10-21T03:06Z
-* cdt: 2026-10-20 22:06 CDT
-* prior named seat: living-bibliography-continuity-engine hop 727 @ 2026-10-19T12:13Z. Honored.
-* this hop: compile stages 773-774 from STAGE-772 next list and current chat paste of update(t); hold infinity denom and hamiltonian mapping; append-only stamp
+* utc: 2026-10-21T12:14Z
+* cdt: 2026-10-21 07:14 CDT
+* prior named seat: continuity-ledger-cycle hop 780 @ 2026-10-21T09:07Z. Honored.
+* this hop: README waterfall refresh + append-only stamp advance to 781; cascade left intact
 * cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, contents: read)
 * cloud index mention only: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU); no binaries uploaded
 * next: other recent machackabook
