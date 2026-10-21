@@ -1,10 +1,10 @@
 {
-  "stage": 785,
+  "stage": 786,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
   "paste": "2026-10-21",
-  "next": [786, 787, 788],
+  "next": [787, 788, 789],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stage 785 holds phi unread / external. Prior 784 held final lerp allocation of new THREE.Vector3 with literal alpha 0.05. Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stage 786 holds uniforms write order uTime then uGravity. Prior 785 held phi unread / external. Paste not rewritten."
 }
