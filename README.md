@@ -10,12 +10,12 @@ Team Enhance hops one repo per run. Equalizer formats only. No history rewrite. 
 * Branch: main
 * Language: JavaScript (Vite 5 / three ^0.169)
 * Numeral: 137451921129154222
-* Stage: **786** — 2026-10-21T21:07Z (2026-10-21 16:07 CDT)
+* Stage: **787** — 2026-10-21T23:06Z (2026-10-21 18:06 CDT)
 * Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
 * Compounding tier: **T5 / 99%**
-* Prior local: hop 785 @ 2026-10-21T19:06Z preserved; not rewritten. Stage 786 holds uniforms write order uTime then uGravity from session kernel.
+* Prior local: hop 786 @ 2026-10-21T21:07Z preserved; not rewritten. Stage 787 holds theta step (0.01 + idx * 0.002) * gravityPull from session kernel.
 * Prior mesh: The-Hive hop 784 @ 2026-10-21T18:06Z named. Honored. Not re-touched.
-* This hop: hold uniforms written uTime then uGravity first in update(t); append-only stamp advanced to 786. Cascade.yml left intact. No secrets written. No device rooted.
+* This hop: hold theta advances as (0.01 + idx * 0.002) * gravityPull after uniforms before geometry; append-only stamp advanced to 787. Cascade.yml left intact. No secrets written. No device rooted.
 * Next in waterfall: The-Hive or other recent machackabook seats
 * Cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`, lint-docs requires README, SECURITY.md, stamp, numeral, no .env / secrets.yml / id_rsa). Not rewritten this hop.
 * Ledger: `docs/LEDGER-STAMP.md`
@@ -37,12 +37,12 @@ Triangular y sector is `(idx % 3 - 1) * major * 0.5` and does not take `theta * 
 Torus/default tube radius (major + minor * cos(phi)) shared by x and z only. Y is minor * sin(phi) * sin(t * 0.5 + idx). Stage 767 holds the tube on x/z and shared y.
 Minor radius is `3 + toroidalWeave * 2`. Hamiltonian ignores minor. Infinity y, triangular ripple/y, and the torus tube use it. Stage 722 holds toroidalWeave external.
 Major = 10 + (idx * 2) held unread by pull. Infinity scale = major * 1.5. Hamiltonian hScale = major. Stage 783 holds major and minor assigned before switch.
-Theta step held as (0.01 + idx * 0.002) * gravityPull. Stage 771 holds the step.
+Theta step held as (0.01 + idx * 0.002) * gravityPull. Stage 787 holds the step.
 Uniforms written uTime then uGravity. Stage 786 holds the uniforms order.
 Major and minor assigned before switch(targetState.geometry). Stage 783 holds major/minor before switch.
 Switch is sole four-case dispatch. Stage 763 holds the switch. All formulas held as in the pasted kernel. Paste not rewritten.
 Phi is referenced but never assigned inside the session paste. Stage 785 holds phi unread / external.
-Full update(t) kernel held as pinned session source. Living path may optimize allocations. Stage 782 reconfirms the full kernel pin from current chat paste (hash beec41f1). Stage 786 advances the pin on uniforms order.
+Full update(t) kernel held as pinned session source. Living path may optimize allocations. Stage 782 reconfirms the full kernel pin from current chat paste (hash beec41f1). Stage 787 advances the pin on theta step.
 
 ## Compounding growth
 
@@ -68,7 +68,7 @@ npm install
 npm run dev
 ```
 
-Env-check note (hop 786): `scripts/env-check.sh` fails closed if `README.md` is missing, if `HEAD` SHA is empty, or if the numeral `137451921129154222` is absent from the tree. A zero exit means the docs surface is present. It is a tree gate only. It does not pair devices, does not read Tailscale state, does not consume ADB pair codes, and does not claim a device was rooted. A found key is a stop, not a stamp. Missing keys are the correct state. It does not upload binaries to the Drive index. Do not run the installer from CI. This hop does not probe wireless debugging and does not open a Tailscale socket. Green is presence, not privilege.
+Env-check note (hop 787): `scripts/env-check.sh` fails closed if `README.md` is missing, if `HEAD` SHA is empty, or if the numeral `137451921129154222` is absent from the tree. A zero exit means the docs surface is present. It is a tree gate only. It does not pair devices, does not read Tailscale state, does not consume ADB pair codes, and does not claim a device was rooted. A found key is a stop, not a stamp. Missing keys are the correct state. It does not upload binaries to the Drive index. Do not run the installer from CI. This hop does not probe wireless debugging and does not open a Tailscale socket. Green is presence, not privilege.
 
 ```bash
 bash scripts/env-check.sh
@@ -94,15 +94,15 @@ Declared operator rotation. One repo, then stop.
 2. Cryptic-Heartbeat — hop 778 closed 2026-10-21T06:13Z. Not re-touched.
 3. The-Hive — hop 784 closed 2026-10-21T18:06Z. Not re-touched.
 4. continuity-ledger-cycle — hop 780 closed 2026-10-21T09:07Z. Not re-touched.
-5. gaia-visualizer — **786 this hop**
+5. gaia-visualizer — **787 this hop**
 6. other recent machackabook — next
 
-## Waterfall receipt (hop 786)
+## Waterfall receipt (hop 787)
 
-* utc: 2026-10-21T21:07Z
-* cdt: 2026-10-21 16:07 CDT
+* utc: 2026-10-21T23:06Z
+* cdt: 2026-10-21 18:06 CDT
 * prior named seat: The-Hive hop 784 @ 2026-10-21T18:06Z. Honored.
-* this hop: hold uniforms write order uTime then uGravity (STAGE-786.md + STAGE.json + stamp); cascade left intact
+* this hop: hold theta step (0.01 + idx * 0.002) * gravityPull (STAGE-787.md + STAGE.json + stamp); cascade left intact
 * cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, contents: read)
 * cloud index mention only: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU); no binaries uploaded
 * next: The-Hive or other recent machackabook
