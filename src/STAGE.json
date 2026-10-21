@@ -1,10 +1,10 @@
 {
-  "stage": 782,
+  "stage": 783,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
   "paste": "2026-10-21",
-  "next": [783, 784, 785],
+  "next": [784, 785, 786],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stage 782 reconfirms full update(t) kernel from current chat paste (hash beec41f1). Stage 750 holds phi unread/external. Prior holds for lerp, torus tube, triangular floor, hamiltonian remain. Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stage 783 holds major = 10 + (idx * 2) and minor = 3 + (toroidalWeave * 2) assigned before switch. Prior 782 reconfirmed full kernel. Paste not rewritten."
 }
