@@ -10,12 +10,12 @@ Team Enhance hops one repo per run. Equalizer formats only. No history rewrite. 
 * Branch: main
 * Language: JavaScript (Vite 5 / three ^0.169)
 * Numeral: 137451921129154222
-* Stage: **784** — 2026-10-21T18:06Z (2026-10-21 13:06 CDT)
+* Stage: **785** — 2026-10-21T19:06Z (2026-10-21 14:06 CDT)
 * Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
 * Compounding tier: **T5 / 99%**
-* Prior local: hop 783 @ 2026-10-21T17:06Z preserved; not rewritten. Stage 784 holds final lerp allocation of new THREE.Vector3 with literal alpha 0.05 from session kernel.
-* Prior mesh: The-Hive hop 783 @ 2026-10-21T17:06Z named. Honored. Not re-touched.
-* This hop: hold this.mesh.position.lerp(new THREE.Vector3(x, y, z), 0.05); append-only stamp advanced to 784. Cascade.yml left intact. No secrets written. No device rooted.
+* Prior local: hop 784 @ 2026-10-21T18:06Z preserved; not rewritten. Stage 785 holds phi unread / external from session kernel.
+* Prior mesh: The-Hive hop 784 @ 2026-10-21T18:06Z named. Honored. Not re-touched.
+* This hop: hold phi as external driver (referenced in torus/infinity y, never assigned in paste); append-only stamp advanced to 785. Cascade.yml left intact. No secrets written. No device rooted.
 * Next in waterfall: The-Hive or other recent machackabook seats
 * Cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`, lint-docs requires README, SECURITY.md, stamp, numeral, no .env / secrets.yml / id_rsa). Not rewritten this hop.
 * Ledger: `docs/LEDGER-STAMP.md`
@@ -41,8 +41,8 @@ Theta step held as (0.01 + idx * 0.002) * gravityPull. Stage 771 holds the step.
 Uniforms written uTime then uGravity. Stage 770 holds the uniforms order.
 Major and minor assigned before switch(targetState.geometry). Stage 783 holds major/minor before switch.
 Switch is sole four-case dispatch. Stage 763 holds the switch. All formulas held as in the pasted kernel. Paste not rewritten.
-Phi is referenced but never assigned inside the session paste. Stage 769 holds phi unread / external.
-Full update(t) kernel held as pinned session source. Living path may optimize allocations. Stage 782 reconfirms the full kernel pin from current chat paste (hash beec41f1). Stage 784 advances the pin on the final lerp allocation.
+Phi is referenced but never assigned inside the session paste. Stage 785 holds phi unread / external.
+Full update(t) kernel held as pinned session source. Living path may optimize allocations. Stage 782 reconfirms the full kernel pin from current chat paste (hash beec41f1). Stage 785 advances the pin on phi external.
 
 ## Compounding growth
 
@@ -68,7 +68,7 @@ npm install
 npm run dev
 ```
 
-Env-check note (hop 784): `scripts/env-check.sh` fails closed if `README.md` is missing, if `HEAD` SHA is empty, or if the numeral `137451921129154222` is absent from the tree. A zero exit means the docs surface is present. It is a tree gate only. It does not pair devices, does not read Tailscale state, does not consume ADB pair codes, and does not claim a device was rooted. A found key is a stop, not a stamp. Missing keys are the correct state. It does not upload binaries to the Drive index. Do not run the installer from CI. This hop does not probe wireless debugging and does not open a Tailscale socket. Green is presence, not privilege.
+Env-check note (hop 785): `scripts/env-check.sh` fails closed if `README.md` is missing, if `HEAD` SHA is empty, or if the numeral `137451921129154222` is absent from the tree. A zero exit means the docs surface is present. It is a tree gate only. It does not pair devices, does not read Tailscale state, does not consume ADB pair codes, and does not claim a device was rooted. A found key is a stop, not a stamp. Missing keys are the correct state. It does not upload binaries to the Drive index. Do not run the installer from CI. This hop does not probe wireless debugging and does not open a Tailscale socket. Green is presence, not privilege.
 
 ```bash
 bash scripts/env-check.sh
@@ -92,17 +92,17 @@ Declared operator rotation. One repo, then stop.
 
 1. ENCLAVE-ADAM-REUNITED — hop 779 closed 2026-10-21T10:07Z. Not re-touched.
 2. Cryptic-Heartbeat — hop 778 closed 2026-10-21T06:13Z. Not re-touched.
-3. The-Hive — hop 783 closed 2026-10-21T17:06Z. Not re-touched.
+3. The-Hive — hop 784 closed 2026-10-21T18:06Z. Not re-touched.
 4. continuity-ledger-cycle — hop 780 closed 2026-10-21T09:07Z. Not re-touched.
-5. gaia-visualizer — **784 this hop**
+5. gaia-visualizer — **785 this hop**
 6. other recent machackabook — next
 
-## Waterfall receipt (hop 784)
+## Waterfall receipt (hop 785)
 
-* utc: 2026-10-21T18:06Z
-* cdt: 2026-10-21 13:06 CDT
-* prior named seat: The-Hive hop 783 @ 2026-10-21T17:06Z. Honored.
-* this hop: hold lerp allocation literal alpha 0.05 (STAGE-784.md + STAGE.json + stamp); cascade left intact
+* utc: 2026-10-21T19:06Z
+* cdt: 2026-10-21 14:06 CDT
+* prior named seat: The-Hive hop 784 @ 2026-10-21T18:06Z. Honored.
+* this hop: hold phi unread / external (STAGE-785.md + STAGE.json + stamp); cascade left intact
 * cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, contents: read)
 * cloud index mention only: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU); no binaries uploaded
 * next: The-Hive or other recent machackabook
