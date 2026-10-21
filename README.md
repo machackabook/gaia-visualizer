@@ -10,12 +10,12 @@ Team Enhance hops one repo per run. Equalizer formats only. No history rewrite. 
 * Branch: main
 * Language: JavaScript (Vite 5 / three ^0.169)
 * Numeral: 137451921129154222
-* Stage: **781** — 2026-10-21T12:14Z (2026-10-21 07:14 CDT)
+* Stage: **782** — 2026-10-21T15:09Z (2026-10-21 10:09 CDT)
 * Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
 * Compounding tier: **T5 / 99%**
-* Prior local: hop 772 @ 2026-10-21T02:07Z preserved; not rewritten.
+* Prior local: hop 781 @ 2026-10-21T12:14Z preserved; not rewritten. Stage 782 reconfirms full update(t) from current chat paste (session hash beec41f1).
 * Prior mesh: continuity-ledger-cycle hop 780 @ 2026-10-21T09:07Z named. Honored. Not re-touched.
-* This hop: waterfall realigned to current named ring; append-only stamp advanced to 781. Cascade.yml left intact. No secrets written. No device rooted.
+* This hop: reconfirm session kernel pin from current chat; append-only stamp advanced to 782. Cascade.yml left intact. No secrets written. No device rooted.
 * Next in waterfall: other recent machackabook seats
 * Cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`, lint-docs requires README, SECURITY.md, stamp, numeral, no .env / secrets.yml / id_rsa). Not rewritten this hop.
 * Ledger: `docs/LEDGER-STAMP.md`
@@ -42,7 +42,7 @@ Uniforms written uTime then uGravity. Stage 770 holds the uniforms order.
 Major and minor assigned before switch(targetState.geometry). Stage 772 holds major/minor before switch.
 Switch is sole four-case dispatch. Stage 763 holds the switch. All formulas held as in the pasted kernel. Paste not rewritten.
 Phi is referenced but never assigned inside the session paste. Stage 769 holds phi unread / external.
-Full update(t) kernel held as pinned session source. Living path may optimize allocations. Stage 749 holds the full kernel pin.
+Full update(t) kernel held as pinned session source. Living path may optimize allocations. Stage 782 reconfirms the full kernel pin from current chat paste (hash beec41f1).
 
 ## Compounding growth
 
@@ -68,7 +68,7 @@ npm install
 npm run dev
 ```
 
-Env-check note (hop 781): `scripts/env-check.sh` fails closed if `README.md` is missing, if `HEAD` SHA is empty, or if the numeral `137451921129154222` is absent from the tree. A zero exit means the docs surface is present. It is a tree gate only. It does not pair devices, does not read Tailscale state, does not consume ADB pair codes, and does not claim a device was rooted. A found key is a stop, not a stamp. Missing keys are the correct state. It does not upload binaries to the Drive index. Do not run the installer from CI. This hop does not probe wireless debugging and does not open a Tailscale socket. Green is presence, not privilege.
+Env-check note (hop 782): `scripts/env-check.sh` fails closed if `README.md` is missing, if `HEAD` SHA is empty, or if the numeral `137451921129154222` is absent from the tree. A zero exit means the docs surface is present. It is a tree gate only. It does not pair devices, does not read Tailscale state, does not consume ADB pair codes, and does not claim a device was rooted. A found key is a stop, not a stamp. Missing keys are the correct state. It does not upload binaries to the Drive index. Do not run the installer from CI. This hop does not probe wireless debugging and does not open a Tailscale socket. Green is presence, not privilege.
 
 ```bash
 bash scripts/env-check.sh
@@ -94,15 +94,15 @@ Declared operator rotation. One repo, then stop.
 2. Cryptic-Heartbeat — hop 778 closed 2026-10-21T06:13Z. Not re-touched.
 3. The-Hive — hop 779 closed 2026-10-21T08:13Z. Not re-touched.
 4. continuity-ledger-cycle — hop 780 closed 2026-10-21T09:07Z. Not re-touched.
-5. gaia-visualizer — **781 this hop**
+5. gaia-visualizer — **782 this hop**
 6. other recent machackabook — next
 
-## Waterfall receipt (hop 781)
+## Waterfall receipt (hop 782)
 
-* utc: 2026-10-21T12:14Z
-* cdt: 2026-10-21 07:14 CDT
+* utc: 2026-10-21T15:09Z
+* cdt: 2026-10-21 10:09 CDT
 * prior named seat: continuity-ledger-cycle hop 780 @ 2026-10-21T09:07Z. Honored.
-* this hop: README waterfall refresh + append-only stamp advance to 781; cascade left intact
+* this hop: reconfirm session update(t) kernel pin (STAGE-782.md + STAGE.json + stamp); cascade left intact
 * cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, contents: read)
 * cloud index mention only: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU); no binaries uploaded
 * next: other recent machackabook
