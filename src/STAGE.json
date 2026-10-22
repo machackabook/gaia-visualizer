@@ -1,10 +1,10 @@
 {
-  "stage": 796,
+  "stage": 797,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
   "paste": "2026-10-22",
-  "next": [797, 798, 799],
+  "next": [798, 799, 800],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stage 796 holds uniforms written uTime then uGravity. Prior 795 held theta step (0.01 + idx * 0.002) * gravityPull unread by geometry. Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stage 797 holds major = 10 + (idx * 2) and minor = 3 + (toroidalWeave * 2) assigned before switch. Prior 796 held uniforms written uTime then uGravity. Paste not rewritten."
 }
