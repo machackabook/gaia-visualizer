@@ -1,10 +1,10 @@
 {
-  "stage": 794,
+  "stage": 795,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
   "paste": "2026-10-22",
-  "next": [795, 796, 797],
+  "next": [796, 797, 798],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stage 794 holds lerp alpha 0.05 and session new Vector3 allocation (living reuses target). Prior 793 held torus/default tube radius (major + minor * cos(phi)) shared by x and z only. Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stage 795 holds theta step (0.01 + idx * 0.002) * gravityPull unread by geometry. Prior 794 held lerp alpha 0.05 and session new Vector3 allocation (living reuses target). Paste not rewritten."
 }
