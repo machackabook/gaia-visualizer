@@ -1,10 +1,10 @@
 {
-  "stage": 791,
+  "stage": 792,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
   "paste": "2026-10-21",
-  "next": [792, 793, 794],
+  "next": [793, 794, 795],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stage 791 holds hamiltonian parametric mapping with hScale = major and y lift sin(t)*2. Prior 790 held infinity lemniscate. Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stage 792 holds triangular floor snap to 2π/3 and y sector free of theta*5. Prior 791 held hamiltonian parametric. Paste not rewritten."
 }
