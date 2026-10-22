@@ -1,10 +1,10 @@
 {
-  "stage": 792,
+  "stage": 793,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
-  "paste": "2026-10-21",
-  "next": [793, 794, 795],
+  "paste": "2026-10-22",
+  "next": [794, 795, 796],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stage 792 holds triangular floor snap to 2π/3 and y sector free of theta*5. Prior 791 held hamiltonian parametric. Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stage 793 holds torus/default tube radius (major + minor * cos(phi)) shared by x and z only. Prior 792 held triangular floor snap to 2π/3 and y sector free of theta*5. Paste not rewritten."
 }
