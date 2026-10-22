@@ -1,10 +1,10 @@
 {
-  "stage": 795,
+  "stage": 796,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
   "paste": "2026-10-22",
-  "next": [796, 797, 798],
+  "next": [797, 798, 799],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stage 795 holds theta step (0.01 + idx * 0.002) * gravityPull unread by geometry. Prior 794 held lerp alpha 0.05 and session new Vector3 allocation (living reuses target). Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stage 796 holds uniforms written uTime then uGravity. Prior 795 held theta step (0.01 + idx * 0.002) * gravityPull unread by geometry. Paste not rewritten."
 }
