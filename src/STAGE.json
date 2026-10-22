@@ -1,10 +1,10 @@
 {
-  "stage": 790,
+  "stage": 791,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
   "paste": "2026-10-21",
-  "next": [791, 792, 793],
+  "next": [792, 793, 794],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stage 790 holds infinity lemniscate mapping and shared y formula. Prior 789 held switch as sole dispatcher. Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stage 791 holds hamiltonian parametric mapping with hScale = major and y lift sin(t)*2. Prior 790 held infinity lemniscate. Paste not rewritten."
 }
