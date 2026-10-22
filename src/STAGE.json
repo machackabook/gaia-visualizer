@@ -1,10 +1,10 @@
 {
-  "stage": 789,
+  "stage": 790,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
   "paste": "2026-10-21",
-  "next": [790, 791, 792],
+  "next": [791, 792, 793],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stage 789 holds switch(targetState.geometry) as sole four-case dispatch with default torus. Prior 788 held major/minor before switch. Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stage 790 holds infinity lemniscate mapping and shared y formula. Prior 789 held switch as sole dispatcher. Paste not rewritten."
 }
