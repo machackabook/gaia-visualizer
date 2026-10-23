@@ -10,13 +10,13 @@ Team Enhance hops one repo per run. Equalizer formats only. No history rewrite. 
 * Branch: main
 * Language: JavaScript (Vite 5 / three ^0.169)
 * Numeral: 137451921129154222
-* Stage: **807** — 2026-10-23T04:08Z (2026-10-22 23:08 CDT)
+* Stage: **815** — 2026-10-23T10:07Z (2026-10-23 05:07 CDT)
 * Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
 * Compounding tier: **T5 / 99%**
-* Prior local: hop 806 @ 2026-10-23T03:xxZ preserved; not rewritten. Stage 807 holds major/minor assignment before switch from session kernel.
-* Prior mesh: The-Hive hop 808 @ 2026-10-23T00:16Z named. Honored. Not re-touched.
-* This hop: hold major = 10 + idx*2 and minor = 3 + toroidalWeave*2 assigned before switch (STAGE-807.md + stamp); cascade.yml left intact. No secrets written. No device rooted.
-* Next in waterfall: The-Hive or Cryptic-Heartbeat or other recent machackabook seats
+* Prior local: hop 807 @ 2026-10-23T04:08Z preserved; not rewritten.
+* Prior mesh: continuity-ledger-cycle hop 814 @ 2026-10-23T06:09Z named this node next. Honored. Not re-touched.
+* This hop: append-only ledger stamp advanced to hop 815. Waterfall realigned. Cascade.yml left intact. No secrets written. No device rooted.
+* Next in waterfall: living-bibliography-continuity-engine or other recent machackabook seats
 * Cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`, lint-docs requires README, SECURITY.md, stamp, numeral, no .env / secrets.yml / id_rsa). Not rewritten this hop.
 * Ledger: `docs/LEDGER-STAMP.md`
 * Cloud index (mention only, no binary upload): Drive folder `CONTINUUM-ENCLAVE-137451921129154222` id `1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU`
@@ -68,7 +68,7 @@ npm install
 npm run dev
 ```
 
-Env-check note (hop 807): `scripts/env-check.sh` fails closed if `README.md` is missing, if `HEAD` SHA is empty, or if the numeral `137451921129154222` is absent from the tree. A zero exit means the docs surface is present. It is a tree gate only. It does not pair devices, does not read Tailscale state, does not consume ADB pair codes, and does not claim a device was rooted. A found key is a stop, not a stamp. Missing keys are the correct state. It does not upload binaries to the Drive index. Do not run the installer from CI. This hop does not probe wireless debugging and does not open a Tailscale socket. Green is presence, not privilege.
+Env-check note (hop 815): `scripts/env-check.sh` fails closed if `README.md` is missing, if `HEAD` SHA is empty, or if the numeral `137451921129154222` is absent from the tree. A zero exit means the docs surface is present. It is a tree gate only. It does not pair devices, does not read Tailscale state, does not consume ADB pair codes, and does not claim a device was rooted. A found key is a stop, not a stamp. Missing keys are the correct state. It does not upload binaries to the Drive index. Do not run the installer from CI. This hop does not probe wireless debugging and does not open a Tailscale socket. Green is presence, not privilege.
 
 ```bash
 bash scripts/env-check.sh
@@ -90,22 +90,24 @@ Cross-repo push on pull stays closed until the operator injects `CASCADE_TOKEN`.
 
 Declared operator rotation. One repo, then stop.
 
-1. ENCLAVE-ADAM-REUNITED — hop 801 closed 2026-10-22T19:07Z. Not re-touched.
-2. Cryptic-Heartbeat — hop 802 closed 2026-10-22T20:07Z. Not re-touched.
-3. The-Hive — hop 808 closed 2026-10-23T00:16Z. Not re-touched.
-4. continuity-ledger-cycle — hop 798 closed 2026-10-22T17:07Z. Not re-touched.
-5. gaia-visualizer — **807 this hop**
-6. other recent machackabook — next
+1. ENCLAVE-ADAM-REUNITED — hop 803 closed 2026-10-23T04:07Z. Not re-touched.
+2. Cryptic-Heartbeat — hop 812 closed 2026-10-23T04:15Z. Not re-touched.
+3. The-Hive — hop 813 closed 2026-10-23T05:07Z. Not re-touched.
+4. continuity-ledger-cycle — hop 814 closed 2026-10-23T06:09Z. Not re-touched.
+5. gaia-visualizer — **815 this hop**
+6. living-bibliography-continuity-engine — next
+7. continuity-engine-ssos — subsequent
+8. hamiltonian-incursion — subsequent
 
-## Waterfall receipt (hop 807)
+## Waterfall receipt (hop 815)
 
-* utc: 2026-10-23T04:08Z
-* cdt: 2026-10-22 23:08 CDT
-* prior named seat: The-Hive hop 808 @ 2026-10-23T00:16Z. Honored.
-* this hop: hold major/minor assignment before switch (STAGE-807.md + stamp); cascade left intact
+* utc: 2026-10-23T10:07Z
+* cdt: 2026-10-23 05:07 CDT
+* prior named seat: continuity-ledger-cycle hop 814 @ 2026-10-23T06:09Z. Honored.
+* this hop: append-only stamp advanced to hop 815; waterfall realigned
 * cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, contents: read)
 * cloud index mention only: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU); no binaries uploaded
-* next: The-Hive or Cryptic-Heartbeat or other recent machackabook
+* next: living-bibliography-continuity-engine or other
 
 ## Mesh siblings
 
