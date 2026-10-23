@@ -10,12 +10,12 @@ Team Enhance hops one repo per run. Equalizer formats only. No history rewrite. 
 * Branch: main
 * Language: JavaScript (Vite 5 / three ^0.169)
 * Numeral: 137451921129154222
-* Stage: **820** — 2026-10-23T20:08Z (2026-10-23 15:08 CDT)
+* Stage: **821** — 2026-10-23T21:09Z (2026-10-23 16:09 CDT)
 * Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
 * Compounding tier: **T5 / 99%**
-* Prior local: hop 819 @ 2026-10-23T19:07Z preserved; not rewritten.
+* Prior local: hop 820 @ 2026-10-23T20:08Z preserved; not rewritten.
 * Prior mesh: continuity-ledger-cycle hop 814 @ 2026-10-23T06:09Z named this node next. Honored. Not re-touched.
-* This hop: append-only ledger stamp advanced to hop 820. Hamiltonian hScale = major and y lift sin(t)*2 held from current chat paste. Waterfall realigned. Cascade.yml left intact. No secrets written. No device rooted.
+* This hop: append-only ledger stamp advanced to hop 821. Triangular floor snap to 2π/3 and y sector (idx%3-1)*major*0.5 free of theta*5 held from current chat paste. Waterfall realigned. Cascade.yml left intact. No secrets written. No device rooted.
 * Next in waterfall: living-bibliography-continuity-engine or continuity-engine-ssos
 * Cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`, lint-docs requires README, SECURITY.md, stamp, numeral, no .env / secrets.yml / id_rsa). Not rewritten this hop.
 * Ledger: `docs/LEDGER-STAMP.md`
@@ -33,7 +33,7 @@ Do not promote extra labels until a future paste includes them.
 Session paste still allocates `new THREE.Vector3` inside lerp with alpha 0.05. Living path keeps `_kernelTarget`. Stage 804 holds the session allocation and literal alpha 0.05.
 Hamiltonian y lift is `sin(t) * 2` and does not take `hScale` or minor. X/Z free of minor. Stage 820 holds hScale = major; y lift sin(t)*2 unread by hScale/minor/phi.
 Infinity lemniscate denom `1 + sin(theta)^2` shared by x and z only; y unread by denom. Stage 819 holds the infinity mapping and shared y.
-Triangular y sector is `(idx % 3 - 1) * major * 0.5` and does not take `theta * 5`. Floor snap to 2π/3. Stage 801 holds the floor and y sector.
+Triangular y sector is `(idx % 3 - 1) * major * 0.5` and does not take `theta * 5`. Floor snap to 2π/3. Stage 821 holds the floor and y sector from current paste.
 Torus/default tube radius (major + minor * cos(phi)) shared by x and z only. Y is minor * sin(phi) * sin(t * 0.5 + idx). Stage 802 holds the tube on x/z and shared y.
 Minor radius is `3 + toroidalWeave * 2`. Hamiltonian ignores minor. Infinity y, triangular ripple/y, and the torus tube use it. Stage 722 holds toroidalWeave external.
 Major = 10 + (idx * 2) held unread by pull. Infinity scale = major * 1.5. Hamiltonian hScale = major. Stage 807 holds major and minor assigned before switch.
@@ -42,7 +42,7 @@ Uniforms written uTime then uGravity. Stage 806 holds the uniforms order and sou
 Major and minor assigned before switch(targetState.geometry). Stage 807 holds major/minor before switch.
 Switch is sole four-case dispatch. Stage 808 holds the switch as sole dispatcher. All formulas held as in the pasted kernel. Paste not rewritten.
 Phi is referenced but never assigned inside the session paste. Stage 805 holds phi unread / external.
-Full update(t) kernel held as pinned session source. Living path may optimize allocations. Stage 820 advances the hamiltonian pin from current chat paste (hash beec41f1). Stages 808-819 preserve prior holds.
+Full update(t) kernel held as pinned session source. Living path may optimize allocations. Stage 821 advances the triangular pin from current chat paste. Stages 808-820 preserve prior holds.
 
 ## Compounding growth
 
@@ -68,7 +68,7 @@ npm install
 npm run dev
 ```
 
-Env-check note (hop 820): `scripts/env-check.sh` fails closed if `README.md` is missing, if `HEAD` SHA is empty, or if the numeral `137451921129154222` is absent from the tree. A zero exit means the docs surface is present. It is a tree gate only. It does not pair devices, does not read Tailscale state, does not consume ADB pair codes, and does not claim a device was rooted. A found key is a stop, not a stamp. Missing keys are the correct state. It does not upload binaries to the Drive index. Do not run the installer from CI. This hop does not probe wireless debugging and does not open a Tailscale socket. Green is presence, not privilege.
+Env-check note (hop 821): `scripts/env-check.sh` fails closed if `README.md` is missing, if `HEAD` SHA is empty, or if the numeral `137451921129154222` is absent from the tree. A zero exit means the docs surface is present. It is a tree gate only. It does not pair devices, does not read Tailscale state, does not consume ADB pair codes, and does not claim a device was rooted. A found key is a stop, not a stamp. Missing keys are the correct state. It does not upload binaries to the Drive index. Do not run the installer from CI. This hop does not probe wireless debugging and does not open a Tailscale socket. Green is presence, not privilege.
 
 ```bash
 bash scripts/env-check.sh
@@ -94,17 +94,17 @@ Declared operator rotation. One repo, then stop.
 2. Cryptic-Heartbeat — hop 812 closed 2026-10-23T04:15Z. Not re-touched.
 3. The-Hive — hop 813 closed 2026-10-23T05:07Z. Not re-touched.
 4. continuity-ledger-cycle — hop 814 closed 2026-10-23T06:09Z. Not re-touched.
-5. gaia-visualizer — **820 this hop**
+5. gaia-visualizer — **821 this hop**
 6. living-bibliography-continuity-engine — next
 7. continuity-engine-ssos — subsequent
 8. hamiltonian-incursion — subsequent
 
-## Waterfall receipt (hop 820)
+## Waterfall receipt (hop 821)
 
-* utc: 2026-10-23T20:08Z
-* cdt: 2026-10-23 15:08 CDT
+* utc: 2026-10-23T21:09Z
+* cdt: 2026-10-23 16:09 CDT
 * prior named seat: continuity-ledger-cycle hop 814 @ 2026-10-23T06:09Z. Honored.
-* this hop: append-only stamp advanced to hop 820; hamiltonian hScale = major and y lift sin(t)*2 held from current chat paste; waterfall realigned
+* this hop: append-only stamp advanced to hop 821; triangular floor snap and y sector free of theta*5 held from current chat paste; waterfall realigned
 * cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, contents: read)
 * cloud index mention only: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU); no binaries uploaded
 * next: living-bibliography-continuity-engine or continuity-engine-ssos
