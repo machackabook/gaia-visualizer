@@ -2,7 +2,7 @@
 
 Band `580-visual`. Chat kernel is the `update(t)` posted in-session (uniforms → theta → radii → geometry switch → lerp 0.05).
 Raw session kernel still allocates `new THREE.Vector3` inside lerp (hash `beec41f1`). Enhanced / live path uses a reused `_kernelTarget` / `_target`.
-Stage 819 holds infinity lemniscate denom shared by x and z only from current chat paste. Prior holds preserved. Extras remain runtime-only.
+Stage 820 holds hamiltonian hScale = major and y lift sin(t)*2 from current chat paste. Prior holds preserved. Extras remain runtime-only.
 
 ## Done
 
@@ -19,20 +19,21 @@ Stage 819 holds infinity lemniscate denom shared by x and z only from current ch
 | 817 | Full update(t) kernel re-pinned from current chat paste. |
 | 818 | Full update(t) kernel reconfirmed from current chat paste. |
 | 819 | Hold infinity lemniscate denom shared by x and z only from current chat paste. |
+| 820 | Hold hamiltonian hScale = major and y lift sin(t)*2 from current chat paste. |
 
 ## Next
 
 | Stage | Owner repo | Work |
 |------|------------|------|
-| 820 | gaia-visualizer | Hold hamiltonian hScale = major and y lift sin(t)*2. |
 | 821 | gaia-visualizer | Hold triangular floor snap and y sector free of theta*5. |
 | 822 | gaia-visualizer | Hold torus/default tube on x/z only; y shared with infinity. |
+| 823 | gaia-visualizer | Hold full kernel pin and major/minor pre-switch. |
 | 14 | The-Hive | Memory engrams into Drive folder `CRYPTIC-HEARTBEAT-NEXUS-ROOT` |
 
 ## Drive from LLM
 
 ```js
 window.dispatchEvent(new CustomEvent('gaia:targetState', {
-  detail: { geometry: 'torus', blendFrom: 'hamiltonian', blendTo: 'torus', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 819, sourceHash: '7cd81012', sessionHash: 'beec41f1' }
+  detail: { geometry: 'torus', blendFrom: 'hamiltonian', blendTo: 'torus', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 820, sourceHash: '7cd81012', sessionHash: 'beec41f1' }
 }));
 ```
