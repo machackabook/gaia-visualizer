@@ -1,10 +1,10 @@
 {
-  "stage": 797,
+  "stage": 800,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
   "paste": "2026-10-22",
-  "next": [798, 799, 800],
+  "next": [801, 802, 803],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stage 797 holds major = 10 + (idx * 2) and minor = 3 + (toroidalWeave * 2) assigned before switch. Prior 796 held uniforms written uTime then uGravity. Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stage 800 holds hamiltonian parametric mapping: hScale = major, xz rose cos(theta*3), y = hScale*sin(theta*3) + sin(t)*2. Prior 799 held infinity lemniscate. Paste not rewritten."
 }
