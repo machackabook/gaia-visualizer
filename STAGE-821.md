@@ -1,18 +1,21 @@
-# Stage 821 — hold triangular floor snap and y sector free of theta*5 (2026-10-23 16:10 CDT)
+# Stage 821 — hold triangular floor snap and y sector free of theta*5 (2026-10-23 17:07 CDT)
 
-Connecting chat re-pasted the complete `update(t)` function. Prior hop 820 held hamiltonian hScale = major and y lift sin(t)*2.
+Connecting chat re-pasted the complete `update(t)` function.
 
 ## Session pin
-- Full kernel held exactly as pasted: uniforms uTime then uGravity; theta step (0.01 + idx*0.002)*gravityPull; major=10+(idx*2); minor=3+(toroidalWeave*2); switch on targetState.geometry with infinity / hamiltonian / triangular / torus|default; lerp alpha 0.05 with new Vector3.
-- Triangular: tAngle = floor(theta / (2π/3)) * (2π/3); x/z = major*cos/sin(tAngle) + minor*cos/sin(theta*5); y = (idx % 3 - 1) * major * 0.5 + sin(t) * minor.
-- Floor snap is modulo-based to 2π/3. Y sector free of theta*5. Ripple uses minor and sin(t). Major scales the sector.
-- Phi referenced but never assigned inside paste. No secrets. Paste not rewritten.
-- Prior holds remain: hamiltonian (820), infinity (819), uniforms/theta/major-minor/switch (earlier).
+- session hash `beec41f1`. Living hash `7cd81012`.
+- Triangular case: modulo-based snapping to 3D tetrahedron/triangular lattice.
+- tAngle = Math.floor(this.theta / (Math.PI * 2 / 3)) * (Math.PI * 2 / 3)
+- x = major * Math.cos(tAngle) + minor * Math.cos(this.theta * 5)
+- z = major * Math.sin(tAngle) + minor * Math.sin(this.theta * 5)
+- y = (this.idx % 3 - 1) * major * 0.5 + Math.sin(t) * minor
+- Floor snap to 2π/3. Y sector free of theta*5. Raw theta*5 stays on minor ripple of x/z only.
+- Phi unread. No secrets. Paste not rewritten.
 
 ## Compiled next stages
-1. 822 — hold torus/default tube on x/z only; y shared with infinity.
-2. 823 — hold full kernel pin and major/minor pre-switch assignment.
-3. 824 — hold lerp alpha 0.05 and Vector3 allocation as session source.
+1. 822 — hold full kernel uniforms order, theta step, major/minor before switch, lerp allocation.
+2. 823 — hold torus/default tube (major + minor*cos(phi)) on x/z and shared y.
+3. 824 — living path may reuse Vector3 target while session paste keeps new allocation.
 
 NUMERAL=137451921129154222
 Connecting repos: The-Hive, Cryptic-Heartbeat, continuity-engine-ssos, continuity-ledger-cycle, living-bibliography-continuity-engine.
