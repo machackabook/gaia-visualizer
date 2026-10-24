@@ -16,7 +16,7 @@ Team Enhance hops one repo per run. Equalizer formats only. No history rewrite. 
 * Prior local: hop 822 @ 2026-10-23T22:07Z preserved; not rewritten.
 * Prior mesh: continuity-ledger-cycle hop 814 @ 2026-10-23T06:09Z named this node next. Honored. Not re-touched.
 * This hop: append-only ledger stamp advanced to hop 824. Stages 822-824 hold full kernel (uniforms order, theta step, major/minor before switch, lerp allocation), torus/default tube on x/z with shared y, and session paste new Vector3 allocation (living path may reuse) from current chat paste of update(t). Waterfall realigned. Cascade.yml left intact. No secrets written. No device rooted. Paste not rewritten.
-* Next in waterfall: living-bibliography-continuity-engine or continuity-engine-ssos
+* Next in waterfall: continuity-engine-ssos (living-bibliography-continuity-engine advanced to 825)
 * Cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`, lint-docs requires README, SECURITY.md, stamp, numeral, no .env / secrets.yml / id_rsa). Not rewritten this hop.
 * Ledger: `docs/LEDGER-STAMP.md`
 * Cloud index (mention only, no binary upload): Drive folder `CONTINUUM-ENCLAVE-137451921129154222` id `1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU`
@@ -95,8 +95,8 @@ Declared operator rotation. One repo, then stop.
 3. The-Hive — hop 813 closed 2026-10-23T05:07Z. Not re-touched.
 4. continuity-ledger-cycle — hop 814 closed 2026-10-23T06:09Z. Not re-touched.
 5. gaia-visualizer — **824 this hop**
-6. living-bibliography-continuity-engine — next
-7. continuity-engine-ssos — subsequent
+6. living-bibliography-continuity-engine — hop 825 closed 2026-10-24T00:11Z. Not re-touched.
+7. continuity-engine-ssos — next
 8. hamiltonian-incursion — subsequent
 
 ## Waterfall receipt (hop 824)
@@ -107,7 +107,7 @@ Declared operator rotation. One repo, then stop.
 * this hop: append-only stamp advanced to hop 824; stages 822-824 hold full kernel, torus tube, and session Vector3 allocation from current chat paste; waterfall realigned
 * cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, contents: read)
 * cloud index mention only: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU); no binaries uploaded
-* next: living-bibliography-continuity-engine or continuity-engine-ssos
+* next: continuity-engine-ssos (living-bibliography advanced to 825)
 
 ## Mesh siblings
 
