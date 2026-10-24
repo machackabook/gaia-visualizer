@@ -1,10 +1,10 @@
 {
-  "stage": 821,
+  "stage": 825,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
   "paste": "2026-10-23",
-  "next": [822, 823, 824],
+  "next": [826, 827, 828],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stages 819-821 hold infinity denom, hamiltonian hScale/y-lift, triangular floor/y-sector from current chat paste of update(t). Prior holds preserved. Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stages 822-825 hold full kernel, torus tube, Vector3 allocation, and infinity lemniscate scale/denom from current chat paste of update(t). Prior holds preserved. Paste not rewritten."
 }
