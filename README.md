@@ -10,12 +10,12 @@ Team Enhance hops one repo per run. Equalizer formats only. No history rewrite. 
 * Branch: main
 * Language: JavaScript (Vite 5 / three ^0.169)
 * Numeral: 137451921129154222
-* Stage: **846** — 2026-10-25T01:08Z (2026-10-24 20:08 CDT)
+* Stage: **847** — 2026-10-25T02:08Z (2026-10-24 21:08 CDT)
 * Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
 * Compounding tier: **T5 / 99%**
-* Prior local: hop 845 @ 2026-10-25T00:09Z preserved; not rewritten.
+* Prior local: hop 846 @ 2026-10-25T01:08Z preserved; not rewritten.
 * Prior mesh: continuity-ledger-cycle hop 814 @ 2026-10-23T06:09Z named this node next. Honored. Not re-touched.
-* This hop: append-only ledger stamp advanced to hop 846. Stage 846 holds living path reuse of Vector3 lerp target (session paste allocates new THREE.Vector3 alpha 0.05). Waterfall realigned. Cascade.yml left intact. No secrets written. No device rooted. Paste not rewritten.
+* This hop: append-only ledger stamp advanced to hop 847. Stage 847 holds phi weave binding documentation (external assignment; paste never assigns phi). Waterfall realigned. Cascade.yml left intact. No secrets written. No device rooted. Paste not rewritten.
 * Next in waterfall: living-bibliography-continuity-engine
 * Cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`, lint-docs requires README, SECURITY.md, stamp, numeral, no .env / secrets.yml / id_rsa). Not rewritten this hop.
 * Ledger: `docs/LEDGER-STAMP.md`
@@ -41,8 +41,8 @@ Theta step held as (0.01 + idx * 0.002) * gravityPull. Stage 841 holds the step 
 Uniforms written uTime then uGravity. Stage 842 holds the uniforms order and sources.
 Major and minor assigned before switch(targetState.geometry). Stage 840 holds major/minor before switch.
 Switch is sole four-case dispatch. Stage 843 holds the switch as sole dispatcher. All formulas held as in the pasted kernel. Paste not rewritten.
-Phi is referenced but never assigned inside the session paste. Stage 835 holds phi unread / external.
-Full update(t) kernel held as pinned session source. Living path may optimize allocations. Stages 839-846 advance the pins from current chat paste. Stages 831-838 preserve prior holds.
+Phi is referenced but never assigned inside the session paste. Stage 847 holds phi weave binding documentation (external assignment). Stage 835 prior hold preserved.
+Full update(t) kernel held as pinned session source. Living path may optimize allocations. Stages 839-847 advance the pins from current chat paste. Stages 831-838 preserve prior holds.
 
 ## Compounding growth
 
@@ -68,7 +68,7 @@ npm install
 npm run dev
 ```
 
-Env-check note (hop 846): `scripts/env-check.sh` fails closed if `README.md` is missing, if `HEAD` SHA is empty, or if the numeral `137451921129154222` is absent from the tree. A zero exit means the docs surface is present. It is a tree gate only. It does not pair devices, does not read Tailscale state, does not consume ADB pair codes, and does not claim a device was rooted. A found key is a stop, not a stamp. Missing keys are the correct state. It does not upload binaries to the Drive index. Do not run the installer from CI. This hop does not probe wireless debugging and does not open a Tailscale socket. Green is presence, not privilege.
+Env-check note (hop 847): `scripts/env-check.sh` fails closed if `README.md` is missing, if `HEAD` SHA is empty, or if the numeral `137451921129154222` is absent from the tree. A zero exit means the docs surface is present. It is a tree gate only. It does not pair devices, does not read Tailscale state, does not consume ADB pair codes, and does not claim a device was rooted. A found key is a stop, not a stamp. Missing keys are the correct state. It does not upload binaries to the Drive index. Do not run the installer from CI. This hop does not probe wireless debugging and does not open a Tailscale socket. Green is presence, not privilege.
 
 ```bash
 bash scripts/env-check.sh
@@ -94,17 +94,17 @@ Declared operator rotation. One repo, then stop.
 2. Cryptic-Heartbeat — hop 812 closed 2026-10-23T04:15Z. Not re-touched.
 3. The-Hive — hop 813 closed 2026-10-23T05:07Z. Not re-touched.
 4. continuity-ledger-cycle — hop 814 closed 2026-10-23T06:09Z. Not re-touched.
-5. gaia-visualizer — **846 this hop**
+5. gaia-visualizer — **847 this hop**
 6. living-bibliography-continuity-engine — hop 825 closed 2026-10-24T00:11Z. Not re-touched.
 7. continuity-engine-ssos — next
 8. hamiltonian-incursion — subsequent
 
-## Waterfall receipt (hop 846)
+## Waterfall receipt (hop 847)
 
-* utc: 2026-10-25T01:08Z
-* cdt: 2026-10-24 20:08 CDT
+* utc: 2026-10-25T02:08Z
+* cdt: 2026-10-24 21:08 CDT
 * prior named seat: continuity-ledger-cycle hop 814 @ 2026-10-23T06:09Z. Honored.
-* this hop: append-only stamp advanced to hop 846; stage 846 holds living path Vector3 reuse from current chat paste; waterfall realigned
+* this hop: append-only stamp advanced to hop 847; stage 847 holds phi weave binding from current chat paste; waterfall realigned
 * cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, contents: read)
 * cloud index mention only: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU); no binaries uploaded
 * next: living-bibliography-continuity-engine
