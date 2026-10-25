@@ -10,12 +10,12 @@ Team Enhance hops one repo per run. Equalizer formats only. No history rewrite. 
 * Branch: main
 * Language: JavaScript (Vite 5 / three ^0.169)
 * Numeral: 137451921129154222
-* Stage: **856** — 2026-10-25T18:07Z (2026-10-25 13:07 CDT)
+* Stage: **859** — 2026-10-25T19:08Z (2026-10-25 14:08 CDT)
 * Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
 * Compounding tier: **T5 / 99%**
-* Prior local: hop 853 @ 2026-10-25T17:07Z preserved; not rewritten.
+* Prior local: hop 856 @ 2026-10-25T18:07Z preserved; not rewritten.
 * Prior mesh: continuity-ledger-cycle hop 814 @ 2026-10-23T06:09Z named this node next. Honored. Not re-touched.
-* This hop: stages 854–856 advanced from current chat paste of `update(t)`. Stage 854 holds theta step unread by geometry switch. Stage 855 holds major/minor assigned before switch. Stage 856 holds phi external/unread in session paste. Waterfall realigned. Cascade.yml left intact. No secrets written. No device rooted. Paste not rewritten.
+* This hop: stages 857–859 advanced from current chat paste of `update(t)`. Stage 857 holds living path Vector3 reuse for lerp (session still allocates). Stage 858 holds infinity lemniscate denom shared by x/z only. Stage 859 holds session switch sole four-case; runtime extras non-promoted. Waterfall realigned. Cascade.yml left intact. No secrets written. No device rooted. Paste not rewritten.
 * Next in waterfall: living-bibliography-continuity-engine
 * Cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`, lint-docs requires README, SECURITY.md, stamp, numeral, no .env / secrets.yml / id_rsa). Not rewritten this hop.
 * Ledger: `docs/LEDGER-STAMP.md`
@@ -30,9 +30,9 @@ Session switch is still only `infinity | hamiltonian | triangular | torus`.
 Live runtime adds phi weave, reused lerp target, optional `uWeave` / `uBlend`, plus runtime extras klein / hopf / figure8 / trefoil.
 Do not promote extra labels until a future paste includes them.
 `default` shares the torus tube. It is not a fifth session case.
-Session paste still allocates `new THREE.Vector3` inside lerp with alpha 0.05. Living path keeps `_kernelTarget`. Stage 852 holds the literal alpha 0.05 unread by gravityPull or toroidalWeave. Stage 846 prior hold preserved.
+Session paste still allocates `new THREE.Vector3` inside lerp with alpha 0.05. Living path keeps `_kernelTarget`. Stage 857 holds the living reuse while session allocates. Stage 852 prior hold on literal alpha preserved.
 Hamiltonian y lift is `sin(t) * 2` and does not take `hScale` or minor. X/Z free of minor. Stage 837 holds hScale = major; y lift sin(t)*2 unread by hScale/minor/phi.
-Infinity lemniscate denom `1 + sin(theta)^2` shared by x and z only; y unread by denom. Stage 836 holds the infinity denom shared by x/z only; y shared with torus. Scale = major * 1.5.
+Infinity lemniscate denom `1 + sin(theta)^2` shared by x and z only; y unread by denom. Stage 858 holds the infinity denom shared by x/z only; y shared with torus. Scale = major * 1.5.
 Triangular y sector is `(idx % 3 - 1) * major * 0.5` and does not take `theta * 5`. Floor snap to 2π/3. Stage 838 holds the floor snap to 2π/3 and y sector free of theta*5 from current paste. Stage 827 prior hold preserved.
 Torus/default tube radius (major + minor * cos(phi)) shared by x and z only. Y is minor * sin(phi) * sin(t * 0.5 + idx). Stage 839 holds the tube on x/z and shared y.
 Minor radius is `3 + toroidalWeave * 2`. Hamiltonian ignores minor. Infinity y, triangular ripple/y, and the torus tube use it. Stage 855 holds the minor/major pre-switch assignment. Stage 849 prior hold preserved.
@@ -40,9 +40,9 @@ Major = 10 + (idx * 2) held unread by pull. Infinity scale = major * 1.5. Hamilt
 Theta step held as (0.01 + idx * 0.002) * gravityPull. Stage 854 holds the step unread by geometry switch. Stage 848 prior hold preserved.
 Uniforms written uTime then uGravity. Stage 851 holds the uniforms order and sources (t and state.gravityPull). Stage 842 prior hold preserved.
 Major and minor assigned before switch(targetState.geometry). Stage 855 holds major/minor before switch.
-Switch is sole four-case dispatch. Stage 853 holds the switch as sole dispatcher; runtime extras non-promoted. All formulas held as in the pasted kernel. Paste not rewritten.
+Switch is sole four-case dispatch. Stage 859 holds the switch as sole dispatcher; runtime extras non-promoted. All formulas held as in the pasted kernel. Paste not rewritten.
 Phi is referenced but never assigned inside the session paste. Stage 856 holds phi external/unread in session paste. Stage 847 prior hold preserved.
-Full update(t) kernel held as pinned session source. Living path may optimize allocations. Stages 854-856 advance the pins from current chat paste. Stages 831-853 preserve prior holds.
+Full update(t) kernel held as pinned session source. Living path may optimize allocations. Stages 857-859 advance the pins from current chat paste. Stages 831-856 preserve prior holds.
 
 ## Compounding growth
 
@@ -68,7 +68,7 @@ npm install
 npm run dev
 ```
 
-Env-check note (hop 856): `scripts/env-check.sh` fails closed if `README.md` is missing, if `HEAD` SHA is empty, or if the numeral `137451921129154222` is absent from the tree. A zero exit means the docs surface is present. It is a tree gate only. It does not pair devices, does not read Tailscale state, does not consume ADB pair codes, and does not claim a device was rooted. A found key is a stop, not a stamp. Missing keys are the correct state. It does not upload binaries to the Drive index. Do not run the installer from CI. This hop does not probe wireless debugging and does not open a Tailscale socket. Green is presence, not privilege.
+Env-check note (hop 859): `scripts/env-check.sh` fails closed if `README.md` is missing, if `HEAD` SHA is empty, or if the numeral `137451921129154222` is absent from the tree. A zero exit means the docs surface is present. It is a tree gate only. It does not pair devices, does not read Tailscale state, does not consume ADB pair codes, and does not claim a device was rooted. A found key is a stop, not a stamp. Missing keys are the correct state. It does not upload binaries to the Drive index. Do not run the installer from CI. This hop does not probe wireless debugging and does not open a Tailscale socket. Green is presence, not privilege.
 
 ```bash
 bash scripts/env-check.sh
@@ -94,17 +94,17 @@ Declared operator rotation. One repo, then stop.
 2. Cryptic-Heartbeat — hop 812 closed 2026-10-23T04:15Z. Not re-touched.
 3. The-Hive — hop 813 closed 2026-10-23T05:07Z. Not re-touched.
 4. continuity-ledger-cycle — hop 814 closed 2026-10-23T06:09Z. Not re-touched.
-5. gaia-visualizer — **856 this hop**
+5. gaia-visualizer — **859 this hop**
 6. living-bibliography-continuity-engine — hop 825 closed 2026-10-24T00:11Z. Not re-touched.
 7. continuity-engine-ssos — next
 8. hamiltonian-incursion — subsequent
 
-## Waterfall receipt (hop 856)
+## Waterfall receipt (hop 859)
 
-* utc: 2026-10-25T18:07Z
-* cdt: 2026-10-25 13:07 CDT
+* utc: 2026-10-25T19:08Z
+* cdt: 2026-10-25 14:08 CDT
 * prior named seat: continuity-ledger-cycle hop 814 @ 2026-10-23T06:09Z. Honored.
-* this hop: stages 854–856 advanced from current chat paste of update(t); stage 854 holds theta step; stage 855 holds major/minor; stage 856 holds phi external; waterfall realigned
+* this hop: stages 857–859 advanced from current chat paste of update(t); stage 857 holds living Vector3 reuse; stage 858 holds infinity denom; stage 859 holds sole four-case switch; waterfall realigned
 * cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, contents: read)
 * cloud index mention only: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU); no binaries uploaded
 * next: living-bibliography-continuity-engine
