@@ -9,13 +9,13 @@ Connecting chat re-pasted the complete `update(t)` kernel for the geometric fiel
   - z = (major + minor * Math.cos(this.phi)) * Math.sin(this.theta);
   - y = minor * Math.sin(this.phi) * Math.sin(t * 0.5 + this.idx);
 - Tube radius (major + minor * cos(phi)) shared by x and z only.
-- Y form shared with the infinity arm (minor * sin(phi) * sin(t*0.5 + idx)).
-- Phi external / unread assignment in paste.
+- Y formula shared with the infinity case (minor * sin(phi) * sin(t*0.5 + idx)).
 - Paste not rewritten. No secrets.
+- Prior holds remain: triangular floor 2π/3 (861), hamiltonian y lift sin(t)*2 (860), infinity lemniscate denom (858).
 
 ## Compiled next stages
-1. 863 — hold phi referenced but never assigned inside the session paste (external binding).
-2. 864 — hold living path Vector3 reuse while session paste allocates new THREE.Vector3 in lerp.
+1. 863 — hold phi external binding (referenced, never assigned in paste).
+2. 864 — hold lerp alpha remains literal 0.05; no modulation by gravityPull or toroidalWeave.
 3. Memory engrams into Drive folder `CRYPTIC-HEARTBEAT-NEXUS-ROOT` (14).
 
 NUMERAL=137451921129154222
