@@ -1,10 +1,10 @@
 {
-  "stage": 846,
+  "stage": 849,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
-  "paste": "2026-10-24",
-  "next": [847, 848, 849],
+  "paste": "2026-10-25",
+  "next": [850, 851, 852],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stage 846 holds living path reuse of Vector3 lerp target (session paste allocates new THREE.Vector3 alpha 0.05). Stages 839-845 preserve prior pins from current chat paste of update(t). Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stage 849 holds toroidalWeave minor radius verification for infinity y / triangular ripple+y / torus tube (hamiltonian ignores minor). Stages 839-848 preserve prior pins from current chat paste of update(t). Paste not rewritten."
 }
