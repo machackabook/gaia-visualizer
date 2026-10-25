@@ -1,10 +1,10 @@
 {
-  "stage": 838,
+  "stage": 846,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
   "paste": "2026-10-24",
-  "next": [839, 840, 841],
+  "next": [847, 848, 849],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stage 838 holds triangular floor snap to 2π/3 and y sector free of theta*5 from current chat paste of update(t). Stages 834-837 preserve prior pins (lerp allocation, phi external, infinity denom, hamiltonian y-lift). Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stage 846 holds living path reuse of Vector3 lerp target (session paste allocates new THREE.Vector3 alpha 0.05). Stages 839-845 preserve prior pins from current chat paste of update(t). Paste not rewritten."
 }
