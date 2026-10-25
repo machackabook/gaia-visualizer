@@ -2,7 +2,7 @@
 
 Band `580-visual`. Chat kernel is the `update(t)` posted in-session (uniforms → theta → radii → geometry switch → lerp 0.05).
 Raw session kernel still allocates `new THREE.Vector3` inside lerp (hash `beec41f1`). Enhanced / live path uses a reused `_kernelTarget` / `_target`.
-Stage 830 holds uniforms uTime then uGravity order and sources from current chat paste. Prior holds preserved. Extras remain runtime-only.
+Stage 850 holds major = 10 + (idx * 2) unread by gravityPull; used for scale/hScale/sector. Prior holds preserved. Extras remain runtime-only.
 
 ## Done
 
@@ -19,20 +19,22 @@ Stage 830 holds uniforms uTime then uGravity order and sources from current chat
 | 828 | Hold full kernel session paste allocation of new Vector3 in lerp (living path may reuse). |
 | 829 | Hold torus/default tube radius shared by x/z and y shared with infinity. |
 | 830 | Hold uniforms uTime then uGravity order and sources. |
+| 831–849 | Hold series on major/minor pre-switch, theta step, switch four-case, phi external, gravityPull on theta, toroidalWeave minor verification, and related pins from current chat paste. (prior entries preserved) |
+| 850 | Hold major = 10 + (idx * 2) unread by gravityPull; used for scale/hScale/sector. |
 
 ## Next
 
 | Stage | Owner repo | Work |
 |------|------------|------|
-| 831 | gaia-visualizer | Hold major = 10 + (idx * 2) and minor = 3 + (toroidalWeave * 2) assigned before switch. |
-| 832 | gaia-visualizer | Hold theta step (0.01 + idx * 0.002) * gravityPull unread by geometry. |
-| 833 | gaia-visualizer | Hold switch(targetState.geometry) as sole four-case dispatcher. |
+| 851 | gaia-visualizer | Hold uniforms order: uTime then uGravity; sources t and state.gravityPull respectively. |
+| 852 | gaia-visualizer | Hold lerp alpha remains literal 0.05; no modulation by gravityPull or toroidalWeave. |
+| 853 | gaia-visualizer | Hold session switch remains sole four-case; runtime extras stay non-promoted until paste. |
 | 14 | The-Hive | Memory engrams into Drive folder `CRYPTIC-HEARTBEAT-NEXUS-ROOT` |
 
 ## Drive from LLM
 
 ```js
 window.dispatchEvent(new CustomEvent('gaia:targetState', {
-  detail: { geometry: 'torus', blendFrom: 'hamiltonian', blendTo: 'torus', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 830, sourceHash: '7cd81012', sessionHash: 'beec41f1' }
+  detail: { geometry: 'torus', blendFrom: 'hamiltonian', blendTo: 'torus', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 850, sourceHash: '7cd81012', sessionHash: 'beec41f1' }
 }));
 ```
