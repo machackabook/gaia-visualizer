@@ -1,5 +1,5 @@
-/** Stage 717 — session triangular floor snaps theta to 2π/3 and y sector free of theta*5. Document only. Do not rewrite the paste. No secrets. */
-export const TRIANGULAR_FLOOR_STAGE = 717;
+/** Stage 863 — session phi external binding (referenced, never assigned in paste). Torus tube held at 862. Document only. Do not rewrite the paste. No secrets. */
+export const TRIANGULAR_FLOOR_STAGE = 863;
 export const TRIANGULAR_FLOOR_SESSION_HASH = 'beec41f1';
 export const TRIANGULAR_FLOOR_LIVING_HASH = '7cd81012';
 export const TRIANGULAR_FLOOR_SECTORS = 3;
@@ -113,6 +113,6 @@ export function noteSessionTriangularFloor(source) {
     pasteRewritten: false,
     secrets: false,
     ok: floorSnap && usesTAngle && snapHolds && yFreeOfTheta5 && invented.length === 0,
-    note: 'Session triangular floor snaps theta to 2π/3 before cos/sin of the lattice vertex. Raw theta*5 stays on the minor ripple (x/z only). Y sector free of theta*5. Living path already matches. Paste not rewritten.',
+    note: 'Session triangular floor snaps theta to 2π/3 before cos/sin of the lattice vertex. Raw theta*5 stays on the minor ripple (x/z only). Y sector free of theta*5. Phi external. Torus tube held. Living path already matches. Paste not rewritten.',
   };
 }

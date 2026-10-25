@@ -2,7 +2,7 @@
 
 Band `580-visual`. Chat kernel is the `update(t)` posted in-session (uniforms → theta → radii → geometry switch → lerp 0.05).
 Raw session kernel still allocates `new THREE.Vector3` inside lerp (hash `beec41f1`). Enhanced / live path uses a reused `_kernelTarget` / `_target`.
-Stage 861 holds the triangular floor snap to 2π/3 and y sector free of theta*5. Prior holds preserved. Extras remain runtime-only.
+Stage 863 holds phi external binding. Stage 862 holds torus/default tube radius shared by x/z and y shared with infinity. Prior holds preserved. Extras remain runtime-only.
 
 ## Done
 
@@ -32,19 +32,21 @@ Stage 861 holds the triangular floor snap to 2π/3 and y sector free of theta*5.
 | 859 | Hold session switch sole four-case; runtime extras non-promoted. |
 | 860 | Hold hamiltonian parametric x/z free of minor and phi; y lift sin(t)*2 independent of hScale. |
 | 861 | Hold triangular floor snap to 2π/3 and y sector free of theta*5. |
+| 862 | Hold torus/default tube radius shared by x/z; y shared with infinity. |
+| 863 | Hold phi external binding (referenced, never assigned in paste). |
 
 ## Next
 
 | Stage | Owner repo | Work |
 |------|------------|------|
-| 862 | gaia-visualizer | Hold torus/default tube radius shared by x/z; y shared with infinity. |
-| 863 | gaia-visualizer | Hold phi external binding (referenced, never assigned in paste). |
+| 864 | gaia-visualizer | Hold lerp alpha remains literal 0.05; no modulation by gravityPull or toroidalWeave. |
+| 865 | gaia-visualizer | Hold uniforms write order uTime then uGravity; sources t and state.gravityPull. |
 | 14 | The-Hive | Memory engrams into Drive folder `CRYPTIC-HEARTBEAT-NEXUS-ROOT` |
 
 ## Drive from LLM
 
 ```js
 window.dispatchEvent(new CustomEvent('gaia:targetState', {
-  detail: { geometry: 'triangular', blendFrom: 'hamiltonian', blendTo: 'triangular', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 861, sourceHash: '7cd81012', sessionHash: 'beec41f1' }
+  detail: { geometry: 'torus', blendFrom: 'triangular', blendTo: 'torus', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 863, sourceHash: '7cd81012', sessionHash: 'beec41f1' }
 }));
 ```
