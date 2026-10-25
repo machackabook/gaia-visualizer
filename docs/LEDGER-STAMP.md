@@ -2,87 +2,43 @@
 
 Append-only Continuity stamp. Do not rewrite history.
 
-## Current stamp (hop 840)
+## hop 845
 
 - repo: machackabook/gaia-visualizer
-- hop: 840
-- utc: 2026-10-24T22:08:00Z
-- cdt: 2026-10-24 17:08 CDT
+- hop: 845
+- utc: 2026-10-25T00:09:00Z
+- cdt: 2026-10-24 19:09 CDT
 - numeral: 137451921129154222
-- team: Enhance / Continuity Engine / sSoS Operating
-- cascade.yml: intact (cron 53 * * * *, contents: read). Not rewritten this hop.
-- env-check: scripts/env-check.sh is a tree gate only. A green exit is not a root attestation, not a Tailscale clearance, and not an ADB pair. Do not commit .env, Tailscale auth keys, or ADB pair codes. A found key is a stop, not a stamp. Missing keys are the correct state. This hop does not probe wireless debugging. Does not claim a device was rooted.
+- team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
+- prior local: hop 840 @ 2026-10-24T22:08Z preserved. STAGE-843 switch pin held.
+- action: STAGE-845 compiled next stages from full update(t) kernel. README stage advanced. Stamp appended. Cascade left intact. No secrets. No device rooted. Drive index mentioned only.
+- cascade.yml: left intact (cron 53 * * * *, contents: read)
+- env-check: tree gate only. Does not claim root.
 - secrets: none written
-- tailscale keys: none written
-- adb pair codes: none written
-- root claim: none (device root not asserted)
-- history: append-only; no rewrite; no force-push
-- prior local: hop 839 @ 2026-10-24T21:07Z preserved. Stage 843 holds switch(targetState.geometry) as sole four-case dispatcher from current chat paste of update(t). Paste not rewritten.
-- prior mesh: continuity-ledger-cycle hop 814 @ 2026-10-23T06:09Z named this node. Honored. Not re-touched.
+- root claim: none
+- history: append-only
+- binaries: not uploaded
+- cloud index: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU) — mention only
+- unknowns kept. Not invented.
 - next in waterfall: living-bibliography-continuity-engine
-- cloud index: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU) — mention only; no binaries uploaded
-- unknowns kept: pair-code, Tailscale auth key, device voiceprint, SD mount path. Not invented.
-- encode: source-only authority
-- token: hop-840.gaia-visualizer.137451921129154222
-- token_b64: aG9wLTg0MC5nYWlhLXZpc3VhbGl6ZXIuMTM3NDUxOTIxMTI5MTU0MjIy
+- token: hop-845.gaia-visualizer.137451921129154222
 
 ```
 NUMERAL=137451921129154222
 REPO=machackabook/gaia-visualizer
-HOP=840
-UTC=2026-10-24T22:08Z
-CDT=2026-10-24 17:08 CDT
+HOP=845
+UTC=2026-10-25T00:09Z
+CDT=2026-10-24 19:09 CDT
 CASCADE=left_intact_cron_53_contents_read
 NULL_POINT_ZERO=REFUSED
-PRIOR=continuity-ledger-cycle@814@2026-10-23T06:09Z; local@839
+PRIOR=hop-840@2026-10-24T22:08Z
 NEXT=living-bibliography-continuity-engine
 DRIVE_INDEX=CONTINUUM-ENCLAVE-137451921129154222
 DRIVE_ID=1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU
 BINARIES=not_uploaded
-OPERATOR=Team Enhance / Continuity Engine / sSoS Operating
+OPERATOR=Team Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
 CONTRACT=preserve enhance synthesize; no history rewrite; no secrets; no force-push; no root claim
 ```
 
-## Prior stamp (hop 839)
-
-- repo: machackabook/gaia-visualizer
-- hop: 839
-- utc: 2026-10-24T21:07:00Z
-- cdt: 2026-10-24 16:07 CDT
-- numeral: 137451921129154222
-- team: Enhance / Continuity Engine / sSoS Operating
-- cascade.yml: intact (cron 53 * * * *, contents: read). Not rewritten this hop.
-- env-check: scripts/env-check.sh is a tree gate only. A green exit is not a root attestation, not a Tailscale clearance, and not an ADB pair. Do not commit .env, Tailscale auth keys, or ADB pair codes. A found key is a stop, not a stamp. Missing keys are the correct state. This hop does not probe wireless debugging. Does not claim a device was rooted.
-- secrets: none written
-- tailscale keys: none written
-- adb pair codes: none written
-- root claim: none (device root not asserted)
-- history: append-only; no rewrite; no force-push
-- prior local: hop 838 @ 2026-10-24T18:06Z preserved. Stage 838 holds triangular floor snap to 2π/3 and y sector free of theta*5 from current chat paste of update(t). Paste not rewritten.
-- prior mesh: continuity-ledger-cycle hop 814 @ 2026-10-23T06:09Z named this node. Honored. Not re-touched.
-- next in waterfall: living-bibliography-continuity-engine
-- cloud index: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU) — mention only; no binaries uploaded
-- unknowns kept: pair-code, Tailscale auth key, device voiceprint, SD mount path. Not invented.
-- encode: source-only authority
-- token: hop-839.gaia-visualizer.137451921129154222
-- token_b64: aG9wLTgzOS5nYWlhLXZpc3VhbGl6ZXIuMTM3NDUxOTIxMTI5MTU0MjIy
-
-```
-NUMERAL=137451921129154222
-REPO=machackabook/gaia-visualizer
-HOP=839
-UTC=2026-10-24T21:07Z
-CDT=2026-10-24 16:07 CDT
-CASCADE=left_intact_cron_53_contents_read
-NULL_POINT_ZERO=REFUSED
-PRIOR=continuity-ledger-cycle@814@2026-10-23T06:09Z; local@838
-NEXT=living-bibliography-continuity-engine
-DRIVE_INDEX=CONTINUUM-ENCLAVE-137451921129154222
-DRIVE_ID=1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU
-BINARIES=not_uploaded
-OPERATOR=Team Enhance / Continuity Engine / sSoS Operating
-CONTRACT=preserve enhance synthesize; no history rewrite; no secrets; no force-push; no root claim
-```
-
-Older stamps remain in git history. Nearest prior block kept above. No history rewrite.
+Prior hop remains in history. No rewrite.
 CASCADE_TOKEN stays in GitHub Secrets. Never committed.
