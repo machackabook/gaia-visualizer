@@ -10,12 +10,11 @@ Team Enhance hops one repo per run. Equalizer formats only. No history rewrite. 
 * Branch: main
 * Language: JavaScript (Vite 5 / three ^0.169)
 * Numeral: 137451921129154222
-* Stage: **886** — 2026-10-26T17:14Z (2026-10-26 12:14 CDT)
+* Stage: **879** — 2026-10-26T19:07Z (2026-10-26 14:07 CDT)
 * Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
 * Compounding tier: **T5 / 99%**
-* Prior local: hop 878 @ 2026-10-26T16:10Z preserved; not rewritten.
-* Prior mesh: Cryptic-Heartbeat hop 885 @ 2026-10-26T17:09Z named this seat in rotation. Honored. Not re-touched.
-* This hop: waterfall advance after Cryptic-Heartbeat 885. Append-only stamp to hop 886. Cascade.yml left intact (healthy cron + lint). No secrets written. No device rooted. Drive index mentioned only.
+* Prior local: hop 886 @ 2026-10-26T17:14Z preserved; not rewritten.
+* This hop: STAGE-879 holds full update(t) kernel pin from current connecting chat paste. Append-only. Cascade.yml left intact. No secrets written. No device rooted. Drive index mentioned only.
 * Next in waterfall: living-bibliography-continuity-engine (rotation continues)
 * Cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`, lint-docs requires README, SECURITY.md, stamp, numeral, no .env / secrets.yml / id_rsa). Not rewritten this hop.
 * Ledger: `docs/LEDGER-STAMP.md`
@@ -30,7 +29,7 @@ Session switch is still only `infinity | hamiltonian | triangular | torus`.
 Live runtime adds phi weave, reused lerp target, optional `uWeave` / `uBlend`, plus runtime extras klein / hopf / figure8 / trefoil.
 Do not promote extra labels until a future paste includes them.
 `default` shares the torus tube. It is not a fifth session case.
-Session paste still allocates `new THREE.Vector3` inside lerp with alpha 0.05. Living path keeps `_kernelTarget`. Stage 857 holds the living reuse while session allocates. Stage 864 holds the lerp alpha literal 0.05 with no modulation by gravityPull or toroidalWeave. Stage 865 holds uniforms write order uTime then uGravity. Stage 866 holds theta step unread by switch. Stage 867 holds major/minor pre-switch. Stage 868 holds phi external binding. Stage 877 holds the full kernel pin from prior paste. Stage 878 reaffirms from latest connecting chat. Stage 886 holds the same kernel pin; paste not rewritten.
+Session paste still allocates `new THREE.Vector3` inside lerp with alpha 0.05. Living path keeps `_kernelTarget`. Stage 857 holds the living reuse while session allocates. Stage 864 holds the lerp alpha literal 0.05 with no modulation by gravityPull or toroidalWeave. Stage 865 holds uniforms write order uTime then uGravity. Stage 866 holds theta step unread by switch. Stage 867 holds major/minor pre-switch. Stage 868 holds phi external binding. Stage 877 holds the full kernel pin from prior paste. Stage 878 reaffirms from latest connecting chat. Stage 879 holds the same kernel pin from this connecting chat; paste not rewritten.
 Hamiltonian y lift is `sin(t) * 2` and does not take `hScale` or minor. X/Z free of minor.
 Infinity lemniscate denom `1 + sin(theta)^2` shared by x and z only; y unread by denom. Scale = major * 1.5.
 Triangular y sector is `(idx % 3 - 1) * major * 0.5` and does not take `theta * 5`. Floor snap to 2π/3.
@@ -42,7 +41,7 @@ Uniforms written uTime then uGravity. Stage 865 holds the order and sources.
 Major and minor assigned before switch(targetState.geometry). Stage 867 holds this.
 Switch is sole four-case dispatch. Stage 859 holds the switch as sole dispatcher; runtime extras non-promoted. All formulas held as in the pasted kernel. Paste not rewritten.
 Phi is referenced but never assigned inside the session paste. Stage 868 holds the external binding.
-Full update(t) kernel held as pinned session source. Living path may optimize allocations. Stage 886 reaffirms from latest chat.
+Full update(t) kernel held as pinned session source. Living path may optimize allocations. Stage 879 reaffirms from latest chat.
 Lerp alpha held as literal 0.05. Stage 864 holds no modulation.
 
 ## Compounding growth
@@ -69,7 +68,7 @@ npm install
 npm run dev
 ```
 
-Env-check note (hop 886): `scripts/env-check.sh` fails closed if `README.md` is missing, if `HEAD` SHA is empty, or if the numeral `137451921129154222` is absent from the tree. A zero exit means the docs surface is present. It is a tree gate only. It does not pair devices, does not read Tailscale state, does not consume ADB pair codes, and does not claim a device was rooted. A found key is a stop, not a stamp. Missing keys are the correct state. It does not upload binaries to the Drive index. Do not run the installer from CI. This hop does not probe wireless debugging and does not open a Tailscale socket. Green is presence, not privilege. No device was rooted.
+Env-check note (hop 879): `scripts/env-check.sh` fails closed if `README.md` is missing, if `HEAD` SHA is empty, or if the numeral `137451921129154222` is absent from the tree. A zero exit means the docs surface is present. It is a tree gate only. It does not pair devices, does not read Tailscale state, does not consume ADB pair codes, and does not claim a device was rooted. A found key is a stop, not a stamp. Missing keys are the correct state. It does not upload binaries to the Drive index. Do not run the installer from CI. This hop does not probe wireless debugging and does not open a Tailscale socket. Green is presence, not privilege. No device was rooted.
 
 ## Speedway
 
@@ -87,16 +86,16 @@ Declared operator rotation. One repo, then stop.
 3. hamiltonian-incursion — hop 883 closed. Not re-touched.
 4. The-Hive — hop 884 closed. Not re-touched.
 5. Cryptic-Heartbeat — hop 885 closed @ 2026-10-26T17:09Z. Honored. Named this seat. Not re-touched.
-6. gaia-visualizer — **886 this hop**
+6. gaia-visualizer — **879 this hop**
 7. living-bibliography-continuity-engine — next
 8. continuity-ledger-cycle — subsequent
 
-## Waterfall receipt (hop 886)
+## Waterfall receipt (hop 879)
 
-* utc: 2026-10-26T17:14Z
-* cdt: 2026-10-26 12:14 CDT
-* prior named seat: Cryptic-Heartbeat hop 885 @ 2026-10-26T17:09Z. Honored.
-* this hop: append-only stamp advanced to hop 886 + waterfall realignment to operator rotation
+* utc: 2026-10-26T19:07Z
+* cdt: 2026-10-26 14:07 CDT
+* prior named seat: hop 886 @ 2026-10-26T17:14Z. Honored.
+* this hop: STAGE-879 holds full update(t) kernel pin from current connecting chat paste. Append-only stamp.
 * cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, contents: read)
 * cloud index mention only: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU); no binaries uploaded
 * next: living-bibliography-continuity-engine
