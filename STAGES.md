@@ -2,7 +2,7 @@
 
 Band `580-visual`. Chat kernel is the `update(t)` posted in-session (uniforms → theta → radii → geometry switch → lerp 0.05).
 Raw session kernel still allocates `new THREE.Vector3` inside lerp (hash `beec41f1`). Enhanced / live path uses a reused `_kernelTarget` / `_target`.
-Stage 865 holds uniforms write order uTime then uGravity; sources t and state.gravityPull. Stage 864 holds lerp alpha remains literal 0.05; no modulation by gravityPull or toroidalWeave. Stage 863 holds phi external binding. Prior holds preserved. Extras remain runtime-only.
+Stage 866 holds theta step (0.01 + this.idx * 0.002) * state.gravityPull unread by the geometry switch. Stage 865 holds uniforms write order uTime then uGravity; sources t and state.gravityPull. Stage 864 holds lerp alpha remains literal 0.05; no modulation by gravityPull or toroidalWeave. Prior holds preserved. Extras remain runtime-only.
 
 ## Done
 
@@ -36,18 +36,19 @@ Stage 865 holds uniforms write order uTime then uGravity; sources t and state.gr
 | 863 | Hold phi external binding (referenced, never assigned in paste). |
 | 864 | Hold lerp alpha remains literal 0.05; no modulation by gravityPull or toroidalWeave. |
 | 865 | Hold uniforms write order uTime then uGravity; sources t and state.gravityPull. |
+| 866 | Hold theta step (0.01 + this.idx * 0.002) * state.gravityPull unread by the geometry switch. |
 
 ## Next
 
 | Stage | Owner repo | Work |
 |------|------------|------|
-| 866 | gaia-visualizer | Hold theta step (0.01 + this.idx * 0.002) * state.gravityPull unread by the geometry switch. |
+| 867 | gaia-visualizer | Hold major = 10 + (this.idx * 2), minor = 3 + (state.toroidalWeave * 2) assigned before the switch. |
 | 14 | The-Hive | Memory engrams into Drive folder `CRYPTIC-HEARTBEAT-NEXUS-ROOT` |
 
 ## Drive from LLM
 
 ```js
 window.dispatchEvent(new CustomEvent('gaia:targetState', {
-  detail: { geometry: 'torus', blendFrom: 'triangular', blendTo: 'torus', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 865, sourceHash: '7cd81012', sessionHash: 'beec41f1' }
+  detail: { geometry: 'torus', blendFrom: 'triangular', blendTo: 'torus', gravityPull: 1.4, toroidalWeave: 1.2, lerp: 0.05, blend: 0.6, stage: 866, sourceHash: '7cd81012', sessionHash: 'beec41f1' }
 }));
 ```
