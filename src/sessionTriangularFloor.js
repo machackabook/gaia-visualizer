@@ -1,5 +1,5 @@
-/** Stage 865 — hold uniforms write order uTime then uGravity; sources t and state.gravityPull. Lerp alpha literal 0.05 held at 864. Phi external held at 863. Document only. Do not rewrite the paste. No secrets. */
-export const TRIANGULAR_FLOOR_STAGE = 865;
+/** Stage 869 — hold session Vector3 allocation inside lerp (alpha 0.05 literal; living path reuses). Phi external held at 868. Major/minor pre-switch held at 867. Theta step unread by switch held at 866. Uniforms order held at 865. Document only. Do not rewrite the paste. No secrets. */
+export const TRIANGULAR_FLOOR_STAGE = 869;
 export const TRIANGULAR_FLOOR_SESSION_HASH = 'beec41f1';
 export const TRIANGULAR_FLOOR_LIVING_HASH = '7cd81012';
 export const TRIANGULAR_FLOOR_SECTORS = 3;
@@ -97,6 +97,7 @@ export function noteSessionTriangularFloor(source) {
   const invented = TRIANGULAR_FLOOR_EXTRAS.filter((name) => hasCase(text, name));
   const lerpAlphaLiteral = /lerp\(new THREE\.Vector3\(x, y, z\), 0\.05\)/.test(text);
   const uniformsOrder = /this\.material\.uniforms\.uTime\.value = t;[\s\S]*?this\.material\.uniforms\.uGravity\.value = state\.gravityPull;/.test(text);
+  const sessionAlloc = /lerp\(new THREE\.Vector3\(x, y, z\), 0\.05\)/.test(text);
   return {
     stage: TRIANGULAR_FLOOR_STAGE,
     session: TRIANGULAR_FLOOR_SESSION_HASH,
@@ -109,6 +110,7 @@ export function noteSessionTriangularFloor(source) {
     yFreeOfTheta5,
     lerpAlphaLiteral,
     uniformsOrder,
+    sessionAlloc,
     sample,
     snapHolds,
     inventedCases: invented,
@@ -116,7 +118,7 @@ export function noteSessionTriangularFloor(source) {
     extrasOffSession: true,
     pasteRewritten: false,
     secrets: false,
-    ok: floorSnap && usesTAngle && snapHolds && yFreeOfTheta5 && invented.length === 0 && lerpAlphaLiteral && uniformsOrder,
-    note: 'Session triangular floor snaps theta to 2π/3 before cos/sin of the lattice vertex. Raw theta*5 stays on the minor ripple (x/z only). Y sector free of theta*5. Phi external. Torus tube held. Lerp alpha literal 0.05 no modulation. Uniforms uTime then uGravity. Living path already matches. Paste not rewritten.',
+    ok: floorSnap && usesTAngle && snapHolds && yFreeOfTheta5 && invented.length === 0 && lerpAlphaLiteral && uniformsOrder && sessionAlloc,
+    note: 'Session triangular floor snaps theta to 2π/3 before cos/sin of the lattice vertex. Raw theta*5 stays on the minor ripple (x/z only). Y sector free of theta*5. Phi external. Torus tube held. Lerp alpha literal 0.05 no modulation. Session allocates new Vector3 in lerp. Uniforms uTime then uGravity. Living path already matches. Paste not rewritten.',
   };
 }
