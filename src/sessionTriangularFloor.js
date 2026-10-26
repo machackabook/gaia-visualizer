@@ -1,5 +1,5 @@
-/** Stage 881 — hold hamiltonian y lift sin(t)*2 free of hScale/minor; x/z free of minor. Infinity denom held at 880. Session Vector3 allocation held at 869. Phi external held at 868. Major/minor pre-switch held at 867. Theta step unread by switch held at 866. Uniforms order held at 865. Document only. Do not rewrite the paste. No secrets. */
-export const TRIANGULAR_FLOOR_STAGE = 881;
+/** Stage 883 — hold torus/default tube (major + minor*cos(phi)) shared by x/z; y shared with infinity. Triangular floor held at 882. Hamiltonian y lift free of hScale/minor held at 881. Infinity denom held at 880. Session Vector3 allocation held. Phi external held at 868. Major/minor pre-switch held at 867. Theta step unread by switch held at 866. Uniforms order held at 865. Document only. Do not rewrite the paste. No secrets. */
+export const TRIANGULAR_FLOOR_STAGE = 883;
 export const TRIANGULAR_FLOOR_SESSION_HASH = 'beec41f1';
 export const TRIANGULAR_FLOOR_LIVING_HASH = '7cd81012';
 export const TRIANGULAR_FLOOR_SECTORS = 3;
@@ -100,6 +100,7 @@ export function noteSessionTriangularFloor(source) {
   const sessionAlloc = /lerp\(new THREE\.Vector3\(x, y, z\), 0\.05\)/.test(text);
   const infinityDenomShared = /const denom = 1 \+ Math\.pow\(Math\.sin\(this\.theta\), 2\);[\s\S]*?x = \(scale \* Math\.cos\(this\.theta\)\) \/ denom;[\s\S]*?z = \(scale \* Math\.sin\(this\.theta\) \* Math\.cos\(this\.theta\)\) \/ denom;/.test(text);
   const hamiltonianLiftFree = /y = hScale \* Math\.sin\(this\.theta \* 3\) \+ \(Math\.sin\(t\) \* 2\);/.test(text);
+  const torusTube = /x = \(major \+ minor \* Math\.cos\(this\.phi\)\) \* Math\.cos\(this\.theta\);[\s\S]*?z = \(major \+ minor \* Math\.cos\(this\.phi\)\) \* Math\.sin\(this\.theta\);/.test(text);
   return {
     stage: TRIANGULAR_FLOOR_STAGE,
     session: TRIANGULAR_FLOOR_SESSION_HASH,
@@ -115,6 +116,7 @@ export function noteSessionTriangularFloor(source) {
     sessionAlloc,
     infinityDenomShared,
     hamiltonianLiftFree,
+    torusTube,
     sample,
     snapHolds,
     inventedCases: invented,
@@ -122,7 +124,7 @@ export function noteSessionTriangularFloor(source) {
     extrasOffSession: true,
     pasteRewritten: false,
     secrets: false,
-    ok: floorSnap && usesTAngle && snapHolds && yFreeOfTheta5 && invented.length === 0 && lerpAlphaLiteral && uniformsOrder && sessionAlloc && infinityDenomShared && hamiltonianLiftFree,
-    note: 'Session triangular floor snaps theta to 2π/3 before cos/sin of the lattice vertex. Raw theta*5 stays on the minor ripple (x/z only). Y sector free of theta*5. Infinity denom shared by x/z only; y unread by denom. Hamiltonian y lift sin(t)*2 free of hScale/minor; x/z free of minor. Phi external. Torus tube held. Lerp alpha literal 0.05 no modulation. Session allocates new Vector3 in lerp. Uniforms uTime then uGravity. Living path already matches. Paste not rewritten.',
+    ok: floorSnap && usesTAngle && snapHolds && yFreeOfTheta5 && invented.length === 0 && lerpAlphaLiteral && uniformsOrder && sessionAlloc && infinityDenomShared && hamiltonianLiftFree && torusTube,
+    note: 'Session triangular floor snaps theta to 2π/3 before cos/sin of the lattice vertex. Raw theta*5 stays on the minor ripple (x/z only). Y sector free of theta*5. Infinity denom shared by x/z only; y unread by denom. Hamiltonian y lift sin(t)*2 free of hScale/minor; x/z free of minor. Torus/default tube (major + minor*cos(phi)) shared by x/z; y shared with infinity. Phi external. Lerp alpha literal 0.05 no modulation. Session allocates new Vector3 in lerp. Uniforms uTime then uGravity. Living path already matches. Paste not rewritten.',
   };
 }
