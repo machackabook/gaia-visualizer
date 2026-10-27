@@ -10,12 +10,13 @@ Team Enhance hops one repo per run. Equalizer formats only. No history rewrite. 
 * Branch: main
 * Language: JavaScript (Vite 5 / three ^0.169)
 * Numeral: 137451921129154222
-* Stage: **886** — 2026-10-27T03:09Z (2026-10-26 22:09 CDT)
+* Stage: **897** — 2026-10-27T09:07Z (2026-10-27 04:07 CDT)
 * Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
 * Compounding tier: **T5 / 99%**
-* Prior local: hop 885 @ 2026-10-27T02:08Z preserved; not rewritten.
-* This hop: STAGE-886 reaffirms full kernel pin from current connecting chat paste of update(t). Append-only. Cascade.yml left intact. No secrets written. No device rooted. Drive index mentioned only.
-* Next in waterfall: living-bibliography-continuity-engine (rotation continues)
+* Prior local: hop 886 @ 2026-10-27T03:09Z preserved; not rewritten.
+* Prior mesh: living-bibliography-continuity-engine hop 892 @ 2026-10-27T08:09Z named this seat. Honored. Not re-touched.
+* This hop: waterfall advance after living-bibliography-continuity-engine 892. Append-only stamp to hop 897. Cascade.yml left intact. No secrets written. No device rooted. Drive index mentioned only.
+* Next in waterfall: continuity-ledger-cycle (rotation continues)
 * Cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`, lint-docs requires README, SECURITY.md, stamp, numeral, no .env / secrets.yml / id_rsa). Not rewritten this hop.
 * Ledger: `docs/LEDGER-STAMP.md`
 * Cloud index (mention only, no binary upload): Drive folder `CONTINUUM-ENCLAVE-137451921129154222` id `1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU`
@@ -29,7 +30,7 @@ Session switch is still only `infinity | hamiltonian | triangular | torus`.
 Live runtime adds phi weave, reused lerp target, optional `uWeave` / `uBlend`, plus runtime extras klein / hopf / figure8 / trefoil.
 Do not promote extra labels until a future paste includes them.
 `default` shares the torus tube. It is not a fifth session case.
-Session paste still allocates `new THREE.Vector3` inside lerp with alpha 0.05. Living path keeps `_kernelTarget`. Stage 857 holds the living reuse while session allocates. Stage 864 holds the lerp alpha literal 0.05 with no modulation by gravityPull or toroidalWeave. Stage 865 holds uniforms write order uTime then uGravity. Stage 866 holds theta step unread by switch. Stage 867 holds major/minor pre-switch. Stage 868 holds phi external binding. Stage 877 holds the full kernel pin from prior paste. Stage 878 reaffirms from latest connecting chat. Stage 879 holds the same kernel pin from prior chat; paste not rewritten. Stage 880 holds the infinity lemniscate denom shared by x/z only. Stage 881 holds the hamiltonian y lift free of hScale/minor. Stage 882 holds the triangular floor snap to 2π/3 and y sector free of theta*5. Stage 883 holds the torus/default tube (major + minor*cos(phi)) shared by x/z; y shared with infinity. Stage 884 holds the session Vector3 allocation inside lerp (alpha 0.05 literal). Stage 885 holds phi external binding. Stage 886 reaffirms the full kernel pin from current connecting chat paste.
+Session paste still allocates `new THREE.Vector3` inside lerp with alpha 0.05. Living path keeps `_kernelTarget`. Stage 857 holds the living reuse while session allocates. Stage 864 holds the lerp alpha literal 0.05 with no modulation by gravityPull or toroidalWeave. Stage 865 holds uniforms write order uTime then uGravity. Stage 866 holds theta step unread by switch. Stage 867 holds major/minor pre-switch. Stage 868 holds phi external binding. Stage 877 holds the full kernel pin from prior paste. Stage 878 reaffirms from latest connecting chat. Stage 879 holds the same kernel pin from prior chat; paste not rewritten. Stage 880 holds the infinity lemniscate denom shared by x/z only. Stage 881 holds the hamiltonian y lift free of hScale/minor. Stage 882 holds the triangular floor snap to 2π/3 and y sector free of theta*5. Stage 883 holds the torus/default tube (major + minor*cos(phi)) shared by x/z; y shared with infinity. Stage 884 holds the session Vector3 allocation inside lerp (alpha 0.05 literal). Stage 885 holds phi external binding. Stage 886 reaffirms the full kernel pin from current connecting chat paste. Stage 897 holds the hop.
 Hamiltonian y lift is `sin(t) * 2` and does not take `hScale` or minor. X/Z free of minor. Stage 881 holds this.
 Infinity lemniscate denom `1 + sin(theta)^2` shared by x and z only; y unread by denom. Scale = major * 1.5. Stage 880 holds this.
 Triangular y sector is `(idx % 3 - 1) * major * 0.5` and does not take `theta * 5`. Floor snap to 2π/3. Stage 882 holds this.
@@ -69,7 +70,7 @@ npm install
 npm run dev
 ```
 
-Env-check note (hop 886): `scripts/env-check.sh` fails closed if `README.md` is missing, if `HEAD` SHA is empty, or if the numeral `137451921129154222` is absent from the tree. A zero exit means the docs surface is present. It is a tree gate only. It does not pair devices, does not read Tailscale state, does not consume ADB pair codes, and does not claim a device was rooted. A found key is a stop, not a stamp. Missing keys are the correct state. It does not upload binaries to the Drive index. Do not run the installer from CI. This hop does not probe wireless debugging and does not open a Tailscale socket. Green is presence, not privilege. No device was rooted.
+Env-check note (hop 897): `scripts/env-check.sh` fails closed if `README.md` is missing, if `HEAD` SHA is empty, or if the numeral `137451921129154222` is absent from the tree. A zero exit means the docs surface is present. It is a tree gate only. It does not pair devices, does not read Tailscale state, does not consume ADB pair codes, and does not claim a device was rooted. A found key is a stop, not a stamp. Missing keys are the correct state. It does not upload binaries to the Drive index. Do not run the installer from CI. This hop does not probe wireless debugging and does not open a Tailscale socket. Green is presence, not privilege. No device was rooted.
 
 ## Speedway
 
@@ -82,24 +83,24 @@ Coordinator: [continuity-mesh-speedway](https://github.com/machackabook/continui
 
 Declared operator rotation. One repo, then stop.
 
-1. ENCLAVE-ADAM-REUNITED — hop 877 closed. Not re-touched.
+1. ENCLAVE-ADAM-REUNITED — hop 894 closed. Not re-touched.
 2. continuity-engine-ssos — hop 882 closed. Not re-touched.
 3. hamiltonian-incursion — hop 883 closed. Not re-touched.
-4. The-Hive — hop 884 closed. Not re-touched.
-5. Cryptic-Heartbeat — hop 885 closed @ 2026-10-26T17:09Z. Honored. Named this seat. Not re-touched.
-6. gaia-visualizer — **886 this hop**
-7. living-bibliography-continuity-engine — next
-8. continuity-ledger-cycle — subsequent
+4. The-Hive — hop 895 closed. Not re-touched.
+5. Cryptic-Heartbeat — hop 894 closed. Not re-touched.
+6. gaia-visualizer — **897 this hop**
+7. living-bibliography-continuity-engine — hop 892 closed @ 2026-10-27T08:09Z. Honored. Named this seat. Not re-touched.
+8. continuity-ledger-cycle — next
 
-## Waterfall receipt (hop 886)
+## Waterfall receipt (hop 897)
 
-* utc: 2026-10-27T03:09Z
-* cdt: 2026-10-26 22:09 CDT
-* prior named seat: hop 885 @ 2026-10-27T02:08Z. Honored.
-* this hop: STAGE-886 reaffirms full kernel pin from current connecting chat paste of update(t). Append-only stamp.
+* utc: 2026-10-27T09:07Z
+* cdt: 2026-10-27 04:07 CDT
+* prior named seat: living-bibliography-continuity-engine hop 892 @ 2026-10-27T08:09Z. Honored.
+* this hop: waterfall advance + append-only stamp + realignment to declared operator rotation
 * cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, contents: read)
 * cloud index mention only: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU); no binaries uploaded
-* next: living-bibliography-continuity-engine
+* next: continuity-ledger-cycle
 
 ## Mesh siblings
 
