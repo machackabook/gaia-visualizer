@@ -1,20 +1,20 @@
-# STAGE-941 — hold phi external binding (referenced, never assigned in paste) (2026-10-29)
+# STAGE-941 — hold phi external binding (2026-10-29)
 
 Connecting chat re-pasted the complete `update(t)` geometric field kernel.
 
 ## Session pin (paste not rewritten)
-- this.phi is referenced in infinity y, torus/default y and tube (and triangular implicitly via minor), never assigned inside update(t)
-- Phi remains an external driver supplied outside the kernel (session paste does not write this.phi)
+- this.phi referenced in infinity y, torus x/z/y; never assigned inside update(t).
+- Phi remains external driver supplied outside the paste.
 - Full kernel otherwise as prior 940 hold on lerp alpha literal 0.05 and session Vector3 allocation.
-- prior holds: 940 lerp alpha literal 0.05 and session Vector3 allocation.
+- prior holds: 940 lerp alpha literal 0.05 + session Vector3 allocation.
 
 ## Enhancement this hop
-Pins the external binding of this.phi. The session paste references phi but never assigns it. Living path may weave or drive phi externally but must not invent an assignment inside the pinned kernel. Paste not rewritten. No secrets.
+Pins the phi binding as external (referenced, never assigned in the update(t) body) exactly as pasted. No rewriting of the paste. Living path must preserve the external nature of phi. Paste not rewritten. No secrets.
 
 ## Next stages compiled
 1. 942 — hold infinity lemniscate denom shared by x/z only.
 2. 943 — hold hamiltonian y lift free of hScale/minor.
-3. 944 — hold triangular floor snap to 2π/3 and y sector free of theta*5.
+3. 944 — hold triangular floor snap to 2π/3 before cos/sin of lattice vertex.
 
 Numeral 137451921129154222. Paste not rewritten. No secrets. No device rooted.
-Connecting: living-bibliography-continuity-engine hop next in waterfall.
+Connecting: The-Hive / Cryptic-Heartbeat / continuity-engine-ssos stage pins advanced in parallel where applicable.
