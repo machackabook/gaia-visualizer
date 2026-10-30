@@ -10,13 +10,13 @@ Team Enhance hops one repo per run. Equalizer formats only. No history rewrite. 
 * Branch: main
 * Language: JavaScript (Vite 5 / three ^0.169)
 * Numeral: 137451921129154222
-* Stage: **954** — 2026-10-30T17:10Z (2026-10-30 12:10 CDT)
+* Stage: **955** — 2026-10-30T18:08Z (2026-10-30 13:08 CDT)
 * Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
 * Compounding tier: **T5 / 99%**
-* Prior local: hop 953 preserved; not rewritten. Stage 954 created.
+* Prior local: hop 954 preserved; not rewritten. Stage 955 created.
 * Prior mesh: Cryptic-Heartbeat hop 952 @ 2026-10-30T14:19Z named next seat. Honored. Not re-touched.
-* This hop: reaffirm full update(t) kernel pin from current connecting chat paste. Advance triangular floor session pin to 954. Cascade.yml left intact (healthy). No secrets written. No device rooted. Drive index mentioned only.
-* Next in waterfall: living-bibliography-continuity-engine (rotation continues)
+* This hop: reaffirm full update(t) kernel pin from current connecting chat paste. Hold infinity lemniscate denom shared by x/z only (y unread by denom). Cascade.yml left intact (healthy). No secrets written. No device rooted. Drive index mentioned only.
+* Next in waterfall: living-bibliography-continuity-engine (already advanced to 955; next continuity-ledger-cycle)
 * Cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`, lint-docs requires README, SECURITY.md, stamp, numeral, no .env / secrets.yml / id_rsa). Not rewritten this hop.
 * Ledger: `docs/LEDGER-STAMP.md`
 * Cloud index (mention only, no binary upload): Drive folder `CONTINUUM-ENCLAVE-137451921129154222` id `1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU`
@@ -30,9 +30,9 @@ Session switch is still only `infinity | hamiltonian | triangular | torus`.
 Live runtime adds phi weave, reused lerp target, optional `uWeave` / `uBlend`, plus runtime extras klein / hopf / figure8 / trefoil.
 Do not promote extra labels until a future paste includes them.
 `default` shares the torus tube. It is not a fifth session case.
-Session paste still allocates `new THREE.Vector3` inside lerp with alpha 0.05. Living path keeps `_kernelTarget`. Stage 857 holds the living reuse while session allocates. Stage 864 holds the lerp alpha literal 0.05 with no modulation by gravityPull or toroidalWeave. Stage 865 holds uniforms write order uTime then uGravity. Stage 866 holds theta step unread by switch. Stage 867 holds major/minor pre-switch. Stage 868 holds phi external binding. Stage 877 holds the full kernel pin from prior paste. Stage 878 reaffirms from latest connecting chat. Stage 879 holds the same kernel pin from prior chat; paste not rewritten. Stage 880 holds the infinity lemniscate denom shared by x/z only. Stage 881 holds the hamiltonian y lift free of hScale/minor. Stage 882 holds the triangular floor snap to 2π/3 and y sector free of theta*5. Stage 883 holds the torus/default tube (major + minor*cos(phi)) shared by x/z; y shared with infinity. Stage 884 holds the session Vector3 allocation inside lerp (alpha 0.05 literal). Stage 885 holds phi external binding. Stage 886 reaffirms the full kernel pin from current connecting chat paste. Stage 897 holds the hop. Stage 903 reaffirms the full update(t) kernel from the latest connecting chat paste. Stage 904 reaffirms full pin. Stage 905 holds uniforms order uTime then uGravity. Stage 906 holds theta step (0.01 + idx * 0.002) * gravityPull unread by switch. Stage 907 holds major/minor pre-switch assignment. Stage 909 reaffirms the same. Stage 912 holds the torus/default tube. Stage 913 holds the lerp alpha literal 0.05 and session Vector3 allocation from the connecting chat paste of update(t). Stage 914 holds phi external binding. Stage 915 holds uniforms write order uTime then uGravity. Stage 916 holds theta step unread by switch. Stage 917 holds major/minor pre-switch assignment. Stage 918 reaffirms full kernel pin from current connecting chat. Stage 919 holds the infinity lemniscate denom shared by x/z only. Stage 923 holds the hop and reaffirms the kernel pin. Stage 924 holds the phi external binding. Stage 925 reaffirms the full kernel pin from current connecting chat. Stage 926 holds uniforms write order uTime then uGravity. Stage 927 holds theta step (0.01 + idx * 0.002) * gravityPull unread by switch. Stage 928 holds major/minor pre-switch assignment. Stage 934 holds the hop. Stage 935 reaffirms the full kernel pin from current connecting chat. Stage 936 holds uniforms write order uTime then uGravity. Stage 937 holds theta step unread by switch. Stage 938 holds major/minor pre-switch assignment. Stage 939 holds switch sole four-case dispatch. Stage 940 holds lerp alpha literal 0.05 and session Vector3 allocation. Stage 941 holds phi external binding. Stage 942 holds the infinity lemniscate denom shared by x/z only. Stage 943 holds the hamiltonian y lift free of minor. Stage 944 holds the triangular floor snap to 2π/3 and y sector free of theta*5. Stage 945 holds the torus/default tube shared by x/z with y identity to infinity. Stage 946 holds the theta advance and phi external binding. Stage 947 holds the uniforms uTime then uGravity write order. Stage 948 holds major/minor pre-switch assignment and switch sole four-case dispatch. Stage 949 holds session lerp new Vector3 allocation with literal alpha 0.05. Stage 950 reaffirms full update(t) kernel pin from current connecting chat. Stage 953 reaffirms the full kernel pin from current connecting chat. Stage 954 reaffirms the full kernel pin from current connecting chat and advances triangular floor session pin.
+Session paste still allocates `new THREE.Vector3` inside lerp with alpha 0.05. Living path keeps `_kernelTarget`. Stage 857 holds the living reuse while session allocates. Stage 864 holds the lerp alpha literal 0.05 with no modulation by gravityPull or toroidalWeave. Stage 865 holds uniforms write order uTime then uGravity. Stage 866 holds theta step unread by switch. Stage 867 holds major/minor pre-switch. Stage 868 holds phi external binding. Stage 877 holds the full kernel pin from prior paste. Stage 878 reaffirms from latest connecting chat. Stage 879 holds the same kernel pin from prior chat; paste not rewritten. Stage 880 holds the infinity lemniscate denom shared by x/z only. Stage 881 holds the hamiltonian y lift free of hScale/minor. Stage 882 holds the triangular floor snap to 2π/3 and y sector free of theta*5. Stage 883 holds the torus/default tube (major + minor*cos(phi)) shared by x/z; y shared with infinity. Stage 884 holds the session Vector3 allocation inside lerp (alpha 0.05 literal). Stage 885 holds phi external binding. Stage 886 reaffirms the full kernel pin from current connecting chat paste. Stage 897 holds the hop. Stage 903 reaffirms the full update(t) kernel from the latest connecting chat paste. Stage 904 reaffirms full pin. Stage 905 holds uniforms order uTime then uGravity. Stage 906 holds theta step (0.01 + idx * 0.002) * gravityPull unread by switch. Stage 907 holds major/minor pre-switch assignment. Stage 909 reaffirms the same. Stage 912 holds the torus/default tube. Stage 913 holds the lerp alpha literal 0.05 and session Vector3 allocation from the connecting chat paste of update(t). Stage 914 holds phi external binding. Stage 915 holds uniforms write order uTime then uGravity. Stage 916 holds theta step unread by switch. Stage 917 holds major/minor pre-switch assignment. Stage 918 reaffirms full kernel pin from current connecting chat. Stage 919 holds the infinity lemniscate denom shared by x/z only. Stage 923 holds the hop and reaffirms the kernel pin. Stage 924 holds the phi external binding. Stage 925 reaffirms the full kernel pin from current connecting chat. Stage 926 holds uniforms write order uTime then uGravity. Stage 927 holds theta step (0.01 + idx * 0.002) * gravityPull unread by switch. Stage 928 holds major/minor pre-switch assignment. Stage 934 holds the hop. Stage 935 reaffirms the full kernel pin from current connecting chat. Stage 936 holds uniforms write order uTime then uGravity. Stage 937 holds theta step unread by switch. Stage 938 holds major/minor pre-switch assignment. Stage 939 holds switch sole four-case dispatch. Stage 940 holds lerp alpha literal 0.05 and session Vector3 allocation. Stage 941 holds phi external binding. Stage 942 holds the infinity lemniscate denom shared by x/z only. Stage 943 holds the hamiltonian y lift free of minor. Stage 944 holds the triangular floor snap to 2π/3 and y sector free of theta*5. Stage 945 holds the torus/default tube shared by x/z with y identity to infinity. Stage 946 holds the theta advance and phi external binding. Stage 947 holds the uniforms uTime then uGravity write order. Stage 948 holds major/minor pre-switch assignment and switch sole four-case dispatch. Stage 949 holds session lerp new Vector3 allocation with literal alpha 0.05. Stage 950 reaffirms full update(t) kernel pin from current connecting chat. Stage 953 reaffirms the full kernel pin from current connecting chat. Stage 954 reaffirms the full kernel pin from current connecting chat and advances triangular floor session pin. Stage 955 reaffirms the full kernel pin from current connecting chat and holds infinity lemniscate denom shared by x/z only (y unread by denom).
 Hamiltonian y lift is `sin(t) * 2` and does not take `hScale` or minor. X/Z free of minor. Stage 881 and 943 hold this.
-Infinity lemniscate denom `1 + sin(theta)^2` shared by x and z only; y unread by denom. Scale = major * 1.5. Stage 880, 919 and 942 hold this.
+Infinity lemniscate denom `1 + sin(theta)^2` shared by x and z only; y unread by denom. Scale = major * 1.5. Stage 880, 919, 942 and 955 hold this.
 Triangular y sector is `(idx % 3 - 1) * major * 0.5` and does not take `theta * 5`. Floor snap to 2π/3. Stage 882 and 944 hold this.
 Torus/default tube radius (major + minor * cos(phi)) shared by x and z only. Y is minor * sin(phi) * sin(t * 0.5 + idx). Stage 883, 912 and 945 hold this.
 Session lerp allocates `new THREE.Vector3(x, y, z)` with literal alpha 0.05. Stage 884, 913, 940 and 949 hold this.
@@ -43,7 +43,7 @@ Uniforms written uTime then uGravity. Stage 865, 905, 915, 926, 932, 936 and 947
 Major and minor assigned before switch(targetState.geometry). Stage 867, 907, 917, 928, 938 and 948 hold this.
 Switch is sole four-case dispatch. Stage 859, 939 and 948 hold the switch as sole dispatcher; runtime extras non-promoted. All formulas held as in the pasted kernel. Paste not rewritten.
 Phi is referenced but never assigned inside the session paste. Stage 868, 885, 914, 924, 941 and 946 hold the external binding.
-Full update(t) kernel held as pinned session source. Living path may optimize allocations. Stage 886, 903, 904, 913, 918, 925, 935, 950, 953, 954 reaffirm from current connecting chat.
+Full update(t) kernel held as pinned session source. Living path may optimize allocations. Stage 886, 903, 904, 913, 918, 925, 935, 950, 953, 954, 955 reaffirm from current connecting chat.
 Lerp alpha held as literal 0.05. Stage 864, 884, 913, 940 and 949 hold no modulation and session allocation.
 
 ## Compounding growth
@@ -70,7 +70,7 @@ npm install
 npm run dev
 ```
 
-Env-check note (hop 954): `scripts/env-check.sh` fails closed if `README.md` is missing, if `HEAD` SHA is empty, or if the numeral `137451921129154222` is absent from the tree. A zero exit means the docs surface is present. It is a tree gate only. It does not pair devices, does not read Tailscale state, does not consume ADB pair codes, and does not claim a device was rooted. A found key is a stop, not a stamp. Missing keys are the correct state. It does not upload binaries to the Drive index. Do not run the installer from CI. This hop does not probe wireless debugging and does not open a Tailscale socket. Green is presence, not privilege. No device was rooted.
+Env-check note (hop 955): `scripts/env-check.sh` fails closed if `README.md` is missing, if `HEAD` SHA is empty, or if the numeral `137451921129154222` is absent from the tree. A zero exit means the docs surface is present. It is a tree gate only. It does not pair devices, does not read Tailscale state, does not consume ADB pair codes, and does not claim a device was rooted. A found key is a stop, not a stamp. Missing keys are the correct state. It does not upload binaries to the Drive index. Do not run the installer from CI. This hop does not probe wireless debugging and does not open a Tailscale socket. Green is presence, not privilege. No device was rooted.
 
 ## Speedway
 
@@ -88,19 +88,19 @@ Declared operator rotation. One repo, then stop.
 3. hamiltonian-incursion — subsequent
 4. The-Hive — subsequent
 5. Cryptic-Heartbeat — hop 952 closed @ 2026-10-30T14:19Z. Honored. Not re-touched.
-6. gaia-visualizer — **954 this hop**
-7. living-bibliography-continuity-engine — next
-8. continuity-ledger-cycle — subsequent
+6. gaia-visualizer — **955 this hop**
+7. living-bibliography-continuity-engine — hop 955 closed. Honored. Not re-touched.
+8. continuity-ledger-cycle — next
 
-## Waterfall receipt (hop 954)
+## Waterfall receipt (hop 955)
 
-* utc: 2026-10-30T17:10Z
-* cdt: 2026-10-30 12:10 CDT
+* utc: 2026-10-30T18:08Z
+* cdt: 2026-10-30 13:08 CDT
 * prior named seat: Cryptic-Heartbeat hop 952 @ 2026-10-30T14:19Z. Honored.
-* this hop: reaffirm full update(t) kernel pin from current connecting chat + advance triangular floor session pin (STAGE-954)
+* this hop: reaffirm full update(t) kernel pin from current connecting chat + hold infinity lemniscate denom shared by x/z only (STAGE-955)
 * cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, contents: read)
 * cloud index mention only: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU); no binaries uploaded
-* next: living-bibliography-continuity-engine
+* next: continuity-ledger-cycle
 
 ## Mesh siblings
 
