@@ -1,5 +1,5 @@
-/** Stage 941 — hold phi external binding from current connecting chat paste of update(t). Lerp alpha literal 0.05 and session Vector3 allocation held at 940. Switch sole four-case dispatch held at 939. Major/minor pre-switch held at 938. Theta step unread by switch held at 937. Torus/default tube held at 922. Triangular floor held at 921. Hamiltonian y lift free of hScale/minor held at 881. Infinity denom held at 880. Uniforms order held at 865. Document only. Do not rewrite the paste. No secrets. */
-export const TRIANGULAR_FLOOR_STAGE = 941;
+/** Stage 954 — reaffirm full update(t) kernel pin from current connecting chat paste. Phi external binding held at 941. Lerp alpha literal 0.05 and session Vector3 allocation held at 940. Switch sole four-case dispatch held at 939. Major/minor pre-switch held at 938. Theta step unread by switch held at 937. Torus/default tube held at 922. Triangular floor held at 921. Hamiltonian y lift free of hScale/minor held at 881. Infinity denom held at 880. Uniforms order held at 865. Document only. Do not rewrite the paste. No secrets. */
+export const TRIANGULAR_FLOOR_STAGE = 954;
 export const TRIANGULAR_FLOOR_SESSION_HASH = 'beec41f1';
 export const TRIANGULAR_FLOOR_LIVING_HASH = '7cd81012';
 export const TRIANGULAR_FLOOR_SECTORS = 3;
@@ -129,6 +129,6 @@ export function noteSessionTriangularFloor(source) {
     pasteRewritten: false,
     secrets: false,
     ok: floorSnap && usesTAngle && snapHolds && yFreeOfTheta5 && invented.length === 0 && lerpAlphaLiteral && uniformsOrder && sessionAlloc && infinityDenomShared && hamiltonianLiftFree && torusTube && phiExternal && fullKernel,
-    note: 'Phi external binding held (referenced, never assigned in paste). Full kernel reaffirmed from current connecting chat paste of update(t). Lerp alpha literal 0.05 with session Vector3 allocation held. Switch sole four-case dispatch. Session torus/default tube (major + minor*cos(phi)) shared by x and z only; y shared with infinity. Session triangular floor snaps theta to 2π/3 before cos/sin of the lattice vertex. Raw theta*5 stays on the minor ripple (x/z only). Y sector free of theta*5. Infinity denom shared by x/z only; y unread by denom. Hamiltonian y lift sin(t)*2 free of hScale/minor; x/z free of minor. Uniforms uTime then uGravity. Theta step unread by switch. Major/minor pre-switch. Living path already matches. Paste not rewritten.',
+    note: 'Full kernel reaffirmed from current connecting chat paste of update(t). Phi external binding held (referenced, never assigned in paste). Lerp alpha literal 0.05 with session Vector3 allocation held. Switch sole four-case dispatch. Session torus/default tube (major + minor*cos(phi)) shared by x and z only; y shared with infinity. Session triangular floor snaps theta to 2π/3 before cos/sin of the lattice vertex. Raw theta*5 stays on the minor ripple (x/z only). Y sector free of theta*5. Infinity denom shared by x/z only; y unread by denom. Hamiltonian y lift sin(t)*2 free of hScale/minor; x/z free of minor. Uniforms uTime then uGravity. Theta step unread by switch. Major/minor pre-switch. Living path already matches. Paste not rewritten.',
   };
 }
