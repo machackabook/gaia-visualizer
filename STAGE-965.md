@@ -1,4 +1,4 @@
-# STAGE-965 — hold infinity lemniscate denom shared by x/z only (2026-10-30)
+# STAGE-965 — hold infinity lemniscate denom shared by x/z only (2026-10-31)
 
 Connecting chat re-pasted the complete `update(t)` geometric field kernel.
 
@@ -11,12 +11,12 @@ Connecting chat re-pasted the complete `update(t)` geometric field kernel.
 - prior holds: 964 lerp alpha literal 0.05 and session Vector3 allocation.
 
 ## Enhancement this hop
-Holds the infinity case lemniscate of Bernoulli mapping. Denom = 1 + Math.pow(Math.sin(this.theta), 2) is shared exclusively by x and z. Y remains minor * Math.sin(this.phi) * Math.sin(t * 0.5 + this.idx) and is unread by the denom. Scale = major * 1.5. Session paste not rewritten. No secrets. No device rooted.
+Holds the infinity case lemniscate of Bernoulli mapping: scale = major * 1.5; denom = 1 + Math.pow(Math.sin(this.theta), 2); x and z divided by denom; y = minor * Math.sin(this.phi) * Math.sin(t * 0.5 + this.idx) unread by denom. Denom shared by x/z only. Paste not rewritten. No secrets. No device rooted.
 
 ## Next stages compiled
 1. 966 — hold hamiltonian lift sin(t)*2 free of minor/hScale.
 2. 967 — hold triangular floor snap to 2π/3 and y sector free of theta*5.
-3. 968 — hold torus/default tube (major + minor*cos(phi)) shared by x/z; y identity to infinity.
+3. 968 — hold torus/default tube (major + minor*cos(phi)) shared by x/z.
 
 Numeral 137451921129154222. Paste not rewritten. No secrets. No device rooted.
 Connecting: continuity-ledger-cycle next in waterfall.
