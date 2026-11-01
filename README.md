@@ -10,12 +10,12 @@ Team Enhance hops one repo per run. Equalizer formats only. No history rewrite. 
 * Branch: main
 * Language: JavaScript (Vite 5 / three ^0.169)
 * Numeral: 137451921129154222
-* Stage: **983** — 2026-11-01T07:12Z (2026-11-01 02:12 CDT)
+* Stage: **984** — 2026-11-01T17:07Z (2026-11-01 12:07 CDT)
 * Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
 * Compounding tier: **T5 / 99%**
-* Prior local: hop 982 @ 2026-11-01T03:18Z preserved; not rewritten. Stage 983 created.
+* Prior local: hop 983 @ 2026-11-01T07:12Z preserved; not rewritten. Stage 984 created.
 * Prior mesh: continuity-ledger-cycle hop 973 @ 2026-11-01T06:15Z named the seat. Honored. Not re-touched.
-* This hop: waterfall advance after continuity-ledger-cycle 973. Append-only stamp to hop 983. Cascade.yml left intact (healthy). No secrets written. No device rooted. Drive index mentioned only. Kernel pin held.
+* This hop: waterfall advance after continuity-ledger-cycle 973. Append-only stamp to hop 984. Cascade.yml left intact (healthy). No secrets written. No device rooted. Drive index mentioned only. Kernel pin held.
 * Next in waterfall: living-bibliography-continuity-engine
 * Cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`, lint-docs requires README, SECURITY.md, stamp, numeral, no .env / secrets.yml / id_rsa). Not rewritten this hop.
 * Ledger: `docs/LEDGER-STAMP.md`
@@ -30,7 +30,7 @@ Session switch is still only `infinity | hamiltonian | triangular | torus`.
 Live runtime adds phi weave, reused lerp target, optional `uWeave` / `uBlend`, plus runtime extras klein / hopf / figure8 / trefoil.
 Do not promote extra labels until a future paste includes them.
 `default` shares the torus tube. It is not a fifth session case.
-Session paste still allocates `new THREE.Vector3` inside lerp with alpha 0.05. Living path keeps `_kernelTarget`. Stage 983 holds the hop and reaffirms the full update(t) kernel pin from prior connecting chat.
+Session paste still allocates `new THREE.Vector3` inside lerp with alpha 0.05. Living path keeps `_kernelTarget`. Stage 984 holds the hop and reaffirms the full update(t) kernel pin from prior connecting chat.
 
 (Full prior stage pins preserved in history. This hop advances the seat without rewriting the kernel formulas.)
 
@@ -58,7 +58,7 @@ npm install
 npm run dev
 ```
 
-Env-check note (hop 983): `scripts/env-check.sh` fails closed if `README.md` is missing, if `HEAD` SHA is empty, or if the numeral `137451921129154222` is absent from the tree. A zero exit means the docs surface is present. It is a tree gate only. It does not pair devices, does not read Tailscale state, does not consume ADB pair codes, and does not claim a device was rooted. A found key is a stop, not a stamp. Missing keys are the correct state. It does not upload binaries to the Drive index. Do not run the installer from CI. This hop does not probe wireless debugging and does not open a Tailscale socket. Green is presence, not privilege. No device was rooted.
+Env-check note (hop 984): `scripts/env-check.sh` fails closed if `README.md` is missing, if `HEAD` SHA is empty, or if the numeral `137451921129154222` is absent from the tree. A zero exit means the docs surface is present. It is a tree gate only. It does not pair devices, does not read Tailscale state, does not consume ADB pair codes, and does not claim a device was rooted. A found key is a stop, not a stamp. Missing keys are the correct state. It does not upload binaries to the Drive index. Do not run the installer from CI. This hop does not probe wireless debugging and does not open a Tailscale socket. Green is presence, not privilege. No device was rooted.
 
 ## Speedway
 
@@ -75,15 +75,15 @@ Declared operator rotation. One repo, then stop.
 2. Cryptic-Heartbeat — hop 960 closed @ 2026-11-01T04:15Z. Honored.
 3. The-Hive — hop 961 closed @ 2026-11-01T05:09Z. Honored.
 4. continuity-ledger-cycle — hop 973 closed @ 2026-11-01T06:15Z. Honored.
-5. gaia-visualizer — **983 this hop**
+5. gaia-visualizer — **984 this hop**
 6. living-bibliography-continuity-engine — next
 7. continuity-engine-ssos — subsequent
 8. hamiltonian-incursion — subsequent
 
-## Waterfall receipt (hop 983)
+## Waterfall receipt (hop 984)
 
-* utc: 2026-11-01T07:12Z
-* cdt: 2026-11-01 02:12 CDT
+* utc: 2026-11-01T17:07Z
+* cdt: 2026-11-01 12:07 CDT
 * prior named seat: continuity-ledger-cycle hop 973 @ 2026-11-01T06:15Z. Honored.
 * this hop: waterfall advance + append-only stamp + kernel pin held
 * cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, contents: read)
