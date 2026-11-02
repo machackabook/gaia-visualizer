@@ -11,10 +11,10 @@ Operating sits in the middle. Team Enhance hops one repo per run. Equalizer form
 - Language: JavaScript
 - Numeral: `137451921129154222`
 - Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
-- Stage: **988** — 2026-11-02T03:09Z (2026-11-01 21:09 CST)
-- Kernel stage: **1002** — session lerp new Vector3 allocation with literal alpha 0.05 held
+- Stage: **1006** — 2026-11-02T15:10Z (2026-11-02 09:10 CST)
+- Kernel stage: **1006** — theta step (0.01 + idx * 0.002) * gravityPull held unread by switch
 - Compounding tier: **T5 / 99%**
-- This hop: kernel advance after hop 987. STAGE-1002.md + sessionLerpVector3Hold.js note + chatKernel.js STAGE=1002. Next stages 1003-1005 compiled. Cascade.yml left intact (healthy). No secrets written. No device rooted. Drive index mentioned only.
+- This hop: kernel advance after hop 988/1005. STAGE-1006.md + chatKernel.js STAGE=1006. Next stages 1007-1009 compiled. Cascade.yml left intact (healthy). No secrets written. No device rooted. Drive index mentioned only.
 - Prior mesh: continuity-ledger-cycle hop 985 @ 2026-11-01T21:20Z named the seat. Honored. Not re-touched.
 - Next in operator waterfall: living-bibliography-continuity-engine
 - Cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`, lint-docs requires README, SECURITY.md, stamp, numeral, no obvious secret files). Not rewritten this hop.
@@ -45,9 +45,9 @@ Current score for this surface: **99% (T5)**.
 
 What this hop added, without rewriting prior stages:
 
-- Kernel stage advanced to 1002 holding session lerp new THREE.Vector3(x, y, z) allocation with literal alpha 0.05.
-- STAGE-1002.md and sessionLerpVector3Hold.js note added. chatKernel.js STAGE constant updated.
-- Next stages compiled: 1003 uniforms order, 1004 full kernel pin, 1005 four-case switch sole dispatcher.
+- Kernel stage advanced to 1006 holding theta step (0.01 + this.idx * 0.002) * state.gravityPull unread by geometry switch.
+- STAGE-1006.md added. chatKernel.js STAGE constant updated.
+- Next stages compiled: 1007 lerp Vector3 alloc, 1008 phi external binding, 1009 major/minor before switch.
 - Unknowns kept unknown: pair-code, Tailscale auth key, device voiceprint, SD mount path. Not invented.
 
 ## Speedway
@@ -62,7 +62,7 @@ Cascade health this hop (read-only): schedule `53 * * * *`, `workflow_dispatch`,
 
 Confirm tree has README, SECURITY.md, docs/LEDGER-STAMP.md, and the numeral. No secret files.
 
-Env-check note (hop 988): a zero exit means README, stamp, and numeral are present in the tree. It does not mean a device was rooted, a Tailscale key is valid, or an ADB pair code was accepted. Do not commit `.env`, Tailscale auth keys, or ADB pair codes. A found key is a stop, not a stamp. Missing keys are the correct state. This hop does not probe wireless debugging and does not open a Tailscale socket. Never claim a device was rooted. Green is presence, not privilege.
+Env-check note (hop 1006): a zero exit means README, stamp, and numeral are present in the tree. It does not mean a device was rooted, a Tailscale key is valid, or an ADB pair code was accepted. Do not commit `.env`, Tailscale auth keys, or ADB pair codes. A found key is a stop, not a stamp. Missing keys are the correct state. This hop does not probe wireless debugging and does not open a Tailscale socket. Never claim a device was rooted. Green is presence, not privilege.
 
 ## Waterfall (one repo per enhance hop)
 
@@ -72,17 +72,17 @@ Declared operator rotation. One repo, then stop.
 2. Cryptic-Heartbeat — hop 983 closed @ 2026-11-01T21:08Z. Honored.
 3. The-Hive — hop 984 closed @ 2026-11-01T21:09Z. Honored.
 4. continuity-ledger-cycle — hop 985 closed @ 2026-11-01T21:20Z. Honored.
-5. gaia-visualizer — **988 this hop**
+5. gaia-visualizer — **1006 this hop**
 6. living-bibliography-continuity-engine — next
 7. continuity-engine-ssos — subsequent
 8. hamiltonian-incursion — subsequent
 
-## Waterfall receipt (hop 988)
+## Waterfall receipt (hop 1006)
 
-- utc: 2026-11-02T03:09Z
-- cdt: 2026-11-01 21:09 CST
+- utc: 2026-11-02T15:10Z
+- cdt: 2026-11-02 09:10 CST
 - prior named seat: continuity-ledger-cycle hop 985 @ 2026-11-01T21:20Z. Honored.
-- this hop: kernel stage 1002 (session lerp Vector3 alloc) + next stages compiled + README update
+- this hop: kernel stage 1006 (theta step unread by switch) + next stages compiled + README update
 - cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`)
 - cloud index mention only: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU); no binaries uploaded
 - next: living-bibliography-continuity-engine
