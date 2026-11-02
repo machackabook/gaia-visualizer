@@ -1,8 +1,8 @@
 /**
- * Living chat-kernel contract — Stage 1006.
+ * Living chat-kernel contract — Stage 1008.
  * Session paste 2026-11-02 reconfirmed four base cases (infinity|hamiltonian|triangular|torus).
  * Stage 314 extras (klein, hopf, figure8, trefoil, mobius) remain in the living switch only.
- * Stage 1006: theta step (0.01 + this.idx * 0.002) * state.gravityPull held unread by geometry switch from connecting chat paste.
+ * Stage 1008: phi held as external binding (referenced, never assigned inside update(t)) from connecting chat paste.
  * GPU/TF auto path remains count > 1024. instanceOffset band 4096–16384.
  */
 
@@ -28,7 +28,7 @@ export {
   CHAT_KERNEL_ENGRAM_FOLDER,
 } from './chatKernelNext.js';
 
-export const STAGE = 1006;
+export const STAGE = 1008;
 export const CHAT_KERNEL_LERP = 0.05;
 export const CHAT_KERNEL_THETA_BASE = 0.01;
 export const CHAT_KERNEL_THETA_IDX = 0.002;
