@@ -11,10 +11,10 @@ Operating sits in the middle. Team Enhance hops one repo per run. Equalizer form
 - Language: JavaScript
 - Numeral: `137451921129154222`
 - Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
-- Stage: **1009** — 2026-11-02T19:08Z (2026-11-02 13:08 CST)
-- Kernel stage: **1009** — major/minor declarations held before switch; major = 10 + (idx * 2), minor = 3 + (toroidalWeave * 2)
+- Stage: **1010** — 2026-11-02T21:08Z (2026-11-02 15:08 CST)
+- Kernel stage: **1010** — infinity denom shared by x/z only (1 + sin(theta)^2); y unread by denom
 - Compounding tier: **T5 / 99%**
-- This hop: kernel advance after hop 1008. STAGE-1009.md + chatKernel.js STAGE=1009. Next stages 1010-1012 compiled. Cascade.yml left intact (healthy). No secrets written. No device rooted. Drive index mentioned only.
+- This hop: kernel advance after hop 1009. STAGE-1010.md + chatKernel.js STAGE=1010. Next stages 1011-1013 compiled. Cascade.yml left intact (healthy). No secrets written. No device rooted. Drive index mentioned only.
 - Prior mesh: continuity-ledger-cycle hop 985 @ 2026-11-01T21:20Z named the seat. Honored. Not re-touched.
 - Next in operator waterfall: living-bibliography-continuity-engine
 - Cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`, lint-docs requires README, SECURITY.md, stamp, numeral, no obvious secret files). Not rewritten this hop.
@@ -45,9 +45,9 @@ Current score for this surface: **99% (T5)**.
 
 What this hop added, without rewriting prior stages:
 
-- Kernel stage advanced to 1009 holding major/minor declarations before switch; major = 10 + (idx * 2), minor = 3 + (toroidalWeave * 2).
-- STAGE-1009.md added. chatKernel.js STAGE constant updated.
-- Next stages compiled: 1010 infinity denom shared by x/z, 1011 hamiltonian y lift unread by minor/phi, 1012 triangular tAngle floor and y lane.
+- Kernel stage advanced to 1010 holding infinity denom shared by x/z only (1 + sin(theta)^2); y unread by denom.
+- STAGE-1010.md added. chatKernel.js STAGE constant updated.
+- Next stages compiled: 1011 hamiltonian y lift unread by minor/phi, 1012 triangular tAngle floor and y lane, 1013 torus tube on x/z only.
 - Unknowns kept unknown: pair-code, Tailscale auth key, device voiceprint, SD mount path. Not invented.
 
 ## Speedway
@@ -62,7 +62,7 @@ Cascade health this hop (read-only): schedule `53 * * * *`, `workflow_dispatch`,
 
 Confirm tree has README, SECURITY.md, docs/LEDGER-STAMP.md, and the numeral. No secret files.
 
-Env-check note (hop 1009): a zero exit means README, stamp, and numeral are present in the tree. It does not mean a device was rooted, a Tailscale key is valid, or an ADB pair code was accepted. Do not commit `.env`, Tailscale auth keys, or ADB pair codes. A found key is a stop, not a stamp. Missing keys are the correct state. This hop does not probe wireless debugging and does not open a Tailscale socket. Never claim a device was rooted. Green is presence, not privilege.
+Env-check note (hop 1010): a zero exit means README, stamp, and numeral are present in the tree. It does not mean a device was rooted, a Tailscale key is valid, or an ADB pair code was accepted. Do not commit `.env`, Tailscale auth keys, or ADB pair codes. A found key is a stop, not a stamp. Missing keys are the correct state. This hop does not probe wireless debugging and does not open a Tailscale socket. Never claim a device was rooted. Green is presence, not privilege.
 
 ## Waterfall (one repo per enhance hop)
 
@@ -72,17 +72,17 @@ Declared operator rotation. One repo, then stop.
 2. Cryptic-Heartbeat — hop 983 closed @ 2026-11-01T21:08Z. Honored.
 3. The-Hive — hop 984 closed @ 2026-11-01T21:09Z. Honored.
 4. continuity-ledger-cycle — hop 985 closed @ 2026-11-01T21:20Z. Honored.
-5. gaia-visualizer — **1009 this hop**
+5. gaia-visualizer — **1010 this hop**
 6. living-bibliography-continuity-engine — next
 7. continuity-engine-ssos — subsequent
 8. hamiltonian-incursion — subsequent
 
-## Waterfall receipt (hop 1009)
+## Waterfall receipt (hop 1010)
 
-- utc: 2026-11-02T19:08Z
-- cdt: 2026-11-02 13:08 CST
+- utc: 2026-11-02T21:08Z
+- cdt: 2026-11-02 15:08 CST
 - prior named seat: continuity-ledger-cycle hop 985 @ 2026-11-01T21:20Z. Honored.
-- this hop: kernel stage 1009 (major/minor before switch) + next stages compiled + README update
+- this hop: kernel stage 1010 (infinity denom shared by x/z) + next stages compiled + README update
 - cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`)
 - cloud index mention only: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU); no binaries uploaded
 - next: living-bibliography-continuity-engine
