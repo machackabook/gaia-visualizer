@@ -1,7 +1,8 @@
 /**
- * Living chat-kernel contract — Stage 1011.
+ * Living chat-kernel contract — Stage 1012.
  * Session paste 2026-11-02 reconfirmed four base cases (infinity|hamiltonian|triangular|torus).
  * Stage 314 extras (klein, hopf, figure8, trefoil, mobius) remain in the living switch only.
+ * Stage 1012: triangular tAngle floor (2π/3) and y lane (idx % 3 - 1) * major * 0.5.
  * Stage 1011: hamiltonian y lift unread by minor/phi (y = hScale * sin(theta*3) + sin(t)*2).
  * Stage 1010: infinity denom shared by x/z only (1 + sin(theta)^2); y unread by denom.
  * Stage 1009: major/minor declarations held before switch; major = 10 + (idx * 2), minor = 3 + (toroidalWeave * 2).
@@ -31,7 +32,7 @@ export {
   CHAT_KERNEL_ENGRAM_FOLDER,
 } from './chatKernelNext.js';
 
-export const STAGE = 1011;
+export const STAGE = 1012;
 export const CHAT_KERNEL_LERP = 0.05;
 export const CHAT_KERNEL_THETA_BASE = 0.01;
 export const CHAT_KERNEL_THETA_IDX = 0.002;
