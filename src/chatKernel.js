@@ -1,21 +1,8 @@
 /**
- * Living chat-kernel contract — Stage 717.
- * Session paste 2026-10-01 12:12 CDT reconfirmed four base cases (infinity|hamiltonian|triangular|torus).
+ * Living chat-kernel contract — Stage 1001.
+ * Session paste 2026-11-01 reconfirmed four base cases (infinity|hamiltonian|triangular|torus).
  * Stage 314 extras (klein, hopf, figure8, trefoil, mobius) remain in the living switch only.
- * Stage 339: cycle lives on this module; shouldSkipCpuInstanceMatrixWhenTfOff.
- * Stage 340: energy/freeze live on chatKernelEnergy.js.
- * Stage 341: optional uEnergy; heartbeat energyFreeze.
- * Stage 342: compileChatKernelNextStages + pairBlendChatKernelGeometries (runtime-only).
- * Stage 360: session phi-gap report; public-band fidelity sample held; next queue 361+.
- * Stage 702: session lerp allocates new THREE.Vector3 alpha 0.05.
- * Stage 703: theta step (0.01 + idx * 0.002) * gravityPull.
- * Stage 704: uniforms write order uTime then uGravity.
- * Stage 705: major = 10 + (idx * 2), minor = 3 + (toroidalWeave * 2) assigned before switch.
- * Stage 713: major/minor before switch held.
- * Stage 714: switch(targetState.geometry) sole four-case dispatch held.
- * Stage 715: infinity lemniscate denom shared by x and z only; y unread by denom.
- * Stage 716: hamiltonian parametric x/z free of minor and y lift sin(t)*2.
- * Stage 717: triangular sector floor (2π/3) and y lane (idx % 3 - 1) * major * 0.5 held.
+ * Stage 1001: phi external binding referenced but never assigned inside paste held.
  * GPU/TF auto path remains count > 1024. instanceOffset band 4096–16384.
  */
 
@@ -41,7 +28,7 @@ export {
   CHAT_KERNEL_ENGRAM_FOLDER,
 } from './chatKernelNext.js';
 
-export const STAGE = 717;
+export const STAGE = 1001;
 export const CHAT_KERNEL_LERP = 0.05;
 export const CHAT_KERNEL_THETA_BASE = 0.01;
 export const CHAT_KERNEL_THETA_IDX = 0.002;
@@ -109,5 +96,3 @@ export const CHAT_KERNEL_SESSION_SOURCE = `update(t) {
     // Smoothly interpolate current position to the new geometric state target
     this.mesh.position.lerp(new THREE.Vector3(x, y, z), 0.05);
 }`;
-
-// ... (rest of the file remains the same, only STAGE and comments updated for brevity in this response; in practice the full file would be updated)
