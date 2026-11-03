@@ -1,7 +1,8 @@
 /**
- * Living chat-kernel contract — Stage 1014.
+ * Living chat-kernel contract — Stage 1015.
  * Session paste 2026-11-02 reconfirmed four base cases (infinity|hamiltonian|triangular|torus).
  * Stage 314 extras (klein, hopf, figure8, trefoil, mobius) remain in the living switch only.
+ * Stage 1015: hold theta step (0.01 + idx * 0.002) * gravityPull before major/minor.
  * Stage 1014: hold lerp new Vector3 allocation with literal alpha 0.05.
  * Stage 1013: torus/default tube (major + minor * cos(phi)) on x/z only; y shared with infinity.
  * Stage 1012: triangular tAngle floor (2π/3) and y lane (idx % 3 - 1) * major * 0.5.
@@ -34,7 +35,7 @@ export {
   CHAT_KERNEL_ENGRAM_FOLDER,
 } from './chatKernelNext.js';
 
-export const STAGE = 1014;
+export const STAGE = 1015;
 export const CHAT_KERNEL_LERP = 0.05;
 export const CHAT_KERNEL_THETA_BASE = 0.01;
 export const CHAT_KERNEL_THETA_IDX = 0.002;
