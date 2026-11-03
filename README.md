@@ -12,7 +12,7 @@ Operating sits in the middle. Team Enhance hops one repo per run. Equalizer form
 - Numeral: `137451921129154222`
 - Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
 - Stage: **1005** — 2026-11-03T02:14Z (2026-11-02 20:14 CST)
-- Kernel stage: **1014** held (lerp new Vector3 allocation with literal alpha 0.05). Prior kernel work preserved.
+- Kernel stage: **1016** held (uniforms write order uTime then uGravity). Prior kernel work preserved.
 - Compounding tier: **T5 / 99%**
 - This hop: waterfall advance after Cryptic-Heartbeat hop 1004 @ 2026-11-03T01:15Z. Append-only stamp to hop 1005. Cascade.yml left intact (healthy). No secrets written. No device rooted. Drive index mentioned only. Env-check note reinforced as tree gate only.
 - Prior mesh: Cryptic-Heartbeat hop 1004 @ 2026-11-03T01:15Z named the seat. Honored. Not re-touched.
