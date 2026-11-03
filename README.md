@@ -12,9 +12,9 @@ Operating sits in the middle. Team Enhance hops one repo per run. Equalizer form
 - Numeral: `137451921129154222`
 - Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
 - Stage: **1006** — 2026-11-03T05:12Z (2026-11-02 23:12 CST)
-- Kernel stage: **1023** held (smooth lerp to geometric state target). Prior kernel work preserved (1021 triangular snapping, 1022 torus/default tube, 1020 hamiltonian, 1019 infinity lemniscate, 1018 switch four-case).
+- Kernel stage: **1030** held (hamiltonian y lift free of hScale/minor). Prior kernel work preserved (1029 infinity denom shared by x/z, 1028 phi external binding, 1027 full session kernel integrity, 1026 major/minor declarations, 1023 smooth lerp).
 - Compounding tier: **T5 / 99%**
-- This hop: waterfall advance after Cryptic-Heartbeat hop 1008 @ 2026-11-03T05:08Z. Append-only stamp to hop 1006. Cascade.yml left intact (healthy). No secrets written. No device rooted. Drive index mentioned only. Env-check note reinforced as tree gate only.
+- This hop: kernel advance to STAGE-1030. Holds phi external, infinity denom, hamiltonian lift. Supporting session note modules added. Cascade.yml left intact. No secrets written. No device rooted. Paste not rewritten.
 - Prior mesh: Cryptic-Heartbeat hop 1008 @ 2026-11-03T05:08Z named the seat. Honored. Not re-touched.
 - Next in operator waterfall: living-bibliography-continuity-engine
 - Cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`, lint-docs requires README, SECURITY.md, stamp, numeral, no obvious secret files). Not rewritten this hop.
@@ -45,8 +45,9 @@ Current score for this surface: **99% (T5)**.
 
 What this hop added, without rewriting prior stages:
 
-- Waterfall realignment continuing declared operator rotation after Cryptic-Heartbeat 1008.
-- Stale stages and prior kernel work left in place as provenance; stage 1006 is append-only.
+- Kernel stages 1028–1030 holding phi external binding, infinity lemniscate denom shared by x/z only, and hamiltonian y lift free of hScale/minor.
+- Supporting session note modules in src/ (sessionPhiExternal1028.js, sessionInfinityDenom1029.js, sessionHamiltonianLift1030.js).
+- Stale stages and prior kernel work left in place as provenance; new stages are append-only.
 - Local verify path kept explicit: confirm README, SECURITY.md, docs/LEDGER-STAMP.md, and the numeral present. No secret files.
 - Unknowns kept unknown: pair-code, Tailscale auth key, device voiceprint, SD mount path. Not invented.
 
@@ -73,7 +74,7 @@ Declared operator rotation. One repo, then stop.
 3. hamiltonian-incursion — hop 1002 closed @ 2026-11-03T00:17Z. Honored. Not re-touched.
 4. The-Hive — hop 1003 closed @ 2026-11-03T01:10Z. Honored. Not re-touched.
 5. Cryptic-Heartbeat — hop 1008 closed @ 2026-11-03T05:08Z. Named this seat. Honored. Not re-touched.
-6. gaia-visualizer — **1006 this hop**
+6. gaia-visualizer — **1006 this hop** (kernel advanced to 1030)
 7. living-bibliography-continuity-engine — next
 8. continuity-ledger-cycle — subsequent
 
@@ -82,7 +83,7 @@ Declared operator rotation. One repo, then stop.
 - utc: 2026-11-03T05:12Z
 - cdt: 2026-11-02 23:12 CST
 - prior named seat: Cryptic-Heartbeat hop 1008 @ 2026-11-03T05:08Z. Honored.
-- this hop: waterfall advance + append-only stamp + realignment to declared operator rotation + env-check reinforced
+- this hop: waterfall advance + append-only stamp + realignment to declared operator rotation + env-check reinforced + kernel stages 1028-1030
 - cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`)
 - cloud index mention only: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU); no binaries uploaded
 - next: living-bibliography-continuity-engine
