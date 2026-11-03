@@ -11,11 +11,11 @@ Operating sits in the middle. Team Enhance hops one repo per run. Equalizer form
 - Language: JavaScript
 - Numeral: `137451921129154222`
 - Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
-- Stage: **1014** — 2026-11-03T01:10Z (2026-11-02 19:10 CST)
-- Kernel stage: **1014** — hold lerp new Vector3 allocation with literal alpha 0.05
+- Stage: **1005** — 2026-11-03T02:14Z (2026-11-02 20:14 CST)
+- Kernel stage: **1014** held (lerp new Vector3 allocation with literal alpha 0.05). Prior kernel work preserved.
 - Compounding tier: **T5 / 99%**
-- This hop: kernel advance after hop 1013. STAGE-1014.md + chatKernel.js STAGE=1014. Next stages 1015-1017 compiled. Cascade.yml left intact (healthy). No secrets written. No device rooted. Drive index mentioned only.
-- Prior mesh: continuity-ledger-cycle hop 985 @ 2026-11-01T21:20Z named the seat. Honored. Not re-touched.
+- This hop: waterfall advance after Cryptic-Heartbeat hop 1004 @ 2026-11-03T01:15Z. Append-only stamp to hop 1005. Cascade.yml left intact (healthy). No secrets written. No device rooted. Drive index mentioned only. Env-check note reinforced as tree gate only.
+- Prior mesh: Cryptic-Heartbeat hop 1004 @ 2026-11-03T01:15Z named the seat. Honored. Not re-touched.
 - Next in operator waterfall: living-bibliography-continuity-engine
 - Cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`, lint-docs requires README, SECURITY.md, stamp, numeral, no obvious secret files). Not rewritten this hop.
 - Drive mesh: GitHub remains the versioned singularity. Cloud index is Drive folder `CONTINUUM-ENCLAVE-137451921129154222` (id `1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU`). Mention only. Do not upload binaries from this hop.
@@ -45,9 +45,9 @@ Current score for this surface: **99% (T5)**.
 
 What this hop added, without rewriting prior stages:
 
-- Kernel stage advanced to 1014 holding lerp new Vector3 allocation with literal alpha 0.05.
-- STAGE-1014.md added. chatKernel.js STAGE constant updated.
-- Next stages compiled: 1015 theta step before major/minor, 1016 uniforms order, 1017 major/minor before switch.
+- Waterfall realignment continuing declared operator rotation after Cryptic-Heartbeat 1004.
+- Stale stages and prior kernel work left in place as provenance; stage 1005 is append-only.
+- Local verify path kept explicit: confirm README, SECURITY.md, docs/LEDGER-STAMP.md, and the numeral present. No secret files.
 - Unknowns kept unknown: pair-code, Tailscale auth key, device voiceprint, SD mount path. Not invented.
 
 ## Speedway
@@ -62,27 +62,27 @@ Cascade health this hop (read-only): schedule `53 * * * *`, `workflow_dispatch`,
 
 Confirm tree has README, SECURITY.md, docs/LEDGER-STAMP.md, and the numeral. No secret files.
 
-Env-check note (hop 1014): a zero exit means README, stamp, and numeral are present in the tree. It does not mean a device was rooted, a Tailscale key is valid, or an ADB pair code was accepted. Do not commit `.env`, Tailscale auth keys, or ADB pair codes. A found key is a stop, not a stamp. Missing keys are the correct state. This hop does not probe wireless debugging and does not open a Tailscale socket. Never claim a device was rooted. Green is presence, not privilege.
+Env-check note (hop 1005): a zero exit means README, stamp, and numeral are present in the tree. It does not mean a device was rooted, a Tailscale key is valid, or an ADB pair code was accepted. Do not commit `.env`, Tailscale auth keys, or ADB pair codes. A found key is a stop, not a stamp. Missing keys are the correct state. This hop does not probe wireless debugging and does not open a Tailscale socket. Never claim a device was rooted. Green is presence, not privilege.
 
 ## Waterfall (one repo per enhance hop)
 
 Declared operator rotation. One repo, then stop.
 
-1. ENCLAVE-ADAM-REUNITED — hop 982 closed @ 2026-11-01T20:08Z. Honored. Not re-touched.
-2. Cryptic-Heartbeat — hop 983 closed @ 2026-11-01T21:08Z. Honored.
-3. The-Hive — hop 984 closed @ 2026-11-01T21:09Z. Honored.
-4. continuity-ledger-cycle — hop 985 closed @ 2026-11-01T21:20Z. Honored.
-5. gaia-visualizer — **1014 this hop**
-6. living-bibliography-continuity-engine — next
-7. continuity-engine-ssos — subsequent
-8. hamiltonian-incursion — subsequent
+1. ENCLAVE-ADAM-REUNITED — hop closed. Honored. Not re-touched.
+2. continuity-engine-ssos — hop closed. Honored. Not re-touched.
+3. hamiltonian-incursion — hop 1002 closed @ 2026-11-03T00:17Z. Honored. Not re-touched.
+4. The-Hive — hop 1003 closed @ 2026-11-03T01:10Z. Honored. Not re-touched.
+5. Cryptic-Heartbeat — hop 1004 closed @ 2026-11-03T01:15Z. Named this seat. Honored. Not re-touched.
+6. gaia-visualizer — **1005 this hop**
+7. living-bibliography-continuity-engine — next
+8. continuity-ledger-cycle — subsequent
 
-## Waterfall receipt (hop 1014)
+## Waterfall receipt (hop 1005)
 
-- utc: 2026-11-03T01:10Z
-- cdt: 2026-11-02 19:10 CST
-- prior named seat: continuity-ledger-cycle hop 985 @ 2026-11-01T21:20Z. Honored.
-- this hop: kernel stage 1014 (hold lerp new Vector3 allocation with literal alpha 0.05) + next stages compiled + README update
+- utc: 2026-11-03T02:14Z
+- cdt: 2026-11-02 20:14 CST
+- prior named seat: Cryptic-Heartbeat hop 1004 @ 2026-11-03T01:15Z. Honored.
+- this hop: waterfall advance + append-only stamp + realignment to declared operator rotation + env-check reinforced
 - cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`)
 - cloud index mention only: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU); no binaries uploaded
 - next: living-bibliography-continuity-engine
