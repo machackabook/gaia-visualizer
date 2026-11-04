@@ -1,5 +1,5 @@
-/** Stage 1053 — hold phi as external binding referenced but never assigned inside paste from current connecting chat paste. Prior: 1052 uniforms. Document only. Do not rewrite the paste. No secrets. */
-export const TRIANGULAR_FLOOR_STAGE = 1053;
+/** Stage 1054 — hold theta step (0.01 + idx * 0.002) * gravityPull before major/minor from current connecting chat paste. Prior: 1053 phi external. Document only. Do not rewrite the paste. No secrets. */
+export const TRIANGULAR_FLOOR_STAGE = 1054;
 export const TRIANGULAR_FLOOR_SESSION_HASH = 'beec41f1';
 export const TRIANGULAR_FLOOR_LIVING_HASH = '7cd81012';
 export const TRIANGULAR_FLOOR_SECTORS = 3;
@@ -97,6 +97,8 @@ export function noteSessionTriangularFloor(source) {
   const invented = TRIANGULAR_FLOOR_EXTRAS.filter((name) => hasCase(text, name));
   const lerpAlphaLiteral = /lerp\(new THREE\.Vector3\(x, y, z\), 0\.05\)/.test(text);
   const uniformsOrder = /this\.material\.uniforms\.uTime\.value = t;[\s\S]*?this\.material\.uniforms\.uGravity\.value = state\.gravityPull;/.test(text);
+  const thetaStep = /this\.theta \+= \(0\.01 \+ this\.idx \* 0\.002\) \* state\.gravityPull;/.test(text);
+  const thetaBeforeMajor = /this\.theta \+= \(0\.01 \+ this\.idx \* 0\.002\) \* state\.gravityPull;[\s\S]*?let major = 10 \+ \(this\.idx \* 2\);/.test(text);
   const sessionAlloc = /lerp\(new THREE\.Vector3\(x, y, z\), 0\.05\)/.test(text);
   const infinityDenomShared = /const denom = 1 \+ Math\.pow\(Math\.sin\(this\.theta\), 2\);[\s\S]*?x = \(scale \* Math\.cos\(this\.theta\)\) \/ denom;[\s\S]*?z = \(scale \* Math\.sin\(this\.theta\) \* Math\.cos\(this\.theta\)\) \/ denom;/.test(text);
   const hamiltonianLiftFree = /y = hScale \* Math\.sin\(this\.theta \* 3\) \+ \(Math\.sin\(t\) \* 2\);/.test(text);
@@ -115,6 +117,8 @@ export function noteSessionTriangularFloor(source) {
     yFreeOfTheta5,
     lerpAlphaLiteral,
     uniformsOrder,
+    thetaStep,
+    thetaBeforeMajor,
     sessionAlloc,
     infinityDenomShared,
     hamiltonianLiftFree,
@@ -128,7 +132,7 @@ export function noteSessionTriangularFloor(source) {
     extrasOffSession: true,
     pasteRewritten: false,
     secrets: false,
-    ok: floorSnap && usesTAngle && snapHolds && yFreeOfTheta5 && invented.length === 0 && lerpAlphaLiteral && uniformsOrder && sessionAlloc && infinityDenomShared && hamiltonianLiftFree && torusTube && phiExternal && fullKernel,
-    note: 'Phi external binding held from current connecting chat paste of update(t). Uniforms write order uTime then uGravity held. Infinity lemniscate denom shared by x/z only held. Torus/default tube held. Triangular floor snap to 2π/3 and y sector free of theta*5 held. Hamiltonian y lift free of hScale/minor held. Session paste remains untouched. Paste not rewritten.',
+    ok: floorSnap && usesTAngle && snapHolds && yFreeOfTheta5 && invented.length === 0 && lerpAlphaLiteral && uniformsOrder && thetaStep && thetaBeforeMajor && sessionAlloc && infinityDenomShared && hamiltonianLiftFree && torusTube && phiExternal && fullKernel,
+    note: 'Theta step (0.01 + idx * 0.002) * gravityPull held before major/minor from current connecting chat paste of update(t). Phi external binding held. Uniforms write order uTime then uGravity held. Infinity lemniscate denom shared by x/z only held. Torus/default tube held. Triangular floor snap to 2π/3 and y sector free of theta*5 held. Hamiltonian y lift free of hScale/minor held. Session paste remains untouched. Paste not rewritten.',
   };
 }
