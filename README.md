@@ -11,10 +11,10 @@ Operating sits in the middle. Team Enhance hops one repo per run. Equalizer form
 - Language: JavaScript
 - Numeral: `137451921129154222`
 - Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
-- Stage: **1057** — 2026-11-04T22:10Z (2026-11-04 16:10 CST)
-- Kernel stage: **1057** held (infinity lemniscate denom = 1 + sin(theta)^2 shared exclusively by x/z; y unread by denom). Prior kernel work preserved (1056 switch sole four-case dispatch, 1055 major = 10 + (idx * 2); minor = 3 + (toroidalWeave * 2) pre-switch, 1054 theta step (0.01 + idx * 0.002) * gravityPull before major/minor, 1053 phi external binding, 1052 uniforms order, 1051 infinity lemniscate denom shared by x/z only, scale=major*1.5, y unread by denom, 1050 torus/default tube (major + minor * cos(phi)) shared by x/z y identity to infinity, 1049 triangular floor snap to 2π/3 and y sector free of theta*5, 1048 hamiltonian y lift free of minor/phi, 1047 theta increment, 1046 lerp alpha literal 0.05 with new Vector3 allocation, 1045 infinity lemniscate, 1044 four-case switch sole dispatcher, 1043 uniforms write order uTime then uGravity, 1042 major/minor formulas and placement before switch, 1041 theta increment, 1040 phi external binding).
+- Stage: **1058** — 2026-11-04T23:08Z (2026-11-04 17:08 CST)
+- Kernel stage: **1058** held (hamiltonian y lift = hScale * sin(theta*3) + sin(t)*2 free of minor/phi). Prior kernel work preserved (1057 infinity lemniscate denom = 1 + sin(theta)^2 shared exclusively by x/z; y unread by denom, 1056 switch sole four-case dispatch, 1055 major = 10 + (idx * 2); minor = 3 + (toroidalWeave * 2) pre-switch, 1054 theta step (0.01 + idx * 0.002) * gravityPull before major/minor, 1053 phi external binding, 1052 uniforms order, 1051 infinity lemniscate denom shared by x/z only, scale=major*1.5, y unread by denom, 1050 torus/default tube (major + minor * cos(phi)) shared by x/z y identity to infinity, 1049 triangular floor snap to 2π/3 and y sector free of theta*5, 1048 hamiltonian y lift free of minor/phi, 1047 theta increment, 1046 lerp alpha literal 0.05 with new Vector3 allocation, 1045 infinity lemniscate, 1044 four-case switch sole dispatcher, 1043 uniforms write order uTime then uGravity, 1042 major/minor formulas and placement before switch, 1041 theta increment, 1040 phi external binding).
 - Compounding tier: **T5 / 99%**
-- This hop: kernel advance to STAGE-1057. Holds session infinity lemniscate denom shared exclusively by x/z from the connecting chat paste. Supporting parallel pins in sibling repos. Cascade.yml left intact. No secrets written. No device rooted. Paste not rewritten.
+- This hop: kernel advance to STAGE-1058. Holds session hamiltonian y lift free of minor/phi from the connecting chat paste. Supporting parallel pins in sibling repos. Cascade.yml left intact. No secrets written. No device rooted. Paste not rewritten.
 - Prior mesh: Cryptic-Heartbeat hop 1008 @ 2026-11-03T05:08Z named the seat. Honored. Not re-touched.
 - Next in operator waterfall: living-bibliography-continuity-engine
 - Cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`, lint-docs requires README, SECURITY.md, stamp, numeral, no obvious secret files). Not rewritten this hop.
@@ -45,7 +45,7 @@ Current score for this surface: **99% (T5)**.
 
 What this hop added, without rewriting prior stages:
 
-- Kernel stage 1057 holding session infinity lemniscate denom shared exclusively by x/z from the connecting chat paste. Prior 1040–1056 preserved.
+- Kernel stage 1058 holding session hamiltonian y lift free of minor/phi from the connecting chat paste. Prior 1040–1057 preserved.
 - Parallel stage pins noted in sibling repos.
 - Stale stages and prior kernel work left in place as provenance; new stages are append-only.
 - Local verify path kept explicit: confirm README, SECURITY.md, docs/LEDGER-STAMP.md, and the numeral present. No secret files.
@@ -63,7 +63,7 @@ Cascade health this hop (read-only): schedule `53 * * * *`, `workflow_dispatch`,
 
 Confirm tree has README, SECURITY.md, docs/LEDGER-STAMP.md, and the numeral. No secret files.
 
-Env-check note (hop 1057): a zero exit means README, stamp, and numeral are present in the tree. It does not mean a device was rooted, a Tailscale key is valid, or an ADB pair code was accepted. Do not commit `.env`, Tailscale auth keys, or ADB pair codes. A found key is a stop, not a stamp. Missing keys are the correct state. This hop does not probe wireless debugging and does not open a Tailscale socket. Never claim a device was rooted. Green is presence, not privilege.
+Env-check note (hop 1058): a zero exit means README, stamp, and numeral are present in the tree. It does not mean a device was rooted, a Tailscale key is valid, or an ADB pair code was accepted. Do not commit `.env`, Tailscale auth keys, or ADB pair codes. A found key is a stop, not a stamp. Missing keys are the correct state. This hop does not probe wireless debugging and does not open a Tailscale socket. Never claim a device was rooted. Green is presence, not privilege.
 
 ## Waterfall (one repo per enhance hop)
 
@@ -74,16 +74,16 @@ Declared operator rotation. One repo, then stop.
 3. hamiltonian-incursion — hop 1002 closed @ 2026-11-03T00:17Z. Honored. Not re-touched.
 4. The-Hive — hop 1003 closed @ 2026-11-03T01:10Z. Honored. Not re-touched.
 5. Cryptic-Heartbeat — hop 1008 closed @ 2026-11-03T05:08Z. Named this seat. Honored. Not re-touched.
-6. gaia-visualizer — **1057 this hop** (kernel advanced to 1057)
+6. gaia-visualizer — **1058 this hop** (kernel advanced to 1058)
 7. living-bibliography-continuity-engine — next
 8. continuity-ledger-cycle — subsequent
 
-## Waterfall receipt (hop 1057)
+## Waterfall receipt (hop 1058)
 
-- utc: 2026-11-04T22:10Z
-- cdt: 2026-11-04 16:10 CST
+- utc: 2026-11-04T23:08Z
+- cdt: 2026-11-04 17:08 CST
 - prior named seat: Cryptic-Heartbeat hop 1008 @ 2026-11-03T05:08Z. Honored.
-- this hop: waterfall advance + append-only stamp + kernel stage 1057 (session infinity lemniscate denom shared exclusively by x/z)
+- this hop: waterfall advance + append-only stamp + kernel stage 1058 (session hamiltonian y lift free of minor/phi)
 - cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`)
 - cloud index mention only: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU); no binaries uploaded
 - next: living-bibliography-continuity-engine
