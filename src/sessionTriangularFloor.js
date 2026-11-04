@@ -1,5 +1,5 @@
-/** Stage 1052 — hold uniforms write order uTime then uGravity and sources from current connecting chat paste. Prior: 1051 infinity lemniscate. Document only. Do not rewrite the paste. No secrets. */
-export const TRIANGULAR_FLOOR_STAGE = 1052;
+/** Stage 1053 — hold phi as external binding referenced but never assigned inside paste from current connecting chat paste. Prior: 1052 uniforms. Document only. Do not rewrite the paste. No secrets. */
+export const TRIANGULAR_FLOOR_STAGE = 1053;
 export const TRIANGULAR_FLOOR_SESSION_HASH = 'beec41f1';
 export const TRIANGULAR_FLOOR_LIVING_HASH = '7cd81012';
 export const TRIANGULAR_FLOOR_SECTORS = 3;
@@ -129,6 +129,6 @@ export function noteSessionTriangularFloor(source) {
     pasteRewritten: false,
     secrets: false,
     ok: floorSnap && usesTAngle && snapHolds && yFreeOfTheta5 && invented.length === 0 && lerpAlphaLiteral && uniformsOrder && sessionAlloc && infinityDenomShared && hamiltonianLiftFree && torusTube && phiExternal && fullKernel,
-    note: 'Uniforms write order uTime then uGravity and sources held from current connecting chat paste of update(t). Infinity lemniscate denom shared by x/z only held. Torus/default tube held. Triangular floor snap to 2π/3 and y sector free of theta*5 held. Hamiltonian y lift free of hScale/minor held. Session paste remains untouched. Paste not rewritten.',
+    note: 'Phi external binding held from current connecting chat paste of update(t). Uniforms write order uTime then uGravity held. Infinity lemniscate denom shared by x/z only held. Torus/default tube held. Triangular floor snap to 2π/3 and y sector free of theta*5 held. Hamiltonian y lift free of hScale/minor held. Session paste remains untouched. Paste not rewritten.',
   };
 }
