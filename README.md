@@ -11,11 +11,11 @@ Operating sits in the middle. Team Enhance hops one repo per run. Equalizer form
 - Language: JavaScript
 - Numeral: `137451921129154222`
 - Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
-- Stage: **1073** — 2026-11-05T15:10Z
-- Kernel stage: **1073** held (theta step (0.01 + idx * 0.002) * gravityPull before major/minor). Prior kernel work preserved (1072 uniforms uTime then uGravity, 1071 lerp new Vector3 alpha 0.05, 1070 torus tube, 1069 triangular tAngle floor, and earlier 1040–1068).
+- Stage: **1074** — 2026-11-05T15:11Z (2026-11-05 09:11 CST)
+- Kernel stage: **1067** held (infinity lemniscate: scale=major*1.5, denom=1+sin(theta)^2 shared exclusively by x/z; y=minor*sin(phi)*sin(t*0.5+idx) unread by denom). Prior kernel work preserved.
 - Compounding tier: **T5 / 99%**
-- This hop: kernel advance to STAGE-1073. Holds session theta increment from the connecting chat paste. Supporting parallel pins in sibling repos. Cascade.yml left intact. No secrets written. No device rooted. Paste not rewritten.
-- Prior mesh: continuity-ledger-cycle hop 1073 @ 2026-11-05T12:16Z named the seat. Honored. Not re-touched.
+- This hop: waterfall advance after primary rotation. Append-only stamp to hop 1074. Cascade.yml left intact (healthy). No secrets written. No device rooted. Drive index mentioned only. README status realigned.
+- Prior local: hop 1058 @ 2026-11-04T23:08Z preserved. Not rewritten.
 - Next in operator waterfall: living-bibliography-continuity-engine
 - Cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`, lint-docs requires README, SECURITY.md, stamp, numeral, no obvious secret files). Not rewritten this hop.
 - Drive mesh: GitHub remains the versioned singularity. Cloud index is Drive folder `CONTINUUM-ENCLAVE-137451921129154222` (id `1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU`). Mention only. Do not upload binaries from this hop.
@@ -45,8 +45,7 @@ Current score for this surface: **99% (T5)**.
 
 What this hop added, without rewriting prior stages:
 
-- Kernel stage 1073 holding session theta step from the connecting chat paste. Prior 1070–1072 and earlier preserved.
-- Parallel stage pins noted in sibling repos.
+- Append-only ledger stamp advanced to hop 1074.
 - Stale stages and prior kernel work left in place as provenance; new stages are append-only.
 - Local verify path kept explicit: confirm README, SECURITY.md, docs/LEDGER-STAMP.md, and the numeral present. No secret files.
 - Unknowns kept unknown: pair-code, Tailscale auth key, device voiceprint, SD mount path. Not invented.
@@ -63,25 +62,27 @@ Cascade health this hop (read-only): schedule `53 * * * *`, `workflow_dispatch`,
 
 Confirm tree has README, SECURITY.md, docs/LEDGER-STAMP.md, and the numeral. No secret files.
 
-Env-check note (hop 1073): a zero exit means README, stamp, and numeral are present in the tree. It does not mean a device was rooted, a Tailscale key is valid, or an ADB pair code was accepted. Do not commit `.env`, Tailscale auth keys, or ADB pair codes. A found key is a stop, not a stamp. Missing keys are the correct state. This hop does not probe wireless debugging and does not open a Tailscale socket. Never claim a device was rooted. Green is presence, not privilege.
+Env-check note (hop 1074): a zero exit means README, stamp, and numeral are present in the tree. It does not mean a device was rooted, a Tailscale key is valid, or an ADB pair code was accepted. Do not commit `.env`, Tailscale auth keys, or ADB pair codes. A found key is a stop, not a stamp. Missing keys are the correct state. This hop does not probe wireless debugging and does not open a Tailscale socket. Never claim a device was rooted. Green is presence, not privilege. Clarity: catalog only what the source tree reveals; never invent unknowns.
 
 ## Waterfall (one repo per enhance hop)
 
 Declared operator rotation. One repo, then stop.
 
 1. ENCLAVE-ADAM-REUNITED — hop closed. Honored. Not re-touched.
-2. continuity-engine-ssos — hop closed. Honored. Not re-touched.
-3. hamiltonian-incursion — hop closed. Honored. Not re-touched.
-4. The-Hive — hop closed. Honored. Not re-touched.
-5. Cryptic-Heartbeat — hop closed. Honored. Not re-touched.
-6. gaia-visualizer — **1073 this hop** (kernel advanced to 1073)
+2. Cryptic-Heartbeat — hop closed. Honored. Not re-touched.
+3. The-Hive — hop closed. Honored. Not re-touched.
+4. continuity-ledger-cycle — hop closed. Honored. Not re-touched.
+5. hamiltonian-incursion — subsequent
+6. gaia-visualizer — **1074 this hop**
 7. living-bibliography-continuity-engine — next
-8. continuity-ledger-cycle — subsequent
+8. continuity-engine-ssos — subsequent
 
-## Waterfall receipt (hop 1073)
+## Waterfall receipt (hop 1074)
 
-- utc: 2026-11-05T15:10Z
-- this hop: waterfall advance + append-only stamp + kernel stage 1073 (session theta step before major/minor)
+- utc: 2026-11-05T15:11Z
+- cdt: 2026-11-05 09:11 CST
+- prior local: hop 1058 @ 2026-11-04T23:08Z. Honored.
+- this hop: waterfall advance + append-only stamp + README realignment
 - cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`)
 - cloud index mention only: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU); no binaries uploaded
 - next: living-bibliography-continuity-engine
