@@ -1,10 +1,10 @@
 {
-  "stage": 1057,
+  "stage": 1074,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
-  "paste": "2026-11-04",
-  "next": [1058, 1059, 1060],
+  "paste": "2026-11-05",
+  "next": [1075, 1076, 1077],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stage 1057 holds infinity lemniscate denom = 1 + sin(theta)^2 shared exclusively by x/z (y unread by denom) from connecting chat paste of update(t). Prior holds preserved. Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stage 1074 holds major = 10 + (idx * 2); minor = 3 + (toroidalWeave * 2); pre-switch from connecting chat paste of update(t). Prior holds preserved. Paste not rewritten."
 }
