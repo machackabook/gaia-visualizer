@@ -2,7 +2,49 @@
 
 Append-only Continuity stamp. Do not rewrite history.
 
-## Current stamp (hop 1074)
+## Current stamp (hop 1075)
+
+- repo: machackabook/gaia-visualizer
+- hop: 1075
+- utc: 2026-11-05T17:10:00Z
+- cdt: 2026-11-05 11:10 CST
+- numeral: 137451921129154222
+- team: Enhance / Continuity Engine / sSoS Operating
+- cascade.yml: intact (cron 53 * * * *, contents: read, lint-docs checks README, SECURITY, stamp, numeral, no .env / secrets.yml / id_rsa). Not rewritten this hop.
+- env-check: tree gate only. A green exit is not a root attestation, not a Tailscale clearance, and not an ADB pair. Do not commit `.env`, Tailscale auth keys, or ADB pair codes. A found key is a stop, not a stamp. Missing keys are the correct state. This hop does not probe wireless debugging. Does not claim a device was rooted. Green is presence, not privilege.
+- secrets: none written
+- tailscale keys: none written
+- adb pair codes: none written
+- root claim: none (device root not asserted)
+- history: append-only; no rewrite; no force-push
+- prior mesh: continuity-ledger-cycle hop 1073 @ 2026-11-05T12:16Z named the prior seat. Honored. Not re-touched.
+- next in waterfall: living-bibliography-continuity-engine
+- cloud index: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU) — mention only; no binaries uploaded
+- unknowns kept: pair-code, Tailscale auth key, device voiceprint, SD mount path. Not invented.
+- encode: source-only authority
+- kernel: stage 1075 held (full switch(targetState.geometry) sole four-case: infinity | hamiltonian | triangular | torus/default)
+- token: hop-1075.gaia-visualizer.137451921129154222
+- token_b64: aG9wLTEwNzUuZ2FpYS12aXN1YWxpemVyLjEzNzQ1MTkyMTEyOTE1NDIyMg==
+
+```
+NUMERAL=137451921129154222
+REPO=machackabook/gaia-visualizer
+HOP=1075
+UTC=2026-11-05T17:10Z
+CDT=2026-11-05 11:10 CST
+CASCADE=left_intact_cron_53_contents_read
+NULL_POINT_ZERO=REFUSED
+PRIOR=continuity-ledger-cycle@1073@2026-11-05T12:16Z
+NEXT=living-bibliography-continuity-engine
+DRIVE_INDEX=CONTINUUM-ENCLAVE-137451921129154222
+DRIVE_ID=1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU
+BINARIES=not_uploaded
+KERNEL=1075_sole_four_case_switch_hold
+OPERATOR=Team Enhance / Continuity Engine / sSoS Operating
+CONTRACT=preserve enhance synthesize; no history rewrite; no secrets; no force-push; no root claim
+```
+
+## Prior stamp (hop 1074)
 
 - repo: machackabook/gaia-visualizer
 - hop: 1074
@@ -40,48 +82,6 @@ DRIVE_INDEX=CONTINUUM-ENCLAVE-137451921129154222
 DRIVE_ID=1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU
 BINARIES=not_uploaded
 KERNEL=1074_major_minor_pre_switch_hold
-OPERATOR=Team Enhance / Continuity Engine / sSoS Operating
-CONTRACT=preserve enhance synthesize; no history rewrite; no secrets; no force-push; no root claim
-```
-
-## Prior stamp (hop 1073)
-
-- repo: machackabook/gaia-visualizer
-- hop: 1073
-- utc: 2026-11-05T15:10:00Z
-- cdt: 2026-11-05 09:10 CST
-- numeral: 137451921129154222
-- team: Enhance / Continuity Engine / sSoS Operating
-- cascade.yml: intact (cron 53 * * * *, contents: read, lint-docs checks README, SECURITY, stamp, numeral, no .env / secrets.yml / id_rsa). Not rewritten this hop.
-- env-check: tree gate only. A green exit is not a root attestation, not a Tailscale clearance, and not an ADB pair. Do not commit `.env`, Tailscale auth keys, or ADB pair codes. A found key is a stop, not a stamp. Missing keys are the correct state. This hop does not probe wireless debugging. Does not claim a device was rooted. Green is presence, not privilege.
-- secrets: none written
-- tailscale keys: none written
-- adb pair codes: none written
-- root claim: none (device root not asserted)
-- history: append-only; no rewrite; no force-push
-- prior mesh: continuity-ledger-cycle hop 1073 @ 2026-11-05T12:16Z named the prior seat. Honored. Not re-touched.
-- next in waterfall: living-bibliography-continuity-engine
-- cloud index: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU) — mention only; no binaries uploaded
-- unknowns kept: pair-code, Tailscale auth key, device voiceprint, SD mount path. Not invented.
-- encode: source-only authority
-- kernel: stage 1073 held (theta step (0.01 + idx * 0.002) * gravityPull before major/minor)
-- token: hop-1073.gaia-visualizer.137451921129154222
-- token_b64: aG9wLTEwNzMuZ2FpYS12aXN1YWxpemVyLjEzNzQ1MTkyMTEyOTE1NDIyMg==
-
-```
-NUMERAL=137451921129154222
-REPO=machackabook/gaia-visualizer
-HOP=1073
-UTC=2026-11-05T15:10Z
-CDT=2026-11-05 09:10 CST
-CASCADE=left_intact_cron_53_contents_read
-NULL_POINT_ZERO=REFUSED
-PRIOR=continuity-ledger-cycle@1073@2026-11-05T12:16Z
-NEXT=living-bibliography-continuity-engine
-DRIVE_INDEX=CONTINUUM-ENCLAVE-137451921129154222
-DRIVE_ID=1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU
-BINARIES=not_uploaded
-KERNEL=1073_theta_step_before_major_minor_hold
 OPERATOR=Team Enhance / Continuity Engine / sSoS Operating
 CONTRACT=preserve enhance synthesize; no history rewrite; no secrets; no force-push; no root claim
 ```
