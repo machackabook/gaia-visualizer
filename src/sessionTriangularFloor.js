@@ -1,5 +1,5 @@
-/** Stage 1054 — hold theta step (0.01 + idx * 0.002) * gravityPull before major/minor from current connecting chat paste. Prior: 1053 phi external. Document only. Do not rewrite the paste. No secrets. */
-export const TRIANGULAR_FLOOR_STAGE = 1054;
+/** Stage 1061 — hold major = 10 + (idx * 2); minor = 3 + (toroidalWeave * 2) placement before switch from current connecting chat paste. Prior: 1060 torus tube. Document only. Do not rewrite the paste. No secrets. */
+export const TRIANGULAR_FLOOR_STAGE = 1061;
 export const TRIANGULAR_FLOOR_SESSION_HASH = 'beec41f1';
 export const TRIANGULAR_FLOOR_LIVING_HASH = '7cd81012';
 export const TRIANGULAR_FLOOR_SECTORS = 3;
@@ -105,6 +105,7 @@ export function noteSessionTriangularFloor(source) {
   const torusTube = /x = \(major \+ minor \* Math\.cos\(this\.phi\)\) \* Math\.cos\(this\.theta\);[\s\S]*?z = \(major \+ minor \* Math\.cos\(this\.phi\)\) \* Math\.sin\(this\.theta\);/.test(text);
   const phiExternal = /this\.phi/.test(text) && !/this\.phi\s*=/.test(text);
   const fullKernel = /update\(t\) \{[\s\S]*this\.mesh\.position\.lerp\(new THREE\.Vector3\(x, y, z\), 0\.05\);/.test(text);
+  const majorMinorBeforeSwitch = /let major = 10 \+ \(this\.idx \* 2\);[\s\S]*?let minor = 3 \+ \(state\.toroidalWeave \* 2\);[\s\S]*?switch\(targetState\.geometry\)/.test(text);
   return {
     stage: TRIANGULAR_FLOOR_STAGE,
     session: TRIANGULAR_FLOOR_SESSION_HASH,
@@ -125,6 +126,7 @@ export function noteSessionTriangularFloor(source) {
     torusTube,
     phiExternal,
     fullKernel,
+    majorMinorBeforeSwitch,
     sample,
     snapHolds,
     inventedCases: invented,
@@ -132,7 +134,7 @@ export function noteSessionTriangularFloor(source) {
     extrasOffSession: true,
     pasteRewritten: false,
     secrets: false,
-    ok: floorSnap && usesTAngle && snapHolds && yFreeOfTheta5 && invented.length === 0 && lerpAlphaLiteral && uniformsOrder && thetaStep && thetaBeforeMajor && sessionAlloc && infinityDenomShared && hamiltonianLiftFree && torusTube && phiExternal && fullKernel,
-    note: 'Theta step (0.01 + idx * 0.002) * gravityPull held before major/minor from current connecting chat paste of update(t). Phi external binding held. Uniforms write order uTime then uGravity held. Infinity lemniscate denom shared by x/z only held. Torus/default tube held. Triangular floor snap to 2π/3 and y sector free of theta*5 held. Hamiltonian y lift free of hScale/minor held. Session paste remains untouched. Paste not rewritten.',
+    ok: floorSnap && usesTAngle && snapHolds && yFreeOfTheta5 && invented.length === 0 && lerpAlphaLiteral && uniformsOrder && thetaStep && thetaBeforeMajor && sessionAlloc && infinityDenomShared && hamiltonianLiftFree && torusTube && phiExternal && fullKernel && majorMinorBeforeSwitch,
+    note: 'Major/minor placement before switch held from current connecting chat paste of update(t). Torus tube, triangular floor, hamiltonian lift, infinity denom, and prior holds remain. Session paste remains untouched. Paste not rewritten.',
   };
 }
