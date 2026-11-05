@@ -11,11 +11,11 @@ Operating sits in the middle. Team Enhance hops one repo per run. Equalizer form
 - Language: JavaScript
 - Numeral: `137451921129154222`
 - Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
-- Stage: **1074** — 2026-11-05T15:11Z (2026-11-05 09:11 CST)
-- Kernel stage: **1067** held (infinity lemniscate: scale=major*1.5, denom=1+sin(theta)^2 shared exclusively by x/z; y=minor*sin(phi)*sin(t*0.5+idx) unread by denom). Prior kernel work preserved.
+- Stage: **1074** — 2026-11-05T16:11Z (2026-11-05 10:11 CST)
+- Kernel stage: **1074** held (major = 10 + (idx * 2); minor = 3 + (toroidalWeave * 2); pre-switch). Prior kernel work preserved.
 - Compounding tier: **T5 / 99%**
 - This hop: waterfall advance after primary rotation. Append-only stamp to hop 1074. Cascade.yml left intact (healthy). No secrets written. No device rooted. Drive index mentioned only. README status realigned.
-- Prior local: hop 1058 @ 2026-11-04T23:08Z preserved. Not rewritten.
+- Prior local: hop 1073 @ 2026-11-05T15:10Z preserved. Not rewritten.
 - Next in operator waterfall: living-bibliography-continuity-engine
 - Cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`, lint-docs requires README, SECURITY.md, stamp, numeral, no obvious secret files). Not rewritten this hop.
 - Drive mesh: GitHub remains the versioned singularity. Cloud index is Drive folder `CONTINUUM-ENCLAVE-137451921129154222` (id `1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU`). Mention only. Do not upload binaries from this hop.
@@ -79,10 +79,10 @@ Declared operator rotation. One repo, then stop.
 
 ## Waterfall receipt (hop 1074)
 
-- utc: 2026-11-05T15:11Z
-- cdt: 2026-11-05 09:11 CST
-- prior local: hop 1058 @ 2026-11-04T23:08Z. Honored.
-- this hop: waterfall advance + append-only stamp + README realignment
+- utc: 2026-11-05T16:11Z
+- cdt: 2026-11-05 10:11 CST
+- prior local: hop 1073 @ 2026-11-05T15:10Z. Honored.
+- this hop: waterfall advance + append-only stamp + README realignment + STAGE-1074 major/minor hold
 - cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`)
 - cloud index mention only: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU); no binaries uploaded
 - next: living-bibliography-continuity-engine
