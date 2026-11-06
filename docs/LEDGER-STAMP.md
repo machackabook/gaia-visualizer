@@ -2,12 +2,12 @@
 
 Append-only Continuity stamp. Do not rewrite history.
 
-## Current stamp (hop 1086)
+## Current stamp (hop 1088)
 
 - repo: machackabook/gaia-visualizer
-- hop: 1086
-- utc: 2026-11-05T22:09:00Z
-- cdt: 2026-11-05 16:09 CST
+- hop: 1088
+- utc: 2026-11-06T00:11:00Z
+- cdt: 2026-11-05 18:11 CST
 - numeral: 137451921129154222
 - team: Enhance / Continuity Engine / sSoS Operating
 - cascade.yml: intact (cron 53 * * * *, contents: read, lint-docs checks README, SECURITY, stamp, numeral, no .env / secrets.yml / id_rsa). Not rewritten this hop.
@@ -22,16 +22,16 @@ Append-only Continuity stamp. Do not rewrite history.
 - cloud index: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU) — mention only; no binaries uploaded
 - unknowns kept: pair-code, Tailscale auth key, device voiceprint, SD mount path. Not invented.
 - encode: source-only authority
-- kernel: stage 1086 held (triangular floor snap to 2π/3 free of theta*5 on y; hamiltonian y lift free of minor and phi; infinity lemniscate denom shared exclusively by x/z; major/minor pre-switch)
-- token: hop-1086.gaia-visualizer.137451921129154222
-- token_b64: aG9wLTEwODYuZ2FpYS12aXN1YWxpemVyLjEzNzQ1MTkyMTEyOTE1NDIyMg==
+- kernel: stage 1088 held (final lerp new Vector3 alpha 0.05; torus/default tube shared by x/z with y identity to infinity; triangular floor snap; hamiltonian y lift; infinity lemniscate denom exclusive to x/z; major/minor pre-switch)
+- token: hop-1088.gaia-visualizer.137451921129154222
+- token_b64: aG9wLTEwODguZ2FpYS12aXN1YWxpemVyLjEzNzQ1MTkyMTEyOTE1NDIyMg==
 
 ```
 NUMERAL=137451921129154222
 REPO=machackabook/gaia-visualizer
-HOP=1086
-UTC=2026-11-05T22:09Z
-CDT=2026-11-05 16:09 CST
+HOP=1088
+UTC=2026-11-06T00:11Z
+CDT=2026-11-05 18:11 CST
 CASCADE=left_intact_cron_53_contents_read
 NULL_POINT_ZERO=REFUSED
 PRIOR=continuity-ledger-cycle@1073@2026-11-05T12:16Z
@@ -39,17 +39,17 @@ NEXT=living-bibliography-continuity-engine
 DRIVE_INDEX=CONTINUUM-ENCLAVE-137451921129154222
 DRIVE_ID=1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU
 BINARIES=not_uploaded
-KERNEL=1086_triangular_floor_snap_hold
+KERNEL=1088_lerp_alpha_0.05_hold
 OPERATOR=Team Enhance / Continuity Engine / sSoS Operating
 CONTRACT=preserve enhance synthesize; no history rewrite; no secrets; no force-push; no root claim
 ```
 
-## Prior stamp (hop 1085)
+## Prior stamp (hop 1087)
 
 - repo: machackabook/gaia-visualizer
-- hop: 1085
-- utc: 2026-11-05T21:09:00Z
-- cdt: 2026-11-05 15:09 CST
+- hop: 1087
+- utc: 2026-11-05T23:10:00Z
+- cdt: 2026-11-05 17:10 CST
 - numeral: 137451921129154222
 - team: Enhance / Continuity Engine / sSoS Operating
 - cascade.yml: intact (cron 53 * * * *, contents: read, lint-docs checks README, SECURITY, stamp, numeral, no .env / secrets.yml / id_rsa). Not rewritten this hop.
@@ -64,16 +64,16 @@ CONTRACT=preserve enhance synthesize; no history rewrite; no secrets; no force-p
 - cloud index: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU) — mention only; no binaries uploaded
 - unknowns kept: pair-code, Tailscale auth key, device voiceprint, SD mount path. Not invented.
 - encode: source-only authority
-- kernel: stage 1085 held (hamiltonian y lift free of minor and phi; infinity lemniscate denom shared exclusively by x/z; major/minor pre-switch; uniforms order)
-- token: hop-1085.gaia-visualizer.137451921129154222
-- token_b64: aG9wLTEwODUuZ2FpYS12aXN1YWxpemVyLjEzNzQ1MTkyMTEyOTE1NDIyMg==
+- kernel: stage 1087 held (torus/default tube (major + minor*cos(phi)) shared by x/z with y identity to infinity; triangular floor snap to 2π/3 free of theta*5 on y; hamiltonian y lift free of minor/phi; infinity lemniscate denom shared exclusively by x/z; major/minor pre-switch)
+- token: hop-1087.gaia-visualizer.137451921129154222
+- token_b64: aG9wLTEwODcuZ2FpYS12aXN1YWxpemVyLjEzNzQ1MTkyMTEyOTE1NDIyMg==
 
 ```
 NUMERAL=137451921129154222
 REPO=machackabook/gaia-visualizer
-HOP=1085
-UTC=2026-11-05T21:09Z
-CDT=2026-11-05 15:09 CST
+HOP=1087
+UTC=2026-11-05T23:10Z
+CDT=2026-11-05 17:10 CST
 CASCADE=left_intact_cron_53_contents_read
 NULL_POINT_ZERO=REFUSED
 PRIOR=continuity-ledger-cycle@1073@2026-11-05T12:16Z
@@ -81,7 +81,7 @@ NEXT=living-bibliography-continuity-engine
 DRIVE_INDEX=CONTINUUM-ENCLAVE-137451921129154222
 DRIVE_ID=1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU
 BINARIES=not_uploaded
-KERNEL=1085_hamiltonian_y_lift_hold
+KERNEL=1087_torus_tube_hold
 OPERATOR=Team Enhance / Continuity Engine / sSoS Operating
 CONTRACT=preserve enhance synthesize; no history rewrite; no secrets; no force-push; no root claim
 ```
