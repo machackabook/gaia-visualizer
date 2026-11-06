@@ -1,10 +1,10 @@
 {
-  "stage": 1074,
+  "stage": 1103,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
-  "paste": "2026-11-05",
-  "next": [1075, 1076, 1077],
+  "paste": "2026-11-06",
+  "next": [1104, 1105, 1106],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stage 1074 holds major = 10 + (idx * 2); minor = 3 + (toroidalWeave * 2); pre-switch from connecting chat paste of update(t). Prior holds preserved. Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stage 1103 holds hamiltonian parametric: hScale=major; x=hScale*cos(theta*3)*cos(theta); z=hScale*cos(theta*3)*sin(theta); y=hScale*sin(theta*3)+(sin(t)*2); free of minor/phi. Prior holds preserved. Paste not rewritten."
 }
