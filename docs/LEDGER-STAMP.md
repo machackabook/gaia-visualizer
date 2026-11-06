@@ -2,12 +2,12 @@
 
 Append-only Continuity stamp. Do not rewrite history.
 
-## Current stamp (hop 1094)
+## Current stamp (hop 1101)
 
 - repo: machackabook/gaia-visualizer
-- hop: 1094
-- utc: 2026-11-06T05:15:00Z
-- cdt: 2026-11-05 23:15 CST
+- hop: 1101
+- utc: 2026-11-06T16:10:00Z
+- cdt: 2026-11-06 10:10 CST
 - numeral: 137451921129154222
 - team: Enhance / Continuity Engine / sSoS Operating
 - cascade.yml: intact (cron 53 * * * *, contents: read, lint-docs checks README, SECURITY, stamp, numeral, no .env / secrets.yml / id_rsa). Not rewritten this hop.
@@ -22,16 +22,16 @@ Append-only Continuity stamp. Do not rewrite history.
 - cloud index: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU) — mention only; no binaries uploaded
 - unknowns kept: pair-code, Tailscale auth key, device voiceprint, SD mount path. Not invented.
 - encode: source-only authority
-- kernel: stage 1094 held (triangular modulo snap to tetrahedron/lattice; tAngle floor 2π/3; y sector free of theta*5; hamiltonian vertex traversal held; infinity lemniscate denom exclusive held; major/minor pre-switch held; theta step held; uniforms uTime then uGravity; final lerp alpha 0.05; torus/default tube)
-- token: hop-1094.gaia-visualizer.137451921129154222
-- token_b64: aG9wLTEwOTQuZ2FpYS12aXN1YWxpemVyLjEzNzQ1MTkyMTEyOTE1NDIyMg==
+- kernel: stage 1101 held (full kernel from uniforms through final lerp: uTime then uGravity; theta step (0.01 + idx * 0.002) * gravityPull; major/minor pre-switch; four-case switch infinity lemniscate / hamiltonian parametric / triangular floor / torus tube; phi external; lerp alpha 0.05)
+- token: hop-1101.gaia-visualizer.137451921129154222
+- token_b64: aG9wLTExMDEuZ2FpYS12aXN1YWxpemVyLjEzNzQ1MTkyMTEyOTE1NDIyMg==
 
 ```
 NUMERAL=137451921129154222
 REPO=machackabook/gaia-visualizer
-HOP=1094
-UTC=2026-11-06T05:15Z
-CDT=2026-11-05 23:15 CST
+HOP=1101
+UTC=2026-11-06T16:10Z
+CDT=2026-11-06 10:10 CST
 CASCADE=left_intact_cron_53_contents_read
 NULL_POINT_ZERO=REFUSED
 PRIOR=continuity-ledger-cycle@1073@2026-11-05T12:16Z
@@ -39,17 +39,17 @@ NEXT=living-bibliography-continuity-engine
 DRIVE_INDEX=CONTINUUM-ENCLAVE-137451921129154222
 DRIVE_ID=1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU
 BINARIES=not_uploaded
-KERNEL=1094_triangular_lattice_hold
+KERNEL=1101_full_kernel_pin
 OPERATOR=Team Enhance / Continuity Engine / sSoS Operating
 CONTRACT=preserve enhance synthesize; no history rewrite; no secrets; no force-push; no root claim
 ```
 
-## Prior stamp (hop 1093)
+## Prior stamp (hop 1098)
 
 - repo: machackabook/gaia-visualizer
-- hop: 1093
-- utc: 2026-11-06T04:08:00Z
-- cdt: 2026-11-05 22:08 CST
+- hop: 1098
+- utc: 2026-11-06T15:12:00Z
+- cdt: 2026-11-06 09:12 CST
 - numeral: 137451921129154222
 - team: Enhance / Continuity Engine / sSoS Operating
 - cascade.yml: intact (cron 53 * * * *, contents: read, lint-docs checks README, SECURITY, stamp, numeral, no .env / secrets.yml / id_rsa). Not rewritten this hop.
@@ -64,16 +64,16 @@ CONTRACT=preserve enhance synthesize; no history rewrite; no secrets; no force-p
 - cloud index: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU) — mention only; no binaries uploaded
 - unknowns kept: pair-code, Tailscale auth key, device voiceprint, SD mount path. Not invented.
 - encode: source-only authority
-- kernel: stage 1093 held (hamiltonian parametric mapping favoring vertex traversal free of minor/phi; y lift sin(t)*2; infinity lemniscate denom exclusive held; major/minor pre-switch held; theta step held; uniforms uTime then uGravity; final lerp alpha 0.05; torus/default tube; triangular floor snap)
-- token: hop-1093.gaia-visualizer.137451921129154222
-- token_b64: aG9wLTEwOTMuZ2FpYS12aXN1YWxpemVyLjEzNzQ1MTkyMTEyOTE1NDIyMg==
+- kernel: stage 1098 held (phi as external binding referenced but never assigned inside paste; uniforms uTime then uGravity; final lerp alpha 0.05; torus/default tube; triangular floor snap; hamiltonian vertex traversal; infinity lemniscate)
+- token: hop-1098.gaia-visualizer.137451921129154222
+- token_b64: aG9wLTEwOTguZ2FpYS12aXN1YWxpemVyLjEzNzQ1MTkyMTEyOTE1NDIyMg==
 
 ```
 NUMERAL=137451921129154222
 REPO=machackabook/gaia-visualizer
-HOP=1093
-UTC=2026-11-06T04:08Z
-CDT=2026-11-05 22:08 CST
+HOP=1098
+UTC=2026-11-06T15:12Z
+CDT=2026-11-06 09:12 CST
 CASCADE=left_intact_cron_53_contents_read
 NULL_POINT_ZERO=REFUSED
 PRIOR=continuity-ledger-cycle@1073@2026-11-05T12:16Z
@@ -81,7 +81,7 @@ NEXT=living-bibliography-continuity-engine
 DRIVE_INDEX=CONTINUUM-ENCLAVE-137451921129154222
 DRIVE_ID=1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU
 BINARIES=not_uploaded
-KERNEL=1093_hamiltonian_vertex_traversal_hold
+KERNEL=1098_phi_external_binding
 OPERATOR=Team Enhance / Continuity Engine / sSoS Operating
 CONTRACT=preserve enhance synthesize; no history rewrite; no secrets; no force-push; no root claim
 ```
