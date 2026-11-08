@@ -1,5 +1,5 @@
-/** Stage 1073 — theta step (0.01 + idx * 0.002) * gravityPull before major/minor. Document only. Paste not rewritten. No secrets. */
-export const THETA_STEP_STAGE = 1073;
+/** Stage 1127 — hold theta step (0.01 + idx * 0.002) * gravityPull unread by switch. Document only. Paste not rewritten. No secrets. */
+export const THETA_STEP_STAGE = 1127;
 export const THETA_STEP_SESSION = 'beec41f1';
 export const THETA_STEP_LIVING = '7cd81012';
 
@@ -8,7 +8,8 @@ const PINNED = '    this.theta += (0.01 + this.idx * 0.002) * state.gravityPull;
 export function sampleThetaStepHold() {
   return {
     formula: '(0.01 + this.idx * 0.002) * state.gravityPull',
-    beforeMajorMinor: true,
+    beforeSwitch: true,
+    unreadByCases: true,
   };
 }
 
@@ -26,23 +27,23 @@ export function noteSessionThetaStepHold(source) {
     sample,
     pasteRewritten: false,
     secrets: false,
-    ok: hasStep && sample.beforeMajorMinor,
-    note: 'update(t) advances theta by (0.01 + idx*0.002)*gravityPull before major/minor. Paste not rewritten.',
+    ok: hasStep && sample.beforeSwitch && sample.unreadByCases,
+    note: 'update(t) advances theta by (0.01 + idx*0.002)*gravityPull before switch; unread by case bodies. Paste not rewritten.',
   };
 }
 
-export function compileSessionStage1073(source) {
+export function compileSessionStage1127(source) {
   const hold = noteSessionThetaStepHold(source);
   return {
     current: THETA_STEP_STAGE,
     session: THETA_STEP_SESSION,
     living: THETA_STEP_LIVING,
-    paste: '2026-11-05 15:10Z',
+    paste: '2026-11-08 01:10Z',
     hold,
     next: [
-      { stage: 1074, title: 'hold major/minor pre-switch' },
-      { stage: 1075, title: 'hold full four-case switch' },
-      { stage: 1076, title: 'hold infinity lemniscate denom shared by x/z only' },
+      { stage: 1128, title: 'hold major/minor declaration prior to switch (reaffirm)' },
+      { stage: 1129, title: 'hold switch four-case (infinity | hamiltonian | triangular | torus/default) sole dispatch' },
+      { stage: 1130, title: 'hold infinity lemniscate denom 1 + sin(theta)^2 scale *1.5' },
     ],
   };
 }
