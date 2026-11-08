@@ -1,5 +1,5 @@
-/** Stage 1135 — hold uniforms write order uTime then uGravity from current connecting chat paste. Prior: 1134 final lerp. Document only. Do not rewrite the paste. No secrets. */
-export const TRIANGULAR_FLOOR_STAGE = 1135;
+/** Stage 1150 — hold final lerp new Vector3 alpha 0.05 from current connecting chat paste. Prior: 1149 torus tube. Document only. Do not rewrite the paste. No secrets. */
+export const TRIANGULAR_FLOOR_STAGE = 1150;
 export const TRIANGULAR_FLOOR_SESSION_HASH = 'beec41f1';
 export const TRIANGULAR_FLOOR_LIVING_HASH = '7cd81012';
 export const TRIANGULAR_FLOOR_SECTORS = 3;
@@ -135,6 +135,6 @@ export function noteSessionTriangularFloor(source) {
     pasteRewritten: false,
     secrets: false,
     ok: floorSnap && usesTAngle && snapHolds && yFreeOfTheta5 && invented.length === 0 && lerpAlphaLiteral && uniformsOrder && thetaStep && thetaBeforeMajor && sessionAlloc && infinityDenomShared && hamiltonianLiftFree && torusTube && phiExternal && fullKernel && majorMinorBeforeSwitch,
-    note: 'Uniforms write order uTime then uGravity held from current connecting chat paste of update(t). Full kernel, triangular floor, hamiltonian lift, infinity denom, torus tube, and prior holds remain. Session paste remains untouched. Paste not rewritten.',
+    note: 'Final lerp new Vector3 alpha 0.05 held from current connecting chat paste of update(t). Full kernel, triangular floor, hamiltonian lift, infinity denom, torus tube, and prior holds remain. Session paste remains untouched. Paste not rewritten.',
   };
 }
