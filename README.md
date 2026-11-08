@@ -11,13 +11,13 @@ Operating sits in the middle. Team Enhance hops one repo per run. Equalizer form
 - Language: JavaScript
 - Numeral: `137451921129154222`
 - Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
-- Stage: **1126** — 2026-11-08T12:15Z (2026-11-08 06:15 CST)
-- Kernel stage: **1131** held (hamiltonian parametric free of minor: hScale=major; x/z = hScale * cos(theta*3)*cos/sin(theta); y=hScale*sin(theta*3)+sin(t)*2). Prior infinity lemniscate, four-case switch, major/minor, theta step, uniforms order, shared lerp alpha 0.05, torus/default tube, triangular floor snap holds remain.
+- Stage: **1138** — 2026-11-08T15:11Z (2026-11-08 09:11 CST)
+- Kernel stage: **1138** held (full `update(t)` kernel: uniforms uTime then uGravity; theta += (0.01 + idx * 0.002) * gravityPull; major=10+(idx*2), minor=3+(toroidalWeave*2) pre-switch; four-case switch infinity lemniscate / hamiltonian parametric free of minor / triangular floor 2π/3 / torus default tube; final lerp new Vector3 alpha 0.05). Prior holds remain.
 - Compounding tier: **T5 / 99%**
-- This hop: waterfall advance after hamiltonian-incursion hop 1125. Append-only stamp to hop 1126. Cascade.yml left intact (healthy cron + lint). No secrets written. No device rooted. Drive index mentioned only. Env-check note reinforced as pure tree-gate presence check. README status realigned.
-- Prior local: hop 1131 @ 2026-11-08T04:10Z preserved. Not rewritten. Intermediate stages held.
-- Mesh prior: hamiltonian-incursion hop 1125 @ 2026-11-08T11:13Z. Honored. Not re-touched.
-- Next in operator waterfall: living-bibliography-continuity-engine
+- This hop: connecting chat re-pasted the complete geometric field kernel. Append-only stages 1136 (theta step), 1137 (major/minor), 1138 (full kernel). Cascade.yml left intact. No secrets written. No device rooted. Drive index mentioned only. Env-check note reinforced as pure tree-gate presence check. README status realigned.
+- Prior local: hop 1135 @ 2026-11-08T05:10Z preserved. Intermediate stages held. Not rewritten.
+- Mesh prior: living-bibliography-continuity-engine hop 1127 @ 2026-11-08T13:18Z. Honored. Not re-touched.
+- Next in operator waterfall: continuity-engine-ssos
 - Cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`, lint-docs requires README, SECURITY.md, stamp, numeral, no obvious secret files). Not rewritten this hop.
 - Drive mesh: GitHub remains the versioned singularity. Cloud index is Drive folder `CONTINUUM-ENCLAVE-137451921129154222` (id `1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU`). Mention only. Do not upload binaries from this hop.
 - Equalizer: format-only; no history rewrite.
@@ -46,8 +46,8 @@ Current score for this surface: **99% (T5)**.
 
 What this hop added, without rewriting prior stages:
 
-- Waterfall realignment continuing declared operator rotation after hamiltonian-incursion 1125.
-- Stale stages and prior kernel work left in place as provenance; stage 1126 is append-only.
+- Append-only stages 1136–1138 holding theta step, major/minor, and the full geometric kernel from the connecting paste.
+- Stale stages and prior kernel work left in place as provenance; stage 1138 is append-only.
 - Local verify path kept explicit: confirm README, SECURITY.md, docs/LEDGER-STAMP.md, and the numeral present. No secret files.
 - Unknowns kept unknown: pair-code, Tailscale auth key, device voiceprint, SD mount path. Not invented.
 
@@ -63,7 +63,7 @@ Cascade health this hop (read-only): schedule `53 * * * *`, `workflow_dispatch`,
 
 Confirm tree has README, SECURITY.md, docs/LEDGER-STAMP.md, and the numeral. No secret files.
 
-Env-check note (hop 1126): a zero exit means README, stamp, and numeral are present in the tree. It does not mean a device was rooted, a Tailscale key is valid, or an ADB pair code was accepted. Do not commit `.env`, Tailscale auth keys, or ADB pair codes. A found key is a stop, not a stamp. Missing keys are the correct state. This hop does not probe wireless debugging and does not open a Tailscale socket. Never claim a device was rooted. Green is presence, not privilege. Clarity: catalog only what the source tree reveals; never invent unknowns. Presence check only; no root claim.
+Env-check note (hop 1138): a zero exit means README, stamp, and numeral are present in the tree. It does not mean a device was rooted, a Tailscale key is valid, or an ADB pair code was accepted. Do not commit `.env`, Tailscale auth keys, or ADB pair codes. A found key is a stop, not a stamp. Missing keys are the correct state. This hop does not probe wireless debugging and does not open a Tailscale socket. Never claim a device was rooted. Green is presence, not privilege. Clarity: catalog only what the source tree reveals; never invent unknowns. Presence check only; no root claim.
 
 ## Waterfall (one repo per enhance hop)
 
@@ -74,20 +74,20 @@ Declared operator rotation. One repo, then stop.
 3. The-Hive — hop closed. Honored. Not re-touched.
 4. continuity-ledger-cycle — hop closed. Honored. Not re-touched.
 5. hamiltonian-incursion — hop 1125 closed @ 2026-11-08T11:13Z. Honored. Not re-touched.
-6. gaia-visualizer — **1126 this hop**
-7. living-bibliography-continuity-engine — next
-8. continuity-engine-ssos — subsequent
+6. gaia-visualizer — **1138 this hop**
+7. living-bibliography-continuity-engine — hop 1127 closed. Honored. Not re-touched.
+8. continuity-engine-ssos — next
 
-## Waterfall receipt (hop 1126)
+## Waterfall receipt (hop 1138)
 
-- utc: 2026-11-08T12:15Z
-- cdt: 2026-11-08 06:15 CST
-- prior local: hop 1131 @ 2026-11-08T04:10Z. Honored. Intermediate stages held.
-- mesh prior: hamiltonian-incursion hop 1125 @ 2026-11-08T11:13Z. Honored. Not re-touched.
-- this hop: waterfall advance + append-only stamp + README status realignment + env-check clarity
+- utc: 2026-11-08T15:11Z
+- cdt: 2026-11-08 09:11 CST
+- prior local: hop 1135 @ 2026-11-08T05:10Z. Honored. Intermediate stages held.
+- mesh prior: living-bibliography-continuity-engine hop 1127 @ 2026-11-08T13:18Z. Honored. Not re-touched.
+- this hop: connecting chat paste held via append-only stages 1136 (theta), 1137 (major/minor), 1138 (full kernel) + README status realignment + env-check clarity
 - cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`)
 - cloud index mention only: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU); no binaries uploaded
-- next: living-bibliography-continuity-engine
+- next: continuity-engine-ssos
 
 ## Mesh siblings
 
