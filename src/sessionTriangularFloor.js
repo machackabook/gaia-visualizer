@@ -1,5 +1,5 @@
-/** Stage 1154 — hold switch(targetState.geometry) sole four-case dispatcher from current connecting chat paste. Prior: 1153 major/minor. Document only. Do not rewrite the paste. No secrets. */
-export const TRIANGULAR_FLOOR_STAGE = 1154;
+/** Stage 1159 — hold final lerp(new THREE.Vector3(x, y, z), 0.05) from current connecting chat paste. Prior: 1158 torus tube. Document only. Do not rewrite the paste. No secrets. */
+export const TRIANGULAR_FLOOR_STAGE = 1159;
 export const TRIANGULAR_FLOOR_SESSION_HASH = 'beec41f1';
 export const TRIANGULAR_FLOOR_LIVING_HASH = '7cd81012';
 export const TRIANGULAR_FLOOR_SECTORS = 3;
@@ -137,6 +137,6 @@ export function noteSessionTriangularFloor(source) {
     pasteRewritten: false,
     secrets: false,
     ok: floorSnap && usesTAngle && snapHolds && yFreeOfTheta5 && invented.length === 0 && lerpAlphaLiteral && uniformsOrder && thetaStep && thetaBeforeMajor && sessionAlloc && infinityDenomShared && hamiltonianLiftFree && torusTube && phiExternal && fullKernel && majorMinorBeforeSwitch && soleFourCase,
-    note: 'Sole four-case switch(targetState.geometry) held from current connecting chat paste of update(t). Full kernel, major/minor, triangular floor, hamiltonian lift, infinity denom, torus tube, phi external, theta step, and prior holds remain. Session paste remains untouched. Paste not rewritten.',
+    note: 'Final lerp(new THREE.Vector3(x, y, z), 0.05) held from current connecting chat paste of update(t). Full kernel, major/minor, triangular floor, hamiltonian lift, infinity denom, torus tube, phi external, theta step, and prior holds remain. Session paste remains untouched. Paste not rewritten.',
   };
 }
