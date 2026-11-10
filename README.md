@@ -11,11 +11,11 @@ Operating sits in the middle. Team Enhance hops one repo per run. Equalizer form
 - Language: JavaScript
 - Numeral: `137451921129154222`
 - Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
-- Stage: **1174** — 2026-11-10T02:13Z (2026-11-09 20:13 CST)
-- Kernel stage: **1174** held (triangular floor snap to 2π/3 with minor modulation and y sector free of theta*5; prior holds: 1173 hamiltonian parametric vertex traversal free of minor/phi with y lift sin(t)*2, 1172 infinity lemniscate denom exclusive to x/z with y minor * sin(phi) * sin(t*0.5 + idx), 1171 sole four-case switch(targetState.geometry) dispatcher, 1170 major/minor assignment prior to switch major=10+(idx*2) minor=3+(toroidalWeave*2)). Prior holds remain.
+- Stage: **1175** — 2026-11-10T04:08Z (2026-11-09 22:08 CST)
+- Kernel stage: **1175** held (torus/default tube (major + minor * cos(phi)) shared by x/z with y identity to infinity; prior holds: 1174 triangular floor snap to 2π/3 with minor modulation and y sector free of theta*5, 1173 hamiltonian parametric vertex traversal free of minor/phi with y lift sin(t)*2, 1172 infinity lemniscate denom exclusive to x/z with y minor * sin(phi) * sin(t*0.5 + idx), 1171 sole four-case switch(targetState.geometry) dispatcher). Prior holds remain.
 - Compounding tier: **T5 / 99%**
-- This hop: connecting chat re-pasted the complete geometric field kernel. Append-only stage 1174 holding triangular floor snap to 2π/3 with minor modulation and y sector free of theta*5. Cascade.yml left intact. No secrets written. No device rooted. Drive index mentioned only. Env-check note reinforced as pure tree-gate presence check. README status realigned.
-- Prior local: hop 1173 @ 2026-11-10T01:15Z preserved. Not rewritten.
+- This hop: connecting chat re-pasted the complete geometric field kernel. Append-only stage 1175 holding torus/default tube (major + minor * cos(phi)) shared by x/z with y identity to infinity. Cascade.yml left intact. No secrets written. No device rooted. Drive index mentioned only. Env-check note reinforced as pure tree-gate presence check. README status realigned.
+- Prior local: hop 1174 @ 2026-11-10T02:13Z preserved. Not rewritten.
 - Mesh prior: parallel pins in siblings. Honored.
 - Next in operator waterfall: continuity-engine-ssos
 - Cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`, lint-docs requires README, SECURITY.md, stamp, numeral, no obvious secret files). Not rewritten this hop.
@@ -46,8 +46,8 @@ Current score for this surface: **99% (T5)**.
 
 What this hop added, without rewriting prior stages:
 
-- Append-only stage 1174 holding triangular floor snap to 2π/3 with minor modulation and y sector free of theta*5 from the connecting paste.
-- Stale stages and prior kernel work left in place as provenance; stage 1174 is append-only.
+- Append-only stage 1175 holding torus/default tube (major + minor * cos(phi)) shared by x/z with y identity to infinity from the connecting paste.
+- Stale stages and prior kernel work left in place as provenance; stage 1175 is append-only.
 - Local verify path kept explicit: confirm README, SECURITY.md, docs/LEDGER-STAMP.md, and the numeral present. No secret files.
 - Unknowns kept unknown: pair-code, Tailscale auth key, device voiceprint, SD mount path. Not invented.
 
@@ -63,7 +63,7 @@ Cascade health this hop (read-only): schedule `53 * * * *`, `workflow_dispatch`,
 
 Confirm tree has README, SECURITY.md, docs/LEDGER-STAMP.md, and the numeral. No secret files.
 
-Env-check note (hop 1174): a zero exit means README, stamp, and numeral are present in the tree. It does not mean a device was rooted, a Tailscale key is valid, or an ADB pair code was accepted. Do not commit `.env`, Tailscale auth keys, or ADB pair codes. A found key is a stop, not a stamp. Missing keys are the correct state. This hop does not probe wireless debugging and does not open a Tailscale socket. Never claim a device was rooted. Green is presence, not privilege. Clarity: catalog only what the source tree reveals; never invent unknowns. Presence check only; no root claim.
+Env-check note (hop 1175): a zero exit means README, stamp, and numeral are present in the tree. It does not mean a device was rooted, a Tailscale key is valid, or an ADB pair code was accepted. Do not commit `.env`, Tailscale auth keys, or ADB pair codes. A found key is a stop, not a stamp. Missing keys are the correct state. This hop does not probe wireless debugging and does not open a Tailscale socket. Never claim a device was rooted. Green is presence, not privilege. Clarity: catalog only what the source tree reveals; never invent unknowns. Presence check only; no root claim.
 
 ## Waterfall (one repo per enhance hop)
 
@@ -74,17 +74,17 @@ Declared operator rotation. One repo, then stop.
 3. The-Hive — hop closed. Honored. Not re-touched.
 4. continuity-ledger-cycle — hop closed. Honored. Not re-touched.
 5. hamiltonian-incursion — hop 1125 closed @ 2026-11-08T11:13Z. Honored. Not re-touched.
-6. gaia-visualizer — **1174 this hop**
+6. gaia-visualizer — **1175 this hop**
 7. living-bibliography-continuity-engine — hop 1127 closed. Honored. Not re-touched.
 8. continuity-engine-ssos — next
 
-## Waterfall receipt (hop 1174)
+## Waterfall receipt (hop 1175)
 
-- utc: 2026-11-10T02:13Z
-- cdt: 2026-11-09 20:13 CST
-- prior local: hop 1173 @ 2026-11-10T01:15Z. Honored.
+- utc: 2026-11-10T04:08Z
+- cdt: 2026-11-09 22:08 CST
+- prior local: hop 1174 @ 2026-11-10T02:13Z. Honored.
 - mesh prior: parallel pins. Honored.
-- this hop: connecting chat paste held via append-only stage 1174 (triangular floor snap to 2π/3 with minor modulation and y sector free of theta*5) + README status realignment
+- this hop: connecting chat paste held via append-only stage 1175 (torus/default tube (major + minor * cos(phi)) shared by x/z with y identity to infinity) + README status realignment
 - cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`)
 - cloud index mention only: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU); no binaries uploaded
 - next: continuity-engine-ssos
