@@ -1,10 +1,10 @@
 {
-  "stage": 1200,
+  "stage": 1223,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
-  "paste": "2026-11-11",
-  "next": [1201, 1202, 1203],
+  "paste": "2026-11-12",
+  "next": [1224, 1225, 1226],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch unchanged four-case. Stage 1200 holds triangular floor snap to 2π/3 and y sector free of theta*5. Prior holds preserved. Paste not rewritten."
+  "note": "Session switch unchanged four-case. Stage 1223 holds major=10+(idx*2) minor=3+(toroidalWeave*2) prior to switch; phi external. Prior holds preserved. Paste not rewritten."
 }
