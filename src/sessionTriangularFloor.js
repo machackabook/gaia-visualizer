@@ -1,5 +1,5 @@
-/** Stage 1220 — hold hamiltonian parametric vertex traversal free of minor on x/z, y lift free of hScale/minor from current connecting chat paste. Prior parallel holds remain. Document only. Do not rewrite the paste. No secrets. */
-export const TRIANGULAR_FLOOR_STAGE = 1220;
+/** Stage 1222 — hold torus/default tube (major + minor*cos(phi)) shared by x/z; y identity to infinity from current connecting chat paste. Prior parallel holds remain. Document only. Do not rewrite the paste. No secrets. */
+export const TRIANGULAR_FLOOR_STAGE = 1222;
 export const TRIANGULAR_FLOOR_SESSION_HASH = 'beec41f1';
 export const TRIANGULAR_FLOOR_LIVING_HASH = '7cd81012';
 export const TRIANGULAR_FLOOR_SECTORS = 3;
@@ -137,6 +137,6 @@ export function noteSessionTriangularFloor(source) {
     pasteRewritten: false,
     secrets: false,
     ok: floorSnap && usesTAngle && snapHolds && yFreeOfTheta5 && invented.length === 0 && lerpAlphaLiteral && uniformsOrder && thetaStep && thetaBeforeMajor && sessionAlloc && infinityDenomShared && hamiltonianLiftFree && torusTube && phiExternal && fullKernel && majorMinorBeforeSwitch && soleFourCase,
-    note: 'Hamiltonian parametric vertex traversal free of minor on x/z, y lift free of hScale/minor held from current connecting chat paste of update(t). Full kernel, infinity denom, torus tube, triangular floor, major/minor prior, and prior holds remain. Session paste remains untouched. Paste not rewritten.',
+    note: 'Torus/default tube (major + minor*cos(phi)) shared by x/z; y identity to infinity held from current connecting chat paste of update(t). Full kernel, infinity denom, hamiltonian lift, triangular floor, major/minor prior, and prior holds remain. Session paste remains untouched. Paste not rewritten.',
   };
 }
