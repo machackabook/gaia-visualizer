@@ -11,11 +11,11 @@ Operating sits in the middle. Team Enhance hops one repo per run. Equalizer form
 - Language: JavaScript
 - Numeral: `137451921129154222`
 - Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
-- Stage: **1231** — 2026-11-13T03:10Z (2026-11-12 21:10 CST)
-- Kernel stage: **1231** held (major/minor assignment prior to switch; phi external; prior holds remain).
+- Stage: **1232** — 2026-11-13T04:15Z (2026-11-12 22:15 CST)
+- Kernel stage: **1232** held (uniforms uTime then uGravity; theta * gravityPull; prior holds remain).
 - Compounding tier: **T5 / 99%**
-- This hop: waterfall advance after prior 1230. Append-only stamp to hop 1231. Cascade.yml left intact (healthy cron + lint). No secrets written. No device rooted. Drive index mentioned only. Env-check note reinforced as pure tree-gate presence check of README/stamp/numeral only.
-- Prior local: hop 1230 preserved. Not rewritten.
+- This hop: waterfall advance after prior 1231. Append-only stamp to hop 1232. Cascade.yml left intact (healthy cron + lint). No secrets written. No device rooted. Drive index mentioned only. Env-check note reinforced as pure tree-gate presence check of README/stamp/numeral only.
+- Prior local: hop 1231 preserved. Not rewritten.
 - Mesh prior: hamiltonian-incursion hop 1225 @ 2026-11-12T21:16Z. Honored. Not re-touched.
 - Next in operator waterfall: living-bibliography-continuity-engine
 - Cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`, lint-docs requires README, SECURITY.md, stamp, numeral, no obvious secret files). Not rewritten this hop.
@@ -46,10 +46,9 @@ Current score for this surface: **99% (T5)**.
 
 What this hop added, without rewriting prior stages:
 
-- Stamp realigned to hop 1231; prior 1230 preserved.
+- Stamp realigned to hop 1232; prior 1231 preserved.
 - README status updated for current hop without altering kernel or history.
-- STAGE-1231.md added holding major/minor prior to switch and phi external.
-- src/sessionMajorMinor.js added as pure session extractor.
+- STAGE-1232.md added holding uniforms write order and theta * gravityPull.
 - Cascade left intact and healthy.
 - Unknowns kept unknown: pair-code, Tailscale auth key, device voiceprint, SD mount path. Not invented.
 
@@ -65,7 +64,7 @@ Cascade health this hop (read-only): schedule `53 * * * *`, `workflow_dispatch`,
 
 Confirm tree has README, SECURITY.md, docs/LEDGER-STAMP.md, and the numeral. No secret files.
 
-Env-check note (hop 1231): a zero exit means README, stamp, and numeral are present in the tree. It does not mean a device was rooted, a Tailscale key is valid, or an ADB pair code was accepted. Do not commit `.env`, Tailscale auth keys, or ADB pair codes. A found key is a stop, not a stamp. Missing keys are the correct state. This hop does not probe wireless debugging and does not open a Tailscale socket. Never claim a device was rooted. Green is presence, not privilege. Clarity: catalog only what the source tree reveals; never invent unknowns. Presence check only; no root claim. Reinforced for hop 1231. Source tree sole trusted neighbor.
+Env-check note (hop 1232): a zero exit means README, stamp, and numeral are present in the tree. It does not mean a device was rooted, a Tailscale key is valid, or an ADB pair code was accepted. Do not commit `.env`, Tailscale auth keys, or ADB pair codes. A found key is a stop, not a stamp. Missing keys are the correct state. This hop does not probe wireless debugging and does not open a Tailscale socket. Never claim a device was rooted. Green is presence, not privilege. Clarity: catalog only what the source tree reveals; never invent unknowns. Presence check only; no root claim. Reinforced for hop 1232. Source tree sole trusted neighbor.
 
 ## Waterfall (one repo per enhance hop)
 
@@ -77,16 +76,16 @@ Declared operator rotation. One repo, then stop.
 4. continuity-ledger-cycle — hop closed. Honored. Not re-touched.
 5. continuity-engine-ssos — hop closed. Honored. Not re-touched.
 6. hamiltonian-incursion — hop 1225 closed @ 2026-11-12T21:16Z. Honored. Not re-touched.
-7. gaia-visualizer — **1231 this hop**
+7. gaia-visualizer — **1232 this hop**
 8. living-bibliography-continuity-engine — next
 
-## Waterfall receipt (hop 1231)
+## Waterfall receipt (hop 1232)
 
-- utc: 2026-11-13T03:10Z
-- cdt: 2026-11-12 21:10 CST
-- prior local: hop 1230 preserved. Honored.
+- utc: 2026-11-13T04:15Z
+- cdt: 2026-11-12 22:15 CST
+- prior local: hop 1231 preserved. Honored.
 - mesh prior: hamiltonian-incursion hop 1225 @ 2026-11-12T21:16Z. Honored. Not re-touched.
-- this hop: stamp realignment to 1231 + README status refresh + STAGE-1231.md + sessionMajorMinor.js. Cascade intact.
+- this hop: stamp realignment to 1232 + README status refresh + STAGE-1232.md. Cascade intact.
 - cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`)
 - cloud index mention only: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU); no binaries uploaded
 - next: living-bibliography-continuity-engine
