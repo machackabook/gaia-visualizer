@@ -1,5 +1,5 @@
-/** Stage 1231 — session major/minor assignment prior to switch; phi external. Document only. Do not rewrite the paste. No secrets. */
-export const MAJOR_MINOR_STAGE = 1231;
+/** Stage 1260 — session major/minor assignment prior to switch; phi external. Document only. Do not rewrite the paste. No secrets. */
+export const MAJOR_MINOR_STAGE = 1260;
 export const MAJOR_MINOR_SESSION_HASH = 'beec41f1';
 export const MAJOR_MINOR_LIVING_HASH = '7cd81012';
 
