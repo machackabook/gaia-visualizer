@@ -11,13 +11,13 @@ Operating sits in the middle. Team Enhance hops one repo per run. Equalizer form
 - Language: JavaScript
 - Numeral: `137451921129154222`
 - Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
-- Stage: **1248** — 2026-11-14T02:09Z
-- Kernel stage: **1248** held (env-check pure presence gate; prior phi external/minor usage and full kernel pins remain).
+- Stage: **1249** — 2026-11-14T03:08Z
+- Kernel stage: **1249** held (full kernel closure with all prior pins parallel from connecting update(t) paste; prior env-check pure presence and geometry pins remain).
 - Compounding tier: **T5 / 99%**
-- This hop: parallel pin holding env-check as pure tree-gate from connecting paste. Append-only stamp to hop 1248. Cascade.yml left intact (healthy cron + lint). No secrets written. No device rooted. Drive index mentioned only. Env-check note reinforced as pure tree-gate presence check of README/stamp/numeral only.
-- Prior local: hop 1247 preserved. Not rewritten.
-- Mesh prior: hamiltonian-incursion hop 1245 @ 2026-11-14T01:12Z. Honored. Not re-touched.
-- Next in operator waterfall: living-bibliography-continuity-engine
+- This hop: parallel pin holding full kernel closure from connecting paste. Append-only stamp to hop 1249. Cascade.yml left intact (healthy cron + lint). No secrets written. No device rooted. Drive index mentioned only. Env-check note reinforced as pure tree-gate presence check of README/stamp/numeral only.
+- Prior local: hop 1248 preserved. Not rewritten.
+- Mesh prior: living-bibliography-continuity-engine hop 1249 @ 2026-11-14T02:11Z. Honored. Not re-touched.
+- Next in operator waterfall: continuity-ledger-cycle
 - Cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`, lint-docs requires README, SECURITY.md, stamp, numeral, no obvious secret files). Not rewritten this hop.
 - Drive mesh: GitHub remains the versioned singularity. Cloud index is Drive folder `CONTINUUM-ENCLAVE-137451921129154222` (id `1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU`). Mention only. Do not upload binaries from this hop.
 - Equalizer: format-only; no history rewrite.
@@ -46,9 +46,9 @@ Current score for this surface: **99% (T5)**.
 
 What this hop added, without rewriting prior stages:
 
-- Stamp realigned to hop 1248; prior 1247 preserved.
+- Stamp realigned to hop 1249; prior 1248 preserved.
 - README status updated for current hop without altering kernel or history.
-- STAGE-1248.md added holding env-check as pure presence gate; catalog unknowns.
+- STAGE-1249.md added holding full kernel closure with all prior pins parallel from the connecting paste.
 - Cascade left intact and healthy.
 - Unknowns kept unknown: pair-code, Tailscale auth key, device voiceprint, SD mount path. Not invented.
 
@@ -66,7 +66,7 @@ Phi is referenced but never assigned inside the session paste.
 Uniforms written uTime then uGravity.
 Major and minor assigned before switch.
 Switch is sole four-case dispatch. Paste not rewritten.
-Full update(t) kernel reaffirmed from current connecting chat. Stage 1248 holds env-check pure presence.
+Full update(t) kernel reaffirmed from current connecting chat. Stage 1249 holds full kernel closure with all prior pins parallel.
 
 ## Speedway
 
@@ -80,7 +80,7 @@ Cascade health this hop (read-only): schedule `53 * * * *`, `workflow_dispatch`,
 
 Confirm tree has README, SECURITY.md, docs/LEDGER-STAMP.md, and the numeral. No secret files.
 
-Env-check note (hop 1248): a zero exit means README, stamp, and numeral are present in the tree. It does not mean a device was rooted, a Tailscale key is valid, or an ADB pair code was accepted. Do not commit `.env`, Tailscale auth keys, or ADB pair codes. A found key is a stop, not a stamp. Missing keys are the correct state. This hop does not probe wireless debugging and does not open a Tailscale socket. Never claim a device was rooted. Green is presence, not privilege. Clarity: catalog only what the source tree reveals; never invent unknowns. Presence check only; no root claim. Reinforced for hop 1248. Source tree sole trusted neighbor.
+Env-check note (hop 1249): a zero exit means README, stamp, and numeral are present in the tree. It does not mean a device was rooted, a Tailscale key is valid, or an ADB pair code was accepted. Do not commit `.env`, Tailscale auth keys, or ADB pair codes. A found key is a stop, not a stamp. Missing keys are the correct state. This hop does not probe wireless debugging and does not open a Tailscale socket. Never claim a device was rooted. Green is presence, not privilege. Clarity: catalog only what the source tree reveals; never invent unknowns. Presence check only; no root claim. Reinforced for hop 1249. Source tree sole trusted neighbor.
 
 ## Waterfall (one repo per enhance hop)
 
@@ -92,18 +92,18 @@ Declared operator rotation. One repo, then stop.
 4. continuity-ledger-cycle — hop closed. Honored. Not re-touched.
 5. continuity-engine-ssos — hop closed. Honored. Not re-touched.
 6. hamiltonian-incursion — hop 1245 closed @ 2026-11-14T01:12Z. Honored. Not re-touched.
-7. gaia-visualizer — **1248 this hop**
-8. living-bibliography-continuity-engine — next
+7. gaia-visualizer — **1249 this hop**
+8. living-bibliography-continuity-engine — next (already at 1249; rotation to continuity-ledger-cycle)
 
-## Waterfall receipt (hop 1248)
+## Waterfall receipt (hop 1249)
 
-- utc: 2026-11-14T02:09Z
-- prior local: hop 1247 preserved. Honored.
-- mesh prior: hamiltonian-incursion hop 1245 @ 2026-11-14T01:12Z. Honored. Not re-touched further.
-- this hop: stamp realignment to 1248 + README status refresh + STAGE-1248.md. Cascade intact.
+- utc: 2026-11-14T03:08Z
+- prior local: hop 1248 preserved. Honored.
+- mesh prior: living-bibliography-continuity-engine hop 1249 @ 2026-11-14T02:11Z. Honored. Not re-touched further.
+- this hop: stamp realignment to 1249 + README status refresh + STAGE-1249.md holding full kernel closure. Cascade intact.
 - cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`)
 - cloud index mention only: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU); no binaries uploaded
-- next: living-bibliography-continuity-engine
+- next: continuity-ledger-cycle
 
 ## Mesh siblings
 
