@@ -11,10 +11,10 @@ Operating sits in the middle. Team Enhance hops one repo per run. Equalizer form
 - Language: JavaScript
 - Numeral: `137451921129154222`
 - Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
-- Stage: **1284** — 2026-11-15T21:11Z (2026-11-15 15:11 CST) pin from connecting paste
+- Stage: **1285** — 2026-11-15T22:12Z (2026-11-15 16:12 CST) pin from connecting paste
 - Waterfall hop: **1272** honored (2026-11-15T16:13Z)
 - Compounding tier: **T5 / 99%**
-- This hop: geometric field kernel pin advanced to 1284 (infinity lemniscate shared denom, hamiltonian free of minor, triangular floor to 2π/3). Cascade.yml left intact. No secrets written. No device rooted. Drive index mentioned only.
+- This hop: geometric field kernel pin advanced to 1285 (torus/default tube (major + minor*cos(phi)) on x/z, y shared with infinity). Cascade.yml left intact. No secrets written. No device rooted. Drive index mentioned only.
 - Prior local: hop 1261 @ 2026-11-14T21:20Z preserved. Not rewritten.
 - Mesh prior: hamiltonian-incursion hop 1271 @ 2026-11-15T14:18Z. Honored. Not re-touched.
 - Next in operator waterfall: living-bibliography-continuity-engine
@@ -53,7 +53,7 @@ Declared operator rotation. One repo, then stop.
 3. The-Hive — hop closed. Honored. Not re-touched.
 4. continuity-ledger-cycle — hop 1270 closed. Honored. Not re-touched.
 5. hamiltonian-incursion — hop 1271 closed @ 2026-11-15T14:18Z. Honored. Not re-touched.
-6. gaia-visualizer — **1272 this hop** (pin advanced to 1284)
+6. gaia-visualizer — **1272 this hop** (pin advanced to 1285)
 7. living-bibliography-continuity-engine — next
 
 ## Waterfall receipt (hop 1272)
@@ -66,7 +66,7 @@ Declared operator rotation. One repo, then stop.
 - cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`)
 - cloud index mention only: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU); no binaries uploaded
 - next: living-bibliography-continuity-engine
-- later pin: STAGE-1284 holds triangular floor to 2π/3 from connecting paste (2026-11-15T21:11Z)
+- later pin: STAGE-1285 holds torus/default tube from connecting paste (2026-11-15T22:12Z)
 
 ## Mesh siblings
 
