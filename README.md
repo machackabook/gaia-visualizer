@@ -11,11 +11,11 @@ Operating sits in the middle. Team Enhance hops one repo per run. Equalizer form
 - Language: JavaScript
 - Numeral: `137451921129154222`
 - Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
-- Stage: **1270** — 2026-11-15T03:15Z
-- Kernel stage: **1270** held (uniforms order uTime then uGravity + theta step product unread by switch; prior infinity lemniscate, final lerp alpha 0.05, torus/default tube, hamiltonian free-of-minor, triangular floor, phi external, sole four-case, major/minor order held from connecting update(t) paste).
+- Stage: **1273** — 2026-11-15T05:15Z
+- Kernel stage: **1273** held (major/minor formulas, phi external, major/minor assignment order before switch and sole four-case dispatch; prior uniforms order uTime then uGravity + theta step product unread by switch; infinity lemniscate, final lerp alpha 0.05, torus/default tube, hamiltonian free-of-minor, triangular floor held from connecting update(t) paste).
 - Compounding tier: **T5 / 99%**
-- This hop: held infinity lemniscate of Bernoulli, final lerp(new THREE.Vector3(x, y, z), 0.05), and uniforms/theta-step product. STAGE-1268.md, STAGE-1269.md, and STAGE-1270.md added. Cascade.yml left intact. No secrets written. No device rooted. Drive index mentioned only.
-- Prior local: hop 1267 preserved. Not rewritten.
+- This hop: held major/minor assignment order and sole four-case, phi external, and radius formulas major=10+(idx*2) minor=3+(toroidalWeave*2). STAGE-1271.md, STAGE-1272.md, and STAGE-1273.md added. Cascade.yml left intact. No secrets written. No device rooted. Drive index mentioned only.
+- Prior local: hop 1270 preserved. Not rewritten.
 - Mesh prior: parallel pins in sibling repos. Honored.
 - Next in operator waterfall: continuity-ledger-cycle
 - Cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`, lint-docs requires README, SECURITY.md, stamp, numeral, no obvious secret files). Not rewritten this hop.
@@ -46,9 +46,9 @@ Current score for this surface: **99% (T5)**.
 
 What this hop added, without rewriting prior stages:
 
-- STAGE-1268.md holding infinity lemniscate of Bernoulli (denom 1+sin²(theta) shared by x/z, scale=major*1.5, y shared with torus).
-- STAGE-1269.md holding final lerp(new THREE.Vector3(x, y, z), 0.05).
-- STAGE-1270.md holding uniforms order uTime then uGravity and theta step * gravityPull.
+- STAGE-1271.md holding major/minor assignment order before switch and sole four-case dispatch.
+- STAGE-1272.md holding phi external (referenced, never assigned inside update).
+- STAGE-1273.md holding minor = 3 + (toroidalWeave * 2) and major = 10 + (idx * 2).
 - README status updated for current hop without altering kernel or history.
 - Cascade left intact and healthy.
 - Unknowns kept unknown: pair-code, Tailscale auth key, device voiceprint, SD mount path. Not invented.
@@ -68,7 +68,7 @@ Uniforms written uTime then uGravity.
 Major and minor assigned before switch.
 Switch is sole four-case dispatch. Paste not rewritten.
 Theta step product (0.01 + idx*0.002)*gravityPull unread by geometry cases.
-Full update(t) kernel reaffirmed from current connecting chat. Stage 1270 holds uniforms order and theta step product; prior full closure remains.
+Full update(t) kernel reaffirmed from current connecting chat. Stage 1273 holds radius formulas; 1272 phi external; 1271 major/minor order and four-case; prior full closure remains.
 
 ## Speedway
 
@@ -82,7 +82,7 @@ Cascade health this hop (read-only): schedule `53 * * * *`, `workflow_dispatch`,
 
 Confirm tree has README, SECURITY.md, docs/LEDGER-STAMP.md, and the numeral. No secret files.
 
-Env-check note (hop 1270): a zero exit means README, stamp, and numeral are present in the tree. It does not mean a device was rooted, a Tailscale key is valid, or an ADB pair code was accepted. Do not commit `.env`, Tailscale auth keys, or ADB pair codes. A found key is a stop, not a stamp. Missing keys are the correct state. This hop does not probe wireless debugging and does not open a Tailscale socket. Never claim a device was rooted. Green is presence, not privilege. Clarity: catalog only what the source tree reveals; never invent unknowns. Presence check only; no root claim. Reinforced for hop 1270. Source tree sole trusted neighbor.
+Env-check note (hop 1273): a zero exit means README, stamp, and numeral are present in the tree. It does not mean a device was rooted, a Tailscale key is valid, or an ADB pair code was accepted. Do not commit `.env`, Tailscale auth keys, or ADB pair codes. A found key is a stop, not a stamp. Missing keys are the correct state. This hop does not probe wireless debugging and does not open a Tailscale socket. Never claim a device was rooted. Green is presence, not privilege. Clarity: catalog only what the source tree reveals; never invent unknowns. Presence check only; no root claim. Reinforced for hop 1273. Source tree sole trusted neighbor.
 
 ## Waterfall (one repo per enhance hop)
 
@@ -94,15 +94,15 @@ Declared operator rotation. One repo, then stop.
 4. continuity-ledger-cycle — hop closed. Honored. Not re-touched.
 5. continuity-engine-ssos — hop closed. Honored. Not re-touched.
 6. hamiltonian-incursion — hop 1245 closed @ 2026-11-14T01:12Z. Honored. Not re-touched.
-7. gaia-visualizer — **1270 this hop**
+7. gaia-visualizer — **1273 this hop**
 8. living-bibliography-continuity-engine — next (already at 1249; rotation to continuity-ledger-cycle)
 
-## Waterfall receipt (hop 1270)
+## Waterfall receipt (hop 1273)
 
-- utc: 2026-11-15T03:15Z
-- prior local: hop 1267 preserved. Honored.
+- utc: 2026-11-15T05:15Z
+- prior local: hop 1270 preserved. Honored.
 - mesh prior: parallel pins advanced. Honored. Not re-touched further.
-- this hop: STAGE-1268.md + STAGE-1269.md + STAGE-1270.md + README status refresh holding infinity lemniscate, final lerp alpha 0.05, and uniforms/theta-step product. Cascade intact.
+- this hop: STAGE-1271.md + STAGE-1272.md + STAGE-1273.md + README status refresh holding major/minor order and four-case, phi external, and radius formulas. Cascade intact.
 - cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`)
 - cloud index mention only: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU); no binaries uploaded
 - next: continuity-ledger-cycle
