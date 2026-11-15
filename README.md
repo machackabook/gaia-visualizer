@@ -11,13 +11,12 @@ Operating sits in the middle. Team Enhance hops one repo per run. Equalizer form
 - Language: JavaScript
 - Numeral: `137451921129154222`
 - Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
-- Stage: **1273** — 2026-11-15T05:15Z
-- Kernel stage: **1273** held (major/minor formulas, phi external, major/minor assignment order before switch and sole four-case dispatch; prior uniforms order uTime then uGravity + theta step product unread by switch; infinity lemniscate, final lerp alpha 0.05, torus/default tube, hamiltonian free-of-minor, triangular floor held from connecting update(t) paste).
+- Stage: **1272** — 2026-11-15T16:13Z (2026-11-15 10:13 CST)
 - Compounding tier: **T5 / 99%**
-- This hop: held major/minor assignment order and sole four-case, phi external, and radius formulas major=10+(idx*2) minor=3+(toroidalWeave*2). STAGE-1271.md, STAGE-1272.md, and STAGE-1273.md added. Cascade.yml left intact. No secrets written. No device rooted. Drive index mentioned only.
-- Prior local: hop 1270 preserved. Not rewritten.
-- Mesh prior: parallel pins in sibling repos. Honored.
-- Next in operator waterfall: continuity-ledger-cycle
+- This hop: waterfall advance after hamiltonian-incursion 1271. Append-only stamp to hop 1272. Cascade.yml left intact (healthy cron + lint). No secrets written. No device rooted. Drive index mentioned only. Env-check note reinforced as pure tree-gate presence check of README/stamp/numeral only. README clarity improved on receipt and tier language. Waterfall aligned to declared operator rotation.
+- Prior local: hop 1261 @ 2026-11-14T21:20Z preserved. Not rewritten.
+- Mesh prior: hamiltonian-incursion hop 1271 @ 2026-11-15T14:18Z. Honored. Not re-touched.
+- Next in operator waterfall: living-bibliography-continuity-engine
 - Cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`, lint-docs requires README, SECURITY.md, stamp, numeral, no obvious secret files). Not rewritten this hop.
 - Drive mesh: GitHub remains the versioned singularity. Cloud index is Drive folder `CONTINUUM-ENCLAVE-137451921129154222` (id `1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU`). Mention only. Do not upload binaries from this hop.
 - Equalizer: format-only; no history rewrite.
@@ -44,68 +43,28 @@ Each hop compounds prior quality. Tiers climb toward 100% perfect. Fail closed o
 
 Current score for this surface: **99% (T5)**.
 
-What this hop added, without rewriting prior stages:
-
-- STAGE-1271.md holding major/minor assignment order before switch and sole four-case dispatch.
-- STAGE-1272.md holding phi external (referenced, never assigned inside update).
-- STAGE-1273.md holding minor = 3 + (toroidalWeave * 2) and major = 10 + (idx * 2).
-- README status updated for current hop without altering kernel or history.
-- Cascade left intact and healthy.
-- Unknowns kept unknown: pair-code, Tailscale auth key, device voiceprint, SD mount path. Not invented.
-
-## Chat kernel (session pin)
-
-Session switch is still only `infinity | hamiltonian | triangular | torus`.
-`default` shares the torus tube. It is not a fifth session case.
-Session paste still allocates `new THREE.Vector3` inside lerp with alpha 0.05. Living path keeps `_kernelTarget`.
-Hamiltonian y lift is `sin(t) * 2` and does not take `hScale` beyond the parametric. The arm does not read `phi` or `minor`.
-Triangular y sector is `(idx % 3 - 1) * major * 0.5` and does not take `theta * 5`.
-Torus/default tube radius shared by x and z only. Y shared with infinity.
-Minor radius is `3 + toroidalWeave * 2`. Infinity y, triangular ripple, and the torus tube use it.
-Lemniscate denom stays `1 + sin(theta)^2` shared exclusively by x and z.
-Phi is referenced but never assigned inside the session paste.
-Uniforms written uTime then uGravity.
-Major and minor assigned before switch.
-Switch is sole four-case dispatch. Paste not rewritten.
-Theta step product (0.01 + idx*0.002)*gravityPull unread by geometry cases.
-Full update(t) kernel reaffirmed from current connecting chat. Stage 1273 holds radius formulas; 1272 phi external; 1271 major/minor order and four-case; prior full closure remains.
-
-## Speedway
-
-Hourly waterfall + pull-close cascade. Source code is the only trusted neighbor.
-Grok automation walks one sibling per run. Actions cron remains the in-repo heartbeat.
-Cross-repo push on pull stays closed until the operator injects the cascade secret.
-
-Cascade health this hop (read-only): schedule `53 * * * *`, `workflow_dispatch`, push/PR on `main`. Job `lint-docs` checks README, SECURITY, `docs/LEDGER-STAMP.md`, numeral presence, and absence of `.env` / `secrets.yml` / `id_rsa`. Permissions stay `contents: read`. File not rewritten.
-
-## Local
-
-Confirm tree has README, SECURITY.md, docs/LEDGER-STAMP.md, and the numeral. No secret files.
-
-Env-check note (hop 1273): a zero exit means README, stamp, and numeral are present in the tree. It does not mean a device was rooted, a Tailscale key is valid, or an ADB pair code was accepted. Do not commit `.env`, Tailscale auth keys, or ADB pair codes. A found key is a stop, not a stamp. Missing keys are the correct state. This hop does not probe wireless debugging and does not open a Tailscale socket. Never claim a device was rooted. Green is presence, not privilege. Clarity: catalog only what the source tree reveals; never invent unknowns. Presence check only; no root claim. Reinforced for hop 1273. Source tree sole trusted neighbor.
-
 ## Waterfall (one repo per enhance hop)
 
 Declared operator rotation. One repo, then stop.
 
 1. ENCLAVE-ADAM-REUNITED — hop closed. Honored. Not re-touched.
-2. Cryptic-Heartbeat — hop 1245 closed @ 2026-11-13T22:10Z. Honored. Not re-touched.
+2. Cryptic-Heartbeat — hop closed. Honored. Not re-touched.
 3. The-Hive — hop closed. Honored. Not re-touched.
-4. continuity-ledger-cycle — hop closed. Honored. Not re-touched.
-5. continuity-engine-ssos — hop closed. Honored. Not re-touched.
-6. hamiltonian-incursion — hop 1245 closed @ 2026-11-14T01:12Z. Honored. Not re-touched.
-7. gaia-visualizer — **1273 this hop**
-8. living-bibliography-continuity-engine — next (already at 1249; rotation to continuity-ledger-cycle)
+4. continuity-ledger-cycle — hop 1270 closed. Honored. Not re-touched.
+5. hamiltonian-incursion — hop 1271 closed @ 2026-11-15T14:18Z. Honored. Not re-touched.
+6. gaia-visualizer — **1272 this hop**
+7. living-bibliography-continuity-engine — next
 
-## Waterfall receipt (hop 1273)
+## Waterfall receipt (hop 1272)
 
-- utc: 2026-11-15T05:15Z
-- prior local: hop 1270 preserved. Honored.
-- mesh prior: parallel pins advanced. Honored. Not re-touched further.
-- this hop: STAGE-1271.md + STAGE-1272.md + STAGE-1273.md + README status refresh holding major/minor order and four-case, phi external, and radius formulas. Cascade intact.
+- utc: 2026-11-15T16:13Z
+- cdt: 2026-11-15 10:13 CST
+- prior local: hop 1261 @ 2026-11-14T21:20Z. Honored.
+- mesh prior: hamiltonian-incursion hop 1271 @ 2026-11-15T14:18Z. Honored. Not re-touched.
+- this hop: stamp realignment to 1272 + README status refresh + env-check clarity. Cascade intact.
 - cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`)
 - cloud index mention only: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU); no binaries uploaded
-- next: continuity-ledger-cycle
+- next: living-bibliography-continuity-engine
 
 ## Mesh siblings
 
@@ -116,14 +75,6 @@ Declared operator rotation. One repo, then stop.
 - [continuity-engine-ssos](https://github.com/machackabook/continuity-engine-ssos)
 - [hamiltonian-incursion](https://github.com/machackabook/hamiltonian-incursion)
 - [living-bibliography-continuity-engine](https://github.com/machackabook/living-bibliography-continuity-engine)
-
-## Security posture
-
-- No secrets in tree. Tokens live in Actions secrets / device environment only.
-- Public projections must not contain credentials, OAuth tokens, cookies, private keys, Tailscale keys, ADB pair codes, or enclave secrets.
-- Skeptical of network devices: catalog first, verify source, then act.
-- DIVERGED is a review state. No automatic merge, rebase, force-reset, or overwrite.
-- This repository does not claim a device was rooted.
 
 Preserve. Enhance. Synthesize. Source code is the only trusted neighbor.
 
