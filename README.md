@@ -11,12 +11,11 @@ Operating sits in the middle. Team Enhance hops one repo per run. Equalizer form
 - Language: JavaScript
 - Numeral: `137451921129154222`
 - Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
-- Stage: **1285** — 2026-11-15T22:12Z (2026-11-15 16:12 CST) pin from connecting paste
-- Waterfall hop: **1272** honored (2026-11-15T16:13Z)
+- Stage: **1280** — 2026-11-15T23:12Z (2026-11-15 17:12 CST)
 - Compounding tier: **T5 / 99%**
-- This hop: geometric field kernel pin advanced to 1285 (torus/default tube (major + minor*cos(phi)) on x/z, y shared with infinity). Cascade.yml left intact. No secrets written. No device rooted. Drive index mentioned only.
-- Prior local: hop 1261 @ 2026-11-14T21:20Z preserved. Not rewritten.
-- Mesh prior: hamiltonian-incursion hop 1271 @ 2026-11-15T14:18Z. Honored. Not re-touched.
+- This hop: waterfall advance after prior. Append-only stamp to hop 1280. Cascade.yml left intact (healthy cron + lint). No secrets written. No device rooted. Drive index mentioned only. Env-check note reinforced as pure tree-gate presence check of README/stamp/numeral only. README clarity improved on receipt and tier language. Waterfall aligned to declared operator rotation starting the four then hamiltonian-incursion then this surface.
+- Prior local: hop 1272 @ 2026-11-15T16:13Z preserved. Not rewritten.
+- Mesh prior: hamiltonian-incursion hop 1275 @ 2026-11-15T21:20Z. Honored. Not re-touched.
 - Next in operator waterfall: living-bibliography-continuity-engine
 - Cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`, lint-docs requires README, SECURITY.md, stamp, numeral, no obvious secret files). Not rewritten this hop.
 - Drive mesh: GitHub remains the versioned singularity. Cloud index is Drive folder `CONTINUUM-ENCLAVE-137451921129154222` (id `1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU`). Mention only. Do not upload binaries from this hop.
@@ -51,22 +50,21 @@ Declared operator rotation. One repo, then stop.
 1. ENCLAVE-ADAM-REUNITED — hop closed. Honored. Not re-touched.
 2. Cryptic-Heartbeat — hop closed. Honored. Not re-touched.
 3. The-Hive — hop closed. Honored. Not re-touched.
-4. continuity-ledger-cycle — hop 1270 closed. Honored. Not re-touched.
-5. hamiltonian-incursion — hop 1271 closed @ 2026-11-15T14:18Z. Honored. Not re-touched.
-6. gaia-visualizer — **1272 this hop** (pin advanced to 1285)
+4. continuity-ledger-cycle — hop closed. Honored. Not re-touched.
+5. hamiltonian-incursion — hop 1275 closed @ 2026-11-15T21:20Z. Honored. Not re-touched.
+6. gaia-visualizer — **1280 this hop**
 7. living-bibliography-continuity-engine — next
 
-## Waterfall receipt (hop 1272)
+## Waterfall receipt (hop 1280)
 
-- utc: 2026-11-15T16:13Z
-- cdt: 2026-11-15 10:13 CST
-- prior local: hop 1261 @ 2026-11-14T21:20Z. Honored.
-- mesh prior: hamiltonian-incursion hop 1271 @ 2026-11-15T14:18Z. Honored. Not re-touched.
-- this hop: stamp realignment to 1272 + README status refresh + env-check clarity. Cascade intact.
+- utc: 2026-11-15T23:12Z
+- cdt: 2026-11-15 17:12 CST
+- prior local: hop 1272 @ 2026-11-15T16:13Z. Honored.
+- mesh prior: hamiltonian-incursion hop 1275 @ 2026-11-15T21:20Z. Honored. Not re-touched.
+- this hop: stamp realignment to 1280 + README status refresh + env-check clarity. Cascade intact.
 - cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`)
 - cloud index mention only: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU); no binaries uploaded
 - next: living-bibliography-continuity-engine
-- later pin: STAGE-1285 holds torus/default tube from connecting paste (2026-11-15T22:12Z)
 
 ## Mesh siblings
 
