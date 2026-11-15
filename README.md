@@ -11,9 +11,10 @@ Operating sits in the middle. Team Enhance hops one repo per run. Equalizer form
 - Language: JavaScript
 - Numeral: `137451921129154222`
 - Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
-- Stage: **1272** — 2026-11-15T16:13Z (2026-11-15 10:13 CST)
+- Stage: **1280** — 2026-11-15T19:09Z (2026-11-15 13:09 CST) pin from connecting paste
+- Waterfall hop: **1272** honored (2026-11-15T16:13Z)
 - Compounding tier: **T5 / 99%**
-- This hop: waterfall advance after hamiltonian-incursion 1271. Append-only stamp to hop 1272. Cascade.yml left intact (healthy cron + lint). No secrets written. No device rooted. Drive index mentioned only. Env-check note reinforced as pure tree-gate presence check of README/stamp/numeral only. README clarity improved on receipt and tier language. Waterfall aligned to declared operator rotation.
+- This hop: geometric field kernel pin advanced to 1280 (uniforms uTime then uGravity + theta step * gravityPull). Cascade.yml left intact. No secrets written. No device rooted. Drive index mentioned only.
 - Prior local: hop 1261 @ 2026-11-14T21:20Z preserved. Not rewritten.
 - Mesh prior: hamiltonian-incursion hop 1271 @ 2026-11-15T14:18Z. Honored. Not re-touched.
 - Next in operator waterfall: living-bibliography-continuity-engine
@@ -52,7 +53,7 @@ Declared operator rotation. One repo, then stop.
 3. The-Hive — hop closed. Honored. Not re-touched.
 4. continuity-ledger-cycle — hop 1270 closed. Honored. Not re-touched.
 5. hamiltonian-incursion — hop 1271 closed @ 2026-11-15T14:18Z. Honored. Not re-touched.
-6. gaia-visualizer — **1272 this hop**
+6. gaia-visualizer — **1272 this hop** (pin advanced to 1280)
 7. living-bibliography-continuity-engine — next
 
 ## Waterfall receipt (hop 1272)
@@ -65,6 +66,7 @@ Declared operator rotation. One repo, then stop.
 - cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`)
 - cloud index mention only: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU); no binaries uploaded
 - next: living-bibliography-continuity-engine
+- later pin: STAGE-1280 holds uniforms and theta from connecting paste (2026-11-15T19:09Z)
 
 ## Mesh siblings
 
