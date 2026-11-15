@@ -1,5 +1,5 @@
-/** Stage 1105 — hold torus/default tube (major + minor*cos(phi)) on x/z with y shared with infinity from current connecting chat paste. Prior: 1104 triangular. Document only. Do not rewrite the paste. No secrets. */
-export const TORUS_DEFAULT_STAGE = 1105;
+/** Stage 1285 — hold torus/default tube (major + minor*cos(phi)) on x/z with y shared with infinity from current connecting chat paste. Prior: 1284 triangular. Document only. Do not rewrite the paste. No secrets. */
+export const TORUS_DEFAULT_STAGE = 1285;
 export const TORUS_DEFAULT_SESSION_HASH = 'beec41f1';
 export const TORUS_DEFAULT_LIVING_HASH = '7cd81012';
 export const TORUS_DEFAULT_EXTRAS = ['klein', 'hopf', 'figure8', 'trefoil', 'mobius'];
