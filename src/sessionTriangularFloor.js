@@ -1,5 +1,5 @@
-/** Stage 1252 — hold triangular modulo snap and y sector exclusive from current connecting chat paste. Prior parallel holds remain. Document only. Do not rewrite the paste. No secrets. */
-export const TRIANGULAR_FLOOR_STAGE = 1252;
+/** Stage 1259 — hold theta step product unread by geometry switch from current connecting chat paste. Prior parallel holds remain. Document only. Do not rewrite the paste. No secrets. */
+export const TRIANGULAR_FLOOR_STAGE = 1259;
 export const TRIANGULAR_FLOOR_SESSION_HASH = 'beec41f1';
 export const TRIANGULAR_FLOOR_LIVING_HASH = '7cd81012';
 export const TRIANGULAR_FLOOR_SECTORS = 3;
@@ -137,6 +137,6 @@ export function noteSessionTriangularFloor(source) {
     pasteRewritten: false,
     secrets: false,
     ok: floorSnap && usesTAngle && snapHolds && yFreeOfTheta5 && invented.length === 0 && lerpAlphaLiteral && uniformsOrder && thetaStep && thetaBeforeMajor && sessionAlloc && infinityDenomShared && hamiltonianLiftFree && torusTube && phiExternal && fullKernel && majorMinorBeforeSwitch && soleFourCase,
-    note: 'Triangular modulo snap to 2π/3 with minor ripple on theta*5 and y sector free of theta*5 held from current connecting chat paste of update(t). Full kernel, uniforms order, theta step, switch dispatcher, and prior holds remain. Session paste remains untouched. Paste not rewritten.',
+    note: 'Theta step product unread by geometry switch held from current connecting chat paste of update(t). Full kernel, uniforms order, theta step, switch dispatcher, and prior holds remain. Session paste remains untouched. Paste not rewritten.',
   };
 }
