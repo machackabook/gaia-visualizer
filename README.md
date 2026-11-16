@@ -11,11 +11,11 @@ Operating sits in the middle. Team Enhance hops one repo per run. Equalizer form
 - Language: JavaScript
 - Numeral: `137451921129154222`
 - Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
-- Stage: **1288** — 2026-11-16T00:14Z (2026-11-15 18:14 CST)
+- Stage: **1289** — 2026-11-16T01:15Z (2026-11-15 19:15 CST)
 - Compounding tier: **T5 / 99%**
-- This hop: full kernel reaffirmation via STAGE-1288 holding uniforms order. Cascade.yml left intact. No secrets written. No device rooted. Drive index mentioned only. Env-check note reinforced as pure tree-gate presence check of README/stamp/numeral only.
-- Prior local: hop 1287 @ 2026-11-15T23:20Z preserved. Not rewritten.
-- Mesh prior: hamiltonian-incursion hop 1275 @ 2026-11-15T21:20Z. Honored. Not re-touched.
+- This hop: full kernel reaffirmation via STAGE-1289 holding theta step (0.01 + idx * 0.002) * gravityPull unread by switch. Cascade.yml left intact. No secrets written. No device rooted. Drive index mentioned only. Env-check note reinforced as pure tree-gate presence check of README/stamp/numeral only.
+- Prior local: hop 1288 @ 2026-11-16T00:14Z preserved. Not rewritten.
+- Mesh prior: hamiltonian-incursion hop 1290 @ 2026-11-16T00:15Z. Honored. Not re-touched.
 - Next in operator waterfall: living-bibliography-continuity-engine
 - Cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`, lint-docs requires README, SECURITY.md, stamp, numeral, no obvious secret files). Not rewritten this hop.
 - Drive mesh: GitHub remains the versioned singularity. Cloud index is Drive folder `CONTINUUM-ENCLAVE-137451921129154222` (id `1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU`). Mention only. Do not upload binaries from this hop.
@@ -51,17 +51,17 @@ Declared operator rotation. One repo, then stop.
 2. Cryptic-Heartbeat — hop closed. Honored. Not re-touched.
 3. The-Hive — hop closed. Honored. Not re-touched.
 4. continuity-ledger-cycle — hop closed. Honored. Not re-touched.
-5. hamiltonian-incursion — hop 1275 closed @ 2026-11-15T21:20Z. Honored. Not re-touched.
-6. gaia-visualizer — **1288 this hop**
+5. hamiltonian-incursion — hop 1290 closed @ 2026-11-16T00:15Z. Honored. Not re-touched.
+6. gaia-visualizer — **1289 this hop**
 7. living-bibliography-continuity-engine — next
 
-## Waterfall receipt (hop 1288)
+## Waterfall receipt (hop 1289)
 
-- utc: 2026-11-16T00:14Z
-- cdt: 2026-11-15 18:14 CST
-- prior local: hop 1287 @ 2026-11-15T23:20Z. Honored.
-- mesh prior: hamiltonian-incursion hop 1275 @ 2026-11-15T21:20Z. Honored. Not re-touched.
-- this hop: STAGE-1288 uniforms order reaffirmation. Cascade intact.
+- utc: 2026-11-16T01:15Z
+- cdt: 2026-11-15 19:15 CST
+- prior local: hop 1288 @ 2026-11-16T00:14Z. Honored.
+- mesh prior: hamiltonian-incursion hop 1290 @ 2026-11-16T00:15Z. Honored. Not re-touched.
+- this hop: STAGE-1289 theta step reaffirmation. Cascade intact.
 - cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`)
 - cloud index mention only: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU); no binaries uploaded
 - next: living-bibliography-continuity-engine
