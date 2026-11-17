@@ -1,5 +1,5 @@
-/** Stage 1288 — full connecting update(t) geometric field kernel. Document only. Do not rewrite the paste. No secrets. */
-export const FULL_STAGE = 1288;
+/** Stage 1302 — full connecting update(t) geometric field kernel. Document only. Do not rewrite the paste. No secrets. */
+export const FULL_STAGE = 1302;
 export const FULL_SESSION_HASH = 'beec41f1';
 export const FULL_LIVING_HASH = '7cd81012';
 
@@ -60,6 +60,8 @@ export function noteSessionFull(source) {
   const hasTheta = /this\.theta\s*\+=\s*\(0\.01\s*\+\s*this\.idx\s*\*\s*0\.002\)\s*\*\s*state\.gravityPull/.test(text);
   const hasFourCase = /case\s*'infinity'/.test(text) && /case\s*'hamiltonian'/.test(text) && /case\s*'triangular'/.test(text) && /case\s*'torus'/.test(text);
   const hasLerp = /position\.lerp\(new\s*THREE\.Vector3\(x,\s*y,\s*z\),\s*0\.05\)/.test(text);
+  const majorMinorPrior = /let major = 10 \+ \(this\.idx \* 2\);[\s\S]*?let minor = 3 \+ \(state\.toroidalWeave \* 2\);[\s\S]*?switch\(targetState\.geometry\)/.test(text);
+  const phiExternal = /this\.phi/.test(text) && !/this\.phi\s*=/.test(text);
   return {
     stage: FULL_STAGE,
     session: FULL_SESSION_HASH,
@@ -69,9 +71,11 @@ export function noteSessionFull(source) {
     hasTheta,
     hasFourCase,
     hasLerp,
+    majorMinorPrior,
+    phiExternal,
     pasteRewritten: false,
     secrets: false,
-    ok: hasUniforms && hasTheta && hasFourCase && hasLerp,
-    note: 'Full connecting update(t) kernel pinned. All cases, uniforms, radii, theta, lerp held. Paste not rewritten.',
+    ok: hasUniforms && hasTheta && hasFourCase && hasLerp && majorMinorPrior && phiExternal,
+    note: 'Full connecting update(t) kernel pinned at stage 1302. All cases, uniforms, radii, theta, lerp held. Paste not rewritten.',
   };
 }
