@@ -1,10 +1,10 @@
 {
-  "stage": 1313,
+  "stage": 1320,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
   "paste": "2026-11-18",
-  "next": [1314, 1315, 1316],
+  "next": [1321, 1322, 1323],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch sole four-case dispatcher. Stage 1313 holds switch(targetState.geometry) for infinity, hamiltonian, triangular, torus/default. Prior holds preserved. Paste not rewritten."
+  "note": "Session switch sole four-case dispatcher. Stage 1320 holds uniforms uTime then uGravity and theta step (0.01 + idx*0.002)*gravityPull. Prior holds (lerp alpha 0.05, major/minor prior, torus tube, triangular floor, hamiltonian parametric, infinity lemniscate) preserved. Paste not rewritten."
 }

@@ -1,0 +1,22 @@
+# STAGE-1318 — hold final lerp(new THREE.Vector3(x, y, z), 0.05) session alloc alpha literal unread by gravityPull/toroidalWeave (2026-11-18T16:20Z)
+
+Connecting chat re-pasted the complete `update(t)` geometric field kernel.
+gaia-visualizer advanced to stage 1318 holding the final position lerp.
+
+## Session pin (paste not rewritten)
+- // Smoothly interpolate current position to the new geometric state target
+    this.mesh.position.lerp(new THREE.Vector3(x, y, z), 0.05);
+- Literal alpha 0.05. New Vector3 allocation each frame. Unread by gravityPull or toroidalWeave.
+- prior holds: 1317 torus/default tube (major + minor*cos(phi)) shared by x/z, y identity to infinity.
+- Paste not rewritten.
+
+## Enhancement this hop
+Holds the final lerp with session-allocated THREE.Vector3 and literal alpha 0.05, independent of state.gravityPull and state.toroidalWeave. Living path matches the connecting paste. Session paste remains untouched. No secrets. No device rooted.
+
+## Next stages compiled
+1. 1319 — hold major/minor assignment major=10+(idx*2) minor=3+(toroidalWeave*2) prior to switch; phi external.
+2. 1320 — hold uniforms order uTime then uGravity and theta step * gravityPull.
+3. 1321 — hold phi as external binding never assigned inside update(t).
+
+Numeral 137451921129154222. Paste not rewritten. No secrets. No device rooted.
+Connecting: parallel pins in sibling repos.
