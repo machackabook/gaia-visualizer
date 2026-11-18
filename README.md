@@ -11,10 +11,10 @@ Operating sits in the middle. Team Enhance hops one repo per run. Equalizer form
 - Language: JavaScript
 - Numeral: `137451921129154222`
 - Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
-- Stage: **1311** — 2026-11-18T01:17Z (final lerp(new THREE.Vector3(x, y, z), 0.05) session alloc)
+- Stage: **1312** — 2026-11-18T03:23Z (uniforms order uTime then uGravity and theta step product (0.01 + idx*0.002)*gravityPull)
 - Compounding tier: **T5 / 99%**
-- This hop: full kernel reaffirmation via STAGE-1311 (final lerp session alloc alpha literal). Cascade.yml left intact. No secrets written. No device rooted. Drive index mentioned only. Env-check note reinforced as pure tree-gate presence check of README/stamp/numeral only.
-- Prior local: hop 1310 @ 2026-11-18T00:16Z and parallel pins preserved. Not rewritten.
+- This hop: full kernel reaffirmation via STAGE-1312 (uniforms order + theta step product). Cascade.yml left intact. No secrets written. No device rooted. Drive index mentioned only. Env-check note reinforced as pure tree-gate presence check of README/stamp/numeral only.
+- Prior local: hop 1311 @ 2026-11-18T01:17Z and parallel pins preserved. Not rewritten.
 - Mesh prior: hamiltonian-incursion and The-Hive parallel pins. Honored. Not re-touched.
 - Next in operator waterfall: living-bibliography-continuity-engine
 - Cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`, lint-docs requires README, SECURITY.md, stamp, numeral, no obvious secret files). Not rewritten this hop.
@@ -52,16 +52,16 @@ Declared operator rotation. One repo, then stop.
 3. The-Hive — hop closed. Honored. Not re-touched.
 4. continuity-ledger-cycle — hop closed. Honored. Not re-touched.
 5. hamiltonian-incursion — hop 1304 closed @ 2026-11-17T04:12Z. Honored. Not re-touched.
-6. gaia-visualizer — **1311 this hop**
+6. gaia-visualizer — **1312 this hop**
 7. living-bibliography-continuity-engine — next
 
-## Waterfall receipt (hop 1311)
+## Waterfall receipt (hop 1312)
 
-- utc: 2026-11-18T01:17Z
-- cdt: 2026-11-17 19:17 CST
-- prior local: hop 1310 @ 2026-11-18T00:16Z and STAGE-1310 parallel pin. Honored.
+- utc: 2026-11-18T03:23Z
+- cdt: 2026-11-17 21:23 CST
+- prior local: hop 1311 @ 2026-11-18T01:17Z and STAGE-1311 parallel pin. Honored.
 - mesh prior: parallel pins in The-Hive and hamiltonian-incursion. Honored. Not re-touched.
-- this hop: STAGE-1311 final lerp(new THREE.Vector3(x, y, z), 0.05) session alloc alpha literal. Cascade intact.
+- this hop: STAGE-1312 uniforms order uTime then uGravity and theta step product (0.01 + idx*0.002)*gravityPull. Cascade intact.
 - cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`)
 - cloud index mention only: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU); no binaries uploaded
 - next: living-bibliography-continuity-engine
