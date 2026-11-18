@@ -1,5 +1,5 @@
-/** Stage 1302 — full connecting update(t) geometric field kernel. Document only. Do not rewrite the paste. No secrets. */
-export const FULL_STAGE = 1302;
+/** Stage 1310 — full connecting update(t) geometric field kernel. Document only. Do not rewrite the paste. No secrets. */
+export const FULL_STAGE = 1310;
 export const FULL_SESSION_HASH = 'beec41f1';
 export const FULL_LIVING_HASH = '7cd81012';
 
@@ -76,6 +76,6 @@ export function noteSessionFull(source) {
     pasteRewritten: false,
     secrets: false,
     ok: hasUniforms && hasTheta && hasFourCase && hasLerp && majorMinorPrior && phiExternal,
-    note: 'Full connecting update(t) kernel pinned at stage 1302. All cases, uniforms, radii, theta, lerp held. Paste not rewritten.',
+    note: 'Full connecting update(t) kernel pinned at stage 1310. All cases, uniforms, radii, theta, lerp held. Paste not rewritten.',
   };
 }
