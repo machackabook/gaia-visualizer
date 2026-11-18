@@ -1,22 +1,23 @@
-# STAGE-1296 — hold major/minor computation major=10+(idx*2) minor=3+(toroidalWeave*2) prior to switch (2026-11-16T22:09Z)
+# STAGE-1296 — hold torus/default tube (major + minor*cos(phi)) shared by x/z; y identity to infinity (2026-11-18T23:16Z)
 
 Connecting chat re-pasted the complete `update(t)` geometric field kernel.
-gaia-visualizer advanced to stage 1296 holding the radius formulas.
+gaia-visualizer advanced to stage 1296 holding the torus case.
 
 ## Session pin (paste not rewritten)
-- let major = 10 + (this.idx * 2);
-- let minor = 3 + (state.toroidalWeave * 2);
-- Assigned before the switch(targetState.geometry). Major base 10 offset by idx*2; minor base 3 offset by toroidalWeave*2.
-- prior holds: 1295 theta step (0.01 + idx * 0.002) * gravityPull.
+- case 'torus': / default:
+- x = (major + minor * Math.cos(this.phi)) * Math.cos(this.theta);
+- z = (major + minor * Math.cos(this.phi)) * Math.sin(this.theta);
+- y = minor * Math.sin(this.phi) * Math.sin(t * 0.5 + this.idx);
+- prior holds: 1295 hamiltonian parametric.
 - Paste not rewritten.
 
 ## Enhancement this hop
-Holds the pre-switch major and minor radius assignments matching the connecting paste. Living path matches. Session paste remains untouched. No secrets. No device rooted.
+Holds the standard toroidal math. Living path matches. Session paste remains untouched. No secrets. No device rooted.
 
 ## Next stages compiled
-1. 1297 — hold switch(targetState.geometry) sole four-case dispatcher: infinity | hamiltonian | triangular | torus/default.
-2. 1298 — hold infinity case lemniscate of Bernoulli with shared denom for x/z only.
-3. 1299 — hold hamiltonian parametric free of minor on x/z, y lift free of hScale/minor.
+1. 1297 — hold full kernel closure with all prior pins parallel.
+2. 1298 — hold major/minor assignment prior to switch.
+3. 1299 — hold uniforms order uTime then uGravity.
 
 Numeral 137451921129154222. Paste not rewritten. No secrets. No device rooted.
 Connecting: parallel pins in sibling repos.
