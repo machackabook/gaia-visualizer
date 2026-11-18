@@ -11,10 +11,10 @@ Operating sits in the middle. Team Enhance hops one repo per run. Equalizer form
 - Language: JavaScript
 - Numeral: `137451921129154222`
 - Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
-- Stage: **1313** — 2026-11-18T04:15Z (hold switch(targetState.geometry) sole four-case dispatcher (infinity, hamiltonian, triangular, torus/default))
+- Stage: **1314** — 2026-11-18T05:10Z (hold infinity lemniscate of Bernoulli: scale=major*1.5, denom=1+sin(theta)^2 shared by x/z only, y free of denom)
 - Compounding tier: **T5 / 99%**
-- This hop: full kernel reaffirmation via STAGE-1313 (sole four-case switch dispatcher). Cascade.yml left intact. No secrets written. No device rooted. Drive index mentioned only. Env-check note reinforced as pure tree-gate presence check of README/stamp/numeral only.
-- Prior local: hop 1312 @ 2026-11-18T03:23Z and parallel pins preserved. Not rewritten.
+- This hop: full kernel reaffirmation via STAGE-1314 (infinity lemniscate). Cascade.yml left intact. No secrets written. No device rooted. Drive index mentioned only. Env-check note reinforced as pure tree-gate presence check of README/stamp/numeral only.
+- Prior local: hop 1313 @ 2026-11-18T04:15Z and parallel pins preserved. Not rewritten.
 - Mesh prior: hamiltonian-incursion and The-Hive parallel pins. Honored. Not re-touched.
 - Next in operator waterfall: living-bibliography-continuity-engine
 - Cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`, lint-docs requires README, SECURITY.md, stamp, numeral, no obvious secret files). Not rewritten this hop.
@@ -52,16 +52,16 @@ Declared operator rotation. One repo, then stop.
 3. The-Hive — hop closed. Honored. Not re-touched.
 4. continuity-ledger-cycle — hop closed. Honored. Not re-touched.
 5. hamiltonian-incursion — hop 1304 closed @ 2026-11-17T04:12Z. Honored. Not re-touched.
-6. gaia-visualizer — **1313 this hop**
+6. gaia-visualizer — **1314 this hop**
 7. living-bibliography-continuity-engine — next
 
-## Waterfall receipt (hop 1313)
+## Waterfall receipt (hop 1314)
 
-- utc: 2026-11-18T04:15Z
-- cdt: 2026-11-17 22:15 CST
-- prior local: hop 1312 @ 2026-11-18T03:23Z and STAGE-1312 parallel pin. Honored.
+- utc: 2026-11-18T05:10Z
+- cdt: 2026-11-17 23:10 CST
+- prior local: hop 1313 @ 2026-11-18T04:15Z and STAGE-1313 parallel pin. Honored.
 - mesh prior: parallel pins in The-Hive and hamiltonian-incursion. Honored. Not re-touched.
-- this hop: STAGE-1313 hold switch(targetState.geometry) sole four-case dispatcher (infinity, hamiltonian, triangular, torus/default). Cascade intact.
+- this hop: STAGE-1314 hold infinity lemniscate of Bernoulli: scale=major*1.5, denom=1+sin(theta)^2 shared by x/z only, y free of denom. Cascade intact.
 - cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`)
 - cloud index mention only: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU); no binaries uploaded
 - next: living-bibliography-continuity-engine
