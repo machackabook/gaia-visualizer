@@ -11,9 +11,9 @@ Operating sits in the middle. Team Enhance hops one repo per run. Equalizer form
 - Language: JavaScript
 - Numeral: `137451921129154222`
 - Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
-- Stage: **1325** — 2026-11-19T01:15Z (hold major/minor formulas independent of geometry case labels)
+- Stage: **1326** — 2026-11-19T01:20Z (hold theta step product unread by the geometry switch)
 - Compounding tier: **T5 / 99%**
-- This hop: STAGE-1324 hold switch sole four-case order; STAGE-1325 hold major/minor independent of cases. Cascade.yml left intact. No secrets written. No device rooted. Drive index mentioned only. Env-check note reinforced as pure tree-gate presence check of README/stamp/numeral only.
+- This hop: STAGE-1324 switch order; STAGE-1325 major/minor independent; STAGE-1326 theta step unread by switch. Cascade.yml left intact. No secrets written. No device rooted. Drive index mentioned only. Env-check note reinforced as pure tree-gate presence check of README/stamp/numeral only.
 - Prior local: hop 1323 @ 2026-11-18T22:11Z and STAGE-1323 evaluateGeometry fidelity. Honored.
 - Mesh prior: hamiltonian-incursion and The-Hive parallel pins. Honored. Not re-touched.
 - Next in operator waterfall: living-bibliography-continuity-engine
@@ -52,16 +52,16 @@ Declared operator rotation. One repo, then stop.
 3. The-Hive — hop closed. Honored. Not re-touched.
 4. continuity-ledger-cycle — hop closed. Honored. Not re-touched.
 5. hamiltonian-incursion — hop 1317 closed @ 2026-11-18T15:39Z. Honored. Not re-touched.
-6. gaia-visualizer — **1325 this hop**
+6. gaia-visualizer — **1326 this hop**
 7. living-bibliography-continuity-engine — next
 
-## Waterfall receipt (hop 1325)
+## Waterfall receipt (hop 1326)
 
-- utc: 2026-11-19T01:15Z
-- cdt: 2026-11-18 19:15 CST
+- utc: 2026-11-19T01:20Z
+- cdt: 2026-11-18 19:20 CST
 - prior local: hop 1323 @ 2026-11-18T22:11Z and STAGE-1323 evaluateGeometry fidelity. Honored.
 - mesh prior: parallel pins in The-Hive and hamiltonian-incursion. Honored. Not re-touched.
-- this hop: STAGE-1324 hold switch sole four-case dispatcher order; STAGE-1325 hold major/minor formulas independent of geometry case labels. Cascade intact.
+- this hop: STAGE-1324 hold switch sole four-case dispatcher order; STAGE-1325 hold major/minor formulas independent of geometry case labels; STAGE-1326 hold theta step product unread by the geometry switch. Cascade intact.
 - cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`)
 - cloud index mention only: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU); no binaries uploaded
 - next: living-bibliography-continuity-engine
