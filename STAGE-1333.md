@@ -1,4 +1,4 @@
-# STAGE-1333 — hold triangular modulo-based snapping to tetrahedron/lattice (2026-11-19T16:58Z)
+# STAGE-1333 — hold triangular modulo-based snapping to tetrahedron/lattice (2026-11-19T18:12Z)
 
 Connecting chat re-pasted the complete `update(t)` geometric field kernel.
 gaia-visualizer advanced to stage 1333 holding the triangular case mapping.
@@ -10,17 +10,17 @@ gaia-visualizer advanced to stage 1333 holding the triangular case mapping.
   x = major * Math.cos(tAngle) + minor * Math.cos(this.theta * 5);
   z = major * Math.sin(tAngle) + minor * Math.sin(this.theta * 5);
   y = (this.idx % 3 - 1) * major * 0.5 + Math.sin(t) * minor;
-- Floor snap of theta to 2π/3 sectors. Y sector (idx%3-1)*major*0.5 + sin(t)*minor free of the theta*5 perturbation on x/z.
+- Modulo-based snapping via floor division by 2π/3. Ripple on raw theta*5 for x/z. y uses idx % 3 for lattice layering + sin(t)*minor.
 - prior holds: 1332 hamiltonian parametric mapping favoring vertex traversal.
 - Paste not rewritten.
 
 ## Enhancement this hop
-Holds the triangular case as modulo-based snapping to form a 3D tetrahedron/triangular lattice. tAngle floors theta into 2π/3 sectors; x/z combine sector base with high-frequency minor*cos/sin(theta*5); y is the independent sector lane free of the theta*5 term. Living path matches the connecting paste. Session paste remains untouched. No secrets. No device rooted.
+Holds the triangular case as the modulo-based snapping to form a 3D tetrahedron/triangular lattice, with tAngle floor-snap and independent y layering. Living path matches the connecting paste. Session paste remains untouched. No secrets. No device rooted.
 
 ## Next stages compiled
-1. 1334 — hold torus/default standard toroidal math with tube (major + minor*cos(phi)) on x/z; y shared with infinity.
+1. 1334 — hold torus/default standard toroidal math with tube.
 2. 1335 — hold full switch completeness with all four cases active.
-3. 1336 — hold final position.lerp(new THREE.Vector3(x, y, z), 0.05) alpha literal unread by gravityPull/toroidalWeave.
+3. 1336 — hold smooth lerp interpolation (alpha 0.05) to target geometric state.
 
 Numeral 137451921129154222. Paste not rewritten. No secrets. No device rooted.
 Connecting: parallel pins in sibling repos.
