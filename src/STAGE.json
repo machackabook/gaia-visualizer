@@ -1,10 +1,10 @@
 {
-  "stage": 1320,
+  "stage": 1332,
   "sessionHash": "beec41f1",
   "livingHash": "7cd81012",
   "geometries": ["infinity", "hamiltonian", "triangular", "torus"],
-  "paste": "2026-11-18",
-  "next": [1321, 1322, 1323],
+  "paste": "2026-11-19",
+  "next": [1333, 1334, 1335],
   "engramFolder": "CRYPTIC-HEARTBEAT-NEXUS-ROOT",
-  "note": "Session switch sole four-case dispatcher. Stage 1320 holds uniforms uTime then uGravity and theta step (0.01 + idx*0.002)*gravityPull. Prior holds (lerp alpha 0.05, major/minor prior, torus tube, triangular floor, hamiltonian parametric, infinity lemniscate) preserved. Paste not rewritten."
+  "note": "Session switch sole four-case dispatcher. Stage 1332 holds hamiltonian parametric mapping favoring vertex traversal. Prior holds (infinity lemniscate, full kernel, uniforms order, theta step, lerp alpha 0.05, major/minor prior, torus tube, triangular floor) preserved. Paste not rewritten."
 }
