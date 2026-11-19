@@ -1,5 +1,5 @@
-/** Stage 1230 — session torus/default tube (major + minor*cos(phi)) shared by x/z; y identity to infinity. Document only. Do not rewrite the paste. No secrets. */
-export const TORUS_STAGE = 1230;
+/** Stage 1328 — session torus/default tube (major + minor*cos(phi)) shared by x/z; y identity to infinity. Phi external. Document only. Do not rewrite the paste. No secrets. */
+export const TORUS_STAGE = 1328;
 export const TORUS_SESSION_HASH = 'beec41f1';
 export const TORUS_LIVING_HASH = '7cd81012';
 
@@ -48,6 +48,7 @@ export function sessionTorus(major, minor, theta, phi, t, idx) {
     y,
     sharedTubeXZ: true,
     yIdentityToInfinity: true,
+    phiExternal: true,
   };
 }
 
@@ -68,6 +69,6 @@ export function noteSessionTorus(source) {
     pasteRewritten: false,
     secrets: false,
     ok: hasTube && yShared,
-    note: 'Torus/default tube (major + minor*cos(phi)) shared by x/z. y identity to infinity. Paste not rewritten.',
+    note: 'Torus/default tube (major + minor*cos(phi)) shared by x/z. y identity to infinity. Phi external. Paste not rewritten.',
   };
 }
