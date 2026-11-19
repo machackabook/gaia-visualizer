@@ -11,10 +11,10 @@ Operating sits in the middle. Team Enhance hops one repo per run. Equalizer form
 - Language: JavaScript
 - Numeral: `137451921129154222`
 - Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
-- Stage: **1333** — 2026-11-19T18:12Z (hold triangular modulo-based snapping to tetrahedron/lattice)
+- Stage: **1336** — 2026-11-19T23:13Z (hold smooth lerp interpolation to target geometric state)
 - Compounding tier: **T5 / 99%**
-- This hop: STAGE-1329 uniforms order; STAGE-1330 full kernel closure; STAGE-1331 infinity lemniscate; STAGE-1332 hamiltonian parametric; STAGE-1333 triangular floor snap. Cascade.yml left intact. No secrets written. No device rooted. Drive index mentioned only. Env-check note reinforced as pure tree-gate presence check of README/stamp/numeral only.
-- Prior local: hop 1332 @ 2026-11-19T15:14Z and STAGE-1332 hamiltonian parametric. Honored.
+- This hop: STAGE-1334 torus/default tube; STAGE-1335 full switch completeness (infinity/hamiltonian/triangular/torus); STAGE-1336 lerp alpha 0.05. Cascade.yml left intact. No secrets written. No device rooted. Drive index mentioned only. Env-check note reinforced as pure tree-gate presence check of README/stamp/numeral only.
+- Prior local: hop 1333 @ 2026-11-19T18:12Z and STAGE-1333 triangular floor snap. Honored.
 - Mesh prior: hamiltonian-incursion and The-Hive parallel pins. Honored. Not re-touched.
 - Next in operator waterfall: living-bibliography-continuity-engine
 - Cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`, lint-docs requires README, SECURITY.md, stamp, numeral, no obvious secret files). Not rewritten this hop.
@@ -52,16 +52,16 @@ Declared operator rotation. One repo, then stop.
 3. The-Hive — hop closed. Honored. Not re-touched.
 4. continuity-ledger-cycle — hop closed. Honored. Not re-touched.
 5. hamiltonian-incursion — hop 1317 closed @ 2026-11-18T15:39Z. Honored. Not re-touched.
-6. gaia-visualizer — **1333 this hop**
+6. gaia-visualizer — **1336 this hop**
 7. living-bibliography-continuity-engine — next
 
-## Waterfall receipt (hop 1333)
+## Waterfall receipt (hop 1336)
 
-- utc: 2026-11-19T18:12Z
-- cdt: 2026-11-19 12:12 CST
-- prior local: hop 1332 @ 2026-11-19T15:14Z and STAGE-1332 hamiltonian parametric. Honored.
+- utc: 2026-11-19T23:13Z
+- cdt: 2026-11-19 17:13 CST
+- prior local: hop 1333 @ 2026-11-19T18:12Z and STAGE-1333 triangular floor snap. Honored.
 - mesh prior: parallel pins in The-Hive and hamiltonian-incursion. Honored. Not re-touched.
-- this hop: STAGE-1329 hold uniforms write order uTime then uGravity; STAGE-1330 hold full kernel closure with all prior pins; STAGE-1331 hold infinity lemniscate of Bernoulli mapping with shared denom on x/z only; STAGE-1332 hold hamiltonian parametric mapping favoring vertex traversal; STAGE-1333 hold triangular modulo-based snapping to tetrahedron/lattice. Cascade intact.
+- this hop: STAGE-1334 hold torus/default standard toroidal math with tube; STAGE-1335 hold full switch completeness with all four cases active; STAGE-1336 hold smooth lerp interpolation (alpha 0.05) to target geometric state. Cascade intact.
 - cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`)
 - cloud index mention only: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU); no binaries uploaded
 - next: living-bibliography-continuity-engine
