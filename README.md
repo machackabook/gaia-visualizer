@@ -11,10 +11,10 @@ Operating sits in the middle. Team Enhance hops one repo per run. Equalizer form
 - Language: JavaScript
 - Numeral: `137451921129154222`
 - Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
-- Stage: **1337** — 2026-11-20T00:11Z (hold uniform write order uTime then uGravity and theta accumulation)
+- Stage: **1338** — 2026-11-20T01:11Z (hold major/minor derivation and toroidalWeave modulation prior to switch)
 - Compounding tier: **T5 / 99%**
-- This hop: STAGE-1337 hold uniforms uTime then uGravity and theta step * gravityPull. Cascade.yml left intact. No secrets written. No device rooted. Drive index mentioned only. Env-check note reinforced as pure tree-gate presence check of README/stamp/numeral only.
-- Prior local: hop 1336 @ 2026-11-19T23:13Z and STAGE-1336 smooth lerp interpolation. Honored.
+- This hop: STAGE-1338 hold major = 10 + (idx * 2); minor = 3 + (toroidalWeave * 2) pre-switch. Cascade.yml left intact. No secrets written. No device rooted. Drive index mentioned only. Env-check note reinforced as pure tree-gate presence check of README/stamp/numeral only.
+- Prior local: hop 1337 @ 2026-11-20T00:11Z and STAGE-1337 uniform write order uTime then uGravity and theta accumulation. Honored.
 - Mesh prior: hamiltonian-incursion and The-Hive parallel pins. Honored. Not re-touched.
 - Next in operator waterfall: living-bibliography-continuity-engine
 - Cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`, lint-docs requires README, SECURITY.md, stamp, numeral, no obvious secret files). Not rewritten this hop.
@@ -52,16 +52,16 @@ Declared operator rotation. One repo, then stop.
 3. The-Hive — hop closed. Honored. Not re-touched.
 4. continuity-ledger-cycle — hop closed. Honored. Not re-touched.
 5. hamiltonian-incursion — hop 1317 closed @ 2026-11-18T15:39Z. Honored. Not re-touched.
-6. gaia-visualizer — **1337 this hop**
+6. gaia-visualizer — **1338 this hop**
 7. living-bibliography-continuity-engine — next
 
-## Waterfall receipt (hop 1337)
+## Waterfall receipt (hop 1338)
 
-- utc: 2026-11-20T00:11Z
-- cdt: 2026-11-19 18:11 CST
-- prior local: hop 1336 @ 2026-11-19T23:13Z and STAGE-1336 smooth lerp interpolation. Honored.
+- utc: 2026-11-20T01:11Z
+- cdt: 2026-11-19 19:11 CST
+- prior local: hop 1337 @ 2026-11-20T00:11Z and STAGE-1337 uniform writes and theta step. Honored.
 - mesh prior: parallel pins in The-Hive and hamiltonian-incursion. Honored. Not re-touched.
-- this hop: STAGE-1337 hold uniform write order uTime then uGravity and theta accumulation * gravityPull. Cascade intact.
+- this hop: STAGE-1338 hold major/minor derivation and toroidalWeave modulation prior to geometry switch. Cascade intact.
 - cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`)
 - cloud index mention only: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU); no binaries uploaded
 - next: living-bibliography-continuity-engine
