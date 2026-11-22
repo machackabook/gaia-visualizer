@@ -1,7 +1,7 @@
-# STAGE-1364 — seek next unknown in geometric field or mesh continuity (2026-11-22T09:11Z)
+# STAGE-1364 — waterfall advance pin of full geometric field kernel from connecting chat (2026-11-22T20:09Z)
 
 Connecting chat re-pasted the complete `update(t)` geometric field kernel.
-gaia-visualizer advanced to stage 1364 seeking the next unknown in the geometric field or mesh continuity, following STAGE-1363 waterfall advance.
+gaia-visualizer advanced to stage 1364 for waterfall advance following STAGE-1363, holding parallel with hamiltonian-incursion STAGE-1364.
 
 ## Session pin (paste not rewritten)
 ```javascript
@@ -57,12 +57,12 @@ update(t) {
 ```
 
 ## Enhancement this hop
-Sought the next unknown in the geometric field kernel and mesh continuity from the connecting paste. All prior holds remain (phi external unread by denom in infinity, lerp alpha fixed at 0.05 with new Vector3 allocation in session, sole four-case switch, major/minor assigned pre-switch, uniforms order uTime then uGravity, theta step scaled by gravityPull). No new unknowns invented. Session paste untouched. No secrets. No device rooted. Cascade.yml left intact. Env-check pure presence tree-gate.
+Full geometric field kernel pinned verbatim from current connecting chat paste. Session allocation of new Vector3 inside lerp noted (living path prefers preallocated per KERNEL_PIN). All prior holds remain. Session paste untouched. No secrets. No device rooted. Cascade.yml left intact. Env-check pure presence tree-gate.
 
 ## Next stages compiled
-1. 1365 — cascade health and numeral lock reaffirmation.
-2. 1366 — parallel pin confirmation across mesh siblings.
-3. 1367 — waterfall advance to continuity-ledger-cycle or next in operator rotation.
+1. 1365 — cascade health reaffirmation and numeral lock.
+2. 1366 — seek next unknown in geometric field or mesh continuity from connecting chat paste of update(t).
+3. 1367 — parallel pin confirmation across mesh siblings.
 
 Numeral 137451921129154222. Paste not rewritten. No secrets. No device rooted.
-Connecting: parallel pins in The-Hive and hamiltonian-incursion as applicable.
+Connecting: primary this hop; parallel pins in hamiltonian-incursion and The-Hive as applicable. Next operator: continuity-ledger-cycle.
