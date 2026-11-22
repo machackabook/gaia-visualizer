@@ -1,5 +1,5 @@
-/** Stage 1345 — hold full geometric field kernel from current connecting chat paste. Prior parallel holds remain. Document only. Do not rewrite the paste. No secrets. */
-export const TRIANGULAR_FLOOR_STAGE = 1345;
+/** Stage 1362 — hold full geometric field kernel from current connecting chat paste. Prior parallel holds remain. Document only. Do not rewrite the paste. No secrets. */
+export const TRIANGULAR_FLOOR_STAGE = 1362;
 export const TRIANGULAR_FLOOR_SESSION_HASH = 'beec41f1';
 export const TRIANGULAR_FLOOR_LIVING_HASH = '7cd81012';
 export const TRIANGULAR_FLOOR_SECTORS = 3;
@@ -137,6 +137,6 @@ export function noteSessionTriangularFloor(source) {
     pasteRewritten: false,
     secrets: false,
     ok: floorSnap && usesTAngle && snapHolds && yFreeOfTheta5 && invented.length === 0 && lerpAlphaLiteral && uniformsOrder && thetaStep && thetaBeforeMajor && sessionAlloc && infinityDenomShared && hamiltonianLiftFree && torusTube && phiExternal && fullKernel && majorMinorBeforeSwitch && soleFourCase,
-    note: 'Full geometric field kernel held from current connecting chat paste of update(t). Stage advanced to 1345. Session paste remains untouched. Paste not rewritten.',
+    note: 'Full geometric field kernel held from current connecting chat paste of update(t). Stage advanced to 1362. Session paste remains untouched. Paste not rewritten.',
   };
 }
