@@ -11,10 +11,10 @@ Operating sits in the middle. Team Enhance hops one repo per run. Equalizer form
 - Language: JavaScript
 - Numeral: `137451921129154222`
 - Team: Enhance / Continuity Engine / Hamiltonian pipe / sSoS Operating
-- Stage: **1384** — 2026-11-24T17:16Z (cascade health reaffirmation and waterfall advance from connecting chat paste of update(t))
+- Stage: **1385** — 2026-11-24T18:09Z (theta step gravityPull independence confirmation and kernel re-pin from connecting chat paste of update(t))
 - Compounding tier: **T5 / 99%**
-- This hop: STAGE-1384 cascade health reaffirmation and waterfall advance. Full geometric field kernel re-pinned and confirmed. All prior holds intact including y-component identities (infinity/torus share sin(t*0.5+idx); hamiltonian free of minor/phi; triangular free of theta*5). Cascade.yml left intact. Geometric kernel held from connecting chat. Parallel pin with hamiltonian-incursion STAGE-1371. Next stages compiled. No secrets written. No device rooted. Drive index mentioned only. Env-check pure presence tree-gate.
-- Prior local: hop 1383 @ 2026-11-24T16:11Z parallel pin confirmation. Honored.
+- This hop: STAGE-1385 theta step gravityPull independence confirmation and kernel re-pin. Confirmed theta += (0.01 + idx * 0.002) * gravityPull unread by geometry switch; major/minor pre-switch independent. Full geometric field kernel re-pinned and confirmed. All prior holds intact including y-component identities (infinity/torus share sin(t*0.5+idx); hamiltonian free of minor/phi; triangular free of theta*5). Cascade.yml left intact. Geometric kernel held from connecting chat. Parallel pin with hamiltonian-incursion STAGE-1371. Next stages compiled. No secrets written. No device rooted. Drive index mentioned only. Env-check pure presence tree-gate.
+- Prior local: hop 1384 @ 2026-11-24T17:16Z cascade health reaffirmation and waterfall advance. Honored.
 - Mesh prior: hamiltonian-incursion hop 1371. Honored.
 - Next in operator waterfall: continuity-ledger-cycle
 - Cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`, lint-docs requires README, SECURITY.md, stamp, numeral, no obvious secret files). Not rewritten this hop.
@@ -52,16 +52,16 @@ Declared operator rotation. One repo, then stop.
 3. The-Hive — hop 1363-parallel. Honored. Not re-touched.
 4. continuity-ledger-cycle — next
 5. hamiltonian-incursion — hop 1371. Honored.
-6. gaia-visualizer — **1384 this hop**
+6. gaia-visualizer — **1385 this hop**
 7. living-bibliography-continuity-engine — hop 1283 closed. Honored. Not re-touched.
 
-## Waterfall receipt (hop 1384)
+## Waterfall receipt (hop 1385)
 
-- utc: 2026-11-24T17:16Z
-- cdt: 2026-11-24 11:16 CST
-- prior local: hop 1383 @ 2026-11-24T16:11Z parallel pin confirmation of full update(t) geometric field kernel from connecting chat paste. Honored.
+- utc: 2026-11-24T18:09Z
+- cdt: 2026-11-24 12:09 CST
+- prior local: hop 1384 @ 2026-11-24T17:16Z cascade health reaffirmation and waterfall advance from connecting chat paste of update(t). Honored.
 - mesh prior: hamiltonian-incursion hop 1371. Honored.
-- this hop: STAGE-1384 cascade health reaffirmation and waterfall advance from connecting chat paste of update(t). Kernel re-pinned and confirmed. Next stages compiled. Cascade intact.
+- this hop: STAGE-1385 theta step gravityPull independence confirmation and kernel re-pin from connecting chat paste of update(t). Kernel re-pinned and confirmed. Next stages compiled. Cascade intact.
 - cascade: `.github/workflows/cascade.yml` left intact (cron `53 * * * *`, `contents: read`)
 - cloud index mention only: CONTINUUM-ENCLAVE-137451921129154222 (id 1Ohp6ZMX02NvFayJfivgXbP4PUMztYUvU); no binaries uploaded
 - next: continuity-ledger-cycle
